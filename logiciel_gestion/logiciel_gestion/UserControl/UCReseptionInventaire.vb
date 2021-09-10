@@ -1,7 +1,4 @@
-﻿Imports MySql.Data.MySqlClient
-Public Class MainForm
-
-    Dim connection As New MySqlConnection(ConnectionDB.getInstance.connectionString)
+﻿Public Class UCReseptionInventaire
     Dim sameID As String
     Dim nomClass = "MainForm"
 
