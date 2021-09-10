@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>logiciel_gestion</RootNamespace>
-    <StartupObject>logiciel_gestion.Form1</StartupObject>
+    <StartupObject>logiciel_gestion.MainForm</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
@@ -16,11 +16,6 @@
 
   <ItemGroup>
     <PackageReference Include="MySql.Data" Version="8.0.26" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DB\Model\" />
-    <Folder Include="DB\Entity\" />
   </ItemGroup>
 
 </Project>

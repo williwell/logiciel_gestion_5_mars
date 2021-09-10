@@ -1,5 +1,4 @@
 C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion\obj\Debug\netcoreapp3.1\logiciel_gestion.vbproj.AssemblyReference.cache
-C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion\obj\Debug\netcoreapp3.1\logiciel_gestion.Form1.resources
 C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion\obj\Debug\netcoreapp3.1\logiciel_gestion.vbproj.GenerateResource.cache
 C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion\obj\Debug\netcoreapp3.1\logiciel_gestion.GeneratedMSBuildEditorConfig.editorconfig
 C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion\obj\Debug\netcoreapp3.1\logiciel_gestion.AssemblyInfoInputs.cache
@@ -23,3 +22,4 @@ C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion\obj\Debug\netcoreap
 C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion\obj\Debug\netcoreapp3.1\logiciel_gestion.dll
 C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion\obj\Debug\netcoreapp3.1\logiciel_gestion.pdb
 C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion\obj\Debug\netcoreapp3.1\logiciel_gestion.genruntimeconfig.cache
+C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion\obj\Debug\netcoreapp3.1\logiciel_gestion.MainForm.resources
