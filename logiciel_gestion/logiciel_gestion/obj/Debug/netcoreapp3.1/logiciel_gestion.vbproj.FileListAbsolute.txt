@@ -23,3 +23,5 @@ C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion\obj\Debug\netcoreap
 C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion\obj\Debug\netcoreapp3.1\logiciel_gestion.pdb
 C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion\obj\Debug\netcoreapp3.1\logiciel_gestion.genruntimeconfig.cache
 C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion\obj\Debug\netcoreapp3.1\logiciel_gestion.MainForm.resources
+C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion\obj\Debug\netcoreapp3.1\logiciel_gestion.UCReseptionInventaire.resources
+C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion\obj\Debug\netcoreapp3.1\logiciel_gestion.UCRetirerInventaire.resources

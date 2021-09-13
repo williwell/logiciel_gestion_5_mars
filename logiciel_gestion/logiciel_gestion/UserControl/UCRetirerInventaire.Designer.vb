@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class UCReseptionInventaire
+Partial Class UCRetirerInventaire
     Inherits System.Windows.Forms.UserControl
 
     'UserControl remplace la méthode Dispose pour nettoyer la liste des composants.
@@ -22,8 +22,7 @@ Partial Class UCReseptionInventaire
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.labPasItem = New System.Windows.Forms.Label()
-        Me.btAjouter = New System.Windows.Forms.Button()
+        Me.btEnlever = New System.Windows.Forms.Button()
         Me.nudQuantiteMod = New System.Windows.Forms.NumericUpDown()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.tbDescription = New System.Windows.Forms.TextBox()
@@ -38,27 +37,18 @@ Partial Class UCReseptionInventaire
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tbIdPiece = New System.Windows.Forms.TextBox()
+        Me.labPasItem = New System.Windows.Forms.Label()
         CType(Me.nudQuantiteMod, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'labPasItem
+        'btEnlever
         '
-        Me.labPasItem.AutoSize = True
-        Me.labPasItem.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.labPasItem.ForeColor = System.Drawing.Color.Red
-        Me.labPasItem.Location = New System.Drawing.Point(304, 38)
-        Me.labPasItem.Name = "labPasItem"
-        Me.labPasItem.Size = New System.Drawing.Size(0, 28)
-        Me.labPasItem.TabIndex = 34
-        '
-        'btAjouter
-        '
-        Me.btAjouter.Location = New System.Drawing.Point(61, 408)
-        Me.btAjouter.Name = "btAjouter"
-        Me.btAjouter.Size = New System.Drawing.Size(75, 23)
-        Me.btAjouter.TabIndex = 32
-        Me.btAjouter.Text = "Ajouter"
-        Me.btAjouter.UseVisualStyleBackColor = True
+        Me.btEnlever.Location = New System.Drawing.Point(61, 408)
+        Me.btEnlever.Name = "btEnlever"
+        Me.btEnlever.Size = New System.Drawing.Size(75, 21)
+        Me.btEnlever.TabIndex = 49
+        Me.btEnlever.Text = "Retirer"
+        Me.btEnlever.UseVisualStyleBackColor = True
         '
         'nudQuantiteMod
         '
@@ -68,7 +58,7 @@ Partial Class UCReseptionInventaire
         Me.nudQuantiteMod.Name = "nudQuantiteMod"
         Me.nudQuantiteMod.ReadOnly = True
         Me.nudQuantiteMod.Size = New System.Drawing.Size(156, 23)
-        Me.nudQuantiteMod.TabIndex = 31
+        Me.nudQuantiteMod.TabIndex = 47
         Me.nudQuantiteMod.Value = New Decimal(New Integer() {1, 0, 0, 0})
         '
         'Label7
@@ -76,9 +66,9 @@ Partial Class UCReseptionInventaire
         Me.Label7.AutoSize = True
         Me.Label7.Location = New System.Drawing.Point(61, 361)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(105, 15)
-        Me.Label7.TabIndex = 30
-        Me.Label7.Text = "Quantité  à ajouter"
+        Me.Label7.Size = New System.Drawing.Size(106, 15)
+        Me.Label7.TabIndex = 46
+        Me.Label7.Text = "Quantité  à enlever"
         '
         'tbDescription
         '
@@ -87,7 +77,7 @@ Partial Class UCReseptionInventaire
         Me.tbDescription.Name = "tbDescription"
         Me.tbDescription.ReadOnly = True
         Me.tbDescription.Size = New System.Drawing.Size(218, 82)
-        Me.tbDescription.TabIndex = 29
+        Me.tbDescription.TabIndex = 45
         '
         'Label6
         '
@@ -95,7 +85,7 @@ Partial Class UCReseptionInventaire
         Me.Label6.Location = New System.Drawing.Point(61, 258)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(67, 15)
-        Me.Label6.TabIndex = 28
+        Me.Label6.TabIndex = 44
         Me.Label6.Text = "Description"
         '
         'tbCommande
@@ -104,7 +94,7 @@ Partial Class UCReseptionInventaire
         Me.tbCommande.Name = "tbCommande"
         Me.tbCommande.ReadOnly = True
         Me.tbCommande.Size = New System.Drawing.Size(218, 23)
-        Me.tbCommande.TabIndex = 27
+        Me.tbCommande.TabIndex = 43
         '
         'Label5
         '
@@ -112,7 +102,7 @@ Partial Class UCReseptionInventaire
         Me.Label5.Location = New System.Drawing.Point(61, 214)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(196, 15)
-        Me.Label5.TabIndex = 26
+        Me.Label5.TabIndex = 42
         Me.Label5.Text = "Nombre de pièce en attente d'arrivé"
         '
         'tbEmplacementPiece
@@ -121,7 +111,7 @@ Partial Class UCReseptionInventaire
         Me.tbEmplacementPiece.Name = "tbEmplacementPiece"
         Me.tbEmplacementPiece.ReadOnly = True
         Me.tbEmplacementPiece.Size = New System.Drawing.Size(218, 23)
-        Me.tbEmplacementPiece.TabIndex = 25
+        Me.tbEmplacementPiece.TabIndex = 41
         '
         'Label4
         '
@@ -129,7 +119,7 @@ Partial Class UCReseptionInventaire
         Me.Label4.Location = New System.Drawing.Point(61, 170)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(80, 15)
-        Me.Label4.TabIndex = 24
+        Me.Label4.TabIndex = 40
         Me.Label4.Text = "Emplacement"
         '
         'tbQuantitePiece
@@ -138,7 +128,7 @@ Partial Class UCReseptionInventaire
         Me.tbQuantitePiece.Name = "tbQuantitePiece"
         Me.tbQuantitePiece.ReadOnly = True
         Me.tbQuantitePiece.Size = New System.Drawing.Size(218, 23)
-        Me.tbQuantitePiece.TabIndex = 23
+        Me.tbQuantitePiece.TabIndex = 39
         '
         'Label3
         '
@@ -146,7 +136,7 @@ Partial Class UCReseptionInventaire
         Me.Label3.Location = New System.Drawing.Point(61, 126)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(53, 15)
-        Me.Label3.TabIndex = 22
+        Me.Label3.TabIndex = 38
         Me.Label3.Text = "Quantité"
         '
         'tbNomPiece
@@ -155,7 +145,7 @@ Partial Class UCReseptionInventaire
         Me.tbNomPiece.Name = "tbNomPiece"
         Me.tbNomPiece.ReadOnly = True
         Me.tbNomPiece.Size = New System.Drawing.Size(218, 23)
-        Me.tbNomPiece.TabIndex = 21
+        Me.tbNomPiece.TabIndex = 37
         '
         'Label2
         '
@@ -163,7 +153,7 @@ Partial Class UCReseptionInventaire
         Me.Label2.Location = New System.Drawing.Point(61, 82)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(34, 15)
-        Me.Label2.TabIndex = 20
+        Me.Label2.TabIndex = 36
         Me.Label2.Text = "Nom"
         '
         'Label1
@@ -172,7 +162,7 @@ Partial Class UCReseptionInventaire
         Me.Label1.Location = New System.Drawing.Point(61, 38)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(49, 15)
-        Me.Label1.TabIndex = 19
+        Me.Label1.TabIndex = 35
         Me.Label1.Text = "ID pièce"
         '
         'tbIdPiece
@@ -180,14 +170,23 @@ Partial Class UCReseptionInventaire
         Me.tbIdPiece.Location = New System.Drawing.Point(61, 56)
         Me.tbIdPiece.Name = "tbIdPiece"
         Me.tbIdPiece.Size = New System.Drawing.Size(218, 23)
-        Me.tbIdPiece.TabIndex = 18
+        Me.tbIdPiece.TabIndex = 34
         '
-        'UCReseptionInventaire
+        'labPasItem
+        '
+        Me.labPasItem.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.labPasItem.ForeColor = System.Drawing.Color.Red
+        Me.labPasItem.Location = New System.Drawing.Point(304, 38)
+        Me.labPasItem.Name = "labPasItem"
+        Me.labPasItem.Size = New System.Drawing.Size(279, 153)
+        Me.labPasItem.TabIndex = 50
+        '
+        'UCRetirerInventaire
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.labPasItem)
-        Me.Controls.Add(Me.btAjouter)
+        Me.Controls.Add(Me.btEnlever)
         Me.Controls.Add(Me.nudQuantiteMod)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.tbDescription)
@@ -202,16 +201,15 @@ Partial Class UCReseptionInventaire
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.tbIdPiece)
-        Me.Name = "UCReseptionInventaire"
-        Me.Size = New System.Drawing.Size(641, 491)
+        Me.Name = "UCRetirerInventaire"
+        Me.Size = New System.Drawing.Size(653, 491)
         CType(Me.nudQuantiteMod, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents labPasItem As Label
-    Friend WithEvents btAjouter As Button
+    Friend WithEvents btEnlever As Button
     Friend WithEvents nudQuantiteMod As NumericUpDown
     Friend WithEvents Label7 As Label
     Friend WithEvents tbDescription As TextBox
@@ -226,4 +224,5 @@ Partial Class UCReseptionInventaire
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents tbIdPiece As TextBox
+    Friend WithEvents labPasItem As Label
 End Class

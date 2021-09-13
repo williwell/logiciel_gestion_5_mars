@@ -844,9 +844,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\logiciel_gestion_5_mars\\logiciel_gestion\\logiciel_gestion\\logiciel_gestion.vbproj",
-      "projectName": "logiciel_gestion",
-      "projectPath": "C:\\logiciel_gestion_5_mars\\logiciel_gestion\\logiciel_gestion\\logiciel_gestion.vbproj",
+      "projectUniqueName": "C:\\logiciel_gestion_5_mars\\logiciel_gestion\\logiciel_gestion\\logiciel_gestion_reception.vbproj",
+      "projectName": "logiciel_gestion_reception",
+      "projectPath": "C:\\logiciel_gestion_5_mars\\logiciel_gestion\\logiciel_gestion\\logiciel_gestion_reception.vbproj",
       "packagesPath": "C:\\Users\\will_\\.nuget\\packages\\",
       "outputPath": "C:\\logiciel_gestion_5_mars\\logiciel_gestion\\logiciel_gestion\\obj\\",
       "projectStyle": "PackageReference",

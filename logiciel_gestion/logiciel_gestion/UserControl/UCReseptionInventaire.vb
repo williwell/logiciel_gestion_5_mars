@@ -1,10 +1,6 @@
 ﻿Public Class UCReseptionInventaire
     Dim sameID As String
-    Dim nomClass = "MainForm"
-
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        nudQuantiteMod.Text = ""
-    End Sub
+    Dim nomClass = "UCReseptionInventaire"
 
     Private Sub tbIdPiece_KeyDown(sender As Object, e As KeyEventArgs) Handles tbIdPiece.KeyDown
         Try
@@ -19,8 +15,9 @@
                         tbDescription.Text = table.Rows(0)(3)
                         tbEmplacementPiece.Text = table.Rows(0)(5)
                         tbCommande.Text = table.Rows(0)(8)
-                        If table.Rows(0)(7) = 1 Then
-                            'ajouter une partie pour savoir quand l'object n est plus utilisé
+                        If table.Rows(0)(7) <> 1 Then
+                            labPasItem.Text = "Cette item n'est plus utilisé normalement!"
+                            labPasItem.ForeColor = Color.FromArgb(225, 202, 56)
                         End If
                         nudQuantiteMod.ReadOnly = False
                         nudQuantiteMod.Select()
@@ -74,7 +71,16 @@
                 If InventaireModel.getInstance.ajouterInventaire(tbIdPiece.Text, Integer.Parse(tbQuantitePiece.Text) + nudQuantiteMod.Value, commande) Then
                     labPasItem.Text = "Le nombre d'item à bien été ajouter"
                     labPasItem.ForeColor = Color.Green
-                    cleane()
+                    tbNomPiece.Text = ""
+                    tbQuantitePiece.Text = ""
+                    tbDescription.Text = ""
+                    tbEmplacementPiece.Text = ""
+                    tbCommande.Text = ""
+                    nudQuantiteMod.ReadOnly = True
+                    nudQuantiteMod.Text = ""
+                    sameID = ""
+                    tbIdPiece.Select()
+                    tbIdPiece.SelectAll()
                 Else
                     MessageBox.Show("Une erreur c'est produit")
                 End If
@@ -85,20 +91,12 @@
         End Try
     End Sub
 
-    Private Sub cleane()
-        Try
-            tbNomPiece.Text = ""
-            tbQuantitePiece.Text = ""
-            tbDescription.Text = ""
-            tbEmplacementPiece.Text = ""
-            tbCommande.Text = ""
-            nudQuantiteMod.ReadOnly = True
-            sameID = ""
-            tbIdPiece.Select()
-            tbIdPiece.SelectAll()
-        Catch ex As Exception
-            ErrLog.getInstance.writeErr(ex.Message, nomClass, "cleane")
-            MessageBox.Show("Une erreur c'est produit!")
-        End Try
+    Private Sub UCReseptionInventaire_Load(sender As Object, e As EventArgs) Handles Me.Load
+        tbIdPiece.Select()
+        nudQuantiteMod.Text = ""
+    End Sub
+
+    Private Sub remplir()
+
     End Sub
 End Class
