@@ -90,7 +90,7 @@
                 Else
 
                     If InventaireModel.getInstance.enleverInventaire(tbIdPiece.Text, enlever) Then
-                        labPasItem.Text = "Le nombre d'item à bien été ajouter"
+                        labPasItem.Text = "Le nombre d'item à bien été retirer"
                         labPasItem.ForeColor = Color.Green
                         cleane()
                     Else
@@ -127,7 +127,8 @@
             tbIdPiece.Select()
             tbIdPiece.SelectAll()
         Catch ex As Exception
-
+            ErrLog.getInstance.writeErr(ex.Message, nomClass, "cleane")
+            MessageBox.Show("Une erreur c'est produit!")
         End Try
     End Sub
 

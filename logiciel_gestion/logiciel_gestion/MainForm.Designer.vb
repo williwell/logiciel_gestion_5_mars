@@ -47,33 +47,42 @@ Partial Class MainForm
         '
         'btAjoutUc
         '
+        Me.btAjoutUc.BackColor = System.Drawing.Color.DarkGray
+        Me.btAjoutUc.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btAjoutUc.FlatAppearance.BorderColor = System.Drawing.Color.Black
         Me.btAjoutUc.Location = New System.Drawing.Point(12, 69)
         Me.btAjoutUc.Name = "btAjoutUc"
         Me.btAjoutUc.Size = New System.Drawing.Size(168, 58)
         Me.btAjoutUc.TabIndex = 19
         Me.btAjoutUc.Text = "AJouter"
-        Me.btAjoutUc.UseVisualStyleBackColor = True
+        Me.btAjoutUc.UseVisualStyleBackColor = False
         '
         'btRetirerUc
         '
+        Me.btRetirerUc.BackColor = System.Drawing.Color.DarkGray
+        Me.btRetirerUc.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btRetirerUc.FlatAppearance.BorderColor = System.Drawing.Color.Black
         Me.btRetirerUc.Location = New System.Drawing.Point(12, 198)
         Me.btRetirerUc.Name = "btRetirerUc"
         Me.btRetirerUc.Size = New System.Drawing.Size(168, 58)
         Me.btRetirerUc.TabIndex = 20
         Me.btRetirerUc.Text = "Retirer"
-        Me.btRetirerUc.UseVisualStyleBackColor = True
+        Me.btRetirerUc.UseVisualStyleBackColor = False
         '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(851, 515)
         Me.Controls.Add(Me.btRetirerUc)
         Me.Controls.Add(Me.btAjoutUc)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.labPasItem)
+        Me.MaximumSize = New System.Drawing.Size(867, 554)
+        Me.MinimumSize = New System.Drawing.Size(867, 554)
         Me.Name = "MainForm"
-        Me.Text = "Form1"
+        Me.Text = "Reception"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

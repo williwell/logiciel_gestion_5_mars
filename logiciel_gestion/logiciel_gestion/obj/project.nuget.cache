@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "/81OteM5kLxXxPTryiPITpzP4LTTy/CHiJzFFdVQ5GvoCisTbaBve11qoDBJkigVxb99phQwtgmC3SYZ7pHdZQ==",
+  "dgSpecHash": "Q+9Ymlqtz2Z7VISe8k2jbNg/4sPOC8Met/k1YlUpXt35WLcTupBtAb8tvqbh03t/jOmhwOg/NWPour6O8r+46Q==",
   "success": true,
   "projectFilePath": "C:\\logiciel_gestion_5_mars\\logiciel_gestion\\logiciel_gestion\\logiciel_gestion_reception.vbproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\will_\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\will_\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\will_\\.nuget\\packages\\mysql.data\\8.0.26\\mysql.data.8.0.26.nupkg.sha512",
+    "C:\\Users\\will_\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\will_\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\will_\\.nuget\\packages\\system.configuration.configurationmanager\\4.4.1\\system.configuration.configurationmanager.4.4.1.nupkg.sha512",
     "C:\\Users\\will_\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512",
