@@ -38,29 +38,25 @@ Public Class MainForm
 
     Private Sub btAjoutUc_Click(sender As Object, e As EventArgs) Handles btAjoutUc.Click
         ucAjout.Dispose()
-        ucAjout = enleverUCAjout()
+        ucAjout = New UCReseptionInventaire
         Panel1.Controls.Clear()
         Panel1.Controls.Add(ucAjout)
     End Sub
 
     Private Sub btRetirerUc_Click(sender As Object, e As EventArgs) Handles btRetirerUc.Click
         ucRetirer.Dispose()
-        ucRetirer = enleverUCEnlever()
+        ucRetirer = New UCRetirerInventaire
         Panel1.Controls.Clear()
         Panel1.Controls.Add(ucRetirer)
     End Sub
 
-    Private Function enleverUCAjout() As UCReseptionInventaire
-        Return New UCReseptionInventaire
-    End Function
-
-    Private Function enleverUCEnlever() As UCRetirerInventaire
-        Return New UCRetirerInventaire
-    End Function
-
-    Public Sub setOption(str1 As String, str2 As String)
+    Public Sub setOption(str1 As String, str2 As String, str3 As String, str4 As String, str5 As String, int6 As Integer)
         options.option1 = str1
         options.option2 = str2
+        options.option3 = str3
+        options.option4 = str4
+        options.option5 = str5
+        options.option6 = int6
     End Sub
 
     Public Function getOption1() As String
@@ -69,5 +65,21 @@ Public Class MainForm
 
     Public Function getOption2() As String
         Return options.option2
+    End Function
+
+    Public Function getOption3() As String
+        Return options.option3
+    End Function
+
+    Public Function getOption4() As String
+        Return options.option4
+    End Function
+
+    Public Function getOption5() As String
+        Return options.option5
+    End Function
+
+    Public Function getOption6() As Integer
+        Return options.option6
     End Function
 End Class

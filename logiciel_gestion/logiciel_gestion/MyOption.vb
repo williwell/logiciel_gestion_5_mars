@@ -14,6 +14,10 @@ Public Class MyOption
         Dim myFileWriter As New IO.StreamWriter(textFileStream)
         myFileWriter.WriteLine(MainForm.getInstance.getOption1)
         myFileWriter.WriteLine(MainForm.getInstance.getOption2)
+        myFileWriter.WriteLine(MainForm.getInstance.getOption3)
+        myFileWriter.WriteLine(MainForm.getInstance.getOption4)
+        myFileWriter.WriteLine(MainForm.getInstance.getOption5)
+        myFileWriter.WriteLine(MainForm.getInstance.getOption6)
         myFileWriter.Close()
         textFileStream.Close()
         MessageBox.Show("Sauvegarde effectuer")
@@ -23,6 +27,11 @@ Public Class MyOption
         Dim myFileReader As New IO.StreamReader("C:\logiciel_gestion_5_mars_fichier\settings.txt")
         Dim option1 = myFileReader.ReadLine()
         Dim option2 = myFileReader.ReadLine()
-        MainForm.getInstance.setOption(option1, option2)
+        Dim option3 = myFileReader.ReadLine()
+        Dim option4 = myFileReader.ReadLine()
+        Dim option5 = myFileReader.ReadLine()
+        Dim option6 = myFileReader.ReadLine()
+        myFileReader.Close()
+        MainForm.getInstance.setOption(option1, option2, option3, option4, option5, Integer.Parse(option6))
     End Sub
 End Class
