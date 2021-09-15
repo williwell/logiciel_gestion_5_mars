@@ -23,7 +23,7 @@ Public Class ModelInventaire
     '__________________________________________________________________________________________________________
     'Methods
     '__________________________________________________________________________________________________________
-    Public Sub modInventaire(liste() As String, use As Boolean)
+    Public Function modInventaire(liste() As String, use As Boolean) As Boolean
         Try
             If connection.State = ConnectionState.Open Then
                 connection.Close()
@@ -37,16 +37,19 @@ Public Class ModelInventaire
                                                             emplacement='{liste(5)}',
                                                             coutUnitaire={Double.Parse(liste(6))},
                                                             utilise={use},
-                                                            enCommande={Integer.Parse(liste(8))}
+                                                            enCommande={Integer.Parse(liste(8))},
+                                                            minStock={Integer.Parse(liste(9))}
                                                             where id ='{liste(0)}'"
             connection.Open()
             Dim reader = command.ExecuteReader()
             connection.Close()
+            Return True
         Catch ex As Exception
             ErrLog.getInstance.writeErr(ex.Message, nomClass, "modInventaire")
             MessageBox.Show("Une erreur c'est produit!")
+            Return False
         End Try
-    End Sub
+    End Function
 
 
     '__________________________________________________________________________________________________________

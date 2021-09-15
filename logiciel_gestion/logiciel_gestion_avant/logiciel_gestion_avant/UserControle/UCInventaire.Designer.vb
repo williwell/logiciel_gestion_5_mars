@@ -28,8 +28,6 @@ Partial Class UCInventaire
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.tbUse = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.tbEmplacement = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -42,9 +40,36 @@ Partial Class UCInventaire
         Me.nudEnCommende = New System.Windows.Forms.NumericUpDown()
         Me.nudCoutUn = New System.Windows.Forms.NumericUpDown()
         Me.btSauv = New System.Windows.Forms.Button()
+        Me.btRecherche = New System.Windows.Forms.Button()
+        Me.cbUse = New System.Windows.Forms.CheckBox()
+        Me.btAnnulMod = New System.Windows.Forms.Button()
+        Me.tbNomFour = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.tbAdres2 = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.tbAdres1 = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.tbCouriel = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.tbLeepTime = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.tbNomConc = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.tbTel = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.tbMethoPaie = New System.Windows.Forms.TextBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.tbNoCompte = New System.Windows.Forms.TextBox()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.tbMetCom = New System.Windows.Forms.TextBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.nudMinInv = New System.Windows.Forms.NumericUpDown()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.btCreer = New System.Windows.Forms.Button()
         CType(Me.nudQuantite, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudEnCommende, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudCoutUn, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nudMinInv, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Label1
@@ -60,7 +85,7 @@ Partial Class UCInventaire
         '
         Me.tbIDPro.Location = New System.Drawing.Point(41, 72)
         Me.tbIDPro.Name = "tbIDPro"
-        Me.tbIDPro.Size = New System.Drawing.Size(172, 23)
+        Me.tbIDPro.Size = New System.Drawing.Size(359, 23)
         Me.tbIDPro.TabIndex = 1
         '
         'tbNom
@@ -68,7 +93,7 @@ Partial Class UCInventaire
         Me.tbNom.Location = New System.Drawing.Point(41, 116)
         Me.tbNom.Name = "tbNom"
         Me.tbNom.ReadOnly = True
-        Me.tbNom.Size = New System.Drawing.Size(172, 23)
+        Me.tbNom.Size = New System.Drawing.Size(359, 23)
         Me.tbNom.TabIndex = 3
         '
         'Label2
@@ -83,7 +108,7 @@ Partial Class UCInventaire
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(263, 54)
+        Me.Label3.Location = New System.Drawing.Point(428, 54)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(82, 15)
         Me.Label3.TabIndex = 4
@@ -92,44 +117,27 @@ Partial Class UCInventaire
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(41, 318)
+        Me.Label4.Location = New System.Drawing.Point(41, 299)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(84, 15)
+        Me.Label4.Size = New System.Drawing.Size(86, 15)
         Me.Label4.TabIndex = 6
-        Me.Label4.Text = "En commande"
-        '
-        'tbUse
-        '
-        Me.tbUse.Location = New System.Drawing.Point(41, 292)
-        Me.tbUse.Name = "tbUse"
-        Me.tbUse.ReadOnly = True
-        Me.tbUse.Size = New System.Drawing.Size(172, 23)
-        Me.tbUse.TabIndex = 9
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(41, 274)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(95, 15)
-        Me.Label5.TabIndex = 8
-        Me.Label5.Text = "Est encore utilisé"
+        Me.Label4.Text = "En Commande"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(41, 230)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(76, 15)
+        Me.Label6.Size = New System.Drawing.Size(77, 15)
         Me.Label6.TabIndex = 10
-        Me.Label6.Text = "Coût unitaire"
+        Me.Label6.Text = "Coût Unitaire"
         '
         'tbEmplacement
         '
         Me.tbEmplacement.Location = New System.Drawing.Point(41, 204)
         Me.tbEmplacement.Name = "tbEmplacement"
         Me.tbEmplacement.ReadOnly = True
-        Me.tbEmplacement.Size = New System.Drawing.Size(172, 23)
+        Me.tbEmplacement.Size = New System.Drawing.Size(116, 23)
         Me.tbEmplacement.TabIndex = 13
         '
         'Label7
@@ -143,16 +151,16 @@ Partial Class UCInventaire
         '
         'tbIDFour
         '
-        Me.tbIDFour.Location = New System.Drawing.Point(263, 72)
+        Me.tbIDFour.Location = New System.Drawing.Point(428, 72)
         Me.tbIDFour.Name = "tbIDFour"
         Me.tbIDFour.ReadOnly = True
-        Me.tbIDFour.Size = New System.Drawing.Size(172, 23)
+        Me.tbIDFour.Size = New System.Drawing.Size(209, 23)
         Me.tbIDFour.TabIndex = 15
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(41, 362)
+        Me.Label8.Location = New System.Drawing.Point(41, 387)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(67, 15)
         Me.Label8.TabIndex = 14
@@ -170,18 +178,21 @@ Partial Class UCInventaire
         'nudQuantite
         '
         Me.nudQuantite.Location = New System.Drawing.Point(41, 160)
+        Me.nudQuantite.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
+        Me.nudQuantite.Minimum = New Decimal(New Integer() {10000, 0, 0, -2147483648})
         Me.nudQuantite.Name = "nudQuantite"
         Me.nudQuantite.ReadOnly = True
-        Me.nudQuantite.Size = New System.Drawing.Size(172, 23)
+        Me.nudQuantite.Size = New System.Drawing.Size(116, 23)
         Me.nudQuantite.TabIndex = 17
         '
         'tbDescription
         '
-        Me.tbDescription.Location = New System.Drawing.Point(41, 380)
+        Me.tbDescription.Location = New System.Drawing.Point(41, 405)
         Me.tbDescription.Multiline = True
         Me.tbDescription.Name = "tbDescription"
         Me.tbDescription.ReadOnly = True
-        Me.tbDescription.Size = New System.Drawing.Size(172, 75)
+        Me.tbDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.tbDescription.Size = New System.Drawing.Size(359, 100)
         Me.tbDescription.TabIndex = 30
         '
         'labPasItem
@@ -189,17 +200,17 @@ Partial Class UCInventaire
         Me.labPasItem.AutoSize = True
         Me.labPasItem.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.labPasItem.ForeColor = System.Drawing.Color.Red
-        Me.labPasItem.Location = New System.Drawing.Point(41, 7)
+        Me.labPasItem.Location = New System.Drawing.Point(428, 18)
         Me.labPasItem.Name = "labPasItem"
         Me.labPasItem.Size = New System.Drawing.Size(0, 28)
         Me.labPasItem.TabIndex = 35
         '
         'nudEnCommende
         '
-        Me.nudEnCommende.Location = New System.Drawing.Point(41, 336)
+        Me.nudEnCommende.Location = New System.Drawing.Point(41, 317)
         Me.nudEnCommende.Name = "nudEnCommende"
         Me.nudEnCommende.ReadOnly = True
-        Me.nudEnCommende.Size = New System.Drawing.Size(172, 23)
+        Me.nudEnCommende.Size = New System.Drawing.Size(116, 23)
         Me.nudEnCommende.TabIndex = 36
         '
         'nudCoutUn
@@ -207,23 +218,275 @@ Partial Class UCInventaire
         Me.nudCoutUn.Location = New System.Drawing.Point(41, 248)
         Me.nudCoutUn.Name = "nudCoutUn"
         Me.nudCoutUn.ReadOnly = True
-        Me.nudCoutUn.Size = New System.Drawing.Size(172, 23)
+        Me.nudCoutUn.Size = New System.Drawing.Size(116, 23)
         Me.nudCoutUn.TabIndex = 37
         '
         'btSauv
         '
         Me.btSauv.Enabled = False
-        Me.btSauv.Location = New System.Drawing.Point(41, 461)
+        Me.btSauv.Location = New System.Drawing.Point(41, 511)
         Me.btSauv.Name = "btSauv"
         Me.btSauv.Size = New System.Drawing.Size(172, 23)
         Me.btSauv.TabIndex = 38
         Me.btSauv.Text = "Enregistrer"
         Me.btSauv.UseVisualStyleBackColor = True
         '
+        'btRecherche
+        '
+        Me.btRecherche.Location = New System.Drawing.Point(40, 18)
+        Me.btRecherche.Name = "btRecherche"
+        Me.btRecherche.Size = New System.Drawing.Size(172, 23)
+        Me.btRecherche.TabIndex = 39
+        Me.btRecherche.Text = "Recherche Produit"
+        Me.btRecherche.UseVisualStyleBackColor = True
+        '
+        'cbUse
+        '
+        Me.cbUse.AutoSize = True
+        Me.cbUse.Enabled = False
+        Me.cbUse.Location = New System.Drawing.Point(41, 277)
+        Me.cbUse.Name = "cbUse"
+        Me.cbUse.Size = New System.Drawing.Size(76, 19)
+        Me.cbUse.TabIndex = 40
+        Me.cbUse.Text = "Est Utilisé"
+        Me.cbUse.UseVisualStyleBackColor = True
+        '
+        'btAnnulMod
+        '
+        Me.btAnnulMod.Enabled = False
+        Me.btAnnulMod.Location = New System.Drawing.Point(228, 511)
+        Me.btAnnulMod.Name = "btAnnulMod"
+        Me.btAnnulMod.Size = New System.Drawing.Size(172, 23)
+        Me.btAnnulMod.TabIndex = 41
+        Me.btAnnulMod.Text = "Annuler Modification"
+        Me.btAnnulMod.UseVisualStyleBackColor = True
+        '
+        'tbNomFour
+        '
+        Me.tbNomFour.Location = New System.Drawing.Point(428, 116)
+        Me.tbNomFour.Name = "tbNomFour"
+        Me.tbNomFour.ReadOnly = True
+        Me.tbNomFour.Size = New System.Drawing.Size(209, 23)
+        Me.tbNomFour.TabIndex = 43
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(428, 98)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(98, 15)
+        Me.Label10.TabIndex = 42
+        Me.Label10.Text = "Nom Fournisseur"
+        '
+        'tbAdres2
+        '
+        Me.tbAdres2.Location = New System.Drawing.Point(428, 204)
+        Me.tbAdres2.Name = "tbAdres2"
+        Me.tbAdres2.ReadOnly = True
+        Me.tbAdres2.Size = New System.Drawing.Size(209, 23)
+        Me.tbAdres2.TabIndex = 47
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(428, 186)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(57, 15)
+        Me.Label5.TabIndex = 46
+        Me.Label5.Text = "Adresse 2"
+        '
+        'tbAdres1
+        '
+        Me.tbAdres1.Location = New System.Drawing.Point(428, 160)
+        Me.tbAdres1.Name = "tbAdres1"
+        Me.tbAdres1.ReadOnly = True
+        Me.tbAdres1.Size = New System.Drawing.Size(209, 23)
+        Me.tbAdres1.TabIndex = 45
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(428, 142)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(57, 15)
+        Me.Label11.TabIndex = 44
+        Me.Label11.Text = "Adresse 1"
+        '
+        'tbCouriel
+        '
+        Me.tbCouriel.Location = New System.Drawing.Point(428, 380)
+        Me.tbCouriel.Name = "tbCouriel"
+        Me.tbCouriel.ReadOnly = True
+        Me.tbCouriel.Size = New System.Drawing.Size(209, 23)
+        Me.tbCouriel.TabIndex = 55
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(428, 362)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(45, 15)
+        Me.Label12.TabIndex = 54
+        Me.Label12.Text = "Couriel"
+        '
+        'tbLeepTime
+        '
+        Me.tbLeepTime.Location = New System.Drawing.Point(428, 336)
+        Me.tbLeepTime.Name = "tbLeepTime"
+        Me.tbLeepTime.ReadOnly = True
+        Me.tbLeepTime.Size = New System.Drawing.Size(209, 23)
+        Me.tbLeepTime.TabIndex = 53
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(428, 318)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(209, 15)
+        Me.Label13.TabIndex = 52
+        Me.Label13.Text = "Temps d'arriver normal pour les pièces"
+        '
+        'tbNomConc
+        '
+        Me.tbNomConc.Location = New System.Drawing.Point(428, 292)
+        Me.tbNomConc.Name = "tbNomConc"
+        Me.tbNomConc.ReadOnly = True
+        Me.tbNomConc.Size = New System.Drawing.Size(209, 23)
+        Me.tbNomConc.TabIndex = 51
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(428, 274)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(100, 15)
+        Me.Label14.TabIndex = 50
+        Me.Label14.Text = "Nom du conctact"
+        '
+        'tbTel
+        '
+        Me.tbTel.Location = New System.Drawing.Point(428, 248)
+        Me.tbTel.Name = "tbTel"
+        Me.tbTel.ReadOnly = True
+        Me.tbTel.Size = New System.Drawing.Size(209, 23)
+        Me.tbTel.TabIndex = 49
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(428, 230)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(61, 15)
+        Me.Label15.TabIndex = 48
+        Me.Label15.Text = "Téléphone"
+        '
+        'tbMethoPaie
+        '
+        Me.tbMethoPaie.Location = New System.Drawing.Point(428, 512)
+        Me.tbMethoPaie.Name = "tbMethoPaie"
+        Me.tbMethoPaie.ReadOnly = True
+        Me.tbMethoPaie.Size = New System.Drawing.Size(209, 23)
+        Me.tbMethoPaie.TabIndex = 61
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(428, 494)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(124, 15)
+        Me.Label19.TabIndex = 60
+        Me.Label19.Text = "Méthode de paiement"
+        '
+        'tbNoCompte
+        '
+        Me.tbNoCompte.Location = New System.Drawing.Point(428, 468)
+        Me.tbNoCompte.Name = "tbNoCompte"
+        Me.tbNoCompte.ReadOnly = True
+        Me.tbNoCompte.Size = New System.Drawing.Size(209, 23)
+        Me.tbNoCompte.TabIndex = 59
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(428, 450)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(111, 15)
+        Me.Label17.TabIndex = 58
+        Me.Label17.Text = "Numéro de compte"
+        '
+        'tbMetCom
+        '
+        Me.tbMetCom.Location = New System.Drawing.Point(428, 424)
+        Me.tbMetCom.Name = "tbMetCom"
+        Me.tbMetCom.ReadOnly = True
+        Me.tbMetCom.Size = New System.Drawing.Size(209, 23)
+        Me.tbMetCom.TabIndex = 57
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(428, 406)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(135, 15)
+        Me.Label18.TabIndex = 56
+        Me.Label18.Text = "Méthode de commande"
+        '
+        'nudMinInv
+        '
+        Me.nudMinInv.Location = New System.Drawing.Point(41, 361)
+        Me.nudMinInv.Name = "nudMinInv"
+        Me.nudMinInv.ReadOnly = True
+        Me.nudMinInv.Size = New System.Drawing.Size(116, 23)
+        Me.nudMinInv.TabIndex = 63
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(41, 343)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(183, 15)
+        Me.Label16.TabIndex = 62
+        Me.Label16.Text = "Minimun besoin dans l'inventaire"
+        '
+        'btCreer
+        '
+        Me.btCreer.Location = New System.Drawing.Point(218, 18)
+        Me.btCreer.Name = "btCreer"
+        Me.btCreer.Size = New System.Drawing.Size(173, 23)
+        Me.btCreer.TabIndex = 64
+        Me.btCreer.Text = "Créer un nouveau produit"
+        Me.btCreer.UseVisualStyleBackColor = True
+        '
         'UCInventaire
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.btCreer)
+        Me.Controls.Add(Me.nudMinInv)
+        Me.Controls.Add(Me.Label16)
+        Me.Controls.Add(Me.tbMethoPaie)
+        Me.Controls.Add(Me.Label19)
+        Me.Controls.Add(Me.tbNoCompte)
+        Me.Controls.Add(Me.Label17)
+        Me.Controls.Add(Me.tbMetCom)
+        Me.Controls.Add(Me.Label18)
+        Me.Controls.Add(Me.tbCouriel)
+        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.tbLeepTime)
+        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.tbNomConc)
+        Me.Controls.Add(Me.Label14)
+        Me.Controls.Add(Me.tbTel)
+        Me.Controls.Add(Me.Label15)
+        Me.Controls.Add(Me.tbAdres2)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.tbAdres1)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.tbNomFour)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.btAnnulMod)
+        Me.Controls.Add(Me.cbUse)
+        Me.Controls.Add(Me.btRecherche)
         Me.Controls.Add(Me.btSauv)
         Me.Controls.Add(Me.nudCoutUn)
         Me.Controls.Add(Me.nudEnCommende)
@@ -236,8 +499,6 @@ Partial Class UCInventaire
         Me.Controls.Add(Me.tbEmplacement)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.tbUse)
-        Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.tbNom)
@@ -245,10 +506,11 @@ Partial Class UCInventaire
         Me.Controls.Add(Me.tbIDPro)
         Me.Controls.Add(Me.Label1)
         Me.Name = "UCInventaire"
-        Me.Size = New System.Drawing.Size(808, 503)
+        Me.Size = New System.Drawing.Size(808, 554)
         CType(Me.nudQuantite, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nudEnCommende, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nudCoutUn, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nudMinInv, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -260,8 +522,6 @@ Partial Class UCInventaire
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents tbUse As TextBox
-    Friend WithEvents Label5 As Label
     Friend WithEvents Label6 As Label
     Friend WithEvents tbEmplacement As TextBox
     Friend WithEvents Label7 As Label
@@ -274,4 +534,30 @@ Partial Class UCInventaire
     Friend WithEvents nudEnCommende As NumericUpDown
     Friend WithEvents nudCoutUn As NumericUpDown
     Friend WithEvents btSauv As Button
+    Friend WithEvents btRecherche As Button
+    Friend WithEvents cbUse As CheckBox
+    Friend WithEvents btAnnulMod As Button
+    Friend WithEvents tbNomFour As TextBox
+    Friend WithEvents Label10 As Label
+    Friend WithEvents tbAdres2 As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents tbAdres1 As TextBox
+    Friend WithEvents Label11 As Label
+    Friend WithEvents tbCouriel As TextBox
+    Friend WithEvents Label12 As Label
+    Friend WithEvents tbLeepTime As TextBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents tbNomConc As TextBox
+    Friend WithEvents Label14 As Label
+    Friend WithEvents tbTel As TextBox
+    Friend WithEvents Label15 As Label
+    Friend WithEvents tbMethoPaie As TextBox
+    Friend WithEvents Label19 As Label
+    Friend WithEvents tbNoCompte As TextBox
+    Friend WithEvents Label17 As Label
+    Friend WithEvents tbMetCom As TextBox
+    Friend WithEvents Label18 As Label
+    Friend WithEvents nudMinInv As NumericUpDown
+    Friend WithEvents Label16 As Label
+    Friend WithEvents btCreer As Button
 End Class

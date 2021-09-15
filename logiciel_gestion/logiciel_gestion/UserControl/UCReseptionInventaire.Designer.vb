@@ -38,6 +38,7 @@ Partial Class UCReseptionInventaire
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tbIdPiece = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
         CType(Me.nudQuantiteMod, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -182,10 +183,20 @@ Partial Class UCReseptionInventaire
         Me.tbIdPiece.Size = New System.Drawing.Size(218, 23)
         Me.tbIdPiece.TabIndex = 18
         '
+        'Label8
+        '
+        Me.Label8.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label8.ForeColor = System.Drawing.Color.Red
+        Me.Label8.Location = New System.Drawing.Point(304, 38)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(279, 153)
+        Me.Label8.TabIndex = 51
+        '
         'UCReseptionInventaire
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.labPasItem)
         Me.Controls.Add(Me.btAjouter)
         Me.Controls.Add(Me.nudQuantiteMod)
@@ -226,4 +237,5 @@ Partial Class UCReseptionInventaire
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents tbIdPiece As TextBox
+    Friend WithEvents Label8 As Label
 End Class

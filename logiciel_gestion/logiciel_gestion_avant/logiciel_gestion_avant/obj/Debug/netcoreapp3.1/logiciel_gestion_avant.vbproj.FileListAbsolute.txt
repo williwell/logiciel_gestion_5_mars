@@ -28,3 +28,5 @@ C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gest
 C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gestion_avant\bin\Debug\netcoreapp3.1\Ubiety.Dns.Core.dll
 C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gestion_avant\bin\Debug\netcoreapp3.1\Zstandard.Net.dll
 C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gestion_avant\obj\Debug\netcoreapp3.1\logiciel_gestion_avant.vbproj.CopyComplete
+C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gestion_avant\obj\Debug\netcoreapp3.1\logiciel_gestion_avant.RechercheProduit.resources
+C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gestion_avant\obj\Debug\netcoreapp3.1\logiciel_gestion_avant.creerProduit.resources

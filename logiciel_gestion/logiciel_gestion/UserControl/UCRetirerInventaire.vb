@@ -140,7 +140,7 @@
         tbEmplacementPiece.Text = table.Rows(0)(5)
         tbCommande.Text = table.Rows(0)(8)
         sameID = tbIdPiece.Text
-        If table.Rows(0)(7) <> 1 Then
+        If Not table.Rows(0)(7) Then
             labPasItem.Text = "Cette item n'est plus utilisé normalement!"
             labPasItem.ForeColor = Color.FromArgb(225, 202, 56)
 

@@ -1,30 +1,21 @@
 ﻿Public Class UCReseptionInventaire
     Dim sameID As String
     Dim nomClass = "UCReseptionInventaire"
+    Dim table As DataTable
 
     Private Sub tbIdPiece_KeyDown(sender As Object, e As KeyEventArgs) Handles tbIdPiece.KeyDown
         Try
             If e.KeyCode = Keys.Enter Then
                 If sameID <> tbIdPiece.Text Then
                     nudQuantiteMod.ReadOnly = True
-                    Dim table As DataTable = InventaireEntity.getInstance.getInventaire(tbIdPiece.Text)
+                    table = InventaireEntity.getInstance.getInventaire(tbIdPiece.Text)
                     If table.Rows.Count > 0 Then
-                        labPasItem.Text = ""
-                        tbNomPiece.Text = table.Rows(0)(1)
-                        tbQuantitePiece.Text = table.Rows(0)(2)
-                        tbDescription.Text = table.Rows(0)(3)
-                        tbEmplacementPiece.Text = table.Rows(0)(5)
-                        tbCommande.Text = table.Rows(0)(8)
-                        If table.Rows(0)(7) <> 1 Then
-                            labPasItem.Text = "Cette item n'est plus utilisé normalement!"
-                            labPasItem.ForeColor = Color.FromArgb(225, 202, 56)
-                        End If
-                        nudQuantiteMod.ReadOnly = False
-                        nudQuantiteMod.Select()
+                        remplir()
                     Else
                         labPasItem.Text = "Le numéro d'item n'existe pas!"
                         labPasItem.ForeColor = Color.Red
                         tbIdPiece.SelectAll()
+                        cleane()
                     End If
                     sameID = tbIdPiece.Text
                 End If
@@ -97,6 +88,36 @@
     End Sub
 
     Private Sub remplir()
+        labPasItem.Text = ""
+        tbNomPiece.Text = table.Rows(0)(1)
+        tbQuantitePiece.Text = table.Rows(0)(2)
+        tbDescription.Text = table.Rows(0)(3)
+        tbEmplacementPiece.Text = table.Rows(0)(5)
+        tbCommande.Text = table.Rows(0)(8)
+        sameID = tbIdPiece.Text
+        If Not table.Rows(0)(7) Then
+            labPasItem.Text = "Cette item n'est plus utilisé normalement!"
+            labPasItem.ForeColor = Color.FromArgb(225, 202, 56)
 
+        End If
+        nudQuantiteMod.ReadOnly = False
+        nudQuantiteMod.Select()
+    End Sub
+
+    Private Sub cleane()
+        Try
+            tbNomPiece.Text = ""
+            tbQuantitePiece.Text = ""
+            tbDescription.Text = ""
+            tbEmplacementPiece.Text = ""
+            tbCommande.Text = ""
+            nudQuantiteMod.ReadOnly = True
+            sameID = ""
+            tbIdPiece.Select()
+            tbIdPiece.SelectAll()
+        Catch ex As Exception
+            ErrLog.getInstance.writeErr(ex.Message, nomClass, "cleane")
+            MessageBox.Show("Une erreur c'est produit!")
+        End Try
     End Sub
 End Class
