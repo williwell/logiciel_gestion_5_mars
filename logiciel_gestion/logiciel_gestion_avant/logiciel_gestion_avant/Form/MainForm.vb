@@ -10,6 +10,7 @@
     Dim ucAccueil As New UCAccueil
     Dim ucInventaire As New UCInventaire
     Dim ucVente As New UCVente
+    Dim ucFour As New UCFournisseur(Me, ucInventaire)
 
     '__________________________________________________________________________________________________________
     'Constructor
@@ -27,6 +28,7 @@
         PanUC.Controls.Add(ucAccueil)
         PanUC.Controls.Add(ucInventaire)
         PanUC.Controls.Add(ucVente)
+        PanUC.Controls.Add(ucFour)
     End Sub
 
     '__________________________________________________________________________________________________________
@@ -65,16 +67,24 @@
     End Sub
 
     Private Sub btInventaire_Click(sender As Object, e As EventArgs) Handles btInventaire.Click
-        ucInventaire.BringToFront()
-        panMenu.Size = panMenu.MinimumSize
+        showInventaire()
     End Sub
 
     Private Sub btVente_Click(sender As Object, e As EventArgs) Handles btVente.Click
-        'ucVente.BringToFront()s
+        'ucVente.BringToFront()
         'panMenu.Size = panMenu.MinimumSize
         MessageBox.Show("La section n'est pas encore implémenté")
     End Sub
 
+    Private Sub btFour_Click(sender As Object, e As EventArgs) Handles btFour.Click
+        ucFour.BringToFront()
+        panMenu.Size = panMenu.MinimumSize
+    End Sub
+
+    Public Sub showInventaire()
+        ucInventaire.BringToFront()
+        panMenu.Size = panMenu.MinimumSize
+    End Sub
 
     '__________________________________________________________________________________________________________
     'Functions

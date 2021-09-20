@@ -24,7 +24,7 @@ Partial Class creerProduit
     Private Sub InitializeComponent()
         Me.nudMinInv = New System.Windows.Forms.NumericUpDown()
         Me.Label16 = New System.Windows.Forms.Label()
-        Me.btAnnulMod = New System.Windows.Forms.Button()
+        Me.btAnnul = New System.Windows.Forms.Button()
         Me.cbUse = New System.Windows.Forms.CheckBox()
         Me.btSauv = New System.Windows.Forms.Button()
         Me.nudCoutUn = New System.Windows.Forms.NumericUpDown()
@@ -44,6 +44,10 @@ Partial Class creerProduit
         Me.Label3 = New System.Windows.Forms.Label()
         Me.btListeFour = New System.Windows.Forms.Button()
         Me.cbFour = New System.Windows.Forms.ComboBox()
+        Me.tbNoMFR = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.tbNoPieceFour = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
         CType(Me.nudMinInv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudCoutUn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudEnCommende, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -66,14 +70,14 @@ Partial Class creerProduit
         Me.Label16.TabIndex = 81
         Me.Label16.Text = "Minimun besoin dans l'inventaire"
         '
-        'btAnnulMod
+        'btAnnul
         '
-        Me.btAnnulMod.Location = New System.Drawing.Point(222, 535)
-        Me.btAnnulMod.Name = "btAnnulMod"
-        Me.btAnnulMod.Size = New System.Drawing.Size(172, 23)
-        Me.btAnnulMod.TabIndex = 80
-        Me.btAnnulMod.Text = "Annuler Modification"
-        Me.btAnnulMod.UseVisualStyleBackColor = True
+        Me.btAnnul.Location = New System.Drawing.Point(222, 623)
+        Me.btAnnul.Name = "btAnnul"
+        Me.btAnnul.Size = New System.Drawing.Size(172, 23)
+        Me.btAnnul.TabIndex = 80
+        Me.btAnnul.Text = "Annuler"
+        Me.btAnnul.UseVisualStyleBackColor = True
         '
         'cbUse
         '
@@ -90,7 +94,7 @@ Partial Class creerProduit
         '
         'btSauv
         '
-        Me.btSauv.Location = New System.Drawing.Point(35, 535)
+        Me.btSauv.Location = New System.Drawing.Point(35, 623)
         Me.btSauv.Name = "btSauv"
         Me.btSauv.Size = New System.Drawing.Size(172, 23)
         Me.btSauv.TabIndex = 78
@@ -113,7 +117,7 @@ Partial Class creerProduit
         '
         'tbDescription
         '
-        Me.tbDescription.Location = New System.Drawing.Point(35, 429)
+        Me.tbDescription.Location = New System.Drawing.Point(35, 517)
         Me.tbDescription.Multiline = True
         Me.tbDescription.Name = "tbDescription"
         Me.tbDescription.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
@@ -141,7 +145,7 @@ Partial Class creerProduit
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(35, 411)
+        Me.Label8.Location = New System.Drawing.Point(35, 499)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(67, 15)
         Me.Label8.TabIndex = 72
@@ -193,9 +197,9 @@ Partial Class creerProduit
         Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(35, 78)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(76, 15)
+        Me.Label2.Size = New System.Drawing.Size(92, 15)
         Me.Label2.TabIndex = 66
-        Me.Label2.Text = "Nom Produit"
+        Me.Label2.Text = "Nom Produit (*)"
         '
         'tbIDPro
         '
@@ -209,9 +213,9 @@ Partial Class creerProduit
         Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(35, 34)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(60, 15)
+        Me.Label1.Size = New System.Drawing.Size(76, 15)
         Me.Label1.TabIndex = 64
-        Me.Label1.Text = "ID Produit"
+        Me.Label1.Text = "ID Produit (*)"
         '
         'Label3
         '
@@ -239,17 +243,53 @@ Partial Class creerProduit
         Me.cbFour.Size = New System.Drawing.Size(172, 23)
         Me.cbFour.TabIndex = 86
         '
+        'tbNoMFR
+        '
+        Me.tbNoMFR.Location = New System.Drawing.Point(35, 473)
+        Me.tbNoMFR.Name = "tbNoMFR"
+        Me.tbNoMFR.Size = New System.Drawing.Size(359, 23)
+        Me.tbNoMFR.TabIndex = 90
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(35, 455)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(129, 15)
+        Me.Label5.TabIndex = 89
+        Me.Label5.Text = "Numéro Manufacturier"
+        '
+        'tbNoPieceFour
+        '
+        Me.tbNoPieceFour.Location = New System.Drawing.Point(35, 429)
+        Me.tbNoPieceFour.Name = "tbNoPieceFour"
+        Me.tbNoPieceFour.Size = New System.Drawing.Size(359, 23)
+        Me.tbNoPieceFour.TabIndex = 88
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(35, 411)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(146, 15)
+        Me.Label10.TabIndex = 87
+        Me.Label10.Text = "Numéro Pièce Fournisseur"
+        '
         'creerProduit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(461, 595)
+        Me.ClientSize = New System.Drawing.Size(461, 650)
+        Me.Controls.Add(Me.tbNoMFR)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.tbNoPieceFour)
+        Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.cbFour)
         Me.Controls.Add(Me.btListeFour)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.nudMinInv)
         Me.Controls.Add(Me.Label16)
-        Me.Controls.Add(Me.btAnnulMod)
+        Me.Controls.Add(Me.btAnnul)
         Me.Controls.Add(Me.cbUse)
         Me.Controls.Add(Me.btSauv)
         Me.Controls.Add(Me.nudCoutUn)
@@ -279,7 +319,7 @@ Partial Class creerProduit
 
     Friend WithEvents nudMinInv As NumericUpDown
     Friend WithEvents Label16 As Label
-    Friend WithEvents btAnnulMod As Button
+    Friend WithEvents btAnnul As Button
     Friend WithEvents cbUse As CheckBox
     Friend WithEvents btSauv As Button
     Friend WithEvents nudCoutUn As NumericUpDown
@@ -299,4 +339,8 @@ Partial Class creerProduit
     Friend WithEvents Label3 As Label
     Friend WithEvents btListeFour As Button
     Friend WithEvents cbFour As ComboBox
+    Friend WithEvents tbNoMFR As TextBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents tbNoPieceFour As TextBox
+    Friend WithEvents Label10 As Label
 End Class

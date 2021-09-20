@@ -25,10 +25,10 @@ Partial Class MainForm
         Me.PanUC = New System.Windows.Forms.Panel()
         Me.btMenu = New System.Windows.Forms.Button()
         Me.panMenu = New System.Windows.Forms.Panel()
+        Me.btFour = New System.Windows.Forms.Button()
         Me.btVente = New System.Windows.Forms.Button()
         Me.btInventaire = New System.Windows.Forms.Button()
         Me.btAccueil = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.panMenu.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -36,7 +36,7 @@ Partial Class MainForm
         '
         Me.PanUC.Location = New System.Drawing.Point(12, 36)
         Me.PanUC.Name = "PanUC"
-        Me.PanUC.Size = New System.Drawing.Size(808, 554)
+        Me.PanUC.Size = New System.Drawing.Size(808, 649)
         Me.PanUC.TabIndex = 1
         '
         'btMenu
@@ -50,7 +50,7 @@ Partial Class MainForm
         '
         'panMenu
         '
-        Me.panMenu.Controls.Add(Me.Button1)
+        Me.panMenu.Controls.Add(Me.btFour)
         Me.panMenu.Controls.Add(Me.btVente)
         Me.panMenu.Controls.Add(Me.btInventaire)
         Me.panMenu.Controls.Add(Me.btAccueil)
@@ -61,6 +61,15 @@ Partial Class MainForm
         Me.panMenu.Name = "panMenu"
         Me.panMenu.Size = New System.Drawing.Size(100, 250)
         Me.panMenu.TabIndex = 2
+        '
+        'btFour
+        '
+        Me.btFour.Location = New System.Drawing.Point(20, 90)
+        Me.btFour.Name = "btFour"
+        Me.btFour.Size = New System.Drawing.Size(77, 23)
+        Me.btFour.TabIndex = 4
+        Me.btFour.Text = "Fournisseur"
+        Me.btFour.UseVisualStyleBackColor = True
         '
         'btVente
         '
@@ -89,24 +98,15 @@ Partial Class MainForm
         Me.btAccueil.Text = "Accueil"
         Me.btAccueil.UseVisualStyleBackColor = True
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(20, 90)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(77, 23)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Fournisseur"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(832, 599)
+        Me.ClientSize = New System.Drawing.Size(832, 692)
         Me.Controls.Add(Me.panMenu)
         Me.Controls.Add(Me.PanUC)
-        Me.MaximumSize = New System.Drawing.Size(848, 638)
-        Me.MinimumSize = New System.Drawing.Size(848, 590)
+        Me.MaximumSize = New System.Drawing.Size(848, 731)
+        Me.MinimumSize = New System.Drawing.Size(848, 731)
         Me.Name = "MainForm"
         Me.Text = "Logiciel Gestion 5-Mars vr"
         Me.panMenu.ResumeLayout(False)
@@ -120,5 +120,5 @@ Partial Class MainForm
     Friend WithEvents btVente As Button
     Friend WithEvents btInventaire As Button
     Friend WithEvents btAccueil As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btFour As Button
 End Class

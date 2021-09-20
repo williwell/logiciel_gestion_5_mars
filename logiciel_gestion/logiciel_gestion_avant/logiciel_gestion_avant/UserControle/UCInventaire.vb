@@ -4,9 +4,9 @@
     '__________________________________________________________________________________________________________
     Dim sameID As String
     Dim tableOri As DataTable
-    Dim change(9) As String
+    Dim change(11) As String
     Dim triger As Boolean = True
-    Dim modif As Boolean
+    Shared instance As UCInventaire = Nothing
 
 
     '__________________________________________________________________________________________________________
@@ -51,6 +51,7 @@
                         sameID = tbIDPro.Text
                     End If
                 End If
+                e.SuppressKeyPress = True
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message)
@@ -66,6 +67,8 @@
         nudEnCommende.ReadOnly = read
         tbDescription.ReadOnly = read
         nudMinInv.ReadOnly = read
+        tbNoFour.ReadOnly = read
+        tbNoMFR.ReadOnly = read
     End Sub
 
     Private Sub cleane()
@@ -79,6 +82,8 @@
         cbUse.Checked = False
         nudEnCommende.Value = 0
         nudMinInv.Value = 0
+        tbNoFour.Text = ""
+        tbNoMFR.Text = ""
         triger = True
         tbNomFour.Text = ""
         tbAdres1.Text = ""
@@ -103,23 +108,33 @@
         cbUse.Checked = tableOri(0)(7)
         nudEnCommende.Value = tableOri(0)(8)
         nudMinInv.Value = tableOri(0)(9)
+        tbNoFour.Text = tableOri(0)(10)
+        tbNoMFR.Text = tableOri(0)(11)
         triger = True
-        tbNomFour.Text = tableOri(0)(11)
-        tbAdres1.Text = tableOri(0)(12)
-        tbAdres2.Text = tableOri(0)(13)
-        Dim tel As String = tableOri(0)(14)
-        tbTel.Text = "(" & tel.Substring(0, 3) & ") " & tel.Substring(3, 3) & "-" & tel.Substring(6)
-        tbNomConc.Text = tableOri(0)(15)
-        tbLeepTime.Text = tableOri(0)(16)
-        tbCouriel.Text = tableOri(0)(17)
-        tbMetCom.Text = tableOri(0)(18)
-        tbNoCompte.Text = tableOri(0)(19)
-        tbMethoPaie.Text = tableOri(0)(20)
+        tbNomFour.Text = tableOri(0)(13)
+        tbAdres1.Text = tableOri(0)(14)
+        tbAdres2.Text = tableOri(0)(15)
+        Dim tel As String = tableOri(0)(16)
+        If tel.Length = 10 Then
+            tbTel.Text = "(" & tel.Substring(0, 3) & ") " & tel.Substring(3, 3) & "-" & tel.Substring(6)
+        Else
+            tbTel.Text = tableOri(0)(16)
+        End If
+        tbNomConc.Text = tableOri(0)(17)
+        tbLeepTime.Text = tableOri(0)(18)
+        tbCouriel.Text = tableOri(0)(19)
+        tbMetCom.Text = tableOri(0)(20)
+        tbNoCompte.Text = tableOri(0)(21)
+        tbMethoPaie.Text = tableOri(0)(22)
     End Sub
 
     Private Sub btSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
-        If ModelInventaire.getInstance.modInventaire(change, True) Then
+        If ModelInventaire.getInstance.modInventaire(change, tableOri(0)(0)) Then
             MessageBox.Show("La modification à bien été fait")
+            For i As Integer = 1 To change.Length - 1
+                tableOri(0)(i) = change(i)
+            Next
+            btSauvChanger()
         Else
             MessageBox.Show("Une erreure est survenue durant la sauvegerde de la modification!")
         End If
@@ -143,10 +158,16 @@
         creer.ShowDialog()
     End Sub
 
+
     '__________________________________________________________________________________________________________
     'Functions
     '__________________________________________________________________________________________________________
-
+    Shared Function getInstance() As UCInventaire
+        If IsNothing(instance) Then
+            instance = New UCInventaire
+        End If
+        Return instance
+    End Function
 
 
     '__________________________________________________________________________________________________________
@@ -215,8 +236,22 @@
         End If
     End Sub
 
+    Private Sub tbNoFour_TextChanged(sender As Object, e As EventArgs) Handles tbNoFour.TextChanged
+        change(10) = tbNoFour.Text
+        If triger Then
+            btSauvChanger()
+        End If
+    End Sub
+
+    Private Sub tbNoMFR_TextChanged(sender As Object, e As EventArgs) Handles tbNoMFR.TextChanged
+        change(11) = tbNoMFR.Text
+        If triger Then
+            btSauvChanger()
+        End If
+    End Sub
+
     Private Sub btSauvChanger()
-        modif = False
+        Dim modif As Boolean = False
         For i As Integer = 1 To tableOri.Columns.Count - 12
             If Not Convert.ToString(tableOri(0)(i)) = change(i) Then
                 modif = True
@@ -232,7 +267,10 @@
     '__________________________________________________________________________________________________________
     Public Sub setIDProduit(id As String)
         tbIDPro.Text = id
+        tbIDPro.Select()
+        SendKeys.Send("{ENTER}")
     End Sub
+
 
 
 

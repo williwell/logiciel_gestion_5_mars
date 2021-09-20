@@ -40,7 +40,7 @@ Partial Class UCAccueil
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.Label1)
         Me.Name = "UCAccueil"
-        Me.Size = New System.Drawing.Size(808, 503)
+        Me.Size = New System.Drawing.Size(808, 649)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

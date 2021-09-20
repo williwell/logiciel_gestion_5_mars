@@ -7,6 +7,9 @@
     <Compile Update="Form\creerProduit.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Form\ListeFournisseur.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Form\MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -17,6 +20,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="UserControle\UCAccueil.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControle\UCFournisseur.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControle\UCInventaire.vb">

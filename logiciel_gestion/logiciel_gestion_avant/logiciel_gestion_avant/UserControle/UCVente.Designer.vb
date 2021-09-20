@@ -29,7 +29,7 @@ Partial Class UCVente
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Name = "UCVente"
-        Me.Size = New System.Drawing.Size(808, 503)
+        Me.Size = New System.Drawing.Size(808, 649)
         Me.ResumeLayout(False)
 
     End Sub

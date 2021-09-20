@@ -1,11 +1,11 @@
 ﻿Imports MySql.Data.MySqlClient
-Public Class EntityFournisseur
+Public Class ModelFournisseur
     '__________________________________________________________________________________________________________
     'Attributes
     '__________________________________________________________________________________________________________
     Dim connection As New MySqlConnection(ConnectionDB.getInstance.connectionString)
-    Shared instance As EntityFournisseur = Nothing
-    Dim nomClass As String = "EntityFournisseur"
+    Shared instance As ModelFournisseur = Nothing
+    Dim nomClass As String = "ModelFournisseur"
 
 
     '__________________________________________________________________________________________________________
@@ -25,57 +25,49 @@ Public Class EntityFournisseur
     '__________________________________________________________________________________________________________
 
 
-
     '__________________________________________________________________________________________________________
     'Functions
     '__________________________________________________________________________________________________________
-    Public Shared Function getInstance() As EntityFournisseur
+    Shared Function getinstance() As ModelFournisseur
         If IsNothing(instance) Then
-            instance = New EntityFournisseur
+            instance = New ModelFournisseur
         End If
         Return instance
     End Function
 
-    Public Function getFournisseur() As DataTable
-        Dim table As New DataTable("fournisseur")
+    Public Function modFour(liste() As String) As Boolean
         Try
             If connection.State = ConnectionState.Open Then
                 connection.Close()
             End If
+
             Dim command As New MySqlCommand
             command.Connection = connection
-            command.CommandText = $"SELECT * FROM `fournisseur`"
-            connection.Open()
-            Dim reader = command.ExecuteReader()
-            table.Load(reader)
-            connection.Close()
-        Catch ex As Exception
-            ErrLog.getInstance.writeErr(ex.Message, nomClass, "getFournisseur")
-            MessageBox.Show("Une erreur c'est produit!")
-        End Try
-        Return table
-    End Function
+            For i As Integer = 0 To liste.Length - 1
+                command.Parameters.AddWithValue("@" & i, liste(i))
+            Next
+            command.CommandText = $"update fournisseur set  nomFournisseur = @1,
+                                                            adresse1 = @2,
+                                                            adresse2 = @3,
+                                                            telephone = @4,
+                                                            NomContacte = @5,
+                                                            leadTime = @6,
+                                                            Couriel = @7,
+                                                            MethodeCommande = @8,
+                                                            noCompte = @9,
+                                                            MethodePaiement = @10
+                                                            where id = @0"
 
-    Public Function getOneFournisseur(id As Integer) As DataTable
-        Dim table As New DataTable("fournisseur")
-        Try
-            If connection.State = ConnectionState.Open Then
-                connection.Close()
-            End If
-            Dim command As New MySqlCommand
-            command.Connection = connection
-            command.CommandText = $"SELECT * FROM `fournisseur` where id = {id}"
             connection.Open()
-            Dim reader = command.ExecuteReader()
-            table.Load(reader)
+            command.ExecuteReader()
             connection.Close()
+            Return True
         Catch ex As Exception
-            ErrLog.getInstance.writeErr(ex.Message, nomClass, "getFournisseur")
-            MessageBox.Show("Une erreur c'est produit!")
+            ErrLog.getInstance.writeErr(ex.Message, nomClass, "modFournisseur")
+            MessageBox.Show("Une erreur c'est produit lors de la modification du fournisseur!")
+            Return False
         End Try
-        Return table
     End Function
-
 
     '__________________________________________________________________________________________________________
     'Validation Functions

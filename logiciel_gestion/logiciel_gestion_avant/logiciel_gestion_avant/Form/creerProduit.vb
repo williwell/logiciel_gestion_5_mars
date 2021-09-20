@@ -2,8 +2,8 @@
     '__________________________________________________________________________________________________________
     'Attributes
     '__________________________________________________________________________________________________________
-    Dim listeNom() As string
-
+    Dim liste(11) As String
+    Dim table As DataTable
 
     '__________________________________________________________________________________________________________
     'Constructor
@@ -15,8 +15,8 @@
     'Load
     '__________________________________________________________________________________________________________
     Private Sub creerProduit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim table As DataTable = EntityFournisseur.getInstance.getFournisseur()
-        ReDim listeNom(table.Rows.Count - 1)
+        table = EntityFournisseur.getInstance.getFournisseur()
+        Dim listeNom(table.Rows.Count - 1) As String
         For i As Integer = 0 To table.Rows.Count - 1
             listeNom(i) = table.Rows(i).Item(1).ToString
         Next
@@ -28,9 +28,59 @@
     'Methods
     '__________________________________________________________________________________________________________
     Private Sub btSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
+        If Not checkVide() Then
+            liste(0) = tbIDPro.Text
+            liste(1) = tbNom.Text
+            liste(2) = nudQuantite.Value
+            If String.IsNullOrEmpty(tbDescription.Text) Then
+                liste(3) = "null"
+            Else
+                liste(3) = tbDescription.Text
+            End If
 
+            For i As Integer = 0 To table.Rows.Count - 1
+                If cbFour.SelectedItem = table.Rows(i).Item(1).ToString Then
+                    liste(4) = i + 1
+                End If
+            Next
+            If String.IsNullOrEmpty(tbEmplacement.Text) Then
+                liste(5) = "null"
+            Else
+                liste(5) = tbEmplacement.Text
+            End If
+            liste(6) = nudCoutUn.Value
+            liste(7) = cbUse.Checked
+            liste(8) = nudEnCommende.Value
+            liste(9) = nudMinInv.Value
+            If String.IsNullOrEmpty(tbNoPieceFour.Text) Then
+                liste(10) = "null"
+            Else
+                liste(10) = tbNoPieceFour.Text
+            End If
+            If String.IsNullOrEmpty(tbNoMFR.Text) Then
+                liste(11) = "null"
+            Else
+                liste(11) = tbNoMFR.Text
+            End If
+
+            If ModelInventaire.getInstance.ajoutInventtaire(liste) Then
+                MessageBox.Show("La création du nouveau produit à bien été fait!")
+            Else
+                MessageBox.Show("Une erreur est survenue durant la création!", "Attention!")
+            End If
+        Else
+            MessageBox.Show("Le id du nouveau produit et le nom du produit doit être rmplie obligatoirement!", "Attention!")
+        End If
     End Sub
 
+    Private Sub btListeFour_Click(sender As Object, e As EventArgs) Handles btListeFour.Click
+        Dim listeFour As New ListeFournisseur(Me)
+        listeFour.ShowDialog()
+    End Sub
+
+    Private Sub btAnnul_Click(sender As Object, e As EventArgs) Handles btAnnul.Click
+        Me.Close()
+    End Sub
 
     '__________________________________________________________________________________________________________
     'Functions
@@ -41,17 +91,25 @@
     '__________________________________________________________________________________________________________
     'Validation Functions
     '__________________________________________________________________________________________________________
-    Private Function chekVide() As Boolean
+    Private Function checkVide() As Boolean
         Dim vide As Boolean = False
+        If String.IsNullOrEmpty(tbIDPro.Text) Or String.IsNullOrEmpty(tbNom.Text) Then
+            vide = True
+        End If
 
-
+        Return vide
     End Function
-
 
     '__________________________________________________________________________________________________________
     'Set
     '__________________________________________________________________________________________________________
-
+    Public Sub setFournisseur(nomFour As String)
+        For i As Integer = 0 To cbFour.Items.Count - 1
+            If cbFour.Items(i) = nomFour Then
+                cbFour.SelectedIndex = i
+            End If
+        Next
+    End Sub
 
 
     '__________________________________________________________________________________________________________

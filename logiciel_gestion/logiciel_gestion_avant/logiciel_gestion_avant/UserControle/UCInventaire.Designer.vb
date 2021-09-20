@@ -66,6 +66,10 @@ Partial Class UCInventaire
         Me.nudMinInv = New System.Windows.Forms.NumericUpDown()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.btCreer = New System.Windows.Forms.Button()
+        Me.tbNoMFR = New System.Windows.Forms.TextBox()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.tbNoFour = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
         CType(Me.nudQuantite, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudEnCommende, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudCoutUn, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -160,7 +164,7 @@ Partial Class UCInventaire
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(41, 387)
+        Me.Label8.Location = New System.Drawing.Point(41, 476)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(67, 15)
         Me.Label8.TabIndex = 14
@@ -187,7 +191,7 @@ Partial Class UCInventaire
         '
         'tbDescription
         '
-        Me.tbDescription.Location = New System.Drawing.Point(41, 405)
+        Me.tbDescription.Location = New System.Drawing.Point(41, 494)
         Me.tbDescription.Multiline = True
         Me.tbDescription.Name = "tbDescription"
         Me.tbDescription.ReadOnly = True
@@ -224,7 +228,7 @@ Partial Class UCInventaire
         'btSauv
         '
         Me.btSauv.Enabled = False
-        Me.btSauv.Location = New System.Drawing.Point(41, 511)
+        Me.btSauv.Location = New System.Drawing.Point(41, 600)
         Me.btSauv.Name = "btSauv"
         Me.btSauv.Size = New System.Drawing.Size(172, 23)
         Me.btSauv.TabIndex = 38
@@ -254,7 +258,7 @@ Partial Class UCInventaire
         'btAnnulMod
         '
         Me.btAnnulMod.Enabled = False
-        Me.btAnnulMod.Location = New System.Drawing.Point(228, 511)
+        Me.btAnnulMod.Location = New System.Drawing.Point(228, 600)
         Me.btAnnulMod.Name = "btAnnulMod"
         Me.btAnnulMod.Size = New System.Drawing.Size(172, 23)
         Me.btAnnulMod.TabIndex = 41
@@ -457,10 +461,48 @@ Partial Class UCInventaire
         Me.btCreer.Text = "Créer un nouveau produit"
         Me.btCreer.UseVisualStyleBackColor = True
         '
+        'tbNoMFR
+        '
+        Me.tbNoMFR.Location = New System.Drawing.Point(41, 449)
+        Me.tbNoMFR.Name = "tbNoMFR"
+        Me.tbNoMFR.ReadOnly = True
+        Me.tbNoMFR.Size = New System.Drawing.Size(359, 23)
+        Me.tbNoMFR.TabIndex = 68
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(41, 431)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(129, 15)
+        Me.Label21.TabIndex = 67
+        Me.Label21.Text = "Numéro Manufacturier"
+        '
+        'tbNoFour
+        '
+        Me.tbNoFour.Location = New System.Drawing.Point(41, 405)
+        Me.tbNoFour.Name = "tbNoFour"
+        Me.tbNoFour.ReadOnly = True
+        Me.tbNoFour.Size = New System.Drawing.Size(359, 23)
+        Me.tbNoFour.TabIndex = 66
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(41, 387)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(115, 15)
+        Me.Label22.TabIndex = 65
+        Me.Label22.Text = "Numéro Fournisseur"
+        '
         'UCInventaire
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.tbNoMFR)
+        Me.Controls.Add(Me.Label21)
+        Me.Controls.Add(Me.tbNoFour)
+        Me.Controls.Add(Me.Label22)
         Me.Controls.Add(Me.btCreer)
         Me.Controls.Add(Me.nudMinInv)
         Me.Controls.Add(Me.Label16)
@@ -506,7 +548,7 @@ Partial Class UCInventaire
         Me.Controls.Add(Me.tbIDPro)
         Me.Controls.Add(Me.Label1)
         Me.Name = "UCInventaire"
-        Me.Size = New System.Drawing.Size(808, 554)
+        Me.Size = New System.Drawing.Size(808, 649)
         CType(Me.nudQuantite, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nudEnCommende, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nudCoutUn, System.ComponentModel.ISupportInitialize).EndInit()
@@ -560,4 +602,8 @@ Partial Class UCInventaire
     Friend WithEvents nudMinInv As NumericUpDown
     Friend WithEvents Label16 As Label
     Friend WithEvents btCreer As Button
+    Friend WithEvents tbNoMFR As TextBox
+    Friend WithEvents Label21 As Label
+    Friend WithEvents tbNoFour As TextBox
+    Friend WithEvents Label22 As Label
 End Class

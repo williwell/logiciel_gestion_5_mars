@@ -79,6 +79,25 @@ Public Class EntityInventaire
         Return table
     End Function
 
+    Public Function getInventaireOfFour(id As Integer) As DataTable
+        Dim table As New DataTable("inventaire")
+        Try
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+            Dim command As New MySqlCommand
+            command.Connection = connection
+            command.CommandText = $"Select * from inventaire where idFournisseur = {id}"
+            connection.Open()
+            Dim reader = command.ExecuteReader()
+            table.Load(reader)
+            connection.Close()
+        Catch ex As Exception
+            ErrLog.getInstance.writeErr(ex.Message, nomClass, "getInventaireOfFour")
+            MessageBox.Show("Une erreur c'est produit!")
+        End Try
+        Return table
+    End Function
     '__________________________________________________________________________________________________________
     'Validation Functions
     '__________________________________________________________________________________________________________
