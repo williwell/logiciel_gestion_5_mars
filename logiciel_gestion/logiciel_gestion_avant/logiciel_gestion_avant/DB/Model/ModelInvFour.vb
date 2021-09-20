@@ -1,11 +1,11 @@
 ﻿Imports MySql.Data.MySqlClient
-Public Class EntityFournisseur
+Public Class ModelInvFour
     '__________________________________________________________________________________________________________
     'Attributes
     '__________________________________________________________________________________________________________
     Dim connection As New MySqlConnection(ConnectionDB.getInstance.connectionString)
-    Shared instance As EntityFournisseur = Nothing
-    Dim nomClass As String = "EntityFournisseur"
+    Shared instance As ModelInvFour = Nothing
+    Dim nomClass As String = "ModelInvFour"
 
 
     '__________________________________________________________________________________________________________
@@ -29,98 +29,74 @@ Public Class EntityFournisseur
     '__________________________________________________________________________________________________________
     'Functions
     '__________________________________________________________________________________________________________
-    Public Shared Function getInstance() As EntityFournisseur
+    Shared Function getinstance() As ModelInvFour
         If IsNothing(instance) Then
-            instance = New EntityFournisseur
+            instance = New ModelInvFour
         End If
         Return instance
     End Function
 
-    Public Function getFournisseur() As DataTable
-        Dim table As New DataTable("fournisseur")
+    Public Function addInvFour(idInv As String, idFour As Integer) As Boolean
         Try
             If connection.State = ConnectionState.Open Then
                 connection.Close()
             End If
+
             Dim command As New MySqlCommand
             command.Connection = connection
-            command.CommandText = $"SELECT * FROM `fournisseur`"
+            command.CommandText = $"insert into invfour values('{idInv}',{idFour},0,'null','null')"
+
             connection.Open()
-            Dim reader = command.ExecuteReader()
-            table.Load(reader)
+            command.ExecuteReader()
             connection.Close()
+            Return True
         Catch ex As Exception
-            ErrLog.getInstance.writeErr(ex.Message, nomClass, "getFournisseur")
-            MessageBox.Show("Une erreur c'est produit!")
+            ErrLog.getInstance.writeErr(ex.Message, nomClass, "addInvFour")
+            MessageBox.Show("Une erreur c'est produit lors de l'ajout du fournisseur!")
+            Return False
         End Try
-        Return table
     End Function
 
-    Public Function getOneFournisseur(id As Integer) As DataTable
-        Dim table As New DataTable("fournisseur")
+    Public Function addInvFour(idInv As String, idFour As Integer, cout As Double, noFour As String, noMFR As String) As Boolean
         Try
             If connection.State = ConnectionState.Open Then
                 connection.Close()
             End If
+
             Dim command As New MySqlCommand
             command.Connection = connection
-            command.CommandText = $"SELECT * FROM `fournisseur` where id = {id}"
+            command.CommandText = $"insert into invfour values('{idInv}',{idFour},{cout}, '{noFour}', '{noMFR}')"
+
             connection.Open()
-            Dim reader = command.ExecuteReader()
-            table.Load(reader)
+            command.ExecuteReader()
             connection.Close()
+            Return True
         Catch ex As Exception
-            ErrLog.getInstance.writeErr(ex.Message, nomClass, "getFournisseur")
-            MessageBox.Show("Une erreur c'est produit!")
+            ErrLog.getInstance.writeErr(ex.Message, nomClass, "addInvFour")
+            MessageBox.Show("Une erreur c'est produit lors de l'ajout du fournisseur!")
+            Return False
         End Try
-        Return table
     End Function
 
-    Public Function getFournisseur(id As String) As DataTable
-        Dim table As New DataTable("fournisseur")
+    Public Function delInvFour(idInv As String, idFour As Integer) As Boolean
         Try
             If connection.State = ConnectionState.Open Then
                 connection.Close()
             End If
-            Dim command As New MySqlCommand
-            command.Connection = connection
-            command.CommandText = $"SELECT * FROM `fournisseur`
-                                    inner join `invfour`
-                                    on fournisseur.id = invfour.idFournisseur
-                                    where invfour.idInventaire = '{id}' and invFour.idFournisseur <> 1"
-            connection.Open()
-            Dim reader = command.ExecuteReader()
-            table.Load(reader)
-            connection.Close()
-        Catch ex As Exception
-            ErrLog.getInstance.writeErr(ex.Message, nomClass, "getFournisseur")
-            MessageBox.Show("Une erreur c'est produit!")
-        End Try
-        Return table
-    End Function
 
-    Public Function getFournisseurAdd(id() As Integer) As DataTable
-        Dim table As New DataTable("fournisseur")
-        Try
-            If connection.State = ConnectionState.Open Then
-                connection.Close()
-            End If
             Dim command As New MySqlCommand
             command.Connection = connection
-            Dim str As String = "SELECT * FROM `fournisseur` where id <> 1 "
-            For i As Integer = 0 To id.Count - 1
-                str = str & " and id <> '" & id(i) & "'"
-            Next
-            command.CommandText = $"{str}"
+            command.CommandText = $"delete from invfour where idInventaire = '{idInv}' and idfournisseur = {idFour}"
+
             connection.Open()
-            Dim reader = command.ExecuteReader()
-            table.Load(reader)
+            command.ExecuteReader()
             connection.Close()
+            Return True
         Catch ex As Exception
-            ErrLog.getInstance.writeErr(ex.Message, nomClass, "getFournisseur")
-            MessageBox.Show("Une erreur c'est produit!")
+            ErrLog.getInstance.writeErr(ex.Message, nomClass, "delInvFour")
+            MessageBox.Show("Une erreur c'est produit lors de la suppression du fournisseur!")
+            Return False
         End Try
-        Return table
     End Function
 
     '__________________________________________________________________________________________________________

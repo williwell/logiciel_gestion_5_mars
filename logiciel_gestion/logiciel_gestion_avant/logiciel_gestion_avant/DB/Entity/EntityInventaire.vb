@@ -45,8 +45,10 @@ Public Class EntityInventaire
             Dim command As New MySqlCommand
             command.Connection = connection
             command.CommandText = $"SELECT * FROM `inventaire`
-                                    inner join `fournisseur` 
-                                    on inventaire.idFournisseur = fournisseur.id
+                                    inner join `invfour`
+                                    on inventaire.id = invfour.idInventaire
+                                    inner join `fournisseur`
+                                    on invfour.idFournisseur = fournisseur.id
                                     WHERE inventaire.id = '{id}'"
             connection.Open()
             Dim reader = command.ExecuteReader()
@@ -87,7 +89,10 @@ Public Class EntityInventaire
             End If
             Dim command As New MySqlCommand
             command.Connection = connection
-            command.CommandText = $"Select * from inventaire where idFournisseur = {id}"
+            command.CommandText = $"Select * from inventaire
+                                    inner join `invfour`
+                                    on inventaire.id = invfour.idInventaire
+                                    where invfour.idFournisseur = {id}"
             connection.Open()
             Dim reader = command.ExecuteReader()
             table.Load(reader)

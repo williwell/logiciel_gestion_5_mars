@@ -33,12 +33,10 @@ Public Class ModelInventaire
             command.CommandText = $"update inventaire set   nom='{liste(1)}',
                                                             quantite={Integer.Parse(liste(2))},
                                                             description='{liste(3)}',
-                                                            idFournisseur={Integer.Parse(liste(4))},
-                                                            emplacement='{liste(5)}',
-                                                            coutUnitaire={Double.Parse(liste(6))},
-                                                            utilise={liste(7)},
-                                                            enCommande={Integer.Parse(liste(8))},
-                                                            minStock={Integer.Parse(liste(9))}
+                                                            emplacement='{liste(4)}',
+                                                            utilise={liste(5)},
+                                                            enCommande={Integer.Parse(liste(6))},
+                                                            minStock={Integer.Parse(liste(7))}
                                                             where id ='{id}'"
             connection.Open()
             Dim reader = command.ExecuteReader()
@@ -58,20 +56,16 @@ Public Class ModelInventaire
             End If
             Dim command As New MySqlCommand
                 command.Connection = connection
-                command.CommandText = $"insert into inventaire values(  '{liste(0)}',
+            command.CommandText = $"insert into inventaire values(  '{liste(0)}',
                                                                         '{liste(1)}',
                                                                         {Integer.Parse(liste(2))},
                                                                         '{liste(3)}',
-                                                                        {Integer.Parse(liste(4))},
                                                                         '{liste(5)}',
-                                                                        {Double.Parse(liste(6))},
                                                                         {liste(7)},
                                                                         {Integer.Parse(liste(8))},
-                                                                        {Integer.Parse(liste(9))},
-                                                                        '{liste(10)}',
-                                                                        '{liste(11)}')"
+                                                                        {Integer.Parse(liste(9))})"
 
-                connection.Open()
+            connection.Open()
                 Dim reader = command.ExecuteReader()
                 connection.Close()
                 Return True

@@ -64,7 +64,11 @@
             End If
 
             If ModelInventaire.getInstance.ajoutInventtaire(liste) Then
-                MessageBox.Show("La création du nouveau produit à bien été fait!")
+                If ModelInvFour.getinstance.addInvFour(liste(0), liste(4), liste(6), liste(10), liste(11)) Then
+                    MessageBox.Show("La création du nouveau produit à bien été fait!")
+                Else
+                    MessageBox.Show("Une erreur est survenue durant la création!", "Attention!")
+                End If
             Else
                 MessageBox.Show("Une erreur est survenue durant la création!", "Attention!")
             End If
@@ -74,7 +78,7 @@
     End Sub
 
     Private Sub btListeFour_Click(sender As Object, e As EventArgs) Handles btListeFour.Click
-        Dim listeFour As New ListeFournisseur(Me)
+        Dim listeFour As New ListeFournisseur(Me, 1)
         listeFour.ShowDialog()
     End Sub
 
