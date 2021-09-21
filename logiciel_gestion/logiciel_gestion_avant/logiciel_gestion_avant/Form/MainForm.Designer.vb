@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class MainForm
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class MainForm
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.PanUC = New System.Windows.Forms.Panel()
         Me.btMenu = New System.Windows.Forms.Button()
@@ -56,10 +56,10 @@ Partial Class MainForm
         Me.panMenu.Controls.Add(Me.btAccueil)
         Me.panMenu.Controls.Add(Me.btMenu)
         Me.panMenu.Location = New System.Drawing.Point(12, 3)
-        Me.panMenu.MaximumSize = New System.Drawing.Size(100, 250)
+        Me.panMenu.MaximumSize = New System.Drawing.Size(100, 144)
         Me.panMenu.MinimumSize = New System.Drawing.Size(100, 27)
         Me.panMenu.Name = "panMenu"
-        Me.panMenu.Size = New System.Drawing.Size(100, 250)
+        Me.panMenu.Size = New System.Drawing.Size(100, 144)
         Me.panMenu.TabIndex = 2
         '
         'btFour

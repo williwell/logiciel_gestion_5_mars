@@ -78,6 +78,30 @@ Public Class ModelInvFour
         End Try
     End Function
 
+    Public Function modInvFour(idInv As String, idFour As Integer, cout As Double, noFour As String, noMFR As String) As Boolean
+        Try
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+
+            Dim command As New MySqlCommand
+            command.Connection = connection
+            command.CommandText = $"update invfour set  coutUnitaire = {cout},
+                                                        noFour = '{noFour}',
+                                                        noMFR = '{noMFR}'
+                                                        where idInventaire = '{idInv}' and idFournisseur = {idFour}"
+
+            connection.Open()
+            command.ExecuteReader()
+            connection.Close()
+            Return True
+        Catch ex As Exception
+            ErrLog.getInstance.writeErr(ex.Message, nomClass, "modInvFour")
+            MessageBox.Show("Une erreur c'est produit lors de l'ajout du fournisseur!")
+            Return False
+        End Try
+    End Function
+
     Public Function delInvFour(idInv As String, idFour As Integer) As Boolean
         Try
             If connection.State = ConnectionState.Open Then

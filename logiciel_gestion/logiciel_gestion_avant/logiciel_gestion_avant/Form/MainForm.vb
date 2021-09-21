@@ -1,4 +1,5 @@
-﻿Public Class MainForm
+﻿
+Public Class MainForm
 
     '__________________________________________________________________________________________________________
     'Attributes
@@ -29,6 +30,7 @@
         PanUC.Controls.Add(ucInventaire)
         PanUC.Controls.Add(ucVente)
         PanUC.Controls.Add(ucFour)
+        ConnectionServeur.getinstance.TestConnection()
     End Sub
 
     '__________________________________________________________________________________________________________
@@ -141,5 +143,4 @@
     Public Function getOption6() As Integer
         Return options.option6
     End Function
-
 End Class

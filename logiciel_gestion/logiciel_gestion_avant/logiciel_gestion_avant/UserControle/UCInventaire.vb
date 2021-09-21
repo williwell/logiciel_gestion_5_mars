@@ -5,7 +5,7 @@
     Dim sameID As String
     Dim sameFour As Integer
     Dim tableOri As DataTable
-    Dim change(15) As String
+    Dim change(12) As String
     Dim triger As Boolean = True
     Shared instance As UCInventaire = Nothing
 
@@ -87,19 +87,25 @@
     Private Sub remplir()
         triger = False
         tbNom.Text = tableOri(0)(1)
+        change(1) = tableOri(0)(1)
+
         nudQuantite.Value = tableOri(0)(2)
+        change(2) = tableOri(0)(2)
+
         tbDescription.Text = tableOri(0)(3)
+        change(3) = tableOri(0)(3)
+
         tbEmplacement.Text = tableOri(0)(4)
+        change(4) = tableOri(0)(4)
 
         cbUse.Checked = tableOri(0)(5)
-        nudEnCommende.Value = tableOri(0)(6)
-        nudMinInv.Value = tableOri(0)(7)
+        change(5) = tableOri(0)(5)
 
-        Dim liste(tableOri.Rows.Count - 1) As String
-        For i As Integer = 0 To tableOri.Rows.Count - 1
-            liste(i) = i + 1
-        Next
-        cbNoFour.DataSource = liste
+        nudEnCommende.Value = tableOri(0)(6)
+        change(6) = tableOri(0)(6)
+
+        nudMinInv.Value = tableOri(0)(7)
+        change(7) = tableOri(0)(7)
 
         triger = True
     End Sub
@@ -107,6 +113,9 @@
     Private Sub remplir(id As Integer)
         triger = False
 
+        change(8) = tableOri(id)(8)
+        change(9) = tableOri(id)(9)
+        change(10) = tableOri(id)(10)
         nudCoutUn.Value = tableOri(id)(10)
         tbNoFour.Text = tableOri(id)(11)
         tbNoMFR.Text = tableOri(id)(12)
@@ -127,13 +136,20 @@
 
     Private Sub btSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
         If ModelInventaire.getInstance.modInventaire(change, tableOri(0)(0)) Then
-            MessageBox.Show("La modification à bien été fait")
-            For i As Integer = 1 To change.Length - 1
-                tableOri(0)(i) = change(i)
-            Next
-            btSauvChanger()
+            If ModelInvFour.getinstance.modInvFour(tbIDPro.Text, tbIDFour.Text, nudCoutUn.Value, tbNoFour.Text, tbNoMFR.Text) Then
+                MessageBox.Show("La modification à bien été fait")
+                For i As Integer = 1 To change.Length - 1
+                    If Not (i = 8 Or i = 9) Then
+                        tableOri(cbNoFour.SelectedIndex)(i) = change(i)
+                    End If
+                Next
+                btSauvChanger()
+            Else
+                MessageBox.Show("Une erreure est survenue durant la sauvegerde de la modification!")
+
+            End If
         Else
-            MessageBox.Show("Une erreure est survenue durant la sauvegerde de la modification!")
+                MessageBox.Show("Une erreure est survenue durant la sauvegerde de la modification!")
         End If
 
     End Sub
@@ -147,7 +163,7 @@
 
     Private Sub btAnnulMod_Click(sender As Object, e As EventArgs) Handles btAnnulMod.Click
         remplir()
-        remplir(0)
+        remplir(cbNoFour.SelectedIndex)
         btSauvChanger()
     End Sub
 
@@ -185,6 +201,13 @@
         tableOri = EntityInventaire.getInstance.getInventaire(tbIDPro.Text)
         If tableOri.Rows.Count > 0 Then
             remplir()
+
+            Dim liste(tableOri.Rows.Count - 1) As String
+            For i As Integer = 0 To tableOri.Rows.Count - 1
+                liste(i) = i + 1
+            Next
+            cbNoFour.DataSource = liste
+
             remplir(0)
             changeRead(False)
             labPasItem.Text = ""
@@ -241,13 +264,6 @@
         End If
     End Sub
 
-    Private Sub nudCoutUn_ValueChanged(sender As Object, e As EventArgs) Handles nudCoutUn.ValueChanged
-        change(10) = Convert.ToString(nudCoutUn.Value)
-        If triger Then
-            btSauvChanger()
-        End If
-    End Sub
-
     Private Sub cbUse_CheckedChanged(sender As Object, e As EventArgs) Handles cbUse.CheckedChanged
         change(5) = cbUse.Checked
         If triger Then
@@ -269,15 +285,22 @@
         End If
     End Sub
 
+    Private Sub nudCoutUn_ValueChanged(sender As Object, e As EventArgs) Handles nudCoutUn.ValueChanged
+        change(10) = Convert.ToString(nudCoutUn.Value)
+        If triger Then
+            btSauvChanger()
+        End If
+    End Sub
+
     Private Sub tbNoFour_TextChanged(sender As Object, e As EventArgs) Handles tbNoFour.TextChanged
-        change(9) = tbNoMFR.Text
+        change(11) = tbNoFour.Text
         If triger Then
             btSauvChanger()
         End If
     End Sub
 
     Private Sub tbNoMFR_TextChanged(sender As Object, e As EventArgs) Handles tbNoMFR.TextChanged
-        change(10) = tbNoMFR.Text
+        change(12) = tbNoMFR.Text
         If triger Then
             btSauvChanger()
         End If
@@ -285,8 +308,8 @@
 
     Private Sub btSauvChanger()
         Dim modif As Boolean = False
-        For i As Integer = 1 To tableOri.Columns.Count - 14
-            If Not Convert.ToString(tableOri(0)(i)) = change(i) Then
+        For i As Integer = 1 To tableOri.Columns.Count - 12
+            If Not Convert.ToString(tableOri(cbNoFour.SelectedIndex)(i)) = change(i) Then
                 modif = True
             End If
         Next

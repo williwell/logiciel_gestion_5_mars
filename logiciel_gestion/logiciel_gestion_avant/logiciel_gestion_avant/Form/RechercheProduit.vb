@@ -21,7 +21,7 @@
     'Load
     '__________________________________________________________________________________________________________
     Private Sub RechercheProduit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        dgvProduit.DataSource = EntityInventaire.getInstance.getInventaire()
+        dgvProduit.DataSource = ConnectionServeur.getinstance.GetInventaire()
         dgvProduit.Sort(dgvProduit.Columns(1), 0)
     End Sub
 
