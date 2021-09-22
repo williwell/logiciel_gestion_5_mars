@@ -15,7 +15,7 @@
     'Load
     '__________________________________________________________________________________________________________
     Private Sub creerProduit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        table = EntityFournisseur.getInstance.getFournisseur()
+        table = ConnectionServeur.getinstance.getFournisseur()
         Dim listeNom(table.Rows.Count - 1) As String
         For i As Integer = 0 To table.Rows.Count - 1
             listeNom(i) = table.Rows(i).Item(1).ToString

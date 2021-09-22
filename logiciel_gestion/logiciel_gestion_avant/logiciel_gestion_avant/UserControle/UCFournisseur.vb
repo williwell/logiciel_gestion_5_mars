@@ -26,7 +26,7 @@
     'Load
     '__________________________________________________________________________________________________________
     Private Sub UCFournisseur_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        dgvFour.DataSource = EntityFournisseur.getInstance.getFournisseur()
+        dgvFour.DataSource = ConnectionServeur.getinstance.getFournisseur()
         tbID.Text = dgvFour.CurrentRow.Cells(0).Value
     End Sub
 
@@ -38,9 +38,9 @@
     End Sub
 
     Private Sub tbID_TextChanged(sender As Object, e As EventArgs) Handles tbID.TextChanged
-        table = EntityFournisseur.getInstance.getOneFournisseur(Integer.Parse(tbID.Text))
+        table = ConnectionServeur.getinstance.getOneFournisseur(Integer.Parse(tbID.Text))
         remplir(table)
-        dgvPiece.DataSource = EntityInventaire.getInstance.getInventaireOfFour(Integer.Parse(tbID.Text))
+        dgvPiece.DataSource = ConnectionServeur.getinstance.getInventaireOfFour(Integer.Parse(tbID.Text))
     End Sub
 
     Private Sub dgvPiece_DoubleClick(sender As Object, e As EventArgs) Handles dgvPiece.DoubleClick

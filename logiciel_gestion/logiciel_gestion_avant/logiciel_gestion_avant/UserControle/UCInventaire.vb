@@ -198,7 +198,7 @@
 
     Private Sub start()
         changeRead(True)
-        tableOri = EntityInventaire.getInstance.getInventaire(tbIDPro.Text)
+        tableOri = ConnectionServeur.getinstance.GetInventaire(tbIDPro.Text)
         If tableOri.Rows.Count > 0 Then
             remplir()
 

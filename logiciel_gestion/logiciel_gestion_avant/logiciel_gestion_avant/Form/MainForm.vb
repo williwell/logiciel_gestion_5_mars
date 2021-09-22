@@ -23,6 +23,7 @@ Public Class MainForm
     'Load
     '__________________________________________________________________________________________________________
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ConnectionServeur.getinstance.TestConnection()
         Me.KeyPreview = True
         MyOption.getInstance.readOption()
         panMenu.Size = panMenu.MinimumSize
@@ -30,7 +31,7 @@ Public Class MainForm
         PanUC.Controls.Add(ucInventaire)
         PanUC.Controls.Add(ucVente)
         PanUC.Controls.Add(ucFour)
-        ConnectionServeur.getinstance.TestConnection()
+
     End Sub
 
     '__________________________________________________________________________________________________________
