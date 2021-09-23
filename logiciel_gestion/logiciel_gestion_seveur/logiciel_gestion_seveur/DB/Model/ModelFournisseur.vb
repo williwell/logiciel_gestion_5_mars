@@ -36,7 +36,10 @@ Public Class ModelFournisseur
         Return instance
     End Function
 
-    Public Function modFour(liste() As String) As Boolean
+    Public Function modFour(liste() As String) As DataTable
+        Dim table As New DataTable
+        table.Columns.Add("bool", GetType(Boolean))
+        table.Rows.Add(False)
         Try
             If connection.State = ConnectionState.Open Then
                 connection.Close()
@@ -62,11 +65,13 @@ Public Class ModelFournisseur
             connection.Open()
             command.ExecuteReader()
             connection.Close()
-            Return True
+
+            table(0)(0) = True
+            Return table
         Catch ex As Exception
             ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "modFournisseur")
             'MessageBox.Show("Une erreur c'est produit lors de la modification du fournisseur!")
-            Return False
+            Return table
         End Try
     End Function
 

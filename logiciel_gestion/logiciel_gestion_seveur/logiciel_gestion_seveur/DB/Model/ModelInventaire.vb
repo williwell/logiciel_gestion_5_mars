@@ -24,7 +24,11 @@ Public Class ModelInventaire
     '__________________________________________________________________________________________________________
     'Methods
     '__________________________________________________________________________________________________________
-    Public Function modInventaire(liste() As String, id As String) As Boolean
+    Public Function modInventaire(liste() As String) As DataTable
+        Dim table As New DataTable
+        table.Columns.Add("bool", GetType(Boolean))
+        table.Rows.Add(False)
+
         Try
             If connection.State = ConnectionState.Open Then
                 connection.Close()
@@ -38,19 +42,25 @@ Public Class ModelInventaire
                                                             utilise={liste(5)},
                                                             enCommande={Integer.Parse(liste(6))},
                                                             minStock={Integer.Parse(liste(7))}
-                                                            where id ='{id}'"
+                                                            where id ='{liste(0)}'"
             connection.Open()
             Dim reader = command.ExecuteReader()
             connection.Close()
-            Return True
+
+            table(0)(0) = True
+            Return table
         Catch ex As Exception
             ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "modInventaire")
             'MessageBox.Show("Une erreur c'est produit!")
-            Return False
+            Return table
         End Try
     End Function
 
-    Public Function ajoutInventtaire(liste() As String) As Boolean
+    Public Function ajoutInventaire(liste() As String) As DataTable
+        Dim table As New DataTable
+        table.Columns.Add("bool", GetType(Boolean))
+        table.Rows.Add(False)
+
         Try
             If connection.State = ConnectionState.Open Then
                 connection.Close()
@@ -69,11 +79,13 @@ Public Class ModelInventaire
             connection.Open()
             Dim reader = command.ExecuteReader()
             connection.Close()
-            Return True
+
+            table(0)(0) = True
+            Return table
         Catch ex As Exception
             ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "ajoutInventaire")
             'MessageBox.Show("Une erreur c'est produit!")
-            Return False
+            Return table
         End Try
     End Function
 

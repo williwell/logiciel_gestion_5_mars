@@ -63,8 +63,9 @@
                 liste(11) = tbNoMFR.Text
             End If
 
-            If ModelInventaire.getInstance.ajoutInventtaire(liste) Then
-                If ModelInvFour.getinstance.addInvFour(liste(0), liste(4), liste(6), liste(10), liste(11)) Then
+            If ConnectionServeur.getinstance.ajoutInventaire(liste) Then
+                Dim liste2() As String = {liste(0), liste(4), liste(6), liste(10), liste(11)}
+                If ConnectionServeur.getinstance.addInvFour(liste2) Then
                     MessageBox.Show("La création du nouveau produit à bien été fait!")
                 Else
                     MessageBox.Show("Une erreur est survenue durant la création!", "Attention!")

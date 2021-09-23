@@ -70,23 +70,29 @@
             creerform.setFournisseur(dgvFour.CurrentRow.Cells(1).Value)
             Me.Close()
         ElseIf action = 2 Then
-            If ModelInvFour.getinstance.addInvFour(idInv, dgvFour.CurrentRow.Cells(0).Value) Then
+            Dim liste() As String = {idInv, dgvFour.CurrentRow.Cells(0).Value}
+            If ConnectionServeur.getinstance.addInvFour(liste) Then
                 MessageBox.Show("L'ajout du fournisseur à bien été fait!")
                 table = ConnectionServeur.getinstance.GetInventaire(idInv)
                 For i As Integer = 0 To table.Rows.Count - 1
                     If table(i)(9) = 1 Then
-                        ModelInvFour.getinstance.delInvFour(idInv, 1)
+                        liste(0) = idInv
+                        liste(1) = 1
+                        ConnectionServeur.getinstance.delInvFour(liste)
                     End If
                 Next
             End If
             Me.Close()
-            ElseIf action = 3 Then
-                If ModelInvFour.getinstance.delInvFour(idInv, dgvFour.CurrentRow.Cells(0).Value) Then
+        ElseIf action = 3 Then
+            Dim liste() As String = {idInv, dgvFour.CurrentRow.Cells(0).Value}
+            If ConnectionServeur.getinstance.delInvFour(liste) Then
                 MessageBox.Show("La suppression du fournisseur à bien été fait!")
             End If
             table = ConnectionServeur.getinstance.GetInventaire(idInv)
             If Not table.Rows.Count > 0 Then
-                ModelInvFour.getinstance.addInvFour(idInv, 1)
+                liste(0) = idInv
+                liste(1) = 1
+                ConnectionServeur.getinstance.addInvFour(liste)
             End If
             Me.Close()
         End If

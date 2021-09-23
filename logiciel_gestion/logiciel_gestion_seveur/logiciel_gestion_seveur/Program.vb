@@ -74,14 +74,32 @@ Module Program
         End Select
     End Sub
 
-    Sub Action(str As String, networkStream As NetworkStream, id() As String)
+    Sub Action(str As String, networkStream As NetworkStream, text() As String)
         Select Case str
             Case "getFournisseurAdd"
-                Dim int(id.Length - 1) As Integer
-                For i As Integer = 0 To id.Length - 1
-                    int(i) = Integer.Parse(id(i))
+                Dim int(text.Length - 1) As Integer
+                For i As Integer = 0 To text.Length - 1
+                    int(i) = Integer.Parse(text(i))
                 Next
                 SendDataTable(EntityFournisseur.getInstance.getFournisseurAdd(int), networkStream)
+            Case "modFour"
+                SendDataTable(ModelFournisseur.getinstance.modFour(text), networkStream)
+            Case "modInventaire"
+                SendDataTable(ModelInventaire.getInstance.modInventaire(text), networkStream)
+            Case "ajoutInventaire"
+                SendDataTable(ModelInventaire.getInstance.ajoutInventaire(text), networkStream)
+            Case "addInvFour"
+                SendDataTable(ModelInvFour.Getinstance.AddInvFour(text), networkStream)
+            Case "modInvFour"
+                SendDataTable(ModelInvFour.Getinstance.ModInvFour(text), networkStream)
+            Case "delInvFour"
+                SendDataTable(ModelInvFour.Getinstance.DelInvFour(text), networkStream)
+        End Select
+    End Sub
+
+    Sub Action(str As String, networkStream As NetworkStream, text() As String, id As String)
+        Select Case str
+
         End Select
     End Sub
 
@@ -121,6 +139,7 @@ Module Program
         Dim i As Integer = -1
         Dim liste() As String
         Dim nbr As Integer = 0
+        Dim bool As Boolean = False
 
         If InStr(data, "\\liste;") >= 1 Then
             data = data.Substring(data.IndexOf(";") + 1)
@@ -137,7 +156,7 @@ Module Program
                     check = False
                 End If
             End While
-            i += 1
+            bool = True
         End If
 
         For Each c As Char In data
@@ -154,6 +173,10 @@ Module Program
             Msg(str(int))
         Next
 
+        If bool Then
+            i += 1
+        End If
+
         Msg(i)
         Select Case i
             Case 0
@@ -164,7 +187,8 @@ Module Program
                 Else
                     Action(str(0), networkStream, liste)
                 End If
-
+            Case 2
+                Action(str(0), networkStream, liste, str(1))
         End Select
     End Sub
 End Module

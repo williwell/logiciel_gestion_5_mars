@@ -37,7 +37,11 @@ Public Class ModelInvFour
         Return instance
     End Function
 
-    Public Function AddInvFour(idInv As String, idFour As Integer) As Boolean
+    Public Function AddInvFour(liste() As String) As DataTable
+        Dim table As New DataTable
+        table.Columns.Add("bool", GetType(Boolean))
+        table.Rows.Add(False)
+
         Try
             If connection.State = ConnectionState.Open Then
                 connection.Close()
@@ -45,20 +49,31 @@ Public Class ModelInvFour
 
             Dim command As New MySqlCommand
             command.Connection = connection
-            command.CommandText = $"insert into invfour values('{idInv}',{idFour},0,'null','null')"
+            If liste.Length > 2 Then
+                command.CommandText = $"insert into invfour values('{liste(0)}',{Integer.Parse(liste(1))},{Double.Parse(liste(2))}, '{liste(3)}', '{liste(4)}')"
+            Else
+                command.CommandText = $"insert into invfour values('{liste(0)}',{Integer.Parse(liste(1))},0,'null','null')"
+            End If
+
 
             connection.Open()
             command.ExecuteReader()
             connection.Close()
-            Return True
+
+            table(0)(0) = True
+            Return table
         Catch ex As Exception
-            ErrLog.getInstance.writeErr(ex.Message, nomClass, "addInvFour")
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "addInvFour")
             'MessageBox.Show("Une erreur c'est produit lors de l'ajout du fournisseur!")
-            Return False
+            Return table
         End Try
     End Function
 
-    Public Function AddInvFour(idInv As String, idFour As Integer, cout As Double, noFour As String, noMFR As String) As Boolean
+    Public Function ModInvFour(liste() As String) As DataTable
+        Dim table As New DataTable
+        table.Columns.Add("bool", GetType(Boolean))
+        table.Rows.Add(False)
+
         Try
             If connection.State = ConnectionState.Open Then
                 connection.Close()
@@ -66,20 +81,29 @@ Public Class ModelInvFour
 
             Dim command As New MySqlCommand
             command.Connection = connection
-            command.CommandText = $"insert into invfour values('{idInv}',{idFour},{cout}, '{noFour}', '{noMFR}')"
+            command.CommandText = $"update invfour set  coutUnitaire = {Double.Parse(liste(2))},
+                                                        noFour = '{liste(3)}',
+                                                        noMFR = '{liste(4)}'
+                                                        where idInventaire = '{liste(0)}' and idFournisseur = {Integer.Parse(liste(1))}"
 
             connection.Open()
             command.ExecuteReader()
             connection.Close()
-            Return True
+
+            table(0)(0) = True
+            Return table
         Catch ex As Exception
-            ErrLog.getInstance.writeErr(ex.Message, nomClass, "addInvFour")
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "modInvFour")
             'MessageBox.Show("Une erreur c'est produit lors de l'ajout du fournisseur!")
-            Return False
+            Return table
         End Try
     End Function
 
-    Public Function ModInvFour(idInv As String, idFour As Integer, cout As Double, noFour As String, noMFR As String) As Boolean
+    Public Function DelInvFour(liste() As String) As DataTable
+        Dim table As New DataTable
+        table.Columns.Add("bool", GetType(Boolean))
+        table.Rows.Add(False)
+
         Try
             If connection.State = ConnectionState.Open Then
                 connection.Close()
@@ -87,40 +111,18 @@ Public Class ModelInvFour
 
             Dim command As New MySqlCommand
             command.Connection = connection
-            command.CommandText = $"update invfour set  coutUnitaire = {cout},
-                                                        noFour = '{noFour}',
-                                                        noMFR = '{noMFR}'
-                                                        where idInventaire = '{idInv}' and idFournisseur = {idFour}"
+            command.CommandText = $"delete from invfour where idInventaire = '{liste(0)}' and idfournisseur = {Integer.Parse(liste(1))}"
 
             connection.Open()
             command.ExecuteReader()
             connection.Close()
-            Return True
+
+            table(0)(0) = True
+            Return table
         Catch ex As Exception
-            ErrLog.getInstance.writeErr(ex.Message, nomClass, "modInvFour")
-            'MessageBox.Show("Une erreur c'est produit lors de l'ajout du fournisseur!")
-            Return False
-        End Try
-    End Function
-
-    Public Function DelInvFour(idInv As String, idFour As Integer) As Boolean
-        Try
-            If connection.State = ConnectionState.Open Then
-                connection.Close()
-            End If
-
-            Dim command As New MySqlCommand
-            command.Connection = connection
-            command.CommandText = $"delete from invfour where idInventaire = '{idInv}' and idfournisseur = {idFour}"
-
-            connection.Open()
-            command.ExecuteReader()
-            connection.Close()
-            Return True
-        Catch ex As Exception
-            ErrLog.getInstance.writeErr(ex.Message, nomClass, "delInvFour")
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "delInvFour")
             'MessageBox.Show("Une erreur c'est produit lors de la suppression du fournisseur!")
-            Return False
+            Return table
         End Try
     End Function
 

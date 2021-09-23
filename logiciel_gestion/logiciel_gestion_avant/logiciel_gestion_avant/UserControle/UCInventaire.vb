@@ -135,8 +135,9 @@
     End Sub
 
     Private Sub btSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
-        If ModelInventaire.getInstance.modInventaire(change, tableOri(0)(0)) Then
-            If ModelInvFour.getinstance.modInvFour(tbIDPro.Text, tbIDFour.Text, nudCoutUn.Value, tbNoFour.Text, tbNoMFR.Text) Then
+        If ConnectionServeur.getinstance.modInventaire(change) Then
+            Dim liste() As String = {tbIDPro.Text, tbIDFour.Text, nudCoutUn.Value, tbNoFour.Text, tbNoMFR.Text}
+            If ConnectionServeur.getinstance.modInvFour(liste) Then
                 MessageBox.Show("La modification à bien été fait")
                 For i As Integer = 1 To change.Length - 1
                     If Not (i = 8 Or i = 9) Then
@@ -149,7 +150,7 @@
 
             End If
         Else
-                MessageBox.Show("Une erreure est survenue durant la sauvegerde de la modification!")
+            MessageBox.Show("Une erreure est survenue durant la sauvegerde de la modification!")
         End If
 
     End Sub

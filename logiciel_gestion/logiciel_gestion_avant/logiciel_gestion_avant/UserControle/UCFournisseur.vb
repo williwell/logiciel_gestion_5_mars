@@ -63,7 +63,7 @@
     End Sub
 
     Private Sub btSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
-        If ModelFournisseur.getinstance.modFour(liste) Then
+        If ConnectionServeur.getinstance.modFour(liste) Then
             MessageBox.Show("La modification c'est fait sans problème")
             For i As Integer = 1 To liste.Length - 1
                 table(0)(i) = liste(i)
