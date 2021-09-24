@@ -8,18 +8,19 @@
     Dim change(12) As String
     Dim triger As Boolean = True
     Shared instance As UCInventaire = Nothing
+    Shared main As MainForm
 
 
     '__________________________________________________________________________________________________________
     'Constructor
     '__________________________________________________________________________________________________________
-    Sub New()
+    Sub New(mainforn As MainForm)
 
         ' Cet appel est requis par le concepteur.
         InitializeComponent()
 
         ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
-
+        main = mainforn
     End Sub
 
     '__________________________________________________________________________________________________________
@@ -156,7 +157,7 @@
     End Sub
 
     Private Sub btRecherche_Click(sender As Object, e As EventArgs) Handles btRecherche.Click
-        Dim recherche As New RechercheProduit(Me)
+        Dim recherche As New RechercheProduit(Me, main)
         recherche.ShowDialog()
         tbIDPro.Select()
         SendKeys.Send("{ENTER}")
@@ -200,27 +201,34 @@
     Private Sub start()
         changeRead(True)
         tableOri = ConnectionServeur.getinstance.GetInventaire(tbIDPro.Text)
-        If tableOri.Rows.Count > 0 Then
-            remplir()
 
-            Dim liste(tableOri.Rows.Count - 1) As String
-            For i As Integer = 0 To tableOri.Rows.Count - 1
-                liste(i) = i + 1
-            Next
-            cbNoFour.DataSource = liste
+        Try
+            If tableOri(0)(0) = "\\null" Then
+                cleane()
+                labPasItem.Text = "Le numéro d'item n'existe pas!"
+                labPasItem.ForeColor = Color.Red
+                tbIDPro.SelectAll()
+                sameID = tbIDPro.Text
+            Else
+                remplir()
 
-            remplir(0)
-            changeRead(False)
-            labPasItem.Text = ""
-            sameID = tbIDPro.Text
-            change(0) = tbIDPro.Text
-        Else
-            cleane()
-            labPasItem.Text = "Le numéro d'item n'existe pas!"
-            labPasItem.ForeColor = Color.Red
-            tbIDPro.SelectAll()
-            sameID = tbIDPro.Text
-        End If
+                Dim liste(tableOri.Rows.Count - 1) As String
+                For i As Integer = 0 To tableOri.Rows.Count - 1
+                    liste(i) = i + 1
+                Next
+                cbNoFour.DataSource = liste
+
+                remplir(0)
+                changeRead(False)
+                labPasItem.Text = ""
+                sameID = tbIDPro.Text
+                change(0) = tbIDPro.Text
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Un erreur est survenu avec le serveur")
+            main.fermer()
+        End Try
+
     End Sub
 
     '__________________________________________________________________________________________________________
@@ -228,7 +236,7 @@
     '__________________________________________________________________________________________________________
     Shared Function getInstance() As UCInventaire
         If IsNothing(instance) Then
-            instance = New UCInventaire
+            instance = New UCInventaire(main)
         End If
         Return instance
     End Function

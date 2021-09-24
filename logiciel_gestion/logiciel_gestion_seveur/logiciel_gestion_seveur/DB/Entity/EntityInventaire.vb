@@ -4,9 +4,9 @@ Public Class EntityInventaire
     '__________________________________________________________________________________________________________
     'Attributes
     '__________________________________________________________________________________________________________
-    Dim connection As New MySqlConnection(ConnectionDB.GetInstance.connectionString)
+    ReadOnly connection As New MySqlConnection(ConnectionDB.GetInstance.connectionString)
     Shared instance As EntityInventaire = Nothing
-    Dim nomClass As String = "EntityInventaire"
+    ReadOnly nomClass As String = "EntityInventaire"
 
 
     '__________________________________________________________________________________________________________
@@ -30,14 +30,14 @@ Public Class EntityInventaire
     '__________________________________________________________________________________________________________
     'Functions
     '__________________________________________________________________________________________________________
-    Public Shared Function getInstance() As EntityInventaire
+    Public Shared Function GetInstance() As EntityInventaire
         If IsNothing(instance) Then
             instance = New EntityInventaire
         End If
         Return instance
     End Function
 
-    Public Function getInventaire(id As String) As DataTable
+    Public Function GetInventaire(id As String) As DataTable
         Dim table As New DataTable("inventaire")
         Try
             If connection.State = ConnectionState.Open Then
@@ -55,14 +55,19 @@ Public Class EntityInventaire
             Dim reader = command.ExecuteReader()
             table.Load(reader)
             connection.Close()
+            If Not table.Rows.Count > 0 Then
+                table = New DataTable
+                table.Columns.Add("error", GetType(String))
+                table.Rows.Add("\\null")
+            End If
         Catch ex As Exception
             ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getInventaire")
-            'MessageBox.Show("Une erreur c'est produit!")
+            Msg("Une erreur c'est produit!")
         End Try
         Return table
     End Function
 
-    Public Function getInventaire() As DataTable
+    Public Function GetInventaire() As DataTable
         Dim table As New DataTable("inventaire")
         Try
             If connection.State = ConnectionState.Open Then
@@ -82,7 +87,7 @@ Public Class EntityInventaire
         Return table
     End Function
 
-    Public Function getInventaireOfFour(id As Integer) As DataTable
+    Public Function GetInventaireOfFour(id As Integer) As DataTable
         Dim table As New DataTable("inventaire")
         Try
             If connection.State = ConnectionState.Open Then

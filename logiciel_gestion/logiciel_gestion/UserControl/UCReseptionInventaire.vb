@@ -8,7 +8,7 @@
             If e.KeyCode = Keys.Enter Then
                 If sameID <> tbIdPiece.Text Then
                     nudQuantiteMod.ReadOnly = True
-                    table = InventaireEntity.getInstance.getInventaire(tbIdPiece.Text)
+                    table = ConnectionServeur.getinstance.GetInventaire(tbIdPiece.Text)
                     If table.Rows.Count > 0 Then
                         remplir()
                     Else
@@ -59,7 +59,8 @@
                 If commande < 0 Then
                     commande = 0
                 End If
-                If InventaireModel.getInstance.ajouterInventaire(tbIdPiece.Text, Integer.Parse(tbQuantitePiece.Text) + nudQuantiteMod.Value, commande) Then
+                Dim liste() As String = {tbIdPiece.Text, Integer.Parse(tbQuantitePiece.Text) + nudQuantiteMod.Value, commande}
+                If ConnectionServeur.getinstance.modQuantite(liste) Then
                     labPasItem.Text = "Le nombre d'item à bien été ajouter"
                     labPasItem.ForeColor = Color.Green
                     tbNomPiece.Text = ""

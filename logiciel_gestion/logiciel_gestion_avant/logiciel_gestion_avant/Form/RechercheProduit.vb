@@ -3,17 +3,18 @@
     'Attributes
     '__________________________________________________________________________________________________________
     Dim ucInvent As UCInventaire
-
+    Dim main As MainForm
     '__________________________________________________________________________________________________________
     'Constructor
     '__________________________________________________________________________________________________________
-    Sub New(uc As UCInventaire)
+    Sub New(uc As UCInventaire, mainform As MainForm)
 
         ' Cet appel est requis par le concepteur.
         InitializeComponent()
 
         ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
         ucInvent = uc
+        main = mainform
     End Sub
 
 
@@ -22,7 +23,13 @@
     '__________________________________________________________________________________________________________
     Private Sub RechercheProduit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dgvProduit.DataSource = ConnectionServeur.getinstance.GetInventaire()
-        dgvProduit.Sort(dgvProduit.Columns(1), 0)
+        Try
+            dgvProduit.Sort(dgvProduit.Columns(1), 0)
+        Catch ex As Exception
+            MessageBox.Show("Un erreur est survenu du coté du serveur!")
+            main.fermer()
+            Me.Close()
+        End Try
     End Sub
 
     Private Sub dgvProduit_DoubleClick(sender As Object, e As EventArgs) Handles dgvProduit.DoubleClick

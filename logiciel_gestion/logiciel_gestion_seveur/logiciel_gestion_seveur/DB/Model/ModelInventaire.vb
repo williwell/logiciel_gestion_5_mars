@@ -4,9 +4,9 @@ Public Class ModelInventaire
     '__________________________________________________________________________________________________________
     'Attributes
     '__________________________________________________________________________________________________________
-    Dim connection As New MySqlConnection(ConnectionDB.GetInstance.connectionString)
+    ReadOnly connection As New MySqlConnection(ConnectionDB.GetInstance.connectionString)
     Shared instance As ModelInventaire = Nothing
-    Dim nomClass As String = "ModelInventaire"
+    ReadOnly nomClass As String = "ModelInventaire"
 
 
     '__________________________________________________________________________________________________________
@@ -24,7 +24,7 @@ Public Class ModelInventaire
     '__________________________________________________________________________________________________________
     'Methods
     '__________________________________________________________________________________________________________
-    Public Function modInventaire(liste() As String) As DataTable
+    Public Function ModInventaire(liste() As String) As DataTable
         Dim table As New DataTable
         table.Columns.Add("bool", GetType(Boolean))
         table.Rows.Add(False)
@@ -56,7 +56,7 @@ Public Class ModelInventaire
         End Try
     End Function
 
-    Public Function ajoutInventaire(liste() As String) As DataTable
+    Public Function AjoutInventaire(liste() As String) As DataTable
         Dim table As New DataTable
         table.Columns.Add("bool", GetType(Boolean))
         table.Rows.Add(False)
@@ -92,7 +92,7 @@ Public Class ModelInventaire
     '__________________________________________________________________________________________________________
     'Functions
     '__________________________________________________________________________________________________________
-    Public Shared Function getInstance() As ModelInventaire
+    Public Shared Function GetInstance() As ModelInventaire
         If IsNothing(instance) Then
             instance = New ModelInventaire
         End If

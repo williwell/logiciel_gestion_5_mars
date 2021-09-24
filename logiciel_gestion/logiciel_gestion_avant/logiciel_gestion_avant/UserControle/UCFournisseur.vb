@@ -49,17 +49,22 @@
     End Sub
 
     Private Sub remplir(table As DataTable)
-        liste(0) = table(0)(0)
-        tbNomFour.Text = table(0)(1)
-        tbAdres1.Text = table(0)(2)
-        tbAdres2.Text = table(0)(3)
-        tbTel.Text = table(0)(4)
-        tbNomCont.Text = table(0)(5)
-        tbLeadTime.Text = table(0)(6)
-        tbAddCour.Text = table(0)(7)
-        tbMethodeCom.Text = table(0)(8)
-        tbNoCompte.Text = table(0)(9)
-        tbMethodePaie.Text = table(0)(10)
+        Try
+            liste(0) = table(0)(0)
+            tbNomFour.Text = table(0)(1)
+            tbAdres1.Text = table(0)(2)
+            tbAdres2.Text = table(0)(3)
+            tbTel.Text = table(0)(4)
+            tbNomCont.Text = table(0)(5)
+            tbLeadTime.Text = table(0)(6)
+            tbAddCour.Text = table(0)(7)
+            tbMethodeCom.Text = table(0)(8)
+            tbNoCompte.Text = table(0)(9)
+            tbMethodePaie.Text = table(0)(10)
+        Catch ex As Exception
+            MessageBox.Show("Un erreure est survenu avec le serveur! 1")
+            main.fermer()
+        End Try
     End Sub
 
     Private Sub btSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
@@ -70,6 +75,8 @@
                 dgvFour.CurrentRow.Cells(i).Value = liste(i)
             Next
             btSauvChanger()
+        Else
+            MessageBox.Show("Un erreur est survenu du coté du serveur! 2")
         End If
     End Sub
 
@@ -84,7 +91,6 @@
     Private Sub btAnnuler_Click(sender As Object, e As EventArgs) Handles btAnnuler.Click
         remplir(table)
     End Sub
-
 
     '__________________________________________________________________________________________________________
     'Functions

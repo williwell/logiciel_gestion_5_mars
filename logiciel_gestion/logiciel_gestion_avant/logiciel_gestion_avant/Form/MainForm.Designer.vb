@@ -22,6 +22,7 @@ Partial Class MainForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.PanUC = New System.Windows.Forms.Panel()
         Me.btMenu = New System.Windows.Forms.Button()
         Me.panMenu = New System.Windows.Forms.Panel()
@@ -29,6 +30,9 @@ Partial Class MainForm
         Me.btVente = New System.Windows.Forms.Button()
         Me.btInventaire = New System.Windows.Forms.Button()
         Me.btAccueil = New System.Windows.Forms.Button()
+        Me.lbNonConc = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.btConnec = New System.Windows.Forms.Button()
         Me.panMenu.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -98,11 +102,31 @@ Partial Class MainForm
         Me.btAccueil.Text = "Accueil"
         Me.btAccueil.UseVisualStyleBackColor = True
         '
+        'lbNonConc
+        '
+        Me.lbNonConc.AutoSize = True
+        Me.lbNonConc.Location = New System.Drawing.Point(265, 14)
+        Me.lbNonConc.Name = "lbNonConc"
+        Me.lbNonConc.Size = New System.Drawing.Size(0, 15)
+        Me.lbNonConc.TabIndex = 3
+        '
+        'btConnec
+        '
+        Me.btConnec.Location = New System.Drawing.Point(483, 7)
+        Me.btConnec.Name = "btConnec"
+        Me.btConnec.Size = New System.Drawing.Size(94, 23)
+        Me.btConnec.TabIndex = 5
+        Me.btConnec.Text = "Connecter"
+        Me.btConnec.UseVisualStyleBackColor = True
+        Me.btConnec.Visible = False
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(832, 692)
+        Me.Controls.Add(Me.btConnec)
+        Me.Controls.Add(Me.lbNonConc)
         Me.Controls.Add(Me.panMenu)
         Me.Controls.Add(Me.PanUC)
         Me.MaximumSize = New System.Drawing.Size(848, 731)
@@ -111,6 +135,7 @@ Partial Class MainForm
         Me.Text = "Logiciel Gestion 5-Mars vr"
         Me.panMenu.ResumeLayout(False)
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -121,4 +146,7 @@ Partial Class MainForm
     Friend WithEvents btInventaire As Button
     Friend WithEvents btAccueil As Button
     Friend WithEvents btFour As Button
+    Friend WithEvents lbNonConc As Label
+    Friend WithEvents Timer1 As Timer
+    Friend WithEvents btConnec As Button
 End Class

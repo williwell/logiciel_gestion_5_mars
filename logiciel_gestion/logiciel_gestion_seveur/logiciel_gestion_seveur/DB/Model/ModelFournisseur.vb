@@ -4,9 +4,9 @@ Public Class ModelFournisseur
     '__________________________________________________________________________________________________________
     'Attributes
     '__________________________________________________________________________________________________________
-    Dim connection As New MySqlConnection(ConnectionDB.GetInstance.connectionString)
+    ReadOnly connection As New MySqlConnection(ConnectionDB.GetInstance.connectionString)
     Shared instance As ModelFournisseur = Nothing
-    Dim nomClass As String = "ModelFournisseur"
+    ReadOnly nomClass As String = "ModelFournisseur"
 
 
     '__________________________________________________________________________________________________________
@@ -29,14 +29,14 @@ Public Class ModelFournisseur
     '__________________________________________________________________________________________________________
     'Functions
     '__________________________________________________________________________________________________________
-    Shared Function getinstance() As ModelFournisseur
+    Shared Function Getinstance() As ModelFournisseur
         If IsNothing(instance) Then
             instance = New ModelFournisseur
         End If
         Return instance
     End Function
 
-    Public Function modFour(liste() As String) As DataTable
+    Public Function ModFour(liste() As String) As DataTable
         Dim table As New DataTable
         table.Columns.Add("bool", GetType(Boolean))
         table.Rows.Add(False)

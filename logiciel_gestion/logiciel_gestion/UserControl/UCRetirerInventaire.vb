@@ -19,7 +19,7 @@
             If e.KeyCode = Keys.Enter Then
                 If sameID <> tbIdPiece.Text Then
                     nudQuantiteMod.ReadOnly = True
-                    table = InventaireEntity.getInstance.getInventaire(tbIdPiece.Text)
+                    table = ConnectionServeur.getinstance.GetInventaire(tbIdPiece.Text)
                     If table.Rows.Count > 0 Then
                         If table.Rows(0)(2) < 0 Then
                             result = MessageBox.Show("Le nombre d'item est négatif dans l'inventaire voulez-vous continuer quand même?", "Attention!", MessageBoxButtons.YesNo)
@@ -78,7 +78,8 @@
 
                     If result = DialogResult.Yes Then
 
-                        If InventaireModel.getInstance.enleverInventaire(tbIdPiece.Text, enlever) Then
+                        Dim liste() As String = {tbIdPiece.Text, enlever, tbCommande.Text}
+                        If ConnectionServeur.getinstance.modQuantite(liste) Then
                             labPasItem.Text = "Le nombre d'item à bien été enlever"
                             labPasItem.ForeColor = Color.Green
                         Else
@@ -88,8 +89,8 @@
                     End If
 
                 Else
-
-                    If InventaireModel.getInstance.enleverInventaire(tbIdPiece.Text, enlever) Then
+                    Dim liste() As String = {tbIdPiece.Text, enlever, tbCommande.Text}
+                    If ConnectionServeur.getinstance.modQuantite(liste) Then
                         labPasItem.Text = "Le nombre d'item à bien été retirer"
                         labPasItem.ForeColor = Color.Green
                         cleane()

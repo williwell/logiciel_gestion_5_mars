@@ -207,7 +207,7 @@ Partial Class UCInventaire
         Me.labPasItem.AutoSize = True
         Me.labPasItem.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.labPasItem.ForeColor = System.Drawing.Color.Red
-        Me.labPasItem.Location = New System.Drawing.Point(422, 72)
+        Me.labPasItem.Location = New System.Drawing.Point(422, 18)
         Me.labPasItem.Name = "labPasItem"
         Me.labPasItem.Size = New System.Drawing.Size(0, 28)
         Me.labPasItem.TabIndex = 35

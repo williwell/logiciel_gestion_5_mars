@@ -1,4 +1,6 @@
 ﻿
+Imports System.ComponentModel
+
 Public Class MainForm
 
     '__________________________________________________________________________________________________________
@@ -9,9 +11,11 @@ Public Class MainForm
     Dim currentKeys As New List(Of Keys)
     Dim options As New StructureOption.mesOption
     Dim ucAccueil As New UCAccueil
-    Dim ucInventaire As New UCInventaire
+    Dim ucInventaire As New UCInventaire(Me)
     Dim ucVente As New UCVente
     Dim ucFour As New UCFournisseur(Me, ucInventaire)
+    Dim connect As New ConnectionServeur(Me)
+    Private Delegate Sub setValue(text As String)
 
     '__________________________________________________________________________________________________________
     'Constructor
@@ -23,15 +27,21 @@ Public Class MainForm
     'Load
     '__________________________________________________________________________________________________________
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ConnectionServeur.getinstance.TestConnection()
         Me.KeyPreview = True
         MyOption.getInstance.readOption()
         panMenu.Size = panMenu.MinimumSize
-        PanUC.Controls.Add(ucAccueil)
-        PanUC.Controls.Add(ucInventaire)
-        PanUC.Controls.Add(ucVente)
-        PanUC.Controls.Add(ucFour)
-
+        ConnectionServeur.setMain(Me)
+        If ConnectionServeur.getinstance.TestConnection() Then
+            panMenu.Size = panMenu.MinimumSize
+            PanUC.Controls.Add(ucAccueil)
+            PanUC.Controls.Add(ucInventaire)
+            PanUC.Controls.Add(ucVente)
+            PanUC.Controls.Add(ucFour)
+        Else
+            lbNonConc.Text = "Impossible de se connecter au serveur!"
+            btConnec.Visible = True
+            btMenu.Enabled = False
+        End If
     End Sub
 
     '__________________________________________________________________________________________________________
@@ -89,6 +99,39 @@ Public Class MainForm
         panMenu.Size = panMenu.MinimumSize
     End Sub
 
+    Private Sub btConnec_Click(sender As Object, e As EventArgs) Handles btConnec.Click
+        If ConnectionServeur.getinstance.TestConnection() Then
+            PanUC.Controls.Add(ucAccueil)
+            PanUC.Controls.Add(ucInventaire)
+            PanUC.Controls.Add(ucVente)
+            PanUC.Controls.Add(ucFour)
+            lbNonConc.Text = ""
+            btConnec.Visible = False
+            btMenu.Enabled = True
+        Else
+            MessageBox.Show("Toujours impossible de se connecter au serveur!")
+        End If
+    End Sub
+
+    Public Sub fermer()
+        If lbNonConc.InvokeRequired Then
+            Dim d As New setValue(AddressOf SetTexte)
+            BeginInvoke(d, New Object() {"Impossible de se connecter au serveur!"})
+        Else
+            ucAccueil.BringToFront()
+            lbNonConc.Text = "Impossible de se connecter au serveur!"
+            btConnec.Visible = True
+            btMenu.Enabled = False
+        End If
+    End Sub
+
+    Private Sub SetTexte(text As String)
+        ucAccueil.BringToFront()
+        lbNonConc.Text = text
+        btConnec.Visible = True
+        btMenu.Enabled = False
+    End Sub
+
     '__________________________________________________________________________________________________________
     'Functions
     '__________________________________________________________________________________________________________
@@ -144,4 +187,8 @@ Public Class MainForm
     Public Function getOption6() As Integer
         Return options.option6
     End Function
+
+    Private Sub MainForm_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        Me.Dispose()
+    End Sub
 End Class
