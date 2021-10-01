@@ -20,7 +20,7 @@
     '__________________________________________________________________________________________________________
     'Methods
     '__________________________________________________________________________________________________________
-    Public Sub writeErr(texte As String, classErr As String, functionErr As String)
+    Public Sub WriteErr(texte As String, classErr As String, functionErr As String)
         Dim textFileStream As New IO.FileStream("C:\logiciel_gestion_5_mars_fichier\ErrLog\" + DateTime.Now.ToString("yyyy-MM-dd-H-m-s") + ".txt", IO.FileMode.OpenOrCreate, IO.FileAccess.ReadWrite, IO.FileShare.None)
         Dim myFileWriter As New IO.StreamWriter(textFileStream)
         myFileWriter.WriteLine(DateTime.Now.ToString())
@@ -37,7 +37,7 @@
     '__________________________________________________________________________________________________________
     'Functions
     '__________________________________________________________________________________________________________
-    Public Shared Function getInstance() As ErrLog
+    Public Shared Function GetInstance() As ErrLog
         If IsNothing(instance) Then
             instance = New ErrLog
         End If

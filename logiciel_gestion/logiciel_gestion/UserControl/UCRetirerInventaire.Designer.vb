@@ -43,6 +43,7 @@ Partial Class UCRetirerInventaire
         '
         'btEnlever
         '
+        Me.btEnlever.Enabled = False
         Me.btEnlever.Location = New System.Drawing.Point(61, 408)
         Me.btEnlever.Name = "btEnlever"
         Me.btEnlever.Size = New System.Drawing.Size(75, 21)

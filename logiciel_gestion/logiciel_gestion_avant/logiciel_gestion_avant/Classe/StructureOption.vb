@@ -1,5 +1,5 @@
 ﻿Public Class StructureOption
-    Public Structure mesOption
+    Public Structure MesOption
         Public option1 As String
         Public option2 As String
         Public option3 As String

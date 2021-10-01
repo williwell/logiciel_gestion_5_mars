@@ -4,9 +4,9 @@ Public Class EntityFournisseur
     '__________________________________________________________________________________________________________
     'Attributes
     '__________________________________________________________________________________________________________
-    Dim connection As New MySqlConnection(ConnectionDB.GetInstance.connectionString)
+    ReadOnly connection As New MySqlConnection(ConnectionDB.GetInstance.connectionString)
     Shared instance As EntityFournisseur = Nothing
-    Dim nomClass As String = "EntityFournisseur"
+    ReadOnly nomClass As String = "EntityFournisseur"
 
 
     '__________________________________________________________________________________________________________
@@ -30,14 +30,14 @@ Public Class EntityFournisseur
     '__________________________________________________________________________________________________________
     'Functions
     '__________________________________________________________________________________________________________
-    Public Shared Function getInstance() As EntityFournisseur
+    Public Shared Function GetInstance() As EntityFournisseur
         If IsNothing(instance) Then
             instance = New EntityFournisseur
         End If
         Return instance
     End Function
 
-    Public Function getFournisseur() As DataTable
+    Public Function GetFournisseur() As DataTable
         Dim table As New DataTable("fournisseur")
         Try
             If connection.State = ConnectionState.Open Then
@@ -57,7 +57,7 @@ Public Class EntityFournisseur
         Return table
     End Function
 
-    Public Function getOneFournisseur(id As Integer) As DataTable
+    Public Function GetOneFournisseur(id As Integer) As DataTable
         Dim table As New DataTable("fournisseur")
         Try
             If connection.State = ConnectionState.Open Then
@@ -77,7 +77,7 @@ Public Class EntityFournisseur
         Return table
     End Function
 
-    Public Function getFournisseur(id As String) As DataTable
+    Public Function GetFournisseur(id As String) As DataTable
         Dim table As New DataTable("fournisseur")
         Try
             If connection.State = ConnectionState.Open Then
@@ -100,7 +100,7 @@ Public Class EntityFournisseur
         Return table
     End Function
 
-    Public Function getFournisseurAdd(id() As Integer) As DataTable
+    Public Function GetFournisseurAdd(id() As Integer) As DataTable
         Dim table As New DataTable("fournisseur")
         Try
             If connection.State = ConnectionState.Open Then

@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.ComponentModel
+Imports MySql.Data.MySqlClient
 Public Class MainForm
     Dim ucAjout As New UCReseptionInventaire
     Dim ucRetirer As New UCRetirerInventaire
@@ -6,6 +7,7 @@ Public Class MainForm
     Dim currentKeys As New List(Of Keys)
     Dim options As New StructureOption.mesOption
     Shared instance As MainForm = Nothing
+    Private Delegate Sub setValue(bool As Boolean)
 
     Public Shared Function getInstance() As MainForm
         If IsNothing(instance) Then
@@ -33,6 +35,10 @@ Public Class MainForm
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.KeyPreview = True
         MyOption.getInstance.readOption()
+        If Not ConnectionServeur.getinstance.TestConnection() Then
+            lostConc(True)
+        End If
+        ConnectionServeur.setMain(Me)
     End Sub
 
 
@@ -50,13 +56,16 @@ Public Class MainForm
         Panel1.Controls.Add(ucRetirer)
     End Sub
 
-    Public Sub setOption(str1 As String, str2 As String, str3 As String, str4 As String, str5 As String, int6 As Integer)
+    Public Sub lostConc(bool As Boolean)
+        btAjoutUc.Enabled = Not bool
+        btRetirerUc.Enabled = Not bool
+        btReconnect.Visible = bool
+    End Sub
+
+    Public Sub setOption(str1 As String, str2 As String, int3 As Integer)
         options.option1 = str1
         options.option2 = str2
-        options.option3 = str3
-        options.option4 = str4
-        options.option5 = str5
-        options.option6 = int6
+        options.option3 = int3
     End Sub
 
     Public Function getOption1() As String
@@ -71,15 +80,28 @@ Public Class MainForm
         Return options.option3
     End Function
 
-    Public Function getOption4() As String
-        Return options.option4
-    End Function
+    Private Sub MainForm_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        ConnectionServeur.getinstance.fermer()
+    End Sub
 
-    Public Function getOption5() As String
-        Return options.option5
-    End Function
+    Private Sub btReconnect_Click(sender As Object, e As EventArgs) Handles btReconnect.Click
+        If ConnectionServeur.getinstance.TestConnection() Then
+            lostConc(False)
+        Else
+            MessageBox.Show("Toujours impossible de se connecter au serveur!")
+        End If
+    End Sub
 
-    Public Function getOption6() As Integer
-        Return options.option6
-    End Function
+    Public Sub fermer()
+        If btAjoutUc.InvokeRequired Then
+            Dim d As New setValue(AddressOf SetTexte)
+            BeginInvoke(d, New Object() {True})
+        Else
+            lostConc(True)
+        End If
+    End Sub
+
+    Private Sub SetTexte(bool As Boolean)
+        lostConc(bool)
+    End Sub
 End Class

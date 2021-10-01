@@ -2,10 +2,10 @@
     '__________________________________________________________________________________________________________
     'Attributes
     '__________________________________________________________________________________________________________
-    Dim main As MainForm
-    Dim ucInv As UCInventaire
+    ReadOnly main As MainForm
+    ReadOnly ucInv As UCInventaire
     Dim table As DataTable
-    Dim liste(10) As String
+    ReadOnly liste(10) As String
 
 
     '__________________________________________________________________________________________________________
@@ -26,29 +26,28 @@
     'Load
     '__________________________________________________________________________________________________________
     Private Sub UCFournisseur_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        dgvFour.DataSource = ConnectionServeur.getinstance.getFournisseur()
-        tbID.Text = dgvFour.CurrentRow.Cells(0).Value
+        LoadFour()
     End Sub
 
     '__________________________________________________________________________________________________________
     'Methods
     '__________________________________________________________________________________________________________
-    Private Sub dgvFour_DoubleClick(sender As Object, e As EventArgs) Handles dgvFour.DoubleClick
+    Private Sub DgvFour_DoubleClick(sender As Object, e As EventArgs) Handles dgvFour.DoubleClick
         tbID.Text = dgvFour.CurrentRow.Cells(0).Value
     End Sub
 
-    Private Sub tbID_TextChanged(sender As Object, e As EventArgs) Handles tbID.TextChanged
-        table = ConnectionServeur.getinstance.getOneFournisseur(Integer.Parse(tbID.Text))
+    Private Sub TbID_TextChanged(sender As Object, e As EventArgs) Handles tbID.TextChanged
+        table = ConnectionServeur.Getinstance.GetOneFournisseur(Integer.Parse(tbID.Text))
         remplir(table)
-        dgvPiece.DataSource = ConnectionServeur.getinstance.getInventaireOfFour(Integer.Parse(tbID.Text))
+        dgvPiece.DataSource = ConnectionServeur.Getinstance.GetInventaireOfFour(Integer.Parse(tbID.Text))
     End Sub
 
-    Private Sub dgvPiece_DoubleClick(sender As Object, e As EventArgs) Handles dgvPiece.DoubleClick
-        ucInv.setIDProduit(dgvPiece.CurrentRow.Cells(0).Value)
-        main.showInventaire()
+    Private Sub DgvPiece_DoubleClick(sender As Object, e As EventArgs) Handles dgvPiece.DoubleClick
+        ucInv.SetIDProduit(dgvPiece.CurrentRow.Cells(0).Value)
+        main.ShowInventaire()
     End Sub
 
-    Private Sub remplir(table As DataTable)
+    Private Sub Remplir(table As DataTable)
         Try
             liste(0) = table(0)(0)
             tbNomFour.Text = table(0)(1)
@@ -63,12 +62,12 @@
             tbMethodePaie.Text = table(0)(10)
         Catch ex As Exception
             MessageBox.Show("Un erreure est survenu avec le serveur! 1")
-            main.fermer()
+            main.Fermer()
         End Try
     End Sub
 
-    Private Sub btSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
-        If ConnectionServeur.getinstance.modFour(liste) Then
+    Private Sub BtSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
+        If ConnectionServeur.Getinstance.ModFour(liste) Then
             MessageBox.Show("La modification c'est fait sans problème")
             For i As Integer = 1 To liste.Length - 1
                 table(0)(i) = liste(i)
@@ -80,7 +79,7 @@
         End If
     End Sub
 
-    Private Sub tbTel_KeyDown(sender As Object, e As KeyEventArgs) Handles tbTel.KeyDown
+    Private Sub TbTel_KeyDown(sender As Object, e As KeyEventArgs) Handles tbTel.KeyDown
         If Not (e.KeyCode = Keys.Back OrElse e.KeyCode = Keys.Delete OrElse e.KeyCode = Keys.Left OrElse e.KeyCode = Keys.Right) Then
             If Not ((e.KeyCode >= 96 AndAlso e.KeyCode <= 105) OrElse (e.KeyCode >= 48 AndAlso e.KeyCode <= 57)) Then
                 e.SuppressKeyPress = True
@@ -88,14 +87,24 @@
         End If
     End Sub
 
-    Private Sub btAnnuler_Click(sender As Object, e As EventArgs) Handles btAnnuler.Click
-        remplir(table)
+    Private Sub BtAnnuler_Click(sender As Object, e As EventArgs) Handles btAnnuler.Click
+        Remplir(table)
+    End Sub
+
+    Private Sub BtCreerFour_Click(sender As Object, e As EventArgs) Handles btCreerFour.Click
+        Dim creer As New CreerFour(Me)
+        creer.ShowDialog()
+    End Sub
+
+    Public Sub LoadFour()
+        dgvFour.DataSource = ConnectionServeur.getinstance.getFournisseur()
+        tbID.Text = dgvFour.CurrentRow.Cells(0).Value
     End Sub
 
     '__________________________________________________________________________________________________________
     'Functions
     '__________________________________________________________________________________________________________
-    Private Sub btSauvChanger()
+    Private Sub BtSauvChanger()
         Dim modif As Boolean = False
         For i As Integer = 1 To table.Columns.Count - 1
             If Not Convert.ToString(table(0)(i)) = liste(i) Then
@@ -112,60 +121,57 @@
     '__________________________________________________________________________________________________________
     'Validation Functions
     '__________________________________________________________________________________________________________
-    Private Sub tbNomFour_TextChanged(sender As Object, e As EventArgs) Handles tbNomFour.TextChanged
+    Private Sub TbNomFour_TextChanged(sender As Object, e As EventArgs) Handles tbNomFour.TextChanged
         liste(1) = tbNomFour.Text
-        btSauvChanger()
+        BtSauvChanger()
     End Sub
 
-    Private Sub tbAdres1_TextChanged(sender As Object, e As EventArgs) Handles tbAdres1.TextChanged
+    Private Sub TbAdres1_TextChanged(sender As Object, e As EventArgs) Handles tbAdres1.TextChanged
         liste(2) = tbAdres1.Text
-        btSauvChanger()
+        BtSauvChanger()
     End Sub
 
-    Private Sub tbAdres2_TextChanged(sender As Object, e As EventArgs) Handles tbAdres2.TextChanged
+    Private Sub TbAdres2_TextChanged(sender As Object, e As EventArgs) Handles tbAdres2.TextChanged
         liste(3) = tbAdres2.Text
-        btSauvChanger()
+        BtSauvChanger()
     End Sub
 
-    Private Sub tbTel_TextChanged(sender As Object, e As EventArgs) Handles tbTel.TextChanged
+    Private Sub TbTel_TextChanged(sender As Object, e As EventArgs) Handles tbTel.TextChanged
         liste(4) = tbTel.Text
-        btSauvChanger()
+        BtSauvChanger()
     End Sub
 
 
 
-    Private Sub tbNomCont_TextChanged(sender As Object, e As EventArgs) Handles tbNomCont.TextChanged
+    Private Sub TbNomCont_TextChanged(sender As Object, e As EventArgs) Handles tbNomCont.TextChanged
         liste(5) = tbNomCont.Text
-        btSauvChanger()
+        BtSauvChanger()
     End Sub
 
-    Private Sub tbLeadTime_TextChanged(sender As Object, e As EventArgs) Handles tbLeadTime.TextChanged
+    Private Sub TbLeadTime_TextChanged(sender As Object, e As EventArgs) Handles tbLeadTime.TextChanged
         liste(6) = tbLeadTime.Text
-        btSauvChanger()
+        BtSauvChanger()
     End Sub
 
-    Private Sub tbAddCour_TextChanged(sender As Object, e As EventArgs) Handles tbAddCour.TextChanged
+    Private Sub TbAddCour_TextChanged(sender As Object, e As EventArgs) Handles tbAddCour.TextChanged
         liste(7) = tbAddCour.Text
-        btSauvChanger()
+        BtSauvChanger()
     End Sub
 
-    Private Sub tbMethodeCom_TextChanged(sender As Object, e As EventArgs) Handles tbMethodeCom.TextChanged
+    Private Sub TbMethodeCom_TextChanged(sender As Object, e As EventArgs) Handles tbMethodeCom.TextChanged
         liste(8) = tbMethodeCom.Text
-        btSauvChanger()
+        BtSauvChanger()
     End Sub
 
-    Private Sub tbNoCompte_TextChanged(sender As Object, e As EventArgs) Handles tbNoCompte.TextChanged
+    Private Sub TbNoCompte_TextChanged(sender As Object, e As EventArgs) Handles tbNoCompte.TextChanged
         liste(9) = tbNoCompte.Text
-        btSauvChanger()
+        BtSauvChanger()
     End Sub
 
-    Private Sub tbMethodePaie_TextChanged(sender As Object, e As EventArgs) Handles tbMethodePaie.TextChanged
+    Private Sub TbMethodePaie_TextChanged(sender As Object, e As EventArgs) Handles tbMethodePaie.TextChanged
         liste(10) = tbMethodePaie.Text
-        btSauvChanger()
+        BtSauvChanger()
     End Sub
-
-
-
 
 
     '__________________________________________________________________________________________________________

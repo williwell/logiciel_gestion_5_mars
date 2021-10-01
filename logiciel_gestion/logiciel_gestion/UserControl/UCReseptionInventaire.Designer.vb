@@ -22,7 +22,6 @@ Partial Class UCReseptionInventaire
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.labPasItem = New System.Windows.Forms.Label()
         Me.btAjouter = New System.Windows.Forms.Button()
         Me.nudQuantiteMod = New System.Windows.Forms.NumericUpDown()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -38,22 +37,13 @@ Partial Class UCReseptionInventaire
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.tbIdPiece = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
+        Me.labPasItem = New System.Windows.Forms.Label()
         CType(Me.nudQuantiteMod, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'labPasItem
-        '
-        Me.labPasItem.AutoSize = True
-        Me.labPasItem.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.labPasItem.ForeColor = System.Drawing.Color.Red
-        Me.labPasItem.Location = New System.Drawing.Point(304, 38)
-        Me.labPasItem.Name = "labPasItem"
-        Me.labPasItem.Size = New System.Drawing.Size(0, 28)
-        Me.labPasItem.TabIndex = 34
-        '
         'btAjouter
         '
+        Me.btAjouter.Enabled = False
         Me.btAjouter.Location = New System.Drawing.Point(61, 408)
         Me.btAjouter.Name = "btAjouter"
         Me.btAjouter.Size = New System.Drawing.Size(75, 23)
@@ -183,20 +173,19 @@ Partial Class UCReseptionInventaire
         Me.tbIdPiece.Size = New System.Drawing.Size(218, 23)
         Me.tbIdPiece.TabIndex = 18
         '
-        'Label8
+        'labPasItem
         '
-        Me.Label8.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label8.ForeColor = System.Drawing.Color.Red
-        Me.Label8.Location = New System.Drawing.Point(304, 38)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(279, 153)
-        Me.Label8.TabIndex = 51
+        Me.labPasItem.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.labPasItem.ForeColor = System.Drawing.Color.Red
+        Me.labPasItem.Location = New System.Drawing.Point(304, 38)
+        Me.labPasItem.Name = "labPasItem"
+        Me.labPasItem.Size = New System.Drawing.Size(279, 153)
+        Me.labPasItem.TabIndex = 51
         '
         'UCReseptionInventaire
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.labPasItem)
         Me.Controls.Add(Me.btAjouter)
         Me.Controls.Add(Me.nudQuantiteMod)
@@ -214,14 +203,12 @@ Partial Class UCReseptionInventaire
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.tbIdPiece)
         Me.Name = "UCReseptionInventaire"
-        Me.Size = New System.Drawing.Size(641, 491)
+        Me.Size = New System.Drawing.Size(653, 491)
         CType(Me.nudQuantiteMod, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents labPasItem As Label
     Friend WithEvents btAjouter As Button
     Friend WithEvents nudQuantiteMod As NumericUpDown
     Friend WithEvents Label7 As Label
@@ -237,5 +224,5 @@ Partial Class UCReseptionInventaire
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents tbIdPiece As TextBox
-    Friend WithEvents Label8 As Label
+    Friend WithEvents labPasItem As Label
 End Class

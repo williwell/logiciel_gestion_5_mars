@@ -1,7 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_LastSelectedProfileId>C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gestion_avant\My Project\PublishProfiles\ClickOnceProfile.pubxml</_LastSelectedProfileId>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Update="Form\Connection.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form\CreerFour.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Form\creerProduit.vb">
@@ -23,6 +29,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControle\UCFournisseur.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControle\UCGestionVehicule.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControle\UCInventaire.vb">

@@ -5,7 +5,7 @@
     Dim sameID As String
     Dim sameFour As Integer
     Dim tableOri As DataTable
-    Dim change(12) As String
+    ReadOnly change(12) As String
     Dim triger As Boolean = True
     Shared instance As UCInventaire = Nothing
     Shared main As MainForm
@@ -33,7 +33,7 @@
     '__________________________________________________________________________________________________________
     'Methods
     '__________________________________________________________________________________________________________
-    Private Sub tbIDPro_KeyDown(sender As Object, e As KeyEventArgs) Handles tbIDPro.KeyDown
+    Private Sub TbIDPro_KeyDown(sender As Object, e As KeyEventArgs) Handles tbIDPro.KeyDown
         Try
             If e.KeyCode = Keys.Enter Then
                 If sameID <> tbIDPro.Text Then
@@ -46,7 +46,7 @@
         End Try
     End Sub
 
-    Private Sub changeRead(read As Boolean)
+    Private Sub ChangeRead(read As Boolean)
         tbNom.ReadOnly = read
         nudQuantite.ReadOnly = read
         tbEmplacement.ReadOnly = read
@@ -59,7 +59,7 @@
         tbNoMFR.ReadOnly = read
     End Sub
 
-    Private Sub cleane()
+    Private Sub Cleane()
         triger = False
         tbNom.Text = ""
         nudQuantite.Value = 0
@@ -85,7 +85,7 @@
         tbMethoPaie.Text = ""
     End Sub
 
-    Private Sub remplir()
+    Private Sub Remplir()
         triger = False
         tbNom.Text = tableOri(0)(1)
         change(1) = tableOri(0)(1)
@@ -111,7 +111,7 @@
         triger = True
     End Sub
 
-    Private Sub remplir(id As Integer)
+    Private Sub Remplir(id As Integer)
         triger = False
 
         change(8) = tableOri(id)(8)
@@ -135,10 +135,10 @@
         triger = True
     End Sub
 
-    Private Sub btSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
-        If ConnectionServeur.getinstance.modInventaire(change) Then
+    Private Sub BtSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
+        If ConnectionServeur.Getinstance.ModInventaire(change) Then
             Dim liste() As String = {tbIDPro.Text, tbIDFour.Text, nudCoutUn.Value, tbNoFour.Text, tbNoMFR.Text}
-            If ConnectionServeur.getinstance.modInvFour(liste) Then
+            If ConnectionServeur.Getinstance.ModInvFour(liste) Then
                 MessageBox.Show("La modification à bien été fait")
                 For i As Integer = 1 To change.Length - 1
                     If Not (i = 8 Or i = 9) Then
@@ -156,32 +156,32 @@
 
     End Sub
 
-    Private Sub btRecherche_Click(sender As Object, e As EventArgs) Handles btRecherche.Click
+    Private Sub BtRecherche_Click(sender As Object, e As EventArgs) Handles btRecherche.Click
         Dim recherche As New RechercheProduit(Me, main)
         recherche.ShowDialog()
         tbIDPro.Select()
         SendKeys.Send("{ENTER}")
     End Sub
 
-    Private Sub btAnnulMod_Click(sender As Object, e As EventArgs) Handles btAnnulMod.Click
-        remplir()
-        remplir(cbNoFour.SelectedIndex)
+    Private Sub BtAnnulMod_Click(sender As Object, e As EventArgs) Handles btAnnulMod.Click
+        Remplir()
+        Remplir(cbNoFour.SelectedIndex)
         btSauvChanger()
     End Sub
 
-    Private Sub btCreer_Click(sender As Object, e As EventArgs) Handles btCreer.Click
+    Private Sub BtCreer_Click(sender As Object, e As EventArgs) Handles btCreer.Click
         Dim creer As New creerProduit()
         creer.ShowDialog()
     End Sub
 
-    Private Sub cbNoFour_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbNoFour.SelectedIndexChanged
+    Private Sub CbNoFour_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbNoFour.SelectedIndexChanged
         If Not sameFour = cbNoFour.SelectedIndex Then
-            remplir(cbNoFour.SelectedIndex)
+            Remplir(cbNoFour.SelectedIndex)
             sameFour = cbNoFour.SelectedIndex
         End If
     End Sub
 
-    Private Sub btAddFour_Click(sender As Object, e As EventArgs) Handles btAddFour.Click
+    Private Sub BtAddFour_Click(sender As Object, e As EventArgs) Handles btAddFour.Click
         Dim liste(cbNoFour.Items.Count - 1) As Integer
         For i As Integer = 0 To cbNoFour.Items.Count - 1
             cbNoFour.SelectedIndex = i
@@ -192,25 +192,25 @@
         start()
     End Sub
 
-    Private Sub brRemoveFour_Click(sender As Object, e As EventArgs) Handles brRemoveFour.Click
+    Private Sub BrRemoveFour_Click(sender As Object, e As EventArgs) Handles brRemoveFour.Click
         Dim listeFour As New ListeFournisseur(3, tbIDPro.Text)
         listeFour.ShowDialog()
         start()
     End Sub
 
-    Private Sub start()
-        changeRead(True)
-        tableOri = ConnectionServeur.getinstance.GetInventaire(tbIDPro.Text)
+    Private Sub Start()
+        ChangeRead(True)
+        tableOri = ConnectionServeur.Getinstance.GetInventaire(tbIDPro.Text)
 
         Try
             If tableOri(0)(0) = "\\null" Then
-                cleane()
+                Cleane()
                 labPasItem.Text = "Le numéro d'item n'existe pas!"
                 labPasItem.ForeColor = Color.Red
                 tbIDPro.SelectAll()
                 sameID = tbIDPro.Text
             Else
-                remplir()
+                Remplir()
 
                 Dim liste(tableOri.Rows.Count - 1) As String
                 For i As Integer = 0 To tableOri.Rows.Count - 1
@@ -218,15 +218,15 @@
                 Next
                 cbNoFour.DataSource = liste
 
-                remplir(0)
-                changeRead(False)
+                Remplir(0)
+                ChangeRead(False)
                 labPasItem.Text = ""
                 sameID = tbIDPro.Text
                 change(0) = tbIDPro.Text
             End If
         Catch ex As Exception
             MessageBox.Show("Un erreur est survenu avec le serveur")
-            main.fermer()
+            main.Fermer()
         End Try
 
     End Sub
@@ -234,7 +234,7 @@
     '__________________________________________________________________________________________________________
     'Functions
     '__________________________________________________________________________________________________________
-    Shared Function getInstance() As UCInventaire
+    Shared Function GetInstance() As UCInventaire
         If IsNothing(instance) Then
             instance = New UCInventaire(main)
         End If
@@ -245,77 +245,77 @@
     '__________________________________________________________________________________________________________
     'Validation Functions
     '__________________________________________________________________________________________________________
-    Private Sub tbNom_TextChanged(sender As Object, e As EventArgs) Handles tbNom.TextChanged
+    Private Sub TbNom_TextChanged(sender As Object, e As EventArgs) Handles tbNom.TextChanged
         change(1) = tbNom.Text
         If triger Then
             btSauvChanger()
         End If
     End Sub
 
-    Private Sub nudQuantite_ValueChanged(sender As Object, e As EventArgs) Handles nudQuantite.ValueChanged
+    Private Sub NudQuantite_ValueChanged(sender As Object, e As EventArgs) Handles nudQuantite.ValueChanged
         change(2) = Convert.ToString(nudQuantite.Value)
         If triger Then
             btSauvChanger()
         End If
     End Sub
 
-    Private Sub tbDescription_TextChanged(sender As Object, e As EventArgs) Handles tbDescription.TextChanged
+    Private Sub TbDescription_TextChanged(sender As Object, e As EventArgs) Handles tbDescription.TextChanged
         change(3) = tbDescription.Text
         If triger Then
             btSauvChanger()
         End If
     End Sub
 
-    Private Sub tbEmplacement_TextChanged(sender As Object, e As EventArgs) Handles tbEmplacement.TextChanged
+    Private Sub TbEmplacement_TextChanged(sender As Object, e As EventArgs) Handles tbEmplacement.TextChanged
         change(4) = tbEmplacement.Text
         If triger Then
             btSauvChanger()
         End If
     End Sub
 
-    Private Sub cbUse_CheckedChanged(sender As Object, e As EventArgs) Handles cbUse.CheckedChanged
+    Private Sub CbUse_CheckedChanged(sender As Object, e As EventArgs) Handles cbUse.CheckedChanged
         change(5) = cbUse.Checked
         If triger Then
             btSauvChanger()
         End If
     End Sub
 
-    Private Sub nudEnCommende_ValueChanged(sender As Object, e As EventArgs) Handles nudEnCommende.ValueChanged
+    Private Sub NudEnCommende_ValueChanged(sender As Object, e As EventArgs) Handles nudEnCommende.ValueChanged
         change(6) = Convert.ToString(nudEnCommende.Value)
         If triger Then
             btSauvChanger()
         End If
     End Sub
 
-    Private Sub nudMinInv_ValueChanged(sender As Object, e As EventArgs) Handles nudMinInv.ValueChanged
+    Private Sub NudMinInv_ValueChanged(sender As Object, e As EventArgs) Handles nudMinInv.ValueChanged
         change(7) = Convert.ToString(nudMinInv.Value)
         If triger Then
             btSauvChanger()
         End If
     End Sub
 
-    Private Sub nudCoutUn_ValueChanged(sender As Object, e As EventArgs) Handles nudCoutUn.ValueChanged
+    Private Sub NudCoutUn_ValueChanged(sender As Object, e As EventArgs) Handles nudCoutUn.ValueChanged
         change(10) = Convert.ToString(nudCoutUn.Value)
         If triger Then
             btSauvChanger()
         End If
     End Sub
 
-    Private Sub tbNoFour_TextChanged(sender As Object, e As EventArgs) Handles tbNoFour.TextChanged
+    Private Sub TbNoFour_TextChanged(sender As Object, e As EventArgs) Handles tbNoFour.TextChanged
         change(11) = tbNoFour.Text
         If triger Then
             btSauvChanger()
         End If
     End Sub
 
-    Private Sub tbNoMFR_TextChanged(sender As Object, e As EventArgs) Handles tbNoMFR.TextChanged
+    Private Sub TbNoMFR_TextChanged(sender As Object, e As EventArgs) Handles tbNoMFR.TextChanged
         change(12) = tbNoMFR.Text
         If triger Then
             btSauvChanger()
         End If
     End Sub
 
-    Private Sub btSauvChanger()
+    Private Sub BtSauvChanger()
         Dim modif As Boolean = False
         For i As Integer = 1 To tableOri.Columns.Count - 12
             If Not Convert.ToString(tableOri(cbNoFour.SelectedIndex)(i)) = change(i) Then
@@ -330,7 +330,7 @@
     '__________________________________________________________________________________________________________
     'Set
     '__________________________________________________________________________________________________________
-    Public Sub setIDProduit(id As String)
+    Public Sub SetIDProduit(id As String)
         tbIDPro.Text = id
         tbIDPro.Select()
         SendKeys.Send("{ENTER}")

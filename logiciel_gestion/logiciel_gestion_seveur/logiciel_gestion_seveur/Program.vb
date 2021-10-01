@@ -3,7 +3,7 @@ Imports System.Net.Sockets
 
 Module Program
     Sub Main()
-        Dim serverSocket As New TcpListener(IPAddress.Parse("127.0.0.1"), 8888)
+        Dim serverSocket As New TcpListener(IPAddress.Any, 8888)
         Dim clientSocket As TcpClient
         Dim counter As Integer
 
@@ -23,11 +23,6 @@ Module Program
             End Try
 
         End While
-
-        clientSocket.Close()
-        serverSocket.Stop()
-        Msg("exit")
-        Console.ReadLine()
     End Sub
 
     Sub Msg(mesg As String)

@@ -26,6 +26,7 @@ Partial Class MainForm
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btAjoutUc = New System.Windows.Forms.Button()
         Me.btRetirerUc = New System.Windows.Forms.Button()
+        Me.btReconnect = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'labPasItem
@@ -69,12 +70,23 @@ Partial Class MainForm
         Me.btRetirerUc.Text = "Retirer"
         Me.btRetirerUc.UseVisualStyleBackColor = False
         '
+        'btReconnect
+        '
+        Me.btReconnect.Location = New System.Drawing.Point(12, 445)
+        Me.btReconnect.Name = "btReconnect"
+        Me.btReconnect.Size = New System.Drawing.Size(168, 58)
+        Me.btReconnect.TabIndex = 0
+        Me.btReconnect.Text = "Connecter"
+        Me.btReconnect.UseVisualStyleBackColor = True
+        Me.btReconnect.Visible = False
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(851, 515)
+        Me.Controls.Add(Me.btReconnect)
         Me.Controls.Add(Me.btRetirerUc)
         Me.Controls.Add(Me.btAjoutUc)
         Me.Controls.Add(Me.Panel1)
@@ -91,4 +103,5 @@ Partial Class MainForm
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btAjoutUc As Button
     Friend WithEvents btRetirerUc As Button
+    Friend WithEvents btReconnect As Button
 End Class

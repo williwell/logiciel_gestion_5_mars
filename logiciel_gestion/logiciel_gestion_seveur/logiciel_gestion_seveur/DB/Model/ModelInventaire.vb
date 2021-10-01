@@ -56,6 +56,33 @@ Public Class ModelInventaire
         End Try
     End Function
 
+    Public Function ModQuantite(liste() As String) As DataTable
+        Dim table As New DataTable
+        table.Columns.Add("bool", GetType(Boolean))
+        table.Rows.Add(False)
+
+        Try
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+            Dim command As New MySqlCommand
+            command.Connection = connection
+            command.CommandText = $"update inventaire set   quantite={Integer.Parse(liste(1))},
+                                                            enCommande={Integer.Parse(liste(2))}
+                                                            where id ='{liste(0)}'"
+            connection.Open()
+            Dim reader = command.ExecuteReader()
+            connection.Close()
+
+            table(0)(0) = True
+            Return table
+        Catch ex As Exception
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "modQuantite")
+            'MessageBox.Show("Une erreur c'est produit!")
+            Return table
+        End Try
+    End Function
+
     Public Function AjoutInventaire(liste() As String) As DataTable
         Dim table As New DataTable
         table.Columns.Add("bool", GetType(Boolean))

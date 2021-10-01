@@ -6,6 +6,8 @@
     <RootNamespace>logiciel_gestion</RootNamespace>
     <StartupObject>logiciel_gestion.MainForm</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
+    <Configurations>Debug;Release;teat</Configurations>
+    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>

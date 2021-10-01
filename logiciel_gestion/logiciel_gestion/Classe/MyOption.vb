@@ -15,9 +15,6 @@ Public Class MyOption
         myFileWriter.WriteLine(MainForm.getInstance.getOption1)
         myFileWriter.WriteLine(MainForm.getInstance.getOption2)
         myFileWriter.WriteLine(MainForm.getInstance.getOption3)
-        myFileWriter.WriteLine(MainForm.getInstance.getOption4)
-        myFileWriter.WriteLine(MainForm.getInstance.getOption5)
-        myFileWriter.WriteLine(MainForm.getInstance.getOption6)
         myFileWriter.Close()
         textFileStream.Close()
         MessageBox.Show("Sauvegarde effectuer")
@@ -32,6 +29,6 @@ Public Class MyOption
         Dim option5 = myFileReader.ReadLine()
         Dim option6 = myFileReader.ReadLine()
         myFileReader.Close()
-        MainForm.getInstance.setOption(option1, option2, option3, option4, option5, Integer.Parse(option6))
+        MainForm.getInstance.setOption(option1, option2, Integer.Parse(option3))
     End Sub
 End Class

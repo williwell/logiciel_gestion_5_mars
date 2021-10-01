@@ -1,5 +1,5 @@
 ﻿Public Class Connection
-    Dim mainform As MainForm
+    ReadOnly mainform As MainForm
     Sub New(main As MainForm)
 
         ' Cet appel est requis par le concepteur.
@@ -15,7 +15,7 @@
 
 
 
-    Private Sub btConnection_Click(sender As Object, e As EventArgs) Handles btConnection.Click
+    Private Sub BtConnection_Click(sender As Object, e As EventArgs) Handles btConnection.Click
         verifConnection()
     End Sub
 
@@ -23,7 +23,7 @@
         mainform.Show()
     End Sub
 
-    Private Sub verifConnection()
+    Private Sub VerifConnection()
         If tbUser.Text = "admin" And tbPass.Text = "Reception1234" Then
             Dim optionRecp As New OptionAvant(Me)
             Me.Hide()
@@ -33,15 +33,15 @@
         End If
     End Sub
 
-    Private Sub tbPass_KeyDown(sender As Object, e As KeyEventArgs) Handles tbPass.KeyDown
+    Private Sub TbPass_KeyDown(sender As Object, e As KeyEventArgs) Handles tbPass.KeyDown
         If e.KeyCode = Keys.Enter Then
-            verifConnection()
+            VerifConnection()
         End If
     End Sub
 
-    Private Sub tbUser_KeyDown(sender As Object, e As KeyEventArgs) Handles tbUser.KeyDown
+    Private Sub TbUser_KeyDown(sender As Object, e As KeyEventArgs) Handles tbUser.KeyDown
         If e.KeyCode = Keys.Enter Then
-            verifConnection()
+            VerifConnection()
         End If
     End Sub
 End Class

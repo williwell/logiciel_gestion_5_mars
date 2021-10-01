@@ -2,7 +2,7 @@
     '__________________________________________________________________________________________________________
     'Attributes
     '__________________________________________________________________________________________________________
-    Dim liste(11) As String
+    ReadOnly liste(11) As String
     Dim table As DataTable
 
     '__________________________________________________________________________________________________________
@@ -14,8 +14,8 @@
     '__________________________________________________________________________________________________________
     'Load
     '__________________________________________________________________________________________________________
-    Private Sub creerProduit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        table = ConnectionServeur.getinstance.getFournisseur()
+    Private Sub CreerProduit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        table = ConnectionServeur.Getinstance.GetFournisseur()
         Dim listeNom(table.Rows.Count - 1) As String
         For i As Integer = 0 To table.Rows.Count - 1
             listeNom(i) = table.Rows(i).Item(1).ToString
@@ -27,7 +27,7 @@
     '__________________________________________________________________________________________________________
     'Methods
     '__________________________________________________________________________________________________________
-    Private Sub btSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
+    Private Sub BtSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
         If Not checkVide() Then
             liste(0) = tbIDPro.Text
             liste(1) = tbNom.Text
@@ -63,9 +63,9 @@
                 liste(11) = tbNoMFR.Text
             End If
 
-            If ConnectionServeur.getinstance.ajoutInventaire(liste) Then
+            If ConnectionServeur.Getinstance.AjoutInventaire(liste) Then
                 Dim liste2() As String = {liste(0), liste(4), liste(6), liste(10), liste(11)}
-                If ConnectionServeur.getinstance.addInvFour(liste2) Then
+                If ConnectionServeur.Getinstance.AddInvFour(liste2) Then
                     MessageBox.Show("La création du nouveau produit à bien été fait!")
                 Else
                     MessageBox.Show("Une erreur est survenue durant la création!", "Attention!")
@@ -78,12 +78,12 @@
         End If
     End Sub
 
-    Private Sub btListeFour_Click(sender As Object, e As EventArgs) Handles btListeFour.Click
+    Private Sub BtListeFour_Click(sender As Object, e As EventArgs) Handles btListeFour.Click
         Dim listeFour As New ListeFournisseur(Me, 1)
         listeFour.ShowDialog()
     End Sub
 
-    Private Sub btAnnul_Click(sender As Object, e As EventArgs) Handles btAnnul.Click
+    Private Sub BtAnnul_Click(sender As Object, e As EventArgs) Handles btAnnul.Click
         Me.Close()
     End Sub
 
@@ -96,7 +96,7 @@
     '__________________________________________________________________________________________________________
     'Validation Functions
     '__________________________________________________________________________________________________________
-    Private Function checkVide() As Boolean
+    Private Function CheckVide() As Boolean
         Dim vide As Boolean = False
         If String.IsNullOrEmpty(tbIDPro.Text) Or String.IsNullOrEmpty(tbNom.Text) Then
             vide = True
@@ -108,7 +108,7 @@
     '__________________________________________________________________________________________________________
     'Set
     '__________________________________________________________________________________________________________
-    Public Sub setFournisseur(nomFour As String)
+    Public Sub SetFournisseur(nomFour As String)
         For i As Integer = 0 To cbFour.Items.Count - 1
             If cbFour.Items(i) = nomFour Then
                 cbFour.SelectedIndex = i

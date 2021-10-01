@@ -19,8 +19,9 @@
             If e.KeyCode = Keys.Enter Then
                 If sameID <> tbIdPiece.Text Then
                     nudQuantiteMod.ReadOnly = True
+                    btEnlever.Enabled = False
                     table = ConnectionServeur.getinstance.GetInventaire(tbIdPiece.Text)
-                    If table.Rows.Count > 0 Then
+                    If Not table(0)(0) = "\\null" Then
                         If table.Rows(0)(2) < 0 Then
                             result = MessageBox.Show("Le nombre d'item est négatif dans l'inventaire voulez-vous continuer quand même?", "Attention!", MessageBoxButtons.YesNo)
                             If result = DialogResult.Yes Then
@@ -124,6 +125,7 @@
             tbEmplacementPiece.Text = ""
             tbCommande.Text = ""
             nudQuantiteMod.ReadOnly = True
+            btEnlever.Enabled = False
             sameID = ""
             tbIdPiece.Select()
             tbIdPiece.SelectAll()
@@ -138,15 +140,16 @@
         tbNomPiece.Text = table.Rows(0)(1)
         tbQuantitePiece.Text = table.Rows(0)(2)
         tbDescription.Text = table.Rows(0)(3)
-        tbEmplacementPiece.Text = table.Rows(0)(5)
-        tbCommande.Text = table.Rows(0)(8)
+        tbEmplacementPiece.Text = table.Rows(0)(4)
+        tbCommande.Text = table.Rows(0)(6)
         sameID = tbIdPiece.Text
-        If Not table.Rows(0)(7) Then
+        If Not Boolean.Parse(table.Rows(0)(5)) Then
             labPasItem.Text = "Cette item n'est plus utilisé normalement!"
             labPasItem.ForeColor = Color.FromArgb(225, 202, 56)
 
         End If
         nudQuantiteMod.ReadOnly = False
+        btEnlever.Enabled = True
         nudQuantiteMod.Select()
     End Sub
 End Class

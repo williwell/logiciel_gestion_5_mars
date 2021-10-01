@@ -10,6 +10,7 @@ Public Class ConnectionServeur
     Dim thread As New Thread(AddressOf stillConnect)
     Shared main As MainForm
     Delegate Sub MySubDelegate()
+    Dim bool As Boolean
 
     Sub New(mainform As MainForm)
         main = mainform
@@ -24,20 +25,18 @@ Public Class ConnectionServeur
 
 
     Public Function TestConnection() As Boolean
+        Dim tCheckCo As New Thread(AddressOf checkCo)
+        Dim tWaiting As New Thread(AddressOf waiting)
         Try
-            clientSocket = New TcpClient("127.0.0.1", 8888)
-            Dim serverStream As NetworkStream = clientSocket.GetStream()
-            Dim outStream As Byte() = Encoding.ASCII.GetBytes("test;$")
-            serverStream.Write(outStream, 0, outStream.Length)
-            serverStream.Flush()
+            bool = True
+            tCheckCo.Start()
+            tWaiting.Start()
+            While bool
 
-            Dim inStream(1024) As Byte
-            serverStream.Read(inStream, 0, inStream.Length())
-            If Boolean.Parse(Encoding.ASCII.GetString(inStream)) Then
-                conc = True
-                thread.Start(main)
-            End If
+            End While
+
             Return conc
+
         Catch ex As Exception
             Return conc
         End Try
@@ -149,33 +148,86 @@ Public Class ConnectionServeur
     End Sub
 
     Private Sub stillConnect(mainform As MainForm)
-        checkClient = New TcpClient("127.0.0.1", 8888)
+        checkClient = New TcpClient(MainForm.getInstance.getOption1(), 8888)
         Dim bool As Boolean = True
+        Dim bool2 As Boolean = True
 
         While bool
-
             If Application.OpenForms().OfType(Of MainForm).Any Then
-                While conc
-                    Thread.Sleep(1000)
-                    Try
-                        Dim serverStream As NetworkStream = clientSocket.GetStream()
-                        Dim outStream As Byte() = Encoding.ASCII.GetBytes("test;$")
-                        serverStream.Write(outStream, 0, outStream.Length)
-                        serverStream.Flush()
+                If conc Then
+                    bool2 = True
+                End If
+                While bool2
+                    If Application.OpenForms().OfType(Of MainForm).Any Then
+                        Thread.Sleep(1000)
+                        Try
+                            Dim serverStream As NetworkStream = clientSocket.GetStream()
+                            Dim outStream As Byte() = Encoding.ASCII.GetBytes("test;$")
+                            serverStream.Write(outStream, 0, outStream.Length)
+                            serverStream.Flush()
 
-                        Dim inStream(1024) As Byte
-                        serverStream.Read(inStream, 0, inStream.Length())
-                        If Boolean.Parse(Encoding.ASCII.GetString(inStream)) Then
-                            conc = True
-                        End If
-                    Catch ex As Exception
-                        conc = False
-                        main.fermer()
-                    End Try
+                            Dim inStream(1024) As Byte
+                            serverStream.Read(inStream, 0, inStream.Length())
+                            If Boolean.Parse(Encoding.ASCII.GetString(inStream)) Then
+                                conc = True
+                            End If
+                        Catch ex As Exception
+                            conc = False
+                            bool2 = False
+                            main.fermer()
+                        End Try
+                    Else
+                        bool2 = False
+                    End If
                 End While
             Else
                 bool = False
+                bool2 = False
             End If
         End While
+
+        'If conc Then
+        '    serverStream = checkClient.GetStream()
+        '    outStream = Encoding.ASCII.GetBytes("fermer;$")
+        '    serverStream.Write(outStream, 0, outStream.Length)
+        '    serverStream.Flush()
+        'End If
+    End Sub
+
+    Public Sub fermer()
+        If conc Then
+            Dim serverStream As NetworkStream = clientSocket.GetStream()
+            Dim outStream As Byte() = Encoding.ASCII.GetBytes("fermer;$")
+            serverStream.Write(outStream, 0, outStream.Length)
+            serverStream.Flush()
+        End If
+    End Sub
+
+    Private Sub checkCo()
+        Try
+            clientSocket = New TcpClient(MainForm.getInstance.getOption1(), 8888)
+            Dim serverStream As NetworkStream = clientSocket.GetStream()
+            Dim outStream As Byte() = Encoding.ASCII.GetBytes("test;$")
+            serverStream.Write(outStream, 0, outStream.Length)
+            serverStream.Flush()
+
+            Dim inStream(1024) As Byte
+            serverStream.Read(inStream, 0, inStream.Length())
+            If Boolean.Parse(Encoding.ASCII.GetString(inStream)) Then
+                conc = True
+                thread.Start(main)
+            End If
+            bool = False
+        Catch ex As Exception
+            bool = False
+        End Try
+    End Sub
+
+    Private Sub waiting()
+        Thread.Sleep(15000)
+        If bool = True Then
+            conc = False
+            bool = False
+        End If
     End Sub
 End Class

@@ -50,6 +50,7 @@ Partial Class UCFournisseur
         Me.Label13 = New System.Windows.Forms.Label()
         Me.btSauv = New System.Windows.Forms.Button()
         Me.btAnnuler = New System.Windows.Forms.Button()
+        Me.btCreerFour = New System.Windows.Forms.Button()
         CType(Me.dgvPiece, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvFour, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -57,7 +58,7 @@ Partial Class UCFournisseur
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(66, 66)
+        Me.Label1.Location = New System.Drawing.Point(40, 44)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(82, 15)
         Me.Label1.TabIndex = 0
@@ -65,7 +66,7 @@ Partial Class UCFournisseur
         '
         'tbID
         '
-        Me.tbID.Location = New System.Drawing.Point(66, 84)
+        Me.tbID.Location = New System.Drawing.Point(40, 62)
         Me.tbID.Name = "tbID"
         Me.tbID.ReadOnly = True
         Me.tbID.Size = New System.Drawing.Size(180, 23)
@@ -73,7 +74,7 @@ Partial Class UCFournisseur
         '
         'tbNomFour
         '
-        Me.tbNomFour.Location = New System.Drawing.Point(66, 128)
+        Me.tbNomFour.Location = New System.Drawing.Point(40, 106)
         Me.tbNomFour.Name = "tbNomFour"
         Me.tbNomFour.Size = New System.Drawing.Size(180, 23)
         Me.tbNomFour.TabIndex = 3
@@ -81,7 +82,7 @@ Partial Class UCFournisseur
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(66, 110)
+        Me.Label2.Location = New System.Drawing.Point(40, 88)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(98, 15)
         Me.Label2.TabIndex = 2
@@ -89,7 +90,7 @@ Partial Class UCFournisseur
         '
         'tbAdres2
         '
-        Me.tbAdres2.Location = New System.Drawing.Point(66, 216)
+        Me.tbAdres2.Location = New System.Drawing.Point(40, 194)
         Me.tbAdres2.Name = "tbAdres2"
         Me.tbAdres2.Size = New System.Drawing.Size(180, 23)
         Me.tbAdres2.TabIndex = 7
@@ -97,7 +98,7 @@ Partial Class UCFournisseur
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(66, 198)
+        Me.Label3.Location = New System.Drawing.Point(40, 176)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(57, 15)
         Me.Label3.TabIndex = 6
@@ -105,7 +106,7 @@ Partial Class UCFournisseur
         '
         'tbAdres1
         '
-        Me.tbAdres1.Location = New System.Drawing.Point(66, 172)
+        Me.tbAdres1.Location = New System.Drawing.Point(40, 150)
         Me.tbAdres1.Name = "tbAdres1"
         Me.tbAdres1.Size = New System.Drawing.Size(180, 23)
         Me.tbAdres1.TabIndex = 5
@@ -113,7 +114,7 @@ Partial Class UCFournisseur
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(66, 154)
+        Me.Label4.Location = New System.Drawing.Point(40, 132)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(57, 15)
         Me.Label4.TabIndex = 4
@@ -121,7 +122,7 @@ Partial Class UCFournisseur
         '
         'tbAddCour
         '
-        Me.tbAddCour.Location = New System.Drawing.Point(66, 392)
+        Me.tbAddCour.Location = New System.Drawing.Point(40, 370)
         Me.tbAddCour.Name = "tbAddCour"
         Me.tbAddCour.Size = New System.Drawing.Size(180, 23)
         Me.tbAddCour.TabIndex = 15
@@ -129,7 +130,7 @@ Partial Class UCFournisseur
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(66, 374)
+        Me.Label5.Location = New System.Drawing.Point(40, 352)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(89, 15)
         Me.Label5.TabIndex = 14
@@ -137,7 +138,7 @@ Partial Class UCFournisseur
         '
         'tbLeadTime
         '
-        Me.tbLeadTime.Location = New System.Drawing.Point(66, 348)
+        Me.tbLeadTime.Location = New System.Drawing.Point(40, 326)
         Me.tbLeadTime.Name = "tbLeadTime"
         Me.tbLeadTime.Size = New System.Drawing.Size(180, 23)
         Me.tbLeadTime.TabIndex = 13
@@ -145,7 +146,7 @@ Partial Class UCFournisseur
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(66, 330)
+        Me.Label6.Location = New System.Drawing.Point(40, 308)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(83, 15)
         Me.Label6.TabIndex = 12
@@ -153,7 +154,7 @@ Partial Class UCFournisseur
         '
         'tbNomCont
         '
-        Me.tbNomCont.Location = New System.Drawing.Point(66, 304)
+        Me.tbNomCont.Location = New System.Drawing.Point(40, 282)
         Me.tbNomCont.Name = "tbNomCont"
         Me.tbNomCont.Size = New System.Drawing.Size(180, 23)
         Me.tbNomCont.TabIndex = 11
@@ -161,7 +162,7 @@ Partial Class UCFournisseur
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(66, 286)
+        Me.Label7.Location = New System.Drawing.Point(40, 264)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(79, 15)
         Me.Label7.TabIndex = 10
@@ -169,7 +170,7 @@ Partial Class UCFournisseur
         '
         'tbTel
         '
-        Me.tbTel.Location = New System.Drawing.Point(66, 260)
+        Me.tbTel.Location = New System.Drawing.Point(40, 238)
         Me.tbTel.Name = "tbTel"
         Me.tbTel.Size = New System.Drawing.Size(180, 23)
         Me.tbTel.TabIndex = 9
@@ -177,7 +178,7 @@ Partial Class UCFournisseur
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(66, 242)
+        Me.Label8.Location = New System.Drawing.Point(40, 220)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(61, 15)
         Me.Label8.TabIndex = 8
@@ -185,7 +186,7 @@ Partial Class UCFournisseur
         '
         'tbMethodePaie
         '
-        Me.tbMethodePaie.Location = New System.Drawing.Point(66, 524)
+        Me.tbMethodePaie.Location = New System.Drawing.Point(40, 502)
         Me.tbMethodePaie.Name = "tbMethodePaie"
         Me.tbMethodePaie.Size = New System.Drawing.Size(180, 23)
         Me.tbMethodePaie.TabIndex = 21
@@ -193,7 +194,7 @@ Partial Class UCFournisseur
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(66, 506)
+        Me.Label9.Location = New System.Drawing.Point(40, 484)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(108, 15)
         Me.Label9.TabIndex = 20
@@ -201,7 +202,7 @@ Partial Class UCFournisseur
         '
         'tbNoCompte
         '
-        Me.tbNoCompte.Location = New System.Drawing.Point(66, 480)
+        Me.tbNoCompte.Location = New System.Drawing.Point(40, 458)
         Me.tbNoCompte.Name = "tbNoCompte"
         Me.tbNoCompte.Size = New System.Drawing.Size(180, 23)
         Me.tbNoCompte.TabIndex = 19
@@ -209,7 +210,7 @@ Partial Class UCFournisseur
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(66, 462)
+        Me.Label10.Location = New System.Drawing.Point(40, 440)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(97, 15)
         Me.Label10.TabIndex = 18
@@ -217,7 +218,7 @@ Partial Class UCFournisseur
         '
         'tbMethodeCom
         '
-        Me.tbMethodeCom.Location = New System.Drawing.Point(66, 436)
+        Me.tbMethodeCom.Location = New System.Drawing.Point(40, 414)
         Me.tbMethodeCom.Name = "tbMethodeCom"
         Me.tbMethodeCom.Size = New System.Drawing.Size(180, 23)
         Me.tbMethodeCom.TabIndex = 17
@@ -225,7 +226,7 @@ Partial Class UCFournisseur
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(66, 418)
+        Me.Label11.Location = New System.Drawing.Point(40, 396)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(135, 15)
         Me.Label11.TabIndex = 16
@@ -236,7 +237,7 @@ Partial Class UCFournisseur
         Me.dgvPiece.AllowUserToAddRows = False
         Me.dgvPiece.AllowUserToDeleteRows = False
         Me.dgvPiece.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvPiece.Location = New System.Drawing.Point(296, 348)
+        Me.dgvPiece.Location = New System.Drawing.Point(296, 326)
         Me.dgvPiece.Name = "dgvPiece"
         Me.dgvPiece.ReadOnly = True
         Me.dgvPiece.RowTemplate.Height = 25
@@ -247,18 +248,18 @@ Partial Class UCFournisseur
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(296, 330)
+        Me.Label12.Location = New System.Drawing.Point(296, 308)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(133, 15)
+        Me.Label12.Size = New System.Drawing.Size(99, 15)
         Me.Label12.TabIndex = 23
-        Me.Label12.Text = "Pièce De Ce Fournisseur"
+        Me.Label12.Text = "Pièce Fournisseur"
         '
         'dgvFour
         '
         Me.dgvFour.AllowUserToAddRows = False
         Me.dgvFour.AllowUserToDeleteRows = False
         Me.dgvFour.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvFour.Location = New System.Drawing.Point(296, 84)
+        Me.dgvFour.Location = New System.Drawing.Point(296, 62)
         Me.dgvFour.Name = "dgvFour"
         Me.dgvFour.ReadOnly = True
         Me.dgvFour.RowTemplate.Height = 25
@@ -269,7 +270,7 @@ Partial Class UCFournisseur
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(296, 66)
+        Me.Label13.Location = New System.Drawing.Point(296, 44)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(108, 15)
         Me.Label13.TabIndex = 25
@@ -278,7 +279,7 @@ Partial Class UCFournisseur
         'btSauv
         '
         Me.btSauv.Enabled = False
-        Me.btSauv.Location = New System.Drawing.Point(66, 553)
+        Me.btSauv.Location = New System.Drawing.Point(40, 531)
         Me.btSauv.Name = "btSauv"
         Me.btSauv.Size = New System.Drawing.Size(85, 23)
         Me.btSauv.TabIndex = 26
@@ -288,17 +289,27 @@ Partial Class UCFournisseur
         'btAnnuler
         '
         Me.btAnnuler.Enabled = False
-        Me.btAnnuler.Location = New System.Drawing.Point(161, 553)
+        Me.btAnnuler.Location = New System.Drawing.Point(135, 531)
         Me.btAnnuler.Name = "btAnnuler"
         Me.btAnnuler.Size = New System.Drawing.Size(85, 23)
         Me.btAnnuler.TabIndex = 27
         Me.btAnnuler.Text = "Annuler"
         Me.btAnnuler.UseVisualStyleBackColor = True
         '
+        'btCreerFour
+        '
+        Me.btCreerFour.Location = New System.Drawing.Point(40, 18)
+        Me.btCreerFour.Name = "btCreerFour"
+        Me.btCreerFour.Size = New System.Drawing.Size(172, 23)
+        Me.btCreerFour.TabIndex = 28
+        Me.btCreerFour.Text = "Créer Nouveau Fournisseur"
+        Me.btCreerFour.UseVisualStyleBackColor = True
+        '
         'UCFournisseur
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.btCreerFour)
         Me.Controls.Add(Me.btAnnuler)
         Me.Controls.Add(Me.btSauv)
         Me.Controls.Add(Me.Label13)
@@ -364,4 +375,5 @@ Partial Class UCFournisseur
     Friend WithEvents Label13 As Label
     Friend WithEvents btSauv As Button
     Friend WithEvents btAnnuler As Button
+    Friend WithEvents btCreerFour As Button
 End Class

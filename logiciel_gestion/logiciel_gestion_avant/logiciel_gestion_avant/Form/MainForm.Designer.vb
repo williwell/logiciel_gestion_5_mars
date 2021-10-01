@@ -22,7 +22,6 @@ Partial Class MainForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Me.PanUC = New System.Windows.Forms.Panel()
         Me.btMenu = New System.Windows.Forms.Button()
         Me.panMenu = New System.Windows.Forms.Panel()
@@ -31,8 +30,8 @@ Partial Class MainForm
         Me.btInventaire = New System.Windows.Forms.Button()
         Me.btAccueil = New System.Windows.Forms.Button()
         Me.lbNonConc = New System.Windows.Forms.Label()
-        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.btConnec = New System.Windows.Forms.Button()
+        Me.btModel = New System.Windows.Forms.Button()
         Me.panMenu.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -54,50 +53,51 @@ Partial Class MainForm
         '
         'panMenu
         '
+        Me.panMenu.Controls.Add(Me.btModel)
         Me.panMenu.Controls.Add(Me.btFour)
         Me.panMenu.Controls.Add(Me.btVente)
         Me.panMenu.Controls.Add(Me.btInventaire)
         Me.panMenu.Controls.Add(Me.btAccueil)
         Me.panMenu.Controls.Add(Me.btMenu)
         Me.panMenu.Location = New System.Drawing.Point(12, 3)
-        Me.panMenu.MaximumSize = New System.Drawing.Size(100, 144)
+        Me.panMenu.MaximumSize = New System.Drawing.Size(100, 177)
         Me.panMenu.MinimumSize = New System.Drawing.Size(100, 27)
         Me.panMenu.Name = "panMenu"
-        Me.panMenu.Size = New System.Drawing.Size(100, 144)
+        Me.panMenu.Size = New System.Drawing.Size(100, 177)
         Me.panMenu.TabIndex = 2
         '
         'btFour
         '
-        Me.btFour.Location = New System.Drawing.Point(20, 90)
+        Me.btFour.Location = New System.Drawing.Point(3, 90)
         Me.btFour.Name = "btFour"
-        Me.btFour.Size = New System.Drawing.Size(77, 23)
+        Me.btFour.Size = New System.Drawing.Size(94, 23)
         Me.btFour.TabIndex = 4
         Me.btFour.Text = "Fournisseur"
         Me.btFour.UseVisualStyleBackColor = True
         '
         'btVente
         '
-        Me.btVente.Location = New System.Drawing.Point(20, 119)
+        Me.btVente.Location = New System.Drawing.Point(3, 119)
         Me.btVente.Name = "btVente"
-        Me.btVente.Size = New System.Drawing.Size(77, 23)
+        Me.btVente.Size = New System.Drawing.Size(94, 23)
         Me.btVente.TabIndex = 3
         Me.btVente.Text = "Contrat"
         Me.btVente.UseVisualStyleBackColor = True
         '
         'btInventaire
         '
-        Me.btInventaire.Location = New System.Drawing.Point(20, 61)
+        Me.btInventaire.Location = New System.Drawing.Point(3, 61)
         Me.btInventaire.Name = "btInventaire"
-        Me.btInventaire.Size = New System.Drawing.Size(77, 23)
+        Me.btInventaire.Size = New System.Drawing.Size(94, 23)
         Me.btInventaire.TabIndex = 2
         Me.btInventaire.Text = "Inventaire"
         Me.btInventaire.UseVisualStyleBackColor = True
         '
         'btAccueil
         '
-        Me.btAccueil.Location = New System.Drawing.Point(20, 32)
+        Me.btAccueil.Location = New System.Drawing.Point(3, 32)
         Me.btAccueil.Name = "btAccueil"
-        Me.btAccueil.Size = New System.Drawing.Size(77, 23)
+        Me.btAccueil.Size = New System.Drawing.Size(94, 23)
         Me.btAccueil.TabIndex = 1
         Me.btAccueil.Text = "Accueil"
         Me.btAccueil.UseVisualStyleBackColor = True
@@ -119,6 +119,15 @@ Partial Class MainForm
         Me.btConnec.Text = "Connecter"
         Me.btConnec.UseVisualStyleBackColor = True
         Me.btConnec.Visible = False
+        '
+        'btModel
+        '
+        Me.btModel.Location = New System.Drawing.Point(3, 148)
+        Me.btModel.Name = "btModel"
+        Me.btModel.Size = New System.Drawing.Size(94, 23)
+        Me.btModel.TabIndex = 5
+        Me.btModel.Text = "Gestion Model"
+        Me.btModel.UseVisualStyleBackColor = True
         '
         'MainForm
         '
@@ -147,6 +156,6 @@ Partial Class MainForm
     Friend WithEvents btAccueil As Button
     Friend WithEvents btFour As Button
     Friend WithEvents lbNonConc As Label
-    Friend WithEvents Timer1 As Timer
     Friend WithEvents btConnec As Button
+    Friend WithEvents btModel As Button
 End Class

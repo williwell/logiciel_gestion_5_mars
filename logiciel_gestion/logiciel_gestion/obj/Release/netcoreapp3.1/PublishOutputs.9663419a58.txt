@@ -1,0 +1,14 @@
+C:\test\logiciel_gestion_reception.exe
+C:\test\logiciel_gestion_reception.dll
+C:\test\logiciel_gestion_reception.deps.json
+C:\test\logiciel_gestion_reception.runtimeconfig.json
+C:\test\logiciel_gestion_reception.pdb
+C:\test\BouncyCastle.Crypto.dll
+C:\test\Google.Protobuf.dll
+C:\test\K4os.Compression.LZ4.dll
+C:\test\K4os.Compression.LZ4.Streams.dll
+C:\test\K4os.Hash.xxHash.dll
+C:\test\MySql.Data.dll
+C:\test\Ubiety.Dns.Core.dll
+C:\test\Zstandard.Net.dll
+C:\test\Newtonsoft.Json.dll
