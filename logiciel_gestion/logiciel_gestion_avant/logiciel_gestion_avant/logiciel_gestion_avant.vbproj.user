@@ -7,10 +7,19 @@
     <Compile Update="Form\Connection.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Form\CreerCouleur.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Form\CreerFour.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Form\CreerModel.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Form\creerProduit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form\GestionInvModel.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Form\ListeFournisseur.vb">
@@ -28,6 +37,9 @@
     <Compile Update="UserControle\UCAccueil.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UserControle\UCCouleur.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UserControle\UCFournisseur.vb">
       <SubType>UserControl</SubType>
     </Compile>
@@ -35,6 +47,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControle\UCInventaire.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControle\UCOption.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControle\UCVente.vb">

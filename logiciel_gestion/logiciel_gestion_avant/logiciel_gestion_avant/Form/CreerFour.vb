@@ -67,7 +67,7 @@
             End If
             liste(9) = tbMethodePaie.Text
 
-            If ConnectionServeur.Getinstance.AddFour(liste) Then
+            If ConnectionServeur.Getinstance.AddDelete(liste, "addFour") Then
                 MessageBox.Show("La création du fournisseur à bien été fait")
                 four.LoadFour()
                 Me.Close()

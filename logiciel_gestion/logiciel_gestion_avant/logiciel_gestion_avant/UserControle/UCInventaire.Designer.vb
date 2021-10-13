@@ -71,7 +71,7 @@ Partial Class UCInventaire
         Me.tbNoFour = New System.Windows.Forms.TextBox()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.cbNoFour = New System.Windows.Forms.ComboBox()
-        Me.brRemoveFour = New System.Windows.Forms.Button()
+        Me.btRemoveFour = New System.Windows.Forms.Button()
         Me.btAddFour = New System.Windows.Forms.Button()
         CType(Me.nudQuantite, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudEnCommende, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -506,17 +506,19 @@ Partial Class UCInventaire
         Me.cbNoFour.Size = New System.Drawing.Size(209, 23)
         Me.cbNoFour.TabIndex = 69
         '
-        'brRemoveFour
+        'btRemoveFour
         '
-        Me.brRemoveFour.Location = New System.Drawing.Point(666, 125)
-        Me.brRemoveFour.Name = "brRemoveFour"
-        Me.brRemoveFour.Size = New System.Drawing.Size(124, 23)
-        Me.brRemoveFour.TabIndex = 71
-        Me.brRemoveFour.Text = "Retirer Fournisseur"
-        Me.brRemoveFour.UseVisualStyleBackColor = True
+        Me.btRemoveFour.Enabled = False
+        Me.btRemoveFour.Location = New System.Drawing.Point(666, 125)
+        Me.btRemoveFour.Name = "btRemoveFour"
+        Me.btRemoveFour.Size = New System.Drawing.Size(124, 23)
+        Me.btRemoveFour.TabIndex = 71
+        Me.btRemoveFour.Text = "Retirer Fournisseur"
+        Me.btRemoveFour.UseVisualStyleBackColor = True
         '
         'btAddFour
         '
+        Me.btAddFour.Enabled = False
         Me.btAddFour.Location = New System.Drawing.Point(666, 72)
         Me.btAddFour.Name = "btAddFour"
         Me.btAddFour.Size = New System.Drawing.Size(124, 23)
@@ -528,7 +530,7 @@ Partial Class UCInventaire
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.brRemoveFour)
+        Me.Controls.Add(Me.btRemoveFour)
         Me.Controls.Add(Me.btAddFour)
         Me.Controls.Add(Me.cbNoFour)
         Me.Controls.Add(Me.tbNoMFR)
@@ -639,6 +641,6 @@ Partial Class UCInventaire
     Friend WithEvents tbNoFour As TextBox
     Friend WithEvents Label22 As Label
     Friend WithEvents cbNoFour As ComboBox
-    Friend WithEvents brRemoveFour As Button
+    Friend WithEvents btRemoveFour As Button
     Friend WithEvents btAddFour As Button
 End Class

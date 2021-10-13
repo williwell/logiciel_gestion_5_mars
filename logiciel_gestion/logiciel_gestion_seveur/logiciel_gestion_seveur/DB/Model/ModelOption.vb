@@ -1,12 +1,12 @@
 ﻿Imports System.Data
 Imports MySql.Data.MySqlClient
-Public Class EntityModel
+Public Class ModelOption
     '__________________________________________________________________________________________________________
     'Attributes
     '__________________________________________________________________________________________________________
     ReadOnly connection As New MySqlConnection(ConnectionDB.GetInstance.connectionString)
-    Shared instance As EntityModel = Nothing
-    ReadOnly nomClass As String = "EntityFournisseur"
+    Shared instance As ModelOption = Nothing
+    ReadOnly nomClass As String = "ModelOption"
 
 
     '__________________________________________________________________________________________________________
@@ -26,55 +26,66 @@ Public Class EntityModel
     '__________________________________________________________________________________________________________
 
 
-
     '__________________________________________________________________________________________________________
     'Functions
     '__________________________________________________________________________________________________________
-    Public Shared Function GetInstance() As EntityModel
+    Shared Function Getinstance() As ModelOption
         If IsNothing(instance) Then
-            instance = New EntityModel
+            instance = New ModelOption
         End If
         Return instance
     End Function
 
-    Public Function GetModel() As DataTable
-        Dim table As New DataTable("model")
+    Public Function AddOptionMo(idOption As String, idModel As String) As DataTable
+        Dim table As New DataTable
+        table.Columns.Add("bool", GetType(Boolean))
+        table.Rows.Add(False)
         Try
             If connection.State = ConnectionState.Open Then
                 connection.Close()
             End If
+
             Dim command As New MySqlCommand
             command.Connection = connection
-            command.CommandText = $"SELECT * FROM `model`"
+
+            command.CommandText = $"insert into optionModel values({idOption},{idModel})"
+
             connection.Open()
-            Dim reader = command.ExecuteReader()
-            table.Load(reader)
+            command.ExecuteReader()
             connection.Close()
+
+            table(0)(0) = True
+            Return table
         Catch ex As Exception
-            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getModel")
-            'MessageBox.Show("Une erreur c'est produit!")
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "addOptionMo")
+            'MessageBox.Show("Une erreur c'est produit lors de l'ajout du fournisseur!")
+            Return table
         End Try
-        Return table
     End Function
 
-    Public Function GetLastIDModel() As String
-        Dim table As New DataTable("Model")
+    Public Function DeleteOpMo(idOption As String, idModel As String) As DataTable
+        Dim table As New DataTable
+        table.Columns.Add("bool", GetType(Boolean))
+        table.Rows.Add(False)
         Try
             If connection.State = ConnectionState.Open Then
                 connection.Close()
             End If
+
             Dim command As New MySqlCommand
             command.Connection = connection
-            command.CommandText = $"SELECT * FROM Model ORDER BY ID DESC LIMIT 1"
+            command.CommandText = $"delete from OptionModel where idoption = {idOption} and idModel = {idModel}"
+
             connection.Open()
-            Dim reader = command.ExecuteReader()
-            table.Load(reader)
+            command.ExecuteReader()
             connection.Close()
-            Return table(0)(0)
+
+            table(0)(0) = True
+            Return table
         Catch ex As Exception
-            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getLastIdModel")
-            'MessageBox.Show("Une erreur c'est produit!")
-            Return "0"
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "addCouleurMo")
+            'MessageBox.Show("Une erreur c'est produit lors de l'ajout du fournisseur!")
+            Return table
         End Try
     End Function
 

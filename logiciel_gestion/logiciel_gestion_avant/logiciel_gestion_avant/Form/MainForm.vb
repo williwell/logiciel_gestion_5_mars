@@ -15,6 +15,8 @@ Public Class MainForm
     ReadOnly ucVente As New UCVente
     ReadOnly ucFour As New UCFournisseur(Me, ucInventaire)
     ReadOnly ucModel As New UCGestionVehicule
+    ReadOnly ucCouleur As New UCCouleur
+    ReadOnly ucOption As New UCOption
     Private Delegate Sub setValue(text As String)
 
     '__________________________________________________________________________________________________________
@@ -38,6 +40,8 @@ Public Class MainForm
             PanUC.Controls.Add(ucVente)
             PanUC.Controls.Add(ucFour)
             PanUC.Controls.Add(ucModel)
+            PanUC.Controls.Add(ucCouleur)
+            PanUC.Controls.Add(ucOption)
         Else
             lbNonConc.Text = "Impossible de se connecter au serveur!"
             btConnec.Visible = True
@@ -106,6 +110,9 @@ Public Class MainForm
             PanUC.Controls.Add(ucInventaire)
             PanUC.Controls.Add(ucVente)
             PanUC.Controls.Add(ucFour)
+            PanUC.Controls.Add(ucModel)
+            PanUC.Controls.Add(ucCouleur)
+            PanUC.Controls.Add(ucOption)
             lbNonConc.Text = ""
             btConnec.Visible = False
             btMenu.Enabled = True
@@ -181,5 +188,15 @@ Public Class MainForm
 
     Private Sub MainForm_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         Me.Dispose()
+    End Sub
+
+    Private Sub BtCouleur_Click(sender As Object, e As EventArgs) Handles BtCouleur.Click
+        ucCouleur.BringToFront()
+        panMenu.Size = panMenu.MinimumSize
+    End Sub
+
+    Private Sub BtOptionModel_Click(sender As Object, e As EventArgs) Handles BtOptionModel.Click
+        ucOption.BringToFront()
+        panMenu.Size = panMenu.MinimumSize
     End Sub
 End Class

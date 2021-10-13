@@ -87,6 +87,26 @@ Public Class EntityInventaire
         Return table
     End Function
 
+    Public Function GetInventaireLimite() As DataTable
+        Dim table As New DataTable("inventaire")
+        Try
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+            Dim command As New MySqlCommand
+            command.Connection = connection
+            command.CommandText = $"Select * from inventaire"
+            connection.Open()
+            Dim reader = command.ExecuteReader()
+            table.Load(reader)
+            connection.Close()
+        Catch ex As Exception
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getInventaire")
+            'MessageBox.Show("Une erreur c'est produit!")
+        End Try
+        Return table
+    End Function
+
     Public Function GetInventaireOfFour(id As Integer) As DataTable
         Dim table As New DataTable("inventaire")
         Try
@@ -105,6 +125,73 @@ Public Class EntityInventaire
             connection.Close()
         Catch ex As Exception
             ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getInventaireOfFour")
+            'MessageBox.Show("Une erreur c'est produit!")
+        End Try
+        Return table
+    End Function
+
+    Public Function GetInvMo(id As String) As DataTable
+        Dim table As New DataTable("inventaire")
+        Try
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+            Dim command As New MySqlCommand
+            command.Connection = connection
+            command.CommandText = $"SELECT id,nom,description,utilise,nombreItem  FROM `inventaire`
+                                                        inner join inventaireModel
+                                                        on id = idinventaire
+                                                        where idModel = '{id}'"
+            connection.Open()
+            Dim reader = command.ExecuteReader()
+            table.Load(reader)
+            connection.Close()
+        Catch ex As Exception
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getInventaire")
+            Msg("Une erreur c'est produit!")
+        End Try
+        Return table
+    End Function
+
+    Public Function GetInvAdd(id() As String) As DataTable
+        Dim table As New DataTable("inventaire")
+        Try
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+            Dim command As New MySqlCommand
+            command.Connection = connection
+            Dim str As String = "SELECT id,nom,description,utilise FROM `inventaire` where id <> 0 "
+            For i As Integer = 0 To id.Count - 1
+                str = str & " and id <> " & id(i) & ""
+            Next
+            command.CommandText = str
+            connection.Open()
+            Dim reader = command.ExecuteReader()
+            table.Load(reader)
+            connection.Close()
+        Catch ex As Exception
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getCouleurDispo")
+            'MessageBox.Show("Une erreur c'est produit!")
+        End Try
+        Return table
+    End Function
+
+    Public Function GetInvAdd() As DataTable
+        Dim table As New DataTable("inventaire")
+        Try
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+            Dim command As New MySqlCommand
+            command.Connection = connection
+            command.CommandText = "SELECT id,nom,description,utilise FROM `inventaire`"
+            connection.Open()
+            Dim reader = command.ExecuteReader()
+            table.Load(reader)
+            connection.Close()
+        Catch ex As Exception
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getCouleurDispo")
             'MessageBox.Show("Une erreur c'est produit!")
         End Try
         Return table

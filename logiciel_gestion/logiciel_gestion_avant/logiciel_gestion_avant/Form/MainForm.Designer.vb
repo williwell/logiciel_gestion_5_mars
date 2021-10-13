@@ -25,13 +25,15 @@ Partial Class MainForm
         Me.PanUC = New System.Windows.Forms.Panel()
         Me.btMenu = New System.Windows.Forms.Button()
         Me.panMenu = New System.Windows.Forms.Panel()
+        Me.BtOptionModel = New System.Windows.Forms.Button()
+        Me.BtCouleur = New System.Windows.Forms.Button()
+        Me.btModel = New System.Windows.Forms.Button()
         Me.btFour = New System.Windows.Forms.Button()
         Me.btVente = New System.Windows.Forms.Button()
         Me.btInventaire = New System.Windows.Forms.Button()
         Me.btAccueil = New System.Windows.Forms.Button()
         Me.lbNonConc = New System.Windows.Forms.Label()
         Me.btConnec = New System.Windows.Forms.Button()
-        Me.btModel = New System.Windows.Forms.Button()
         Me.panMenu.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -53,6 +55,9 @@ Partial Class MainForm
         '
         'panMenu
         '
+        Me.panMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panMenu.Controls.Add(Me.BtOptionModel)
+        Me.panMenu.Controls.Add(Me.BtCouleur)
         Me.panMenu.Controls.Add(Me.btModel)
         Me.panMenu.Controls.Add(Me.btFour)
         Me.panMenu.Controls.Add(Me.btVente)
@@ -60,11 +65,38 @@ Partial Class MainForm
         Me.panMenu.Controls.Add(Me.btAccueil)
         Me.panMenu.Controls.Add(Me.btMenu)
         Me.panMenu.Location = New System.Drawing.Point(12, 3)
-        Me.panMenu.MaximumSize = New System.Drawing.Size(100, 177)
-        Me.panMenu.MinimumSize = New System.Drawing.Size(100, 27)
+        Me.panMenu.MaximumSize = New System.Drawing.Size(100, 235)
+        Me.panMenu.MinimumSize = New System.Drawing.Size(100, 30)
         Me.panMenu.Name = "panMenu"
-        Me.panMenu.Size = New System.Drawing.Size(100, 177)
+        Me.panMenu.Size = New System.Drawing.Size(100, 235)
         Me.panMenu.TabIndex = 2
+        '
+        'BtOptionModel
+        '
+        Me.BtOptionModel.Location = New System.Drawing.Point(3, 206)
+        Me.BtOptionModel.Name = "BtOptionModel"
+        Me.BtOptionModel.Size = New System.Drawing.Size(94, 23)
+        Me.BtOptionModel.TabIndex = 7
+        Me.BtOptionModel.Text = "Option Model"
+        Me.BtOptionModel.UseVisualStyleBackColor = True
+        '
+        'BtCouleur
+        '
+        Me.BtCouleur.Location = New System.Drawing.Point(3, 177)
+        Me.BtCouleur.Name = "BtCouleur"
+        Me.BtCouleur.Size = New System.Drawing.Size(94, 23)
+        Me.BtCouleur.TabIndex = 6
+        Me.BtCouleur.Text = "Couleur"
+        Me.BtCouleur.UseVisualStyleBackColor = True
+        '
+        'btModel
+        '
+        Me.btModel.Location = New System.Drawing.Point(3, 148)
+        Me.btModel.Name = "btModel"
+        Me.btModel.Size = New System.Drawing.Size(94, 23)
+        Me.btModel.TabIndex = 5
+        Me.btModel.Text = "Model"
+        Me.btModel.UseVisualStyleBackColor = True
         '
         'btFour
         '
@@ -120,15 +152,6 @@ Partial Class MainForm
         Me.btConnec.UseVisualStyleBackColor = True
         Me.btConnec.Visible = False
         '
-        'btModel
-        '
-        Me.btModel.Location = New System.Drawing.Point(3, 148)
-        Me.btModel.Name = "btModel"
-        Me.btModel.Size = New System.Drawing.Size(94, 23)
-        Me.btModel.TabIndex = 5
-        Me.btModel.Text = "Gestion Model"
-        Me.btModel.UseVisualStyleBackColor = True
-        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -158,4 +181,6 @@ Partial Class MainForm
     Friend WithEvents lbNonConc As Label
     Friend WithEvents btConnec As Button
     Friend WithEvents btModel As Button
+    Friend WithEvents BtOptionModel As Button
+    Friend WithEvents BtCouleur As Button
 End Class

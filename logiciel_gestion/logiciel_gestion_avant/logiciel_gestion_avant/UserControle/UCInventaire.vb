@@ -57,6 +57,8 @@
         nudMinInv.ReadOnly = read
         tbNoFour.ReadOnly = read
         tbNoMFR.ReadOnly = read
+        btAddFour.Enabled = Not read
+        btRemoveFour.Enabled = Not read
     End Sub
 
     Private Sub Cleane()
@@ -136,16 +138,16 @@
     End Sub
 
     Private Sub BtSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
-        If ConnectionServeur.Getinstance.ModInventaire(change) Then
+        If ConnectionServeur.Getinstance.AddDelete(change, "modInventaire") Then
             Dim liste() As String = {tbIDPro.Text, tbIDFour.Text, nudCoutUn.Value, tbNoFour.Text, tbNoMFR.Text}
-            If ConnectionServeur.Getinstance.ModInvFour(liste) Then
+            If ConnectionServeur.Getinstance.AddDelete(liste, "modInvFour") Then
                 MessageBox.Show("La modification à bien été fait")
                 For i As Integer = 1 To change.Length - 1
                     If Not (i = 8 Or i = 9) Then
                         tableOri(cbNoFour.SelectedIndex)(i) = change(i)
                     End If
                 Next
-                btSauvChanger()
+                BtSauvChanger()
             Else
                 MessageBox.Show("Une erreure est survenue durant la sauvegerde de la modification!")
 
@@ -182,7 +184,7 @@
     End Sub
 
     Private Sub BtAddFour_Click(sender As Object, e As EventArgs) Handles btAddFour.Click
-        Dim liste(cbNoFour.Items.Count - 1) As Integer
+        Dim liste(cbNoFour.Items.Count - 1) As String
         For i As Integer = 0 To cbNoFour.Items.Count - 1
             cbNoFour.SelectedIndex = i
             liste(i) = Integer.Parse(tbIDFour.Text)
@@ -192,15 +194,15 @@
         start()
     End Sub
 
-    Private Sub BrRemoveFour_Click(sender As Object, e As EventArgs) Handles brRemoveFour.Click
+    Private Sub BrRemoveFour_Click(sender As Object, e As EventArgs) Handles btRemoveFour.Click
         Dim listeFour As New ListeFournisseur(3, tbIDPro.Text)
         listeFour.ShowDialog()
-        start()
+        Start()
     End Sub
 
     Private Sub Start()
         ChangeRead(True)
-        tableOri = ConnectionServeur.Getinstance.GetInventaire(tbIDPro.Text)
+        tableOri = ConnectionServeur.Getinstance.GetInfo(tbIDPro.Text, "getInventaire")
 
         Try
             If tableOri(0)(0) = "\\null" Then

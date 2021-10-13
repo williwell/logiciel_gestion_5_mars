@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class UCGestionVehicule
     Inherits System.Windows.Forms.UserControl
 
     'UserControl remplace la méthode Dispose pour nettoyer la liste des composants.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class UCGestionVehicule
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée à l'aide du Concepteur Windows Form.  
     'Ne la modifiez pas à l'aide de l'éditeur de code.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.cbModel = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -37,6 +37,7 @@ Partial Class UCGestionVehicule
         Me.dgvOptionAjout = New System.Windows.Forms.DataGridView()
         Me.BtEnregistrer = New System.Windows.Forms.Button()
         Me.BtAnnuler = New System.Windows.Forms.Button()
+        Me.btInv = New System.Windows.Forms.Button()
         CType(Me.dgvOptionMo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvCoulMo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvCoulAjout, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -143,6 +144,7 @@ Partial Class UCGestionVehicule
         Me.dgvCoulAjout.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvCoulAjout.Location = New System.Drawing.Point(415, 329)
         Me.dgvCoulAjout.Name = "dgvCoulAjout"
+        Me.dgvCoulAjout.ReadOnly = True
         Me.dgvCoulAjout.RowTemplate.Height = 25
         Me.dgvCoulAjout.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvCoulAjout.Size = New System.Drawing.Size(351, 150)
@@ -172,7 +174,7 @@ Partial Class UCGestionVehicule
         'BtEnregistrer
         '
         Me.BtEnregistrer.Enabled = False
-        Me.BtEnregistrer.Location = New System.Drawing.Point(52, 485)
+        Me.BtEnregistrer.Location = New System.Drawing.Point(52, 514)
         Me.BtEnregistrer.Name = "BtEnregistrer"
         Me.BtEnregistrer.Size = New System.Drawing.Size(148, 23)
         Me.BtEnregistrer.TabIndex = 17
@@ -182,17 +184,27 @@ Partial Class UCGestionVehicule
         'BtAnnuler
         '
         Me.BtAnnuler.Enabled = False
-        Me.BtAnnuler.Location = New System.Drawing.Point(226, 485)
+        Me.BtAnnuler.Location = New System.Drawing.Point(226, 514)
         Me.BtAnnuler.Name = "BtAnnuler"
         Me.BtAnnuler.Size = New System.Drawing.Size(141, 23)
         Me.BtAnnuler.TabIndex = 18
         Me.BtAnnuler.Text = "Annuler Changement"
         Me.BtAnnuler.UseVisualStyleBackColor = True
         '
+        'btInv
+        '
+        Me.btInv.Location = New System.Drawing.Point(52, 485)
+        Me.btInv.Name = "btInv"
+        Me.btInv.Size = New System.Drawing.Size(148, 23)
+        Me.btInv.TabIndex = 19
+        Me.btInv.Text = "Gérer Piece Model"
+        Me.btInv.UseVisualStyleBackColor = True
+        '
         'UCGestionVehicule
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.btInv)
         Me.Controls.Add(Me.BtAnnuler)
         Me.Controls.Add(Me.BtEnregistrer)
         Me.Controls.Add(Me.Label5)
@@ -209,7 +221,7 @@ Partial Class UCGestionVehicule
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cbModel)
         Me.Name = "UCGestionVehicule"
-        Me.Size = New System.Drawing.Size(808, 649)
+        Me.Size = New System.Drawing.Size(831, 649)
         CType(Me.dgvOptionMo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvCoulMo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvCoulAjout, System.ComponentModel.ISupportInitialize).EndInit()
@@ -234,4 +246,5 @@ Partial Class UCGestionVehicule
     Friend WithEvents dgvOptionAjout As DataGridView
     Friend WithEvents BtEnregistrer As Button
     Friend WithEvents BtAnnuler As Button
+    Friend WithEvents btInv As Button
 End Class

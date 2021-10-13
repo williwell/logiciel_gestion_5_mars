@@ -1,12 +1,12 @@
 ﻿Imports System.Data
 Imports MySql.Data.MySqlClient
-Public Class EntityFournisseur
+Public Class ModelCouleur
     '__________________________________________________________________________________________________________
     'Attributes
     '__________________________________________________________________________________________________________
     ReadOnly connection As New MySqlConnection(ConnectionDB.GetInstance.connectionString)
-    Shared instance As EntityFournisseur = Nothing
-    ReadOnly nomClass As String = "EntityFournisseur"
+    Shared instance As ModelCouleur = Nothing
+    ReadOnly nomClass As String = "ModelCouleur"
 
 
     '__________________________________________________________________________________________________________
@@ -26,102 +26,144 @@ Public Class EntityFournisseur
     '__________________________________________________________________________________________________________
 
 
-
     '__________________________________________________________________________________________________________
     'Functions
     '__________________________________________________________________________________________________________
-    Public Shared Function GetInstance() As EntityFournisseur
+    Shared Function Getinstance() As ModelCouleur
         If IsNothing(instance) Then
-            instance = New EntityFournisseur
+            instance = New ModelCouleur
         End If
         Return instance
     End Function
 
-    Public Function GetFournisseur() As DataTable
-        Dim table As New DataTable("fournisseur")
+    Public Function AddCouleur(liste() As String) As DataTable
+        Dim table As New DataTable
+        table.Columns.Add("bool", GetType(Boolean))
+        table.Rows.Add(False)
         Try
             If connection.State = ConnectionState.Open Then
                 connection.Close()
             End If
+
             Dim command As New MySqlCommand
             command.Connection = connection
-            command.CommandText = $"SELECT * FROM `fournisseur`"
+            command.CommandText = $"insert into Couleur(nom,code,cout,deleteCoul) values('{liste(0)}','{liste(1)}',{liste(2)},1)"
+
             connection.Open()
-            Dim reader = command.ExecuteReader()
-            table.Load(reader)
+            command.ExecuteReader()
             connection.Close()
+
+            table(0)(0) = True
+            Return table
         Catch ex As Exception
-            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getFournisseur")
-            'MessageBox.Show("Une erreur c'est produit!")
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "addCouleur")
+            'MessageBox.Show("Une erreur c'est produit lors de l'ajout du fournisseur!")
+            Return table
         End Try
-        Return table
     End Function
 
-    Public Function GetOneFournisseur(id As Integer) As DataTable
-        Dim table As New DataTable("fournisseur")
+    Public Function AddCouleurMo(idCouleur As String, idModel As String) As DataTable
+        Dim table As New DataTable
+        table.Columns.Add("bool", GetType(Boolean))
+        table.Rows.Add(False)
         Try
             If connection.State = ConnectionState.Open Then
                 connection.Close()
             End If
+
             Dim command As New MySqlCommand
             command.Connection = connection
-            command.CommandText = $"SELECT * FROM `fournisseur` where id = {id}"
+            command.CommandText = $"insert into CouleurModel values({idCouleur},{idModel})"
+
             connection.Open()
-            Dim reader = command.ExecuteReader()
-            table.Load(reader)
+            command.ExecuteReader()
             connection.Close()
+
+            table(0)(0) = True
+            Return table
         Catch ex As Exception
-            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getFournisseur")
-            'MessageBox.Show("Une erreur c'est produit!")
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "addCouleurMo")
+            'MessageBox.Show("Une erreur c'est produit lors de l'ajout du fournisseur!")
+            Return table
         End Try
-        Return table
     End Function
 
-    Public Function GetFournisseur(id As String) As DataTable
-        Dim table As New DataTable("fournisseur")
+    Public Function DeleteCouleurMo(idCouleur As String, idModel As String) As DataTable
+        Dim table As New DataTable
+        table.Columns.Add("bool", GetType(Boolean))
+        table.Rows.Add(False)
         Try
             If connection.State = ConnectionState.Open Then
                 connection.Close()
             End If
+
             Dim command As New MySqlCommand
             command.Connection = connection
-            command.CommandText = $"SELECT * FROM `fournisseur`
-                                    inner join `invfour`
-                                    on fournisseur.id = invfour.idFournisseur
-                                    where invfour.idInventaire = '{id}' and invFour.idFournisseur <> 1"
+            command.CommandText = $"delete from CouleurModel where idCouleur = {idCouleur} and idModel = {idModel}"
+
             connection.Open()
-            Dim reader = command.ExecuteReader()
-            table.Load(reader)
+            command.ExecuteReader()
             connection.Close()
+
+            table(0)(0) = True
+            Return table
         Catch ex As Exception
-            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getFournisseur")
-            'MessageBox.Show("Une erreur c'est produit!")
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "addCouleurMo")
+            'MessageBox.Show("Une erreur c'est produit lors de l'ajout du fournisseur!")
+            Return table
         End Try
-        Return table
     End Function
 
-    Public Function GetFournisseurAdd(id() As Integer) As DataTable
-        Dim table As New DataTable("fournisseur")
+    Public Function UpdateCouleur(liste() As String) As DataTable
+        Dim table As New DataTable
+        table.Columns.Add("bool", GetType(Boolean))
+        table.Rows.Add(False)
         Try
             If connection.State = ConnectionState.Open Then
                 connection.Close()
             End If
+
             Dim command As New MySqlCommand
             command.Connection = connection
-            Dim str As String = "SELECT * FROM `fournisseur` where id <> 1 "
-            For i As Integer = 0 To id.Count - 1
-                str = str & " and id <> '" & id(i) & "'"
-            Next
-            command.CommandText = $"{str}"
+            command.CommandText = $"Update Couleur set nom = '{liste(1)}', code = '{liste(2)}', cout = {liste(3)} where id = {liste(0)}"
+
             connection.Open()
-            Dim reader = command.ExecuteReader()
-            table.Load(reader)
+            command.ExecuteReader()
             connection.Close()
+
+            table(0)(0) = True
+            Return table
         Catch ex As Exception
-            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getFournisseurAdd")
-            'MessageBox.Show("Une erreur c'est produit!")
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "addCouleurMo")
+            'MessageBox.Show("Une erreur c'est produit lors de l'ajout du fournisseur!")
+            Return table
         End Try
-        Return table
+    End Function
+
+    Public Function ChangeDelete(id As String) As DataTable
+        Dim table As New DataTable
+        table.Columns.Add("bool", GetType(Boolean))
+        table.Rows.Add(False)
+        Try
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+
+            Dim command As New MySqlCommand
+            command.Connection = connection
+            command.CommandText = $"Update Couleur set DeleteCoul = 0 where id = {id}"
+
+            connection.Open()
+            command.ExecuteReader()
+            connection.Close()
+
+            table(0)(0) = True
+            Return table
+        Catch ex As Exception
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "ChangeDelete")
+            'MessageBox.Show("Une erreur c'est produit lors de l'ajout du fournisseur!")
+            Return table
+        End Try
     End Function
 
     '__________________________________________________________________________________________________________
@@ -141,4 +183,5 @@ Public Class EntityFournisseur
     '__________________________________________________________________________________________________________
 
 End Class
+
 

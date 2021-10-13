@@ -22,7 +22,7 @@ Public Class HandleClient
                 If clientSocket.Connected = True Then
                     Dim networkStream As NetworkStream = clientSocket.GetStream()
                     networkStream.Read(bytesFrom, 0, 1024)
-                    dataFromClient = Encoding.ASCII.GetString(bytesFrom)
+                    dataFromClient = Encoding.UTF8.GetString(bytesFrom)
                     dataFromClient = dataFromClient.Substring(0, dataFromClient.IndexOf("$"))
                     If Not dataFromClient = "test;" Then
                         Msg("From client-" + clNo + ": " + dataFromClient)
@@ -65,9 +65,13 @@ Public Class HandleClient
             Case "getModel"
                 SendDataTable(EntityModel.GetInstance.GetModel(), networkStream)
             Case "getOptionAdd"
-                SendDataTable(EntityModel.GetInstance.GetOptionDispo(), networkStream)
+                SendDataTable(EntityOption.GetInstance.GetOptionDispo(), networkStream)
             Case "getCouleurAdd"
-                SendDataTable(EntityModel.GetInstance.GetCouleurDispo(), networkStream)
+                SendDataTable(EntityCouleur.GetInstance.GetCouleur(), networkStream)
+            Case "getInvAdd"
+                SendDataTable(EntityInventaire.GetInstance.GetInvAdd(), networkStream)
+            Case "getCouleur"
+                SendDataTable(EntityCouleur.GetInstance.GetCouleur(), networkStream)
         End Select
     End Sub
 
@@ -82,9 +86,13 @@ Public Class HandleClient
             Case "getOneFournisseur"
                 SendDataTable(EntityFournisseur.GetInstance.GetOneFournisseur(Integer.Parse(id)), networkStream)
             Case "getOptionModel"
-                SendDataTable(EntityModel.GetInstance.GetOptionModel(Integer.Parse(id)), networkStream)
+                SendDataTable(EntityOption.GetInstance.GetOptionModel(Integer.Parse(id)), networkStream)
             Case "getCouleurModel"
-                SendDataTable(EntityModel.GetInstance.GetCouleurModel(Integer.Parse(id)), networkStream)
+                SendDataTable(EntityCouleur.GetInstance.GetCouleurModel(Integer.Parse(id)), networkStream)
+            Case "getOnlyInv"
+                SendDataTable(EntityInventaire.GetInstance.GetInvMo(id), networkStream)
+            Case "ChangeDelete"
+                SendDataTable(ModelCouleur.Getinstance.ChangeDelete(id), networkStream)
         End Select
     End Sub
 
@@ -113,17 +121,48 @@ Public Class HandleClient
             Case "addFour"
                 SendDataTable(ModelFournisseur.Getinstance.AddFour(text), networkStream)
             Case "getOptionAdd"
-                SendDataTable(EntityModel.GetInstance.GetOptionDispo(text), networkStream)
+                SendDataTable(EntityOption.GetInstance.GetOptionDispo(text), networkStream)
             Case "getCouleurAdd"
-                SendDataTable(EntityModel.GetInstance.GetCouleurDispo(text), networkStream)
+                SendDataTable(EntityCouleur.GetInstance.GetCouleurAdd(text), networkStream)
+            Case "getInvAdd"
+                SendDataTable(EntityInventaire.GetInstance.GetInvAdd(text), networkStream)
+            Case "updateCouleur"
+                SendDataTable(ModelCouleur.Getinstance.UpdateCouleur(text), networkStream)
+            Case "AddCoul"
+                SendDataTable(ModelCouleur.Getinstance.AddCouleur(text), networkStream)
         End Select
     End Sub
 
-    'Sub Action(str As String, networkStream As NetworkStream, text() As String, id As String)
-    '    Select Case str
+    Sub Action(str As String, networkStream As NetworkStream, id1 As String, id2 As String)
+        Select Case str
+            Case "AddOpMo"
+                SendDataTable(ModelOption.Getinstance.AddOptionMo(id1, id2), networkStream)
+            Case "AddCoulMo"
+                SendDataTable(ModelCouleur.Getinstance.AddCouleurMo(id1, id2), networkStream)
+            Case "DeleteOpMo"
+                SendDataTable(ModelOption.Getinstance.DeleteOpMo(id1, id2), networkStream)
+            Case "DeleteCoulMo"
+                SendDataTable(ModelCouleur.Getinstance.DeleteCouleurMo(id1, id2), networkStream)
+            Case "AddModel"
+                SendDataTable(ModelModel.Getinstance.AddModel(id1, id2), networkStream)
+            Case "DeleteInvMo"
+                SendDataTable(ModelInvModel.Getinstance.DeleteInvMo(id1, id2), networkStream)
+        End Select
+    End Sub
 
-    '    End Select
-    'End Sub
+    Sub Action(str As String, networkStream As NetworkStream, id1 As String, id2 As String, nbr As String)
+        Select Case str
+            Case "ModInvModel"
+                SendDataTable(ModelInvModel.Getinstance.UpdateInvMo(id1, id2, nbr), networkStream)
+        End Select
+    End Sub
+
+    Sub Action(str As String, networkStream As NetworkStream, texte() As String, id As String)
+        Select Case str
+            Case "AddInvMo"
+                SendDataTable(ModelInvModel.Getinstance.AddInvMo(texte, id), networkStream)
+        End Select
+    End Sub
 
     Sub SendDataTable(table As DataTable, networkStream As NetworkStream)
         Dim sendBytes As [Byte]()
@@ -142,7 +181,7 @@ Public Class HandleClient
         Next
         str += "\\end;"
 
-        sendBytes = Encoding.ASCII.GetBytes(str)
+        sendBytes = Encoding.UTF8.GetBytes(str)
         networkStream.Write(sendBytes, 0, sendBytes.Length)
         networkStream.Flush()
         Msg(str)
@@ -150,7 +189,7 @@ Public Class HandleClient
     End Sub
 
     Sub SendBoolean(bool As Boolean, networkStream As NetworkStream)
-        Dim sendBytes As [Byte]() = Encoding.ASCII.GetBytes(bool)
+        Dim sendBytes As [Byte]() = Encoding.UTF8.GetBytes(bool)
         networkStream.Write(sendBytes, 0, sendBytes.Length)
         networkStream.Flush()
         'msg(bool)
@@ -207,8 +246,14 @@ Public Class HandleClient
                 Else
                     Action(str(0), networkStream, liste)
                 End If
-                'Case 2
-                '    Action(str(0), networkStream, liste, str(1))
+            Case 2
+                If IsNothing(liste) Then
+                    Action(str(0), networkStream, str(1), str(2))
+                Else
+                    Action(str(0), networkStream, liste, str(1))
+                End If
+            Case 3
+                Action(str(0), networkStream, str(1), str(2), str(3))
         End Select
     End Sub
 End Class

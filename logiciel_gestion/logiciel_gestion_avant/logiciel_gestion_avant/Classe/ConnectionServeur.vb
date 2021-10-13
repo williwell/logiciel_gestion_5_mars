@@ -27,13 +27,13 @@ Public Class ConnectionServeur
         Try
             clientSocket = New TcpClient(MainForm.getInstance.getOption1, 8888)
             Dim serverStream As NetworkStream = clientSocket.GetStream()
-            Dim outStream As Byte() = Encoding.ASCII.GetBytes("test;$")
+            Dim outStream As Byte() = Encoding.UTF8.GetBytes("test;$")
             serverStream.Write(outStream, 0, outStream.Length)
             serverStream.Flush()
 
             Dim inStream(1024) As Byte
             serverStream.Read(inStream, 0, inStream.Length())
-            If Boolean.Parse(Encoding.ASCII.GetString(inStream)) Then
+            If Boolean.Parse(Encoding.UTF8.GetString(inStream)) Then
                 conc = True
                 thread.Start(main)
             End If
@@ -43,145 +43,7 @@ Public Class ConnectionServeur
         End Try
     End Function
 
-
-
-    Public Function GetInventaire() As DataTable
-        Dim table As New DataTable
-
-        If conc Then
-            Try
-                Dim serverStream As NetworkStream = clientSocket.GetStream()
-                Dim outStream As Byte() = Encoding.ASCII.GetBytes("getInventaire;$")
-                serverStream.Write(outStream, 0, outStream.Length)
-                serverStream.Flush()
-
-                table = createTable(serverStream)
-            Catch ex As Exception
-
-            End Try
-        End If
-        Return table
-    End Function
-
-    Public Function GetInventaire(id As String) As DataTable
-        Dim table As New DataTable
-
-        If conc Then
-            Try
-                Dim serverStream As NetworkStream = clientSocket.GetStream()
-                Dim outStream As Byte() = Encoding.ASCII.GetBytes("getInventaire;" & id & ";$")
-                serverStream.Write(outStream, 0, outStream.Length)
-                serverStream.Flush()
-
-                table = createTable(serverStream)
-            Catch ex As Exception
-
-            End Try
-        End If
-        Return table
-    End Function
-
-    Public Function GetInventaireOfFour(id As Integer) As DataTable
-        Dim table As New DataTable
-
-        If conc Then
-            Try
-                Dim serverStream As NetworkStream = clientSocket.GetStream()
-                Dim outStream As Byte() = Encoding.ASCII.GetBytes("getInventaireOfFour;" & id & ";$")
-                serverStream.Write(outStream, 0, outStream.Length)
-                serverStream.Flush()
-
-                table = createTable(serverStream)
-            Catch ex As Exception
-
-            End Try
-        End If
-        Return table
-    End Function
-
-    Public Function GetFournisseur() As DataTable
-        Dim table As New DataTable
-
-        If conc Then
-            Try
-                Dim serverStream As NetworkStream = clientSocket.GetStream()
-                Dim outStream As Byte() = Encoding.ASCII.GetBytes("getFournisseur;$")
-                serverStream.Write(outStream, 0, outStream.Length)
-                serverStream.Flush()
-
-                table = createTable(serverStream)
-            Catch ex As Exception
-
-            End Try
-        End If
-        Return table
-    End Function
-
-    Public Function GetOneFournisseur(id As Integer) As DataTable
-        Dim table As New DataTable
-
-        If conc Then
-            Try
-                Dim serverStream As NetworkStream = clientSocket.GetStream()
-                Dim outStream As Byte() = Encoding.ASCII.GetBytes("getOneFournisseur;" & id & ";$")
-                serverStream.Write(outStream, 0, outStream.Length)
-                serverStream.Flush()
-
-                table = createTable(serverStream)
-            Catch ex As Exception
-
-            End Try
-        End If
-        Return table
-    End Function
-
-    Public Function GetFournisseur(id As String) As DataTable
-        Dim table As New DataTable
-
-        If conc Then
-            Try
-                Dim serverStream As NetworkStream = clientSocket.GetStream()
-                Dim outStream As Byte() = Encoding.ASCII.GetBytes("getFournisseur;" & id & ";$")
-                serverStream.Write(outStream, 0, outStream.Length)
-                serverStream.Flush()
-
-
-                table = createTable(serverStream)
-            Catch ex As Exception
-
-            End Try
-        End If
-        Return table
-    End Function
-
-    Public Function GetFournisseurAdd(id() As Integer) As DataTable
-        Dim table As New DataTable
-
-        If conc Then
-            Try
-                Dim serverStream As NetworkStream = clientSocket.GetStream()
-                Dim text As String = "\\liste;"
-
-                For i As Integer = 0 To id.Length - 1
-                    text += id(i) & ";"
-                Next
-                text += "\\listeEnd;"
-
-                Dim outStream As Byte() = Encoding.ASCII.GetBytes(text & "getFournisseurAdd;$")
-                serverStream.Write(outStream, 0, outStream.Length)
-                serverStream.Flush()
-
-
-
-                table = createTable(serverStream)
-            Catch ex As Exception
-
-            End Try
-        End If
-        Return table
-    End Function
-
-    Public Function ModFour(liste() As String) As Boolean
+    Public Function AddDelete(liste() As String, instruction As String) As Boolean
         Dim bool As Boolean = False
 
         If conc Then
@@ -194,13 +56,13 @@ Public Class ConnectionServeur
                 Next
                 text += "\\listeEnd;"
 
-                Dim outStream As Byte() = Encoding.ASCII.GetBytes(text & "modFour;$")
+                Dim outStream As Byte() = Encoding.UTF8.GetBytes(text & instruction & ";$")
                 serverStream.Write(outStream, 0, outStream.Length)
                 serverStream.Flush()
 
 
 
-                Dim table As DataTable = createTable(serverStream)
+                Dim table As DataTable = CreateTable(serverStream)
                 bool = Boolean.Parse(table(0)(0))
             Catch ex As Exception
 
@@ -209,184 +71,16 @@ Public Class ConnectionServeur
         Return bool
     End Function
 
-    Public Function ModInventaire(liste() As String) As Boolean
-        Dim bool As Boolean = False
-
-        If conc Then
-            Try
-                Dim serverStream As NetworkStream = clientSocket.GetStream()
-                Dim text As String = "\\liste;"
-
-                For i As Integer = 0 To liste.Length - 1
-                    text += liste(i) & ";"
-                Next
-                text += "\\listeEnd;"
-
-                Dim outStream As Byte() = Encoding.ASCII.GetBytes(text & "modInventaire;$")
-                serverStream.Write(outStream, 0, outStream.Length)
-                serverStream.Flush()
-
-
-
-                Dim table As DataTable = createTable(serverStream)
-                bool = Boolean.Parse(table(0)(0))
-            Catch ex As Exception
-
-            End Try
-        End If
-        Return bool
-    End Function
-
-    Public Function AjoutInventaire(liste() As String) As Boolean
-        Dim bool As Boolean = False
-
-        If conc Then
-            Try
-                Dim serverStream As NetworkStream = clientSocket.GetStream()
-                Dim text As String = "\\liste;"
-
-                For i As Integer = 0 To liste.Length - 1
-                    text += liste(i) & ";"
-                Next
-                text += "\\listeEnd;"
-
-                Dim outStream As Byte() = Encoding.ASCII.GetBytes(text & "ajoutInventaire;$")
-                serverStream.Write(outStream, 0, outStream.Length)
-                serverStream.Flush()
-
-
-
-                Dim table As DataTable = createTable(serverStream)
-                bool = Boolean.Parse(table(0)(0))
-            Catch ex As Exception
-
-            End Try
-        End If
-        Return bool
-    End Function
-
-    Public Function ModInvFour(liste() As String) As Boolean
-        Dim bool As Boolean = False
-
-        If conc Then
-            Try
-                Dim serverStream As NetworkStream = clientSocket.GetStream()
-                Dim text As String = "\\liste;"
-
-                For i As Integer = 0 To liste.Length - 1
-                    text += liste(i) & ";"
-                Next
-                text += "\\listeEnd;"
-
-                Dim outStream As Byte() = Encoding.ASCII.GetBytes(text & "modInvFour;$")
-                serverStream.Write(outStream, 0, outStream.Length)
-                serverStream.Flush()
-
-
-
-                Dim table As DataTable = createTable(serverStream)
-                bool = Boolean.Parse(table(0)(0))
-            Catch ex As Exception
-
-            End Try
-        End If
-        Return bool
-    End Function
-
-    Public Function AddInvFour(liste() As String) As Boolean
-        Dim bool As Boolean = False
-
-        If conc Then
-            Try
-                Dim serverStream As NetworkStream = clientSocket.GetStream()
-                Dim text As String = "\\liste;"
-
-                For i As Integer = 0 To liste.Length - 1
-                    text += liste(i) & ";"
-                Next
-                text += "\\listeEnd;"
-
-                Dim outStream As Byte() = Encoding.ASCII.GetBytes(text & "addInvFour;$")
-                serverStream.Write(outStream, 0, outStream.Length)
-                serverStream.Flush()
-
-
-
-                Dim table As DataTable = createTable(serverStream)
-                bool = Boolean.Parse(table(0)(0))
-            Catch ex As Exception
-
-            End Try
-        End If
-        Return bool
-    End Function
-
-    Public Function DelInvFour(liste() As String) As Boolean
-        Dim bool As Boolean = False
-
-        If conc Then
-            Try
-                Dim serverStream As NetworkStream = clientSocket.GetStream()
-                Dim text As String = "\\liste;"
-
-                For i As Integer = 0 To liste.Length - 1
-                    text += liste(i) & ";"
-                Next
-                text += "\\listeEnd;"
-
-                Dim outStream As Byte() = Encoding.ASCII.GetBytes(text & "delInvFour;$")
-                serverStream.Write(outStream, 0, outStream.Length)
-                serverStream.Flush()
-
-
-
-                Dim table As DataTable = createTable(serverStream)
-                bool = Boolean.Parse(table(0)(0))
-            Catch ex As Exception
-
-            End Try
-        End If
-        Return bool
-    End Function
-
-    Public Function AddFour(liste() As String) As Boolean
-        Dim bool As Boolean = False
-
-        If conc Then
-            Try
-                Dim serverStream As NetworkStream = clientSocket.GetStream()
-                Dim text As String = "\\liste;"
-
-                For i As Integer = 0 To liste.Length - 1
-                    text += liste(i) & ";"
-                Next
-                text += "\\listeEnd;"
-
-                Dim outStream As Byte() = Encoding.ASCII.GetBytes(text & "addFour;$")
-                serverStream.Write(outStream, 0, outStream.Length)
-                serverStream.Flush()
-
-
-
-                Dim table As DataTable = createTable(serverStream)
-                bool = Boolean.Parse(table(0)(0))
-            Catch ex As Exception
-
-            End Try
-        End If
-        Return bool
-    End Function
-
-    Public Function GetModel() As DataTable
+    Public Function GetInfo(Instruction As String) As DataTable
         Dim table As DataTable = Nothing
         If conc Then
             Try
                 Dim serverStream As NetworkStream = clientSocket.GetStream()
-                Dim outStream As Byte() = Encoding.ASCII.GetBytes("getModel;$")
+                Dim outStream As Byte() = Encoding.UTF8.GetBytes(Instruction & ";$")
                 serverStream.Write(outStream, 0, outStream.Length)
                 serverStream.Flush()
 
-                table = createTable(serverStream)
+                table = CreateTable(serverStream)
             Catch ex As Exception
 
             End Try
@@ -394,16 +88,16 @@ Public Class ConnectionServeur
         Return table
     End Function
 
-    Public Function GetOptionModel(id As String) As DataTable
+    Public Function GetInfo(id As String, instruction As String) As DataTable
         Dim table As DataTable = Nothing
         If conc Then
             Try
                 Dim serverStream As NetworkStream = clientSocket.GetStream()
-                Dim outStream As Byte() = Encoding.ASCII.GetBytes("getOptionModel;" & id & ";$")
+                Dim outStream As Byte() = Encoding.UTF8.GetBytes(instruction & ";" & id & ";$")
                 serverStream.Write(outStream, 0, outStream.Length)
                 serverStream.Flush()
 
-                table = createTable(serverStream)
+                table = CreateTable(serverStream)
             Catch ex As Exception
 
             End Try
@@ -411,24 +105,7 @@ Public Class ConnectionServeur
         Return table
     End Function
 
-    Public Function GetCouleurModel(id As String) As DataTable
-        Dim table As DataTable = Nothing
-        If conc Then
-            Try
-                Dim serverStream As NetworkStream = clientSocket.GetStream()
-                Dim outStream As Byte() = Encoding.ASCII.GetBytes("getCouleurModel;" & id & ";$")
-                serverStream.Write(outStream, 0, outStream.Length)
-                serverStream.Flush()
-
-                table = createTable(serverStream)
-            Catch ex As Exception
-
-            End Try
-        End If
-        Return table
-    End Function
-
-    Public Function GetOptionAdd(id() As String) As DataTable
+    Public Function GetInfo(id() As String, Instruction As String) As DataTable
         Dim table As DataTable = Nothing
         If conc Then
             Try
@@ -441,11 +118,11 @@ Public Class ConnectionServeur
                 Next
                 text += "\\listeEnd;"
 
-                Dim outStream As Byte() = Encoding.ASCII.GetBytes(text & "getOptionAdd;$")
+                Dim outStream As Byte() = Encoding.UTF8.GetBytes(text & Instruction & ";$")
                 serverStream.Write(outStream, 0, outStream.Length)
                 serverStream.Flush()
 
-                table = createTable(serverStream)
+                table = CreateTable(serverStream)
             Catch ex As Exception
 
             End Try
@@ -453,29 +130,90 @@ Public Class ConnectionServeur
         Return table
     End Function
 
-    Public Function GetCouleurAdd(id() As String) As DataTable
-        Dim table As DataTable = Nothing
+    Public Function AddModel(Nom As String, Cout As String) As String
+        Dim nbr As Integer = 0
         If conc Then
             Try
                 Dim serverStream As NetworkStream = clientSocket.GetStream()
 
-                Dim text As String = "\\liste;"
-
-                For i As Integer = 0 To id.Length - 1
-                    text += id(i) & ";"
-                Next
-                text += "\\listeEnd;"
-
-                Dim outStream As Byte() = Encoding.ASCII.GetBytes(text & "getCouleurAdd;$")
+                Dim outStream As Byte() = Encoding.UTF8.GetBytes("AddModel;" & Nom & ";" & Cout & ";$")
                 serverStream.Write(outStream, 0, outStream.Length)
                 serverStream.Flush()
 
-                table = createTable(serverStream)
+                Dim table As DataTable = CreateTable(serverStream)
+                nbr = Integer.Parse(table(0)(0))
             Catch ex As Exception
 
             End Try
         End If
-        Return table
+        Return nbr
+    End Function
+
+    Public Function AddDelete(liste() As String, id As String, texte As String) As Boolean
+        Dim bool As Boolean = False
+
+        If conc Then
+            Try
+                For i As Integer = 0 To liste.Length - 1
+                    Dim serverStream As NetworkStream = clientSocket.GetStream()
+
+                    Dim outStream As Byte() = Encoding.UTF8.GetBytes(texte & ";" & liste(i) & ";" & id & ";$")
+                    serverStream.Write(outStream, 0, outStream.Length)
+                    serverStream.Flush()
+
+                    Dim table As DataTable = CreateTable(serverStream)
+                    bool = Boolean.Parse(table(0)(0))
+                Next
+            Catch ex As Exception
+
+            End Try
+        End If
+        Return bool
+    End Function
+
+    Public Function AddDeleteListe(liste() As String, id As String, instruction As String) As Boolean
+        Dim bool As Boolean = False
+
+        If conc Then
+            Try
+                Dim serverStream As NetworkStream = clientSocket.GetStream()
+                Dim text As String = "\\liste;"
+
+                For i As Integer = 0 To liste.Length - 1
+                    text += liste(i) & ";"
+                Next
+                text += "\\listeEnd;"
+
+                Dim outStream As Byte() = Encoding.UTF8.GetBytes(text & instruction & ";" & id & ";$")
+                serverStream.Write(outStream, 0, outStream.Length)
+                serverStream.Flush()
+
+                Dim table As DataTable = CreateTable(serverStream)
+                bool = Boolean.Parse(table(0)(0))
+            Catch ex As Exception
+
+            End Try
+        End If
+        Return bool
+    End Function
+
+    Public Function ModInvModel(idInv As String, idModel As String, nbr As String) As Boolean
+        Dim bool As Boolean = False
+        If conc Then
+            Try
+                Dim serverStream As NetworkStream = clientSocket.GetStream()
+
+                Dim outStream As Byte() = Encoding.UTF8.GetBytes("ModInvModel;" & idInv & ";" & idModel & ";" & nbr & ";$")
+                serverStream.Write(outStream, 0, outStream.Length)
+                serverStream.Flush()
+
+                Dim table As DataTable = CreateTable(serverStream)
+                bool = True
+            Catch ex As Exception
+
+            End Try
+        End If
+        Return bool
     End Function
 
     Private Function CreateTable(serverStrem As NetworkStream) As DataTable
@@ -489,7 +227,7 @@ Public Class ConnectionServeur
 
         While search
             serverStrem.Read(inStream, 0, inStream.Length())
-            str += Encoding.ASCII.GetString(inStream)
+            str += Encoding.UTF8.GetString(inStream)
             If InStr(str, "\\end;") >= 1 Then
                 search = False
             End If
@@ -549,13 +287,13 @@ Public Class ConnectionServeur
                         Thread.Sleep(1000)
                         Try
                             Dim serverStream As NetworkStream = clientSocket.GetStream()
-                            Dim outStream As Byte() = Encoding.ASCII.GetBytes("test;$")
+                            Dim outStream As Byte() = Encoding.UTF8.GetBytes("test;$")
                             serverStream.Write(outStream, 0, outStream.Length)
                             serverStream.Flush()
 
                             Dim inStream(1024) As Byte
                             serverStream.Read(inStream, 0, inStream.Length())
-                            If Boolean.Parse(Encoding.ASCII.GetString(inStream)) Then
+                            If Boolean.Parse(Encoding.UTF8.GetString(inStream)) Then
                                 conc = True
                             End If
                         Catch ex As Exception

@@ -1,12 +1,12 @@
 ﻿Imports System.Data
 Imports MySql.Data.MySqlClient
-Public Class EntityFournisseur
+Public Class ModelInvModel
     '__________________________________________________________________________________________________________
     'Attributes
     '__________________________________________________________________________________________________________
     ReadOnly connection As New MySqlConnection(ConnectionDB.GetInstance.connectionString)
-    Shared instance As EntityFournisseur = Nothing
-    ReadOnly nomClass As String = "EntityFournisseur"
+    Shared instance As ModelInvModel = Nothing
+    ReadOnly nomClass As String = "ModelInvModel"
 
 
     '__________________________________________________________________________________________________________
@@ -26,102 +26,101 @@ Public Class EntityFournisseur
     '__________________________________________________________________________________________________________
 
 
-
     '__________________________________________________________________________________________________________
     'Functions
     '__________________________________________________________________________________________________________
-    Public Shared Function GetInstance() As EntityFournisseur
+    Shared Function Getinstance() As ModelInvModel
         If IsNothing(instance) Then
-            instance = New EntityFournisseur
+            instance = New ModelInvModel
         End If
         Return instance
     End Function
 
-    Public Function GetFournisseur() As DataTable
-        Dim table As New DataTable("fournisseur")
+    Public Function AddInvMo(texte() As String, idModel As String) As DataTable
+        Dim table As New DataTable
+        table.Columns.Add("bool", GetType(Boolean))
+        table.Rows.Add(False)
         Try
-            If connection.State = ConnectionState.Open Then
-                connection.Close()
-            End If
-            Dim command As New MySqlCommand
-            command.Connection = connection
-            command.CommandText = $"SELECT * FROM `fournisseur`"
-            connection.Open()
-            Dim reader = command.ExecuteReader()
-            table.Load(reader)
-            connection.Close()
-        Catch ex As Exception
-            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getFournisseur")
-            'MessageBox.Show("Une erreur c'est produit!")
-        End Try
-        Return table
-    End Function
+            For i As Integer = 0 To texte.Length - 1
+                If connection.State = ConnectionState.Open Then
+                    connection.Close()
+                End If
 
-    Public Function GetOneFournisseur(id As Integer) As DataTable
-        Dim table As New DataTable("fournisseur")
-        Try
-            If connection.State = ConnectionState.Open Then
-                connection.Close()
-            End If
-            Dim command As New MySqlCommand
-            command.Connection = connection
-            command.CommandText = $"SELECT * FROM `fournisseur` where id = {id}"
-            connection.Open()
-            Dim reader = command.ExecuteReader()
-            table.Load(reader)
-            connection.Close()
-        Catch ex As Exception
-            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getFournisseur")
-            'MessageBox.Show("Une erreur c'est produit!")
-        End Try
-        Return table
-    End Function
+                Dim command As New MySqlCommand
+                command.Connection = connection
 
-    Public Function GetFournisseur(id As String) As DataTable
-        Dim table As New DataTable("fournisseur")
-        Try
-            If connection.State = ConnectionState.Open Then
-                connection.Close()
-            End If
-            Dim command As New MySqlCommand
-            command.Connection = connection
-            command.CommandText = $"SELECT * FROM `fournisseur`
-                                    inner join `invfour`
-                                    on fournisseur.id = invfour.idFournisseur
-                                    where invfour.idInventaire = '{id}' and invFour.idFournisseur <> 1"
-            connection.Open()
-            Dim reader = command.ExecuteReader()
-            table.Load(reader)
-            connection.Close()
-        Catch ex As Exception
-            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getFournisseur")
-            'MessageBox.Show("Une erreur c'est produit!")
-        End Try
-        Return table
-    End Function
+                Dim idInv = texte(i)
+                i += 1
+                Dim nbr = texte(i)
 
-    Public Function GetFournisseurAdd(id() As Integer) As DataTable
-        Dim table As New DataTable("fournisseur")
-        Try
-            If connection.State = ConnectionState.Open Then
+                command.CommandText = $"Insert into inventaireModel values({idInv},{idModel},{nbr})"
+
+                connection.Open()
+                command.ExecuteReader()
                 connection.Close()
-            End If
-            Dim command As New MySqlCommand
-            command.Connection = connection
-            Dim str As String = "SELECT * FROM `fournisseur` where id <> 1 "
-            For i As Integer = 0 To id.Count - 1
-                str = str & " and id <> '" & id(i) & "'"
             Next
-            command.CommandText = $"{str}"
-            connection.Open()
-            Dim reader = command.ExecuteReader()
-            table.Load(reader)
-            connection.Close()
+
+            table(0)(0) = True
+            Return table
         Catch ex As Exception
-            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getFournisseurAdd")
-            'MessageBox.Show("Une erreur c'est produit!")
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "addInvMo")
+            'MessageBox.Show("Une erreur c'est produit lors de l'ajout du fournisseur!")
+            Return table
         End Try
-        Return table
+    End Function
+
+    Public Function DeleteInvMo(idInv As String, idModel As String) As DataTable
+        Dim table As New DataTable
+        table.Columns.Add("bool", GetType(Boolean))
+        table.Rows.Add(False)
+        Try
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+
+            Dim command As New MySqlCommand
+            command.Connection = connection
+
+            command.CommandText = $"Delete from InventaireModel where idInventaire = {idInv} and idmodel = {idModel}"
+
+            connection.Open()
+            command.ExecuteReader()
+            connection.Close()
+
+            table(0)(0) = True
+            Return table
+        Catch ex As Exception
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "addInvMo")
+            'MessageBox.Show("Une erreur c'est produit lors de l'ajout du fournisseur!")
+            Return table
+        End Try
+    End Function
+
+    Public Function UpdateInvMo(idInv As String, idModel As String, nbr As Integer) As DataTable
+        Dim table As New DataTable
+        table.Columns.Add("bool", GetType(Boolean))
+        table.Rows.Add(False)
+        Try
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+
+            Dim command As New MySqlCommand
+            command.Connection = connection
+
+            command.CommandText = $"Update inventaireModel set NombreItem = {nbr} where idInventaire = {idInv} and idmodel = {idModel}"
+
+            connection.Open()
+            command.ExecuteReader()
+            connection.Close()
+
+            table(0)(0) = True
+            Return table
+        Catch ex As Exception
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "UpdateInvMo")
+            'MessageBox.Show("Une erreur c'est produit lors de l'ajout du fournisseur!")
+            Return table
+        End Try
     End Function
 
     '__________________________________________________________________________________________________________
@@ -141,4 +140,6 @@ Public Class EntityFournisseur
     '__________________________________________________________________________________________________________
 
 End Class
+
+
 

@@ -5,7 +5,7 @@
     ReadOnly creerform As creerProduit
     ReadOnly action As Integer
     ReadOnly idInv As String
-    ReadOnly idListe() As Integer
+    ReadOnly idListe() As String
 
 
     '__________________________________________________________________________________________________________
@@ -29,7 +29,7 @@
         idInv = id
     End Sub
 
-    Sub New(i As Integer, id As String, idListeGet() As Integer)
+    Sub New(i As Integer, id As String, idListeGet() As String)
         ' Cet appel est requis par le concepteur.
         InitializeComponent()
 
@@ -44,15 +44,15 @@
     '__________________________________________________________________________________________________________
     Private Sub ListeFournisseur_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If action = 1 Then
-            dgvFour.DataSource = ConnectionServeur.getinstance.getFournisseur
+            dgvFour.DataSource = ConnectionServeur.Getinstance.GetInfo("getFournisseur")
         ElseIf action = 2 Then
-            dgvFour.DataSource = ConnectionServeur.getinstance.getFournisseurAdd(idListe)
+            dgvFour.DataSource = ConnectionServeur.Getinstance.GetInfo(idListe, "getFournisseurAdd")
             If Not dgvFour.Rows.Count > 0 Then
                 MessageBox.Show("Ce produit a tous les fournisseurs!")
                 Me.Close()
             End If
         ElseIf action = 3 Then
-            dgvFour.DataSource = ConnectionServeur.getinstance.getFournisseur(idInv)
+            dgvFour.DataSource = ConnectionServeur.Getinstance.GetInfo(idInv, "getFournisseur")
             If Not dgvFour.Rows.Count > 0 Then
                 MessageBox.Show("Ce produit n'a pas de fournisseur!")
                 Me.Close()
@@ -71,28 +71,28 @@
             Me.Close()
         ElseIf action = 2 Then
             Dim liste() As String = {idInv, dgvFour.CurrentRow.Cells(0).Value}
-            If ConnectionServeur.Getinstance.AddInvFour(liste) Then
+            If ConnectionServeur.Getinstance.AddDelete(liste, "addInvFour") Then
                 MessageBox.Show("L'ajout du fournisseur à bien été fait!")
-                table = ConnectionServeur.Getinstance.GetInventaire(idInv)
+                table = ConnectionServeur.Getinstance.GetInfo(idInv, "getInventaire")
                 For i As Integer = 0 To table.Rows.Count - 1
                     If table(i)(9) = 1 Then
                         liste(0) = idInv
                         liste(1) = 1
-                        ConnectionServeur.Getinstance.DelInvFour(liste)
+                        ConnectionServeur.Getinstance.AddDelete(liste, "delInvFour")
                     End If
                 Next
             End If
             Me.Close()
         ElseIf action = 3 Then
             Dim liste() As String = {idInv, dgvFour.CurrentRow.Cells(0).Value}
-            If ConnectionServeur.Getinstance.DelInvFour(liste) Then
+            If ConnectionServeur.Getinstance.AddDelete(liste, "delInvFour") Then
                 MessageBox.Show("La suppression du fournisseur à bien été fait!")
             End If
-            table = ConnectionServeur.Getinstance.GetInventaire(idInv)
-            If Not table.Rows.Count > 0 Then
+            table = ConnectionServeur.Getinstance.GetInfo(idInv, "getInventaire")
+            If table(0)(0) = "\\null" Then
                 liste(0) = idInv
                 liste(1) = 1
-                ConnectionServeur.Getinstance.AddInvFour(liste)
+                ConnectionServeur.Getinstance.AddDelete(liste, "addInvFour")
             End If
             Me.Close()
         End If

@@ -1,11 +1,11 @@
 ﻿Imports System.Data
 Imports MySql.Data.MySqlClient
-Public Class EntityFournisseur
+Public Class EntityOption
     '__________________________________________________________________________________________________________
     'Attributes
     '__________________________________________________________________________________________________________
     ReadOnly connection As New MySqlConnection(ConnectionDB.GetInstance.connectionString)
-    Shared instance As EntityFournisseur = Nothing
+    Shared instance As EntityOption = Nothing
     ReadOnly nomClass As String = "EntityFournisseur"
 
 
@@ -30,95 +30,75 @@ Public Class EntityFournisseur
     '__________________________________________________________________________________________________________
     'Functions
     '__________________________________________________________________________________________________________
-    Public Shared Function GetInstance() As EntityFournisseur
+    Public Shared Function GetInstance() As EntityOption
         If IsNothing(instance) Then
-            instance = New EntityFournisseur
+            instance = New EntityOption
         End If
         Return instance
     End Function
 
-    Public Function GetFournisseur() As DataTable
-        Dim table As New DataTable("fournisseur")
+    Public Function GetOptionModel(id As Integer) As DataTable
+        Dim table As New DataTable("option")
         Try
             If connection.State = ConnectionState.Open Then
                 connection.Close()
             End If
             Dim command As New MySqlCommand
             command.Connection = connection
-            command.CommandText = $"SELECT * FROM `fournisseur`"
+            command.CommandText = $"SELECT id,nom,cout  FROM `optiondispo`
+                                                        inner join optionmodel
+                                                        on id = idOption
+                                                        where idModel = '{id}'"
             connection.Open()
             Dim reader = command.ExecuteReader()
             table.Load(reader)
             connection.Close()
         Catch ex As Exception
-            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getFournisseur")
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getOptionModel")
             'MessageBox.Show("Une erreur c'est produit!")
         End Try
         Return table
     End Function
 
-    Public Function GetOneFournisseur(id As Integer) As DataTable
-        Dim table As New DataTable("fournisseur")
+    Public Function GetOptionDispo(id() As String) As DataTable
+        Dim table As New DataTable("option")
         Try
             If connection.State = ConnectionState.Open Then
                 connection.Close()
             End If
             Dim command As New MySqlCommand
             command.Connection = connection
-            command.CommandText = $"SELECT * FROM `fournisseur` where id = {id}"
-            connection.Open()
-            Dim reader = command.ExecuteReader()
-            table.Load(reader)
-            connection.Close()
-        Catch ex As Exception
-            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getFournisseur")
-            'MessageBox.Show("Une erreur c'est produit!")
-        End Try
-        Return table
-    End Function
-
-    Public Function GetFournisseur(id As String) As DataTable
-        Dim table As New DataTable("fournisseur")
-        Try
-            If connection.State = ConnectionState.Open Then
-                connection.Close()
-            End If
-            Dim command As New MySqlCommand
-            command.Connection = connection
-            command.CommandText = $"SELECT * FROM `fournisseur`
-                                    inner join `invfour`
-                                    on fournisseur.id = invfour.idFournisseur
-                                    where invfour.idInventaire = '{id}' and invFour.idFournisseur <> 1"
-            connection.Open()
-            Dim reader = command.ExecuteReader()
-            table.Load(reader)
-            connection.Close()
-        Catch ex As Exception
-            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getFournisseur")
-            'MessageBox.Show("Une erreur c'est produit!")
-        End Try
-        Return table
-    End Function
-
-    Public Function GetFournisseurAdd(id() As Integer) As DataTable
-        Dim table As New DataTable("fournisseur")
-        Try
-            If connection.State = ConnectionState.Open Then
-                connection.Close()
-            End If
-            Dim command As New MySqlCommand
-            command.Connection = connection
-            Dim str As String = "SELECT * FROM `fournisseur` where id <> 1 "
+            Dim str As String = "SELECT * FROM `optionDispo` where id <> 0 "
             For i As Integer = 0 To id.Count - 1
-                str = str & " and id <> '" & id(i) & "'"
+                str = str & " and id <> " & id(i) & ""
             Next
-            command.CommandText = $"{str}"
+            command.CommandText = str
             connection.Open()
             Dim reader = command.ExecuteReader()
             table.Load(reader)
             connection.Close()
         Catch ex As Exception
-            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getFournisseurAdd")
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getOptionDispo")
+            'MessageBox.Show("Une erreur c'est produit!")
+        End Try
+        Return table
+    End Function
+
+    Public Function GetOptionDispo() As DataTable
+        Dim table As New DataTable("option")
+        Try
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+            Dim command As New MySqlCommand
+            command.Connection = connection
+            command.CommandText = "SELECT * FROM `optionDispo`"
+            connection.Open()
+            Dim reader = command.ExecuteReader()
+            table.Load(reader)
+            connection.Close()
+        Catch ex As Exception
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getOptionDispo")
             'MessageBox.Show("Une erreur c'est produit!")
         End Try
         Return table
@@ -141,4 +121,5 @@ Public Class EntityFournisseur
     '__________________________________________________________________________________________________________
 
 End Class
+
 

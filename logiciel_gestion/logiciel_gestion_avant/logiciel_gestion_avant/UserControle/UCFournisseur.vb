@@ -37,9 +37,9 @@
     End Sub
 
     Private Sub TbID_TextChanged(sender As Object, e As EventArgs) Handles tbID.TextChanged
-        table = ConnectionServeur.Getinstance.GetOneFournisseur(Integer.Parse(tbID.Text))
-        remplir(table)
-        dgvPiece.DataSource = ConnectionServeur.Getinstance.GetInventaireOfFour(Integer.Parse(tbID.Text))
+        table = ConnectionServeur.Getinstance.GetInfo(Integer.Parse(tbID.Text), "getOneFournisseur")
+        Remplir(table)
+        dgvPiece.DataSource = ConnectionServeur.Getinstance.GetInfo(Integer.Parse(tbID.Text), "getInventaireOfFour")
     End Sub
 
     Private Sub DgvPiece_DoubleClick(sender As Object, e As EventArgs) Handles dgvPiece.DoubleClick
@@ -67,13 +67,13 @@
     End Sub
 
     Private Sub BtSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
-        If ConnectionServeur.Getinstance.ModFour(liste) Then
+        If ConnectionServeur.Getinstance.AddDelete(liste, "modFour") Then
             MessageBox.Show("La modification c'est fait sans problème")
             For i As Integer = 1 To liste.Length - 1
                 table(0)(i) = liste(i)
                 dgvFour.CurrentRow.Cells(i).Value = liste(i)
             Next
-            btSauvChanger()
+            BtSauvChanger()
         Else
             MessageBox.Show("Un erreur est survenu du coté du serveur! 2")
         End If
@@ -97,7 +97,7 @@
     End Sub
 
     Public Sub LoadFour()
-        dgvFour.DataSource = ConnectionServeur.getinstance.getFournisseur()
+        dgvFour.DataSource = ConnectionServeur.Getinstance.GetInfo("getFournisseur")
         tbID.Text = dgvFour.CurrentRow.Cells(0).Value
     End Sub
 

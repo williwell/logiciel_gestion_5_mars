@@ -15,7 +15,7 @@
     'Load
     '__________________________________________________________________________________________________________
     Private Sub CreerProduit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        table = ConnectionServeur.Getinstance.GetFournisseur()
+        table = ConnectionServeur.Getinstance.GetInfo("getFournisseur")
         Dim listeNom(table.Rows.Count - 1) As String
         For i As Integer = 0 To table.Rows.Count - 1
             listeNom(i) = table.Rows(i).Item(1).ToString
@@ -63,9 +63,9 @@
                 liste(11) = tbNoMFR.Text
             End If
 
-            If ConnectionServeur.Getinstance.AjoutInventaire(liste) Then
+            If ConnectionServeur.Getinstance.AddDelete(liste, "ajoutInventaire") Then
                 Dim liste2() As String = {liste(0), liste(4), liste(6), liste(10), liste(11)}
-                If ConnectionServeur.Getinstance.AddInvFour(liste2) Then
+                If ConnectionServeur.Getinstance.AddDelete(liste2, "addInvFour") Then
                     MessageBox.Show("La création du nouveau produit à bien été fait!")
                 Else
                     MessageBox.Show("Une erreur est survenue durant la création!", "Attention!")

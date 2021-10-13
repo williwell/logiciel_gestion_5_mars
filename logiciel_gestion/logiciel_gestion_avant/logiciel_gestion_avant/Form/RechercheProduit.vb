@@ -22,7 +22,7 @@
     'Load
     '__________________________________________________________________________________________________________
     Private Sub RechercheProduit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        dgvProduit.DataSource = ConnectionServeur.getinstance.GetInventaire()
+        dgvProduit.DataSource = ConnectionServeur.Getinstance.GetInfo("getInventaire")
         Try
             dgvProduit.Sort(dgvProduit.Columns(1), 0)
         Catch ex As Exception
