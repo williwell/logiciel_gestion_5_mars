@@ -1,5 +1,4 @@
 ﻿Public Class UCCouleur
-    Dim color As New ColorDialog
     Dim tableCouleur As DataTable
     Dim listeOr(0, 0) As String
 
@@ -42,6 +41,9 @@
                     For c As Integer = 0 To tableCouleur.Columns.Count - 1
                         listeOr(r, c) = listeAdd(c)
                     Next
+                    MessageBox.Show("Enregistrement réussit!")
+                Else
+                    MessageBox.Show("Une erreure c'est produit durant l'enregistrement")
                 End If
             End If
         Next
@@ -54,7 +56,7 @@
         RemplirDGV()
     End Sub
 
-    Private Sub dgvCouleur_CellBeginEdit(sender As Object, e As DataGridViewCellCancelEventArgs) Handles dgvCouleur.CellBeginEdit
+    Private Sub DGVCouleur_CellBeginEdit(sender As Object, e As DataGridViewCellCancelEventArgs) Handles dgvCouleur.CellBeginEdit
         If e.ColumnIndex = 0 Then
             e.Cancel = True
         End If
@@ -80,7 +82,7 @@
         End If
     End Sub
 
-    Private Sub dgvCouleur_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCouleur.CellEndEdit
+    Private Sub DGVCouleur_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCouleur.CellEndEdit
         CheckerChange()
     End Sub
 

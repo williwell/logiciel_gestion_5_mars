@@ -72,6 +72,8 @@ Public Class HandleClient
                 SendDataTable(EntityInventaire.GetInstance.GetInvAdd(), networkStream)
             Case "getCouleur"
                 SendDataTable(EntityCouleur.GetInstance.GetCouleur(), networkStream)
+            Case "getInvLow"
+                SendDataTable(EntityInventaire.GetInstance.GetInvLowQt(), networkStream)
         End Select
     End Sub
 
@@ -93,6 +95,10 @@ Public Class HandleClient
                 SendDataTable(EntityInventaire.GetInstance.GetInvMo(id), networkStream)
             Case "ChangeDelete"
                 SendDataTable(ModelCouleur.Getinstance.ChangeDelete(id), networkStream)
+            Case "ChangeDeleteOp"
+                SendDataTable(ModelOption.Getinstance.ChangeDelete(id), networkStream)
+            Case "getOnlyInvOpt"
+                SendDataTable(EntityInventaire.GetInstance.getInvOpt(id), networkStream)
         End Select
     End Sub
 
@@ -130,6 +136,14 @@ Public Class HandleClient
                 SendDataTable(ModelCouleur.Getinstance.UpdateCouleur(text), networkStream)
             Case "AddCoul"
                 SendDataTable(ModelCouleur.Getinstance.AddCouleur(text), networkStream)
+            Case "updateOption"
+                SendDataTable(ModelOption.Getinstance.UpdateOption(text), networkStream)
+            Case "CreateOption"
+                SendDataTable(ModelOption.Getinstance.CreateOption(text), networkStream)
+            Case "AddOptionItem"
+                SendDataTable(ModelOption.Getinstance.AddOptionItem(text), networkStream)
+            Case "DeleteInvOpt"
+                SendDataTable(ModelOption.Getinstance.DeleteOpItem(text), networkStream)
         End Select
     End Sub
 
@@ -154,6 +168,8 @@ Public Class HandleClient
         Select Case str
             Case "ModInvModel"
                 SendDataTable(ModelInvModel.Getinstance.UpdateInvMo(id1, id2, nbr), networkStream)
+            Case "ModInvOpt"
+                SendDataTable(ModelOption.Getinstance.UpdateOptInv(id1, id2, nbr), networkStream)
         End Select
     End Sub
 

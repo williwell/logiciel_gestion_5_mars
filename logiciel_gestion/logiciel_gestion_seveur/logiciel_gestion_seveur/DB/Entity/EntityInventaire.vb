@@ -147,7 +147,30 @@ Public Class EntityInventaire
             table.Load(reader)
             connection.Close()
         Catch ex As Exception
-            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getInventaire")
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getInvMo")
+            Msg("Une erreur c'est produit!")
+        End Try
+        Return table
+    End Function
+
+    Public Function GetInvOpt(id As String) As DataTable
+        Dim table As New DataTable("inventaire")
+        Try
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+            Dim command As New MySqlCommand
+            command.Connection = connection
+            command.CommandText = $"SELECT id,nom,description,utilise,o.quantite  FROM `inventaire`
+                                                        inner join OptionPiece o
+                                                        on id = idPiece
+                                                        where idOption = '{id}'"
+            connection.Open()
+            Dim reader = command.ExecuteReader()
+            table.Load(reader)
+            connection.Close()
+        Catch ex As Exception
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getInvOpt")
             Msg("Une erreur c'est produit!")
         End Try
         Return table
@@ -186,6 +209,26 @@ Public Class EntityInventaire
             Dim command As New MySqlCommand
             command.Connection = connection
             command.CommandText = "SELECT id,nom,description,utilise FROM `inventaire`"
+            connection.Open()
+            Dim reader = command.ExecuteReader()
+            table.Load(reader)
+            connection.Close()
+        Catch ex As Exception
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "getCouleurDispo")
+            'MessageBox.Show("Une erreur c'est produit!")
+        End Try
+        Return table
+    End Function
+
+    Public Function GetInvLowQt() As DataTable
+        Dim table As New DataTable("inventaire")
+        Try
+            If connection.State = ConnectionState.Open Then
+                connection.Close()
+            End If
+            Dim command As New MySqlCommand
+            command.Connection = connection
+            command.CommandText = "SELECT id,nom,description,utilise,Quantite,minStock FROM `inventaire` where Quantite < minStock order by (Quantite - minStock)"
             connection.Open()
             Dim reader = command.ExecuteReader()
             table.Load(reader)

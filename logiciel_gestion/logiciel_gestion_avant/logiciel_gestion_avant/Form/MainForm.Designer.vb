@@ -25,6 +25,7 @@ Partial Class MainForm
         Me.PanUC = New System.Windows.Forms.Panel()
         Me.btMenu = New System.Windows.Forms.Button()
         Me.panMenu = New System.Windows.Forms.Panel()
+        Me.BtClient = New System.Windows.Forms.Button()
         Me.BtOptionModel = New System.Windows.Forms.Button()
         Me.BtCouleur = New System.Windows.Forms.Button()
         Me.btModel = New System.Windows.Forms.Button()
@@ -41,7 +42,7 @@ Partial Class MainForm
         '
         Me.PanUC.Location = New System.Drawing.Point(12, 36)
         Me.PanUC.Name = "PanUC"
-        Me.PanUC.Size = New System.Drawing.Size(808, 649)
+        Me.PanUC.Size = New System.Drawing.Size(808, 621)
         Me.PanUC.TabIndex = 1
         '
         'btMenu
@@ -56,6 +57,7 @@ Partial Class MainForm
         'panMenu
         '
         Me.panMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panMenu.Controls.Add(Me.BtClient)
         Me.panMenu.Controls.Add(Me.BtOptionModel)
         Me.panMenu.Controls.Add(Me.BtCouleur)
         Me.panMenu.Controls.Add(Me.btModel)
@@ -65,11 +67,20 @@ Partial Class MainForm
         Me.panMenu.Controls.Add(Me.btAccueil)
         Me.panMenu.Controls.Add(Me.btMenu)
         Me.panMenu.Location = New System.Drawing.Point(12, 3)
-        Me.panMenu.MaximumSize = New System.Drawing.Size(100, 235)
+        Me.panMenu.MaximumSize = New System.Drawing.Size(100, 260)
         Me.panMenu.MinimumSize = New System.Drawing.Size(100, 30)
         Me.panMenu.Name = "panMenu"
-        Me.panMenu.Size = New System.Drawing.Size(100, 235)
+        Me.panMenu.Size = New System.Drawing.Size(100, 30)
         Me.panMenu.TabIndex = 2
+        '
+        'BtClient
+        '
+        Me.BtClient.Location = New System.Drawing.Point(2, 232)
+        Me.BtClient.Name = "BtClient"
+        Me.BtClient.Size = New System.Drawing.Size(94, 23)
+        Me.BtClient.TabIndex = 8
+        Me.BtClient.Text = "Client"
+        Me.BtClient.UseVisualStyleBackColor = True
         '
         'BtOptionModel
         '
@@ -183,4 +194,5 @@ Partial Class MainForm
     Friend WithEvents btModel As Button
     Friend WithEvents BtOptionModel As Button
     Friend WithEvents BtCouleur As Button
+    Friend WithEvents BtClient As Button
 End Class

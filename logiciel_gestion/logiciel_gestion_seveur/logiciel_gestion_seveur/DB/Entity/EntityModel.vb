@@ -6,7 +6,7 @@ Public Class EntityModel
     '__________________________________________________________________________________________________________
     ReadOnly connection As New MySqlConnection(ConnectionDB.GetInstance.connectionString)
     Shared instance As EntityModel = Nothing
-    ReadOnly nomClass As String = "EntityFournisseur"
+    ReadOnly nomClass As String = "EntityModel"
 
 
     '__________________________________________________________________________________________________________

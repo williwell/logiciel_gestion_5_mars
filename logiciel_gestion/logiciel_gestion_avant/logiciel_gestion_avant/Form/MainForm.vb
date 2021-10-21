@@ -42,6 +42,7 @@ Public Class MainForm
             PanUC.Controls.Add(ucModel)
             PanUC.Controls.Add(ucCouleur)
             PanUC.Controls.Add(ucOption)
+            ucAccueil.RowsColor()
         Else
             lbNonConc.Text = "Impossible de se connecter au serveur!"
             btConnec.Visible = True
@@ -79,9 +80,8 @@ Public Class MainForm
     End Sub
 
     Private Sub BtAccueil_Click(sender As Object, e As EventArgs) Handles btAccueil.Click
-        'ucAccueil.BringToFront()
-        'panMenu.Size = panMenu.MinimumSize
-        MessageBox.Show("La section n'est pas encore implémenté")
+        ucAccueil.BringToFront()
+        panMenu.Size = panMenu.MinimumSize
     End Sub
 
     Private Sub BtInventaire_Click(sender As Object, e As EventArgs) Handles btInventaire.Click

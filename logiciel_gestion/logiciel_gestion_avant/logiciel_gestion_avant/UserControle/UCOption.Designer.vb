@@ -22,16 +22,94 @@ Partial Class UCOption
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.DGVOption = New System.Windows.Forms.DataGridView()
+        Me.BTCreer = New System.Windows.Forms.Button()
+        Me.BtSave = New System.Windows.Forms.Button()
+        Me.BTAnnuler = New System.Windows.Forms.Button()
+        Me.BTDelete = New System.Windows.Forms.Button()
+        Me.BTItem = New System.Windows.Forms.Button()
+        CType(Me.DGVOption, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'DGVOption
+        '
+        Me.DGVOption.AllowUserToAddRows = False
+        Me.DGVOption.AllowUserToDeleteRows = False
+        Me.DGVOption.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DGVOption.Location = New System.Drawing.Point(93, 165)
+        Me.DGVOption.Name = "DGVOption"
+        Me.DGVOption.RowTemplate.Height = 25
+        Me.DGVOption.Size = New System.Drawing.Size(486, 264)
+        Me.DGVOption.TabIndex = 0
+        '
+        'BTCreer
+        '
+        Me.BTCreer.Location = New System.Drawing.Point(93, 136)
+        Me.BTCreer.Name = "BTCreer"
+        Me.BTCreer.Size = New System.Drawing.Size(140, 23)
+        Me.BTCreer.TabIndex = 1
+        Me.BTCreer.Text = "Créer Nouvelle Option"
+        Me.BTCreer.UseVisualStyleBackColor = True
+        '
+        'BtSave
+        '
+        Me.BtSave.Enabled = False
+        Me.BtSave.Location = New System.Drawing.Point(93, 435)
+        Me.BtSave.Name = "BtSave"
+        Me.BtSave.Size = New System.Drawing.Size(117, 23)
+        Me.BtSave.TabIndex = 2
+        Me.BtSave.Text = "Enregistrer"
+        Me.BtSave.UseVisualStyleBackColor = True
+        '
+        'BTAnnuler
+        '
+        Me.BTAnnuler.Enabled = False
+        Me.BTAnnuler.Location = New System.Drawing.Point(216, 435)
+        Me.BTAnnuler.Name = "BTAnnuler"
+        Me.BTAnnuler.Size = New System.Drawing.Size(117, 23)
+        Me.BTAnnuler.TabIndex = 3
+        Me.BTAnnuler.Text = "Annuler"
+        Me.BTAnnuler.UseVisualStyleBackColor = True
+        '
+        'BTDelete
+        '
+        Me.BTDelete.Location = New System.Drawing.Point(339, 435)
+        Me.BTDelete.Name = "BTDelete"
+        Me.BTDelete.Size = New System.Drawing.Size(117, 23)
+        Me.BTDelete.TabIndex = 4
+        Me.BTDelete.Text = "Supprimer Option"
+        Me.BTDelete.UseVisualStyleBackColor = True
+        '
+        'BTItem
+        '
+        Me.BTItem.Location = New System.Drawing.Point(239, 136)
+        Me.BTItem.Name = "BTItem"
+        Me.BTItem.Size = New System.Drawing.Size(140, 23)
+        Me.BTItem.TabIndex = 5
+        Me.BTItem.Text = "Gérer Inventaire Option"
+        Me.BTItem.UseVisualStyleBackColor = True
         '
         'UCOption
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.BTItem)
+        Me.Controls.Add(Me.BTDelete)
+        Me.Controls.Add(Me.BTAnnuler)
+        Me.Controls.Add(Me.BtSave)
+        Me.Controls.Add(Me.BTCreer)
+        Me.Controls.Add(Me.DGVOption)
         Me.Name = "UCOption"
         Me.Size = New System.Drawing.Size(808, 649)
+        CType(Me.DGVOption, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
+    Friend WithEvents DGVOption As DataGridView
+    Friend WithEvents BTCreer As Button
+    Friend WithEvents BtSave As Button
+    Friend WithEvents BTAnnuler As Button
+    Friend WithEvents BTDelete As Button
+    Friend WithEvents BTItem As Button
 End Class

@@ -197,13 +197,13 @@ Public Class ConnectionServeur
         Return bool
     End Function
 
-    Public Function ModInvModel(idInv As String, idModel As String, nbr As String) As Boolean
+    Public Function ModInv(idInv As String, idModel As String, nbr As String, str As String) As Boolean
         Dim bool As Boolean = False
         If conc Then
             Try
                 Dim serverStream As NetworkStream = clientSocket.GetStream()
 
-                Dim outStream As Byte() = Encoding.UTF8.GetBytes("ModInvModel;" & idInv & ";" & idModel & ";" & nbr & ";$")
+                Dim outStream As Byte() = Encoding.UTF8.GetBytes(str & ";" & idInv & ";" & idModel & ";" & nbr & ";$")
                 serverStream.Write(outStream, 0, outStream.Length)
                 serverStream.Flush()
 

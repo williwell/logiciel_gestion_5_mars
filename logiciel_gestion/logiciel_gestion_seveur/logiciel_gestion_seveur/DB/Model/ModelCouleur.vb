@@ -108,7 +108,7 @@ Public Class ModelCouleur
             table(0)(0) = True
             Return table
         Catch ex As Exception
-            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "addCouleurMo")
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "DeleteCouleurMo")
             'MessageBox.Show("Une erreur c'est produit lors de l'ajout du fournisseur!")
             Return table
         End Try
@@ -134,7 +134,7 @@ Public Class ModelCouleur
             table(0)(0) = True
             Return table
         Catch ex As Exception
-            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "addCouleurMo")
+            ErrLog.GetInstance.WriteErr(ex.Message, nomClass, "UpdateCouleur")
             'MessageBox.Show("Une erreur c'est produit lors de l'ajout du fournisseur!")
             Return table
         End Try

@@ -1,59 +1,57 @@
 ﻿Imports System.ComponentModel
 
-Public Class GestionInvModel
-    Dim tableInvMo As DataTable
-    Dim OrInvMo(0, 0) As String
+Public Class GestionInvOpt
+    Dim tableInvOpt As DataTable
+    Dim OrInvOpt(0, 0) As String
     Dim tableInvAdd As DataTable
     Dim OrInvAdd(0, 0) As String
     Dim tableAll As New DataTable
     Dim OrTableAll(0, 0) As String
-    Dim listeInvMo() As String
+    Dim listeInvOpt() As String
     Dim listeInvAdd() As String
     Dim nbrInv As Integer
     Dim id As String
-    Dim ucGestion As UCGestionVehicule
 
-    Sub New(idModel As String, uc As UCGestionVehicule)
+    Sub New(idOpt As String)
 
         ' Cet appel est requis par le concepteur.
         InitializeComponent()
 
         ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
-        id = idModel
-        ucGestion = uc
+        id = idOpt
     End Sub
 
 
     Private Sub GestionInvModel_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim liste() As String
 
-        tableInvMo = ConnectionServeur.Getinstance.GetInfo(id, "getOnlyInv")
-        ReDim OrInvMo(tableInvMo.Rows.Count - 1, tableInvMo.Columns.Count - 1)
-        ucGestion.ListeOr(OrInvMo, tableInvMo)
-        DGVInventaireMo.DataSource = tableInvMo
-        listeInvMo = ucGestion.PopulateList(tableInvMo)
-        nbrInv = listeInvMo.Length
+        tableInvOpt = ConnectionServeur.Getinstance.GetInfo(id, "getOnlyInvOpt")
+        ReDim OrInvOpt(tableInvOpt.Rows.Count - 1, tableInvOpt.Columns.Count - 1)
+        ListGest.ListeOr(OrInvOpt, tableInvOpt)
+        DGVInventaireOpt.DataSource = tableInvOpt
+        listeInvOpt = ListGest.PopulateList(tableInvOpt)
+        nbrInv = listeInvOpt.Length
 
-        ReDim liste(DGVInventaireMo.Rows.Count - 1)
+        ReDim liste(DGVInventaireOpt.Rows.Count - 1)
         For i As Integer = 0 To liste.Count - 1
-            liste(i) = DGVInventaireMo.Rows(i).Cells(0).Value
+            liste(i) = DGVInventaireOpt.Rows(i).Cells(0).Value
         Next
 
         tableInvAdd = ConnectionServeur.Getinstance.GetInfo(liste, "getInvAdd")
         ReDim OrInvAdd(tableInvAdd.Rows.Count - 1, tableInvAdd.Columns.Count - 1)
-        ucGestion.ListeOr(OrInvAdd, tableInvAdd)
+        ListGest.ListeOr(OrInvAdd, tableInvAdd)
         DGVInventaireAdd.DataSource = tableInvAdd
-        listeInvAdd = ucGestion.PopulateList(tableInvAdd)
+        listeInvAdd = ListGest.PopulateList(tableInvAdd)
 
-        For i As Integer = 0 To tableInvMo.Columns.Count - 1
-            tableAll.Columns.Add(tableInvMo.Columns(i).ColumnName)
+        For i As Integer = 0 To tableInvOpt.Columns.Count - 1
+            tableAll.Columns.Add(tableInvOpt.Columns(i).ColumnName)
         Next
 
-        If tableInvMo.Rows.Count > 0 Then
-            For r As Integer = 0 To tableInvMo.Rows.Count - 1
+        If tableInvOpt.Rows.Count > 0 Then
+            For r As Integer = 0 To tableInvOpt.Rows.Count - 1
                 Dim row As DataRow = tableAll.NewRow
-                For c As Integer = 0 To tableInvMo.Columns.Count - 1
-                    row(c) = tableInvMo(r)(c)
+                For c As Integer = 0 To tableInvOpt.Columns.Count - 1
+                    row(c) = tableInvOpt(r)(c)
                 Next
                 tableAll.Rows.Add(row)
             Next
@@ -72,30 +70,36 @@ Public Class GestionInvModel
             Next
         End If
         ReDim OrTableAll(tableAll.Rows.Count - 1, tableAll.Columns.Count - 1)
-        ucGestion.ListeOr(OrTableAll, tableAll)
+        ListGest.ListeOr(OrTableAll, tableAll)
     End Sub
 
     Private Sub DGVInventaireAdd_DoubleClick(sender As Object, e As EventArgs) Handles DGVInventaireAdd.DoubleClick
-        PopulateRow(tableInvMo, DGVInventaireAdd, DGVInventaireMo)
+        ListGest.PopulateRow(tableInvOpt, DGVInventaireAdd, DGVInventaireOpt, tableAll)
+        ListGest.changeBt(ListGest.CheckChange(OrInvOpt, tableInvOpt, nbrInv), btSave, btAnnuler)
     End Sub
 
-    Private Sub DGVInventaireMo_DoubleClick(sender As Object, e As EventArgs) Handles DGVInventaireMo.DoubleClick
-        PopulateRow(tableInvAdd, DGVInventaireMo, DGVInventaireAdd)
+    Private Sub DGVInventaireOpt_DoubleClick(sender As Object, e As EventArgs) Handles DGVInventaireOpt.DoubleClick
+        ListGest.PopulateRow(tableInvAdd, DGVInventaireOpt, DGVInventaireAdd, tableAll)
+        ListGest.changeBt(ListGest.CheckChange(OrInvOpt, tableInvOpt, nbrInv), btSave, btAnnuler)
     End Sub
 
 
 
-    Private Sub btSave_Click(sender As Object, e As EventArgs) Handles btSave.Click
-        Dim listeAjout() As String = CreateListeAdd(listeInvMo, DGVInventaireMo, True)
+    Private Sub BtSave_Click(sender As Object, e As EventArgs) Handles btSave.Click
+        Sauvegarder()
+    End Sub
+
+    Private Sub Sauvegarder()
+        Dim listeAjout() As String = CreateListeAdd(listeInvOpt, DGVInventaireOpt, True)
         Dim bool1 As Boolean = True
         Dim bool2 As Boolean = True
 
-        For i As Integer = 0 To DGVInventaireMo.Rows.Count - 1
-            For int As Integer = 0 To OrInvMo.Length / DGVInventaireMo.Columns.Count - 1
-                If DGVInventaireMo.Rows(i).Cells(0).Value = OrInvMo(int, 0) Then
-                    For c As Integer = 0 To DGVInventaireMo.Columns.Count - 1
-                        If Not DGVInventaireMo.Rows(i).Cells(c).Value = OrInvMo(int, c) Then
-                            If ConnectionServeur.Getinstance.ModInv(DGVInventaireMo.Rows(i).Cells(0).Value, id, DGVInventaireMo.Rows(i).Cells(c).Value, "ModInvModel") Then
+        For i As Integer = 0 To DGVInventaireOpt.Rows.Count - 1
+            For int As Integer = 0 To OrInvOpt.Length / DGVInventaireOpt.Columns.Count - 1
+                If DGVInventaireOpt.Rows(i).Cells(0).Value = OrInvOpt(int, 0) Then
+                    For c As Integer = 0 To DGVInventaireOpt.Columns.Count - 1
+                        If Not DGVInventaireOpt.Rows(i).Cells(c).Value = OrInvOpt(int, c) Then
+                            If ConnectionServeur.Getinstance.ModInv(DGVInventaireOpt.Rows(i).Cells(0).Value, id, DGVInventaireOpt.Rows(i).Cells(c).Value, "ModInvOpt") Then
                                 bool2 = True
                             Else
                                 bool2 = False
@@ -107,16 +111,16 @@ Public Class GestionInvModel
         Next
 
         If Not IsNothing(listeAjout) Then
-            If ConnectionServeur.Getinstance.AddDeleteListe(listeAjout, id, "AddInvMo") Then
+            If ConnectionServeur.Getinstance.AddDelete(listeAjout, "AddOptionItem") Then
                 listeAjout = CreateListeAdd(listeInvAdd, DGVInventaireAdd, False)
                 If Not IsNothing(listeAjout) Then
-                    If ConnectionServeur.Getinstance.AddDelete(listeAjout, id, "DeleteInvMo") Then
+                    If ConnectionServeur.Getinstance.AddDelete(listeAjout, id, "DeleteInvOpt") Then
                         bool1 = True
-                        ReDim OrInvMo(tableInvMo.Rows.Count - 1, tableInvMo.Columns.Count - 1)
-                        ucGestion.ListeOr(OrInvMo, tableInvMo)
+                        ReDim OrInvOpt(tableInvOpt.Rows.Count - 1, tableInvOpt.Columns.Count - 1)
+                        ListGest.ListeOr(OrInvOpt, tableInvOpt)
                         ReDim OrInvAdd(tableInvAdd.Rows.Count - 1, tableInvAdd.Columns.Count - 1)
-                        ucGestion.ListeOr(OrInvAdd, tableInvAdd)
-                        ucGestion.CheckChange()
+                        ListGest.ListeOr(OrInvAdd, tableInvAdd)
+                        ListGest.changeBt(ListGest.CheckChange(OrInvOpt, tableInvOpt, nbrInv), btSave, btAnnuler)
                     Else
                         bool1 = False
                     End If
@@ -127,13 +131,13 @@ Public Class GestionInvModel
         Else
             listeAjout = CreateListeAdd(listeInvAdd, DGVInventaireAdd, False)
             If Not IsNothing(listeAjout) Then
-                If ConnectionServeur.Getinstance.AddDelete(listeAjout, id, "DeleteInvMo") Then
+                If ConnectionServeur.Getinstance.AddDelete(listeAjout, id, "DeleteInvOpt") Then
                     bool1 = True
-                    ReDim OrInvMo(tableInvMo.Rows.Count - 1, tableInvMo.Columns.Count - 1)
-                    ucGestion.ListeOr(OrInvMo, tableInvMo)
+                    ReDim OrInvOpt(tableInvOpt.Rows.Count - 1, tableInvOpt.Columns.Count - 1)
+                    ListGest.ListeOr(OrInvOpt, tableInvOpt)
                     ReDim OrInvAdd(tableInvAdd.Rows.Count - 1, tableInvAdd.Columns.Count - 1)
-                    ucGestion.ListeOr(OrInvAdd, tableInvAdd)
-                    ucGestion.CheckChange()
+                    ListGest.ListeOr(OrInvAdd, tableInvAdd)
+                    ListGest.changeBt(ListGest.CheckChange(OrInvOpt, tableInvOpt, nbrInv), btSave, btAnnuler)
                 Else
                     bool1 = False
                 End If
@@ -169,60 +173,34 @@ Public Class GestionInvModel
                 nbr += 1
                 ReDim Preserve listeAdd(nbr)
                 listeAdd(nbr) = dgv.Rows(i).Cells(0).Value
+                nbr += 1
+                ReDim Preserve listeAdd(nbr)
+                listeAdd(nbr) = id
                 If bool Then
                     nbr += 1
                     ReDim Preserve listeAdd(nbr)
-                    listeAdd(nbr) = dgv.Rows(i).Cells(dgv.Columns.Count - 1).Value
+                    If String.IsNullOrEmpty(dgv.Rows(i).Cells(dgv.Columns.Count - 1).Value) Then
+                        listeAdd(nbr) = 0
+                    Else
+                        listeAdd(nbr) = dgv.Rows(i).Cells(dgv.Columns.Count - 1).Value
+                    End If
                 End If
             End If
         Next
         Return listeAdd
     End Function
 
-    Public Sub CheckChange()
-        If ucGestion.CheckFor(listeInvMo, tableInvMo, nbrInv) Then
-            btSave.Enabled = True
-        Else
-            btSave.Enabled = False
-        End If
-    End Sub
-
-    Private Sub DGVInventaireMo_CellBeginEdit(sender As Object, e As DataGridViewCellCancelEventArgs) Handles DGVInventaireMo.CellBeginEdit
+    Private Sub DGVInventaireMo_CellBeginEdit(sender As Object, e As DataGridViewCellCancelEventArgs) Handles DGVInventaireOpt.CellBeginEdit
         If Not e.ColumnIndex = 4 Then
             e.Cancel = True
         End If
     End Sub
 
-    Public Sub PopulateRow(table As DataTable, dgvGiver As DataGridView, dgvRecever As DataGridView)
-        Dim row As DataRow = table.NewRow
-        Dim nbr As Integer = 0
-
-        If dgvGiver.Columns.Count = 5 Then
-            nbr = 2
-        End If
-
-        For i As Integer = 0 To tableAll.Rows.Count - 1
-            If tableAll(i)(0) = dgvGiver.CurrentRow.Cells(0).Value Then
-                If nbr = 2 Then
-                    tableAll(i)(4) = dgvGiver.CurrentRow.Cells(4).Value
-                End If
-                For int As Integer = 0 To dgvGiver.Columns.Count - nbr
-                    row(int) = tableAll(i)(int)
-                Next
-            End If
-        Next
-
-
-        table.Rows.Add(row)
-        dgvRecever.Sort(dgvRecever.Columns(0), ListSortDirection.Ascending)
-        dgvGiver.Rows.Remove(dgvGiver.CurrentRow)
-        CheckChange()
-    End Sub
-
-    Private Sub btAnnuler_Click(sender As Object, e As EventArgs) Handles btAnnuler.Click
-        AnnulerChangement(OrInvMo, tableInvMo)
+    Private Sub BtAnnuler_Click(sender As Object, e As EventArgs) Handles btAnnuler.Click
+        AnnulerChangement(OrInvOpt, tableInvOpt)
         AnnulerChangement(OrInvAdd, tableInvAdd)
         AnnulerChangement(OrTableAll, tableAll)
+        ListGest.changeBt(ListGest.CheckChange(OrInvOpt, tableInvOpt, nbrInv), btSave, btAnnuler)
     End Sub
 
     Private Sub AnnulerChangement(liste(,) As String, table As DataTable)
@@ -238,17 +216,16 @@ Public Class GestionInvModel
             Next
             table.Rows.Add(row)
         Next
-        CheckChange()
     End Sub
 
-    Private Sub DGVInventaireMo_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles DGVInventaireMo.CellEndEdit
+    Private Sub DGVInventaireOpt_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles DGVInventaireOpt.CellEndEdit
         Dim bool As Boolean
-        For i As Integer = 0 To tableInvMo.Rows.Count - 1
+        For i As Integer = 0 To tableInvOpt.Rows.Count - 1
             bool = False
-            For r As Integer = 0 To OrTableAll.Length / tableInvMo.Columns.Count - 1
-                If OrTableAll(r, 0) = tableInvMo.Rows(i).Item(0) Then
-                    For c As Integer = 0 To tableInvMo.Columns.Count - 1
-                        If Not OrTableAll(r, c) = tableInvMo(i)(c) Then
+            For r As Integer = 0 To OrTableAll.Length / tableInvOpt.Columns.Count - 1
+                If OrTableAll(r, 0) = tableInvOpt.Rows(i).Item(0) Then
+                    For c As Integer = 0 To tableInvOpt.Columns.Count - 1
+                        If Not OrTableAll(r, c) = tableInvOpt(i)(c) Then
                             bool = True
                         End If
                     Next
@@ -260,5 +237,15 @@ Public Class GestionInvModel
                 btSave.Enabled = False
             End If
         Next
+        ListGest.changeBt(ListGest.CheckChange(OrInvOpt, tableInvOpt, nbrInv), btSave, btAnnuler)
+    End Sub
+
+    Private Sub GestionInvOpt_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        Dim result As DialogResult = MessageBox.Show("Voulez-vous sauvegarder les modifications que vous avez apporté?", "Attention", MessageBoxButtons.YesNoCancel)
+        If result = DialogResult.Yes Then
+            Sauvegarder()
+        ElseIf result = DialogResult.Cancel Then
+            e.Cancel = True
+        End If
     End Sub
 End Class

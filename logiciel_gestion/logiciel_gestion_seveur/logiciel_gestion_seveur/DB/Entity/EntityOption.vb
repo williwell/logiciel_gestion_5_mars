@@ -6,7 +6,7 @@ Public Class EntityOption
     '__________________________________________________________________________________________________________
     ReadOnly connection As New MySqlConnection(ConnectionDB.GetInstance.connectionString)
     Shared instance As EntityOption = Nothing
-    ReadOnly nomClass As String = "EntityFournisseur"
+    ReadOnly nomClass As String = "EntityOption"
 
 
     '__________________________________________________________________________________________________________
@@ -68,7 +68,7 @@ Public Class EntityOption
             End If
             Dim command As New MySqlCommand
             command.Connection = connection
-            Dim str As String = "SELECT * FROM `optionDispo` where id <> 0 "
+            Dim str As String = "SELECT id,nom,cout FROM `optionDispo` where id <> 0 and DeleteOpt <> 0"
             For i As Integer = 0 To id.Count - 1
                 str = str & " and id <> " & id(i) & ""
             Next
@@ -92,7 +92,7 @@ Public Class EntityOption
             End If
             Dim command As New MySqlCommand
             command.Connection = connection
-            command.CommandText = "SELECT * FROM `optionDispo`"
+            command.CommandText = "SELECT id,nom,cout FROM `optionDispo` where DeleteOpt <> 0"
             connection.Open()
             Dim reader = command.ExecuteReader()
             table.Load(reader)
