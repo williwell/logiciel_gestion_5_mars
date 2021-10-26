@@ -30,14 +30,18 @@ Partial Class OptionAvant
         Me.tbIp = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.TBTPS = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.TBTVQ = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'btAnnuler
         '
-        Me.btAnnuler.Location = New System.Drawing.Point(153, 192)
+        Me.btAnnuler.Location = New System.Drawing.Point(153, 280)
         Me.btAnnuler.Name = "btAnnuler"
         Me.btAnnuler.Size = New System.Drawing.Size(85, 23)
-        Me.btAnnuler.TabIndex = 27
+        Me.btAnnuler.TabIndex = 6
         Me.btAnnuler.Text = "Annuler"
         Me.btAnnuler.UseVisualStyleBackColor = True
         '
@@ -46,7 +50,7 @@ Partial Class OptionAvant
         Me.tbPortDB.Location = New System.Drawing.Point(59, 163)
         Me.tbPortDB.Name = "tbPortDB"
         Me.tbPortDB.Size = New System.Drawing.Size(179, 23)
-        Me.tbPortDB.TabIndex = 26
+        Me.tbPortDB.TabIndex = 2
         '
         'Label6
         '
@@ -59,10 +63,10 @@ Partial Class OptionAvant
         '
         'btSauv
         '
-        Me.btSauv.Location = New System.Drawing.Point(59, 192)
+        Me.btSauv.Location = New System.Drawing.Point(59, 280)
         Me.btSauv.Name = "btSauv"
         Me.btSauv.Size = New System.Drawing.Size(85, 23)
-        Me.btSauv.TabIndex = 18
+        Me.btSauv.TabIndex = 5
         Me.btSauv.Text = "Sauvegarder"
         Me.btSauv.UseVisualStyleBackColor = True
         '
@@ -71,14 +75,14 @@ Partial Class OptionAvant
         Me.tbNom.Location = New System.Drawing.Point(59, 119)
         Me.tbNom.Name = "tbNom"
         Me.tbNom.Size = New System.Drawing.Size(179, 23)
-        Me.tbNom.TabIndex = 17
+        Me.tbNom.TabIndex = 1
         '
         'tbIp
         '
         Me.tbIp.Location = New System.Drawing.Point(59, 75)
         Me.tbIp.Name = "tbIp"
         Me.tbIp.Size = New System.Drawing.Size(179, 23)
-        Me.tbIp.TabIndex = 16
+        Me.tbIp.TabIndex = 0
         '
         'Label2
         '
@@ -98,11 +102,47 @@ Partial Class OptionAvant
         Me.Label1.TabIndex = 14
         Me.Label1.Text = "Ip serveur"
         '
+        'TBTPS
+        '
+        Me.TBTPS.Location = New System.Drawing.Point(59, 207)
+        Me.TBTPS.Name = "TBTPS"
+        Me.TBTPS.Size = New System.Drawing.Size(179, 23)
+        Me.TBTPS.TabIndex = 3
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(59, 189)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(26, 15)
+        Me.Label3.TabIndex = 28
+        Me.Label3.Text = "TPS"
+        '
+        'TBTVQ
+        '
+        Me.TBTVQ.Location = New System.Drawing.Point(59, 251)
+        Me.TBTVQ.Name = "TBTVQ"
+        Me.TBTVQ.Size = New System.Drawing.Size(179, 23)
+        Me.TBTVQ.TabIndex = 4
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(59, 233)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(29, 15)
+        Me.Label4.TabIndex = 30
+        Me.Label4.Text = "TVQ"
+        '
         'OptionAvant
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(449, 450)
+        Me.Controls.Add(Me.TBTVQ)
+        Me.Controls.Add(Me.Label4)
+        Me.Controls.Add(Me.TBTPS)
+        Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.btAnnuler)
         Me.Controls.Add(Me.tbPortDB)
         Me.Controls.Add(Me.Label6)
@@ -126,4 +166,8 @@ Partial Class OptionAvant
     Friend WithEvents tbIp As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents TBTPS As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents TBTVQ As TextBox
+    Friend WithEvents Label4 As Label
 End Class

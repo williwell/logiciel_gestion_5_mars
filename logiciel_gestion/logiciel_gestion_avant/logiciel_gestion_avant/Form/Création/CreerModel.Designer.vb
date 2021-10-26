@@ -255,7 +255,7 @@ Partial Class CreerModel
         Me.Controls.Add(Me.dgvOptionMo)
         Me.Controls.Add(Me.Label1)
         Me.Name = "CreerModel"
-        Me.Text = "CreerModel"
+        Me.Text = "Créer Nouveau Model"
         CType(Me.dgvCoulAjout, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvOptionAjout, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvCoulMo, System.ComponentModel.ISupportInitialize).EndInit()

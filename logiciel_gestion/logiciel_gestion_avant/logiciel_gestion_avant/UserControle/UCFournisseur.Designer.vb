@@ -77,7 +77,7 @@ Partial Class UCFournisseur
         Me.tbNomFour.Location = New System.Drawing.Point(40, 106)
         Me.tbNomFour.Name = "tbNomFour"
         Me.tbNomFour.Size = New System.Drawing.Size(180, 23)
-        Me.tbNomFour.TabIndex = 3
+        Me.tbNomFour.TabIndex = 2
         '
         'Label2
         '
@@ -93,7 +93,7 @@ Partial Class UCFournisseur
         Me.tbAdres2.Location = New System.Drawing.Point(40, 194)
         Me.tbAdres2.Name = "tbAdres2"
         Me.tbAdres2.Size = New System.Drawing.Size(180, 23)
-        Me.tbAdres2.TabIndex = 7
+        Me.tbAdres2.TabIndex = 4
         '
         'Label3
         '
@@ -109,7 +109,7 @@ Partial Class UCFournisseur
         Me.tbAdres1.Location = New System.Drawing.Point(40, 150)
         Me.tbAdres1.Name = "tbAdres1"
         Me.tbAdres1.Size = New System.Drawing.Size(180, 23)
-        Me.tbAdres1.TabIndex = 5
+        Me.tbAdres1.TabIndex = 3
         '
         'Label4
         '
@@ -125,7 +125,7 @@ Partial Class UCFournisseur
         Me.tbAddCour.Location = New System.Drawing.Point(40, 370)
         Me.tbAddCour.Name = "tbAddCour"
         Me.tbAddCour.Size = New System.Drawing.Size(180, 23)
-        Me.tbAddCour.TabIndex = 15
+        Me.tbAddCour.TabIndex = 8
         '
         'Label5
         '
@@ -141,7 +141,7 @@ Partial Class UCFournisseur
         Me.tbLeadTime.Location = New System.Drawing.Point(40, 326)
         Me.tbLeadTime.Name = "tbLeadTime"
         Me.tbLeadTime.Size = New System.Drawing.Size(180, 23)
-        Me.tbLeadTime.TabIndex = 13
+        Me.tbLeadTime.TabIndex = 7
         '
         'Label6
         '
@@ -157,7 +157,7 @@ Partial Class UCFournisseur
         Me.tbNomCont.Location = New System.Drawing.Point(40, 282)
         Me.tbNomCont.Name = "tbNomCont"
         Me.tbNomCont.Size = New System.Drawing.Size(180, 23)
-        Me.tbNomCont.TabIndex = 11
+        Me.tbNomCont.TabIndex = 6
         '
         'Label7
         '
@@ -173,7 +173,7 @@ Partial Class UCFournisseur
         Me.tbTel.Location = New System.Drawing.Point(40, 238)
         Me.tbTel.Name = "tbTel"
         Me.tbTel.Size = New System.Drawing.Size(180, 23)
-        Me.tbTel.TabIndex = 9
+        Me.tbTel.TabIndex = 5
         '
         'Label8
         '
@@ -189,7 +189,7 @@ Partial Class UCFournisseur
         Me.tbMethodePaie.Location = New System.Drawing.Point(40, 502)
         Me.tbMethodePaie.Name = "tbMethodePaie"
         Me.tbMethodePaie.Size = New System.Drawing.Size(180, 23)
-        Me.tbMethodePaie.TabIndex = 21
+        Me.tbMethodePaie.TabIndex = 11
         '
         'Label9
         '
@@ -205,7 +205,7 @@ Partial Class UCFournisseur
         Me.tbNoCompte.Location = New System.Drawing.Point(40, 458)
         Me.tbNoCompte.Name = "tbNoCompte"
         Me.tbNoCompte.Size = New System.Drawing.Size(180, 23)
-        Me.tbNoCompte.TabIndex = 19
+        Me.tbNoCompte.TabIndex = 10
         '
         'Label10
         '
@@ -221,7 +221,7 @@ Partial Class UCFournisseur
         Me.tbMethodeCom.Location = New System.Drawing.Point(40, 414)
         Me.tbMethodeCom.Name = "tbMethodeCom"
         Me.tbMethodeCom.Size = New System.Drawing.Size(180, 23)
-        Me.tbMethodeCom.TabIndex = 17
+        Me.tbMethodeCom.TabIndex = 9
         '
         'Label11
         '
@@ -243,7 +243,7 @@ Partial Class UCFournisseur
         Me.dgvPiece.RowTemplate.Height = 25
         Me.dgvPiece.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvPiece.Size = New System.Drawing.Size(561, 199)
-        Me.dgvPiece.TabIndex = 22
+        Me.dgvPiece.TabIndex = 15
         '
         'Label12
         '
@@ -265,7 +265,7 @@ Partial Class UCFournisseur
         Me.dgvFour.RowTemplate.Height = 25
         Me.dgvFour.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvFour.Size = New System.Drawing.Size(561, 199)
-        Me.dgvFour.TabIndex = 24
+        Me.dgvFour.TabIndex = 14
         '
         'Label13
         '
@@ -282,7 +282,7 @@ Partial Class UCFournisseur
         Me.btSauv.Location = New System.Drawing.Point(40, 531)
         Me.btSauv.Name = "btSauv"
         Me.btSauv.Size = New System.Drawing.Size(85, 23)
-        Me.btSauv.TabIndex = 26
+        Me.btSauv.TabIndex = 12
         Me.btSauv.Text = "Enregistrer"
         Me.btSauv.UseVisualStyleBackColor = True
         '
@@ -292,7 +292,7 @@ Partial Class UCFournisseur
         Me.btAnnuler.Location = New System.Drawing.Point(135, 531)
         Me.btAnnuler.Name = "btAnnuler"
         Me.btAnnuler.Size = New System.Drawing.Size(85, 23)
-        Me.btAnnuler.TabIndex = 27
+        Me.btAnnuler.TabIndex = 13
         Me.btAnnuler.Text = "Annuler"
         Me.btAnnuler.UseVisualStyleBackColor = True
         '
@@ -301,7 +301,7 @@ Partial Class UCFournisseur
         Me.btCreerFour.Location = New System.Drawing.Point(40, 18)
         Me.btCreerFour.Name = "btCreerFour"
         Me.btCreerFour.Size = New System.Drawing.Size(172, 23)
-        Me.btCreerFour.TabIndex = 28
+        Me.btCreerFour.TabIndex = 0
         Me.btCreerFour.Text = "Créer Nouveau Fournisseur"
         Me.btCreerFour.UseVisualStyleBackColor = True
         '

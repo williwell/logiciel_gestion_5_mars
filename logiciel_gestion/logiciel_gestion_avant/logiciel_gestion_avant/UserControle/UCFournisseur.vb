@@ -49,6 +49,11 @@
 
     Private Sub Remplir(table As DataTable)
         Try
+            If table(0)(0) = 1 Then
+                ChangeEnable(False)
+            Else
+                ChangeEnable(True)
+            End If
             liste(0) = table(0)(0)
             tbNomFour.Text = table(0)(1)
             tbAdres1.Text = table(0)(2)
@@ -64,6 +69,19 @@
             MessageBox.Show("Un erreure est survenu avec le serveur! 1")
             main.Fermer()
         End Try
+    End Sub
+
+    Private Sub ChangeEnable(bool As Boolean)
+        tbNomFour.Enabled = bool
+        tbAdres1.Enabled = bool
+        tbAdres2.Enabled = bool
+        tbTel.Enabled = bool
+        tbNomCont.Enabled = bool
+        tbLeadTime.Enabled = bool
+        tbAddCour.Enabled = bool
+        tbMethodeCom.Enabled = bool
+        tbNoCompte.Enabled = bool
+        tbMethodePaie.Enabled = bool
     End Sub
 
     Private Sub BtSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click

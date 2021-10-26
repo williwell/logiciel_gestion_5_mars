@@ -7,6 +7,10 @@
         tableVehicule.Rows.Add("Ce datagridview n'est pas encore implementé") 'A changer plus tard
         tableVehicule.Rows.Add("Ce datagridview n'est pas encore implementé") 'A changer plus tard
 
+        LoadDGV()
+    End Sub
+
+    Public Sub LoadDGV()
         tableItem = ConnectionServeur.Getinstance.GetInfo("getInvLow")
         DGVVehicule.DataSource = tableVehicule
         DGVItemLow.DataSource = tableItem
@@ -14,11 +18,7 @@
         blockSorting(DGVItemLow)
         blockSorting(DGVVehicule)
 
-        'For r As Integer = 0 To DGVItemLow.RowCount - 1
-        '    If DGVItemLow.Rows(r).Cells("Quantite").Value <= 0 Then
-        '        DGVVehicule.Rows(0).DefaultCellStyle.BackColor = Color.Red
-        '    End If
-        'Next
+        RowsColor()
     End Sub
 
     Private Sub blockSorting(dgv As DataGridView)

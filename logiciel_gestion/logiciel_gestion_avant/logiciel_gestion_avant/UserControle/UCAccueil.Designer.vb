@@ -68,7 +68,7 @@ Partial Class UCAccueil
         Me.DGVVehicule.Name = "DGVVehicule"
         Me.DGVVehicule.RowTemplate.Height = 25
         Me.DGVVehicule.Size = New System.Drawing.Size(704, 273)
-        Me.DGVVehicule.TabIndex = 4
+        Me.DGVVehicule.TabIndex = 1
         '
         'UCAccueil
         '

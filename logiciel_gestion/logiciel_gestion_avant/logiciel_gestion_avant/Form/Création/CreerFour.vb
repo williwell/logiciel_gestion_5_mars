@@ -76,4 +76,16 @@
             End If
         End If
     End Sub
+
+    Private Sub TbTel_KeyDown(sender As Object, e As KeyEventArgs) Handles tbTel.KeyDown
+        If Not (e.KeyCode = Keys.Back OrElse e.KeyCode = Keys.Delete OrElse e.KeyCode = Keys.Left OrElse e.KeyCode = Keys.Right) Then
+            If Not ((e.KeyCode >= 96 AndAlso e.KeyCode <= 105) OrElse (e.KeyCode >= 48 AndAlso e.KeyCode <= 57)) Then
+                e.SuppressKeyPress = True
+            End If
+        End If
+    End Sub
+
+    Private Sub btAnnuler_Click(sender As Object, e As EventArgs) Handles btAnnuler.Click
+        Me.Close()
+    End Sub
 End Class

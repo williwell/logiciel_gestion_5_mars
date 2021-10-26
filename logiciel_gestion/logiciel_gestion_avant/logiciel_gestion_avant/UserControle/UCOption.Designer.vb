@@ -40,7 +40,7 @@ Partial Class UCOption
         Me.DGVOption.Name = "DGVOption"
         Me.DGVOption.RowTemplate.Height = 25
         Me.DGVOption.Size = New System.Drawing.Size(486, 264)
-        Me.DGVOption.TabIndex = 0
+        Me.DGVOption.TabIndex = 3
         '
         'BTCreer
         '
@@ -57,7 +57,7 @@ Partial Class UCOption
         Me.BtSave.Location = New System.Drawing.Point(93, 435)
         Me.BtSave.Name = "BtSave"
         Me.BtSave.Size = New System.Drawing.Size(117, 23)
-        Me.BtSave.TabIndex = 2
+        Me.BtSave.TabIndex = 4
         Me.BtSave.Text = "Enregistrer"
         Me.BtSave.UseVisualStyleBackColor = True
         '
@@ -67,7 +67,7 @@ Partial Class UCOption
         Me.BTAnnuler.Location = New System.Drawing.Point(216, 435)
         Me.BTAnnuler.Name = "BTAnnuler"
         Me.BTAnnuler.Size = New System.Drawing.Size(117, 23)
-        Me.BTAnnuler.TabIndex = 3
+        Me.BTAnnuler.TabIndex = 5
         Me.BTAnnuler.Text = "Annuler"
         Me.BTAnnuler.UseVisualStyleBackColor = True
         '
@@ -76,7 +76,7 @@ Partial Class UCOption
         Me.BTDelete.Location = New System.Drawing.Point(339, 435)
         Me.BTDelete.Name = "BTDelete"
         Me.BTDelete.Size = New System.Drawing.Size(117, 23)
-        Me.BTDelete.TabIndex = 4
+        Me.BTDelete.TabIndex = 6
         Me.BTDelete.Text = "Supprimer Option"
         Me.BTDelete.UseVisualStyleBackColor = True
         '
@@ -85,7 +85,7 @@ Partial Class UCOption
         Me.BTItem.Location = New System.Drawing.Point(239, 136)
         Me.BTItem.Name = "BTItem"
         Me.BTItem.Size = New System.Drawing.Size(140, 23)
-        Me.BTItem.TabIndex = 5
+        Me.BTItem.TabIndex = 2
         Me.BTItem.Text = "Gérer Inventaire Option"
         Me.BTItem.UseVisualStyleBackColor = True
         '

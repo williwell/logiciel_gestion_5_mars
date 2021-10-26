@@ -116,7 +116,7 @@ Partial Class CreerCouleur
         Me.MaximumSize = New System.Drawing.Size(310, 335)
         Me.MinimumSize = New System.Drawing.Size(310, 335)
         Me.Name = "CreerCouleur"
-        Me.Text = "CreerCouleur"
+        Me.Text = "Création Nouvelle Couleur"
         CType(Me.NUDCout, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

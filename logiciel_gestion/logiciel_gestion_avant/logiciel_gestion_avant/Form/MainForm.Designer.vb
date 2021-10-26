@@ -70,7 +70,7 @@ Partial Class MainForm
         Me.panMenu.MaximumSize = New System.Drawing.Size(100, 260)
         Me.panMenu.MinimumSize = New System.Drawing.Size(100, 30)
         Me.panMenu.Name = "panMenu"
-        Me.panMenu.Size = New System.Drawing.Size(100, 30)
+        Me.panMenu.Size = New System.Drawing.Size(100, 260)
         Me.panMenu.TabIndex = 2
         '
         'BtClient
@@ -175,7 +175,7 @@ Partial Class MainForm
         Me.MaximumSize = New System.Drawing.Size(848, 731)
         Me.MinimumSize = New System.Drawing.Size(848, 731)
         Me.Name = "MainForm"
-        Me.Text = "Logiciel Gestion 5-Mars vr"
+        Me.Text = "Logiciel Gestion 5-Mars VR"
         Me.panMenu.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()

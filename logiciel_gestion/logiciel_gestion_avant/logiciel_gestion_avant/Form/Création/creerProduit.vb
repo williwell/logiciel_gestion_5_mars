@@ -67,6 +67,7 @@
                 Dim liste2() As String = {liste(0), liste(4), liste(6), liste(10), liste(11)}
                 If ConnectionServeur.Getinstance.AddDelete(liste2, "addInvFour") Then
                     MessageBox.Show("La création du nouveau produit à bien été fait!")
+                    Me.Close()
                 Else
                     MessageBox.Show("Une erreur est survenue durant la création!", "Attention!")
                 End If
@@ -85,6 +86,13 @@
 
     Private Sub BtAnnul_Click(sender As Object, e As EventArgs) Handles btAnnul.Click
         Me.Close()
+    End Sub
+
+    Private Sub nudCoutUn_KeyDown(sender As Object, e As KeyEventArgs) Handles nudCoutUn.KeyDown
+        If e.KeyCode = 110 Or e.KeyCode = 190 Then
+            e.SuppressKeyPress = True
+            SendKeys.Send(",")
+        End If
     End Sub
 
     '__________________________________________________________________________________________________________
@@ -115,7 +123,6 @@
             End If
         Next
     End Sub
-
 
     '__________________________________________________________________________________________________________
     'Get

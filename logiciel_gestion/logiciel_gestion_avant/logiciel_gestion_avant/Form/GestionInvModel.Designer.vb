@@ -52,7 +52,7 @@ Partial Class GestionInvModel
         Me.DGVInventaireAdd.RowTemplate.Height = 25
         Me.DGVInventaireAdd.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DGVInventaireAdd.Size = New System.Drawing.Size(443, 488)
-        Me.DGVInventaireAdd.TabIndex = 43
+        Me.DGVInventaireAdd.TabIndex = 2
         '
         'Label8
         '
@@ -73,7 +73,7 @@ Partial Class GestionInvModel
         Me.DGVInventaireMo.RowTemplate.Height = 25
         Me.DGVInventaireMo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DGVInventaireMo.Size = New System.Drawing.Size(543, 488)
-        Me.DGVInventaireMo.TabIndex = 41
+        Me.DGVInventaireMo.TabIndex = 1
         '
         'btSave
         '
@@ -81,7 +81,7 @@ Partial Class GestionInvModel
         Me.btSave.Location = New System.Drawing.Point(12, 521)
         Me.btSave.Name = "btSave"
         Me.btSave.Size = New System.Drawing.Size(137, 23)
-        Me.btSave.TabIndex = 45
+        Me.btSave.TabIndex = 3
         Me.btSave.Text = "Enregistrer"
         Me.btSave.UseVisualStyleBackColor = True
         '
@@ -90,7 +90,7 @@ Partial Class GestionInvModel
         Me.btAnnuler.Location = New System.Drawing.Point(155, 521)
         Me.btAnnuler.Name = "btAnnuler"
         Me.btAnnuler.Size = New System.Drawing.Size(137, 23)
-        Me.btAnnuler.TabIndex = 46
+        Me.btAnnuler.TabIndex = 4
         Me.btAnnuler.Text = "Annuler"
         Me.btAnnuler.UseVisualStyleBackColor = True
         '
@@ -106,7 +106,7 @@ Partial Class GestionInvModel
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.DGVInventaireMo)
         Me.Name = "GestionInvModel"
-        Me.Text = "GestionInvModel"
+        Me.Text = "Gestion Model Inventaire"
         CType(Me.DGVInventaireAdd, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGVInventaireMo, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

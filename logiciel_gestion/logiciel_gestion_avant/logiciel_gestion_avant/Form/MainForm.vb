@@ -17,6 +17,7 @@ Public Class MainForm
     ReadOnly ucModel As New UCGestionVehicule
     ReadOnly ucCouleur As New UCCouleur
     ReadOnly ucOption As New UCOption
+    ReadOnly ucClient As New UCClient
     Private Delegate Sub setValue(text As String)
 
     '__________________________________________________________________________________________________________
@@ -35,14 +36,7 @@ Public Class MainForm
         ConnectionServeur.setMain(Me)
         If ConnectionServeur.getinstance.TestConnection() Then
             panMenu.Size = panMenu.MinimumSize
-            PanUC.Controls.Add(ucAccueil)
-            PanUC.Controls.Add(ucInventaire)
-            PanUC.Controls.Add(ucVente)
-            PanUC.Controls.Add(ucFour)
-            PanUC.Controls.Add(ucModel)
-            PanUC.Controls.Add(ucCouleur)
-            PanUC.Controls.Add(ucOption)
-            ucAccueil.RowsColor()
+            AddUC()
         Else
             lbNonConc.Text = "Impossible de se connecter au serveur!"
             btConnec.Visible = True
@@ -53,6 +47,18 @@ Public Class MainForm
     '__________________________________________________________________________________________________________
     'Methods
     '__________________________________________________________________________________________________________
+    Private Sub AddUC()
+        PanUC.Controls.Add(ucAccueil)
+        PanUC.Controls.Add(ucInventaire)
+        PanUC.Controls.Add(ucVente)
+        PanUC.Controls.Add(ucFour)
+        PanUC.Controls.Add(ucModel)
+        PanUC.Controls.Add(ucCouleur)
+        PanUC.Controls.Add(ucOption)
+        PanUC.Controls.Add(ucClient)
+        ucAccueil.RowsColor()
+    End Sub
+
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         currentKeys.Add(e.KeyCode)
 
@@ -80,6 +86,7 @@ Public Class MainForm
     End Sub
 
     Private Sub BtAccueil_Click(sender As Object, e As EventArgs) Handles btAccueil.Click
+        ucAccueil.LoadDGV()
         ucAccueil.BringToFront()
         panMenu.Size = panMenu.MinimumSize
     End Sub
@@ -106,13 +113,7 @@ Public Class MainForm
 
     Private Sub BtConnec_Click(sender As Object, e As EventArgs) Handles btConnec.Click
         If ConnectionServeur.Getinstance.TestConnection() Then
-            PanUC.Controls.Add(ucAccueil)
-            PanUC.Controls.Add(ucInventaire)
-            PanUC.Controls.Add(ucVente)
-            PanUC.Controls.Add(ucFour)
-            PanUC.Controls.Add(ucModel)
-            PanUC.Controls.Add(ucCouleur)
-            PanUC.Controls.Add(ucOption)
+            AddUC()
             lbNonConc.Text = ""
             btConnec.Visible = False
             btMenu.Enabled = True
@@ -187,7 +188,11 @@ Public Class MainForm
     End Function
 
     Private Sub MainForm_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        Me.Dispose()
+        If MessageBox.Show("Voulez-vous vraiment fermer le programme?", "Attention!", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            Me.Dispose()
+        Else
+            e.Cancel = True
+        End If
     End Sub
 
     Private Sub BtCouleur_Click(sender As Object, e As EventArgs) Handles BtCouleur.Click
@@ -197,6 +202,11 @@ Public Class MainForm
 
     Private Sub BtOptionModel_Click(sender As Object, e As EventArgs) Handles BtOptionModel.Click
         ucOption.BringToFront()
+        panMenu.Size = panMenu.MinimumSize
+    End Sub
+
+    Private Sub BtClient_Click(sender As Object, e As EventArgs) Handles BtClient.Click
+        ucClient.BringToFront()
         panMenu.Size = panMenu.MinimumSize
     End Sub
 End Class

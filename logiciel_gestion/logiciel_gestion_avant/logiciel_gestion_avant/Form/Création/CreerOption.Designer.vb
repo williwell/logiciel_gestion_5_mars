@@ -132,7 +132,7 @@ Partial Class CreerOption
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DGVItemOption)
         Me.Name = "CreerOption"
-        Me.Text = "CreerOption"
+        Me.Text = "Créer nouvelle Option"
         CType(Me.DGVItemOption, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGVItemAdd, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NUDCout, System.ComponentModel.ISupportInitialize).EndInit()

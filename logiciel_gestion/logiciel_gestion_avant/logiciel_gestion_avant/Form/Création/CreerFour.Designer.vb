@@ -254,7 +254,7 @@ Partial Class CreerFour
         Me.MaximumSize = New System.Drawing.Size(279, 580)
         Me.MinimumSize = New System.Drawing.Size(279, 580)
         Me.Name = "CreerFour"
-        Me.Text = "CreerFour"
+        Me.Text = "Créer Nouveau Fournisseur"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

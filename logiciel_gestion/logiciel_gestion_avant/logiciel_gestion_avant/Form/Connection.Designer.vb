@@ -34,7 +34,7 @@ Partial Class Connection
         Me.tbPass.Location = New System.Drawing.Point(62, 130)
         Me.tbPass.Name = "tbPass"
         Me.tbPass.Size = New System.Drawing.Size(100, 23)
-        Me.tbPass.TabIndex = 10
+        Me.tbPass.TabIndex = 1
         '
         'Label2
         '
@@ -59,14 +59,14 @@ Partial Class Connection
         Me.tbUser.Location = New System.Drawing.Point(62, 86)
         Me.tbUser.Name = "tbUser"
         Me.tbUser.Size = New System.Drawing.Size(100, 23)
-        Me.tbUser.TabIndex = 7
+        Me.tbUser.TabIndex = 0
         '
         'btConnection
         '
         Me.btConnection.Location = New System.Drawing.Point(62, 159)
         Me.btConnection.Name = "btConnection"
         Me.btConnection.Size = New System.Drawing.Size(75, 23)
-        Me.btConnection.TabIndex = 6
+        Me.btConnection.TabIndex = 2
         Me.btConnection.Text = "Connexion"
         Me.btConnection.UseVisualStyleBackColor = True
         '

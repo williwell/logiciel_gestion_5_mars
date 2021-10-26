@@ -103,6 +103,7 @@ Partial Class creerProduit
         '
         'nudCoutUn
         '
+        Me.nudCoutUn.DecimalPlaces = 2
         Me.nudCoutUn.Location = New System.Drawing.Point(35, 228)
         Me.nudCoutUn.Name = "nudCoutUn"
         Me.nudCoutUn.Size = New System.Drawing.Size(116, 23)
@@ -307,7 +308,7 @@ Partial Class creerProduit
         Me.Controls.Add(Me.tbIDPro)
         Me.Controls.Add(Me.Label1)
         Me.Name = "creerProduit"
-        Me.Text = "Nouveau Produit"
+        Me.Text = "Créer Nouveau Produit"
         CType(Me.nudMinInv, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nudCoutUn, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nudEnCommende, System.ComponentModel.ISupportInitialize).EndInit()

@@ -50,7 +50,7 @@ Partial Class UCGestionVehicule
         Me.cbModel.Location = New System.Drawing.Point(52, 64)
         Me.cbModel.Name = "cbModel"
         Me.cbModel.Size = New System.Drawing.Size(315, 23)
-        Me.cbModel.TabIndex = 0
+        Me.cbModel.TabIndex = 1
         '
         'Label1
         '
@@ -124,7 +124,7 @@ Partial Class UCGestionVehicule
         Me.btCreer.Location = New System.Drawing.Point(52, 20)
         Me.btCreer.Name = "btCreer"
         Me.btCreer.Size = New System.Drawing.Size(134, 23)
-        Me.btCreer.TabIndex = 12
+        Me.btCreer.TabIndex = 0
         Me.btCreer.Text = "Créer Nouveau Model"
         Me.btCreer.UseVisualStyleBackColor = True
         '
@@ -148,7 +148,7 @@ Partial Class UCGestionVehicule
         Me.dgvCoulAjout.RowTemplate.Height = 25
         Me.dgvCoulAjout.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvCoulAjout.Size = New System.Drawing.Size(351, 150)
-        Me.dgvCoulAjout.TabIndex = 15
+        Me.dgvCoulAjout.TabIndex = 7
         '
         'Label6
         '
@@ -169,7 +169,7 @@ Partial Class UCGestionVehicule
         Me.dgvOptionAjout.RowTemplate.Height = 25
         Me.dgvOptionAjout.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvOptionAjout.Size = New System.Drawing.Size(351, 150)
-        Me.dgvOptionAjout.TabIndex = 13
+        Me.dgvOptionAjout.TabIndex = 5
         '
         'BtEnregistrer
         '
@@ -177,7 +177,7 @@ Partial Class UCGestionVehicule
         Me.BtEnregistrer.Location = New System.Drawing.Point(52, 514)
         Me.BtEnregistrer.Name = "BtEnregistrer"
         Me.BtEnregistrer.Size = New System.Drawing.Size(148, 23)
-        Me.BtEnregistrer.TabIndex = 17
+        Me.BtEnregistrer.TabIndex = 9
         Me.BtEnregistrer.Text = "Enregistrer Changement"
         Me.BtEnregistrer.UseVisualStyleBackColor = True
         '
@@ -187,7 +187,7 @@ Partial Class UCGestionVehicule
         Me.BtAnnuler.Location = New System.Drawing.Point(226, 514)
         Me.BtAnnuler.Name = "BtAnnuler"
         Me.BtAnnuler.Size = New System.Drawing.Size(141, 23)
-        Me.BtAnnuler.TabIndex = 18
+        Me.BtAnnuler.TabIndex = 10
         Me.BtAnnuler.Text = "Annuler Changement"
         Me.BtAnnuler.UseVisualStyleBackColor = True
         '
@@ -196,7 +196,7 @@ Partial Class UCGestionVehicule
         Me.btInv.Location = New System.Drawing.Point(52, 485)
         Me.btInv.Name = "btInv"
         Me.btInv.Size = New System.Drawing.Size(148, 23)
-        Me.btInv.TabIndex = 19
+        Me.btInv.TabIndex = 8
         Me.btInv.Text = "Gérer Piece Model"
         Me.btInv.UseVisualStyleBackColor = True
         '
