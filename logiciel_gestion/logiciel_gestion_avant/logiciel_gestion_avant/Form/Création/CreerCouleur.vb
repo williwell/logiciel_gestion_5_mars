@@ -16,4 +16,11 @@
             MessageBox.Show("La couleur doit avoir un nom!")
         End If
     End Sub
+
+    Private Sub NUDCout_KeyDown(sender As Object, e As KeyEventArgs) Handles NUDCout.KeyDown
+        If e.KeyCode = 110 Or e.KeyCode = 190 Then
+            e.SuppressKeyPress = True
+            SendKeys.Send(",")
+        End If
+    End Sub
 End Class

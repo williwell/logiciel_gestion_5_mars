@@ -5,12 +5,12 @@ Public Class GestionInvOpt
     Dim OrInvOpt(0, 0) As String
     Dim tableInvAdd As DataTable
     Dim OrInvAdd(0, 0) As String
-    Dim tableAll As New DataTable
+    ReadOnly tableAll As New DataTable
     Dim OrTableAll(0, 0) As String
     Dim listeInvOpt() As String
     Dim listeInvAdd() As String
     Dim nbrInv As Integer
-    Dim id As String
+    ReadOnly id As String
 
     Sub New(idOpt As String)
 
@@ -83,7 +83,17 @@ Public Class GestionInvOpt
         ListGest.changeBt(ListGest.CheckChange(OrInvOpt, tableInvOpt, nbrInv), btSave, btAnnuler)
     End Sub
 
+    Private Sub DGVOption_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) Handles DGVInventaireOpt.EditingControlShowing
+        If DGVInventaireOpt.CurrentCell.ColumnIndex = 4 Then
+            AddHandler CType(e.Control, TextBox).KeyPress, AddressOf TextBox_keyPress
+        End If
+    End Sub
 
+    Private Sub TextBox_keyPress(sender As Object, e As KeyPressEventArgs)
+        If Not Char.IsDigit(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
 
     Private Sub BtSave_Click(sender As Object, e As EventArgs) Handles btSave.Click
         Sauvegarder()
@@ -241,11 +251,13 @@ Public Class GestionInvOpt
     End Sub
 
     Private Sub GestionInvOpt_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        Dim result As DialogResult = MessageBox.Show("Voulez-vous sauvegarder les modifications que vous avez apporté?", "Attention", MessageBoxButtons.YesNoCancel)
-        If result = DialogResult.Yes Then
-            Sauvegarder()
-        ElseIf result = DialogResult.Cancel Then
-            e.Cancel = True
+        If btSave.Enabled = True Then
+            Dim result As DialogResult = MessageBox.Show("Voulez-vous sauvegarder les modifications que vous avez apporté?", "Attention", MessageBoxButtons.YesNoCancel)
+            If result = DialogResult.Yes Then
+                Sauvegarder()
+            ElseIf result = DialogResult.Cancel Then
+                e.Cancel = True
+            End If
         End If
     End Sub
 End Class

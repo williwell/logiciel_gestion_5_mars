@@ -79,6 +79,7 @@ Partial Class CreerOption
         Me.DGVItemAdd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVItemAdd.Location = New System.Drawing.Point(614, 179)
         Me.DGVItemAdd.Name = "DGVItemAdd"
+        Me.DGVItemAdd.ReadOnly = True
         Me.DGVItemAdd.RowTemplate.Height = 25
         Me.DGVItemAdd.Size = New System.Drawing.Size(456, 268)
         Me.DGVItemAdd.TabIndex = 7
@@ -103,6 +104,7 @@ Partial Class CreerOption
         '
         'NUDCout
         '
+        Me.NUDCout.DecimalPlaces = 2
         Me.NUDCout.Location = New System.Drawing.Point(45, 135)
         Me.NUDCout.Name = "NUDCout"
         Me.NUDCout.Size = New System.Drawing.Size(184, 23)

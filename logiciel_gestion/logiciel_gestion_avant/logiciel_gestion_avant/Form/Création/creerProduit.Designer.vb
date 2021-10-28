@@ -48,6 +48,7 @@ Partial Class creerProduit
         Me.Label5 = New System.Windows.Forms.Label()
         Me.tbNoPieceFour = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
+        Me.LabSameID = New System.Windows.Forms.Label()
         CType(Me.nudMinInv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudCoutUn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudEnCommende, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -276,11 +277,21 @@ Partial Class creerProduit
         Me.Label10.TabIndex = 87
         Me.Label10.Text = "Numéro Pièce Fournisseur"
         '
+        'LabSameID
+        '
+        Me.LabSameID.AutoSize = True
+        Me.LabSameID.Location = New System.Drawing.Point(160, 34)
+        Me.LabSameID.Name = "LabSameID"
+        Me.LabSameID.Size = New System.Drawing.Size(47, 15)
+        Me.LabSameID.TabIndex = 91
+        Me.LabSameID.Text = "Label11"
+        '
         'creerProduit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(461, 650)
+        Me.Controls.Add(Me.LabSameID)
         Me.Controls.Add(Me.tbNoMFR)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.tbNoPieceFour)
@@ -344,4 +355,5 @@ Partial Class creerProduit
     Friend WithEvents Label5 As Label
     Friend WithEvents tbNoPieceFour As TextBox
     Friend WithEvents Label10 As Label
+    Friend WithEvents LabSameID As Label
 End Class

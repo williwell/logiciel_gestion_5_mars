@@ -222,6 +222,7 @@ Partial Class UCInventaire
         '
         'nudCoutUn
         '
+        Me.nudCoutUn.DecimalPlaces = 2
         Me.nudCoutUn.Location = New System.Drawing.Point(41, 248)
         Me.nudCoutUn.Name = "nudCoutUn"
         Me.nudCoutUn.ReadOnly = True

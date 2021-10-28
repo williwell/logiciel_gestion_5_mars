@@ -1,6 +1,6 @@
 ﻿Public Class UCAccueil
     Dim tableItem As New DataTable
-    Dim tableVehicule As New DataTable
+    ReadOnly tableVehicule As New DataTable
 
     Private Sub UCAccueil_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         tableVehicule.Columns.Add("Temporaire") 'A changer plus tard
@@ -21,7 +21,7 @@
         RowsColor()
     End Sub
 
-    Private Sub blockSorting(dgv As DataGridView)
+    Private Sub BlockSorting(dgv As DataGridView)
         For Each col As DataGridViewColumn In dgv.Columns
             col.SortMode = DataGridViewColumnSortMode.NotSortable
         Next

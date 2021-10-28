@@ -329,6 +329,13 @@
         btAnnulMod.Enabled = modif
     End Sub
 
+    Private Sub NudCoutUn_KeyDown(sender As Object, e As KeyEventArgs) Handles nudCoutUn.KeyDown
+        If e.KeyCode = 110 Or e.KeyCode = 190 Then
+            e.SuppressKeyPress = True
+            SendKeys.Send(",")
+        End If
+    End Sub
+
     '__________________________________________________________________________________________________________
     'Set
     '__________________________________________________________________________________________________________

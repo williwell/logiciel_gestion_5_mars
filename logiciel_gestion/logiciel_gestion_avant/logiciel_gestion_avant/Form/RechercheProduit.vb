@@ -2,8 +2,8 @@
     '__________________________________________________________________________________________________________
     'Attributes
     '__________________________________________________________________________________________________________
-    Dim ucInvent As UCInventaire
-    Dim main As MainForm
+    ReadOnly ucInvent As UCInventaire
+    ReadOnly main As MainForm
     '__________________________________________________________________________________________________________
     'Constructor
     '__________________________________________________________________________________________________________
@@ -32,8 +32,8 @@
         End Try
     End Sub
 
-    Private Sub dgvProduit_DoubleClick(sender As Object, e As EventArgs) Handles dgvProduit.DoubleClick
-        ucInvent.setIDProduit(dgvProduit.CurrentRow.Cells(0).Value)
+    Private Sub DgvProduit_DoubleClick(sender As Object, e As EventArgs) Handles dgvProduit.DoubleClick
+        ucInvent.SetIDProduit(dgvProduit.CurrentRow.Cells(0).Value)
         Me.Close()
     End Sub
 

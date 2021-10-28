@@ -85,7 +85,7 @@
         End If
     End Sub
 
-    Private Sub btAnnuler_Click(sender As Object, e As EventArgs) Handles btAnnuler.Click
+    Private Sub BtAnnuler_Click(sender As Object, e As EventArgs) Handles btAnnuler.Click
         Me.Close()
     End Sub
 End Class

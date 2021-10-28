@@ -24,7 +24,6 @@ Partial Class UCGestionVehicule
     Private Sub InitializeComponent()
         Me.cbModel = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.tbPrix = New System.Windows.Forms.TextBox()
         Me.dgvOptionMo = New System.Windows.Forms.DataGridView()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -38,10 +37,12 @@ Partial Class UCGestionVehicule
         Me.BtEnregistrer = New System.Windows.Forms.Button()
         Me.BtAnnuler = New System.Windows.Forms.Button()
         Me.btInv = New System.Windows.Forms.Button()
+        Me.NUDCout = New System.Windows.Forms.NumericUpDown()
         CType(Me.dgvOptionMo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvCoulMo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvCoulAjout, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvOptionAjout, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NUDCout, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cbModel
@@ -61,13 +62,6 @@ Partial Class UCGestionVehicule
         Me.Label1.TabIndex = 1
         Me.Label1.Text = "Model"
         '
-        'tbPrix
-        '
-        Me.tbPrix.Location = New System.Drawing.Point(52, 108)
-        Me.tbPrix.Name = "tbPrix"
-        Me.tbPrix.Size = New System.Drawing.Size(315, 23)
-        Me.tbPrix.TabIndex = 3
-        '
         'dgvOptionMo
         '
         Me.dgvOptionMo.AllowUserToAddRows = False
@@ -75,6 +69,7 @@ Partial Class UCGestionVehicule
         Me.dgvOptionMo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvOptionMo.Location = New System.Drawing.Point(52, 158)
         Me.dgvOptionMo.Name = "dgvOptionMo"
+        Me.dgvOptionMo.ReadOnly = True
         Me.dgvOptionMo.RowTemplate.Height = 25
         Me.dgvOptionMo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvOptionMo.Size = New System.Drawing.Size(351, 150)
@@ -83,6 +78,7 @@ Partial Class UCGestionVehicule
         'Label2
         '
         Me.Label2.AutoSize = True
+        Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.Location = New System.Drawing.Point(52, 140)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(81, 15)
@@ -105,6 +101,7 @@ Partial Class UCGestionVehicule
         Me.dgvCoulMo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvCoulMo.Location = New System.Drawing.Point(52, 329)
         Me.dgvCoulMo.Name = "dgvCoulMo"
+        Me.dgvCoulMo.ReadOnly = True
         Me.dgvCoulMo.RowTemplate.Height = 25
         Me.dgvCoulMo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvCoulMo.Size = New System.Drawing.Size(351, 150)
@@ -166,6 +163,7 @@ Partial Class UCGestionVehicule
         Me.dgvOptionAjout.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvOptionAjout.Location = New System.Drawing.Point(415, 158)
         Me.dgvOptionAjout.Name = "dgvOptionAjout"
+        Me.dgvOptionAjout.ReadOnly = True
         Me.dgvOptionAjout.RowTemplate.Height = 25
         Me.dgvOptionAjout.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dgvOptionAjout.Size = New System.Drawing.Size(351, 150)
@@ -200,10 +198,19 @@ Partial Class UCGestionVehicule
         Me.btInv.Text = "Gérer Piece Model"
         Me.btInv.UseVisualStyleBackColor = True
         '
+        'NUDCout
+        '
+        Me.NUDCout.DecimalPlaces = 2
+        Me.NUDCout.Location = New System.Drawing.Point(52, 108)
+        Me.NUDCout.Name = "NUDCout"
+        Me.NUDCout.Size = New System.Drawing.Size(315, 23)
+        Me.NUDCout.TabIndex = 17
+        '
         'UCGestionVehicule
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.NUDCout)
         Me.Controls.Add(Me.btInv)
         Me.Controls.Add(Me.BtAnnuler)
         Me.Controls.Add(Me.BtEnregistrer)
@@ -217,7 +224,6 @@ Partial Class UCGestionVehicule
         Me.Controls.Add(Me.dgvCoulMo)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.dgvOptionMo)
-        Me.Controls.Add(Me.tbPrix)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cbModel)
         Me.Name = "UCGestionVehicule"
@@ -226,6 +232,7 @@ Partial Class UCGestionVehicule
         CType(Me.dgvCoulMo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvCoulAjout, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvOptionAjout, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NUDCout, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -233,7 +240,6 @@ Partial Class UCGestionVehicule
 
     Friend WithEvents cbModel As ComboBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents tbPrix As TextBox
     Friend WithEvents dgvOptionMo As DataGridView
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
@@ -247,4 +253,5 @@ Partial Class UCGestionVehicule
     Friend WithEvents BtEnregistrer As Button
     Friend WithEvents BtAnnuler As Button
     Friend WithEvents btInv As Button
+    Friend WithEvents NUDCout As NumericUpDown
 End Class

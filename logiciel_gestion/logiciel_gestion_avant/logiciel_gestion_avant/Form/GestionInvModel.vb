@@ -5,13 +5,13 @@ Public Class GestionInvModel
     Dim OrInvMo(0, 0) As String
     Dim tableInvAdd As DataTable
     Dim OrInvAdd(0, 0) As String
-    Dim tableAll As New DataTable
+    ReadOnly tableAll As New DataTable
     Dim OrTableAll(0, 0) As String
     Dim listeInvMo() As String
     Dim listeInvAdd() As String
     Dim nbrInv As Integer
-    Dim id As String
-    Dim ucGestion As UCGestionVehicule
+    ReadOnly id As String
+    ReadOnly ucGestion As UCGestionVehicule
 
     Sub New(idModel As String, uc As UCGestionVehicule)
 
@@ -85,7 +85,7 @@ Public Class GestionInvModel
 
 
 
-    Private Sub btSave_Click(sender As Object, e As EventArgs) Handles btSave.Click
+    Private Sub BtSave_Click(sender As Object, e As EventArgs) Handles btSave.Click
         Dim listeAjout() As String = CreateListeAdd(listeInvMo, DGVInventaireMo, True)
         Dim bool1 As Boolean = True
         Dim bool2 As Boolean = True
@@ -143,6 +143,7 @@ Public Class GestionInvModel
         If bool1 Then
             If bool2 Then
                 MessageBox.Show("L'enregistrement c'est effectuer correctement")
+                Me.Close()
             Else
                 MessageBox.Show("Le changement des items pour le model c'est effectué correctement, mais une erreure c'est produit durant le changement des quantité des items")
             End If
@@ -178,6 +179,18 @@ Public Class GestionInvModel
         Next
         Return listeAdd
     End Function
+
+    Private Sub DGVOption_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) Handles DGVInventaireMo.EditingControlShowing
+        If DGVInventaireMo.CurrentCell.ColumnIndex = 4 Then
+            AddHandler CType(e.Control, TextBox).KeyPress, AddressOf TextBox_keyPress
+        End If
+    End Sub
+
+    Private Sub TextBox_keyPress(sender As Object, e As KeyPressEventArgs)
+        If Not Char.IsDigit(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
 
     Public Sub CheckChange()
         If ucGestion.CheckFor(listeInvMo, tableInvMo, nbrInv) Then
@@ -219,7 +232,7 @@ Public Class GestionInvModel
         CheckChange()
     End Sub
 
-    Private Sub btAnnuler_Click(sender As Object, e As EventArgs) Handles btAnnuler.Click
+    Private Sub BtAnnuler_Click(sender As Object, e As EventArgs) Handles btAnnuler.Click
         AnnulerChangement(OrInvMo, tableInvMo)
         AnnulerChangement(OrInvAdd, tableInvAdd)
         AnnulerChangement(OrTableAll, tableAll)

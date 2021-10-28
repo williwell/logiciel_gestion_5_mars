@@ -1,5 +1,5 @@
 ﻿Public Class CreerClient
-    Dim client As UCClient
+    ReadOnly client As UCClient
 
     Sub New(cl As UCClient)
 

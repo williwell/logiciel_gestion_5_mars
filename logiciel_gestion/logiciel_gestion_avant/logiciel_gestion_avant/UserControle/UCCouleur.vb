@@ -70,8 +70,10 @@
     End Sub
 
     Private Sub TextBox_keyPress(sender As Object, e As KeyPressEventArgs)
-        If Not Char.IsDigit(e.KeyChar) Then
-            e.Handled = True
+        If dgvCouleur.CurrentCell.ColumnIndex = 3 Then
+            If (Not Char.IsDigit(e.KeyChar)) Then
+                e.Handled = True
+            End If
         End If
     End Sub
 

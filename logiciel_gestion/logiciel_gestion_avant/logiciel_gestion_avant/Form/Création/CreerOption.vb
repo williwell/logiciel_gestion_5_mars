@@ -81,12 +81,40 @@
                 Next
                 If bool Then
                     MessageBox.Show("Une erreure est survenue durant l'enregistrement des pièces associer aux option!")
+                Else
+                    MessageBox.Show("La création de la nouvelle option est fait!")
+                    Me.Close()
                 End If
             Else
                 MessageBox.Show("Une erreure est survenue durant l'enregistrement de la nouvelle option!")
             End If
         Else
             MessageBox.Show("Vous devez avoir un nom!")
+        End If
+    End Sub
+
+    Private Sub NUDCout_KeyDown(sender As Object, e As KeyEventArgs) Handles NUDCout.KeyDown
+        If e.KeyCode = 110 Or e.KeyCode = 190 Then
+            e.SuppressKeyPress = True
+            SendKeys.Send(",")
+        End If
+    End Sub
+
+    Private Sub DGVOption_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) Handles DGVItemOption.EditingControlShowing
+        If DGVItemOption.CurrentCell.ColumnIndex = 4 Then
+            AddHandler CType(e.Control, TextBox).KeyPress, AddressOf TextBox_keyPress
+        End If
+    End Sub
+
+    Private Sub TextBox_keyPress(sender As Object, e As KeyPressEventArgs)
+        If Not Char.IsDigit(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub DGVOption_CellBeginEdit(sender As Object, e As DataGridViewCellCancelEventArgs) Handles DGVItemOption.CellBeginEdit
+        If Not e.ColumnIndex = 4 Then
+            e.Cancel = True
         End If
     End Sub
 End Class

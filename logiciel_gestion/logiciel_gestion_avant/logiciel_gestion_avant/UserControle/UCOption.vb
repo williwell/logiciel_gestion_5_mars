@@ -100,5 +100,12 @@
     Private Sub BTItem_Click(sender As Object, e As EventArgs) Handles BTItem.Click
         Dim form As New GestionInvOpt(DGVOption.CurrentRow.Cells(0).Value)
         form.ShowDialog()
+        RemplireDGV()
+    End Sub
+
+    Private Sub DGVOption_DoubleClick(sender As Object, e As EventArgs) Handles DGVOption.DoubleClick
+        Dim form As New GestionInvOpt(DGVOption.CurrentRow.Cells(0).Value)
+        form.ShowDialog()
+        RemplireDGV()
     End Sub
 End Class

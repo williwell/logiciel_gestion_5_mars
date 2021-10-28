@@ -76,6 +76,7 @@ Partial Class CreerCouleur
         '
         'NUDCout
         '
+        Me.NUDCout.DecimalPlaces = 2
         Me.NUDCout.Location = New System.Drawing.Point(64, 158)
         Me.NUDCout.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
         Me.NUDCout.Name = "NUDCout"

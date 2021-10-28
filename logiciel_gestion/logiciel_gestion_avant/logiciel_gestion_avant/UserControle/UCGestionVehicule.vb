@@ -23,8 +23,10 @@ Public Class UCGestionVehicule
     End Sub
 
     Private Sub Remplir(id As String)
-        tbPrix.Text = tableModel(id - 1)(2)
-
+        'Mettre que si a rien
+        If tableModel.Rows.Count <> 0 Then
+            NUDCout.Value = tableModel(id - 1)(2)
+        End If
         tableOptionMo = ConnectionServeur.Getinstance.GetInfo(id, "getOptionModel")
         ReDim OrOpMo(tableOptionMo.Rows.Count - 1, tableOptionMo.Columns.Count - 1)
         ListeOr(OrOpMo, tableOptionMo)
@@ -148,9 +150,22 @@ Public Class UCGestionVehicule
                     If ConnectionServeur.Getinstance.AddDelete(listeAjout, listeId(cbModel.SelectedIndex), "DeleteOpMo") Then
                         bool1 = True
                     End If
+                Else
+                    bool1 = True
                 End If
             End If
+        Else
+            listeAjout = CreateListeAdd(listeOpDispo, dgvOptionAjout)
+            If Not IsNothing(listeAjout) Then
+                If ConnectionServeur.Getinstance.AddDelete(listeAjout, listeId(cbModel.SelectedIndex), "DeleteOpMo") Then
+                    bool1 = True
+                End If
+            Else
+                bool1 = True
+            End If
         End If
+
+
 
         listeAjout = CreateListeAdd(listeCoulMo, dgvCoulMo)
 
@@ -161,8 +176,18 @@ Public Class UCGestionVehicule
                     If ConnectionServeur.Getinstance.AddDelete(listeAjout, listeId(cbModel.SelectedIndex), "DeleteCoulMo") Then
                         bool2 = True
                     End If
-
+                Else
+                    bool2 = True
                 End If
+            End If
+        Else
+            listeAjout = CreateListeAdd(listeCoulDispo, dgvCoulAjout)
+            If Not IsNothing(listeAjout) Then
+                If ConnectionServeur.Getinstance.AddDelete(listeAjout, listeId(cbModel.SelectedIndex), "DeleteCoulMo") Then
+                    bool2 = True
+                End If
+            Else
+                bool2 = True
             End If
         End If
 
@@ -232,7 +257,7 @@ Public Class UCGestionVehicule
         Next
     End Sub
 
-    Private Sub btCreer_Click(sender As Object, e As EventArgs) Handles btCreer.Click
+    Private Sub BtCreer_Click(sender As Object, e As EventArgs) Handles btCreer.Click
         Dim creer As New CreerModel(Me)
         creer.ShowDialog()
     End Sub
@@ -249,8 +274,15 @@ Public Class UCGestionVehicule
         Remplir(1)
     End Sub
 
-    Private Sub btInv_Click(sender As Object, e As EventArgs) Handles btInv.Click
+    Private Sub BtInv_Click(sender As Object, e As EventArgs) Handles btInv.Click
         Dim uc As New GestionInvModel(listeId(cbModel.SelectedIndex), Me)
         uc.ShowDialog()
+    End Sub
+
+    Private Sub NUDCout_KeyDown(sender As Object, e As KeyEventArgs) Handles NUDCout.KeyDown
+        If e.KeyCode = 110 Or e.KeyCode = 190 Then
+            e.SuppressKeyPress = True
+            SendKeys.Send(",")
+        End If
     End Sub
 End Class

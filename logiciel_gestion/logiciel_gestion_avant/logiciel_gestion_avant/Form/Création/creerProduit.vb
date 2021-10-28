@@ -1,4 +1,4 @@
-﻿Public Class creerProduit
+﻿Public Class CreerProduit
     '__________________________________________________________________________________________________________
     'Attributes
     '__________________________________________________________________________________________________________
@@ -15,6 +15,7 @@
     'Load
     '__________________________________________________________________________________________________________
     Private Sub CreerProduit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        LabSameID.Text = ""
         table = ConnectionServeur.Getinstance.GetInfo("getFournisseur")
         Dim listeNom(table.Rows.Count - 1) As String
         For i As Integer = 0 To table.Rows.Count - 1
@@ -28,7 +29,7 @@
     'Methods
     '__________________________________________________________________________________________________________
     Private Sub BtSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
-        If Not checkVide() Then
+        If Not CheckVide() Then
             liste(0) = tbIDPro.Text
             liste(1) = tbNom.Text
             liste(2) = nudQuantite.Value
@@ -95,6 +96,7 @@
         End If
     End Sub
 
+
     '__________________________________________________________________________________________________________
     'Functions
     '__________________________________________________________________________________________________________
@@ -122,6 +124,20 @@
                 cbFour.SelectedIndex = i
             End If
         Next
+    End Sub
+
+    Private Sub tbIDPro_LostFocus(sender As Object, e As EventArgs) Handles tbIDPro.LostFocus
+        Dim table As DataTable = ConnectionServeur.Getinstance.GetInfo(tbIDPro.Text, "sameID")
+        If table(0)(0) = 1 Then
+            tbIDPro.BackColor = Color.Red
+            btSauv.Enabled = False
+            LabSameID.Text = "Ce ID de produit existe déjà!"
+            LabSameID.ForeColor = Color.Red
+        Else
+            LabSameID.Text = ""
+            btSauv.Enabled = True
+            tbIDPro.BackColor = Color.FromArgb(-1)
+        End If
     End Sub
 
     '__________________________________________________________________________________________________________

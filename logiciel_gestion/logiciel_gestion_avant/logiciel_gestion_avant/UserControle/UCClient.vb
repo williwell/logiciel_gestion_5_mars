@@ -10,7 +10,7 @@
         creer.ShowDialog(Me)
     End Sub
 
-    Public Sub loadClient()
+    Public Sub LoadClient()
         tableCl = ConnectionServeur.Getinstance.GetInfo("getClient")
         DGVClient.DataSource = tableCl
     End Sub

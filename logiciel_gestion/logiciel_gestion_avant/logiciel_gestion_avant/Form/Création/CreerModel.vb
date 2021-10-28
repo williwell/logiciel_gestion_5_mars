@@ -1,14 +1,14 @@
 ﻿Imports System.ComponentModel
 
 Public Class CreerModel
-    Dim ucGestionModel As UCGestionVehicule
+    ReadOnly ucGestionModel As UCGestionVehicule
     Dim tableOpAjout As New DataTable
-    Dim tableOpMo As New DataTable
+    ReadOnly tableOpMo As New DataTable
     Dim tableCoulAjout As New DataTable
-    Dim tableCoulMo As New DataTable
+    ReadOnly tableCoulMo As New DataTable
     Dim tableInvAjout As New DataTable
-    Dim tableInvMo As New DataTable
-    Dim tableMid As New DataTable
+    ReadOnly tableInvMo As New DataTable
+    ReadOnly tableMid As New DataTable
 
     Sub New(uc As UCGestionVehicule)
         ' Cet appel est requis par le concepteur.
@@ -69,19 +69,19 @@ Public Class CreerModel
         dgv2.DataSource = table
     End Sub
 
-    Private Sub dgvOptionAjout_DoubleClick(sender As Object, e As EventArgs) Handles dgvOptionAjout.DoubleClick
+    Private Sub DgvOptionAjout_DoubleClick(sender As Object, e As EventArgs) Handles dgvOptionAjout.DoubleClick
         PopulateRow(tableOpMo, dgvOptionAjout, dgvOptionMo)
     End Sub
 
-    Private Sub dgvOptionMo_DoubleClick(sender As Object, e As EventArgs) Handles dgvOptionMo.DoubleClick
+    Private Sub DgvOptionMo_DoubleClick(sender As Object, e As EventArgs) Handles dgvOptionMo.DoubleClick
         PopulateRow(tableOpAjout, dgvOptionMo, dgvOptionAjout)
     End Sub
 
-    Private Sub dgvCoulAjout_DoubleClick(sender As Object, e As EventArgs) Handles dgvCoulAjout.DoubleClick
+    Private Sub DgvCoulAjout_DoubleClick(sender As Object, e As EventArgs) Handles dgvCoulAjout.DoubleClick
         PopulateRow(tableCoulMo, dgvCoulAjout, dgvCoulMo)
     End Sub
 
-    Private Sub dgvCoulMo_DoubleClick(sender As Object, e As EventArgs) Handles dgvCoulMo.DoubleClick
+    Private Sub DgvCoulMo_DoubleClick(sender As Object, e As EventArgs) Handles dgvCoulMo.DoubleClick
         PopulateRow(tableCoulAjout, dgvCoulMo, dgvCoulAjout)
     End Sub
 
@@ -152,7 +152,7 @@ Public Class CreerModel
         End If
     End Sub
 
-    Private Function createListe(dgv As DataGridView) As String()
+    Private Function CreateListe(dgv As DataGridView) As String()
         Dim liste() As String = Nothing
         Dim nbr As Integer = 0
         For i As Integer = 0 To dgv.Rows.Count - 1
@@ -163,7 +163,7 @@ Public Class CreerModel
         Return liste
     End Function
 
-    Private Function createListeInv(dgv As DataGridView) As String()
+    Private Function CreateListeInv(dgv As DataGridView) As String()
         Dim liste() As String = Nothing
         Dim nbr As Integer = -1
         For i As Integer = 0 To dgv.Rows.Count - 1
@@ -180,6 +180,24 @@ Public Class CreerModel
     Private Sub DGVInventaireMo_CellBeginEdit(sender As Object, e As DataGridViewCellCancelEventArgs) Handles DGVInventaireMo.CellBeginEdit
         If Not e.ColumnIndex = 4 Then
             e.Cancel = True
+        End If
+    End Sub
+
+    Private Sub NUDCout_KeyDown(sender As Object, e As KeyEventArgs) Handles nudCout.KeyDown
+        If e.KeyCode = 110 Or e.KeyCode = 190 Then
+            e.SuppressKeyPress = True
+            SendKeys.Send(",")
+        End If
+    End Sub
+    Private Sub DGVInventaireMo_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) Handles DGVInventaireMo.EditingControlShowing
+        If DGVInventaireMo.CurrentCell.ColumnIndex = 4 Then
+            AddHandler CType(e.Control, TextBox).KeyPress, AddressOf TextBox_keyPress
+        End If
+    End Sub
+
+    Private Sub TextBox_keyPress(sender As Object, e As KeyPressEventArgs)
+        If Not Char.IsDigit(e.KeyChar) Then
+            e.Handled = True
         End If
     End Sub
 End Class
