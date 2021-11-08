@@ -14,4 +14,9 @@
         tableCl = ConnectionServeur.Getinstance.GetInfo("getClient")
         DGVClient.DataSource = tableCl
     End Sub
+
+    Private Sub DGVClient_DoubleClick(sender As Object, e As EventArgs) Handles DGVClient.DoubleClick
+        Dim InfoClient As New GestionClient(DGVClient.CurrentRow.Cells(0).Value, Me)
+        InfoClient.ShowDialog()
+    End Sub
 End Class

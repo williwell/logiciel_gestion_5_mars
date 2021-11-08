@@ -15,6 +15,8 @@
     'Load
     '__________________________________________________________________________________________________________
     Private Sub CreerProduit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim liste() As String = {"CAD", "US"}
+        CBDevise.DataSource = liste
         LabSameID.Text = ""
         table = ConnectionServeur.Getinstance.GetInfo("getFournisseur")
         Dim listeNom(table.Rows.Count - 1) As String
@@ -65,7 +67,7 @@
             End If
 
             If ConnectionServeur.Getinstance.AddDelete(liste, "ajoutInventaire") Then
-                Dim liste2() As String = {liste(0), liste(4), liste(6), liste(10), liste(11)}
+                Dim liste2() As String = {liste(0), liste(4), liste(6), liste(10), liste(11), CBDevise.SelectedItem.ToString}
                 If ConnectionServeur.Getinstance.AddDelete(liste2, "addInvFour") Then
                     MessageBox.Show("La création du nouveau produit à bien été fait!")
                     Me.Close()
@@ -89,7 +91,7 @@
         Me.Close()
     End Sub
 
-    Private Sub nudCoutUn_KeyDown(sender As Object, e As KeyEventArgs) Handles nudCoutUn.KeyDown
+    Private Sub NudCoutUn_KeyDown(sender As Object, e As KeyEventArgs) Handles nudCoutUn.KeyDown
         If e.KeyCode = 110 Or e.KeyCode = 190 Then
             e.SuppressKeyPress = True
             SendKeys.Send(",")
@@ -126,7 +128,7 @@
         Next
     End Sub
 
-    Private Sub tbIDPro_LostFocus(sender As Object, e As EventArgs) Handles tbIDPro.LostFocus
+    Private Sub TbIDPro_LostFocus(sender As Object, e As EventArgs) Handles tbIDPro.LostFocus
         Dim table As DataTable = ConnectionServeur.Getinstance.GetInfo(tbIDPro.Text, "sameID")
         If table(0)(0) = 1 Then
             tbIDPro.BackColor = Color.Red

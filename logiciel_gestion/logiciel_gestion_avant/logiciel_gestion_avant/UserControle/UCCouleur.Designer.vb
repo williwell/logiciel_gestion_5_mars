@@ -45,9 +45,9 @@ Partial Class UCCouleur
         '
         Me.BtCreer.Location = New System.Drawing.Point(53, 71)
         Me.BtCreer.Name = "BtCreer"
-        Me.BtCreer.Size = New System.Drawing.Size(135, 23)
+        Me.BtCreer.Size = New System.Drawing.Size(176, 23)
         Me.BtCreer.TabIndex = 1
-        Me.BtCreer.Text = "Créer nouvelle couleur"
+        Me.BtCreer.Text = "Créer Nouvelle Couleur Model"
         Me.BtCreer.UseVisualStyleBackColor = True
         '
         'BTEnregistrer

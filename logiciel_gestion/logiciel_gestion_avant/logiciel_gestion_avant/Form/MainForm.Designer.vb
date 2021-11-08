@@ -23,6 +23,11 @@ Partial Class MainForm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.PanUC = New System.Windows.Forms.Panel()
+        Me.PanCouleur = New System.Windows.Forms.Panel()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.BTCoulTissu = New System.Windows.Forms.Button()
+        Me.BTCoulToile = New System.Windows.Forms.Button()
+        Me.BTCoulModel = New System.Windows.Forms.Button()
         Me.btMenu = New System.Windows.Forms.Button()
         Me.panMenu = New System.Windows.Forms.Panel()
         Me.BtClient = New System.Windows.Forms.Button()
@@ -35,15 +40,69 @@ Partial Class MainForm
         Me.btAccueil = New System.Windows.Forms.Button()
         Me.lbNonConc = New System.Windows.Forms.Label()
         Me.btConnec = New System.Windows.Forms.Button()
+        Me.PanUC.SuspendLayout()
+        Me.PanCouleur.SuspendLayout()
         Me.panMenu.SuspendLayout()
         Me.SuspendLayout()
         '
         'PanUC
         '
+        Me.PanUC.Controls.Add(Me.PanCouleur)
         Me.PanUC.Location = New System.Drawing.Point(12, 36)
         Me.PanUC.Name = "PanUC"
         Me.PanUC.Size = New System.Drawing.Size(808, 621)
         Me.PanUC.TabIndex = 1
+        '
+        'PanCouleur
+        '
+        Me.PanCouleur.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PanCouleur.Controls.Add(Me.Button5)
+        Me.PanCouleur.Controls.Add(Me.BTCoulTissu)
+        Me.PanCouleur.Controls.Add(Me.BTCoulToile)
+        Me.PanCouleur.Controls.Add(Me.BTCoulModel)
+        Me.PanCouleur.Location = New System.Drawing.Point(100, 149)
+        Me.PanCouleur.MaximumSize = New System.Drawing.Size(100, 118)
+        Me.PanCouleur.MinimumSize = New System.Drawing.Size(100, 118)
+        Me.PanCouleur.Name = "PanCouleur"
+        Me.PanCouleur.Size = New System.Drawing.Size(100, 118)
+        Me.PanCouleur.TabIndex = 10
+        Me.PanCouleur.Visible = False
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(3, 90)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(94, 23)
+        Me.Button5.TabIndex = 4
+        Me.Button5.Text = "???"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'BTCoulTissu
+        '
+        Me.BTCoulTissu.Location = New System.Drawing.Point(3, 61)
+        Me.BTCoulTissu.Name = "BTCoulTissu"
+        Me.BTCoulTissu.Size = New System.Drawing.Size(94, 23)
+        Me.BTCoulTissu.TabIndex = 2
+        Me.BTCoulTissu.Text = "Tissus"
+        Me.BTCoulTissu.UseVisualStyleBackColor = True
+        '
+        'BTCoulToile
+        '
+        Me.BTCoulToile.Location = New System.Drawing.Point(3, 32)
+        Me.BTCoulToile.Name = "BTCoulToile"
+        Me.BTCoulToile.Size = New System.Drawing.Size(94, 23)
+        Me.BTCoulToile.TabIndex = 1
+        Me.BTCoulToile.Text = "Toile"
+        Me.BTCoulToile.UseVisualStyleBackColor = True
+        '
+        'BTCoulModel
+        '
+        Me.BTCoulModel.Location = New System.Drawing.Point(3, 3)
+        Me.BTCoulModel.Name = "BTCoulModel"
+        Me.BTCoulModel.Size = New System.Drawing.Size(94, 23)
+        Me.BTCoulModel.TabIndex = 0
+        Me.BTCoulModel.Text = "Model"
+        Me.BTCoulModel.UseVisualStyleBackColor = True
         '
         'btMenu
         '
@@ -66,7 +125,7 @@ Partial Class MainForm
         Me.panMenu.Controls.Add(Me.btInventaire)
         Me.panMenu.Controls.Add(Me.btAccueil)
         Me.panMenu.Controls.Add(Me.btMenu)
-        Me.panMenu.Location = New System.Drawing.Point(12, 3)
+        Me.panMenu.Location = New System.Drawing.Point(12, 7)
         Me.panMenu.MaximumSize = New System.Drawing.Size(100, 260)
         Me.panMenu.MinimumSize = New System.Drawing.Size(100, 30)
         Me.panMenu.Name = "panMenu"
@@ -176,6 +235,8 @@ Partial Class MainForm
         Me.MinimumSize = New System.Drawing.Size(848, 731)
         Me.Name = "MainForm"
         Me.Text = "Logiciel Gestion 5-Mars VR"
+        Me.PanUC.ResumeLayout(False)
+        Me.PanCouleur.ResumeLayout(False)
         Me.panMenu.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -195,4 +256,9 @@ Partial Class MainForm
     Friend WithEvents BtOptionModel As Button
     Friend WithEvents BtCouleur As Button
     Friend WithEvents BtClient As Button
+    Friend WithEvents PanCouleur As Panel
+    Friend WithEvents Button5 As Button
+    Friend WithEvents BTCoulTissu As Button
+    Friend WithEvents BTCoulToile As Button
+    Friend WithEvents BTCoulModel As Button
 End Class

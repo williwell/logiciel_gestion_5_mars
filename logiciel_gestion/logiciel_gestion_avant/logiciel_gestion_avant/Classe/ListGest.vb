@@ -1,15 +1,25 @@
 ﻿Imports System.ComponentModel
 
 Public Class ListGest
-    Shared Sub PopulateRow(table As DataTable, dgvGiver As DataGridView, dgvRecever As DataGridView)
-        Dim row As DataRow = table.NewRow
-        Dim nbr As Integer = 0
+    Shared Sub PopulateRow(tableRecever As DataTable, dgvGiver As DataGridView, dgvRecever As DataGridView)
+        Dim row As DataRow = tableRecever.NewRow
         For i As Integer = 0 To dgvGiver.Columns.Count - 1
             row(i) = dgvGiver.CurrentRow.Cells(i).Value
         Next
-        table.Rows.Add(row)
+        tableRecever.Rows.Add(row)
         dgvRecever.Sort(dgvRecever.Columns(0), ListSortDirection.Ascending)
         dgvGiver.Rows.Remove(dgvGiver.CurrentRow)
+    End Sub
+
+    Shared Sub LoadCoul(table As DataTable, instruction As String, dgv As DataGridView, liste(,) As String)
+        table = ConnectionServeur.Getinstance.GetInfo(instruction)
+        dgv.DataSource = table
+        ReDim liste(table.Rows.Count - 1, table.Columns.Count - 1)
+        For r As Integer = 0 To table.Rows.Count - 1
+            For c As Integer = 0 To table.Columns.Count - 1
+                liste(r, c) = table(r)(c)
+            Next
+        Next
     End Sub
 
     Shared Sub PopulateRow(table As DataTable, dgvGiver As DataGridView, dgvRecever As DataGridView, tableMid As DataTable)
@@ -45,7 +55,7 @@ Public Class ListGest
         Return list
     End Function
 
-    Shared Sub changeBt(bool As Boolean, btSave As Button, btAnnuler As Button)
+    Shared Sub ChangeBt(bool As Boolean, btSave As Button, btAnnuler As Button)
         btSave.Enabled = bool
         btAnnuler.Enabled = bool
     End Sub

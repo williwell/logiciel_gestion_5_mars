@@ -225,6 +225,7 @@ Partial Class CreerModel
         '
         'nudCout
         '
+        Me.nudCout.DecimalPlaces = 2
         Me.nudCout.Location = New System.Drawing.Point(21, 71)
         Me.nudCout.Maximum = New Decimal(New Integer() {500000, 0, 0, 0})
         Me.nudCout.Name = "nudCout"

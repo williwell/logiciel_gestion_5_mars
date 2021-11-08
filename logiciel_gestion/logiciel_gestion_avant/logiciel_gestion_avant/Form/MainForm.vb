@@ -12,12 +12,16 @@ Public Class MainForm
     Dim options As New StructureOption.mesOption
     ReadOnly ucAccueil As New UCAccueil
     ReadOnly ucInventaire As New UCInventaire(Me)
-    ReadOnly ucVente As New UCVente
+    ReadOnly ucVente As New UCVente(Me)
     ReadOnly ucFour As New UCFournisseur(Me, ucInventaire)
     ReadOnly ucModel As New UCGestionVehicule
     ReadOnly ucCouleur As New UCCouleur
     ReadOnly ucOption As New UCOption
     ReadOnly ucClient As New UCClient
+    ReadOnly ucCoulToile As New UCCouleurToile
+    ReadOnly ucCoulTissus As New UCCouleurTissus
+    Dim ucVente2 As UCVente2
+    Dim ucVente3 As UCVente3
     Private Delegate Sub setValue(text As String)
 
     '__________________________________________________________________________________________________________
@@ -31,10 +35,10 @@ Public Class MainForm
     '__________________________________________________________________________________________________________
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.KeyPreview = True
-        MyOption.getInstance.readOption()
+        MyOption.GetInstance.ReadOption()
         panMenu.Size = panMenu.MinimumSize
-        ConnectionServeur.setMain(Me)
-        If ConnectionServeur.getinstance.TestConnection() Then
+        ConnectionServeur.SetMain(Me)
+        If ConnectionServeur.Getinstance.TestConnection() Then
             panMenu.Size = panMenu.MinimumSize
             AddUC()
         Else
@@ -56,6 +60,10 @@ Public Class MainForm
         PanUC.Controls.Add(ucCouleur)
         PanUC.Controls.Add(ucOption)
         PanUC.Controls.Add(ucClient)
+        PanUC.Controls.Add(ucCoulToile)
+        PanUC.Controls.Add(ucCoulTissus)
+        PanUC.Controls.Add(ucVente2)
+        PanUC.Controls.Add(ucVente3)
         ucAccueil.RowsColor()
     End Sub
 
@@ -82,7 +90,7 @@ Public Class MainForm
         Else
             panMenu.Size = panMenu.MinimumSize
         End If
-
+        PanCouleur.Visible = False
     End Sub
 
     Private Sub BtAccueil_Click(sender As Object, e As EventArgs) Handles btAccueil.Click
@@ -92,13 +100,12 @@ Public Class MainForm
     End Sub
 
     Private Sub BtInventaire_Click(sender As Object, e As EventArgs) Handles btInventaire.Click
-        showInventaire()
+        ShowInventaire()
     End Sub
 
     Private Sub BtVente_Click(sender As Object, e As EventArgs) Handles btVente.Click
-        'ucVente.BringToFront()
-        'panMenu.Size = panMenu.MinimumSize
-        MessageBox.Show("La section n'est pas encore implémenté")
+        ucVente.BringToFront()
+        panMenu.Size = panMenu.MinimumSize
     End Sub
 
     Private Sub BtFour_Click(sender As Object, e As EventArgs) Handles btFour.Click
@@ -144,6 +151,31 @@ Public Class MainForm
     Private Sub BtModel_Click(sender As Object, e As EventArgs) Handles btModel.Click
         ucModel.BringToFront()
         panMenu.Size = panMenu.MinimumSize
+    End Sub
+
+    Public Sub SetUCVente2(ByRef uc As UCVente2)
+        ucVente2 = uc
+    End Sub
+
+    Public Sub SetUCVente3(ByRef uc As UCVente3)
+        ucVente3 = uc
+    End Sub
+
+    Public Sub ChangeUCNext1()
+        ucVente2.loadDGV()
+        ucVente2.BringToFront()
+    End Sub
+
+    Public Sub ChangeUCNext2()
+        ucVente3.BringToFront()
+    End Sub
+
+    Public Sub ChangeUCPrev1()
+        ucVente.BringToFront()
+    End Sub
+
+    Public Sub ChangeUCPrev2()
+        ucVente2.BringToFront()
     End Sub
 
     '__________________________________________________________________________________________________________
@@ -196,8 +228,12 @@ Public Class MainForm
     End Sub
 
     Private Sub BtCouleur_Click(sender As Object, e As EventArgs) Handles BtCouleur.Click
-        ucCouleur.BringToFront()
-        panMenu.Size = panMenu.MinimumSize
+        If PanCouleur.Visible = True Then
+            PanCouleur.Visible = False
+        Else
+            PanCouleur.BringToFront()
+            PanCouleur.Visible = True
+        End If
     End Sub
 
     Private Sub BtOptionModel_Click(sender As Object, e As EventArgs) Handles BtOptionModel.Click
@@ -207,6 +243,21 @@ Public Class MainForm
 
     Private Sub BtClient_Click(sender As Object, e As EventArgs) Handles BtClient.Click
         ucClient.BringToFront()
+        panMenu.Size = panMenu.MinimumSize
+    End Sub
+
+    Private Sub BTCoulModel_Click(sender As Object, e As EventArgs) Handles BTCoulModel.Click
+        ucCouleur.BringToFront()
+        panMenu.Size = panMenu.MinimumSize
+    End Sub
+
+    Private Sub BTCoulToile_Click(sender As Object, e As EventArgs) Handles BTCoulToile.Click
+        ucCoulToile.BringToFront()
+        panMenu.Size = panMenu.MinimumSize
+    End Sub
+
+    Private Sub BTCoulTissu_Click(sender As Object, e As EventArgs) Handles BTCoulTissu.Click
+        ucCoulTissus.BringToFront()
         panMenu.Size = panMenu.MinimumSize
     End Sub
 End Class

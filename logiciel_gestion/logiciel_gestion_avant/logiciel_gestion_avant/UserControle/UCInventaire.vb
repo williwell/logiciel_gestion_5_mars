@@ -5,7 +5,7 @@
     Dim sameID As String
     Dim sameFour As Integer
     Dim tableOri As DataTable
-    ReadOnly change(12) As String
+    ReadOnly change(13) As String
     Dim triger As Boolean = True
     Shared instance As UCInventaire = Nothing
     Shared main As MainForm
@@ -27,6 +27,10 @@
     'Load
     '__________________________________________________________________________________________________________
     Private Sub UCInventaire_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        triger = False
+        Dim liste() As String = {"CAD", "US"}
+        CBDevise.DataSource = liste
+        triger = True
         tbIDPro.Select()
     End Sub
 
@@ -37,7 +41,8 @@
         Try
             If e.KeyCode = Keys.Enter Then
                 If sameID <> tbIDPro.Text Then
-                    start()
+                    Start()
+                    BtSauvChanger()
                 End If
                 e.SuppressKeyPress = True
             End If
@@ -59,6 +64,7 @@
         tbNoMFR.ReadOnly = read
         btAddFour.Enabled = Not read
         btRemoveFour.Enabled = Not read
+        CBDevise.Enabled = Not read
     End Sub
 
     Private Sub Cleane()
@@ -122,24 +128,30 @@
         nudCoutUn.Value = tableOri(id)(10)
         tbNoFour.Text = tableOri(id)(11)
         tbNoMFR.Text = tableOri(id)(12)
-        tbIDFour.Text = tableOri(id)(13)
-        tbNomFour.Text = tableOri(id)(14)
-        tbAdres1.Text = tableOri(id)(15)
-        tbAdres2.Text = tableOri(id)(16)
-        tbTel.Text = tableOri(id)(17)
-        tbNomConc.Text = tableOri(id)(18)
-        tbLeepTime.Text = tableOri(id)(19)
-        tbCouriel.Text = tableOri(id)(20)
-        tbMetCom.Text = tableOri(id)(21)
-        tbNoCompte.Text = tableOri(id)(22)
-        tbMethoPaie.Text = tableOri(id)(23)
+        If CBDevise.Items(0).ToString = tableOri(id)(13) Then
+            CBDevise.SelectedIndex = 0
+        Else
+            CBDevise.SelectedIndex = 1
+        End If
+        change(13) = CBDevise.SelectedItem.ToString
+        tbIDFour.Text = tableOri(id)(14)
+        tbNomFour.Text = tableOri(id)(15)
+        tbAdres1.Text = tableOri(id)(16)
+        tbAdres2.Text = tableOri(id)(17)
+        tbTel.Text = tableOri(id)(18)
+        tbNomConc.Text = tableOri(id)(19)
+        tbLeepTime.Text = tableOri(id)(20)
+        tbCouriel.Text = tableOri(id)(21)
+        tbMetCom.Text = tableOri(id)(22)
+        tbNoCompte.Text = tableOri(id)(23)
+        tbMethoPaie.Text = tableOri(id)(24)
 
         triger = True
     End Sub
 
     Private Sub BtSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
         If ConnectionServeur.Getinstance.AddDelete(change, "modInventaire") Then
-            Dim liste() As String = {tbIDPro.Text, tbIDFour.Text, nudCoutUn.Value, tbNoFour.Text, tbNoMFR.Text}
+            Dim liste() As String = {tbIDPro.Text, tbIDFour.Text, nudCoutUn.Value, tbNoFour.Text, tbNoMFR.Text, CBDevise.SelectedItem.ToString}
             If ConnectionServeur.Getinstance.AddDelete(liste, "modInvFour") Then
                 MessageBox.Show("La modification à bien été fait")
                 For i As Integer = 1 To change.Length - 1
@@ -317,6 +329,13 @@
         End If
     End Sub
 
+    Private Sub CBDevise_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBDevise.SelectedIndexChanged
+        change(13) = CBDevise.SelectedItem.ToString
+        If triger Then
+            BtSauvChanger()
+        End If
+    End Sub
+
     Private Sub BtSauvChanger()
         Dim modif As Boolean = False
         For i As Integer = 1 To tableOri.Columns.Count - 12
@@ -344,7 +363,6 @@
         tbIDPro.Select()
         SendKeys.Send("{ENTER}")
     End Sub
-
 
     '__________________________________________________________________________________________________________
     'Get

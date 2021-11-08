@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class creerProduit
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class CreerProduit
     Inherits System.Windows.Forms.Form
 
     'Form remplace la méthode Dispose pour nettoyer la liste des composants.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class creerProduit
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée à l'aide du Concepteur Windows Form.  
     'Ne la modifiez pas à l'aide de l'éditeur de code.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.nudMinInv = New System.Windows.Forms.NumericUpDown()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -49,6 +49,8 @@ Partial Class creerProduit
         Me.tbNoPieceFour = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.LabSameID = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.CBDevise = New System.Windows.Forms.ComboBox()
         CType(Me.nudMinInv, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudCoutUn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudEnCommende, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -286,11 +288,30 @@ Partial Class creerProduit
         Me.LabSameID.TabIndex = 91
         Me.LabSameID.Text = "Label11"
         '
-        'creerProduit
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(160, 210)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(41, 15)
+        Me.Label11.TabIndex = 92
+        Me.Label11.Text = "Devise"
+        '
+        'CBDevise
+        '
+        Me.CBDevise.FormattingEnabled = True
+        Me.CBDevise.Location = New System.Drawing.Point(160, 228)
+        Me.CBDevise.Name = "CBDevise"
+        Me.CBDevise.Size = New System.Drawing.Size(121, 23)
+        Me.CBDevise.TabIndex = 93
+        '
+        'CreerProduit
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(461, 650)
+        Me.Controls.Add(Me.CBDevise)
+        Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.LabSameID)
         Me.Controls.Add(Me.tbNoMFR)
         Me.Controls.Add(Me.Label5)
@@ -318,7 +339,7 @@ Partial Class creerProduit
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.tbIDPro)
         Me.Controls.Add(Me.Label1)
-        Me.Name = "creerProduit"
+        Me.Name = "CreerProduit"
         Me.Text = "Créer Nouveau Produit"
         CType(Me.nudMinInv, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nudCoutUn, System.ComponentModel.ISupportInitialize).EndInit()
@@ -356,4 +377,6 @@ Partial Class creerProduit
     Friend WithEvents tbNoPieceFour As TextBox
     Friend WithEvents Label10 As Label
     Friend WithEvents LabSameID As Label
+    Friend WithEvents Label11 As Label
+    Friend WithEvents CBDevise As ComboBox
 End Class

@@ -73,6 +73,8 @@ Partial Class UCInventaire
         Me.cbNoFour = New System.Windows.Forms.ComboBox()
         Me.btRemoveFour = New System.Windows.Forms.Button()
         Me.btAddFour = New System.Windows.Forms.Button()
+        Me.CBDevise = New System.Windows.Forms.ComboBox()
+        Me.Label20 = New System.Windows.Forms.Label()
         CType(Me.nudQuantite, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudEnCommende, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.nudCoutUn, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -527,10 +529,30 @@ Partial Class UCInventaire
         Me.btAddFour.Text = "Ajouter Fournisseur"
         Me.btAddFour.UseVisualStyleBackColor = True
         '
+        'CBDevise
+        '
+        Me.CBDevise.Enabled = False
+        Me.CBDevise.FormattingEnabled = True
+        Me.CBDevise.Location = New System.Drawing.Point(162, 248)
+        Me.CBDevise.Name = "CBDevise"
+        Me.CBDevise.Size = New System.Drawing.Size(121, 23)
+        Me.CBDevise.TabIndex = 95
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(162, 230)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(41, 15)
+        Me.Label20.TabIndex = 94
+        Me.Label20.Text = "Devise"
+        '
         'UCInventaire
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.CBDevise)
+        Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.btRemoveFour)
         Me.Controls.Add(Me.btAddFour)
         Me.Controls.Add(Me.cbNoFour)
@@ -644,4 +666,6 @@ Partial Class UCInventaire
     Friend WithEvents cbNoFour As ComboBox
     Friend WithEvents btRemoveFour As Button
     Friend WithEvents btAddFour As Button
+    Friend WithEvents CBDevise As ComboBox
+    Friend WithEvents Label20 As Label
 End Class

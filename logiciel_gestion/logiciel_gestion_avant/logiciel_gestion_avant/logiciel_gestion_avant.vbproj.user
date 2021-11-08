@@ -13,6 +13,12 @@
     <Compile Update="Form\Création\CreerCouleur.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Form\Création\CreerCouleurTissus.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form\Création\CreerCouleurToile.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Form\Création\CreerFour.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -37,6 +43,9 @@
     <Compile Update="Form\ListeFournisseur.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Form\ListeVehicule.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Form\MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -49,9 +58,6 @@
     <Compile Update="Form\Création\CreerOption.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Form\test.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="UserControle\UCAccueil.vb">
       <SubType>UserControl</SubType>
     </Compile>
@@ -59,6 +65,12 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControle\UCCouleur.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControle\UCCouleurTissus.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControle\UCCouleurToile.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControle\UCFournisseur.vb">
@@ -74,6 +86,12 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControle\UCVente.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControle\UCVente2.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControle\UCVente3.vb">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
