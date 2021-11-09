@@ -95,4 +95,16 @@
     Public Sub setID(idV As String)
         id = idV
     End Sub
+
+    Public Function getDatePre() As Date
+        Return DTPPre.Value
+    End Function
+
+    Public Sub clear()
+        id = "0"
+        CBModel.SelectedIndex = 0
+        CBCoulVe.SelectedIndex = 0
+        CBCoulToile.SelectedIndex = 0
+        CBCoulTissus.SelectedIndex = 0
+    End Sub
 End Class

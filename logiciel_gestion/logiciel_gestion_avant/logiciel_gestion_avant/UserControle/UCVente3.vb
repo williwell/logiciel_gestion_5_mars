@@ -46,6 +46,8 @@
                 listeAddCl(6) = CBSexe.SelectedItem
 
                 If String.IsNullOrEmpty(TBEmail.Text) Then
+                    listeAddCl(7) = "null"
+                Else
                     listeAddCl(7) = TBEmail.Text
                 End If
 
@@ -70,7 +72,25 @@
                         listeAdd(nbr) = liste(i)
                     Next
                     If ConnectionServeur.Getinstance.AddDelete(listeAdd, "addOpVe") Then
-                        MessageBox.Show("Ajout fait avec succès")
+                        table = ConnectionServeur.Getinstance.GetInfo(listeAddCl, "AddClientID")
+                        If Not table(0)(0) = 0 Then
+                            ReDim listeAdd(4)
+                            listeAdd(0) = id
+                            listeAdd(1) = Date.Now.ToString("yyyy-MM-dd")
+                            listeAdd(2) = uc.getDatePre
+                            listeAdd(4) = table(0)(0)
+                            table = ConnectionServeur.Getinstance.GetInfo("GetPriority")
+                            Dim nbr2 As Integer = table(0)(0) + 1
+                            listeAdd(3) = nbr2
+                            If ConnectionServeur.Getinstance.AddDelete(listeAdd, "addVenteClient") Then
+                                MessageBox.Show("Ajout fait avec succès")
+                                clear()
+                            Else
+                                MessageBox.Show("Une erreure c'est produit durant l'association du véicule et du client!", "Attention!")
+                            End If
+                        Else
+                            MessageBox.Show("Une erreure c'est produit durant la création du nouveau client!", "Attention!")
+                        End If
                     Else
                         MessageBox.Show("Une erreure c'est produit durant l'association des option!", "Attention!")
                     End If
@@ -90,6 +110,18 @@
     End Sub
 
     Private Sub UCVente3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim liste() As String = {"Non déterminer", "Homme", "Femme"}
+        CBSexe.DataSource = liste
+    End Sub
 
+    Private Sub clear()
+        TBPrenom1.Text = ""
+        TBNom1.Text = ""
+        TBPrenom2.Text = ""
+        TBNom2.Text = ""
+        TBTel1.Text = ""
+        TBTel2.Text = ""
+        CBSexe.SelectedIndex = 0
+        TBEmail.Text = ""
     End Sub
 End Class

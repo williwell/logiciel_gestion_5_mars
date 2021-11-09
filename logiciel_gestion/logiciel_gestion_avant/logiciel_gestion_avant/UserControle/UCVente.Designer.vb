@@ -35,6 +35,8 @@ Partial Class UCVente
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.BtNext = New System.Windows.Forms.Button()
+        Me.DTPPre = New System.Windows.Forms.DateTimePicker()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'BTChoisir
@@ -71,7 +73,7 @@ Partial Class UCVente
         Me.CBModel.FormattingEnabled = True
         Me.CBModel.Location = New System.Drawing.Point(321, 230)
         Me.CBModel.Name = "CBModel"
-        Me.CBModel.Size = New System.Drawing.Size(196, 23)
+        Me.CBModel.Size = New System.Drawing.Size(200, 23)
         Me.CBModel.TabIndex = 5
         '
         'CBCoulVe
@@ -80,7 +82,7 @@ Partial Class UCVente
         Me.CBCoulVe.FormattingEnabled = True
         Me.CBCoulVe.Location = New System.Drawing.Point(321, 274)
         Me.CBCoulVe.Name = "CBCoulVe"
-        Me.CBCoulVe.Size = New System.Drawing.Size(196, 23)
+        Me.CBCoulVe.Size = New System.Drawing.Size(200, 23)
         Me.CBCoulVe.TabIndex = 7
         '
         'Label3
@@ -98,7 +100,7 @@ Partial Class UCVente
         Me.CBCoulTissus.FormattingEnabled = True
         Me.CBCoulTissus.Location = New System.Drawing.Point(321, 362)
         Me.CBCoulTissus.Name = "CBCoulTissus"
-        Me.CBCoulTissus.Size = New System.Drawing.Size(196, 23)
+        Me.CBCoulTissus.Size = New System.Drawing.Size(200, 23)
         Me.CBCoulTissus.TabIndex = 11
         '
         'Label4
@@ -116,7 +118,7 @@ Partial Class UCVente
         Me.CBCoulToile.FormattingEnabled = True
         Me.CBCoulToile.Location = New System.Drawing.Point(321, 318)
         Me.CBCoulToile.Name = "CBCoulToile"
-        Me.CBCoulToile.Size = New System.Drawing.Size(196, 23)
+        Me.CBCoulToile.Size = New System.Drawing.Size(200, 23)
         Me.CBCoulToile.TabIndex = 9
         '
         'Label5
@@ -157,10 +159,28 @@ Partial Class UCVente
         Me.BtNext.Text = "Suivant"
         Me.BtNext.UseVisualStyleBackColor = True
         '
+        'DTPPre
+        '
+        Me.DTPPre.Location = New System.Drawing.Point(321, 406)
+        Me.DTPPre.Name = "DTPPre"
+        Me.DTPPre.Size = New System.Drawing.Size(200, 23)
+        Me.DTPPre.TabIndex = 15
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(321, 388)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(126, 15)
+        Me.Label8.TabIndex = 16
+        Me.Label8.Text = "Date Prévu Fabrication"
+        '
         'UCVente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.DTPPre)
         Me.Controls.Add(Me.BtNext)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.Label6)
@@ -194,4 +214,6 @@ Partial Class UCVente
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents BtNext As Button
+    Friend WithEvents DTPPre As DateTimePicker
+    Friend WithEvents Label8 As Label
 End Class

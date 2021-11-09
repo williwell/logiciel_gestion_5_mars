@@ -226,6 +226,7 @@ Partial Class UCVente3
         '
         'CBSexe
         '
+        Me.CBSexe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CBSexe.FormattingEnabled = True
         Me.CBSexe.Location = New System.Drawing.Point(321, 478)
         Me.CBSexe.Name = "CBSexe"
