@@ -4,6 +4,7 @@
     Dim table As DataTable
     Dim tableCh As New DataTable
     Dim id As Integer
+    Dim prix As Double
     Sub New(ucVente As UCVente, form As MainForm)
 
         ' Cet appel est requis par le concepteur.
@@ -56,9 +57,30 @@
 
     Private Sub DGVOpDispo_DoubleClick(sender As Object, e As EventArgs) Handles DGVOpDispo.DoubleClick
         ListGest.PopulateRow(tableCh, DGVOpDispo, DGVOpCh)
+        checkPrix()
     End Sub
 
     Private Sub DGVOpCh_DoubleClick(sender As Object, e As EventArgs) Handles DGVOpCh.DoubleClick
         ListGest.PopulateRow(table, DGVOpCh, DGVOpDispo)
+        checkPrix()
+    End Sub
+
+    Public Sub setPrix(prixMo As String)
+        prix = Double.Parse(prixMo)
+        TBCout.Text = prix
+        TBTPS.Text = Math.Round(prix * Double.Parse(MainForm.GetInstance.GetOption4), 2)
+        TBTVQ.Text = Math.Round(prix * Double.Parse(MainForm.GetInstance.GetOption5), 2)
+        TBTotal.Text = Math.Round(prix + Double.Parse(TBTPS.Text) + Double.Parse(TBTVQ.Text), 2)
+    End Sub
+
+    Private Sub checkPrix()
+        Dim d As Double = prix
+        For i As Integer = 0 To DGVOpCh.Rows.Count - 1
+            d += DGVOpCh.Rows(i).Cells(2).Value
+        Next
+        TBCout.Text = d
+        TBTPS.Text = Math.Round(d * MainForm.GetInstance.GetOption4, 2)
+        TBTVQ.Text = Math.Round(d * MainForm.GetInstance.GetOption5, 2)
+        TBTotal.Text = Math.Round(d + Double.Parse(TBTPS.Text) + Double.Parse(TBTVQ.Text), 2)
     End Sub
 End Class

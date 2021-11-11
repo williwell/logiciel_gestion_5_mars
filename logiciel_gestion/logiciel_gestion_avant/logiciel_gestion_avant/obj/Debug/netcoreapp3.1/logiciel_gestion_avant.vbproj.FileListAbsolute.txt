@@ -52,3 +52,4 @@ C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gest
 C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gestion_avant\obj\Debug\netcoreapp3.1\logiciel_gestion_avant.UCVente2.resources
 C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gestion_avant\obj\Debug\netcoreapp3.1\logiciel_gestion_avant.ListeVehicule.resources
 C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gestion_avant\obj\Debug\netcoreapp3.1\logiciel_gestion_avant.UCVente3.resources
+C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gestion_avant\obj\Debug\netcoreapp3.1\logiciel_gestion_avant.ListeClient.resources

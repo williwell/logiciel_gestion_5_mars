@@ -106,5 +106,10 @@
         CBCoulVe.SelectedIndex = 0
         CBCoulToile.SelectedIndex = 0
         CBCoulTissus.SelectedIndex = 0
+        DTPPre.Value = Now
     End Sub
+
+    Public Function getPrix() As String
+        Return tableModel(CBModel.SelectedIndex)(2)
+    End Function
 End Class

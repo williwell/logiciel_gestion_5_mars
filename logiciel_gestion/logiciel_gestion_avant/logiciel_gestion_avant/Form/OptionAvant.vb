@@ -17,14 +17,16 @@ Public Class OptionAvant
     End Sub
 
     Private Sub BtSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
-        MainForm.GetInstance.SetOption(tbIp.Text, tbNom.Text, Integer.Parse(tbPortDB.Text))
+        MainForm.GetInstance.SetOption(tbIp.Text, tbNom.Text, Integer.Parse(tbPortDB.Text), Double.Parse(TBTPS.Text), Double.Parse(TBTVQ.Text))
         MyOption.GetInstance.SaveOption()
     End Sub
 
     Private Sub OptionReception_Load(sender As Object, e As EventArgs) Handles Me.Load
         tbIp.Text = MainForm.getInstance.getOption1()
         tbNom.Text = MainForm.getInstance.getOption2()
-        tbPortDB.Text = MainForm.getInstance.getOption3()
+        tbPortDB.Text = MainForm.GetInstance.GetOption3()
+        TBTPS.Text = MainForm.GetInstance.GetOption4()
+        TBTVQ.Text = MainForm.GetInstance.GetOption5()
     End Sub
 
     Private Sub BtAnnuler_Click(sender As Object, e As EventArgs) Handles btAnnuler.Click

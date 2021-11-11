@@ -30,7 +30,7 @@ Partial Class UCVente3
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.BTClient = New System.Windows.Forms.Button()
         Me.BTPrev = New System.Windows.Forms.Button()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -121,14 +121,14 @@ Partial Class UCVente3
         Me.Label1.TabIndex = 16
         Me.Label1.Text = "Client"
         '
-        'Button2
+        'BTClient
         '
-        Me.Button2.Location = New System.Drawing.Point(64, 196)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(196, 23)
-        Me.Button2.TabIndex = 15
-        Me.Button2.Text = "Choisir Client"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.BTClient.Location = New System.Drawing.Point(64, 196)
+        Me.BTClient.Name = "BTClient"
+        Me.BTClient.Size = New System.Drawing.Size(196, 23)
+        Me.BTClient.TabIndex = 15
+        Me.BTClient.Text = "Choisir Client"
+        Me.BTClient.UseVisualStyleBackColor = True
         '
         'BTPrev
         '
@@ -258,7 +258,7 @@ Partial Class UCVente3
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.BTClient)
         Me.Name = "UCVente3"
         Me.Size = New System.Drawing.Size(808, 649)
         Me.ResumeLayout(False)
@@ -274,7 +274,7 @@ Partial Class UCVente3
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
-    Friend WithEvents Button2 As Button
+    Friend WithEvents BTClient As Button
     Friend WithEvents BTPrev As Button
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label

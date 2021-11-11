@@ -164,6 +164,7 @@ Public Class MainForm
     Public Sub ChangeUCNext1()
         ucVente2.loadDGV()
         ucVente2.BringToFront()
+        ucVente2.setPrix(ucVente.getPrix())
     End Sub
 
     Public Sub ChangeUCNext2()
@@ -197,10 +198,12 @@ Public Class MainForm
     '__________________________________________________________________________________________________________
     'Set
     '__________________________________________________________________________________________________________
-    Public Sub SetOption(str1 As String, str2 As String, int3 As Integer)
+    Public Sub SetOption(str1 As String, str2 As String, int3 As Integer, doub4 As Double, doub5 As Double)
         options.option1 = str1
         options.option2 = str2
         options.option3 = int3
+        options.option4 = doub4
+        options.option5 = doub5
     End Sub
 
 
@@ -217,6 +220,14 @@ Public Class MainForm
 
     Public Function GetOption3() As String
         Return options.option3
+    End Function
+
+    Public Function GetOption4() As String
+        Return options.option4
+    End Function
+
+    Public Function GetOption5() As String
+        Return options.option5
     End Function
 
     Private Sub MainForm_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing

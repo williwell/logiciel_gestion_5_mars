@@ -40,6 +40,9 @@
     <Compile Update="Form\InfoClient.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Form\ListeClient.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Form\ListeFournisseur.vb">
       <SubType>Form</SubType>
     </Compile>
