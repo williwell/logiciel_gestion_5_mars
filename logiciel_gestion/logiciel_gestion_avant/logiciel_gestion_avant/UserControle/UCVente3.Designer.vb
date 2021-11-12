@@ -44,6 +44,23 @@ Partial Class UCVente3
         Me.TBTel2 = New System.Windows.Forms.TextBox()
         Me.TBEmail = New System.Windows.Forms.TextBox()
         Me.CBSexe = New System.Windows.Forms.ComboBox()
+        Me.BTNewCl = New System.Windows.Forms.Button()
+        Me.CBSexeCl = New System.Windows.Forms.ComboBox()
+        Me.TBEmailCl = New System.Windows.Forms.TextBox()
+        Me.TBTel2Cl = New System.Windows.Forms.TextBox()
+        Me.TBTel1Cl = New System.Windows.Forms.TextBox()
+        Me.TBNom2Cl = New System.Windows.Forms.TextBox()
+        Me.TBPrenom2Cl = New System.Windows.Forms.TextBox()
+        Me.TBNom1Cl = New System.Windows.Forms.TextBox()
+        Me.TBPreNom1Cl = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.Label14 = New System.Windows.Forms.Label()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.Label19 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'BTSave
@@ -59,7 +76,7 @@ Partial Class UCVente3
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label7.Location = New System.Drawing.Point(64, 156)
+        Me.Label7.Location = New System.Drawing.Point(64, 120)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(142, 21)
         Me.Label7.TabIndex = 26
@@ -69,7 +86,7 @@ Partial Class UCVente3
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label6.Location = New System.Drawing.Point(321, 156)
+        Me.Label6.Location = New System.Drawing.Point(321, 120)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(117, 21)
         Me.Label6.TabIndex = 25
@@ -115,7 +132,7 @@ Partial Class UCVente3
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(64, 131)
+        Me.Label1.Location = New System.Drawing.Point(64, 95)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(61, 25)
         Me.Label1.TabIndex = 16
@@ -123,7 +140,7 @@ Partial Class UCVente3
         '
         'BTClient
         '
-        Me.BTClient.Location = New System.Drawing.Point(64, 196)
+        Me.BTClient.Location = New System.Drawing.Point(64, 160)
         Me.BTClient.Name = "BTClient"
         Me.BTClient.Size = New System.Drawing.Size(196, 23)
         Me.BTClient.TabIndex = 15
@@ -233,10 +250,182 @@ Partial Class UCVente3
         Me.CBSexe.Size = New System.Drawing.Size(204, 23)
         Me.CBSexe.TabIndex = 41
         '
+        'BTNewCl
+        '
+        Me.BTNewCl.Location = New System.Drawing.Point(321, 160)
+        Me.BTNewCl.Name = "BTNewCl"
+        Me.BTNewCl.Size = New System.Drawing.Size(196, 23)
+        Me.BTNewCl.TabIndex = 42
+        Me.BTNewCl.Text = "Créer Nouveau Client"
+        Me.BTNewCl.UseVisualStyleBackColor = True
+        '
+        'CBSexeCl
+        '
+        Me.CBSexeCl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CBSexeCl.FormattingEnabled = True
+        Me.CBSexeCl.Location = New System.Drawing.Point(64, 478)
+        Me.CBSexeCl.Name = "CBSexeCl"
+        Me.CBSexeCl.Size = New System.Drawing.Size(204, 23)
+        Me.CBSexeCl.TabIndex = 58
+        Me.CBSexeCl.Visible = False
+        '
+        'TBEmailCl
+        '
+        Me.TBEmailCl.Location = New System.Drawing.Point(64, 522)
+        Me.TBEmailCl.Name = "TBEmailCl"
+        Me.TBEmailCl.Size = New System.Drawing.Size(204, 23)
+        Me.TBEmailCl.TabIndex = 57
+        Me.TBEmailCl.Visible = False
+        '
+        'TBTel2Cl
+        '
+        Me.TBTel2Cl.Location = New System.Drawing.Point(64, 434)
+        Me.TBTel2Cl.Name = "TBTel2Cl"
+        Me.TBTel2Cl.Size = New System.Drawing.Size(204, 23)
+        Me.TBTel2Cl.TabIndex = 56
+        Me.TBTel2Cl.Visible = False
+        '
+        'TBTel1Cl
+        '
+        Me.TBTel1Cl.Location = New System.Drawing.Point(64, 390)
+        Me.TBTel1Cl.Name = "TBTel1Cl"
+        Me.TBTel1Cl.Size = New System.Drawing.Size(204, 23)
+        Me.TBTel1Cl.TabIndex = 55
+        Me.TBTel1Cl.Visible = False
+        '
+        'TBNom2Cl
+        '
+        Me.TBNom2Cl.Location = New System.Drawing.Point(64, 346)
+        Me.TBNom2Cl.Name = "TBNom2Cl"
+        Me.TBNom2Cl.Size = New System.Drawing.Size(204, 23)
+        Me.TBNom2Cl.TabIndex = 54
+        Me.TBNom2Cl.Visible = False
+        '
+        'TBPrenom2Cl
+        '
+        Me.TBPrenom2Cl.Location = New System.Drawing.Point(64, 302)
+        Me.TBPrenom2Cl.Name = "TBPrenom2Cl"
+        Me.TBPrenom2Cl.Size = New System.Drawing.Size(204, 23)
+        Me.TBPrenom2Cl.TabIndex = 53
+        Me.TBPrenom2Cl.Visible = False
+        '
+        'TBNom1Cl
+        '
+        Me.TBNom1Cl.Location = New System.Drawing.Point(64, 258)
+        Me.TBNom1Cl.Name = "TBNom1Cl"
+        Me.TBNom1Cl.Size = New System.Drawing.Size(204, 23)
+        Me.TBNom1Cl.TabIndex = 52
+        Me.TBNom1Cl.Visible = False
+        '
+        'TBPreNom1Cl
+        '
+        Me.TBPreNom1Cl.Location = New System.Drawing.Point(64, 214)
+        Me.TBPreNom1Cl.Name = "TBPreNom1Cl"
+        Me.TBPreNom1Cl.Size = New System.Drawing.Size(204, 23)
+        Me.TBPreNom1Cl.TabIndex = 51
+        Me.TBPreNom1Cl.Visible = False
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(64, 504)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(36, 15)
+        Me.Label12.TabIndex = 50
+        Me.Label12.Text = "Email"
+        Me.Label12.Visible = False
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(64, 460)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(31, 15)
+        Me.Label13.TabIndex = 49
+        Me.Label13.Text = "Sexe"
+        Me.Label13.Visible = False
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(64, 416)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(70, 15)
+        Me.Label14.TabIndex = 48
+        Me.Label14.Text = "Téléphone 2"
+        Me.Label14.Visible = False
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(64, 372)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(70, 15)
+        Me.Label15.TabIndex = 47
+        Me.Label15.Text = "Téléphnoe 1"
+        Me.Label15.Visible = False
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(64, 328)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(43, 15)
+        Me.Label16.TabIndex = 46
+        Me.Label16.Text = "Nom 2"
+        Me.Label16.Visible = False
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(64, 284)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(58, 15)
+        Me.Label17.TabIndex = 45
+        Me.Label17.Text = "Prenom 2"
+        Me.Label17.Visible = False
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(64, 240)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(43, 15)
+        Me.Label18.TabIndex = 44
+        Me.Label18.Text = "Nom 1"
+        Me.Label18.Visible = False
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(64, 196)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(58, 15)
+        Me.Label19.TabIndex = 43
+        Me.Label19.Text = "Prénom 1"
+        Me.Label19.Visible = False
+        '
         'UCVente3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.CBSexeCl)
+        Me.Controls.Add(Me.TBEmailCl)
+        Me.Controls.Add(Me.TBTel2Cl)
+        Me.Controls.Add(Me.TBTel1Cl)
+        Me.Controls.Add(Me.TBNom2Cl)
+        Me.Controls.Add(Me.TBPrenom2Cl)
+        Me.Controls.Add(Me.TBNom1Cl)
+        Me.Controls.Add(Me.TBPreNom1Cl)
+        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.Label14)
+        Me.Controls.Add(Me.Label15)
+        Me.Controls.Add(Me.Label16)
+        Me.Controls.Add(Me.Label17)
+        Me.Controls.Add(Me.Label18)
+        Me.Controls.Add(Me.Label19)
+        Me.Controls.Add(Me.BTNewCl)
         Me.Controls.Add(Me.CBSexe)
         Me.Controls.Add(Me.TBEmail)
         Me.Controls.Add(Me.TBTel2)
@@ -288,4 +477,21 @@ Partial Class UCVente3
     Friend WithEvents TBTel2 As TextBox
     Friend WithEvents TBEmail As TextBox
     Friend WithEvents CBSexe As ComboBox
+    Friend WithEvents BTNewCl As Button
+    Friend WithEvents CBSexeCl As ComboBox
+    Friend WithEvents TBEmailCl As TextBox
+    Friend WithEvents TBTel2Cl As TextBox
+    Friend WithEvents TBTel1Cl As TextBox
+    Friend WithEvents TBNom2Cl As TextBox
+    Friend WithEvents TBPrenom2Cl As TextBox
+    Friend WithEvents TBNom1Cl As TextBox
+    Friend WithEvents TBPreNom1Cl As TextBox
+    Friend WithEvents Label12 As Label
+    Friend WithEvents Label13 As Label
+    Friend WithEvents Label14 As Label
+    Friend WithEvents Label15 As Label
+    Friend WithEvents Label16 As Label
+    Friend WithEvents Label17 As Label
+    Friend WithEvents Label18 As Label
+    Friend WithEvents Label19 As Label
 End Class

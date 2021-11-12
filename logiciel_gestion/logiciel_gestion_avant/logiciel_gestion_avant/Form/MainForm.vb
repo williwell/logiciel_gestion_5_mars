@@ -22,6 +22,7 @@ Public Class MainForm
     ReadOnly ucCoulTissus As New UCCouleurTissus
     Dim ucVente2 As UCVente2
     Dim ucVente3 As UCVente3
+    ReadOnly ucLivrer As New UCLivrerVehicule
     Private Delegate Sub setValue(text As String)
 
     '__________________________________________________________________________________________________________
@@ -64,6 +65,7 @@ Public Class MainForm
         PanUC.Controls.Add(ucCoulTissus)
         PanUC.Controls.Add(ucVente2)
         PanUC.Controls.Add(ucVente3)
+        PanUC.Controls.Add(ucLivrer)
         ucAccueil.RowsColor()
     End Sub
 
@@ -269,6 +271,11 @@ Public Class MainForm
 
     Private Sub BTCoulTissu_Click(sender As Object, e As EventArgs) Handles BTCoulTissu.Click
         ucCoulTissus.BringToFront()
+        panMenu.Size = panMenu.MinimumSize
+    End Sub
+
+    Private Sub BTLivrer_Click(sender As Object, e As EventArgs) Handles BTLivrer.Click
+        ucLivrer.BringToFront()
         panMenu.Size = panMenu.MinimumSize
     End Sub
 End Class

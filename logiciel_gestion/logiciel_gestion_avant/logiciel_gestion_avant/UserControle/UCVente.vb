@@ -7,6 +7,10 @@
     Dim TableCoulTissus As DataTable
     Dim bool As Boolean = False
     Dim id As String = "0"
+    Dim prix As Decimal
+    Dim TPS As Decimal
+    Dim TVQ As Decimal
+    Dim total As Decimal
 
     Sub New(form As MainForm)
 
@@ -41,6 +45,8 @@
             liste(0) = "Aucune couleur de disponible pour ce model"
         End If
         CBCoulVe.DataSource = liste
+        prix = Decimal.Parse(tableModel(CBModel.SelectedIndex)(2))
+        TBCout.Text = prix.ToString("0.00$")
     End Sub
 
     Private Sub RemplirCB(ByRef table As DataTable, CB As ComboBox, str As String)
@@ -112,4 +118,13 @@
     Public Function getPrix() As String
         Return tableModel(CBModel.SelectedIndex)(2)
     End Function
+
+    Private Sub TBCout_TextChanged(sender As Object, e As EventArgs) Handles TBCout.TextChanged
+        TPS = Math.Round(prix * MainForm.GetInstance.GetOption4, 2)
+        TBTPS.Text = TPS.ToString("0.00$")
+        TVQ = Math.Round(prix * MainForm.GetInstance.GetOption5, 2)
+        TBTVQ.Text = TVQ.ToString("0.00$")
+        total = Math.Round(prix + TPS + TVQ, 2)
+        TBTotal.Text = total.ToString("0.00$")
+    End Sub
 End Class

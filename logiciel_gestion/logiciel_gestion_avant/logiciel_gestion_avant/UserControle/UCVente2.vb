@@ -4,7 +4,11 @@
     Dim table As DataTable
     Dim tableCh As New DataTable
     Dim id As Integer
-    Dim prix As Double
+    Dim prix As Decimal
+    Dim TPS As Decimal
+    Dim TVQ As Decimal
+    Dim total As Decimal
+
     Sub New(ucVente As UCVente, form As MainForm)
 
         ' Cet appel est requis par le concepteur.
@@ -66,11 +70,14 @@
     End Sub
 
     Public Sub setPrix(prixMo As String)
-        prix = Double.Parse(prixMo)
-        TBCout.Text = prix
-        TBTPS.Text = Math.Round(prix * Double.Parse(MainForm.GetInstance.GetOption4), 2)
-        TBTVQ.Text = Math.Round(prix * Double.Parse(MainForm.GetInstance.GetOption5), 2)
-        TBTotal.Text = Math.Round(prix + Double.Parse(TBTPS.Text) + Double.Parse(TBTVQ.Text), 2)
+        prix = Math.Round(Double.Parse(prixMo), 2)
+        TBCout.Text = prix.ToString("0.00$")
+        TPS = Math.Round(prix * Double.Parse(MainForm.GetInstance.GetOption4), 2)
+        TBTPS.Text = TPS.ToString("0.00$")
+        TVQ = Math.Round(prix * Double.Parse(MainForm.GetInstance.GetOption5), 2)
+        TBTVQ.Text = TVQ.ToString("0.00$")
+        total = Math.Round(prix + TVQ + TPS, 2)
+        TBTotal.Text = total.ToString("0.00$")
     End Sub
 
     Private Sub checkPrix()

@@ -37,6 +37,14 @@ Partial Class UCVente
         Me.BtNext = New System.Windows.Forms.Button()
         Me.DTPPre = New System.Windows.Forms.DateTimePicker()
         Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.TBTotal = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.TBTVQ = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.TBTPS = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.TBCout = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'BTChoisir
@@ -175,10 +183,86 @@ Partial Class UCVente
         Me.Label8.TabIndex = 16
         Me.Label8.Text = "Date Prévu Fabrication"
         '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(604, 529)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(32, 15)
+        Me.Label9.TabIndex = 46
+        Me.Label9.Text = "Total"
+        '
+        'TBTotal
+        '
+        Me.TBTotal.Location = New System.Drawing.Point(604, 547)
+        Me.TBTotal.Name = "TBTotal"
+        Me.TBTotal.ReadOnly = True
+        Me.TBTotal.Size = New System.Drawing.Size(162, 23)
+        Me.TBTotal.TabIndex = 45
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(604, 485)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(29, 15)
+        Me.Label10.TabIndex = 44
+        Me.Label10.Text = "TVQ"
+        '
+        'TBTVQ
+        '
+        Me.TBTVQ.Location = New System.Drawing.Point(604, 503)
+        Me.TBTVQ.Name = "TBTVQ"
+        Me.TBTVQ.ReadOnly = True
+        Me.TBTVQ.Size = New System.Drawing.Size(162, 23)
+        Me.TBTVQ.TabIndex = 43
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(604, 441)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(26, 15)
+        Me.Label11.TabIndex = 42
+        Me.Label11.Text = "TPS"
+        '
+        'TBTPS
+        '
+        Me.TBTPS.Location = New System.Drawing.Point(604, 459)
+        Me.TBTPS.Name = "TBTPS"
+        Me.TBTPS.ReadOnly = True
+        Me.TBTPS.Size = New System.Drawing.Size(162, 23)
+        Me.TBTPS.TabIndex = 41
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(604, 397)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(27, 15)
+        Me.Label12.TabIndex = 40
+        Me.Label12.Text = "Prix"
+        '
+        'TBCout
+        '
+        Me.TBCout.Location = New System.Drawing.Point(604, 415)
+        Me.TBCout.Name = "TBCout"
+        Me.TBCout.ReadOnly = True
+        Me.TBCout.Size = New System.Drawing.Size(162, 23)
+        Me.TBCout.TabIndex = 39
+        '
         'UCVente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.TBTotal)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.TBTVQ)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.TBTPS)
+        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.TBCout)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.DTPPre)
         Me.Controls.Add(Me.BtNext)
@@ -216,4 +300,12 @@ Partial Class UCVente
     Friend WithEvents BtNext As Button
     Friend WithEvents DTPPre As DateTimePicker
     Friend WithEvents Label8 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents TBTotal As TextBox
+    Friend WithEvents Label10 As Label
+    Friend WithEvents TBTVQ As TextBox
+    Friend WithEvents Label11 As Label
+    Friend WithEvents TBTPS As TextBox
+    Friend WithEvents Label12 As Label
+    Friend WithEvents TBCout As TextBox
 End Class

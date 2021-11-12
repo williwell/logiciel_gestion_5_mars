@@ -19,5 +19,8 @@
         Dim row As DataGridViewRow = DGVVehicule.CurrentRow
         uc.setID(row.Cells(0).Value)
         uc.NextPage(row.Cells(1).Value, row.Cells(2).Value, row.Cells(3).Value, row.Cells(4).Value, row.Cells(5).Value)
+        Me.Close()
     End Sub
+
+
 End Class

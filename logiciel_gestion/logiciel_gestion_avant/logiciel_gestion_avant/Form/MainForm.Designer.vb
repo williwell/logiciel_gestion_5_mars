@@ -30,6 +30,7 @@ Partial Class MainForm
         Me.BTCoulModel = New System.Windows.Forms.Button()
         Me.btMenu = New System.Windows.Forms.Button()
         Me.panMenu = New System.Windows.Forms.Panel()
+        Me.BTLivrer = New System.Windows.Forms.Button()
         Me.BtClient = New System.Windows.Forms.Button()
         Me.BtOptionModel = New System.Windows.Forms.Button()
         Me.BtCouleur = New System.Windows.Forms.Button()
@@ -116,6 +117,7 @@ Partial Class MainForm
         'panMenu
         '
         Me.panMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panMenu.Controls.Add(Me.BTLivrer)
         Me.panMenu.Controls.Add(Me.BtClient)
         Me.panMenu.Controls.Add(Me.BtOptionModel)
         Me.panMenu.Controls.Add(Me.BtCouleur)
@@ -126,11 +128,20 @@ Partial Class MainForm
         Me.panMenu.Controls.Add(Me.btAccueil)
         Me.panMenu.Controls.Add(Me.btMenu)
         Me.panMenu.Location = New System.Drawing.Point(12, 7)
-        Me.panMenu.MaximumSize = New System.Drawing.Size(100, 260)
+        Me.panMenu.MaximumSize = New System.Drawing.Size(100, 292)
         Me.panMenu.MinimumSize = New System.Drawing.Size(100, 30)
         Me.panMenu.Name = "panMenu"
-        Me.panMenu.Size = New System.Drawing.Size(100, 260)
+        Me.panMenu.Size = New System.Drawing.Size(100, 292)
         Me.panMenu.TabIndex = 2
+        '
+        'BTLivrer
+        '
+        Me.BTLivrer.Location = New System.Drawing.Point(2, 261)
+        Me.BTLivrer.Name = "BTLivrer"
+        Me.BTLivrer.Size = New System.Drawing.Size(94, 23)
+        Me.BTLivrer.TabIndex = 9
+        Me.BTLivrer.Text = "Livrer"
+        Me.BTLivrer.UseVisualStyleBackColor = True
         '
         'BtClient
         '
@@ -261,4 +272,5 @@ Partial Class MainForm
     Friend WithEvents BTCoulTissu As Button
     Friend WithEvents BTCoulToile As Button
     Friend WithEvents BTCoulModel As Button
+    Friend WithEvents BTLivrer As Button
 End Class

@@ -85,6 +85,9 @@
     <Compile Update="UserControle\UCInventaire.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UserControle\UCLivrerVehicule.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UserControle\UCOption.vb">
       <SubType>UserControl</SubType>
     </Compile>
