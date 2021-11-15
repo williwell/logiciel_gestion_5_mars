@@ -11,9 +11,9 @@ Public Class GestionInvModel
     Dim listeInvAdd() As String
     Dim nbrInv As Integer
     ReadOnly id As String
-    ReadOnly ucGestion As UCGestionVehicule
+    ReadOnly ucGestion As UCGestionModel
 
-    Sub New(idModel As String, uc As UCGestionVehicule)
+    Sub New(idModel As String, uc As UCGestionModel)
 
         ' Cet appel est requis par le concepteur.
         InitializeComponent()

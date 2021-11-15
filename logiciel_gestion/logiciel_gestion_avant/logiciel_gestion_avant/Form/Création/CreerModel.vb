@@ -1,7 +1,7 @@
 ﻿Imports System.ComponentModel
 
 Public Class CreerModel
-    ReadOnly ucGestionModel As UCGestionVehicule
+    ReadOnly ucGestionModel As UCGestionModel
     Dim tableOpAjout As New DataTable
     ReadOnly tableOpMo As New DataTable
     Dim tableCoulAjout As New DataTable
@@ -10,7 +10,7 @@ Public Class CreerModel
     ReadOnly tableInvMo As New DataTable
     ReadOnly tableMid As New DataTable
 
-    Sub New(uc As UCGestionVehicule)
+    Sub New(uc As UCGestionModel)
         ' Cet appel est requis par le concepteur.
         InitializeComponent()
 

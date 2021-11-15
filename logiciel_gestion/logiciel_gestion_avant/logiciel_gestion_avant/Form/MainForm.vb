@@ -14,7 +14,7 @@ Public Class MainForm
     ReadOnly ucInventaire As New UCInventaire(Me)
     ReadOnly ucVente As New UCVente(Me)
     ReadOnly ucFour As New UCFournisseur(Me, ucInventaire)
-    ReadOnly ucModel As New UCGestionVehicule
+    ReadOnly ucModel As New UCGestionModel
     ReadOnly ucCouleur As New UCCouleur
     ReadOnly ucOption As New UCOption
     ReadOnly ucClient As New UCClient
@@ -23,6 +23,7 @@ Public Class MainForm
     Dim ucVente2 As UCVente2
     Dim ucVente3 As UCVente3
     ReadOnly ucLivrer As New UCLivrerVehicule
+    ReadOnly ucGestVeh As New UCGestionVehicule
     Private Delegate Sub setValue(text As String)
 
     '__________________________________________________________________________________________________________
@@ -66,6 +67,7 @@ Public Class MainForm
         PanUC.Controls.Add(ucVente2)
         PanUC.Controls.Add(ucVente3)
         PanUC.Controls.Add(ucLivrer)
+        PanUC.Controls.Add(ucGestVeh)
         ucAccueil.RowsColor()
     End Sub
 
@@ -234,6 +236,7 @@ Public Class MainForm
 
     Private Sub MainForm_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         If MessageBox.Show("Voulez-vous vraiment fermer le programme?", "Attention!", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            ConnectionServeur.Getinstance.GetInfo("fermer")
             Me.Dispose()
         Else
             e.Cancel = True
@@ -274,7 +277,21 @@ Public Class MainForm
         panMenu.Size = panMenu.MinimumSize
     End Sub
 
-    Private Sub BTLivrer_Click(sender As Object, e As EventArgs) Handles BTLivrer.Click
+    Private Sub BTLivrer_Click(sender As Object, e As EventArgs) Handles BTVehicule.Click
+        If PanGestVeh.Visible = True Then
+            PanCouleur.Visible = False
+        Else
+            PanGestVeh.BringToFront()
+            PanGestVeh.Visible = True
+        End If
+    End Sub
+
+    Private Sub BTGest_Click(sender As Object, e As EventArgs) Handles BTGest.Click
+        ucGestVeh.BringToFront()
+        panMenu.Size = panMenu.MinimumSize
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles BTLivrer.Click
         ucLivrer.BringToFront()
         panMenu.Size = panMenu.MinimumSize
     End Sub

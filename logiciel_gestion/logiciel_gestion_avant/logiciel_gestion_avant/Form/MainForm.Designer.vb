@@ -24,13 +24,12 @@ Partial Class MainForm
     Private Sub InitializeComponent()
         Me.PanUC = New System.Windows.Forms.Panel()
         Me.PanCouleur = New System.Windows.Forms.Panel()
-        Me.Button5 = New System.Windows.Forms.Button()
         Me.BTCoulTissu = New System.Windows.Forms.Button()
         Me.BTCoulToile = New System.Windows.Forms.Button()
         Me.BTCoulModel = New System.Windows.Forms.Button()
         Me.btMenu = New System.Windows.Forms.Button()
         Me.panMenu = New System.Windows.Forms.Panel()
-        Me.BTLivrer = New System.Windows.Forms.Button()
+        Me.BTVehicule = New System.Windows.Forms.Button()
         Me.BtClient = New System.Windows.Forms.Button()
         Me.BtOptionModel = New System.Windows.Forms.Button()
         Me.BtCouleur = New System.Windows.Forms.Button()
@@ -41,13 +40,19 @@ Partial Class MainForm
         Me.btAccueil = New System.Windows.Forms.Button()
         Me.lbNonConc = New System.Windows.Forms.Label()
         Me.btConnec = New System.Windows.Forms.Button()
+        Me.PanGestVeh = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.BTLivrer = New System.Windows.Forms.Button()
+        Me.BTGest = New System.Windows.Forms.Button()
         Me.PanUC.SuspendLayout()
         Me.PanCouleur.SuspendLayout()
         Me.panMenu.SuspendLayout()
+        Me.PanGestVeh.SuspendLayout()
         Me.SuspendLayout()
         '
         'PanUC
         '
+        Me.PanUC.Controls.Add(Me.PanGestVeh)
         Me.PanUC.Controls.Add(Me.PanCouleur)
         Me.PanUC.Location = New System.Drawing.Point(12, 36)
         Me.PanUC.Name = "PanUC"
@@ -57,26 +62,16 @@ Partial Class MainForm
         'PanCouleur
         '
         Me.PanCouleur.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PanCouleur.Controls.Add(Me.Button5)
         Me.PanCouleur.Controls.Add(Me.BTCoulTissu)
         Me.PanCouleur.Controls.Add(Me.BTCoulToile)
         Me.PanCouleur.Controls.Add(Me.BTCoulModel)
         Me.PanCouleur.Location = New System.Drawing.Point(100, 149)
-        Me.PanCouleur.MaximumSize = New System.Drawing.Size(100, 118)
-        Me.PanCouleur.MinimumSize = New System.Drawing.Size(100, 118)
+        Me.PanCouleur.MaximumSize = New System.Drawing.Size(100, 89)
+        Me.PanCouleur.MinimumSize = New System.Drawing.Size(100, 89)
         Me.PanCouleur.Name = "PanCouleur"
-        Me.PanCouleur.Size = New System.Drawing.Size(100, 118)
+        Me.PanCouleur.Size = New System.Drawing.Size(100, 89)
         Me.PanCouleur.TabIndex = 10
         Me.PanCouleur.Visible = False
-        '
-        'Button5
-        '
-        Me.Button5.Location = New System.Drawing.Point(3, 90)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(94, 23)
-        Me.Button5.TabIndex = 4
-        Me.Button5.Text = "???"
-        Me.Button5.UseVisualStyleBackColor = True
         '
         'BTCoulTissu
         '
@@ -117,7 +112,7 @@ Partial Class MainForm
         'panMenu
         '
         Me.panMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.panMenu.Controls.Add(Me.BTLivrer)
+        Me.panMenu.Controls.Add(Me.BTVehicule)
         Me.panMenu.Controls.Add(Me.BtClient)
         Me.panMenu.Controls.Add(Me.BtOptionModel)
         Me.panMenu.Controls.Add(Me.BtCouleur)
@@ -134,14 +129,14 @@ Partial Class MainForm
         Me.panMenu.Size = New System.Drawing.Size(100, 292)
         Me.panMenu.TabIndex = 2
         '
-        'BTLivrer
+        'BTVehicule
         '
-        Me.BTLivrer.Location = New System.Drawing.Point(2, 261)
-        Me.BTLivrer.Name = "BTLivrer"
-        Me.BTLivrer.Size = New System.Drawing.Size(94, 23)
-        Me.BTLivrer.TabIndex = 9
-        Me.BTLivrer.Text = "Livrer"
-        Me.BTLivrer.UseVisualStyleBackColor = True
+        Me.BTVehicule.Location = New System.Drawing.Point(2, 261)
+        Me.BTVehicule.Name = "BTVehicule"
+        Me.BTVehicule.Size = New System.Drawing.Size(94, 23)
+        Me.BTVehicule.TabIndex = 9
+        Me.BTVehicule.Text = "Véhicule"
+        Me.BTVehicule.UseVisualStyleBackColor = True
         '
         'BtClient
         '
@@ -233,6 +228,47 @@ Partial Class MainForm
         Me.btConnec.UseVisualStyleBackColor = True
         Me.btConnec.Visible = False
         '
+        'PanGestVeh
+        '
+        Me.PanGestVeh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PanGestVeh.Controls.Add(Me.Button1)
+        Me.PanGestVeh.Controls.Add(Me.BTLivrer)
+        Me.PanGestVeh.Controls.Add(Me.BTGest)
+        Me.PanGestVeh.Location = New System.Drawing.Point(101, 231)
+        Me.PanGestVeh.MaximumSize = New System.Drawing.Size(100, 89)
+        Me.PanGestVeh.MinimumSize = New System.Drawing.Size(100, 89)
+        Me.PanGestVeh.Name = "PanGestVeh"
+        Me.PanGestVeh.Size = New System.Drawing.Size(100, 89)
+        Me.PanGestVeh.TabIndex = 11
+        Me.PanGestVeh.Visible = False
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(3, 61)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(94, 23)
+        Me.Button1.TabIndex = 2
+        Me.Button1.Text = "Tissus"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'BTLivrer
+        '
+        Me.BTLivrer.Location = New System.Drawing.Point(3, 32)
+        Me.BTLivrer.Name = "BTLivrer"
+        Me.BTLivrer.Size = New System.Drawing.Size(94, 23)
+        Me.BTLivrer.TabIndex = 1
+        Me.BTLivrer.Text = "Livrer"
+        Me.BTLivrer.UseVisualStyleBackColor = True
+        '
+        'BTGest
+        '
+        Me.BTGest.Location = New System.Drawing.Point(3, 3)
+        Me.BTGest.Name = "BTGest"
+        Me.BTGest.Size = New System.Drawing.Size(94, 23)
+        Me.BTGest.TabIndex = 0
+        Me.BTGest.Text = "Véhicule"
+        Me.BTGest.UseVisualStyleBackColor = True
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -249,6 +285,7 @@ Partial Class MainForm
         Me.PanUC.ResumeLayout(False)
         Me.PanCouleur.ResumeLayout(False)
         Me.panMenu.ResumeLayout(False)
+        Me.PanGestVeh.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -268,9 +305,12 @@ Partial Class MainForm
     Friend WithEvents BtCouleur As Button
     Friend WithEvents BtClient As Button
     Friend WithEvents PanCouleur As Panel
-    Friend WithEvents Button5 As Button
     Friend WithEvents BTCoulTissu As Button
     Friend WithEvents BTCoulToile As Button
     Friend WithEvents BTCoulModel As Button
+    Friend WithEvents BTVehicule As Button
+    Friend WithEvents PanGestVeh As Panel
+    Friend WithEvents Button1 As Button
     Friend WithEvents BTLivrer As Button
+    Friend WithEvents BTGest As Button
 End Class

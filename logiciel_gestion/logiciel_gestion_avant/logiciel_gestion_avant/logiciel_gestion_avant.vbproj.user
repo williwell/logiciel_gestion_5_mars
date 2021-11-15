@@ -79,6 +79,9 @@
     <Compile Update="UserControle\UCFournisseur.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UserControle\UCGestionModel.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UserControle\UCGestionVehicule.vb">
       <SubType>UserControl</SubType>
     </Compile>

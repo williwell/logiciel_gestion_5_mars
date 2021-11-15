@@ -12,7 +12,13 @@
         Next
 
         If MessageBox.Show("Voulez-vous vraiment mettre ce véhicule comme étant livrer?" & vbCrLf & str, "Attention!", MessageBoxButtons.YesNo) = DialogResult.Yes Then
-
+            Dim liste() As String = {DGVVehicule.CurrentRow.Cells(0).Value, "0"}
+            If ConnectionServeur.Getinstance.AddDelete(liste, "livrerVehicule") Then
+                MessageBox.Show("Le véhicule à bien été mit comme livrer!")
+                DGVVehicule.Rows.Remove(DGVVehicule.CurrentRow)
+            Else
+                MessageBox.Show("Une erreure est survenu durant le changement du véhicule à l'état livrer!", "Attention!")
+            End If
         End If
     End Sub
 End Class
