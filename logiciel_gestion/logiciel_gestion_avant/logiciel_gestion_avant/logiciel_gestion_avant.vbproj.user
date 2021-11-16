@@ -76,6 +76,9 @@
     <Compile Update="UserControle\UCCouleurToile.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UserControle\UCFabriquer.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UserControle\UCFournisseur.vb">
       <SubType>UserControl</SubType>
     </Compile>
@@ -92,6 +95,9 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControle\UCOption.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControle\UCReception.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControle\UCVente.vb">

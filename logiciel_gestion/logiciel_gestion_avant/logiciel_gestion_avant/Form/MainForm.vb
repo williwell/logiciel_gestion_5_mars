@@ -24,6 +24,8 @@ Public Class MainForm
     Dim ucVente3 As UCVente3
     ReadOnly ucLivrer As New UCLivrerVehicule
     ReadOnly ucGestVeh As New UCGestionVehicule
+    ReadOnly ucFabriquer As New UCFabriquer
+    ReadOnly ucReception As New UCReception
     Private Delegate Sub setValue(text As String)
 
     '__________________________________________________________________________________________________________
@@ -68,6 +70,8 @@ Public Class MainForm
         PanUC.Controls.Add(ucVente3)
         PanUC.Controls.Add(ucLivrer)
         PanUC.Controls.Add(ucGestVeh)
+        PanUC.Controls.Add(ucFabriquer)
+        PanUC.Controls.Add(ucReception)
         ucAccueil.RowsColor()
     End Sub
 
@@ -277,7 +281,7 @@ Public Class MainForm
         panMenu.Size = panMenu.MinimumSize
     End Sub
 
-    Private Sub BTLivrer_Click(sender As Object, e As EventArgs) Handles BTVehicule.Click
+    Private Sub BTVehicule_Click(sender As Object, e As EventArgs) Handles BTVehicule.Click
         If PanGestVeh.Visible = True Then
             PanCouleur.Visible = False
         Else
@@ -291,8 +295,18 @@ Public Class MainForm
         panMenu.Size = panMenu.MinimumSize
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles BTLivrer.Click
+    Private Sub BTLivrer_Click(sender As Object, e As EventArgs) Handles BTLivrer.Click, BTVehicule.Click
         ucLivrer.BringToFront()
+        panMenu.Size = panMenu.MinimumSize
+    End Sub
+
+    Private Sub BTReception_Click(sender As Object, e As EventArgs) Handles BTReception.Click
+        ucReception.BringToFront()
+        panMenu.Size = panMenu.MinimumSize
+    End Sub
+
+    Private Sub BTFabriquer_Click(sender As Object, e As EventArgs) Handles BTFabriquer.Click
+        ucFabriquer.BringToFront()
         panMenu.Size = panMenu.MinimumSize
     End Sub
 End Class

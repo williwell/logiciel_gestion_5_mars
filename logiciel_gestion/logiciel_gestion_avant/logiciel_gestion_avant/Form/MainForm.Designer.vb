@@ -23,6 +23,10 @@ Partial Class MainForm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.PanUC = New System.Windows.Forms.Panel()
+        Me.PanGestVeh = New System.Windows.Forms.Panel()
+        Me.BTFabriquer = New System.Windows.Forms.Button()
+        Me.BTLivrer = New System.Windows.Forms.Button()
+        Me.BTGest = New System.Windows.Forms.Button()
         Me.PanCouleur = New System.Windows.Forms.Panel()
         Me.BTCoulTissu = New System.Windows.Forms.Button()
         Me.BTCoulToile = New System.Windows.Forms.Button()
@@ -40,14 +44,11 @@ Partial Class MainForm
         Me.btAccueil = New System.Windows.Forms.Button()
         Me.lbNonConc = New System.Windows.Forms.Label()
         Me.btConnec = New System.Windows.Forms.Button()
-        Me.PanGestVeh = New System.Windows.Forms.Panel()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.BTLivrer = New System.Windows.Forms.Button()
-        Me.BTGest = New System.Windows.Forms.Button()
+        Me.BTReception = New System.Windows.Forms.Button()
         Me.PanUC.SuspendLayout()
+        Me.PanGestVeh.SuspendLayout()
         Me.PanCouleur.SuspendLayout()
         Me.panMenu.SuspendLayout()
-        Me.PanGestVeh.SuspendLayout()
         Me.SuspendLayout()
         '
         'PanUC
@@ -58,6 +59,48 @@ Partial Class MainForm
         Me.PanUC.Name = "PanUC"
         Me.PanUC.Size = New System.Drawing.Size(808, 621)
         Me.PanUC.TabIndex = 1
+        '
+        'PanGestVeh
+        '
+        Me.PanGestVeh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PanGestVeh.Controls.Add(Me.BTReception)
+        Me.PanGestVeh.Controls.Add(Me.BTFabriquer)
+        Me.PanGestVeh.Controls.Add(Me.BTLivrer)
+        Me.PanGestVeh.Controls.Add(Me.BTGest)
+        Me.PanGestVeh.Location = New System.Drawing.Point(101, 231)
+        Me.PanGestVeh.MaximumSize = New System.Drawing.Size(100, 119)
+        Me.PanGestVeh.MinimumSize = New System.Drawing.Size(100, 119)
+        Me.PanGestVeh.Name = "PanGestVeh"
+        Me.PanGestVeh.Size = New System.Drawing.Size(100, 119)
+        Me.PanGestVeh.TabIndex = 11
+        Me.PanGestVeh.Visible = False
+        '
+        'BTFabriquer
+        '
+        Me.BTFabriquer.Location = New System.Drawing.Point(3, 61)
+        Me.BTFabriquer.Name = "BTFabriquer"
+        Me.BTFabriquer.Size = New System.Drawing.Size(94, 23)
+        Me.BTFabriquer.TabIndex = 2
+        Me.BTFabriquer.Text = "Fabriquer"
+        Me.BTFabriquer.UseVisualStyleBackColor = True
+        '
+        'BTLivrer
+        '
+        Me.BTLivrer.Location = New System.Drawing.Point(3, 32)
+        Me.BTLivrer.Name = "BTLivrer"
+        Me.BTLivrer.Size = New System.Drawing.Size(94, 23)
+        Me.BTLivrer.TabIndex = 1
+        Me.BTLivrer.Text = "Livrer"
+        Me.BTLivrer.UseVisualStyleBackColor = True
+        '
+        'BTGest
+        '
+        Me.BTGest.Location = New System.Drawing.Point(3, 3)
+        Me.BTGest.Name = "BTGest"
+        Me.BTGest.Size = New System.Drawing.Size(94, 23)
+        Me.BTGest.TabIndex = 0
+        Me.BTGest.Text = "Véhicule"
+        Me.BTGest.UseVisualStyleBackColor = True
         '
         'PanCouleur
         '
@@ -228,46 +271,14 @@ Partial Class MainForm
         Me.btConnec.UseVisualStyleBackColor = True
         Me.btConnec.Visible = False
         '
-        'PanGestVeh
+        'BTReception
         '
-        Me.PanGestVeh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PanGestVeh.Controls.Add(Me.Button1)
-        Me.PanGestVeh.Controls.Add(Me.BTLivrer)
-        Me.PanGestVeh.Controls.Add(Me.BTGest)
-        Me.PanGestVeh.Location = New System.Drawing.Point(101, 231)
-        Me.PanGestVeh.MaximumSize = New System.Drawing.Size(100, 89)
-        Me.PanGestVeh.MinimumSize = New System.Drawing.Size(100, 89)
-        Me.PanGestVeh.Name = "PanGestVeh"
-        Me.PanGestVeh.Size = New System.Drawing.Size(100, 89)
-        Me.PanGestVeh.TabIndex = 11
-        Me.PanGestVeh.Visible = False
-        '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(3, 61)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(94, 23)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "Tissus"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'BTLivrer
-        '
-        Me.BTLivrer.Location = New System.Drawing.Point(3, 32)
-        Me.BTLivrer.Name = "BTLivrer"
-        Me.BTLivrer.Size = New System.Drawing.Size(94, 23)
-        Me.BTLivrer.TabIndex = 1
-        Me.BTLivrer.Text = "Livrer"
-        Me.BTLivrer.UseVisualStyleBackColor = True
-        '
-        'BTGest
-        '
-        Me.BTGest.Location = New System.Drawing.Point(3, 3)
-        Me.BTGest.Name = "BTGest"
-        Me.BTGest.Size = New System.Drawing.Size(94, 23)
-        Me.BTGest.TabIndex = 0
-        Me.BTGest.Text = "Véhicule"
-        Me.BTGest.UseVisualStyleBackColor = True
+        Me.BTReception.Location = New System.Drawing.Point(2, 90)
+        Me.BTReception.Name = "BTReception"
+        Me.BTReception.Size = New System.Drawing.Size(94, 23)
+        Me.BTReception.TabIndex = 3
+        Me.BTReception.Text = "Reception"
+        Me.BTReception.UseVisualStyleBackColor = True
         '
         'MainForm
         '
@@ -283,9 +294,9 @@ Partial Class MainForm
         Me.Name = "MainForm"
         Me.Text = "Logiciel Gestion 5-Mars VR"
         Me.PanUC.ResumeLayout(False)
+        Me.PanGestVeh.ResumeLayout(False)
         Me.PanCouleur.ResumeLayout(False)
         Me.panMenu.ResumeLayout(False)
-        Me.PanGestVeh.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -310,7 +321,8 @@ Partial Class MainForm
     Friend WithEvents BTCoulModel As Button
     Friend WithEvents BTVehicule As Button
     Friend WithEvents PanGestVeh As Panel
-    Friend WithEvents Button1 As Button
+    Friend WithEvents BTFabriquer As Button
     Friend WithEvents BTLivrer As Button
     Friend WithEvents BTGest As Button
+    Friend WithEvents BTReception As Button
 End Class
