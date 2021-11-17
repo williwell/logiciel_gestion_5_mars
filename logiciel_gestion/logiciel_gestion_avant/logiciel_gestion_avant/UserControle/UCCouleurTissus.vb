@@ -1,6 +1,7 @@
 ﻿Public Class UCCouleurTissus
     ReadOnly tableCoul As DataTable
-    Dim listeOr(0, 0) As String
+    ReadOnly listeOr(0, 0) As String
+
     Private Sub UCCouleurTissus_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ListGest.loadCoul(tableCoul, "getCoulTissus", dgvCouleur, listeOr)
     End Sub

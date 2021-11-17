@@ -93,33 +93,33 @@
         End If
     End Sub
 
-    Private Sub addClient(listeAddCl() As String, id As String)
+    Private Sub AddClient(listeAddCl() As String, id As String)
         Dim table As DataTable
         If idCl = 0 Then
             table = ConnectionServeur.Getinstance.GetInfo(listeAddCl, "AddClientID")
             If Not table(0)(0) = 0 Then
-                addVenteCl(id)
+                AddVenteCl(id)
             Else
                 MessageBox.Show("Une erreure c'est produit durant la création du nouveau client!", "Attention!")
             End If
         Else
-            addVenteCl(id)
+            AddVenteCl(id)
         End If
     End Sub
 
-    Private Sub addVenteCl(id As String)
+    Private Sub AddVenteCl(id As String)
         Dim listeAdd(4) As String
         listeAdd(0) = id
         listeAdd(1) = Date.Now.ToString("yyyy-MM-dd")
-        listeAdd(2) = uc.getDatePre
+        listeAdd(2) = uc.GetDatePre
         listeAdd(4) = idCl
         Dim table As DataTable = ConnectionServeur.Getinstance.GetInfo("GetPriority")
         Dim nbr2 As Integer = table(0)(0) + 1
         listeAdd(3) = nbr2
         If ConnectionServeur.Getinstance.AddDelete(listeAdd, "addVenteClient") Then
             MessageBox.Show("Ajout fait avec succès")
-            clear()
-            uc.clear()
+            Clear()
+            uc.Clear()
             main.ChangeUCPrev1()
         Else
             MessageBox.Show("Une erreure c'est produit durant l'association du véicule et du client!", "Attention!")
@@ -136,7 +136,7 @@
         CBSexeCl.DataSource = liste
     End Sub
 
-    Private Sub clear()
+    Private Sub Clear()
         TBPrenom1.Text = ""
         TBNom1.Text = ""
         TBPrenom2.Text = ""
@@ -146,7 +146,7 @@
         CBSexe.SelectedIndex = 0
         TBEmail.Text = ""
         idCl = 0
-        changeEna(False)
+        ChangeEna(False)
         idCl = 0
     End Sub
 
@@ -155,7 +155,7 @@
         ListCl.ShowDialog()
     End Sub
 
-    Public Sub getRowCl(row As DataGridViewRow)
+    Public Sub GetRowCl(row As DataGridViewRow)
         idCl = row.Cells(0).Value
         TBPreNom1Cl.Text = row.Cells(1).Value
         TBNom1Cl.Text = row.Cells(2).Value
@@ -169,10 +169,10 @@
             End If
         Next
         TBEmailCl.Text = row.Cells(8).Value
-        changeEna(True)
+        ChangeEna(True)
     End Sub
 
-    Private Sub changeEna(bool As Boolean)
+    Private Sub ChangeEna(bool As Boolean)
         TBPrenom1.Enabled = Not bool
         TBNom1.Enabled = Not bool
         TBPrenom2.Enabled = Not bool

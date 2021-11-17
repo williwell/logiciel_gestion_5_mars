@@ -1,10 +1,10 @@
 ﻿Imports System.ComponentModel
 
 Public Class GestionClient
-    Dim ID As String
-    Dim uc As UCClient
+    ReadOnly ID As String
+    ReadOnly uc As UCClient
     Dim table As DataTable
-    Dim liste() As String = {"Non déterminer", "Homme", "Femme"}
+    ReadOnly liste() As String = {"Non déterminer", "Homme", "Femme"}
     Sub New(IDClient As String, ucClient As UCClient)
 
         ' Cet appel est requis par le concepteur.

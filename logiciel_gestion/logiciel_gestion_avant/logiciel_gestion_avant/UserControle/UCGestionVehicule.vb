@@ -1,8 +1,16 @@
 ﻿Public Class UCGestionVehicule
     Dim table As DataTable
-    Dim search As New BindingSource
-    Dim bool As Boolean = True
-    Dim str As String = ""
+    ReadOnly search As New BindingSource
+    Dim main As MainForm
+
+    Sub New(mainform As MainForm)
+
+        ' Cet appel est requis par le concepteur.
+        InitializeComponent()
+
+        ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
+        main = mainform
+    End Sub
 
     Private Sub UCGestionVehicule_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         table = ConnectionServeur.Getinstance.GetInfo("GetVehiculeAll")
@@ -46,23 +54,36 @@
         CBCoulTis.DataSource = listeTis
     End Sub
 
-    Private Sub SearchDGV()
+    Private Sub TBSearchMat_TextChanged(sender As Object, e As EventArgs) Handles TBSearchMat.TextChanged, CBModel.SelectedIndexChanged, CBCoulVe.SelectedIndexChanged, CBCoulToi.SelectedIndexChanged, CBCoulTis.SelectedIndexChanged, RBFabNon.CheckedChanged, RBFabOui.CheckedChanged, RBFabTous.CheckedChanged, RBInvNon.CheckedChanged, RBInvOui.CheckedChanged, RBInvTous.CheckedChanged
         Dim str As String = ""
-        If CBFab.Checked Then
-            str += "fabriquer like 'true'"
+
+        If Not RBFabTous.Checked Then
+            If RBFabOui.Checked Then
+                str += "fabriquer like 'True'"
+            Else
+                str += "fabriquer like 'False'"
+            End If
         End If
 
-        If CBInv.Checked Then
+        If Not RBInvTous.Checked Then
             If String.IsNullOrEmpty(str) Then
-                str += "eninventaire like 'true'"
+                If RBInvOui.Checked Then
+                    str += "eninventaire like 'True'"
+                Else
+                    str += "eninventaire like 'False'"
+                End If
             Else
-                str += " and eninventaire like 'true'"
+                If RBInvOui.Checked Then
+                    str += " and eninventaire like 'True'"
+                Else
+                    str += " and eninventaire like 'False'"
+                End If
             End If
         End If
 
         If Not String.IsNullOrEmpty(Trim(TBSearchMat.Text)) Then
             If String.IsNullOrEmpty(str) Then
-                str += "nomatricule like '" & TBSearchMat.Text & "'"
+                str += "nomatricule like '%" & TBSearchMat.Text & "%'"
             Else
                 str += " and nomatricule like '" & TBSearchMat.Text & "'"
             End If
@@ -103,31 +124,10 @@
         search.Filter = str
     End Sub
 
-    Private Sub CBFab_CheckedChanged(sender As Object, e As EventArgs) Handles CBFab.CheckedChanged
-        SearchDGV()
-    End Sub
-
-    Private Sub CBInv_CheckedChanged(sender As Object, e As EventArgs) Handles CBInv.CheckedChanged
-        SearchDGV()
-    End Sub
-
-    Private Sub TBSearchMat_TextChanged(sender As Object, e As EventArgs) Handles TBSearchMat.TextChanged
-        SearchDGV()
-    End Sub
-
-    Private Sub CBModel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBModel.SelectedIndexChanged
-        SearchDGV()
-    End Sub
-
-    Private Sub CBCoulVe_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBCoulVe.SelectedIndexChanged
-        SearchDGV()
-    End Sub
-
-    Private Sub CBCoulToi_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBCoulToi.SelectedIndexChanged
-        SearchDGV()
-    End Sub
-
-    Private Sub CBCoulTis_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBCoulTis.SelectedIndexChanged
-        SearchDGV()
+    Private Sub DGVVehicule_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVVehicule.CellDoubleClick
+        If e.RowIndex >= 0 Then
+            Dim ucInfoClVe As New UCInfoClientVehicule(DGVVehicule.CurrentRow.Cells(0).Value)
+            main.putUC(ucInfoClVe)
+        End If
     End Sub
 End Class

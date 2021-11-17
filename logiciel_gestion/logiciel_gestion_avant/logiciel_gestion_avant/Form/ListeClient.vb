@@ -1,5 +1,5 @@
 ﻿Public Class ListeClient
-    Dim uc As UCVente3
+    ReadOnly uc As UCVente3
 
     Sub New(ucVe As UCVente3)
 

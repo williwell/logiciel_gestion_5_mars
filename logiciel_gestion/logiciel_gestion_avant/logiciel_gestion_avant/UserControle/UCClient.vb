@@ -15,8 +15,10 @@
         DGVClient.DataSource = tableCl
     End Sub
 
-    Private Sub DGVClient_DoubleClick(sender As Object, e As EventArgs) Handles DGVClient.DoubleClick
-        Dim InfoClient As New GestionClient(DGVClient.CurrentRow.Cells(0).Value, Me)
-        InfoClient.ShowDialog()
+    Private Sub DGVClient_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVClient.CellDoubleClick
+        If e.RowIndex >= 0 Then
+            Dim InfoClient As New GestionClient(DGVClient.CurrentRow.Cells(0).Value, Me)
+            InfoClient.ShowDialog()
+        End If
     End Sub
 End Class

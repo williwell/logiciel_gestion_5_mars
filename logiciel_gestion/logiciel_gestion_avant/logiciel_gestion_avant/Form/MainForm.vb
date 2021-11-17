@@ -22,10 +22,7 @@ Public Class MainForm
     ReadOnly ucCoulTissus As New UCCouleurTissus
     Dim ucVente2 As UCVente2
     Dim ucVente3 As UCVente3
-    ReadOnly ucLivrer As New UCLivrerVehicule
-    ReadOnly ucGestVeh As New UCGestionVehicule
-    ReadOnly ucFabriquer As New UCFabriquer
-    ReadOnly ucReception As New UCReception
+    ReadOnly ucGestVeh As New UCGestionVehicule(Me)
     Private Delegate Sub setValue(text As String)
 
     '__________________________________________________________________________________________________________
@@ -68,10 +65,7 @@ Public Class MainForm
         PanUC.Controls.Add(ucCoulTissus)
         PanUC.Controls.Add(ucVente2)
         PanUC.Controls.Add(ucVente3)
-        PanUC.Controls.Add(ucLivrer)
         PanUC.Controls.Add(ucGestVeh)
-        PanUC.Controls.Add(ucFabriquer)
-        PanUC.Controls.Add(ucReception)
         ucAccueil.RowsColor()
     End Sub
 
@@ -253,6 +247,7 @@ Public Class MainForm
         Else
             PanCouleur.BringToFront()
             PanCouleur.Visible = True
+            PanGestVeh.Visible = False
         End If
     End Sub
 
@@ -282,31 +277,20 @@ Public Class MainForm
     End Sub
 
     Private Sub BTVehicule_Click(sender As Object, e As EventArgs) Handles BTVehicule.Click
-        If PanGestVeh.Visible = True Then
-            PanCouleur.Visible = False
-        Else
-            PanGestVeh.BringToFront()
-            PanGestVeh.Visible = True
-        End If
+        ucGestVeh.BringToFront()
+        panMenu.Size = panMenu.MinimumSize
     End Sub
 
     Private Sub BTGest_Click(sender As Object, e As EventArgs) Handles BTGest.Click
         ucGestVeh.BringToFront()
         panMenu.Size = panMenu.MinimumSize
+        PanGestVeh.Visible = False
     End Sub
 
-    Private Sub BTLivrer_Click(sender As Object, e As EventArgs) Handles BTLivrer.Click, BTVehicule.Click
-        ucLivrer.BringToFront()
-        panMenu.Size = panMenu.MinimumSize
+    Public Sub putUC(uc As UserControl)
+        PanUC.Controls.Add(uc)
+        uc.BringToFront()
     End Sub
 
-    Private Sub BTReception_Click(sender As Object, e As EventArgs) Handles BTReception.Click
-        ucReception.BringToFront()
-        panMenu.Size = panMenu.MinimumSize
-    End Sub
 
-    Private Sub BTFabriquer_Click(sender As Object, e As EventArgs) Handles BTFabriquer.Click
-        ucFabriquer.BringToFront()
-        panMenu.Size = panMenu.MinimumSize
-    End Sub
 End Class

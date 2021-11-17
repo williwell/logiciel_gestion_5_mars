@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class UCVente
     Inherits System.Windows.Forms.UserControl
 
     'UserControl remplace la méthode Dispose pour nettoyer la liste des composants.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class UCVente
     'REMARQUE : la procédure suivante est requise par le Concepteur Windows Form
     'Elle peut être modifiée à l'aide du Concepteur Windows Form.  
     'Ne la modifiez pas à l'aide de l'éditeur de code.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.BTChoisir = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -45,6 +45,8 @@ Partial Class UCVente
         Me.TBTPS = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.TBCout = New System.Windows.Forms.TextBox()
+        Me.CBTVQ = New System.Windows.Forms.CheckBox()
+        Me.CBTPS = New System.Windows.Forms.CheckBox()
         Me.SuspendLayout()
         '
         'BTChoisir
@@ -186,7 +188,7 @@ Partial Class UCVente
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(604, 529)
+        Me.Label9.Location = New System.Drawing.Point(592, 458)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(32, 15)
         Me.Label9.TabIndex = 46
@@ -194,7 +196,7 @@ Partial Class UCVente
         '
         'TBTotal
         '
-        Me.TBTotal.Location = New System.Drawing.Point(604, 547)
+        Me.TBTotal.Location = New System.Drawing.Point(592, 476)
         Me.TBTotal.Name = "TBTotal"
         Me.TBTotal.ReadOnly = True
         Me.TBTotal.Size = New System.Drawing.Size(162, 23)
@@ -203,7 +205,7 @@ Partial Class UCVente
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(604, 485)
+        Me.Label10.Location = New System.Drawing.Point(592, 414)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(29, 15)
         Me.Label10.TabIndex = 44
@@ -211,7 +213,7 @@ Partial Class UCVente
         '
         'TBTVQ
         '
-        Me.TBTVQ.Location = New System.Drawing.Point(604, 503)
+        Me.TBTVQ.Location = New System.Drawing.Point(592, 432)
         Me.TBTVQ.Name = "TBTVQ"
         Me.TBTVQ.ReadOnly = True
         Me.TBTVQ.Size = New System.Drawing.Size(162, 23)
@@ -220,7 +222,7 @@ Partial Class UCVente
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(604, 441)
+        Me.Label11.Location = New System.Drawing.Point(592, 370)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(26, 15)
         Me.Label11.TabIndex = 42
@@ -228,7 +230,7 @@ Partial Class UCVente
         '
         'TBTPS
         '
-        Me.TBTPS.Location = New System.Drawing.Point(604, 459)
+        Me.TBTPS.Location = New System.Drawing.Point(592, 388)
         Me.TBTPS.Name = "TBTPS"
         Me.TBTPS.ReadOnly = True
         Me.TBTPS.Size = New System.Drawing.Size(162, 23)
@@ -237,7 +239,7 @@ Partial Class UCVente
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(604, 397)
+        Me.Label12.Location = New System.Drawing.Point(592, 326)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(27, 15)
         Me.Label12.TabIndex = 40
@@ -245,16 +247,38 @@ Partial Class UCVente
         '
         'TBCout
         '
-        Me.TBCout.Location = New System.Drawing.Point(604, 415)
+        Me.TBCout.Location = New System.Drawing.Point(592, 344)
         Me.TBCout.Name = "TBCout"
         Me.TBCout.ReadOnly = True
         Me.TBCout.Size = New System.Drawing.Size(162, 23)
         Me.TBCout.TabIndex = 39
         '
+        'CBTVQ
+        '
+        Me.CBTVQ.AutoSize = True
+        Me.CBTVQ.Location = New System.Drawing.Point(592, 530)
+        Me.CBTVQ.Name = "CBTVQ"
+        Me.CBTVQ.Size = New System.Drawing.Size(48, 19)
+        Me.CBTVQ.TabIndex = 48
+        Me.CBTVQ.Text = "TVQ"
+        Me.CBTVQ.UseVisualStyleBackColor = True
+        '
+        'CBTPS
+        '
+        Me.CBTPS.AutoSize = True
+        Me.CBTPS.Location = New System.Drawing.Point(592, 505)
+        Me.CBTPS.Name = "CBTPS"
+        Me.CBTPS.Size = New System.Drawing.Size(45, 19)
+        Me.CBTPS.TabIndex = 47
+        Me.CBTPS.Text = "TPS"
+        Me.CBTPS.UseVisualStyleBackColor = True
+        '
         'UCVente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.CBTVQ)
+        Me.Controls.Add(Me.CBTPS)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.TBTotal)
         Me.Controls.Add(Me.Label10)
@@ -308,4 +332,6 @@ Partial Class UCVente
     Friend WithEvents TBTPS As TextBox
     Friend WithEvents Label12 As Label
     Friend WithEvents TBCout As TextBox
+    Friend WithEvents CBTVQ As CheckBox
+    Friend WithEvents CBTPS As CheckBox
 End Class

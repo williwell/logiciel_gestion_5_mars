@@ -2,7 +2,7 @@
     ReadOnly main As MainForm
     ReadOnly uc As UCVente
     Dim table As DataTable
-    Dim tableCh As New DataTable
+    ReadOnly tableCh As New DataTable
     Dim id As Integer
     Dim prix As Decimal
     Dim TPS As Decimal
@@ -29,9 +29,9 @@
         DGVOpCh.DataSource = tableCh
     End Sub
 
-    Public Sub loadDGV()
-        If Not id = uc.getIDModel Then
-            id = uc.getIDModel
+    Public Sub LoadDGV()
+        If Not id = uc.GetIDModel Then
+            id = uc.GetIDModel
             table = ConnectionServeur.Getinstance.GetInfo(id, "getOptionModel")
             DGVOpDispo.DataSource = table
 
@@ -69,7 +69,7 @@
         checkPrix()
     End Sub
 
-    Public Sub setPrix(prixMo As String)
+    Public Sub SetPrix(prixMo As String)
         prix = Math.Round(Double.Parse(prixMo), 2)
         TBCout.Text = prix.ToString("0.00$")
         TPS = Math.Round(prix * Double.Parse(MainForm.GetInstance.GetOption4), 2)
@@ -80,7 +80,7 @@
         TBTotal.Text = total.ToString("0.00$")
     End Sub
 
-    Private Sub checkPrix()
+    Private Sub CheckPrix()
         Dim d As Double = prix
         For i As Integer = 0 To DGVOpCh.Rows.Count - 1
             d += DGVOpCh.Rows(i).Cells(2).Value

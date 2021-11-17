@@ -1,5 +1,5 @@
 ﻿Public Class ListeVehicule
-    Dim uc As UCVente
+    ReadOnly uc As UCVente
 
     Sub New(ucVente As UCVente)
 

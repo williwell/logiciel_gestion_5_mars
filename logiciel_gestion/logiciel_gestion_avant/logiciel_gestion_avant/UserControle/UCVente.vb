@@ -1,11 +1,11 @@
 ﻿Public Class UCVente
-    Dim main As MainForm
+    ReadOnly main As MainForm
     Dim listeAdd(4) As String
     Shared tableModel As New DataTable
     Dim tableCoulVe As DataTable
     Dim tableCoulToile As DataTable
     Dim TableCoulTissus As DataTable
-    Dim bool As Boolean = False
+    Dim bool As Boolean = True
     Dim id As String = "0"
     Dim prix As Decimal
     Dim TPS As Decimal
@@ -73,7 +73,7 @@
         main.ChangeUCNext1()
     End Sub
 
-    Public Sub nextPage2(liste() As String)
+    Public Sub NextPage2(liste() As String)
         Dim nbr As Integer = listeAdd.Count
         For i As Integer = 0 To liste.Count - 1
             ReDim Preserve listeAdd(nbr)
@@ -86,27 +86,27 @@
         NextPage("null", tableModel(CBModel.SelectedIndex)(0), tableCoulVe(CBCoulVe.SelectedIndex)(0), tableCoulToile(CBCoulToile.SelectedIndex)(0), TableCoulTissus(CBCoulTissus.SelectedIndex)(0))
     End Sub
 
-    Public Function getIDModel() As String
+    Public Function GetIDModel() As String
         Return tableModel(CBModel.SelectedIndex)(0)
     End Function
 
-    Public Function getListeAdd() As String()
+    Public Function GetListeAdd() As String()
         Return listeAdd
     End Function
 
-    Public Function getID() As String
+    Public Function GetID() As String
         Return id
     End Function
 
-    Public Sub setID(idV As String)
+    Public Sub SetID(idV As String)
         id = idV
     End Sub
 
-    Public Function getDatePre() As Date
+    Public Function GetDatePre() As Date
         Return DTPPre.Value
     End Function
 
-    Public Sub clear()
+    Public Sub Clear()
         id = "0"
         CBModel.SelectedIndex = 0
         CBCoulVe.SelectedIndex = 0
@@ -115,15 +115,49 @@
         DTPPre.Value = Now
     End Sub
 
-    Public Function getPrix() As String
+    Public Function GetPrix() As String
         Return tableModel(CBModel.SelectedIndex)(2)
     End Function
 
     Private Sub TBCout_TextChanged(sender As Object, e As EventArgs) Handles TBCout.TextChanged
-        TPS = Math.Round(prix * MainForm.GetInstance.GetOption4, 2)
-        TBTPS.Text = TPS.ToString("0.00$")
-        TVQ = Math.Round(prix * MainForm.GetInstance.GetOption5, 2)
-        TBTVQ.Text = TVQ.ToString("0.00$")
+        changeTaxe()
+    End Sub
+
+    Private Sub DTPPre_ValueChanged(sender As Object, e As EventArgs) Handles DTPPre.ValueChanged
+        If bool Then
+            If DTPPre.Value < Now Then
+                bool = False
+                DTPPre.Value = Now
+                bool = True
+            End If
+        End If
+    End Sub
+
+    Private Sub CBTPS_CheckedChanged(sender As Object, e As EventArgs) Handles CBTPS.CheckedChanged
+        changeTaxe()
+    End Sub
+
+    Private Sub CBTVQ_CheckedChanged(sender As Object, e As EventArgs) Handles CBTVQ.CheckedChanged
+        changeTaxe()
+    End Sub
+
+    Private Sub changeTaxe()
+        If CBTPS.Checked Then
+            TPS = Math.Round(prix * MainForm.GetInstance.GetOption4, 2)
+            TBTPS.Text = TPS.ToString("0.00$")
+        Else
+            TPS = 0
+            TBTPS.Text = TPS.ToString("0.00$")
+        End If
+
+        If CBTVQ.Checked Then
+            TVQ = Math.Round(prix * MainForm.GetInstance.GetOption5, 2)
+            TBTVQ.Text = TVQ.ToString("0.00$")
+        Else
+            TVQ = 0
+            TBTVQ.Text = TVQ.ToString("0.00$")
+        End If
+
         total = Math.Round(prix + TPS + TVQ, 2)
         TBTotal.Text = total.ToString("0.00$")
     End Sub

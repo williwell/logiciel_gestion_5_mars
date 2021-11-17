@@ -76,9 +76,6 @@
     <Compile Update="UserControle\UCCouleurToile.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UserControle\UCFabriquer.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="UserControle\UCFournisseur.vb">
       <SubType>UserControl</SubType>
     </Compile>
@@ -88,16 +85,13 @@
     <Compile Update="UserControle\UCGestionVehicule.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UserControle\UCInfoClientVehicule.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UserControle\UCInventaire.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UserControle\UCLivrerVehicule.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="UserControle\UCOption.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControle\UCReception.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControle\UCVente.vb">
