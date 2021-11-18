@@ -1,5 +1,5 @@
 ﻿Public Class UCGestionVehicule
-    Dim table As DataTable
+    Dim table As New DataTable
     ReadOnly search As New BindingSource
     Dim main As MainForm
 
@@ -13,7 +13,25 @@
     End Sub
 
     Private Sub UCGestionVehicule_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        table = ConnectionServeur.Getinstance.GetInfo("GetVehiculeAll")
+        Dim tableTempo As DataTable
+        tableTempo = ConnectionServeur.Getinstance.GetInfo("GetVehiculeAll")
+
+        For c As Integer = 0 To tableTempo.Columns.Count - 1
+            If tableTempo(0)(c) = "True" Or tableTempo(0)(c) = "False" Then
+                table.Columns.Add(tableTempo.Columns(c).ColumnName, GetType(Boolean))
+            Else
+                table.Columns.Add(tableTempo.Columns(c).ColumnName, GetType(String))
+            End If
+        Next
+
+        For r As Integer = 0 To tableTempo.Rows.Count - 1
+            Dim row As DataRow = table.NewRow
+            For c As Integer = 0 To tableTempo.Columns.Count - 1
+                row(c) = tableTempo(r)(c)
+            Next
+            table.Rows.Add(row)
+        Next
+
         DGVVehicule.DataSource = table
         search.DataSource = DGVVehicule.DataSource
 
@@ -126,8 +144,8 @@
 
     Private Sub DGVVehicule_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVVehicule.CellDoubleClick
         If e.RowIndex >= 0 Then
-            Dim ucInfoClVe As New UCInfoClientVehicule(DGVVehicule.CurrentRow.Cells(0).Value, main)
-            main.putUC(ucInfoClVe)
+            Dim gestionVe As New GestionVehicule(DGVVehicule.CurrentRow)
+            gestionVe.ShowDialog()
         End If
     End Sub
 
