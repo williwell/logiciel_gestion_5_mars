@@ -24,6 +24,7 @@ Partial Class MainForm
     Private Sub InitializeComponent()
         Me.PanUC = New System.Windows.Forms.Panel()
         Me.PanGestVeh = New System.Windows.Forms.Panel()
+        Me.BTReception = New System.Windows.Forms.Button()
         Me.BTFabriquer = New System.Windows.Forms.Button()
         Me.BTLivrer = New System.Windows.Forms.Button()
         Me.BTGest = New System.Windows.Forms.Button()
@@ -44,7 +45,6 @@ Partial Class MainForm
         Me.btAccueil = New System.Windows.Forms.Button()
         Me.lbNonConc = New System.Windows.Forms.Label()
         Me.btConnec = New System.Windows.Forms.Button()
-        Me.BTReception = New System.Windows.Forms.Button()
         Me.PanUC.SuspendLayout()
         Me.PanGestVeh.SuspendLayout()
         Me.PanCouleur.SuspendLayout()
@@ -74,6 +74,15 @@ Partial Class MainForm
         Me.PanGestVeh.Size = New System.Drawing.Size(100, 119)
         Me.PanGestVeh.TabIndex = 11
         Me.PanGestVeh.Visible = False
+        '
+        'BTReception
+        '
+        Me.BTReception.Location = New System.Drawing.Point(2, 90)
+        Me.BTReception.Name = "BTReception"
+        Me.BTReception.Size = New System.Drawing.Size(94, 23)
+        Me.BTReception.TabIndex = 3
+        Me.BTReception.Text = "Reception"
+        Me.BTReception.UseVisualStyleBackColor = True
         '
         'BTFabriquer
         '
@@ -270,15 +279,6 @@ Partial Class MainForm
         Me.btConnec.Text = "Connecter"
         Me.btConnec.UseVisualStyleBackColor = True
         Me.btConnec.Visible = False
-        '
-        'BTReception
-        '
-        Me.BTReception.Location = New System.Drawing.Point(2, 90)
-        Me.BTReception.Name = "BTReception"
-        Me.BTReception.Size = New System.Drawing.Size(94, 23)
-        Me.BTReception.TabIndex = 3
-        Me.BTReception.Text = "Reception"
-        Me.BTReception.UseVisualStyleBackColor = True
         '
         'MainForm
         '

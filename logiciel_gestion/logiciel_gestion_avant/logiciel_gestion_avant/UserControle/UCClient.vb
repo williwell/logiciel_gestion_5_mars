@@ -1,5 +1,15 @@
 ﻿Public Class UCClient
+    Dim main As MainForm
     Dim tableCl As DataTable
+
+    Sub New(mainform As MainForm)
+
+        ' Cet appel est requis par le concepteur.
+        InitializeComponent()
+
+        ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
+        main = mainform
+    End Sub
 
     Private Sub UCClient_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         loadClient()
@@ -20,5 +30,9 @@
             Dim InfoClient As New GestionClient(DGVClient.CurrentRow.Cells(0).Value, Me)
             InfoClient.ShowDialog()
         End If
+    End Sub
+
+    Private Sub UCClient_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
+        main.fermerMenu()
     End Sub
 End Class

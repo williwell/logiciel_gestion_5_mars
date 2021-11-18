@@ -1,6 +1,16 @@
 ﻿Public Class UCAccueil
     Dim tableItem As New DataTable
     ReadOnly tableVehicule As New DataTable
+    Dim main As MainForm
+
+    Sub New(mainform As MainForm)
+
+        ' Cet appel est requis par le concepteur.
+        InitializeComponent()
+
+        ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
+        main = mainform
+    End Sub
 
     Private Sub UCAccueil_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         tableVehicule.Columns.Add("Temporaire") 'A changer plus tard
@@ -15,8 +25,8 @@
         DGVVehicule.DataSource = tableVehicule
         DGVItemLow.DataSource = tableItem
 
-        blockSorting(DGVItemLow)
-        blockSorting(DGVVehicule)
+        BlockSorting(DGVItemLow)
+        BlockSorting(DGVVehicule)
 
         RowsColor()
     End Sub
@@ -42,4 +52,7 @@
         DGVVehicule.ClearSelection()
     End Sub
 
+    Private Sub UCAccueil_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
+        main.fermerMenu()
+    End Sub
 End Class

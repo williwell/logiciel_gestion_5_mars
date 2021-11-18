@@ -1,6 +1,16 @@
 ﻿Public Class UCCouleurTissus
+    Dim main As MainForm
     ReadOnly tableCoul As DataTable
     ReadOnly listeOr(0, 0) As String
+
+    Sub New(mainform As MainForm)
+
+        ' Cet appel est requis par le concepteur.
+        InitializeComponent()
+
+        ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
+        main = mainform
+    End Sub
 
     Private Sub UCCouleurTissus_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ListGest.loadCoul(tableCoul, "getCoulTissus", dgvCouleur, listeOr)
@@ -91,5 +101,9 @@
                 End If
             Next
         Next
+    End Sub
+
+    Private Sub UCCouleurTissus_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
+        main.fermerMenu()
     End Sub
 End Class

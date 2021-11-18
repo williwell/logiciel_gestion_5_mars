@@ -9,21 +9,22 @@ Public Class MainForm
     Shared instance As MainForm = Nothing
     ReadOnly keyCombo As New List(Of Keys)({Keys.ControlKey, Keys.H, Keys.P})
     ReadOnly currentKeys As New List(Of Keys)
-    Dim options As New StructureOption.mesOption
-    ReadOnly ucAccueil As New UCAccueil
+    Dim options As New StructureOption.MesOption
+    ReadOnly ucAccueil As New UCAccueil(Me)
     ReadOnly ucInventaire As New UCInventaire(Me)
     ReadOnly ucVente As New UCVente(Me)
     ReadOnly ucFour As New UCFournisseur(Me, ucInventaire)
-    ReadOnly ucModel As New UCGestionModel
-    ReadOnly ucCouleur As New UCCouleur
-    ReadOnly ucOption As New UCOption
-    ReadOnly ucClient As New UCClient
-    ReadOnly ucCoulToile As New UCCouleurToile
-    ReadOnly ucCoulTissus As New UCCouleurTissus
+    ReadOnly ucModel As New UCGestionModel(Me)
+    ReadOnly ucCouleur As New UCCouleur(Me)
+    ReadOnly ucOption As New UCOption(Me)
+    ReadOnly ucClient As New UCClient(Me)
+    ReadOnly ucCoulToile As New UCCouleurToile(Me)
+    ReadOnly ucCoulTissus As New UCCouleurTissus(Me)
     Dim ucVente2 As UCVente2
     Dim ucVente3 As UCVente3
     ReadOnly ucGestVeh As New UCGestionVehicule(Me)
     Private Delegate Sub setValue(text As String)
+
 
     '__________________________________________________________________________________________________________
     'Constructor
@@ -163,18 +164,19 @@ Public Class MainForm
         ucVente3 = uc
     End Sub
 
-    Public Sub ChangeUCNext1()
-        ucVente2.loadDGV()
+    Public Sub ChangeUCNext1(tps As Boolean, tvq As Boolean)
+        ucVente2.LoadDGV()
         ucVente2.BringToFront()
-        ucVente2.setPrix(ucVente.getPrix())
+        ucVente2.SetPrix(ucVente.GetPrix(), tps, tvq)
     End Sub
 
     Public Sub ChangeUCNext2()
         ucVente3.BringToFront()
     End Sub
 
-    Public Sub ChangeUCPrev1()
+    Public Sub ChangeUCPrev1(tps As Boolean, tvq As Boolean)
         ucVente.BringToFront()
+        ucVente.SetTaxe(tps, tvq)
     End Sub
 
     Public Sub ChangeUCPrev2()
@@ -292,5 +294,13 @@ Public Class MainForm
         uc.BringToFront()
     End Sub
 
+    Private Sub MainForm_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
+        If Not panMenu.DisplayRectangle.Contains(e.Location) Then
+            panMenu.Size = panMenu.MinimumSize
+        End If
+    End Sub
 
+    Public Sub fermerMenu()
+        panMenu.Size = panMenu.MinimumSize
+    End Sub
 End Class

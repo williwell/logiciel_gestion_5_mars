@@ -120,7 +120,7 @@
             MessageBox.Show("Ajout fait avec succès")
             Clear()
             uc.Clear()
-            main.ChangeUCPrev1()
+            main.ChangeUCPrev1(True, True)
         Else
             MessageBox.Show("Une erreure c'est produit durant l'association du véicule et du client!", "Attention!")
         End If
@@ -202,5 +202,9 @@
     Private Sub BTNewCl_Click(sender As Object, e As EventArgs) Handles BTNewCl.Click
         changeEna(False)
         idCl = 0
+    End Sub
+
+    Private Sub UCVente3_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
+        main.fermerMenu()
     End Sub
 End Class

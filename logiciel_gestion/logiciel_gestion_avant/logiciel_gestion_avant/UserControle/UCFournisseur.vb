@@ -191,6 +191,10 @@
         BtSauvChanger()
     End Sub
 
+    Private Sub UCFournisseur_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
+        main.fermerMenu()
+    End Sub
+
 
     '__________________________________________________________________________________________________________
     'Set

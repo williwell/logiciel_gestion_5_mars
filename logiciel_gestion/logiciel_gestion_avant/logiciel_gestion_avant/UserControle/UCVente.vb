@@ -31,6 +31,9 @@
         RemplirCB(tableCoulToile, CBCoulToile, "getCoulToile")
 
         RemplirCB(TableCoulTissus, CBCoulTissus, "getCoulTissus")
+
+        CBTPS.Checked = True
+        CBTVQ.Checked = True
     End Sub
 
     Private Sub CBModel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBModel.SelectedIndexChanged
@@ -70,7 +73,7 @@
         listeAdd(2) = coulVe
         listeAdd(3) = coulToile
         listeAdd(4) = CoulTissus
-        main.ChangeUCNext1()
+        main.ChangeUCNext1(CBTPS.Checked, CBTVQ.Checked)
     End Sub
 
     Public Sub NextPage2(liste() As String)
@@ -83,7 +86,28 @@
     End Sub
 
     Private Sub BtNext_Click(sender As Object, e As EventArgs) Handles BtNext.Click
-        NextPage("null", tableModel(CBModel.SelectedIndex)(0), tableCoulVe(CBCoulVe.SelectedIndex)(0), tableCoulToile(CBCoulToile.SelectedIndex)(0), TableCoulTissus(CBCoulTissus.SelectedIndex)(0))
+        Dim coulVe As String
+        If tableCoulVe.Rows.Count = 0 Then
+            coulVe = "null"
+        Else
+            coulVe = tableCoulVe(CBCoulVe.SelectedIndex)(0)
+        End If
+
+        Dim coulToile As String
+        If tableCoulToile.Rows.Count = 0 Then
+            coulToile = "null"
+        Else
+            coulToile = tableCoulToile(CBCoulToile.SelectedIndex)(0)
+        End If
+
+        Dim CoulTissus As String
+        If TableCoulTissus.Rows.Count = 0 Then
+            CoulTissus = "null"
+        Else
+            CoulTissus = TableCoulTissus(CBCoulTissus.SelectedIndex)(0)
+        End If
+
+        NextPage("null", tableModel(CBModel.SelectedIndex)(0), coulVe, coulToile, CoulTissus)
     End Sub
 
     Public Function GetIDModel() As String
@@ -160,5 +184,14 @@
 
         total = Math.Round(prix + TPS + TVQ, 2)
         TBTotal.Text = total.ToString("0.00$")
+    End Sub
+
+    Public Sub SetTaxe(TPSBool As Boolean, TVQBool As Boolean)
+        CBTPS.Checked = TPSBool
+        CBTVQ.Checked = TVQBool
+    End Sub
+
+    Private Sub UCVente_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
+        main.fermerMenu()
     End Sub
 End Class

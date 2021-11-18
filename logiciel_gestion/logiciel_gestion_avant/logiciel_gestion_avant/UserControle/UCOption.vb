@@ -1,5 +1,15 @@
 ﻿Public Class UCOption
+    Dim main As MainForm
     Dim listeOr(0, 0) As String
+
+    Sub New(mainform As MainForm)
+
+        ' Cet appel est requis par le concepteur.
+        InitializeComponent()
+
+        ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
+        main = mainform
+    End Sub
 
     Private Sub UCOption_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RemplireDGV()
@@ -107,5 +117,9 @@
         Dim form As New GestionInvOpt(DGVOption.CurrentRow.Cells(0).Value)
         form.ShowDialog()
         RemplireDGV()
+    End Sub
+
+    Private Sub UCOption_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
+        main.fermerMenu()
     End Sub
 End Class

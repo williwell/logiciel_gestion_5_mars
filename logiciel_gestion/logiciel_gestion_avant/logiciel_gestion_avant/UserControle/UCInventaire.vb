@@ -364,6 +364,10 @@
         SendKeys.Send("{ENTER}")
     End Sub
 
+    Private Sub UCInventaire_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
+        main.fermerMenu()
+    End Sub
+
     '__________________________________________________________________________________________________________
     'Get
     '__________________________________________________________________________________________________________

@@ -1,6 +1,7 @@
 ﻿Imports System.ComponentModel
 
 Public Class UCGestionModel
+    Dim main As MainForm
     Dim tableModel As DataTable
     Dim listeId() As String
     Dim tableOptionAdd As DataTable
@@ -17,6 +18,15 @@ Public Class UCGestionModel
     Dim listeCoulDispo() As String
     Dim nbrOp As Integer
     Dim nbrCoul As Integer
+
+    Sub New(mainform As MainForm)
+
+        ' Cet appel est requis par le concepteur.
+        InitializeComponent()
+
+        ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
+        main = mainform
+    End Sub
 
     Private Sub UCGestionVehicule_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RemplirModel()
@@ -284,5 +294,9 @@ Public Class UCGestionModel
             e.SuppressKeyPress = True
             SendKeys.Send(",")
         End If
+    End Sub
+
+    Private Sub UCGestionModel_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
+        main.fermerMenu()
     End Sub
 End Class

@@ -42,7 +42,7 @@
     End Sub
 
     Private Sub BTPrev_Click(sender As Object, e As EventArgs) Handles BTPrev.Click
-        main.ChangeUCPrev1()
+        main.ChangeUCPrev1(CBTPS.Checked, CBTVQ.Checked)
     End Sub
 
     Private Sub BTNext_Click(sender As Object, e As EventArgs) Handles BTNext.Click
@@ -69,15 +69,12 @@
         checkPrix()
     End Sub
 
-    Public Sub SetPrix(prixMo As String)
+    Public Sub SetPrix(prixMo As String, tpsbool As Boolean, tvqbool As Boolean)
         prix = Math.Round(Double.Parse(prixMo), 2)
-        TBCout.Text = prix.ToString("0.00$")
-        TPS = Math.Round(prix * Double.Parse(MainForm.GetInstance.GetOption4), 2)
-        TBTPS.Text = TPS.ToString("0.00$")
-        TVQ = Math.Round(prix * Double.Parse(MainForm.GetInstance.GetOption5), 2)
-        TBTVQ.Text = TVQ.ToString("0.00$")
-        total = Math.Round(prix + TVQ + TPS, 2)
-        TBTotal.Text = total.ToString("0.00$")
+        CBTPS.Checked = tpsbool
+        CBTVQ.Checked = tvqbool
+
+        CheckPrix()
     End Sub
 
     Private Sub CheckPrix()
@@ -85,9 +82,33 @@
         For i As Integer = 0 To DGVOpCh.Rows.Count - 1
             d += DGVOpCh.Rows(i).Cells(2).Value
         Next
+
+        If CBTPS.Checked Then
+            TPS = Math.Round(d * MainForm.GetInstance.GetOption4, 2)
+            TBTPS.Text = TPS.ToString("0.00$")
+        Else
+            TPS = 0
+            TBTPS.Text = TPS.ToString("0.00$")
+        End If
+
+        If CBTVQ.Checked Then
+            TVQ = Math.Round(d * MainForm.GetInstance.GetOption5, 2)
+            TBTVQ.Text = TVQ.ToString("0.00$")
+        Else
+            TVQ = 0
+            TBTVQ.Text = TVQ.ToString("0.00$")
+        End If
+
         TBCout.Text = d
-        TBTPS.Text = Math.Round(d * MainForm.GetInstance.GetOption4, 2)
-        TBTVQ.Text = Math.Round(d * MainForm.GetInstance.GetOption5, 2)
-        TBTotal.Text = Math.Round(d + Double.Parse(TBTPS.Text) + Double.Parse(TBTVQ.Text), 2)
+
+        TBTotal.Text = Math.Round(d + TPS + TVQ, 2).ToString("0.00$")
+    End Sub
+
+    Private Sub CBTPS_CheckedChanged(sender As Object, e As EventArgs) Handles CBTPS.CheckedChanged, CBTVQ.CheckedChanged
+        CheckPrix()
+    End Sub
+
+    Private Sub UCVente2_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
+        main.fermerMenu()
     End Sub
 End Class

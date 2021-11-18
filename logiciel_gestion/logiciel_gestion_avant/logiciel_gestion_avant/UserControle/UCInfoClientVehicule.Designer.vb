@@ -22,7 +22,7 @@ Partial Class UCInfoClientVehicule
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.DGVClient = New System.Windows.Forms.DataGridView()
         Me.TBID = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -43,17 +43,21 @@ Partial Class UCInfoClientVehicule
         Me.TBSexe = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TBTel2 = New System.Windows.Forms.TextBox()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DGVClient, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'DataGridView1
+        'DGVClient
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(349, 83)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowTemplate.Height = 25
-        Me.DataGridView1.Size = New System.Drawing.Size(420, 229)
-        Me.DataGridView1.TabIndex = 0
+        Me.DGVClient.AllowUserToAddRows = False
+        Me.DGVClient.AllowUserToDeleteRows = False
+        Me.DGVClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DGVClient.Location = New System.Drawing.Point(258, 83)
+        Me.DGVClient.Name = "DGVClient"
+        Me.DGVClient.ReadOnly = True
+        Me.DGVClient.RowTemplate.Height = 25
+        Me.DGVClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DGVClient.Size = New System.Drawing.Size(547, 269)
+        Me.DGVClient.TabIndex = 0
         '
         'TBID
         '
@@ -86,7 +90,7 @@ Partial Class UCInfoClientVehicule
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label3.Location = New System.Drawing.Point(349, 55)
+        Me.Label3.Location = New System.Drawing.Point(258, 55)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(124, 25)
         Me.Label3.TabIndex = 4
@@ -252,16 +256,16 @@ Partial Class UCInfoClientVehicule
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TBID)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.DGVClient)
         Me.Name = "UCInfoClientVehicule"
         Me.Size = New System.Drawing.Size(808, 649)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DGVClient, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents DGVClient As DataGridView
     Friend WithEvents TBID As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label

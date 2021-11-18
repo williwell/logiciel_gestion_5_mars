@@ -1,6 +1,16 @@
 ﻿Public Class UCCouleur
+    Dim main As MainForm
     Dim tableCouleur As DataTable
     Dim listeOr(0, 0) As String
+
+    Sub New(mainform As MainForm)
+
+        ' Cet appel est requis par le concepteur.
+        InitializeComponent()
+
+        ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
+        main = mainform
+    End Sub
 
     Private Sub UCCouleur_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         RemplirDGV()
@@ -99,5 +109,9 @@
                 End If
             Next
         Next
+    End Sub
+
+    Private Sub UCCouleur_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
+        main.fermerMenu()
     End Sub
 End Class

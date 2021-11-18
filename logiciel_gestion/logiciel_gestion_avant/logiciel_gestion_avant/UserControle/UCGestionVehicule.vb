@@ -126,8 +126,12 @@
 
     Private Sub DGVVehicule_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVVehicule.CellDoubleClick
         If e.RowIndex >= 0 Then
-            Dim ucInfoClVe As New UCInfoClientVehicule(DGVVehicule.CurrentRow.Cells(0).Value)
+            Dim ucInfoClVe As New UCInfoClientVehicule(DGVVehicule.CurrentRow.Cells(0).Value, main)
             main.putUC(ucInfoClVe)
         End If
+    End Sub
+
+    Private Sub UCGestionVehicule_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
+        main.fermerMenu()
     End Sub
 End Class
