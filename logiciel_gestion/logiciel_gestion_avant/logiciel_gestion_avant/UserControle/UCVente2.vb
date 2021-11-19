@@ -7,7 +7,6 @@
     Dim prix As Decimal
     Dim TPS As Decimal
     Dim TVQ As Decimal
-    Dim total As Decimal
 
     Sub New(ucVente As UCVente, form As MainForm)
 

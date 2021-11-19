@@ -1,7 +1,7 @@
 ﻿Public Class UCAccueil
     Dim tableItem As New DataTable
     ReadOnly tableVehicule As New DataTable
-    Dim main As MainForm
+    ReadOnly main As MainForm
 
     Sub New(mainform As MainForm)
 

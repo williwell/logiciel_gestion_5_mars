@@ -165,7 +165,7 @@
         changeTaxe()
     End Sub
 
-    Private Sub changeTaxe()
+    Private Sub ChangeTaxe()
         If CBTPS.Checked Then
             TPS = Math.Round(prix * MainForm.GetInstance.GetOption4, 2)
             TBTPS.Text = TPS.ToString("0.00$")

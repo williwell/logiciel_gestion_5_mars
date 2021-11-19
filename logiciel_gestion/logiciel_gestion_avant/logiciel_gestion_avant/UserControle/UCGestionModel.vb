@@ -1,7 +1,7 @@
 ﻿Imports System.ComponentModel
 
 Public Class UCGestionModel
-    Dim main As MainForm
+    ReadOnly main As MainForm
     Dim tableModel As DataTable
     Dim listeId() As String
     Dim tableOptionAdd As DataTable

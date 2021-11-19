@@ -289,7 +289,7 @@ Public Class MainForm
         PanGestVeh.Visible = False
     End Sub
 
-    Public Sub putUC(uc As UserControl)
+    Public Sub PutUC(uc As UserControl)
         PanUC.Controls.Add(uc)
         uc.BringToFront()
     End Sub
@@ -300,7 +300,7 @@ Public Class MainForm
         End If
     End Sub
 
-    Public Sub fermerMenu()
+    Public Sub FermerMenu()
         panMenu.Size = panMenu.MinimumSize
     End Sub
 End Class

@@ -1,7 +1,7 @@
 ﻿Public Class UCGestionVehicule
-    Dim table As New DataTable
+    Dim table As DataTable
     ReadOnly search As New BindingSource
-    Dim main As MainForm
+    ReadOnly main As MainForm
 
     Sub New(mainform As MainForm)
 
@@ -13,24 +13,7 @@
     End Sub
 
     Private Sub UCGestionVehicule_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim tableTempo As DataTable
-        tableTempo = ConnectionServeur.Getinstance.GetInfo("GetVehiculeAll")
-
-        For c As Integer = 0 To tableTempo.Columns.Count - 1
-            If tableTempo(0)(c) = "True" Or tableTempo(0)(c) = "False" Then
-                table.Columns.Add(tableTempo.Columns(c).ColumnName, GetType(Boolean))
-            Else
-                table.Columns.Add(tableTempo.Columns(c).ColumnName, GetType(String))
-            End If
-        Next
-
-        For r As Integer = 0 To tableTempo.Rows.Count - 1
-            Dim row As DataRow = table.NewRow
-            For c As Integer = 0 To tableTempo.Columns.Count - 1
-                row(c) = tableTempo(r)(c)
-            Next
-            table.Rows.Add(row)
-        Next
+        table = ConnectionServeur.Getinstance.GetInfo("GetVehiculeAll")
 
         DGVVehicule.DataSource = table
         search.DataSource = DGVVehicule.DataSource
@@ -144,12 +127,22 @@
 
     Private Sub DGVVehicule_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVVehicule.CellDoubleClick
         If e.RowIndex >= 0 Then
-            Dim gestionVe As New GestionVehicule(DGVVehicule.CurrentRow)
+            Dim gestionVe As New GestionVehicule(DGVVehicule.CurrentRow, Me)
             gestionVe.ShowDialog()
         End If
     End Sub
 
     Private Sub UCGestionVehicule_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
         main.fermerMenu()
+    End Sub
+
+    Public Sub ChangeRow(row As DataGridViewRow)
+        For r As Integer = 0 To DGVVehicule.Rows.Count - 1
+            If DGVVehicule.Rows(r).Cells(0).Value = row.Cells(0).Value Then
+                For c As Integer = 0 To DGVVehicule.Columns.Count - 1
+                    DGVVehicule.Rows(r).Cells(c).Value = row.Cells(c).Value
+                Next
+            End If
+        Next
     End Sub
 End Class

@@ -279,35 +279,39 @@ Public Class ConnectionServeur
         checkClient = New TcpClient(MainForm.getInstance.getOption1, 8888)
         Dim bool As Boolean = True
 
-        While bool
+        Try
+            While bool
 
-            If Application.OpenForms().OfType(Of MainForm).Any Then
-                While conc
-                    If Application.OpenForms().OfType(Of MainForm).Any Then
-                        Thread.Sleep(1000)
-                        Try
-                            Dim serverStream As NetworkStream = clientSocket.GetStream()
-                            Dim outStream As Byte() = Encoding.UTF8.GetBytes("test;$")
-                            serverStream.Write(outStream, 0, outStream.Length)
-                            serverStream.Flush()
+                If Application.OpenForms().OfType(Of MainForm).Any Then
+                    While conc
+                        If Application.OpenForms().OfType(Of MainForm).Any Then
+                            Thread.Sleep(1000)
+                            Try
+                                Dim serverStream As NetworkStream = clientSocket.GetStream()
+                                Dim outStream As Byte() = Encoding.UTF8.GetBytes("test;$")
+                                serverStream.Write(outStream, 0, outStream.Length)
+                                serverStream.Flush()
 
-                            Dim inStream(1024) As Byte
-                            serverStream.Read(inStream, 0, inStream.Length())
-                            If Boolean.Parse(Encoding.UTF8.GetString(inStream)) Then
-                                conc = True
-                            End If
-                        Catch ex As Exception
+                                Dim inStream(1024) As Byte
+                                serverStream.Read(inStream, 0, inStream.Length())
+                                If Boolean.Parse(Encoding.UTF8.GetString(inStream)) Then
+                                    conc = True
+                                End If
+                            Catch ex As Exception
+                                conc = False
+                                main.Fermer()
+                            End Try
+                        Else
                             conc = False
-                            main.fermer()
-                        End Try
-                    Else
-                        conc = False
-                        bool = False
-                    End If
-                End While
-            Else
-                bool = False
-            End If
-        End While
+                            bool = False
+                        End If
+                    End While
+                Else
+                    bool = False
+                End If
+            End While
+        Catch ex As Exception
+
+        End Try
     End Sub
 End Class

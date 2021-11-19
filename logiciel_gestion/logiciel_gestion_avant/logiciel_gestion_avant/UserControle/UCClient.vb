@@ -1,5 +1,5 @@
 ﻿Public Class UCClient
-    Dim main As MainForm
+    ReadOnly main As MainForm
     Dim tableCl As DataTable
 
     Sub New(mainform As MainForm)

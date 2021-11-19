@@ -1,5 +1,5 @@
 ﻿Public Class UCCouleurTissus
-    Dim main As MainForm
+    ReadOnly main As MainForm
     ReadOnly tableCoul As DataTable
     ReadOnly listeOr(0, 0) As String
 

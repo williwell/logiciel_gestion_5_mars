@@ -1,5 +1,5 @@
 ﻿Public Class UCOption
-    Dim main As MainForm
+    ReadOnly main As MainForm
     Dim listeOr(0, 0) As String
 
     Sub New(mainform As MainForm)

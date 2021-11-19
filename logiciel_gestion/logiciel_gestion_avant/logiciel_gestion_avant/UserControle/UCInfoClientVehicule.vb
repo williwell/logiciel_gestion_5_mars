@@ -1,6 +1,6 @@
 ﻿Public Class UCInfoClientVehicule
-    Dim main As MainForm
-    Dim id As String
+    ReadOnly main As MainForm
+    ReadOnly id As String
     Dim table As DataTable
 
     Sub New(idve As String, mainform As MainForm)

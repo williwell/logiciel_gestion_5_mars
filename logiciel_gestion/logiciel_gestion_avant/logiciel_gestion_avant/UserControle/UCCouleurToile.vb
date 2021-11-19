@@ -1,5 +1,5 @@
 ﻿Public Class UCCouleurToile
-    Dim main As MainForm
+    ReadOnly main As MainForm
     Dim tableCoul As DataTable
     Dim listeOr(0, 0) As String
 

@@ -33,7 +33,7 @@ Partial Class GestionVehicule
         Me.Label5 = New System.Windows.Forms.Label()
         Me.CBCoulTissus = New System.Windows.Forms.ComboBox()
         Me.DTPPrevu = New System.Windows.Forms.DateTimePicker()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.LabDatePrevu = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.TBEmail = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -59,6 +59,8 @@ Partial Class GestionVehicule
         Me.Label19 = New System.Windows.Forms.Label()
         Me.TBIDVe = New System.Windows.Forms.TextBox()
         Me.BTSave = New System.Windows.Forms.Button()
+        Me.CBFabriquer = New System.Windows.Forms.CheckBox()
+        Me.CBInv = New System.Windows.Forms.CheckBox()
         CType(Me.DGVClient, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -152,19 +154,21 @@ Partial Class GestionVehicule
         '
         'DTPPrevu
         '
-        Me.DTPPrevu.Location = New System.Drawing.Point(56, 360)
+        Me.DTPPrevu.Location = New System.Drawing.Point(56, 410)
         Me.DTPPrevu.Name = "DTPPrevu"
         Me.DTPPrevu.Size = New System.Drawing.Size(178, 23)
         Me.DTPPrevu.TabIndex = 10
+        Me.DTPPrevu.Visible = False
         '
-        'Label6
+        'LabDatePrevu
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(56, 342)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(64, 15)
-        Me.Label6.TabIndex = 11
-        Me.Label6.Text = "Date Prévu"
+        Me.LabDatePrevu.AutoSize = True
+        Me.LabDatePrevu.Location = New System.Drawing.Point(56, 392)
+        Me.LabDatePrevu.Name = "LabDatePrevu"
+        Me.LabDatePrevu.Size = New System.Drawing.Size(64, 15)
+        Me.LabDatePrevu.TabIndex = 11
+        Me.LabDatePrevu.Text = "Date Prévu"
+        Me.LabDatePrevu.Visible = False
         '
         'Label9
         '
@@ -381,6 +385,7 @@ Partial Class GestionVehicule
         '
         'BTSave
         '
+        Me.BTSave.Enabled = False
         Me.BTSave.Location = New System.Drawing.Point(56, 477)
         Me.BTSave.Name = "BTSave"
         Me.BTSave.Size = New System.Drawing.Size(178, 23)
@@ -388,11 +393,33 @@ Partial Class GestionVehicule
         Me.BTSave.Text = "Enregistrer"
         Me.BTSave.UseVisualStyleBackColor = True
         '
+        'CBFabriquer
+        '
+        Me.CBFabriquer.AutoSize = True
+        Me.CBFabriquer.Location = New System.Drawing.Point(56, 345)
+        Me.CBFabriquer.Name = "CBFabriquer"
+        Me.CBFabriquer.Size = New System.Drawing.Size(76, 19)
+        Me.CBFabriquer.TabIndex = 47
+        Me.CBFabriquer.Text = "Fabriquer"
+        Me.CBFabriquer.UseVisualStyleBackColor = True
+        '
+        'CBInv
+        '
+        Me.CBInv.AutoSize = True
+        Me.CBInv.Location = New System.Drawing.Point(56, 370)
+        Me.CBInv.Name = "CBInv"
+        Me.CBInv.Size = New System.Drawing.Size(94, 19)
+        Me.CBInv.TabIndex = 48
+        Me.CBInv.Text = "En Inventaire"
+        Me.CBInv.UseVisualStyleBackColor = True
+        '
         'GestionVehicule
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1245, 629)
+        Me.Controls.Add(Me.CBInv)
+        Me.Controls.Add(Me.CBFabriquer)
         Me.Controls.Add(Me.BTSave)
         Me.Controls.Add(Me.Label19)
         Me.Controls.Add(Me.TBIDVe)
@@ -418,7 +445,7 @@ Partial Class GestionVehicule
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.TBIDCl)
         Me.Controls.Add(Me.DGVClient)
-        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.LabDatePrevu)
         Me.Controls.Add(Me.DTPPrevu)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.CBCoulTissus)
@@ -449,7 +476,7 @@ Partial Class GestionVehicule
     Friend WithEvents Label5 As Label
     Friend WithEvents CBCoulTissus As ComboBox
     Friend WithEvents DTPPrevu As DateTimePicker
-    Friend WithEvents Label6 As Label
+    Friend WithEvents LabDatePrevu As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents TBEmail As TextBox
     Friend WithEvents Label10 As Label
@@ -475,4 +502,6 @@ Partial Class GestionVehicule
     Friend WithEvents Label19 As Label
     Friend WithEvents TBIDVe As TextBox
     Friend WithEvents BTSave As Button
+    Friend WithEvents CBFabriquer As CheckBox
+    Friend WithEvents CBInv As CheckBox
 End Class
