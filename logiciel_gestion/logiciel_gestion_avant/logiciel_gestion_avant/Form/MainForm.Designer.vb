@@ -24,8 +24,6 @@ Partial Class MainForm
     Private Sub InitializeComponent()
         Me.PanUC = New System.Windows.Forms.Panel()
         Me.PanGestVeh = New System.Windows.Forms.Panel()
-        Me.BTReception = New System.Windows.Forms.Button()
-        Me.BTFabriquer = New System.Windows.Forms.Button()
         Me.BTLivrer = New System.Windows.Forms.Button()
         Me.BTGest = New System.Windows.Forms.Button()
         Me.PanCouleur = New System.Windows.Forms.Panel()
@@ -63,35 +61,13 @@ Partial Class MainForm
         'PanGestVeh
         '
         Me.PanGestVeh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PanGestVeh.Controls.Add(Me.BTReception)
-        Me.PanGestVeh.Controls.Add(Me.BTFabriquer)
         Me.PanGestVeh.Controls.Add(Me.BTLivrer)
         Me.PanGestVeh.Controls.Add(Me.BTGest)
         Me.PanGestVeh.Location = New System.Drawing.Point(101, 231)
-        Me.PanGestVeh.MaximumSize = New System.Drawing.Size(100, 119)
-        Me.PanGestVeh.MinimumSize = New System.Drawing.Size(100, 119)
         Me.PanGestVeh.Name = "PanGestVeh"
-        Me.PanGestVeh.Size = New System.Drawing.Size(100, 119)
+        Me.PanGestVeh.Size = New System.Drawing.Size(100, 61)
         Me.PanGestVeh.TabIndex = 11
         Me.PanGestVeh.Visible = False
-        '
-        'BTReception
-        '
-        Me.BTReception.Location = New System.Drawing.Point(2, 90)
-        Me.BTReception.Name = "BTReception"
-        Me.BTReception.Size = New System.Drawing.Size(94, 23)
-        Me.BTReception.TabIndex = 3
-        Me.BTReception.Text = "Reception"
-        Me.BTReception.UseVisualStyleBackColor = True
-        '
-        'BTFabriquer
-        '
-        Me.BTFabriquer.Location = New System.Drawing.Point(3, 61)
-        Me.BTFabriquer.Name = "BTFabriquer"
-        Me.BTFabriquer.Size = New System.Drawing.Size(94, 23)
-        Me.BTFabriquer.TabIndex = 2
-        Me.BTFabriquer.Text = "Fabriquer"
-        Me.BTFabriquer.UseVisualStyleBackColor = True
         '
         'BTLivrer
         '
@@ -99,7 +75,7 @@ Partial Class MainForm
         Me.BTLivrer.Name = "BTLivrer"
         Me.BTLivrer.Size = New System.Drawing.Size(94, 23)
         Me.BTLivrer.TabIndex = 1
-        Me.BTLivrer.Text = "Livrer"
+        Me.BTLivrer.Text = "Liste Fabriquer"
         Me.BTLivrer.UseVisualStyleBackColor = True
         '
         'BTGest
@@ -108,7 +84,7 @@ Partial Class MainForm
         Me.BTGest.Name = "BTGest"
         Me.BTGest.Size = New System.Drawing.Size(94, 23)
         Me.BTGest.TabIndex = 0
-        Me.BTGest.Text = "Véhicule"
+        Me.BTGest.Text = "Gestion"
         Me.BTGest.UseVisualStyleBackColor = True
         '
         'PanCouleur
@@ -321,8 +297,6 @@ Partial Class MainForm
     Friend WithEvents BTCoulModel As Button
     Friend WithEvents BTVehicule As Button
     Friend WithEvents PanGestVeh As Panel
-    Friend WithEvents BTFabriquer As Button
     Friend WithEvents BTLivrer As Button
     Friend WithEvents BTGest As Button
-    Friend WithEvents BTReception As Button
 End Class

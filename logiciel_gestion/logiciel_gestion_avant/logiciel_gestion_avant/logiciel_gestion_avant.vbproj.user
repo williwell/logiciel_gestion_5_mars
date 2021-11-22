@@ -94,6 +94,9 @@
     <Compile Update="UserControle\UCInventaire.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UserControle\UCListeLivraison.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UserControle\UCOption.vb">
       <SubType>UserControl</SubType>
     </Compile>
