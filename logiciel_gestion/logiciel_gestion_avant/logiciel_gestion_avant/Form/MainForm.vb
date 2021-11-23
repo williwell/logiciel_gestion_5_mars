@@ -25,6 +25,7 @@ Public Class MainForm
     ReadOnly ucGestVeh As New UCGestionVehicule(Me)
     ReadOnly ucListeVe As New UCListeLivraison(Me)
     Private Delegate Sub setValue(text As String)
+    Dim bool As Boolean = False
 
 
     '__________________________________________________________________________________________________________
@@ -69,7 +70,9 @@ Public Class MainForm
         PanUC.Controls.Add(ucVente3)
         PanUC.Controls.Add(ucGestVeh)
         PanUC.Controls.Add(UCListeVe)
-        ucAccueil.RowsColor()
+        ucAccueil.RowsColorInv()
+        ucAccueil.RowsColorVe()
+        bool = True
     End Sub
 
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
@@ -317,4 +320,8 @@ Public Class MainForm
         panMenu.Size = panMenu.MinimumSize
         PanGestVeh.Visible = False
     End Sub
+
+    Public Function getbool() As Boolean
+        Return bool
+    End Function
 End Class

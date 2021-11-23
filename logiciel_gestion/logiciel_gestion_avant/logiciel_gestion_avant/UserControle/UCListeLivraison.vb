@@ -3,6 +3,9 @@
     ReadOnly main As MainForm
     Dim SourceRowIndex As Integer = -1
     ReadOnly tableOR As New DataTable
+    Dim rowInd As Integer = -1
+    Dim tableCl As DataTable
+    Dim bool As Boolean = False
 
     Sub New(mainforn As MainForm)
 
@@ -14,8 +17,11 @@
     End Sub
 
     Private Sub UCListeLivraison_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        tableCl = ConnectionServeur.Getinstance.GetInfo("getOneInfoClVe")
         table = ConnectionServeur.Getinstance.GetInfo("getVehiculePrio")
         DGVVehicule.DataSource = table
+
+
 
         For c As Integer = 0 To table.Columns.Count - 1
             tableOR.Columns.Add(table.Columns(c).ColumnName)
@@ -28,16 +34,32 @@
             tableOR.Rows.Add(row)
         Next
 
-        LoadClient(table(0)(0))
+        LoadClient(0)
+        bool = True
     End Sub
 
     Private Sub UCListeLivraison_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
         main.FermerMenu()
     End Sub
 
-    Private Sub LoadClient(id As String)
-        Dim tableCl As DataTable = ConnectionServeur.Getinstance.GetInfo("getinfoclve")
-        'RENDU LA
+    Private Sub LoadClient(index As Integer)
+        Dim id As Integer
+
+        For r As Integer = 0 To DGVVehicule.Rows.Count - 1
+            If DGVVehicule.Rows(index).Cells(0).Value = tableCl(r)(tableCl.Columns.Count - 1) Then
+                id = r
+            End If
+        Next
+
+        TBID.Text = tableCl(id)(1)
+        TBPrenom1.Text = tableCl(id)(2)
+        TBNom1.Text = tableCl(id)(3)
+        TBPrenom2.Text = tableCl(id)(4)
+        TBNom2.Text = tableCl(id)(5)
+        TBTel1.Text = tableCl(id)(6)
+        TBTel2.Text = tableCl(id)(7)
+        TBSexe.Text = tableCl(id)(8)
+        TBEmail.Text = tableCl(id)(9)
     End Sub
 
     Private Sub DGVVehicule_MouseDown(ByVal sender As Object, ByVal e As MouseEventArgs) Handles DGVVehicule.MouseDown
@@ -46,6 +68,7 @@
             If e.Button = Windows.Forms.MouseButtons.Left Then
                 SourceRowIndex = DGVVehicule.HitTest(e.X, e.Y).RowIndex
                 DGVVehicule.Rows(SourceRowIndex).Selected = True
+                LoadClient(SourceRowIndex)
                 DGVVehicule.Refresh()
                 DoDragDrop(DGVVehicule.Rows(SourceRowIndex), DragDropEffects.Move)
             End If
@@ -99,8 +122,6 @@
         Else
             MessageBox.Show("Une erreure c'est produit durant l'enregistrement des changement de priorité!", "Attention!")
         End If
-
-
     End Sub
 
     Private Sub BTAnnuler_Click(sender As Object, e As EventArgs) Handles BTAnnuler.Click

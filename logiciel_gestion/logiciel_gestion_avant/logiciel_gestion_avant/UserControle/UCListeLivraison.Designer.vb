@@ -26,24 +26,24 @@ Partial Class UCListeLivraison
         Me.BTSave = New System.Windows.Forms.Button()
         Me.BTAnnuler = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TBPrenom1 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TBNom1 = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.TBNom2 = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.TBPrenom2 = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.TBEmail = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.TBSexe = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.TBTel2 = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.TBTel1 = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.TextBox9 = New System.Windows.Forms.TextBox()
+        Me.TBID = New System.Windows.Forms.TextBox()
         CType(Me.DGVVehicule, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -92,13 +92,13 @@ Partial Class UCListeLivraison
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Info Client"
         '
-        'TextBox1
+        'TBPrenom1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(20, 121)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(168, 23)
-        Me.TextBox1.TabIndex = 4
+        Me.TBPrenom1.Location = New System.Drawing.Point(20, 121)
+        Me.TBPrenom1.Name = "TBPrenom1"
+        Me.TBPrenom1.ReadOnly = True
+        Me.TBPrenom1.Size = New System.Drawing.Size(168, 23)
+        Me.TBPrenom1.TabIndex = 4
         '
         'Label2
         '
@@ -118,13 +118,13 @@ Partial Class UCListeLivraison
         Me.Label3.TabIndex = 7
         Me.Label3.Text = "Nom 1"
         '
-        'TextBox2
+        'TBNom1
         '
-        Me.TextBox2.Location = New System.Drawing.Point(20, 165)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.ReadOnly = True
-        Me.TextBox2.Size = New System.Drawing.Size(168, 23)
-        Me.TextBox2.TabIndex = 6
+        Me.TBNom1.Location = New System.Drawing.Point(20, 165)
+        Me.TBNom1.Name = "TBNom1"
+        Me.TBNom1.ReadOnly = True
+        Me.TBNom1.Size = New System.Drawing.Size(168, 23)
+        Me.TBNom1.TabIndex = 6
         '
         'Label4
         '
@@ -135,13 +135,13 @@ Partial Class UCListeLivraison
         Me.Label4.TabIndex = 11
         Me.Label4.Text = "Nom 2"
         '
-        'TextBox3
+        'TBNom2
         '
-        Me.TextBox3.Location = New System.Drawing.Point(20, 253)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.ReadOnly = True
-        Me.TextBox3.Size = New System.Drawing.Size(168, 23)
-        Me.TextBox3.TabIndex = 10
+        Me.TBNom2.Location = New System.Drawing.Point(20, 253)
+        Me.TBNom2.Name = "TBNom2"
+        Me.TBNom2.ReadOnly = True
+        Me.TBNom2.Size = New System.Drawing.Size(168, 23)
+        Me.TBNom2.TabIndex = 10
         '
         'Label5
         '
@@ -152,13 +152,13 @@ Partial Class UCListeLivraison
         Me.Label5.TabIndex = 9
         Me.Label5.Text = "Prénom 2"
         '
-        'TextBox4
+        'TBPrenom2
         '
-        Me.TextBox4.Location = New System.Drawing.Point(20, 209)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.ReadOnly = True
-        Me.TextBox4.Size = New System.Drawing.Size(168, 23)
-        Me.TextBox4.TabIndex = 8
+        Me.TBPrenom2.Location = New System.Drawing.Point(20, 209)
+        Me.TBPrenom2.Name = "TBPrenom2"
+        Me.TBPrenom2.ReadOnly = True
+        Me.TBPrenom2.Size = New System.Drawing.Size(168, 23)
+        Me.TBPrenom2.TabIndex = 8
         '
         'Label6
         '
@@ -169,13 +169,13 @@ Partial Class UCListeLivraison
         Me.Label6.TabIndex = 19
         Me.Label6.Text = "Email"
         '
-        'TextBox5
+        'TBEmail
         '
-        Me.TextBox5.Location = New System.Drawing.Point(194, 209)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.ReadOnly = True
-        Me.TextBox5.Size = New System.Drawing.Size(168, 23)
-        Me.TextBox5.TabIndex = 18
+        Me.TBEmail.Location = New System.Drawing.Point(194, 209)
+        Me.TBEmail.Name = "TBEmail"
+        Me.TBEmail.ReadOnly = True
+        Me.TBEmail.Size = New System.Drawing.Size(168, 23)
+        Me.TBEmail.TabIndex = 18
         '
         'Label7
         '
@@ -186,13 +186,13 @@ Partial Class UCListeLivraison
         Me.Label7.TabIndex = 17
         Me.Label7.Text = "Sexe"
         '
-        'TextBox6
+        'TBSexe
         '
-        Me.TextBox6.Location = New System.Drawing.Point(194, 165)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.ReadOnly = True
-        Me.TextBox6.Size = New System.Drawing.Size(168, 23)
-        Me.TextBox6.TabIndex = 16
+        Me.TBSexe.Location = New System.Drawing.Point(194, 165)
+        Me.TBSexe.Name = "TBSexe"
+        Me.TBSexe.ReadOnly = True
+        Me.TBSexe.Size = New System.Drawing.Size(168, 23)
+        Me.TBSexe.TabIndex = 16
         '
         'Label8
         '
@@ -203,13 +203,13 @@ Partial Class UCListeLivraison
         Me.Label8.TabIndex = 15
         Me.Label8.Text = "Téléphone 2"
         '
-        'TextBox7
+        'TBTel2
         '
-        Me.TextBox7.Location = New System.Drawing.Point(194, 121)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.ReadOnly = True
-        Me.TextBox7.Size = New System.Drawing.Size(168, 23)
-        Me.TextBox7.TabIndex = 14
+        Me.TBTel2.Location = New System.Drawing.Point(194, 121)
+        Me.TBTel2.Name = "TBTel2"
+        Me.TBTel2.ReadOnly = True
+        Me.TBTel2.Size = New System.Drawing.Size(168, 23)
+        Me.TBTel2.TabIndex = 14
         '
         'Label9
         '
@@ -220,13 +220,13 @@ Partial Class UCListeLivraison
         Me.Label9.TabIndex = 13
         Me.Label9.Text = "Téléphone 1"
         '
-        'TextBox8
+        'TBTel1
         '
-        Me.TextBox8.Location = New System.Drawing.Point(194, 77)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.ReadOnly = True
-        Me.TextBox8.Size = New System.Drawing.Size(168, 23)
-        Me.TextBox8.TabIndex = 12
+        Me.TBTel1.Location = New System.Drawing.Point(194, 77)
+        Me.TBTel1.Name = "TBTel1"
+        Me.TBTel1.ReadOnly = True
+        Me.TBTel1.Size = New System.Drawing.Size(168, 23)
+        Me.TBTel1.TabIndex = 12
         '
         'Label10
         '
@@ -237,36 +237,36 @@ Partial Class UCListeLivraison
         Me.Label10.TabIndex = 21
         Me.Label10.Text = "ID"
         '
-        'TextBox9
+        'TBID
         '
-        Me.TextBox9.Location = New System.Drawing.Point(20, 77)
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.ReadOnly = True
-        Me.TextBox9.Size = New System.Drawing.Size(168, 23)
-        Me.TextBox9.TabIndex = 20
+        Me.TBID.Location = New System.Drawing.Point(20, 77)
+        Me.TBID.Name = "TBID"
+        Me.TBID.ReadOnly = True
+        Me.TBID.Size = New System.Drawing.Size(168, 23)
+        Me.TBID.TabIndex = 20
         '
         'UCListeLivraison
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.TextBox9)
+        Me.Controls.Add(Me.TBID)
         Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.TextBox5)
+        Me.Controls.Add(Me.TBEmail)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.TextBox6)
+        Me.Controls.Add(Me.TBSexe)
         Me.Controls.Add(Me.Label8)
-        Me.Controls.Add(Me.TextBox7)
+        Me.Controls.Add(Me.TBTel2)
         Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.TextBox8)
+        Me.Controls.Add(Me.TBTel1)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.TextBox3)
+        Me.Controls.Add(Me.TBNom2)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.TextBox4)
+        Me.Controls.Add(Me.TBPrenom2)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.TBNom1)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.TBPrenom1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.BTAnnuler)
         Me.Controls.Add(Me.BTSave)
@@ -283,22 +283,22 @@ Partial Class UCListeLivraison
     Friend WithEvents BTSave As Button
     Friend WithEvents BTAnnuler As Button
     Friend WithEvents Label1 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TBPrenom1 As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TBNom1 As TextBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents TBNom2 As TextBox
     Friend WithEvents Label5 As Label
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents TBPrenom2 As TextBox
     Friend WithEvents Label6 As Label
-    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents TBEmail As TextBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents TextBox6 As TextBox
+    Friend WithEvents TBSexe As TextBox
     Friend WithEvents Label8 As Label
-    Friend WithEvents TextBox7 As TextBox
+    Friend WithEvents TBTel2 As TextBox
     Friend WithEvents Label9 As Label
-    Friend WithEvents TextBox8 As TextBox
+    Friend WithEvents TBTel1 As TextBox
     Friend WithEvents Label10 As Label
-    Friend WithEvents TextBox9 As TextBox
+    Friend WithEvents TBID As TextBox
 End Class

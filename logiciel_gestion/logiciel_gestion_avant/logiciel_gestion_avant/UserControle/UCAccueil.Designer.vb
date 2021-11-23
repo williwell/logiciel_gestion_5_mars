@@ -63,10 +63,14 @@ Partial Class UCAccueil
         '
         'DGVVehicule
         '
+        Me.DGVVehicule.AllowUserToAddRows = False
+        Me.DGVVehicule.AllowUserToDeleteRows = False
         Me.DGVVehicule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVVehicule.Location = New System.Drawing.Point(74, 325)
         Me.DGVVehicule.Name = "DGVVehicule"
+        Me.DGVVehicule.ReadOnly = True
         Me.DGVVehicule.RowTemplate.Height = 25
+        Me.DGVVehicule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DGVVehicule.Size = New System.Drawing.Size(704, 273)
         Me.DGVVehicule.TabIndex = 1
         '
