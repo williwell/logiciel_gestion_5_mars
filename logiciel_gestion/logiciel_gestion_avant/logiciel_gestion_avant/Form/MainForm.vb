@@ -7,6 +7,29 @@ Public Class MainForm
     'Attributes
     '__________________________________________________________________________________________________________
     Shared instance As MainForm = Nothing
+
+    Dim TableClient As DataTable
+    Dim tableCoulVe As DataTable
+    Dim tableCoulMo As DataTable
+    Dim tableCoulTis As DataTable
+    Dim tableCoulToi As DataTable
+    'Dim tableFacture As DataTable
+    'Dim tableFactInv As DataTable
+    Dim tableFour As DataTable
+    Dim tableInv As DataTable
+    Dim tableInvMo As DataTable
+    Dim tableInvFour As DataTable
+    Dim tableLivrer As DataTable
+    Dim tableModel As DataTable
+    Dim tableOp As DataTable
+    Dim tableOpMo As DataTable
+    Dim tableOpInv As DataTable
+    Dim tableOpVe As DataTable
+    'Dim tableReparation As DataTable
+    'Dim tableRepVe As DataTable
+    Dim tableVe As DataTable
+    Dim tableVenteVe As DataTable
+
     ReadOnly keyCombo As New List(Of Keys)({Keys.ControlKey, Keys.H, Keys.P})
     ReadOnly currentKeys As New List(Of Keys)
     Dim options As New StructureOption.MesOption
@@ -27,7 +50,6 @@ Public Class MainForm
     Private Delegate Sub setValue(text As String)
     Dim bool As Boolean = False
 
-
     '__________________________________________________________________________________________________________
     'Constructor
     '__________________________________________________________________________________________________________
@@ -44,6 +66,7 @@ Public Class MainForm
         ConnectionServeur.SetMain(Me)
         If ConnectionServeur.Getinstance.TestConnection() Then
             panMenu.Size = panMenu.MinimumSize
+            LoadTable()
             AddUC()
         Else
             lbNonConc.Text = "Impossible de se connecter au serveur!"
@@ -73,6 +96,30 @@ Public Class MainForm
         ucAccueil.RowsColorInv()
         ucAccueil.RowsColorVe()
         bool = True
+    End Sub
+
+    Private Sub LoadTable()
+        TableClient = ConnectionServeur.Getinstance.GetInfo("getClient")
+        tableCoulVe = ConnectionServeur.Getinstance.GetInfo("getCouleurAll")
+        tableCoulMo = ConnectionServeur.Getinstance.GetInfo("getCoulMoAll")
+        tableCoulTis = ConnectionServeur.Getinstance.GetInfo("getCoulTisAll")
+        tableCoulToi = ConnectionServeur.Getinstance.GetInfo("getCoulToiAll")
+        ' tableFacture 
+        ' tableFactInv 
+        tableFour = ConnectionServeur.Getinstance.GetInfo("getFournisseur")
+        tableInv = ConnectionServeur.Getinstance.GetInfo("getInventaire")
+        tableInvMo = ConnectionServeur.Getinstance.GetInfo("getInvMoAll")
+        tableInvFour = ConnectionServeur.Getinstance.GetInfo("getInvFour")
+        tableLivrer = ConnectionServeur.Getinstance.GetInfo("getLivrer")
+        tableModel = ConnectionServeur.Getinstance.GetInfo("getModel")
+        tableOp = ConnectionServeur.Getinstance.GetInfo("getOption")
+        tableOpMo = ConnectionServeur.Getinstance.GetInfo("getOpMo")
+        tableOpInv = ConnectionServeur.Getinstance.GetInfo("getOpInv")
+        tableOpVe = ConnectionServeur.Getinstance.GetInfo("getOpVe")
+        ' tableReparation 
+        ' tableRepVe
+        tableVe = ConnectionServeur.Getinstance.GetInfo("getVeAll")
+        tableVenteVe = ConnectionServeur.Getinstance.GetInfo("getVenteVe")
     End Sub
 
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown

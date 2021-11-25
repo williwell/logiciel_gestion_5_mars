@@ -17,7 +17,7 @@
         If Not String.IsNullOrEmpty(TBPrenom1.Text) Or Not idCl = 0 Then
             If Not String.IsNullOrEmpty(TBNom1.Text) Or Not idCl = 0 Then
                 Dim listeAddCl(7) As String
-                If Not idCl = 0 Then
+                If idCl = 0 Then
                     listeAddCl(0) = TBPrenom1.Text
                     listeAddCl(1) = TBNom1.Text
 
@@ -98,6 +98,7 @@
         If idCl = 0 Then
             table = ConnectionServeur.Getinstance.GetInfo(listeAddCl, "AddClientID")
             If Not table(0)(0) = 0 Then
+                idCl = table(0)(0)
                 AddVenteCl(id)
             Else
                 MessageBox.Show("Une erreure c'est produit durant la création du nouveau client!", "Attention!")

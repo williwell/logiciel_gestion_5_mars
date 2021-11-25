@@ -106,6 +106,7 @@ Partial Class CreerOption
         '
         Me.NUDCout.DecimalPlaces = 2
         Me.NUDCout.Location = New System.Drawing.Point(45, 135)
+        Me.NUDCout.Maximum = New Decimal(New Integer() {500000, 0, 0, 0})
         Me.NUDCout.Name = "NUDCout"
         Me.NUDCout.Size = New System.Drawing.Size(184, 23)
         Me.NUDCout.TabIndex = 10

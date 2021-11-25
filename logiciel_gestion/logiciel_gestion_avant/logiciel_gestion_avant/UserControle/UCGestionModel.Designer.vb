@@ -202,11 +202,12 @@ Partial Class UCGestionModel
         '
         Me.NUDCout.DecimalPlaces = 2
         Me.NUDCout.Location = New System.Drawing.Point(52, 108)
+        Me.NUDCout.Maximum = New Decimal(New Integer() {500000, 0, 0, 0})
         Me.NUDCout.Name = "NUDCout"
         Me.NUDCout.Size = New System.Drawing.Size(315, 23)
         Me.NUDCout.TabIndex = 17
         '
-        'UCGestionVehicule
+        'UCGestionModel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -226,7 +227,7 @@ Partial Class UCGestionModel
         Me.Controls.Add(Me.dgvOptionMo)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cbModel)
-        Me.Name = "UCGestionVehicule"
+        Me.Name = "UCGestionModel"
         Me.Size = New System.Drawing.Size(831, 649)
         CType(Me.dgvOptionMo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvCoulMo, System.ComponentModel.ISupportInitialize).EndInit()

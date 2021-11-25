@@ -43,13 +43,16 @@
     <Compile Update="Form\InfoClient.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Form\ListeClient.vb">
+    <Compile Update="Form\Liste\ListeClient.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Form\ListeFournisseur.vb">
+    <Compile Update="Form\Liste\ListeFournisseur.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Form\ListeVehicule.vb">
+    <Compile Update="Form\Liste\ListeInvManque.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form\Liste\ListeVehicule.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Form\MainForm.vb">
