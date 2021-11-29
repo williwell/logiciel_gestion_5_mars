@@ -71,7 +71,7 @@ Partial Class UCAccueil
         Me.DGVVehicule.ReadOnly = True
         Me.DGVVehicule.RowTemplate.Height = 25
         Me.DGVVehicule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DGVVehicule.Size = New System.Drawing.Size(704, 220)
+        Me.DGVVehicule.Size = New System.Drawing.Size(704, 248)
         Me.DGVVehicule.TabIndex = 1
         '
         'UCAccueil

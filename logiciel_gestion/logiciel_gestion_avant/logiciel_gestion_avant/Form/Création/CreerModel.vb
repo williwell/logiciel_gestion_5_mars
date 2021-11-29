@@ -21,15 +21,53 @@ Public Class CreerModel
     Private Sub CreerModel_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim liste(-1) As String
 
-        tableOpAjout = ConnectionServeur.Getinstance.GetInfo(liste, "getOptionAdd")
+        tableOpAjout.Columns.Add("ID")
+        tableOpAjout.Columns.Add("Nom")
+        tableOpAjout.Columns.Add("Cout")
+        For r As Integer = 0 To MainForm.tableOp.Rows.Count - 1
+            If MainForm.tableOp.Rows(r).Item("id") <> 0 And MainForm.tableOp.Rows(r).Item("deleteopt") <> False Then
+                Dim row As DataRow = tableOpAjout.NewRow
+                row(0) = MainForm.tableOp.Rows(r).Item("id")
+                row(1) = MainForm.tableOp.Rows(r).Item("Nom")
+                row(2) = MainForm.tableOp.Rows(r).Item("Cout")
+                tableOpAjout.Rows.Add(row)
+            End If
+        Next
+
         dgvOptionAjout.DataSource = tableOpAjout
         RemplirColDGV(dgvOptionAjout, dgvOptionMo, tableOpMo)
 
-        tableCoulAjout = ConnectionServeur.Getinstance.GetInfo(liste, "getCouleurAdd")
+        tableCoulAjout.Columns.Add("ID")
+        tableCoulAjout.Columns.Add("Nom")
+        tableCoulAjout.Columns.Add("Code")
+        tableCoulAjout.Columns.Add("Cout")
+        For r As Integer = 0 To MainForm.tableCoulVe.Rows.Count - 1
+            If MainForm.tableCoulVe.Rows(r).Item("id") <> 0 And MainForm.tableCoulVe.Rows(r).Item("deletecoul") <> False Then
+                Dim row As DataRow = tableCoulAjout.NewRow
+                row(0) = MainForm.tableCoulVe.Rows(r).Item("id")
+                row(1) = MainForm.tableCoulVe.Rows(r).Item("Nom")
+                row(2) = MainForm.tableCoulVe.Rows(r).Item("Code")
+                row(3) = MainForm.tableCoulVe.Rows(r).Item("Cout")
+                tableCoulAjout.Rows.Add(row)
+            End If
+        Next
+
         dgvCoulAjout.DataSource = tableCoulAjout
         RemplirColDGV(dgvCoulAjout, dgvCoulMo, tableCoulMo)
 
-        tableInvAjout = ConnectionServeur.Getinstance.GetInfo("getInvAdd")
+        tableInvAjout.Columns.Add("ID")
+        tableInvAjout.Columns.Add("Nom")
+        tableInvAjout.Columns.Add("Description")
+        tableInvAjout.Columns.Add("Utilisé")
+        For r As Integer = 0 To MainForm.tableInv.Rows.Count - 1
+            Dim row As DataRow = tableInvAjout.NewRow
+            row(0) = MainForm.tableInv.Rows(r).Item("id")
+            row(1) = MainForm.tableInv.Rows(r).Item("nom")
+            row(2) = MainForm.tableInv.Rows(r).Item("description")
+            row(3) = MainForm.tableInv.Rows(r).Item("utilise")
+            tableInvAjout.Rows.Add(row)
+        Next
+
         DGVInventaireAdd.DataSource = tableInvAjout
         RemplirColDGVInv(DGVInventaireAdd, DGVInventaireMo, tableInvMo)
 

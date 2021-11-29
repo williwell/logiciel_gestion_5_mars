@@ -1,9 +1,9 @@
 ﻿Public Class UCAccueil
-    Dim tableItem As New DataTable
-    Dim tableVehicule As New DataTable
+    ReadOnly tableItem As New DataTable
+    ReadOnly tableVehicule As New DataTable
     ReadOnly main As MainForm
-    Dim tableInv As DataTable
-    Dim tableManque As New DataTable
+    ReadOnly tableInv As New DataTable
+    ReadOnly tableManque As New DataTable
 
     Sub New(mainform As MainForm)
 
@@ -22,17 +22,106 @@
     End Sub
 
     Public Sub LoadDGV()
-        tableItem = ConnectionServeur.Getinstance.GetInfo("getInvLow")
+        Dim listeTe() As String = {"id", "Nom", "Description", "Utilise", "Quantité", "Minimun Stock"}
+        For i As Integer = 0 To listeTe.Length - 1
+            tableItem.Columns.Add(listeTe(i))
+        Next
+
+        For r As Integer = 0 To MainForm.tableInv.Rows.Count - 1
+            If Integer.Parse(MainForm.tableInv.Rows(r).Item("Quantite")) < Integer.Parse(MainForm.tableInv.Rows(r).Item("minStock")) Then
+                Dim row As DataRow = tableItem.NewRow
+                row(0) = MainForm.tableInv.Rows(r).Item("ID")
+                row(1) = MainForm.tableInv.Rows(r).Item("Nom")
+                row(2) = MainForm.tableInv.Rows(r).Item("Description")
+                row(3) = MainForm.tableInv.Rows(r).Item("Utilise")
+                row(4) = MainForm.tableInv.Rows(r).Item("Quantite")
+                row(5) = MainForm.tableInv.Rows(r).Item("minStock")
+                tableItem.Rows.Add(row)
+            End If
+        Next
+
         DGVItemLow.DataSource = tableItem
 
-        tableVehicule = ConnectionServeur.Getinstance.GetInfo("getVehiculeAccueil")
+        tableVehicule.Columns.Add("ID")
+        tableVehicule.Columns.Add("Numéro Matricule")
+        tableVehicule.Columns.Add("Model")
+        tableVehicule.Columns.Add("Couleur Véhicule")
+        tableVehicule.Columns.Add("Couleur Toile")
+        tableVehicule.Columns.Add("Couleur Tissus")
+        tableVehicule.Columns.Add("Fabriquer", GetType(Boolean))
+        tableVehicule.Columns.Add("En Inventaire", GetType(Boolean))
+        tableVehicule.Columns.Add("Date Prévu", GetType(Date))
+        tableVehicule.Columns.Add("Priorité")
+        For r As Integer = 0 To MainForm.tableVe.Rows.Count - 1
+            For r2 As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
+                If MainForm.tableVe.Rows(r).Item("id") = MainForm.tableVenteVe.Rows(r2).Item("idvehicule") Then
+                    If MainForm.tableVenteVe.Rows(r2).Item("dateprevu") < Date.Now.AddMonths(1) Then
+                        Dim row As DataRow = tableVehicule.NewRow
+                        row(0) = MainForm.tableVe.Rows(r).Item("id")
+                        row(1) = MainForm.tableVe.Rows(r).Item("nomatricule")
+                        row(6) = MainForm.tableVe.Rows(r).Item("fabriquer")
+                        row(7) = MainForm.tableVe.Rows(r).Item("eninventaire")
+                        row(8) = MainForm.tableVenteVe.Rows(r2).Item("dateprevu")
+                        row(9) = MainForm.tableVenteVe.Rows(r2).Item("priorite")
+                        For r3 As Integer = 0 To MainForm.tableModel.Rows.Count - 1
+                            If MainForm.tableVe.Rows(r).Item("idmodel") = MainForm.tableModel.Rows(r3).Item("id") Then
+                                row(2) = MainForm.tableModel.Rows(r3).Item("nom")
+                            End If
+                        Next
+                        For r3 As Integer = 0 To MainForm.tableCoulVe.Rows.Count - 1
+                            If MainForm.tableVe.Rows(r).Item("idcouleur") = MainForm.tableCoulVe.Rows(r3).Item("id") Then
+                                row(3) = MainForm.tableCoulVe.Rows(r3).Item("nom")
+                            End If
+                        Next
+                        For r3 As Integer = 0 To MainForm.tableCoulToi.Rows.Count - 1
+                            If MainForm.tableVe.Rows(r).Item("idcoultoile") = MainForm.tableCoulToi.Rows(r3).Item("id") Then
+                                row(4) = MainForm.tableCoulToi.Rows(r3).Item("nom")
+                            End If
+                        Next
+                        For r3 As Integer = 0 To MainForm.tableCoulTis.Rows.Count - 1
+                            If MainForm.tableVe.Rows(r).Item("idcoultissus") = MainForm.tableCoulTis.Rows(r3).Item("id") Then
+                                row(5) = MainForm.tableCoulTis.Rows(r3).Item("nom")
+                            End If
+                        Next
+                        tableVehicule.Rows.Add(row)
+                    End If
+                End If
+            Next
+        Next
+
         DGVVehicule.DataSource = tableVehicule
 
-        tableInv = ConnectionServeur.Getinstance.GetInfo("getInvAccueil")
+        tableInv.Columns.Add("id")
+        tableInv.Columns.Add("quantite")
 
+        For r As Integer = 0 To MainForm.tableInv.Rows.Count - 1
+            Dim row As DataRow = tableInv.NewRow
+            row(0) = MainForm.tableInv.Rows(r).Item("id")
+            row(1) = MainForm.tableInv.Rows(r).Item("quantite")
+            tableInv.Rows.Add(row)
+        Next
 
         For i As Integer = 0 To DGVVehicule.Rows.Count - 1
-            Dim table As DataTable = ConnectionServeur.Getinstance.GetInfo(DGVVehicule.Rows(i).Cells(0).Value, "getInvOneVe")
+            Dim table As New DataTable
+            table.Columns.Add("idinv")
+            table.Columns.Add("quantite")
+            For r As Integer = 0 To MainForm.tableVe.Rows.Count - 1
+                If MainForm.tableVe.Rows(r).Item("id") = DGVVehicule.Rows(i).Cells(0).Value Then
+                    For r2 As Integer = 0 To MainForm.tableModel.Rows.Count - 1
+                        If MainForm.tableVe.Rows(r).Item("idmodel") = MainForm.tableModel.Rows(r2).Item("id") Then
+                            For r3 As Integer = 0 To MainForm.tableInvMo.Rows.Count - 1
+                                If MainForm.tableModel.Rows(r2).Item("id") = MainForm.tableInvMo.Rows(r3).Item("idmodel") Then
+                                    Dim row As DataRow = table.NewRow
+                                    row(0) = MainForm.tableInvMo.Rows(r3).Item("idinventaire")
+                                    row(1) = MainForm.tableInvMo.Rows(r3).Item("nombreitem")
+                                    table.Rows.Add(row)
+                                End If
+                            Next
+                        End If
+                    Next
+                End If
+            Next
+
             Dim liste(1, -1) As String
 
 
@@ -64,7 +153,7 @@
                             liste(1, 0) = tableInv(nbr)(1)
                         End If
                     End If
-                        nbr += 1
+                    nbr += 1
                 End While
             Next
 
@@ -93,7 +182,7 @@
 
     Public Sub RowsColorInv()
         For Each row As DataGridViewRow In DGVItemLow.Rows
-            If row.Cells("Quantite").Value <= 0 Then
+            If row.Cells("Quantité").Value <= 0 Then
                 row.DefaultCellStyle.BackColor = Color.Red
             Else
                 row.DefaultCellStyle.BackColor = Color.Yellow
@@ -108,7 +197,7 @@
 
     Public Sub RowsColorVe()
         For Each row As DataGridViewRow In DGVVehicule.Rows
-            If row.Cells("DatePrevu").Value <= Date.Now Then
+            If row.Cells("Date Prévu").Value <= Date.Now Then
                 row.DefaultCellStyle.BackColor = Color.Yellow
             Else
                 row.DefaultCellStyle.BackColor = Color.Green
@@ -128,7 +217,7 @@
     End Sub
 
     Private Sub UCAccueil_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
-        main.fermerMenu()
+        main.FermerMenu()
     End Sub
 
     Private Sub DGVVehicule_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVVehicule.CellDoubleClick

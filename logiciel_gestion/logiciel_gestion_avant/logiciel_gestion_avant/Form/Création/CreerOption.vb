@@ -3,6 +3,11 @@
     ReadOnly tableOp As New DataTable
     ReadOnly tableMid As New DataTable
     Private Sub CreerOption_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        tableAdd.Columns.Add("id")
+        tableAdd.Columns.Add("Nom")
+        tableAdd.Columns.Add("Description")
+        'Rendu la
+
         tableAdd = ConnectionServeur.Getinstance.GetInfo("getInvAdd")
         DGVItemAdd.DataSource = tableAdd
         For i As Integer = 0 To DGVItemAdd.Columns.Count

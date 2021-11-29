@@ -8,32 +8,32 @@ Public Class MainForm
     '__________________________________________________________________________________________________________
     Shared instance As MainForm = Nothing
 
-    Dim TableClient As DataTable
-    Dim tableCoulVe As DataTable
-    Dim tableCoulMo As DataTable
-    Dim tableCoulTis As DataTable
-    Dim tableCoulToi As DataTable
+    Public Shared TableClient As DataTable
+    Public Shared tableCoulVe As DataTable
+    Public Shared tableCoulMo As DataTable
+    Public Shared tableCoulTis As DataTable
+    Public Shared tableCoulToi As DataTable
     'Dim tableFacture As DataTable
     'Dim tableFactInv As DataTable
-    Dim tableFour As DataTable
-    Dim tableInv As DataTable
-    Dim tableInvMo As DataTable
-    Dim tableInvFour As DataTable
-    Dim tableLivrer As DataTable
-    Dim tableModel As DataTable
-    Dim tableOp As DataTable
-    Dim tableOpMo As DataTable
-    Dim tableOpInv As DataTable
-    Dim tableOpVe As DataTable
+    Public Shared tableFour As DataTable
+    Public Shared tableInv As DataTable
+    Public Shared tableInvMo As DataTable
+    Public Shared tableInvFour As DataTable
+    Public Shared tableLivrer As DataTable
+    Public Shared tableModel As DataTable
+    Public Shared tableOp As DataTable
+    Public Shared tableOpMo As DataTable
+    Public Shared tableOpInv As DataTable
+    Public Shared tableOpVe As DataTable
     'Dim tableReparation As DataTable
     'Dim tableRepVe As DataTable
-    Dim tableVe As DataTable
-    Dim tableVenteVe As DataTable
+    Public Shared tableVe As DataTable
+    Public Shared tableVenteVe As DataTable
 
     ReadOnly keyCombo As New List(Of Keys)({Keys.ControlKey, Keys.H, Keys.P})
     ReadOnly currentKeys As New List(Of Keys)
     Dim options As New StructureOption.MesOption
-    ReadOnly ucAccueil As New UCAccueil(Me)
+    Dim ucAccueil As UCAccueil
     ReadOnly ucInventaire As New UCInventaire(Me)
     ReadOnly ucVente As New UCVente(Me)
     ReadOnly ucFour As New UCFournisseur(Me, ucInventaire)
@@ -79,6 +79,7 @@ Public Class MainForm
     'Methods
     '__________________________________________________________________________________________________________
     Private Sub AddUC()
+        ucAccueil = New UCAccueil(Me)
         PanUC.Controls.Add(ucAccueil)
         PanUC.Controls.Add(ucInventaire)
         PanUC.Controls.Add(ucVente)
@@ -92,7 +93,7 @@ Public Class MainForm
         PanUC.Controls.Add(ucVente2)
         PanUC.Controls.Add(ucVente3)
         PanUC.Controls.Add(ucGestVeh)
-        PanUC.Controls.Add(UCListeVe)
+        PanUC.Controls.Add(ucListeVe)
         ucAccueil.RowsColorInv()
         ucAccueil.RowsColorVe()
         bool = True
@@ -131,7 +132,6 @@ Public Class MainForm
             Me.Hide()
             connection.Show()
         End If
-
     End Sub
 
     Private Sub Form1_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
