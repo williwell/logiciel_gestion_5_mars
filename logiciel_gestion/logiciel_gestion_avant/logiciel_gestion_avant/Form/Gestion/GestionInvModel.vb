@@ -1,9 +1,9 @@
 ﻿Imports System.ComponentModel
 
 Public Class GestionInvModel
-    Dim tableInvMo As DataTable
+    Dim tableInvMo As New DataTable
     Dim OrInvMo(0, 0) As String
-    Dim tableInvAdd As DataTable
+    Dim tableInvAdd As New DataTable
     Dim OrInvAdd(0, 0) As String
     ReadOnly tableAll As New DataTable
     Dim OrTableAll(0, 0) As String
@@ -27,7 +27,28 @@ Public Class GestionInvModel
     Private Sub GestionInvModel_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim liste() As String
 
-        tableInvMo = ConnectionServeur.Getinstance.GetInfo(id, "getOnlyInv")
+        tableInvMo.Columns.Add("ID")
+        tableInvMo.Columns.Add("Nom")
+        tableInvMo.Columns.Add("Description")
+        tableInvMo.Columns.Add("Utilisé")
+        tableInvMo.Columns.Add("Nombre Item")
+
+        For r As Integer = 0 To MainForm.tableInv.Rows.Count - 1
+            For r2 As Integer = 0 To MainForm.tableInvMo.Rows.Count - 1
+                If MainForm.tableInv.Rows(r).Item("id") = MainForm.tableInvMo.Rows(r2).Item("idinventaire") Then
+                    If MainForm.tableInvMo.Rows(r2).Item("idmodel") = id Then
+                        Dim row As DataRow = tableInvMo.NewRow
+                        row(0) = MainForm.tableInv.Rows(r).Item("id")
+                        row(1) = MainForm.tableInv.Rows(r).Item("nom")
+                        row(2) = MainForm.tableInv.Rows(r).Item("description")
+                        row(3) = MainForm.tableInv.Rows(r).Item("utilise")
+                        row(4) = MainForm.tableInvMo.Rows(r2).Item("nombreitem")
+                        tableInvMo.Rows.Add(row)
+                    End If
+                End If
+            Next
+        Next
+
         ReDim OrInvMo(tableInvMo.Rows.Count - 1, tableInvMo.Columns.Count - 1)
         ucGestion.ListeOr(OrInvMo, tableInvMo)
         DGVInventaireMo.DataSource = tableInvMo
@@ -39,7 +60,28 @@ Public Class GestionInvModel
             liste(i) = DGVInventaireMo.Rows(i).Cells(0).Value
         Next
 
-        tableInvAdd = ConnectionServeur.Getinstance.GetInfo(liste, "getInvAdd")
+        tableInvAdd.Columns.Add("ID")
+        tableInvAdd.Columns.Add("Nom")
+        tableInvAdd.Columns.Add("Description")
+        tableInvAdd.Columns.Add("Utilisé")
+
+        For r As Integer = 0 To MainForm.tableInv.Rows.Count - 1
+            Dim bool As Boolean = True
+            For i As Integer = 0 To liste.Length - 1
+                If MainForm.tableInv.Rows(r).Item("id") = liste(i) Then
+                    bool = False
+                End If
+            Next
+            If bool Then
+                Dim row As DataRow = tableInvAdd.NewRow
+                row(0) = MainForm.tableInv.Rows(r).Item("id")
+                row(1) = MainForm.tableInv.Rows(r).Item("nom")
+                row(2) = MainForm.tableInv.Rows(r).Item("description")
+                row(3) = MainForm.tableInv.Rows(r).Item("utilise")
+                tableInvAdd.Rows.Add(row)
+            End If
+        Next
+
         ReDim OrInvAdd(tableInvAdd.Rows.Count - 1, tableInvAdd.Columns.Count - 1)
         ucGestion.ListeOr(OrInvAdd, tableInvAdd)
         DGVInventaireAdd.DataSource = tableInvAdd

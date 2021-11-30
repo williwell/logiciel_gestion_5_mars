@@ -18,10 +18,10 @@
         Dim liste() As String = {"CAD", "US"}
         CBDevise.DataSource = liste
         LabSameID.Text = ""
-        table = ConnectionServeur.Getinstance.GetInfo("getFournisseur")
-        Dim listeNom(table.Rows.Count - 1) As String
-        For i As Integer = 0 To table.Rows.Count - 1
-            listeNom(i) = table.Rows(i).Item(1).ToString
+
+        Dim listeNom(MainForm.tableFour.Rows.Count - 1) As String
+        For i As Integer = 0 To MainForm.tableFour.Rows.Count - 1
+            listeNom(i) = MainForm.tableFour.Rows(i).Item(1).ToString
         Next
         cbFour.DataSource() = listeNom
     End Sub
@@ -41,8 +41,8 @@
                 liste(3) = tbDescription.Text
             End If
 
-            For i As Integer = 0 To table.Rows.Count - 1
-                If cbFour.SelectedItem = table.Rows(i).Item(1).ToString Then
+            For i As Integer = 0 To MainForm.tableFour.Rows.Count - 1
+                If cbFour.SelectedItem = MainForm.tableFour.Rows(i).Item(1).ToString Then
                     liste(4) = i + 1
                 End If
             Next
@@ -129,8 +129,15 @@
     End Sub
 
     Private Sub TbIDPro_LostFocus(sender As Object, e As EventArgs) Handles tbIDPro.LostFocus
-        Dim table As DataTable = ConnectionServeur.Getinstance.GetInfo(tbIDPro.Text, "sameID")
-        If table(0)(0) = 1 Then
+        Dim bool As Boolean = False
+
+        For i As Integer = 0 To MainForm.tableInv.Rows.Count - 1
+            If MainForm.tableInv.Rows(i).Item("id") = tbIDPro.Text Then
+                bool = True
+            End If
+        Next
+
+        If bool Then
             tbIDPro.BackColor = Color.Red
             btSauv.Enabled = False
             LabSameID.Text = "Ce ID de produit existe déjà!"

@@ -3,7 +3,7 @@
 Public Class GestionClient
     ReadOnly ID As String
     ReadOnly uc As UCClient
-    Dim table As DataTable
+    Dim table As New DataTable
     ReadOnly liste() As String = {"Non déterminer", "Homme", "Femme"}
     Sub New(IDClient As String, ucClient As UCClient)
 
@@ -16,7 +16,20 @@ Public Class GestionClient
     End Sub
 
     Private Sub GestionClient_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        table = ConnectionServeur.Getinstance.GetInfo(ID, "getOneClient")
+        For c As Integer = 0 To MainForm.TableClient.Columns.Count - 1
+            table.Columns.Add(MainForm.TableClient.Columns(c).ColumnName)
+        Next
+
+        For r As Integer = 0 To MainForm.TableClient.Rows.Count - 1
+            If MainForm.TableClient.Rows(r).Item("id") = ID Then
+                Dim row As DataRow = table.NewRow
+                For c As Integer = 0 To MainForm.TableClient.Columns.Count - 1
+                    row(c) = MainForm.TableClient(r)(c)
+                Next
+                table.Rows.Add(row)
+            End If
+        Next
+
         CBSexe.DataSource = liste
         LoadInfo()
     End Sub

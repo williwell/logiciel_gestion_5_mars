@@ -34,7 +34,9 @@ Partial Class UCClient
         Me.DGVClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVClient.Location = New System.Drawing.Point(54, 121)
         Me.DGVClient.Name = "DGVClient"
+        Me.DGVClient.ReadOnly = True
         Me.DGVClient.RowTemplate.Height = 25
+        Me.DGVClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DGVClient.Size = New System.Drawing.Size(661, 396)
         Me.DGVClient.TabIndex = 0
         '

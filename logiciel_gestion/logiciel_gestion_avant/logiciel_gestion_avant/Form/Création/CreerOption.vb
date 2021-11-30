@@ -6,9 +6,17 @@
         tableAdd.Columns.Add("id")
         tableAdd.Columns.Add("Nom")
         tableAdd.Columns.Add("Description")
-        'Rendu la
+        tableAdd.Columns.Add("Utilisé")
 
-        tableAdd = ConnectionServeur.Getinstance.GetInfo("getInvAdd")
+        For i As Integer = 0 To MainForm.tableInv.Rows.Count - 1
+            Dim row As DataRow = tableAdd.NewRow
+            row(0) = MainForm.tableInv.Rows(i).Item("id")
+            row(1) = MainForm.tableInv.Rows(i).Item("nom")
+            row(2) = MainForm.tableInv.Rows(i).Item("description")
+            row(3) = MainForm.tableInv.Rows(i).Item("utilise")
+            tableAdd.Rows.Add(row)
+        Next
+
         DGVItemAdd.DataSource = tableAdd
         For i As Integer = 0 To DGVItemAdd.Columns.Count
             If i <> DGVItemAdd.Columns.Count Then
