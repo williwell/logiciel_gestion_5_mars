@@ -44,15 +44,67 @@
     '__________________________________________________________________________________________________________
     Private Sub ListeFournisseur_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If action = 1 Then
-            dgvFour.DataSource = ConnectionServeur.Getinstance.GetInfo("getFournisseur")
+            dgvFour.DataSource = MainForm.tableFour
         ElseIf action = 2 Then
-            dgvFour.DataSource = ConnectionServeur.Getinstance.GetInfo(idListe, "getFournisseurAdd")
+            Dim table As New DataTable
+
+            For c As Integer = 0 To MainForm.tableFour.Columns.Count - 1
+                table.Columns.Add(MainForm.tableFour.Columns(c).ColumnName)
+            Next
+
+            For r As Integer = 0 To MainForm.tableFour.Rows.Count - 1
+                Dim bool As Boolean = True
+                For i As Integer = 0 To idListe.Length - 1
+                    If MainForm.tableFour.Rows(r).Item("id") = idListe(i) Or MainForm.tableFour.Rows(r).Item("id") = 1 Then
+                        bool = False
+                    End If
+                Next
+                If bool Then
+                    Dim row As DataRow = table.NewRow
+                    For c As Integer = 0 To MainForm.tableFour.Columns.Count - 1
+                        row(c) = MainForm.tableFour(r)(c)
+                    Next
+                    table.Rows.Add(row)
+                End If
+            Next
+
+            dgvFour.DataSource = table
+
             If Not dgvFour.Rows.Count > 0 Then
                 MessageBox.Show("Ce produit a tous les fournisseurs!")
                 Me.Close()
             End If
         ElseIf action = 3 Then
-            dgvFour.DataSource = ConnectionServeur.Getinstance.GetInfo(idInv, "getFournisseur")
+            'Select Case* FROM `fournisseur`
+            '                        inner Join `invfour`
+            '                        On fournisseur.id = invfour.idFournisseur
+            '                        where invfour.idInventaire = '{id}' and invFour.idFournisseur <> 1
+
+            Dim table As New DataTable
+            Dim nbr As Integer = 0
+            For c As Integer = 0 To MainForm.tableFour.Columns.Count - 1
+                table.Columns.Add(MainForm.tableFour.Columns(c).ColumnName)
+                nbr += 1
+            Next
+            For c As Integer = 0 To (MainForm.tableInvFour.Columns.Count - 1)
+                table.Columns.Add(MainForm.tableInvFour.Columns(c).ColumnName)
+            Next
+
+            For r As Integer = 0 To MainForm.tableFour.Rows.Count - 1
+                For r2 As Integer = 0 To MainForm.tableInvFour.Rows.Count - 1
+                    If MainForm.tableFour.Rows(r).Item("id") = MainForm.tableInvFour.Rows(r2).Item("idfournisseur") Then
+                        If MainForm.tableInvFour.Rows(r2).Item("idInventaire") = idInv And MainForm.tableInvFour.Rows(r2).Item("idfournisseur") <> 1 Then
+                            Dim row As DataRow = table.NewRow
+                            For c As Integer = 0 To MainForm.tableFour.Columns.Count - 1
+                                row(c) = MainForm.tableFour(r)(c)
+                            Next
+                            table.Rows.Add(row)
+                        End If
+                    End If
+                Next
+            Next
+
+            dgvFour.DataSource = table
             If Not dgvFour.Rows.Count > 0 Then
                 MessageBox.Show("Ce produit n'a pas de fournisseur!")
                 Me.Close()

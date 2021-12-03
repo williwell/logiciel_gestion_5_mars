@@ -2,9 +2,9 @@
 
 Public Class GestionVehicule
     ReadOnly row As DataGridViewRow
-    Dim table As DataTable
+    Dim table As New DataTable
     Dim tableModel As DataTable
-    Dim tableCoulVe As DataTable
+    Dim tableCoulVe As New DataTable
     Dim tableCoulToile As DataTable
     Dim tableCoulTissus As DataTable
     Dim bool As Boolean = True
@@ -25,7 +25,57 @@ Public Class GestionVehicule
     Private Sub GestionVehicule_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         bool = False
 
-        table = ConnectionServeur.Getinstance.GetInfo(row.Cells(0).Value, "getInfoClVe")
+        tableCoulVe.Columns.Add("id")
+        tableCoulVe.Columns.Add("nom")
+        tableCoulVe.Columns.Add("code")
+        tableCoulVe.Columns.Add("cout")
+
+        table.Columns.Add("ID")
+        table.Columns.Add("Prenom1")
+        table.Columns.Add("Nom1")
+        table.Columns.Add("Prenom2")
+        table.Columns.Add("Nom2")
+        table.Columns.Add("Téléphone1")
+        table.Columns.Add("Téléphone2")
+        table.Columns.Add("Sexe")
+        table.Columns.Add("Email")
+
+        For r As Integer = 0 To MainForm.TableClient.Rows.Count - 1
+            For r2 As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
+                If MainForm.TableClient.Rows(r).Item("id") = MainForm.tableVenteVe.Rows(r2).Item("idclient") Then
+                    If MainForm.tableVenteVe.Rows(r2).Item("idvehicule") = row.Cells(0).Value Then
+                        Dim row As DataRow = table.NewRow
+                        row(0) = MainForm.TableClient.Rows(r).Item("id")
+                        row(1) = MainForm.TableClient.Rows(r).Item("prenom1")
+                        row(2) = MainForm.TableClient.Rows(r).Item("nom1")
+                        row(3) = MainForm.TableClient.Rows(r).Item("prenom2")
+                        row(4) = MainForm.TableClient.Rows(r).Item("nom2")
+                        row(5) = MainForm.TableClient.Rows(r).Item("telephone1")
+                        row(6) = MainForm.TableClient.Rows(r).Item("telephone2")
+                        row(7) = MainForm.TableClient.Rows(r).Item("sexe")
+                        row(8) = MainForm.TableClient.Rows(r).Item("email")
+                        table.Rows.Add(row)
+                    End If
+                End If
+            Next
+            For r2 As Integer = 0 To MainForm.tableLivrer.Rows.Count - 1
+                If MainForm.TableClient.Rows(r).Item("id") = MainForm.tableLivrer.Rows(r2).Item("idclient") Then
+                    If MainForm.tableLivrer.Rows(r2).Item("idvehicule") = row.Cells(0).Value Then
+                        Dim row As DataRow = table.NewRow
+                        row(0) = MainForm.TableClient.Rows(r).Item("id")
+                        row(1) = MainForm.TableClient.Rows(r).Item("prenom1")
+                        row(2) = MainForm.TableClient.Rows(r).Item("nom1")
+                        row(3) = MainForm.TableClient.Rows(r).Item("prenom2")
+                        row(4) = MainForm.TableClient.Rows(r).Item("nom2")
+                        row(5) = MainForm.TableClient.Rows(r).Item("telephone1")
+                        row(6) = MainForm.TableClient.Rows(r).Item("telephone2")
+                        row(7) = MainForm.TableClient.Rows(r).Item("sexe")
+                        row(8) = MainForm.TableClient.Rows(r).Item("email")
+                        table.Rows.Add(row)
+                    End If
+                End If
+            Next
+        Next
 
         If table.Rows.Count > 0 Then
             DGVClient.DataSource = table
@@ -46,11 +96,11 @@ Public Class GestionVehicule
         TBIDVe.Text = row.Cells(0).Value
         TBMatricule.Text = row.Cells(1).Value
 
-        RemplirCB(tableModel, CBModel, "getModel")
+        RemplirCB(CBModel, MainForm.tableModel)
 
-        RemplirCB(tableCoulToile, CBCoulToile, "getCoulToile")
+        RemplirCB(CBCoulToile, MainForm.tableCoulToi)
 
-        RemplirCB(tableCoulTissus, CBCoulTissus, "getCoulTissus")
+        RemplirCB(CBCoulTissus, MainForm.tableCoulTis)
 
 
         SelectionComboBox(CBModel, row.Cells(2).Value)
@@ -65,7 +115,16 @@ Public Class GestionVehicule
             CBInv.Checked = True
         End If
 
-        Dim tabletempo As DataTable = ConnectionServeur.Getinstance.GetInfo(row.Cells(0).Value, "getDatePrevu")
+        Dim tabletempo As New DataTable
+
+        tabletempo.Columns.Add("dateprevu")
+        For r As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
+            If MainForm.tableVenteVe.Rows(r).Item("idvehicule") = row.Cells(0).Value Then
+                Dim row As DataRow = tabletempo.NewRow
+                row(0) = MainForm.tableVenteVe.Rows(r).Item("dateprevu")
+                tabletempo.Rows.Add(row)
+            End If
+        Next
 
         If tabletempo.Rows.Count > 0 Then
             DTPPrevu.Visible = True
@@ -82,27 +141,43 @@ Public Class GestionVehicule
     Private Sub RemplirListe(lis As String())
         lis(0) = row.Cells(0).Value
         lis(1) = row.Cells(1).Value
-        lis(2) = tableModel(CBModel.SelectedIndex)(0)
+        lis(2) = Mainform.tableModel(CBModel.SelectedIndex)(0)
         lis(3) = tableCoulVe(CBCoulVe.SelectedIndex)(0)
-        lis(4) = tableCoulToile(CBCoulToile.SelectedIndex)(0)
-        lis(5) = tableCoulTissus(CBCoulTissus.SelectedIndex)(0)
+        lis(4) = MainForm.tableCoulToi(CBCoulToile.SelectedIndex)(0)
+        lis(5) = MainForm.tableCoulTis(CBCoulTissus.SelectedIndex)(0)
         lis(6) = CBFabriquer.Checked
         lis(7) = CBInv.Checked
         lis(8) = DTPPrevu.Value.ToString("yyyy-MM-dd")
     End Sub
 
-    Private Sub RemplirCB(ByRef table As DataTable, CB As ComboBox, str As String)
-        table = ConnectionServeur.Getinstance.GetInfo(str)
-        Dim liste(table.Rows.Count - 1)
-        For i As Integer = 0 To table.Rows.Count - 1
-            liste(i) = table(i)(1)
+    Private Sub RemplirCB(CB As ComboBox, tablemain As DataTable)
+        Dim liste(tablemain.Rows.Count - 1)
+        For i As Integer = 0 To tablemain.Rows.Count - 1
+            liste(i) = tablemain(i)(1)
         Next
 
         CB.DataSource = liste
     End Sub
 
     Private Sub CBModel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBModel.SelectedIndexChanged
-        tableCoulVe = ConnectionServeur.Getinstance.GetInfo(tableModel(CBModel.SelectedIndex)(0), "getCouleurModel")
+        tableCoulVe.Clear()
+
+
+        For r As Integer = 0 To MainForm.tableCoulVe.Rows.Count - 1
+            For r2 As Integer = 0 To MainForm.tableCoulMo.Rows.Count - 1
+                If MainForm.tableCoulVe.Rows(r).Item("id") = MainForm.tableCoulMo.Rows(r2).Item("idcouleur") Then
+                    If MainForm.tableCoulMo.Rows(r2).Item("idmodel") = MainForm.tableModel(CBModel.SelectedIndex)(0) Then
+                        Dim row As DataRow = tableCoulVe.NewRow
+                        row(0) = MainForm.tableCoulVe.Rows(r).Item("id")
+                        row(1) = MainForm.tableCoulVe.Rows(r).Item("nom")
+                        row(2) = MainForm.tableCoulVe.Rows(r).Item("code")
+                        row(3) = MainForm.tableCoulVe.Rows(r).Item("cout")
+                        tableCoulVe.Rows.Add(row)
+                    End If
+                End If
+            Next
+        Next
+
         Dim listeCoul(0) As String
         If tableCoulVe.Rows.Count > 0 Then
             ReDim listeCoul(tableCoulVe.Rows.Count - 1)
@@ -156,7 +231,7 @@ Public Class GestionVehicule
 
     Private Sub CBModel_SelectedValueChanged(sender As Object, e As EventArgs) Handles CBModel.SelectedValueChanged
         If bool Then
-            liste(2) = tableModel(CBModel.SelectedIndex)(0)
+            liste(2) = MainForm.tableModel(CBModel.SelectedIndex)(0)
             CheckChange()
         End If
     End Sub
@@ -164,7 +239,7 @@ Public Class GestionVehicule
     Private Sub CBCoulVe_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBCoulVe.SelectedIndexChanged
         If bool Then
             If Not CBCoulVe.SelectedItem = "Aucune couleur de disponible pour ce model" Then
-                liste(3) = tableCoulVe(CBCoulVe.SelectedIndex)(0)
+                liste(3) = MainForm.tableCoulVe(CBCoulVe.SelectedIndex)(0)
             Else
                 liste(3) = 0
             End If
@@ -174,14 +249,14 @@ Public Class GestionVehicule
 
     Private Sub CBCoulToile_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBCoulToile.SelectedIndexChanged
         If bool Then
-            liste(4) = tableCoulToile(CBCoulToile.SelectedIndex)(0)
+            liste(4) = MainForm.tableCoulToi(CBCoulToile.SelectedIndex)(0)
             CheckChange()
         End If
     End Sub
 
     Private Sub CBCoulTissus_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBCoulTissus.SelectedIndexChanged
         If bool Then
-            liste(5) = tableCoulTissus(CBCoulTissus.SelectedIndex)(0)
+            liste(5) = MainForm.tableCoulTis(CBCoulTissus.SelectedIndex)(0)
             CheckChange()
         End If
     End Sub

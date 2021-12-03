@@ -11,8 +11,7 @@
     End Sub
 
     Private Sub ListeClient_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim table As DataTable = ConnectionServeur.Getinstance.GetInfo("getClient")
-        DGVClient.DataSource = table
+        DGVClient.DataSource = MainForm.TableClient
     End Sub
 
     Private Sub DGVClient_DoubleClick(sender As Object, e As EventArgs) Handles DGVClient.DoubleClick
