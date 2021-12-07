@@ -18,15 +18,28 @@
         tableManque.Columns.Add("IDVe")
         tableManque.Columns.Add("IDPiece")
         tableManque.Columns.Add("Quantite")
-        LoadDGV()
-    End Sub
-
-    Public Sub LoadDGV()
         Dim listeTe() As String = {"id", "Nom", "Description", "Utilise", "Quantité", "Minimun Stock"}
         For i As Integer = 0 To listeTe.Length - 1
             tableItem.Columns.Add(listeTe(i))
         Next
 
+        tableVehicule.Columns.Add("ID")
+        tableVehicule.Columns.Add("Numéro Matricule")
+        tableVehicule.Columns.Add("Model")
+        tableVehicule.Columns.Add("Couleur Véhicule")
+        tableVehicule.Columns.Add("Couleur Toile")
+        tableVehicule.Columns.Add("Couleur Tissus")
+        tableVehicule.Columns.Add("Fabriquer", GetType(Boolean))
+        tableVehicule.Columns.Add("En Inventaire", GetType(Boolean))
+        tableVehicule.Columns.Add("Date Prévu", GetType(Date))
+        tableVehicule.Columns.Add("Priorité")
+
+        tableInv.Columns.Add("id")
+        tableInv.Columns.Add("quantite")
+        LoadDGV()
+    End Sub
+
+    Public Sub LoadDGV()
         For r As Integer = 0 To MainForm.tableInv.Rows.Count - 1
             If Integer.Parse(MainForm.tableInv.Rows(r).Item("Quantite")) < Integer.Parse(MainForm.tableInv.Rows(r).Item("minStock")) Then
                 Dim row As DataRow = tableItem.NewRow
@@ -42,16 +55,6 @@
 
         DGVItemLow.DataSource = tableItem
 
-        tableVehicule.Columns.Add("ID")
-        tableVehicule.Columns.Add("Numéro Matricule")
-        tableVehicule.Columns.Add("Model")
-        tableVehicule.Columns.Add("Couleur Véhicule")
-        tableVehicule.Columns.Add("Couleur Toile")
-        tableVehicule.Columns.Add("Couleur Tissus")
-        tableVehicule.Columns.Add("Fabriquer", GetType(Boolean))
-        tableVehicule.Columns.Add("En Inventaire", GetType(Boolean))
-        tableVehicule.Columns.Add("Date Prévu", GetType(Date))
-        tableVehicule.Columns.Add("Priorité")
         For r As Integer = 0 To MainForm.tableVe.Rows.Count - 1
             For r2 As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
                 If MainForm.tableVe.Rows(r).Item("id") = MainForm.tableVenteVe.Rows(r2).Item("idvehicule") Then
@@ -90,9 +93,6 @@
         Next
 
         DGVVehicule.DataSource = tableVehicule
-
-        tableInv.Columns.Add("id")
-        tableInv.Columns.Add("quantite")
 
         For r As Integer = 0 To MainForm.tableInv.Rows.Count - 1
             Dim row As DataRow = tableInv.NewRow

@@ -49,6 +49,7 @@ Public Class MainForm
     ReadOnly ucListeVe As New UCListeLivraison(Me)
     Private Delegate Sub setValue(text As String)
     Dim bool As Boolean = False
+    Public Shared lang = Globalization.CultureInfo.CurrentCulture
 
     '__________________________________________________________________________________________________________
     'Constructor

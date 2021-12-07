@@ -75,16 +75,9 @@
                 Me.Close()
             End If
         ElseIf action = 3 Then
-            'Select Case* FROM `fournisseur`
-            '                        inner Join `invfour`
-            '                        On fournisseur.id = invfour.idFournisseur
-            '                        where invfour.idInventaire = '{id}' and invFour.idFournisseur <> 1
-
             Dim table As New DataTable
-            Dim nbr As Integer = 0
             For c As Integer = 0 To MainForm.tableFour.Columns.Count - 1
                 table.Columns.Add(MainForm.tableFour.Columns(c).ColumnName)
-                nbr += 1
             Next
             For c As Integer = 0 To (MainForm.tableInvFour.Columns.Count - 1)
                 table.Columns.Add(MainForm.tableInvFour.Columns(c).ColumnName)
@@ -95,8 +88,13 @@
                     If MainForm.tableFour.Rows(r).Item("id") = MainForm.tableInvFour.Rows(r2).Item("idfournisseur") Then
                         If MainForm.tableInvFour.Rows(r2).Item("idInventaire") = idInv And MainForm.tableInvFour.Rows(r2).Item("idfournisseur") <> 1 Then
                             Dim row As DataRow = table.NewRow
+                            Dim nbr As Integer = 0
                             For c As Integer = 0 To MainForm.tableFour.Columns.Count - 1
                                 row(c) = MainForm.tableFour(r)(c)
+                                nbr += 1
+                            Next
+                            For c As Integer = 0 To MainForm.tableInvFour.Columns.Count - 1
+                                row(c + nbr) = MainForm.tableInvFour(r2)(c)
                             Next
                             table.Rows.Add(row)
                         End If
@@ -117,7 +115,6 @@
     'Methods
     '__________________________________________________________________________________________________________
     Private Sub DgvFour_DoubleClick(sender As Object, e As EventArgs) Handles dgvFour.DoubleClick
-        Dim table As DataTable
         If action = 1 Then
             creerform.SetFournisseur(dgvFour.CurrentRow.Cells(1).Value)
             Me.Close()
@@ -125,7 +122,59 @@
             Dim liste() As String = {idInv, dgvFour.CurrentRow.Cells(0).Value}
             If ConnectionServeur.Getinstance.AddDelete(liste, "addInvFour") Then
                 MessageBox.Show("L'ajout du fournisseur à bien été fait!")
-                table = ConnectionServeur.Getinstance.GetInfo(idInv, "getInventaire")
+                Dim rowadd As DataRow = MainForm.tableInvFour.NewRow
+                rowadd(0) = idInv
+                rowadd(1) = dgvFour.CurrentRow.Cells(0).Value
+                rowadd(2) = 0
+                rowadd(3) = "null"
+                rowadd(4) = "null"
+                rowadd(5) = "CAD"
+                MainForm.tableInvFour.Rows.Add(rowadd)
+
+                Dim table As New DataTable
+                For i As Integer = 0 To MainForm.tableInv.Columns.Count - 1
+                    table.Columns.Add(MainForm.tableInv.Columns(i).ColumnName)
+                Next
+                For i As Integer = 0 To MainForm.tableInvFour.Columns.Count - 1
+                    table.Columns.Add(MainForm.tableInvFour.Columns(i).ColumnName)
+                Next
+                For i As Integer = 0 To MainForm.tableFour.Columns.Count - 1
+                    If MainForm.tableFour.Columns(i).ColumnName = "id" Then
+                        table.Columns.Add("idFour")
+                    Else
+                        table.Columns.Add(MainForm.tableFour.Columns(i).ColumnName)
+                    End If
+                Next
+
+                For r As Integer = 0 To MainForm.tableInv.Rows.Count - 1
+                    If MainForm.tableInv.Rows(r).Item("id") = idInv Then
+                        For r2 As Integer = 0 To MainForm.tableInvFour.Rows.Count - 1
+                            If MainForm.tableInv.Rows(r).Item("id") = MainForm.tableInvFour.Rows(r2).Item("idinventaire") Then
+                                For r3 As Integer = 0 To MainForm.tableFour.Rows.Count - 1
+                                    If MainForm.tableInvFour.Rows(r2).Item("idfournisseur") = MainForm.tableFour.Rows(r3).Item("id") Then
+                                        Dim row As DataRow = table.NewRow
+                                        Dim nbr As Integer = 0
+                                        Dim nbr2 As Integer
+                                        For i As Integer = 0 To MainForm.tableInv.Columns.Count - 1
+                                            row(i) = MainForm.tableInv(r)(i)
+                                            nbr += 1
+                                        Next
+                                        nbr2 = nbr
+                                        For i As Integer = 0 To MainForm.tableInvFour.Columns.Count - 1
+                                            row(i + nbr2) = MainForm.tableInvFour(r2)(i)
+                                            nbr += 1
+                                        Next
+                                        For i As Integer = 0 To MainForm.tableFour.Columns.Count - 1
+                                            row(i + nbr) = MainForm.tableFour(r3)(i)
+                                        Next
+                                        table.Rows.Add(row)
+                                    End If
+                                Next
+                            End If
+                        Next
+                    End If
+                Next
+
                 For i As Integer = 0 To table.Rows.Count - 1
                     If table(i)(9) = 1 Then
                         liste(0) = idInv
@@ -139,9 +188,60 @@
             Dim liste() As String = {idInv, dgvFour.CurrentRow.Cells(0).Value}
             If ConnectionServeur.Getinstance.AddDelete(liste, "delInvFour") Then
                 MessageBox.Show("La suppression du fournisseur à bien été fait!")
+                For i As Integer = 0 To MainForm.tableInvFour.Rows.Count - 1
+                    If MainForm.tableInvFour.Rows(i).Item("idinventaire") = idInv And MainForm.tableInvFour.Rows(i).Item("idfournisseur") = dgvFour.CurrentRow.Cells(0).Value Then
+                        MainForm.tableInvFour.Rows.RemoveAt(dgvFour.CurrentRow.Index)
+                        i = MainForm.tableInvFour.Rows.Count
+                    End If
+                Next
             End If
-            table = ConnectionServeur.Getinstance.GetInfo(idInv, "getInventaire")
-            If table(0)(0) = "\\null" Then
+
+            Dim table As New DataTable
+
+            For i As Integer = 0 To MainForm.tableInv.Columns.Count - 1
+                table.Columns.Add(MainForm.tableInv.Columns(i).ColumnName)
+            Next
+            For i As Integer = 0 To MainForm.tableInvFour.Columns.Count - 1
+                table.Columns.Add(MainForm.tableInvFour.Columns(i).ColumnName)
+            Next
+            For i As Integer = 0 To MainForm.tableFour.Columns.Count - 1
+                If MainForm.tableFour.Columns(i).ColumnName = "id" Then
+                    table.Columns.Add("idFour")
+                Else
+                    table.Columns.Add(MainForm.tableFour.Columns(i).ColumnName)
+                End If
+            Next
+
+            For r As Integer = 0 To MainForm.tableInv.Rows.Count - 1
+                If MainForm.tableInv.Rows(r).Item("id") = idInv Then
+                    For r2 As Integer = 0 To MainForm.tableInvFour.Rows.Count - 1
+                        If MainForm.tableInv.Rows(r).Item("id") = MainForm.tableInvFour.Rows(r2).Item("idinventaire") Then
+                            For r3 As Integer = 0 To MainForm.tableFour.Rows.Count - 1
+                                If MainForm.tableInvFour.Rows(r2).Item("idfournisseur") = MainForm.tableFour.Rows(r3).Item("id") Then
+                                    Dim row As DataRow = table.NewRow
+                                    Dim nbr As Integer = 0
+                                    Dim nbr2 As Integer
+                                    For i As Integer = 0 To MainForm.tableInv.Columns.Count - 1
+                                        row(i) = MainForm.tableInv(r)(i)
+                                        nbr += 1
+                                    Next
+                                    nbr2 = nbr
+                                    For i As Integer = 0 To MainForm.tableInvFour.Columns.Count - 1
+                                        row(i + nbr2) = MainForm.tableInvFour(r2)(i)
+                                        nbr += 1
+                                    Next
+                                    For i As Integer = 0 To MainForm.tableFour.Columns.Count - 1
+                                        row(i + nbr) = MainForm.tableFour(r3)(i)
+                                    Next
+                                    table.Rows.Add(row)
+                                End If
+                            Next
+                        End If
+                    Next
+                End If
+            Next
+
+            If table.Rows.Count = 0 Then
                 liste(0) = idInv
                 liste(1) = 1
                 ConnectionServeur.Getinstance.AddDelete(liste, "addInvFour")

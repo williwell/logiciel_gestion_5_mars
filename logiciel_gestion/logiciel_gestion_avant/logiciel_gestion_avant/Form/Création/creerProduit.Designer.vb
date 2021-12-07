@@ -108,6 +108,7 @@ Partial Class CreerProduit
         '
         Me.nudCoutUn.DecimalPlaces = 2
         Me.nudCoutUn.Location = New System.Drawing.Point(35, 228)
+        Me.nudCoutUn.Maximum = New Decimal(New Integer() {99999, 0, 0, 0})
         Me.nudCoutUn.Name = "nudCoutUn"
         Me.nudCoutUn.Size = New System.Drawing.Size(116, 23)
         Me.nudCoutUn.TabIndex = 77

@@ -1,7 +1,7 @@
 ﻿Public Class ListeInvManque
     Dim table As DataTable
     Dim id As String
-    Dim tableInv As DataTable
+    Dim tableInv As New DataTable
     Dim bool As Boolean = False
 
     Sub New(tableManque As DataTable, idcl As String)
@@ -16,11 +16,51 @@
 
     Private Sub ListeInvManque_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DGVManque.DataSource = table
-        Dim tablecl As DataTable = ConnectionServeur.Getinstance.GetInfo(id, "getOneClientByVe")
+
+        'Select Case c.id, c.Prenom1, c.nom1, c.Prenom2, c.nom2, c.telephone1, c.telephone2, c.sexe, c.email FROM `client` c 
+        '                            inner Join `ventevehicule` v on v.idclient = c.id
+        '                            where v.idvehicule = {id}
+
+        Dim tableCl As New DataTable
+        For c As Integer = 0 To MainForm.TableClient.Columns.Count - 1
+            tableCl.Columns.Add(MainForm.TableClient.Columns(c).ColumnName)
+        Next
+
+        For r As Integer = 0 To MainForm.TableClient.Rows.Count - 1
+            For r2 As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
+                If MainForm.tableVenteVe.Rows(r2).Item("idclient") = MainForm.TableClient.Rows(r).Item("id") Then
+                    If MainForm.tableVenteVe.Rows(r2).Item("idvehicule") = id Then
+                        Dim row As DataRow = tableCl.NewRow
+                        For c As Integer = 0 To MainForm.TableClient.Columns.Count - 1
+                            row(c) = MainForm.TableClient(r)(c)
+                        Next
+                        tableCl.Rows.Add(row)
+                    End If
+                End If
+            Next
+        Next
+
         Dim liste(table.Rows.Count - 1) As String
 
         For i As Integer = 0 To table.Rows.Count - 1
             liste(i) = table(i)(0)
+        Next
+
+        'SELECT * FROM inventaire where id = {liste(i)}
+
+        For i As Integer = 0 To MainForm.tableInv.Columns.Count - 1
+            tableInv.Columns.Add(MainForm.tableInv.Columns(i).ColumnName)
+        Next
+
+        For r As Integer = 0 To MainForm.tableInv.Rows.Count - 1
+            For i As Integer = 0 To liste.Length - 1
+                If MainForm.tableInv.Rows(r).Item("id") = liste(i) Then
+                    Dim row As DataRow = tableInv.NewRow
+                    For c As Integer = 0 To MainForm.tableInv.Columns.Count - 1
+                        'row(c) = 
+                    Next
+                End If
+            Next
         Next
 
         tableInv = ConnectionServeur.Getinstance.GetInfo(liste, "getInvManque")
