@@ -61,10 +61,16 @@ Public Class MainForm
     'Load
     '__________________________________________________________________________________________________________
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ProgressBar1.Value = 20
+    End Sub
+
+    Private Sub MainForm_Shown(sender As Object, e As EventArgs) Handles Me.Shown
         Me.KeyPreview = True
         MyOption.GetInstance.ReadOption()
+        ProgressBar1.Value = 50
         panMenu.Size = panMenu.MinimumSize
         ConnectionServeur.SetMain(Me)
+        ProgressBar1.Value = 75
         If ConnectionServeur.Getinstance.TestConnection() Then
             panMenu.Size = panMenu.MinimumSize
             LoadTable()
@@ -74,6 +80,9 @@ Public Class MainForm
             btConnec.Visible = True
             btMenu.Enabled = False
         End If
+        ProgressBar1.Value = 90
+        Threading.Thread.Sleep(200)
+        ProgressBar1.Dispose()
     End Sub
 
     '__________________________________________________________________________________________________________
@@ -275,7 +284,7 @@ Public Class MainForm
         Return options.option2
     End Function
 
-    Public Function GetOption3() As String
+    Public Function GetOption3() As Integer
         Return options.option3
     End Function
 

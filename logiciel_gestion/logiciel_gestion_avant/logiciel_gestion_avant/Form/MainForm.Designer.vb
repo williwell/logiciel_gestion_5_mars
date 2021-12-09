@@ -43,6 +43,7 @@ Partial Class MainForm
         Me.btAccueil = New System.Windows.Forms.Button()
         Me.lbNonConc = New System.Windows.Forms.Label()
         Me.btConnec = New System.Windows.Forms.Button()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.PanUC.SuspendLayout()
         Me.PanGestVeh.SuspendLayout()
         Me.PanCouleur.SuspendLayout()
@@ -51,6 +52,7 @@ Partial Class MainForm
         '
         'PanUC
         '
+        Me.PanUC.Controls.Add(Me.ProgressBar1)
         Me.PanUC.Controls.Add(Me.PanGestVeh)
         Me.PanUC.Controls.Add(Me.PanCouleur)
         Me.PanUC.Location = New System.Drawing.Point(12, 36)
@@ -256,6 +258,13 @@ Partial Class MainForm
         Me.btConnec.UseVisualStyleBackColor = True
         Me.btConnec.Visible = False
         '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Location = New System.Drawing.Point(253, 240)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(277, 23)
+        Me.ProgressBar1.TabIndex = 6
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -299,4 +308,5 @@ Partial Class MainForm
     Friend WithEvents PanGestVeh As Panel
     Friend WithEvents BTLivrer As Button
     Friend WithEvents BTGest As Button
+    Friend WithEvents ProgressBar1 As ProgressBar
 End Class

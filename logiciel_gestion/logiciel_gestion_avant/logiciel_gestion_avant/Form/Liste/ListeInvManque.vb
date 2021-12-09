@@ -17,10 +17,6 @@
     Private Sub ListeInvManque_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DGVManque.DataSource = table
 
-        'Select Case c.id, c.Prenom1, c.nom1, c.Prenom2, c.nom2, c.telephone1, c.telephone2, c.sexe, c.email FROM `client` c 
-        '                            inner Join `ventevehicule` v on v.idclient = c.id
-        '                            where v.idvehicule = {id}
-
         Dim tableCl As New DataTable
         For c As Integer = 0 To MainForm.TableClient.Columns.Count - 1
             tableCl.Columns.Add(MainForm.TableClient.Columns(c).ColumnName)
@@ -46,8 +42,6 @@
             liste(i) = table(i)(0)
         Next
 
-        'SELECT * FROM inventaire where id = {liste(i)}
-
         For i As Integer = 0 To MainForm.tableInv.Columns.Count - 1
             tableInv.Columns.Add(MainForm.tableInv.Columns(i).ColumnName)
         Next
@@ -57,13 +51,12 @@
                 If MainForm.tableInv.Rows(r).Item("id") = liste(i) Then
                     Dim row As DataRow = tableInv.NewRow
                     For c As Integer = 0 To MainForm.tableInv.Columns.Count - 1
-                        'row(c) = 
+                        row(c) = MainForm.tableInv(r)(c)
                     Next
+                    tableInv.Rows.Add(row)
                 End If
             Next
         Next
-
-        tableInv = ConnectionServeur.Getinstance.GetInfo(liste, "getInvManque")
 
         TBIDCl.Text = tablecl(0)(0)
         TBPrenom1.Text = tablecl(0)(1)

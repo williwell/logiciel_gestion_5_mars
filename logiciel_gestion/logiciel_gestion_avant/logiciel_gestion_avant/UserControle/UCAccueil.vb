@@ -15,31 +15,40 @@
     End Sub
 
     Private Sub UCAccueil_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        tableManque.Columns.Add("IDVe")
-        tableManque.Columns.Add("IDPiece")
-        tableManque.Columns.Add("Quantite")
-        Dim listeTe() As String = {"id", "Nom", "Description", "Utilise", "Quantité", "Minimun Stock"}
-        For i As Integer = 0 To listeTe.Length - 1
-            tableItem.Columns.Add(listeTe(i))
-        Next
+        Try
+            tableManque.Columns.Add("IDVe")
+            tableManque.Columns.Add("IDPiece")
+            tableManque.Columns.Add("Quantite")
+            Dim listeTe() As String = {"id", "Nom", "Description", "Utilise", "Quantité", "Minimun Stock"}
+            For i As Integer = 0 To listeTe.Length - 1
+                tableItem.Columns.Add(listeTe(i))
+            Next
 
-        tableVehicule.Columns.Add("ID")
-        tableVehicule.Columns.Add("Numéro Matricule")
-        tableVehicule.Columns.Add("Model")
-        tableVehicule.Columns.Add("Couleur Véhicule")
-        tableVehicule.Columns.Add("Couleur Toile")
-        tableVehicule.Columns.Add("Couleur Tissus")
-        tableVehicule.Columns.Add("Fabriquer", GetType(Boolean))
-        tableVehicule.Columns.Add("En Inventaire", GetType(Boolean))
-        tableVehicule.Columns.Add("Date Prévu", GetType(Date))
-        tableVehicule.Columns.Add("Priorité")
+            tableVehicule.Columns.Add("ID")
+            tableVehicule.Columns.Add("Numéro Matricule")
+            tableVehicule.Columns.Add("Model")
+            tableVehicule.Columns.Add("Couleur Véhicule")
+            tableVehicule.Columns.Add("Couleur Toile")
+            tableVehicule.Columns.Add("Couleur Tissus")
+            tableVehicule.Columns.Add("Fabriquer", GetType(Boolean))
+            tableVehicule.Columns.Add("En Inventaire", GetType(Boolean))
+            tableVehicule.Columns.Add("Date Prévu", GetType(Date))
+            tableVehicule.Columns.Add("Priorité")
 
-        tableInv.Columns.Add("id")
-        tableInv.Columns.Add("quantite")
-        LoadDGV()
+            tableInv.Columns.Add("id")
+            tableInv.Columns.Add("quantite")
+            LoadDGV()
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
     End Sub
 
     Public Sub LoadDGV()
+        tableInv.Clear()
+        tableItem.Clear()
+        tableManque.Clear()
+        tableVehicule.Clear()
+
         For r As Integer = 0 To MainForm.tableInv.Rows.Count - 1
             If Integer.Parse(MainForm.tableInv.Rows(r).Item("Quantite")) < Integer.Parse(MainForm.tableInv.Rows(r).Item("minStock")) Then
                 Dim row As DataRow = tableItem.NewRow

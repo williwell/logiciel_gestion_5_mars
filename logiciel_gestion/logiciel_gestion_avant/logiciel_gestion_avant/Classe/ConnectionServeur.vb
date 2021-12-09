@@ -25,7 +25,7 @@ Public Class ConnectionServeur
 
     Public Function TestConnection() As Boolean
         Try
-            clientSocket = New TcpClient(MainForm.getInstance.getOption1, 8888)
+            clientSocket = New TcpClient(MainForm.GetInstance.GetOption1, MainForm.GetInstance.GetOption3)
             Dim serverStream As NetworkStream = clientSocket.GetStream()
             Dim outStream As Byte() = Encoding.UTF8.GetBytes("test;$")
             serverStream.Write(outStream, 0, outStream.Length)
@@ -276,7 +276,7 @@ Public Class ConnectionServeur
     End Sub
 
     Private Sub StillConnect(mainform As MainForm)
-        checkClient = New TcpClient(MainForm.getInstance.getOption1, 8888)
+        checkClient = New TcpClient(MainForm.GetInstance.GetOption1, MainForm.GetInstance.GetOption3)
         Dim bool As Boolean = True
 
         Try

@@ -179,7 +179,9 @@
                     If table(i)(9) = 1 Then
                         liste(0) = idInv
                         liste(1) = 1
-                        ConnectionServeur.Getinstance.AddDelete(liste, "delInvFour")
+                        If ConnectionServeur.Getinstance.AddDelete(liste, "delInvFour") Then
+
+                        End If
                     End If
                 Next
             End If

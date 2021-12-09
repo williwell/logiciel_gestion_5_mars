@@ -116,6 +116,7 @@
 
     Public Sub LoadFour()
         dgvFour.DataSource = ConnectionServeur.Getinstance.GetInfo("getFournisseur")
+        Threading.Thread.Sleep(500)
         tbID.Text = dgvFour.CurrentRow.Cells(0).Value
     End Sub
 
