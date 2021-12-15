@@ -2,15 +2,14 @@
 
 Public Class UCGestionModel
     ReadOnly main As MainForm
-    Dim tableModel As DataTable
     Dim listeId() As String
-    Dim tableOptionAdd As DataTable
+    ReadOnly tableOptionAdd As New DataTable
     Dim OrOpAdd(0, 0) As String
-    Dim tableOptionMo As DataTable
+    ReadOnly tableOptionMo As New DataTable
     Dim OrOpMo(0, 0) As String
-    Dim tableCouleurAdd As DataTable
+    ReadOnly tableCouleurAdd As New DataTable
     Dim OrCoulAdd(0, 0) As String
-    Dim tableCouleurMo As DataTable
+    ReadOnly tableCouleurMo As New DataTable
     Dim OrCoulMo(0, 0) As String
     Dim listeOpMo() As String
     Dim listeOpDispo() As String
@@ -29,15 +28,47 @@ Public Class UCGestionModel
     End Sub
 
     Private Sub UCGestionVehicule_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        tableOptionMo.Columns.Add("ID")
+        tableOptionMo.Columns.Add("Nom")
+        tableOptionMo.Columns.Add("Coût")
+        tableOptionAdd.Columns.Add("ID")
+        tableOptionAdd.Columns.Add("Nom")
+        tableOptionAdd.Columns.Add("Coût")
+        tableCouleurMo.Columns.Add("ID")
+        tableCouleurMo.Columns.Add("Nom")
+        tableCouleurMo.Columns.Add("Code")
+        tableCouleurMo.Columns.Add("Coût")
+        tableCouleurAdd.Columns.Add("ID")
+        tableCouleurAdd.Columns.Add("Nom")
+        tableCouleurAdd.Columns.Add("Code")
+        tableCouleurAdd.Columns.Add("Coût")
+
         RemplirModel()
     End Sub
 
     Private Sub Remplir(id As String)
         'Mettre que si a rien
-        If tableModel.Rows.Count <> 0 Then
-            NUDCout.Value = tableModel(id - 1)(2)
+        If MainForm.tableModel.Rows.Count <> 0 Then
+            NUDCout.Value = MainForm.tableModel(id - 1)(2)
         End If
-        tableOptionMo = ConnectionServeur.Getinstance.GetInfo(id, "getOptionModel")
+
+        tableOptionMo.Clear()
+        tableOptionAdd.Clear()
+        tableCouleurMo.Clear()
+        tableCouleurAdd.Clear()
+
+        For r As Integer = 0 To MainForm.tableOp.Rows.Count - 1
+            For r2 As Integer = 0 To MainForm.tableOpMo.Rows.Count - 1
+                If MainForm.tableOp.Rows(r).Item("id") = MainForm.tableOpMo.Rows(r2).Item("idoption") And MainForm.tableOpMo.Rows(r2).Item("idmodel") = id Then
+                    Dim row As DataRow = tableOptionMo.NewRow
+                    row(0) = MainForm.tableOp.Rows(r).Item("id")
+                    row(1) = MainForm.tableOp.Rows(r).Item("nom")
+                    row(2) = MainForm.tableOp.Rows(r).Item("cout")
+                    tableOptionMo.Rows.Add(row)
+                End If
+            Next
+        Next
+
         ReDim OrOpMo(tableOptionMo.Rows.Count - 1, tableOptionMo.Columns.Count - 1)
         ListeOr(OrOpMo, tableOptionMo)
         dgvOptionMo.DataSource = tableOptionMo
@@ -49,13 +80,45 @@ Public Class UCGestionModel
             liste(i) = dgvOptionMo.Rows(i).Cells(0).Value
         Next
 
-        tableOptionAdd = ConnectionServeur.Getinstance.GetInfo(liste, "getOptionAdd")
+        For r As Integer = 0 To MainForm.tableOp.Rows.Count - 1
+            Dim bool As Boolean = True
+            For i As Integer = 0 To liste.Length() - 1
+                If MainForm.tableOp.Rows(r).Item("id") = 0 Or MainForm.tableOp.Rows(r).Item("id") = liste(i) Then
+                    bool = False
+                End If
+            Next
+            If MainForm.tableOp.Rows(r).Item("deleteopt") = "False" Then
+                bool = False
+            End If
+            If bool Then
+                Dim row As DataRow = tableOptionAdd.NewRow
+                row(0) = MainForm.tableOp.Rows(r).Item("id")
+                row(1) = MainForm.tableOp.Rows(r).Item("nom")
+                row(2) = MainForm.tableOp.Rows(r).Item("cout")
+                tableOptionAdd.Rows.Add(row)
+            End If
+        Next
+
         ReDim OrOpAdd(tableOptionAdd.Rows.Count - 1, tableOptionAdd.Columns.Count - 1)
         ListeOr(OrOpAdd, tableOptionAdd)
         dgvOptionAjout.DataSource = tableOptionAdd
         listeOpDispo = PopulateList(tableOptionAdd)
 
-        tableCouleurMo = ConnectionServeur.Getinstance.GetInfo(id, "getCouleurModel")
+        For r As Integer = 0 To MainForm.tableCoulVe.Rows.Count - 1
+            For r2 As Integer = 0 To MainForm.tableCoulMo.Rows.Count - 1
+                If MainForm.tableCoulVe.Rows(r).Item("id") = MainForm.tableCoulMo.Rows(r2).Item("idcouleur") Then
+                    If MainForm.tableCoulMo.Rows(r2).Item("idmodel") = id Then
+                        Dim row As DataRow = tableCouleurMo.NewRow
+                        row(0) = MainForm.tableCoulVe.Rows(r).Item("id")
+                        row(1) = MainForm.tableCoulVe.Rows(r).Item("nom")
+                        row(2) = MainForm.tableCoulVe.Rows(r).Item("code")
+                        row(3) = MainForm.tableCoulVe.Rows(r).Item("cout")
+                        tableCouleurMo.Rows.Add(row)
+                    End If
+                End If
+            Next
+        Next
+
         ReDim OrCoulMo(tableCouleurMo.Rows.Count - 1, tableCouleurMo.Columns.Count - 1)
         ListeOr(OrCoulMo, tableCouleurMo)
         dgvCoulMo.DataSource = tableCouleurMo
@@ -67,7 +130,26 @@ Public Class UCGestionModel
             liste(i) = dgvCoulMo.Rows(i).Cells(0).Value
         Next
 
-        tableCouleurAdd = ConnectionServeur.Getinstance.GetInfo(liste, "getCouleurAdd")
+        For r As Integer = 0 To MainForm.tableCoulVe.Rows.Count - 1
+            Dim bool As Boolean = True
+            For i As Integer = 0 To liste.Length() - 1
+                If MainForm.tableCoulVe.Rows(r).Item("id") = 0 Or MainForm.tableCoulVe.Rows(r).Item("id") = liste(i) Then
+                    bool = False
+                End If
+            Next
+            If MainForm.tableCoulVe.Rows(r).Item("deletecoul") = "False" Then
+                bool = False
+            End If
+            If bool Then
+                Dim row As DataRow = tableCouleurAdd.NewRow
+                row(0) = MainForm.tableCoulVe.Rows(r).Item("id")
+                row(1) = MainForm.tableCoulVe.Rows(r).Item("nom")
+                row(2) = MainForm.tableCoulVe.Rows(r).Item("code")
+                row(3) = MainForm.tableCoulVe.Rows(r).Item("cout")
+                tableCouleurAdd.Rows.Add(row)
+            End If
+        Next
+
         ReDim OrCoulAdd(tableCouleurAdd.Rows.Count - 1, tableCouleurAdd.Columns.Count - 1)
         ListeOr(OrCoulAdd, tableCouleurAdd)
         dgvCoulAjout.DataSource = tableCouleurAdd
@@ -273,12 +355,11 @@ Public Class UCGestionModel
     End Sub
 
     Public Sub RemplirModel()
-        tableModel = ConnectionServeur.Getinstance.GetInfo("getModel")
-        Dim liste(tableModel.Rows.Count - 1) As String
-        ReDim listeId(tableModel.Rows.Count - 1)
-        For i As Integer = 0 To tableModel.Rows.Count - 1
-            liste(i) = tableModel(i)(1)
-            listeId(i) = tableModel(i)(0)
+        Dim liste(MainForm.tableModel.Rows.Count - 1) As String
+        ReDim listeId(MainForm.tableModel.Rows.Count - 1)
+        For i As Integer = 0 To MainForm.tableModel.Rows.Count - 1
+            liste(i) = MainForm.tableModel(i)(1)
+            listeId(i) = MainForm.tableModel(i)(0)
         Next
         cbModel.DataSource = liste
         Remplir(1)

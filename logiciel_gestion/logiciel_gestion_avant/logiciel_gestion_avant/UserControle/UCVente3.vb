@@ -114,8 +114,14 @@
         listeAdd(1) = Date.Now.ToString("yyyy-MM-dd")
         listeAdd(2) = uc.GetDatePre
         listeAdd(4) = idCl
-        Dim table As DataTable = ConnectionServeur.Getinstance.GetInfo("GetPriority")
-        Dim nbr2 As Integer = table(0)(0) + 1
+
+        Dim nbr2 As Integer = 0
+        For r As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
+            If MainForm.tableVenteVe.Rows(r).Item("priorite") >= nbr2 Then
+                nbr2 = Integer.Parse(MainForm.tableVenteVe.Rows(r).Item("priorite"))
+            End If
+        Next
+        nbr2 += 1
         listeAdd(3) = nbr2
         If ConnectionServeur.Getinstance.AddDelete(listeAdd, "addVenteClient") Then
             MessageBox.Show("Ajout fait avec succès")

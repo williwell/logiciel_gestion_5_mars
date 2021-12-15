@@ -51,6 +51,10 @@ Public Class MainForm
     Dim bool As Boolean = False
     Public Shared lang = Globalization.CultureInfo.CurrentCulture
 
+    'À faire un jour
+    Public Shared test As DataSet
+    'À faire un jour
+
     '__________________________________________________________________________________________________________
     'Constructor
     '__________________________________________________________________________________________________________
@@ -131,6 +135,11 @@ Public Class MainForm
         ' tableRepVe
         tableVe = ConnectionServeur.Getinstance.GetInfo("getVeAll")
         tableVenteVe = ConnectionServeur.Getinstance.GetInfo("getVenteVe")
+
+        'À faire un jour
+        'test.Tables.Add(tableInv)
+        'test.Tables.Add(tableVe)
+        'À faire un jour
     End Sub
 
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown

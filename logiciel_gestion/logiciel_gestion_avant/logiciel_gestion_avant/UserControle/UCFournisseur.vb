@@ -4,7 +4,7 @@
     '__________________________________________________________________________________________________________
     ReadOnly main As MainForm
     ReadOnly ucInv As UCInventaire
-    Dim table As DataTable
+    Dim table As New DataTable
     ReadOnly liste(10) As String
 
 
@@ -26,6 +26,10 @@
     'Load
     '__________________________________________________________________________________________________________
     Private Sub UCFournisseur_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        For i As Integer = 0 To MainForm.tableFour.Columns.Count - 1
+            table.Columns.Add(MainForm.tableFour.Columns(i).ColumnName)
+        Next
+
         LoadFour()
     End Sub
 
@@ -37,9 +41,46 @@
     End Sub
 
     Private Sub TbID_TextChanged(sender As Object, e As EventArgs) Handles tbID.TextChanged
-        table = ConnectionServeur.Getinstance.GetInfo(Integer.Parse(tbID.Text), "getOneFournisseur")
+        table.Clear()
+
+        For r As Integer = 0 To MainForm.tableFour.Rows.Count - 1
+            If MainForm.tableFour.Rows(r).Item("id") = tbID.Text Then
+                Dim row As DataRow = table.NewRow
+                For c As Integer = 0 To MainForm.tableFour.Columns.Count - 1
+                    row(c) = MainForm.tableFour(r)(c)
+                Next
+                table.Rows.Add(row)
+            End If
+        Next
+
         Remplir(table)
-        dgvPiece.DataSource = ConnectionServeur.Getinstance.GetInfo(Integer.Parse(tbID.Text), "getInventaireOfFour")
+
+        Dim tableInv As New DataTable
+
+        For c As Integer = 0 To MainForm.tableInv.Columns.Count - 1
+            tableInv.Columns.Add(MainForm.tableInv.Columns(c).ColumnName)
+        Next
+        tableInv.Columns.Add("Coût Unitaire")
+        tableInv.Columns.Add("Numéro Fournisseur")
+        tableInv.Columns.Add("Numéro MFR")
+        tableInv.Columns.Add("Devise")
+
+        For r As Integer = 0 To MainForm.tableInv.Rows.Count - 1
+            For r2 As Integer = 0 To MainForm.tableInvFour.Rows.Count - 1
+                If MainForm.tableInv.Rows(r).Item("id") = MainForm.tableInvFour.Rows(r2).Item("idinventaire") And MainForm.tableInvFour.Rows(r2).Item("idfournisseur") = tbID.Text Then
+                    Dim row As DataRow = tableInv.NewRow
+                    For c As Integer = 0 To MainForm.tableInv.Columns.Count - 1
+                        row(c) = MainForm.tableInv(r)(c)
+                    Next
+                    For c As Integer = 0 To MainForm.tableInvFour.Columns.Count - 3
+                        row(MainForm.tableInv.Columns.Count + c) = MainForm.tableInvFour(r2)(c + 2)
+                    Next
+                    tableInv.Rows.Add(row)
+                End If
+            Next
+        Next
+
+        dgvPiece.DataSource = tableInv
     End Sub
 
     Private Sub DgvPiece_DoubleClick(sender As Object, e As EventArgs) Handles dgvPiece.DoubleClick
@@ -115,7 +156,7 @@
     End Sub
 
     Public Sub LoadFour()
-        dgvFour.DataSource = ConnectionServeur.Getinstance.GetInfo("getFournisseur")
+        dgvFour.DataSource = MainForm.tableFour
         Threading.Thread.Sleep(500)
         tbID.Text = dgvFour.CurrentRow.Cells(0).Value
     End Sub
@@ -127,7 +168,6 @@
         Dim modif As Boolean = False
         For i As Integer = 1 To table.Columns.Count - 1
             If Not Convert.ToString(table(0)(i)) = liste(i) Then
-                'MessageBox.Show(table(0)(i) & "  =  " & liste(i))
                 modif = True
             End If
         Next

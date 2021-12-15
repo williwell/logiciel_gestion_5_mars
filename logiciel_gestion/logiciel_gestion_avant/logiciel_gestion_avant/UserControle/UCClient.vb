@@ -21,7 +21,7 @@
     End Sub
 
     Public Sub LoadClient()
-        tableCl = ConnectionServeur.Getinstance.GetInfo("getClient")
+        tableCl = MainForm.TableClient
         DGVClient.DataSource = tableCl
     End Sub
 

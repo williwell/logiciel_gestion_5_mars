@@ -1,7 +1,7 @@
 ﻿Public Class UCCouleurTissus
     ReadOnly main As MainForm
-    ReadOnly tableCoul As DataTable
-    ReadOnly listeOr(0, 0) As String
+    ReadOnly tableCoul As New DataTable
+    Dim listeOr(0, 0) As String
 
     Sub New(mainform As MainForm)
 
@@ -13,7 +13,13 @@
     End Sub
 
     Private Sub UCCouleurTissus_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ListGest.loadCoul(tableCoul, "getCoulTissus", dgvCouleur, listeOr)
+        tableCoul.Columns.Add("ID")
+        tableCoul.Columns.Add("Nom")
+        tableCoul.Columns.Add("Code")
+
+        dgvCouleur.DataSource = tableCoul
+
+        LoadCoul()
     End Sub
 
     Private Sub BtCreer_Click(sender As Object, e As EventArgs) Handles BtCreer.Click
@@ -22,7 +28,26 @@
     End Sub
 
     Public Sub LoadCoul()
-        ListGest.LoadCoul(tableCoul, "getCoulTissus", dgvCouleur, listeOr)
+        tableCoul.Clear()
+
+        For r As Integer = 0 To MainForm.tableCoulTis.Rows.Count - 1
+            If MainForm.tableCoulTis.Rows(r).Item("deletecoul") = True Then
+                Dim row As DataRow = tableCoul.NewRow
+                row(0) = MainForm.tableCoulTis.Rows(r).Item("id")
+                row(1) = MainForm.tableCoulTis.Rows(r).Item("nom")
+                row(2) = MainForm.tableCoulTis.Rows(r).Item("code")
+                tableCoul.Rows.Add(row)
+            End If
+        Next
+
+
+
+        ReDim listeOr(tableCoul.Rows.Count - 1, tableCoul.Columns.Count - 1)
+        For r As Integer = 0 To tableCoul.Rows.Count - 1
+            For c As Integer = 0 To tableCoul.Columns.Count - 1
+                listeOr(r, c) = tableCoul(r)(c)
+            Next
+        Next
     End Sub
 
     Private Sub BTAnnuler_Click(sender As Object, e As EventArgs) Handles BTAnnuler.Click
@@ -45,7 +70,7 @@
                 End If
             Next
             If bool Then
-                If ConnectionServeur.Getinstance.AddDelete(listeAdd, "updateCouleur") Then
+                If ConnectionServeur.Getinstance.AddDelete(listeAdd, "updateCouleurTis") Then
                     For c As Integer = 0 To tableCoul.Columns.Count - 1
                         listeOr(r, c) = listeAdd(c)
                     Next
@@ -81,8 +106,8 @@
 
     Private Sub BtDel_Click(sender As Object, e As EventArgs) Handles BtDel.Click
         If MessageBox.Show("Voulez-vous vraiment supprimer " + dgvCouleur.CurrentRow.Cells(1).Value + "?", "Attention!", MessageBoxButtons.YesNo) = DialogResult.Yes Then
-            ConnectionServeur.Getinstance.GetInfo(dgvCouleur.CurrentRow.Cells(0).Value, "ChangeDelete")
-            loadCoul()
+            ConnectionServeur.Getinstance.GetInfo(dgvCouleur.CurrentRow.Cells(0).Value, "ChangeDeleteTis")
+            LoadCoul()
         End If
     End Sub
 

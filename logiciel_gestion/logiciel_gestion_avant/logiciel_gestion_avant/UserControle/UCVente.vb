@@ -2,9 +2,9 @@
     ReadOnly main As MainForm
     Dim listeAdd(4) As String
     Shared tableModel As New DataTable
-    Dim tableCoulVe As DataTable
-    Dim tableCoulToile As DataTable
-    Dim TableCoulTissus As DataTable
+    Dim tableCoulVe As New DataTable
+    Dim tableCoulToile As New DataTable
+    Dim TableCoulTissus As New DataTable
     Dim bool As Boolean = True
     Dim id As String = "0"
     Dim prix As Decimal
@@ -22,22 +22,45 @@
     End Sub
 
     Private Sub UCVente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        tableCoulVe.Columns.Add("ID")
+        tableCoulVe.Columns.Add("Nom")
+        tableCoulVe.Columns.Add("Code")
+        tableCoulVe.Columns.Add("Coût")
+
         Dim ucVe2 As New UCVente2(Me, main)
         Dim ucVe3 As New UCVente3(Me, main)
         main.SetUCVente2(ucVe2)
         main.SetUCVente3(ucVe3)
-        RemplirCB(tableModel, CBModel, "getModel")
 
-        RemplirCB(tableCoulToile, CBCoulToile, "getCoulToile")
+        tableModel = MainForm.tableModel
+        RemplirCB(tableModel, CBModel)
 
-        RemplirCB(TableCoulTissus, CBCoulTissus, "getCoulTissus")
+        tableCoulToile = MainForm.tableCoulToi
+        RemplirCB(tableCoulToile, CBCoulToile)
+
+        TableCoulTissus = MainForm.tableCoulTis
+        RemplirCB(TableCoulTissus, CBCoulTissus)
 
         CBTPS.Checked = True
         CBTVQ.Checked = True
     End Sub
 
     Private Sub CBModel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBModel.SelectedIndexChanged
-        tableCoulVe = ConnectionServeur.Getinstance.GetInfo(tableModel(CBModel.SelectedIndex)(0), "getCouleurModel")
+        tableCoulVe.Clear()
+
+        For r As Integer = 0 To MainForm.tableCoulVe.Rows.Count - 1
+            For r2 As Integer = 0 To MainForm.tableCoulMo.Rows.Count - 1
+                If MainForm.tableCoulVe.Rows(r).Item("id") = MainForm.tableCoulMo.Rows(r2).Item("idcouleur") And MainForm.tableCoulMo.Rows(r2).Item("idmodel") = tableModel(CBModel.SelectedIndex)(0) Then
+                    Dim row As DataRow = tableCoulVe.NewRow
+                    row(0) = MainForm.tableCoulVe.Rows(r).Item("id")
+                    row(1) = MainForm.tableCoulVe.Rows(r).Item("nom")
+                    row(2) = MainForm.tableCoulVe.Rows(r).Item("code")
+                    row(3) = MainForm.tableCoulVe.Rows(r).Item("cout")
+                    tableCoulVe.Rows.Add(row)
+                End If
+            Next
+        Next
+
         Dim liste(0) As String
         If tableCoulVe.Rows.Count > 0 Then
             ReDim liste(tableCoulVe.Rows.Count - 1)
@@ -52,8 +75,7 @@
         TBCout.Text = prix.ToString("0.00$")
     End Sub
 
-    Private Sub RemplirCB(ByRef table As DataTable, CB As ComboBox, str As String)
-        table = ConnectionServeur.Getinstance.GetInfo(str)
+    Private Sub RemplirCB(ByRef table As DataTable, CB As ComboBox)
         Dim liste(table.Rows.Count - 1)
         For i As Integer = 0 To table.Rows.Count - 1
             liste(i) = table(i)(1)

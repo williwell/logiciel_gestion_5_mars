@@ -4,7 +4,7 @@
     '__________________________________________________________________________________________________________
     Dim sameID As String
     Dim sameFour As Integer
-    Dim tableOri As DataTable
+    Dim tableOri As New DataTable
     ReadOnly change(13) As String
     Dim triger As Boolean = True
     Shared instance As UCInventaire = Nothing
@@ -27,6 +27,20 @@
     'Load
     '__________________________________________________________________________________________________________
     Private Sub UCInventaire_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        For c As Integer = 0 To MainForm.tableInv.Columns.Count - 1
+            tableOri.Columns.Add(MainForm.tableInv.Columns(c).ColumnName)
+        Next
+        For c As Integer = 0 To MainForm.tableInvFour.Columns.Count - 1
+            tableOri.Columns.Add(MainForm.tableInvFour.Columns(c).ColumnName)
+        Next
+        For c As Integer = 0 To MainForm.tableFour.Columns.Count - 1
+            If MainForm.tableFour.Columns(c).ColumnName = "id" Then
+                tableOri.Columns.Add("id2")
+            Else
+                tableOri.Columns.Add(MainForm.tableFour.Columns(c).ColumnName)
+            End If
+        Next
+
         triger = False
         Dim liste() As String = {"CAD", "US"}
         CBDevise.DataSource = liste
@@ -214,7 +228,41 @@
 
     Private Sub Start()
         ChangeRead(True)
-        tableOri = ConnectionServeur.Getinstance.GetInfo(tbIDPro.Text, "getInventaire")
+
+        'Select Case* FROM `inventaire`
+        '                            inner Join `invfour`
+        '                            On inventaire.id = invfour.idInventaire
+        '                            inner Join `fournisseur`
+        '                            On invfour.idFournisseur = fournisseur.id
+        '                            WHERE inventaire.id = '{id}'
+        tableOri.Clear()
+
+        For r As Integer = 0 To MainForm.tableInv.Rows.Count - 1
+            If MainForm.tableInv.Rows(r).Item("id") = tbIDPro.Text Then
+                For r2 As Integer = 0 To MainForm.tableInvFour.Rows.Count - 1
+                    If MainForm.tableInv.Rows(r).Item("id") = MainForm.tableInvFour.Rows(r2).Item("idinventaire") Then
+                        For r3 As Integer = 0 To MainForm.tableFour.Rows.Count - 1
+                            If MainForm.tableInvFour.Rows(r2).Item("idfournisseur") = MainForm.tableFour.Rows(r3).Item("id") Then
+                                Dim row As DataRow = tableOri.NewRow
+                                For c As Integer = 0 To MainForm.tableInv.Columns.Count - 1
+                                    row(c) = MainForm.tableInv(r)(c)
+                                Next
+                                Dim nbr As Integer = MainForm.tableInv.Columns.Count
+                                For c As Integer = 0 To MainForm.tableInvFour.Columns.Count - 1
+                                    row(c + nbr) = MainForm.tableInvFour(r2)(c)
+                                Next
+                                nbr += MainForm.tableInvFour.Columns.Count
+                                For c As Integer = 0 To MainForm.tableFour.Columns.Count - 1
+                                    row(c + nbr) = MainForm.tableFour(r3)(c)
+                                Next
+                                tableOri.Rows.Add(row)
+                            End If
+                        Next
+                    End If
+                Next
+            End If
+        Next
+
 
         Try
             If tableOri(0)(0) = "\\null" Then

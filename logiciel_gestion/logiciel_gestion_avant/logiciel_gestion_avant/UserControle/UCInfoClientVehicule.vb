@@ -1,7 +1,7 @@
 ﻿Public Class UCInfoClientVehicule
     ReadOnly main As MainForm
     ReadOnly id As String
-    Dim table As DataTable
+    Dim table As New DataTable
 
     Sub New(idve As String, mainform As MainForm)
 
@@ -14,7 +14,26 @@
     End Sub
 
     Private Sub UCInfoClientVehicule_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        table = ConnectionServeur.Getinstance.GetInfo(id, "getInfoClVe")
+        'Select Case c.id, c.Prenom1, c.nom1, c.Prenom2, c.nom2, c.telephone1, c.telephone2, c.sexe, c.email FROM `client` c 
+        '                            inner Join `ventevehicule` v on c.id = v.idclient
+        '                            where v.idvehicule = {id}
+        'For c As Integer = 0 To MainForm.TableClient.Columns.Count - 1
+        '    table.Columns.Add(MainForm.TableClient.Columns(c).ColumnName)
+        'Next
+
+        'For r As Integer = 0 To MainForm.TableClient.Rows.Count - 1
+        '    For r2 As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
+        '        If MainForm.TableClient.Rows(r).Item("id") = MainForm.tableVenteVe.Rows(r2).Item("idclient") And MainForm.tableVenteVe.Rows(r2).Item("idvehicule") = id Then
+        '            Dim row As DataRow = table.NewRow
+        '            For c As Integer = 0 To MainForm.TableClient.Columns.Count - 1
+        '                row(c) = MainForm.TableClient(r)(c)
+        '            Next
+        '            table.Rows.Add(row)
+        '        End If
+        '    Next
+        'Next
+
+        'table = ConnectionServeur.Getinstance.GetInfo(id, "getInfoClVe")
 
         If table.Rows.Count > 0 Then
             DGVClient.DataSource = table

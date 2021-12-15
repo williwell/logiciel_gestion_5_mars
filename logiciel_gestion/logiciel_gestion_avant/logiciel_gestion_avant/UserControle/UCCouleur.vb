@@ -1,6 +1,6 @@
 ﻿Public Class UCCouleur
     ReadOnly main As MainForm
-    Dim tableCouleur As DataTable
+    Dim tableCouleur As New DataTable
     Dim listeOr(0, 0) As String
 
     Sub New(mainform As MainForm)
@@ -13,6 +13,10 @@
     End Sub
 
     Private Sub UCCouleur_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        tableCouleur.Columns.Add("ID")
+        tableCouleur.Columns.Add("Nom")
+        tableCouleur.Columns.Add("Code")
+        tableCouleur.Columns.Add("Coût")
         RemplirDGV()
     End Sub
 
@@ -26,7 +30,19 @@
     End Sub
 
     Public Sub RemplirDGV()
-        tableCouleur = ConnectionServeur.Getinstance.GetInfo("getCouleur")
+        tableCouleur.Clear()
+
+        For r As Integer = 0 To MainForm.tableCoulVe.Rows.Count - 1
+            If MainForm.tableCoulVe.Rows(r).Item("deleteCoul") = True Then
+                Dim row As DataRow = tableCouleur.NewRow
+                row(0) = MainForm.tableCoulVe.Rows(r).Item("id")
+                row(1) = MainForm.tableCoulVe.Rows(r).Item("nom")
+                row(2) = MainForm.tableCoulVe.Rows(r).Item("code")
+                row(3) = MainForm.tableCoulVe.Rows(r).Item("cout")
+                tableCouleur.Rows.Add(row)
+            End If
+        Next
+
         dgvCouleur.DataSource = tableCouleur
         ReDim listeOr(tableCouleur.Rows.Count - 1, tableCouleur.Columns.Count - 1)
         For r As Integer = 0 To tableCouleur.Rows.Count - 1

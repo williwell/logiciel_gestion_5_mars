@@ -1,6 +1,6 @@
 ﻿Public Class UCCouleurToile
     ReadOnly main As MainForm
-    Dim tableCoul As DataTable
+    Dim tableCoul As New DataTable
     Dim listeOr(0, 0) As String
 
     Sub New(mainform As MainForm)
@@ -13,7 +13,10 @@
     End Sub
 
     Private Sub UCCouleurToile_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        loadCoul()
+        tableCoul.Columns.Add("ID")
+        tableCoul.Columns.Add("Nom")
+        tableCoul.Columns.Add("Code")
+        LoadCoul()
     End Sub
 
     Private Sub BtCreer_Click(sender As Object, e As EventArgs) Handles BtCreer.Click
@@ -22,7 +25,24 @@
     End Sub
 
     Public Sub LoadCoul()
-        ListGest.LoadCoul(tableCoul, "getCoulToile", dgvCouleur, listeOr)
+        For r As Integer = 0 To MainForm.tableCoulToi.Rows.Count - 1
+            If MainForm.tableCoulToi.Rows(r).Item("deletecoul") = True Then
+                Dim row As DataRow = tableCoul.NewRow
+                row(0) = MainForm.tableCoulToi.Rows(r).Item("id")
+                row(1) = MainForm.tableCoulToi.Rows(r).Item("nom")
+                row(2) = MainForm.tableCoulToi.Rows(r).Item("code")
+                tableCoul.Rows.Add(row)
+            End If
+        Next
+
+        dgvCouleur.DataSource = tableCoul
+
+        ReDim listeOr(tableCoul.Rows.Count - 1, tableCoul.Columns.Count - 1)
+        For r As Integer = 0 To tableCoul.Rows.Count - 1
+            For c As Integer = 0 To tableCoul.Columns.Count - 1
+                listeOr(r, c) = tableCoul(r)(c)
+            Next
+        Next
     End Sub
 
 
@@ -58,7 +78,7 @@
                 End If
             Next
             If bool Then
-                If ConnectionServeur.Getinstance.AddDelete(listeAdd, "updateCouleur") Then
+                If ConnectionServeur.Getinstance.AddDelete(listeAdd, "updateCouleurToi") Then
                     For c As Integer = 0 To tableCoul.Columns.Count - 1
                         listeOr(r, c) = listeAdd(c)
                     Next
@@ -94,7 +114,7 @@
 
     Private Sub BtDel_Click(sender As Object, e As EventArgs) Handles BtDel.Click
         If MessageBox.Show("Voulez-vous vraiment supprimer " + dgvCouleur.CurrentRow.Cells(1).Value + "?", "Attention!", MessageBoxButtons.YesNo) = DialogResult.Yes Then
-            ConnectionServeur.Getinstance.GetInfo(dgvCouleur.CurrentRow.Cells(0).Value, "ChangeDelete")
+            ConnectionServeur.Getinstance.GetInfo(dgvCouleur.CurrentRow.Cells(0).Value, "ChangeDeleteToi")
             RemplirDGV()
         End If
     End Sub

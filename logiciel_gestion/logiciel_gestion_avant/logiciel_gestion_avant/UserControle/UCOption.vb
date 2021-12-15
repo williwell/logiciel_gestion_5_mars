@@ -16,7 +16,23 @@
     End Sub
 
     Public Sub RemplireDGV()
-        DGVOption.DataSource = ConnectionServeur.Getinstance.GetInfo("getOptionAdd")
+        'SELECT id,nom,cout FROM `optionDispo` where DeleteOpt <> 0
+        Dim table As New DataTable
+        table.Columns.Add("ID")
+        table.Columns.Add("Nom")
+        table.Columns.Add("Coût")
+
+        For r As Integer = 0 To MainForm.tableOp.Rows.Count - 1
+            If MainForm.tableOp.Rows(r).Item("deleteopt") = "True" Then
+                Dim row As DataRow = table.NewRow
+                row(0) = MainForm.tableOp.Rows(r).Item("id")
+                row(1) = MainForm.tableOp.Rows(r).Item("nom")
+                row(2) = MainForm.tableOp.Rows(r).Item("cout")
+                table.Rows.Add(row)
+            End If
+        Next
+
+        DGVOption.DataSource = table
 
         ReDim listeOr(DGVOption.Rows.Count - 1, DGVOption.Columns.Count - 1)
         For r As Integer = 0 To DGVOption.Rows.Count - 1

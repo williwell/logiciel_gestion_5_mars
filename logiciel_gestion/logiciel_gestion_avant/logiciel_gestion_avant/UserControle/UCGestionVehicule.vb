@@ -1,5 +1,5 @@
 ﻿Public Class UCGestionVehicule
-    Dim table As DataTable
+    ReadOnly table As New DataTable
     ReadOnly search As New BindingSource
     ReadOnly main As MainForm
 
@@ -13,44 +13,95 @@
     End Sub
 
     Private Sub UCGestionVehicule_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        table = ConnectionServeur.Getinstance.GetInfo("GetVehiculeAll")
+        table.Columns.Add("id")
+        table.Columns.Add("nomatricule")
+        table.Columns.Add("model")
+        table.Columns.Add("cout")
+        table.Columns.Add("couleurvehicule")
+        table.Columns.Add("codecouleurvehicule")
+        table.Columns.Add("couleurtoile")
+        table.Columns.Add("codecouleurtoile")
+        table.Columns.Add("couleurtissus")
+        table.Columns.Add("codecouleurtissus")
+        table.Columns.Add("fabriquer")
+        table.Columns.Add("eninventaire")
+
+        For r As Integer = 0 To MainForm.tableVe.Rows.Count - 1
+            For r2 As Integer = 0 To MainForm.tableModel.Rows.Count - 1
+                If MainForm.tableModel.Rows(r2).Item("id") = MainForm.tableVe.Rows(r).Item("idmodel") Then
+                    For r3 As Integer = 0 To MainForm.tableCoulVe.Rows.Count - 1
+                        If MainForm.tableCoulVe.Rows(r3).Item("id") = MainForm.tableVe.Rows(r).Item("idcouleur") Then
+                            For r4 As Integer = 0 To MainForm.tableCoulToi.Rows.Count - 1
+                                If MainForm.tableVe.Rows(r).Item("idcoultoile") = MainForm.tableCoulToi.Rows(r4).Item("id") Then
+                                    For r5 As Integer = 0 To MainForm.tableCoulTis.Rows.Count - 1
+                                        If MainForm.tableVe.Rows(r).Item("idcoultissus") = MainForm.tableCoulTis.Rows(r5).Item("id") Then
+                                            Dim row As DataRow = table.NewRow
+                                            row(0) = MainForm.tableVe.Rows(r).Item("id")
+                                            row(1) = MainForm.tableVe.Rows(r).Item("nomatricule")
+                                            row(2) = MainForm.tableModel.Rows(r2).Item("nom")
+                                            row(3) = MainForm.tableModel.Rows(r2).Item("cout")
+                                            row(4) = MainForm.tableCoulVe.Rows(r3).Item("nom")
+                                            row(5) = MainForm.tableCoulVe.Rows(r3).Item("code")
+                                            row(6) = MainForm.tableCoulToi.Rows(r4).Item("nom")
+                                            row(7) = MainForm.tableCoulToi.Rows(r4).Item("code")
+                                            row(8) = MainForm.tableCoulTis.Rows(r5).Item("nom")
+                                            row(9) = MainForm.tableCoulTis.Rows(r5).Item("code")
+                                            row(10) = MainForm.tableVe.Rows(r).Item("fabriquer")
+                                            row(11) = MainForm.tableVe.Rows(r).Item("eninventaire")
+                                            table.Rows.Add(row)
+                                        End If
+                                    Next
+                                End If
+                            Next
+                        End If
+                    Next
+                End If
+            Next
+        Next
 
         DGVVehicule.DataSource = table
         search.DataSource = DGVVehicule.DataSource
 
-        Dim tableModel As DataTable = ConnectionServeur.Getinstance.GetInfo("getModel")
-        Dim listeMo(tableModel.Rows.Count) As String
+        Dim listeMo(MainForm.tableModel.Rows.Count) As String
         listeMo(0) = "Tous les models"
 
-        For i As Integer = 1 To tableModel.Rows.Count
-            listeMo(i) = tableModel(i - 1)(1)
+        For i As Integer = 1 To MainForm.tableModel.Rows.Count
+            listeMo(i) = MainForm.tableModel(i - 1)(1)
         Next
         CBModel.DataSource = listeMo
 
-        Dim tableVe As DataTable = ConnectionServeur.Getinstance.GetInfo("getCouleur")
+        Dim tableVe As New DataTable
+        tableVe.Columns.Add("nom")
+
+        For r As Integer = 0 To MainForm.tableCoulVe.Rows.Count - 1
+            If MainForm.tableCoulVe.Rows(r).Item("deletecoul") = "True" Then
+                Dim row As DataRow = tableVe.NewRow
+                row(0) = MainForm.tableCoulVe.Rows(r).Item("nom")
+                tableVe.Rows.Add(row)
+            End If
+        Next
+
         Dim listeVe(tableVe.Rows.Count) As String
         listeVe(0) = "Toutes les Couleurs"
 
         For i As Integer = 1 To tableVe.Rows.Count
-            listeVe(i) = tableVe(i - 1)(1)
+            listeVe(i) = tableVe(i - 1)(0)
         Next
         CBCoulVe.DataSource = listeVe
 
-        Dim tableToi As DataTable = ConnectionServeur.Getinstance.GetInfo("getCoulToile")
-        Dim listeToi(tableToi.Rows.Count) As String
+        Dim listeToi(MainForm.tableCoulToi.Rows.Count) As String
         listeToi(0) = "Toutes les Couleurs Toiles"
 
-        For i As Integer = 1 To tableToi.Rows.Count
-            listeToi(i) = tableToi(i - 1)(1)
+        For i As Integer = 1 To MainForm.tableCoulToi.Rows.Count
+            listeToi(i) = MainForm.tableCoulToi(i - 1)(1)
         Next
         CBCoulToi.DataSource = listeToi
 
-        Dim tableTis As DataTable = ConnectionServeur.Getinstance.GetInfo("getCoulTissus")
-        Dim listeTis(tableTis.Rows.Count) As String
+        Dim listeTis(MainForm.tableCoulTis.Rows.Count) As String
         listeTis(0) = "Toutes les Couleurs Toiles"
 
-        For i As Integer = 1 To tableTis.Rows.Count
-            listeTis(i) = tableTis(i - 1)(1)
+        For i As Integer = 1 To MainForm.tableCoulTis.Rows.Count
+            listeTis(i) = MainForm.tableCoulTis(i - 1)(1)
         Next
         CBCoulTis.DataSource = listeTis
     End Sub

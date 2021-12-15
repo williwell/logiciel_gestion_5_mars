@@ -1,10 +1,10 @@
 ﻿Public Class UCListeLivraison
-    Dim table As DataTable
+    Dim table As New DataTable
     ReadOnly main As MainForm
     Dim SourceRowIndex As Integer = -1
     ReadOnly tableOR As New DataTable
     Dim rowInd As Integer = -1
-    Dim tableCl As DataTable
+    Dim tableCl As New DataTable
     Dim bool As Boolean = False
 
     Sub New(mainforn As MainForm)
@@ -17,10 +17,91 @@
     End Sub
 
     Private Sub UCListeLivraison_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        tableCl = ConnectionServeur.Getinstance.GetInfo("getOneInfoClVe")
-        table = ConnectionServeur.Getinstance.GetInfo("getVehiculePrio")
-        DGVVehicule.DataSource = table
+        tableCl.Columns.Add("v.id")
+        For c As Integer = 0 To MainForm.TableClient.Columns.Count - 1
+            If MainForm.TableClient.Columns(c).ColumnName = "id" Then
+                tableCl.Columns.Add("c.id")
+            Else
+                tableCl.Columns.Add(MainForm.TableClient.Columns(c).ColumnName)
+            End If
+        Next
+        tableCl.Columns.Add("idvehicule")
 
+        For r As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
+            For r2 As Integer = 0 To MainForm.TableClient.Rows.Count - 1
+                If MainForm.tableVenteVe.Rows(r).Item("idclient") = MainForm.TableClient.Rows(r2).Item("id") Then
+                    Dim row As DataRow = tableCl.NewRow
+                    Dim nbr As Integer = 1
+                    row(0) = MainForm.tableVenteVe.Rows(r).Item("id")
+                    For c As Integer = 0 To MainForm.TableClient.Columns.Count - 1
+                        row(c + nbr) = MainForm.TableClient(r2)(c)
+                    Next
+                    nbr += MainForm.TableClient.Columns.Count
+                    row(nbr) = MainForm.tableVenteVe.Rows(r).Item("idvehicule")
+                    tableCl.Rows.Add(row)
+                End If
+            Next
+        Next
+
+        'Select Case v.eninventaire, vv.priorite As Priorite
+        '                            FROM `vehicule` v 
+        '                            inner Join `ventevehicule` vv on v.id = vv.idvehicule 
+        '                            order by priorite"
+
+        table.Columns.Add("ID")
+        table.Columns.Add("Numéro Matricule")
+        table.Columns.Add("Model")
+        table.Columns.Add("Couleur Véhicule")
+        table.Columns.Add("Couleur Toile")
+        table.Columns.Add("Couleur Tissus")
+        table.Columns.Add("Fabriquer")
+        table.Columns.Add("En Inventaire")
+        table.Columns.Add("Priorité")
+
+        For r As Integer = 0 To MainForm.tableVe.Rows.Count - 1
+            For r3 As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
+                If MainForm.tableVe.Rows(r).Item("id") = MainForm.tableVenteVe.Rows(r3).Item("idvehicule") Then
+                    Dim row As DataRow = table.NewRow
+                    row(0) = MainForm.tableVe.Rows(r).Item("id")
+                    row(1) = MainForm.tableVe.Rows(r).Item("nomatricule")
+
+                    For r2 As Integer = 0 To MainForm.tableModel.Rows.Count - 1
+                        If MainForm.tableVe.Rows(r).Item("idmodel") = MainForm.tableModel.Rows(r2).Item("id") Then
+                            row(2) = MainForm.tableModel.Rows(r2).Item("nom")
+                        End If
+                    Next
+
+                    For r2 As Integer = 0 To MainForm.tableCoulVe.Rows.Count - 1
+                        If MainForm.tableVe.Rows(r).Item("idcouleur") = MainForm.tableCoulVe.Rows(r2).Item("id") Then
+                            row(3) = MainForm.tableCoulVe.Rows(r2).Item("nom")
+                        End If
+                    Next
+
+                    For r2 As Integer = 0 To MainForm.tableCoulToi.Rows.Count - 1
+                        If MainForm.tableVe.Rows(r).Item("idcoultoile") = MainForm.tableCoulToi.Rows(r2).Item("id") Then
+                            row(4) = MainForm.tableCoulToi.Rows(r2).Item("nom")
+                        End If
+                    Next
+
+                    For r2 As Integer = 0 To MainForm.tableCoulTis.Rows.Count - 1
+                        If MainForm.tableVe.Rows(r).Item("idcoultissus") = MainForm.tableCoulTis.Rows(r2).Item("id") Then
+                            row(5) = MainForm.tableCoulTis.Rows(r2).Item("nom")
+                        End If
+                    Next
+
+                    row(6) = MainForm.tableVe.Rows(r).Item("fabriquer")
+                    row(7) = MainForm.tableVe.Rows(r).Item("eninventaire")
+                    row(8) = MainForm.tableVenteVe.Rows(r3).Item("priorite")
+                    table.Rows.Add(row)
+                End If
+            Next
+
+        Next
+
+        table.DefaultView.Sort = "Priorité ASC"
+        table = table.DefaultView.ToTable
+
+        DGVVehicule.DataSource = table
 
 
         For c As Integer = 0 To table.Columns.Count - 1
@@ -45,7 +126,7 @@
     Private Sub LoadClient(index As Integer)
         Dim id As Integer
 
-        For r As Integer = 0 To DGVVehicule.Rows.Count - 1
+        For r As Integer = 0 To tableCl.Rows.Count - 1
             If DGVVehicule.Rows(index).Cells(0).Value = tableCl(r)(tableCl.Columns.Count - 1) Then
                 id = r
             End If

@@ -1,7 +1,7 @@
 ﻿Public Class UCVente2
     ReadOnly main As MainForm
     ReadOnly uc As UCVente
-    Dim table As DataTable
+    Dim table As New DataTable
     ReadOnly tableCh As New DataTable
     Dim id As Integer
     Dim prix As Decimal
@@ -19,8 +19,14 @@
     End Sub
 
     Private Sub UCVente2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        id = uc.getIDModel
-        table = ConnectionServeur.Getinstance.GetInfo(id, "getOptionModel")
+        id = uc.GetIDModel
+
+        table.Columns.Add("ID")
+        table.Columns.Add("Nom")
+        table.Columns.Add("Coût")
+
+        remplirDGV()
+
         DGVOpDispo.DataSource = table
         For i As Integer = 0 To table.Columns.Count - 1
             tableCh.Columns.Add(table.Columns(i).ColumnName)
@@ -31,7 +37,7 @@
     Public Sub LoadDGV()
         If Not id = uc.GetIDModel Then
             id = uc.GetIDModel
-            table = ConnectionServeur.Getinstance.GetInfo(id, "getOptionModel")
+            remplirDGV()
             DGVOpDispo.DataSource = table
 
             For i As Integer = DGVOpCh.Rows.Count - 1 To 0 Step -1
@@ -109,5 +115,21 @@
 
     Private Sub UCVente2_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
         main.fermerMenu()
+    End Sub
+
+    Private Sub remplirDGV()
+        table.Clear()
+
+        For r As Integer = 0 To MainForm.tableOp.Rows.Count - 1
+            For r2 As Integer = 0 To MainForm.tableOpMo.Rows.Count - 1
+                If MainForm.tableOp.Rows(r).Item("id") = MainForm.tableOpMo.Rows(r2).Item("idoption") And MainForm.tableOpMo.Rows(r2).Item("idmodel") = id Then
+                    Dim row As DataRow = table.NewRow
+                    row(0) = MainForm.tableOp.Rows(r).Item("id")
+                    row(1) = MainForm.tableOp.Rows(r).Item("nom")
+                    row(2) = MainForm.tableOp.Rows(r).Item("cout")
+                    table.Rows.Add(row)
+                End If
+            Next
+        Next
     End Sub
 End Class
