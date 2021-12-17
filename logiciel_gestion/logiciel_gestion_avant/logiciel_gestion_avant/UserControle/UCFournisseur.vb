@@ -30,6 +30,7 @@
             table.Columns.Add(MainForm.tableFour.Columns(i).ColumnName)
         Next
 
+        dgvFour.DataSource = MainForm.tableFour
         LoadFour()
     End Sub
 
@@ -156,7 +157,7 @@
     End Sub
 
     Public Sub LoadFour()
-        dgvFour.DataSource = MainForm.tableFour
+        'dgvFour.DataSource = MainForm.tableFour
         Threading.Thread.Sleep(500)
         tbID.Text = dgvFour.CurrentRow.Cells(0).Value
     End Sub

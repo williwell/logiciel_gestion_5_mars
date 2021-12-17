@@ -67,9 +67,24 @@
             End If
 
             If ConnectionServeur.Getinstance.AddDelete(liste, "ajoutInventaire") Then
+                Dim row As DataRow = MainForm.tableInv.NewRow
+                row(0) = liste(0)
+                row(1) = liste(1)
+                row(2) = liste(2)
+                row(3) = liste(3)
+                row(4) = liste(5)
+                row(5) = liste(7)
+                row(6) = liste(8)
+                row(7) = liste(9)
+                MainForm.tableInv.Rows.Add(row)
                 Dim liste2() As String = {liste(0), liste(4), liste(6), liste(10), liste(11), CBDevise.SelectedItem.ToString}
                 If ConnectionServeur.Getinstance.AddDelete(liste2, "addInvFour") Then
                     MessageBox.Show("La création du nouveau produit à bien été fait!")
+                    Dim row2 As DataRow = MainForm.tableInvFour.NewRow
+                    For i As Integer = 0 To liste2.Length - 1
+                        row2(i) = liste2(i)
+                    Next
+                    MainForm.tableInvFour.Rows.Add(row2)
                     Me.Close()
                 Else
                     MessageBox.Show("Une erreur est survenue durant la création!", "Attention!")

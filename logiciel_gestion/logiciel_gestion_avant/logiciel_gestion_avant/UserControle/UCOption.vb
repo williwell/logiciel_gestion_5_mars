@@ -16,7 +16,6 @@
     End Sub
 
     Public Sub RemplireDGV()
-        'SELECT id,nom,cout FROM `optionDispo` where DeleteOpt <> 0
         Dim table As New DataTable
         table.Columns.Add("ID")
         table.Columns.Add("Nom")
@@ -121,6 +120,7 @@
     Private Sub BTCreer_Click(sender As Object, e As EventArgs) Handles BTCreer.Click
         Dim OptionForm As New CreerOption
         OptionForm.ShowDialog()
+        RemplireDGV()
     End Sub
 
     Private Sub BTItem_Click(sender As Object, e As EventArgs) Handles BTItem.Click

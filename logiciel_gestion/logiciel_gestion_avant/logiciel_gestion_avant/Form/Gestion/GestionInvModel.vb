@@ -138,6 +138,11 @@ Public Class GestionInvModel
                     For c As Integer = 0 To DGVInventaireMo.Columns.Count - 1
                         If Not DGVInventaireMo.Rows(i).Cells(c).Value = OrInvMo(int, c) Then
                             If ConnectionServeur.Getinstance.ModInv(DGVInventaireMo.Rows(i).Cells(0).Value, id, DGVInventaireMo.Rows(i).Cells(c).Value, "ModInvModel") Then
+                                For r As Integer = 0 To MainForm.tableInvMo.Rows.Count - 1
+                                    If MainForm.tableInvMo.Rows(r).Item("idinventaire") = DGVInventaireMo.Rows(i).Cells(0).Value And MainForm.tableInvMo.Rows(r).Item("idmodel") = id Then
+                                        MainForm.tableInvMo(r)(2) = DGVInventaireMo.Rows(i).Cells(c).Value
+                                    End If
+                                Next
                                 bool2 = True
                             Else
                                 bool2 = False
@@ -150,6 +155,15 @@ Public Class GestionInvModel
 
         If Not IsNothing(listeAjout) Then
             If ConnectionServeur.Getinstance.AddDeleteListe(listeAjout, id, "AddInvMo") Then
+                For i As Integer = 0 To listeAjout.Length - 1
+                    Dim row As DataRow = MainForm.tableInvMo.NewRow
+                    row(0) = listeAjout(i)
+                    i += 1
+                    row(1) = id
+                    row(2) = listeAjout(i)
+                    MainForm.tableInvMo.Rows.Add(row)
+                Next
+
                 listeAjout = CreateListeAdd(listeInvAdd, DGVInventaireAdd, False)
                 If Not IsNothing(listeAjout) Then
                     If ConnectionServeur.Getinstance.AddDelete(listeAjout, id, "DeleteInvMo") Then
@@ -159,6 +173,18 @@ Public Class GestionInvModel
                         ReDim OrInvAdd(tableInvAdd.Rows.Count - 1, tableInvAdd.Columns.Count - 1)
                         ucGestion.ListeOr(OrInvAdd, tableInvAdd)
                         ucGestion.CheckChange()
+
+                        For i As Integer = 0 To listeAjout.Length - 1
+                            Dim delete As DataRow
+                            For Each r As Integer In MainForm.tableInvMo.Rows
+                                If MainForm.tableInvMo.Rows(r).Item("idinventaire") = listeAjout(i) And MainForm.tableInvMo.Rows(r).Item("idmodel") = id Then
+                                    delete = MainForm.tableInvMo.Rows(r)
+                                End If
+                            Next
+                            If Not IsNothing(delete) Then
+                                MainForm.tableInvMo.Rows.Remove(delete)
+                            End If
+                        Next
                     Else
                         bool1 = False
                     End If
@@ -176,6 +202,20 @@ Public Class GestionInvModel
                     ReDim OrInvAdd(tableInvAdd.Rows.Count - 1, tableInvAdd.Columns.Count - 1)
                     ucGestion.ListeOr(OrInvAdd, tableInvAdd)
                     ucGestion.CheckChange()
+
+                    'Supprimer les lignes de la table du mainform
+                    For i As Integer = 0 To listeAjout.Length - 1
+                        Dim delete As DataRow
+                        For r As Integer = 0 To MainForm.tableInvMo.Rows.Count - 1
+                            If MainForm.tableInvMo.Rows(r).Item("idinventaire") = listeAjout(i) And MainForm.tableInvMo.Rows(r).Item("idmodel") = id Then
+                                delete = MainForm.tableInvMo.Rows(r)
+                            End If
+                        Next
+                        If Not IsNothing(delete) Then
+                            MainForm.tableInvMo.Rows.Remove(delete)
+                        End If
+                    Next
+
                 Else
                     bool1 = False
                 End If
@@ -215,7 +255,11 @@ Public Class GestionInvModel
                 If bool Then
                     nbr += 1
                     ReDim Preserve listeAdd(nbr)
-                    listeAdd(nbr) = dgv.Rows(i).Cells(dgv.Columns.Count - 1).Value
+                    If String.IsNullOrEmpty(dgv.Rows(i).Cells(dgv.Columns.Count - 1).Value) Then
+                        listeAdd(nbr) = 0
+                    Else
+                        listeAdd(nbr) = dgv.Rows(i).Cells(dgv.Columns.Count - 1).Value
+                    End If
                 End If
             End If
         Next

@@ -170,14 +170,45 @@ Public Class CreerModel
         If Not String.IsNullOrEmpty(TbName.Text) Then
             id = ConnectionServeur.Getinstance.AddModel(TbName.Text, nudCout.Value.ToString)
             If Not id = 0 Then
+
+                Dim row As DataRow = MainForm.tableModel.NewRow
+                row(0) = id
+                row(1) = TbName.Text
+                row(2) = nudCout.Value.ToString
+                MainForm.tableModel.Rows.Add(row)
+
                 If dgvOptionMo.Rows.Count > 0 Then
-                    ConnectionServeur.Getinstance.AddDelete(createListe(dgvOptionMo), id, "AddOpMo")
+                    ConnectionServeur.Getinstance.AddDeleteListe(CreateListe(dgvOptionMo), id, "AddOpMo")
+
+                    For r As Integer = 0 To dgvOptionMo.Rows.Count - 1
+                        Dim row2 As DataRow = MainForm.tableOpMo.NewRow
+                        row2(0) = dgvOptionMo.Rows(r).Cells(0).Value
+                        row2(1) = id
+                        MainForm.tableOpMo.Rows.Add(row2)
+                    Next
+
                 End If
                 If dgvCoulMo.Rows.Count > 0 Then
-                    ConnectionServeur.Getinstance.AddDelete(createListe(dgvCoulMo), id, "AddCoulMo")
+                    ConnectionServeur.Getinstance.AddDeleteListe(CreateListe(dgvCoulMo), id, "AddCoulMo")
+
+                    For r As Integer = 0 To dgvCoulMo.Rows.Count - 1
+                        Dim row2 As DataRow = MainForm.tableCoulMo.NewRow
+                        row2(0) = dgvCoulMo.Rows(r).Cells(0).Value
+                        row2(1) = id
+                        MainForm.tableCoulMo.Rows.Add(row2)
+                    Next
+
                 End If
                 If DGVInventaireMo.Rows.Count > 0 Then
-                    ConnectionServeur.Getinstance.AddDeleteListe(createListeInv(DGVInventaireMo), id, "AddInvMo")
+                    ConnectionServeur.Getinstance.AddDeleteListe(CreateListeInv(DGVInventaireMo), id, "AddInvMo")
+
+                    For r As Integer = 0 To DGVInventaireMo.Rows.Count - 1
+                        Dim row2 As DataRow = MainForm.tableInvMo.NewRow
+                        row2(0) = DGVInventaireMo.Rows(r).Cells(0).Value
+                        row2(1) = id
+                        MainForm.tableInvMo.Rows.Add(row2)
+                    Next
+
                 End If
                 ucGestionModel.RemplirModel()
                 MessageBox.Show("Création du nouveau model réussit")
@@ -210,7 +241,11 @@ Public Class CreerModel
             liste(nbr) = dgv.Rows(i).Cells(0).Value
             nbr += 1
             ReDim Preserve liste(nbr)
-            liste(nbr) = dgv.Rows(i).Cells(dgv.Columns.Count - 1).Value
+            If String.IsNullOrEmpty(dgv.Rows(i).Cells(dgv.Columns.Count - 1).Value) Then
+                liste(nbr) = 0
+            Else
+                liste(nbr) = dgv.Rows(i).Cells(dgv.Columns.Count - 1).Value
+            End If
         Next
         Return liste
     End Function

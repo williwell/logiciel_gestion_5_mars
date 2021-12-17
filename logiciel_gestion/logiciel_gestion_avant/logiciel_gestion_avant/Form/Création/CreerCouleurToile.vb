@@ -15,7 +15,21 @@
                 Dim liste() As String = {TBNom.Text, TBCode.Text}
                 If ConnectionServeur.Getinstance.AddDelete(liste, "AddCoulToile") Then
                     MessageBox.Show("La création de la nouvelle couleur réussit!")
-                    uc.loadCoul()
+
+                    Dim row As DataRow = MainForm.tableCoulToi.NewRow
+                    Dim nbr As Integer = 0
+                    For r As Integer = 0 To MainForm.tableCoulToi.Rows.Count - 1
+                        If MainForm.tableCoulToi.Rows(r).Item("id") >= nbr Then
+                            nbr = Integer.Parse(MainForm.tableCoulToi.Rows(r).Item("id")) + 1
+                        End If
+                    Next
+                    row(0) = nbr
+                    For c As Integer = 0 To liste.Length - 1
+                        row(c + 1) = liste(c)
+                    Next
+                    MainForm.tableCoulToi.Rows.Add(row)
+
+                    uc.LoadCoul()
                     Me.Close()
                 Else
                     MessageBox.Show("Une erreure est survenue durant l'enregistrement!")

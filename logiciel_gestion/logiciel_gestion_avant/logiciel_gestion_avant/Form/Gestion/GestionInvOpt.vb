@@ -25,11 +25,6 @@ Public Class GestionInvOpt
     Private Sub GestionInvModel_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Dim liste() As String
 
-        'Select Case id,nom,description,utilise,o.quantite  FROM `inventaire`
-        '                                                inner Join OptionPiece o
-        '                                                On id = idPiece
-        '                                                where idOption = '{id}'
-
         tableInvOpt.Columns.Add("ID")
         tableInvOpt.Columns.Add("Nom")
         tableInvOpt.Columns.Add("Description")
@@ -157,6 +152,14 @@ Public Class GestionInvOpt
                     For c As Integer = 0 To DGVInventaireOpt.Columns.Count - 1
                         If Not DGVInventaireOpt.Rows(i).Cells(c).Value = OrInvOpt(int, c) Then
                             If ConnectionServeur.Getinstance.ModInv(DGVInventaireOpt.Rows(i).Cells(0).Value, id, DGVInventaireOpt.Rows(i).Cells(c).Value, "ModInvOpt") Then
+
+                                'Modifie la Quantité dans la table du mainform
+                                For r As Integer = 0 To MainForm.tableOpInv.Rows.Count - 1
+                                    If MainForm.tableOpInv.Rows(r).Item("idpiece") = DGVInventaireOpt.Rows(i).Cells(0).Value And MainForm.tableOpInv.Rows(r).Item("idoption") = id Then
+                                        MainForm.tableOpInv.Rows(r).Item("quantite") = DGVInventaireOpt.Rows(i).Cells(c).Value
+                                    End If
+                                Next
+
                                 bool2 = True
                             Else
                                 bool2 = False
@@ -169,36 +172,24 @@ Public Class GestionInvOpt
 
         If Not IsNothing(listeAjout) Then
             If ConnectionServeur.Getinstance.AddDelete(listeAjout, "AddOptionItem") Then
-                listeAjout = CreateListeAdd(listeInvAdd, DGVInventaireAdd, False)
-                If Not IsNothing(listeAjout) Then
-                    If ConnectionServeur.Getinstance.AddDelete(listeAjout, id, "DeleteInvOpt") Then
-                        bool1 = True
-                        ReDim OrInvOpt(tableInvOpt.Rows.Count - 1, tableInvOpt.Columns.Count - 1)
-                        ListGest.ListeOr(OrInvOpt, tableInvOpt)
-                        ReDim OrInvAdd(tableInvAdd.Rows.Count - 1, tableInvAdd.Columns.Count - 1)
-                        ListGest.ListeOr(OrInvAdd, tableInvAdd)
-                        ListGest.changeBt(ListGest.CheckChange(OrInvOpt, tableInvOpt, nbrInv), btSave, btAnnuler)
-                    Else
-                        bool1 = False
-                    End If
-                End If
+
+                'Ajoute les ligne dans la table du mainform
+                For i As Integer = 0 To listeAjout.Length - 1
+                    Dim row As DataRow = MainForm.tableOpInv.NewRow
+                    row(0) = listeAjout(i)
+                    i += 1
+                    row(1) = listeAjout(i)
+                    i += 1
+                    row(2) = listeAjout(i)
+                    MainForm.tableOpInv.Rows.Add(row)
+                Next
+
+                deleteRow(bool1)
             Else
                 bool1 = False
             End If
         Else
-            listeAjout = CreateListeAdd(listeInvAdd, DGVInventaireAdd, False)
-            If Not IsNothing(listeAjout) Then
-                If ConnectionServeur.Getinstance.AddDelete(listeAjout, id, "DeleteInvOpt") Then
-                    bool1 = True
-                    ReDim OrInvOpt(tableInvOpt.Rows.Count - 1, tableInvOpt.Columns.Count - 1)
-                    ListGest.ListeOr(OrInvOpt, tableInvOpt)
-                    ReDim OrInvAdd(tableInvAdd.Rows.Count - 1, tableInvAdd.Columns.Count - 1)
-                    ListGest.ListeOr(OrInvAdd, tableInvAdd)
-                    ListGest.changeBt(ListGest.CheckChange(OrInvOpt, tableInvOpt, nbrInv), btSave, btAnnuler)
-                Else
-                    bool1 = False
-                End If
-            End If
+            deleteRow(bool1)
         End If
 
         If bool1 Then
@@ -212,6 +203,36 @@ Public Class GestionInvOpt
                 MessageBox.Show("Le changement des quantités des items c'est effectué correctement, mais une erreure c'est produit durant l'enregistrement des produits.")
             Else
                 MessageBox.Show("Un erreure est c'est produit durant l'enregistrement des changement!")
+            End If
+        End If
+    End Sub
+
+    Private Sub deleteRow(ByRef bool1 As Boolean)
+        Dim listeAjout() As String = CreateListeAdd(listeInvAdd, DGVInventaireAdd, False)
+        If Not IsNothing(listeAjout) Then
+            If ConnectionServeur.Getinstance.AddDelete(listeAjout, id, "DeleteInvOpt") Then
+
+                'Supprimer les lignes dans la table du mainform
+                For i As Integer = 0 To listeAjout.Length - 1
+                    Dim row As DataRow
+                    For r As Integer = 0 To MainForm.tableOpInv.Rows.Count - 1
+                        If MainForm.tableOpInv.Rows(r).Item("idoption") = listeAjout(i) And MainForm.tableOpInv.Rows(r).Item("idoption") = id Then
+                            row = MainForm.tableOpInv.Rows(r)
+                        End If
+                    Next
+                    If Not IsNothing(row) Then
+                        MainForm.tableOpInv.Rows.Remove(row)
+                    End If
+                Next
+
+                bool1 = True
+                ReDim OrInvOpt(tableInvOpt.Rows.Count - 1, tableInvOpt.Columns.Count - 1)
+                ListGest.ListeOr(OrInvOpt, tableInvOpt)
+                ReDim OrInvAdd(tableInvAdd.Rows.Count - 1, tableInvAdd.Columns.Count - 1)
+                ListGest.ListeOr(OrInvAdd, tableInvAdd)
+                ListGest.ChangeBt(ListGest.CheckChange(OrInvOpt, tableInvOpt, nbrInv), btSave, btAnnuler)
+            Else
+                bool1 = False
             End If
         End If
     End Sub

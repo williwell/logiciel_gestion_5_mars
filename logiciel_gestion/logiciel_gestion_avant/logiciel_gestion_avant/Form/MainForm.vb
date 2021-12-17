@@ -65,6 +65,7 @@ Public Class MainForm
     'Load
     '__________________________________________________________________________________________________________
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        System.IO.File.Delete("C:\logiciel_gestion_5_mars_fichier\texte.txt")
         ProgressBar1.Value = 20
     End Sub
 

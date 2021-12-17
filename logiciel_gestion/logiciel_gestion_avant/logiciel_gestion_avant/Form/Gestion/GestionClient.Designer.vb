@@ -215,7 +215,6 @@ Partial Class GestionClient
         '
         'BTSave
         '
-        Me.BTSave.Enabled = False
         Me.BTSave.Location = New System.Drawing.Point(31, 456)
         Me.BTSave.Name = "BTSave"
         Me.BTSave.Size = New System.Drawing.Size(102, 23)

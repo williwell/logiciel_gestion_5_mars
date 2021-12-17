@@ -20,6 +20,11 @@ Public Class GestionClient
             table.Columns.Add(MainForm.TableClient.Columns(c).ColumnName)
         Next
 
+        LoadDGV
+    End Sub
+
+    Private Sub LoadDGV()
+        table.Clear()
         For r As Integer = 0 To MainForm.TableClient.Rows.Count - 1
             If MainForm.TableClient.Rows(r).Item("id") = ID Then
                 Dim row As DataRow = table.NewRow
@@ -37,6 +42,14 @@ Public Class GestionClient
     Private Sub BTSave_Click(sender As Object, e As EventArgs) Handles BTSave.Click
         Dim listeAdd() As String = {TBID.Text, TBPrenom1.Text, TBNom1.Text, TBPrenom2.Text, TBNom2.Text, TBTel1.Text, TBTel2.Text, CBSexe.SelectedItem.ToString, TBEmail.Text}
         If ConnectionServeur.Getinstance.AddDelete(listeAdd, "modClient") Then
+            For r As Integer = 0 To MainForm.TableClient.Rows.Count - 1
+                If MainForm.TableClient.Rows(r).Item("id") = TBID.Text Then
+                    For c As Integer = 0 To MainForm.TableClient.Columns.Count - 1
+                        MainForm.TableClient(r)(c) = listeAdd(c)
+                    Next
+                    LoadDGV()
+                End If
+            Next
             For i As Integer = 0 To listeAdd.Length - 1
                 table(0)(i) = listeAdd(i)
             Next
@@ -69,7 +82,7 @@ Public Class GestionClient
     End Sub
 
     Private Sub GestionClient_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        uc.LoadClient()
+        'uc.LoadClient()
     End Sub
 
     Private Sub TBTel1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TBTel1.KeyPress

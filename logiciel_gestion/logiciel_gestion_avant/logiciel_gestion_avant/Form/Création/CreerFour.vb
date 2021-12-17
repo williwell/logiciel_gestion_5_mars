@@ -69,6 +69,20 @@
 
             If ConnectionServeur.Getinstance.AddDelete(liste, "addFour") Then
                 MessageBox.Show("La création du fournisseur à bien été fait")
+
+                Dim row As DataRow = MainForm.tableFour.NewRow
+                Dim nbr As Integer = 0
+                For r As Integer = 0 To MainForm.tableFour.Rows.Count - 1
+                    If MainForm.tableFour.Rows(r).Item("id") >= nbr Then
+                        nbr = Integer.Parse(MainForm.tableFour.Rows(r).Item("id")) + 1
+                    End If
+                Next
+                row(0) = nbr
+                For c As Integer = 0 To liste.Length - 1
+                    row(c + 1) = liste(c)
+                Next
+                MainForm.tableFour.Rows.Add(row)
+
                 four.LoadFour()
                 Me.Close()
             Else

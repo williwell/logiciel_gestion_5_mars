@@ -57,7 +57,21 @@
 
             If ConnectionServeur.Getinstance.AddDelete(liste, "AddClient") Then
                 MessageBox.Show("Enregistrement effectuer avec succès")
-                client.LoadClient()
+
+                Dim row As DataRow = MainForm.TableClient.NewRow
+                Dim nbr As Integer = 0
+                For r As Integer = 0 To MainForm.TableClient.Rows.Count - 1
+                    If MainForm.TableClient.Rows(r).Item("id") >= nbr Then
+                        nbr = Integer.Parse(MainForm.TableClient.Rows(r).Item("id")) + 1
+                    End If
+                Next
+                row(0) = nbr
+                For c As Integer = 0 To liste.Length - 1
+                    row(c + 1) = liste(c)
+                Next
+                MainForm.TableClient.Rows.Add(row)
+
+                'client.LoadClient()
                 Me.Close()
             Else
                 MessageBox.Show("Une erreure est survenu durant l'enregistrement!", "Attention!")

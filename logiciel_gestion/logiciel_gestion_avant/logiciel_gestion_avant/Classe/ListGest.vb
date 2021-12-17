@@ -11,17 +11,6 @@ Public Class ListGest
         dgvGiver.Rows.Remove(dgvGiver.CurrentRow)
     End Sub
 
-    Shared Sub LoadCoul(table As DataTable, instruction As String, dgv As DataGridView, liste(,) As String)
-        table = ConnectionServeur.Getinstance.GetInfo(instruction)
-        dgv.DataSource = table
-        ReDim liste(table.Rows.Count - 1, table.Columns.Count - 1)
-        For r As Integer = 0 To table.Rows.Count - 1
-            For c As Integer = 0 To table.Columns.Count - 1
-                liste(r, c) = table(r)(c)
-            Next
-        Next
-    End Sub
-
     Shared Sub PopulateRow(table As DataTable, dgvGiver As DataGridView, dgvRecever As DataGridView, tableMid As DataTable)
         Dim row As DataRow = table.NewRow
         Dim nbr As Integer = 0
@@ -96,18 +85,6 @@ Public Class ListGest
         Next
         Return listeAdd
     End Function
-
-    Shared Sub RemplirModel(table As DataTable, instruction As String, ListeId() As String, cb As ComboBox)
-        table = ConnectionServeur.Getinstance.GetInfo(instruction)
-        Dim liste(table.Rows.Count - 1) As String
-        ReDim ListeId(table.Rows.Count - 1)
-        For i As Integer = 0 To table.Rows.Count - 1
-            liste(i) = table(i)(1)
-            ListeId(i) = table(i)(0)
-        Next
-        cb.DataSource = liste
-        'Remplir(1)
-    End Sub
 
     Shared Sub ListeOr(liste(,) As String, table As DataTable)
         For r As Integer = 0 To table.Rows.Count - 1

@@ -82,6 +82,21 @@
         If Not String.IsNullOrEmpty(str) Then
             Dim liste() As String = {TBNom.Text, NUDCout.Value}
             Dim id As DataTable = ConnectionServeur.Getinstance.GetInfo(liste, "CreateOption")
+
+            Dim nbr As Integer = 0
+            For r As Integer = 0 To MainForm.tableOp.Rows.Count - 1
+                If MainForm.tableOp.Rows(r).Item("id") >= nbr Then
+                    nbr = MainForm.tableOp.Rows(r).Item("id") + 1
+                End If
+            Next
+
+            Dim row As DataRow = MainForm.tableOp.NewRow
+            row(0) = nbr
+            row(1) = liste(0)
+            row(2) = liste(1)
+            row(3) = "True"
+            MainForm.tableOp.Rows.Add(row)
+
             If Not id(0)(0) = "False" Then
                 For r As Integer = 0 To DGVItemOption.Rows.Count - 1
                     Dim listeAdd(2) As String
@@ -90,6 +105,12 @@
                     listeAdd(2) = DGVItemOption.Rows(r).Cells(DGVItemOption.Columns.Count - 1).Value
                     If Not ConnectionServeur.Getinstance.AddDelete(listeAdd, "AddOptionItem") Then
                         bool = True
+                    Else
+                        Dim row2 As DataRow = MainForm.tableOpInv.NewRow
+                        For i As Integer = 0 To listeAdd.Length - 1
+                            row2(i) = listeAdd(i)
+                        Next
+                        MainForm.tableOpInv.Rows.Add(row2)
                     End If
                 Next
                 If bool Then

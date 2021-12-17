@@ -33,7 +33,7 @@ Public Class ConnectionServeur
 
             Dim inStream(1024) As Byte
             serverStream.Read(inStream, 0, inStream.Length())
-            If Boolean.Parse(Encoding.UTF8.GetString(inStream)) Then
+            If Boolean.Parse(Encoding.UTF8.GetString(inStream).Substring(0, 4)) Then
                 conc = True
                 thread.Start(main)
             End If
@@ -231,6 +231,15 @@ Public Class ConnectionServeur
             If InStr(str, "\\end;") >= 1 Then
                 search = False
             End If
+
+            'Dim textFileStream As New IO.FileStream("C:\logiciel_gestion_5_mars_fichier\texte.txt", IO.FileMode.OpenOrCreate, IO.FileAccess.ReadWrite, IO.FileShare.None)
+            'Dim myFileWriter As New IO.StreamWriter(textFileStream)
+            Using myFileWriter As IO.StreamWriter = IO.File.AppendText("C:\logiciel_gestion_5_mars_fichier\texte.txt")
+                myFileWriter.WriteLine(str)
+                myFileWriter.WriteLine("ok")
+                myFileWriter.Close()
+                'textFileStream.Close()
+            End Using
         End While
 
         Dim row As Integer = Integer.Parse(str.Substring(0, str.IndexOf(";")))
@@ -294,7 +303,7 @@ Public Class ConnectionServeur
 
                                 Dim inStream(1024) As Byte
                                 serverStream.Read(inStream, 0, inStream.Length())
-                                If Boolean.Parse(Encoding.UTF8.GetString(inStream)) Then
+                                If Boolean.Parse(Encoding.UTF8.GetString(inStream).Substring(0, 4)) Then
                                     conc = True
                                 End If
                             Catch ex As Exception

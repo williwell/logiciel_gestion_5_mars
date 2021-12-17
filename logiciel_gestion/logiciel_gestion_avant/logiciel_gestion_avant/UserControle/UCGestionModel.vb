@@ -49,7 +49,7 @@ Public Class UCGestionModel
     Private Sub Remplir(id As String)
         'Mettre que si a rien
         If MainForm.tableModel.Rows.Count <> 0 Then
-            NUDCout.Value = MainForm.tableModel(id - 1)(2)
+            NUDCout.Value = MainForm.tableModel(cbModel.SelectedIndex)(2)
         End If
 
         tableOptionMo.Clear()
@@ -157,7 +157,7 @@ Public Class UCGestionModel
     End Sub
 
     Private Sub CbModel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbModel.SelectedIndexChanged
-        Remplir(cbModel.SelectedIndex + 1)
+        Remplir(MainForm.tableModel.Rows(cbModel.SelectedIndex).Item("id"))
     End Sub
 
     Private Sub DgvOptionMo_DoubleClick(sender As Object, e As EventArgs) Handles dgvOptionMo.DoubleClick

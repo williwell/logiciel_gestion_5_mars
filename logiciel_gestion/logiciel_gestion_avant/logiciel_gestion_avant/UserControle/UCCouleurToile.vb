@@ -25,6 +25,8 @@
     End Sub
 
     Public Sub LoadCoul()
+        tableCoul.Clear()
+
         For r As Integer = 0 To MainForm.tableCoulToi.Rows.Count - 1
             If MainForm.tableCoulToi.Rows(r).Item("deletecoul") = True Then
                 Dim row As DataRow = tableCoul.NewRow
@@ -54,17 +56,6 @@
             Next
         Next
         CheckerChange()
-    End Sub
-
-    Public Sub RemplirDGV()
-        tableCoul = ConnectionServeur.Getinstance.GetInfo("getCouleur")
-        dgvCouleur.DataSource = tableCoul
-        ReDim listeOr(tableCoul.Rows.Count - 1, tableCoul.Columns.Count - 1)
-        For r As Integer = 0 To tableCoul.Rows.Count - 1
-            For c As Integer = 0 To tableCoul.Columns.Count - 1
-                listeOr(r, c) = tableCoul(r)(c)
-            Next
-        Next
     End Sub
 
     Private Sub BTEnregistrer_Click(sender As Object, e As EventArgs) Handles BTEnregistrer.Click
@@ -115,7 +106,7 @@
     Private Sub BtDel_Click(sender As Object, e As EventArgs) Handles BtDel.Click
         If MessageBox.Show("Voulez-vous vraiment supprimer " + dgvCouleur.CurrentRow.Cells(1).Value + "?", "Attention!", MessageBoxButtons.YesNo) = DialogResult.Yes Then
             ConnectionServeur.Getinstance.GetInfo(dgvCouleur.CurrentRow.Cells(0).Value, "ChangeDeleteToi")
-            RemplirDGV()
+            LoadCoul()
         End If
     End Sub
 

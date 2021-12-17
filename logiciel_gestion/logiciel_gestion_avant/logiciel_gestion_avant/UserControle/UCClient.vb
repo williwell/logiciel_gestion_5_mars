@@ -12,7 +12,7 @@
     End Sub
 
     Private Sub UCClient_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        loadClient()
+        LoadClient()
     End Sub
 
     Private Sub BtCreer_Click(sender As Object, e As EventArgs) Handles BtCreer.Click
@@ -20,7 +20,7 @@
         creer.ShowDialog(Me)
     End Sub
 
-    Public Sub LoadClient()
+    Public Sub loadclient()
         tableCl = MainForm.TableClient
         DGVClient.DataSource = tableCl
     End Sub

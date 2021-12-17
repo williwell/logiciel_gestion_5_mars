@@ -199,12 +199,25 @@ Public Class GestionVehicule
     End Sub
 
     Private Sub BTSave_Click(sender As Object, e As EventArgs) Handles BTSave.Click
+        'Envoi les nouvelles données au seveur et attend la réponse de celui ci si ca marcher ou pas
         If ConnectionServeur.Getinstance.AddDelete(liste, "updateVehicule") Then
+
+            'Update Vehicule dans la table du mainform
+            For r As Integer = 0 To MainForm.tableVe.Rows.Count - 1
+                If MainForm.tableVe.Rows(r).Item("id") = liste(0) Then
+                    For c As Integer = 1 To MainForm.tableVe.Columns.Count - 1
+                        MainForm.tableVe(r)(c) = liste(c)
+                    Next
+                End If
+            Next
+
+            'Message de confirmation de réussite et changement de la liste originale pour matcher les nouvelles données
             MessageBox.Show("Enregistrement fait avec succès!")
             For i As Integer = 1 To liste.Count - 1
                 listeOR(i) = liste(i)
             Next
 
+            'Remplir le datarow avec les nouvelles données pour quand on va fermer la fenêtre elle soit envoyer dans le datagrid view de ucgestionVehicule
             row.Cells(1).Value = TBMatricule.Text
             row.Cells(2).Value = tableModel(CBModel.SelectedIndex)(1)
             row.Cells(3).Value = tableCoulVe(CBCoulVe.SelectedIndex)(1)
@@ -218,6 +231,7 @@ Public Class GestionVehicule
 
             CheckChange()
         Else
+            'Message d'erreure si l'enregistrement sur le serveur à échouer
             MessageBox.Show("Une erreure est survenue durant l'enregistrement!", "Attention!")
         End If
     End Sub
