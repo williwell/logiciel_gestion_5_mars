@@ -13,6 +13,7 @@
     End Sub
 
     Private Sub UCGestionVehicule_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Création des colonnes pour la table
         table.Columns.Add("id")
         table.Columns.Add("nomatricule")
         table.Columns.Add("model")
@@ -26,6 +27,7 @@
         table.Columns.Add("fabriquer")
         table.Columns.Add("eninventaire")
 
+        'loop pour mettre toutes les informations dans la table 
         For r As Integer = 0 To MainForm.tableVe.Rows.Count - 1
             For r2 As Integer = 0 To MainForm.tableModel.Rows.Count - 1
                 If MainForm.tableModel.Rows(r2).Item("id") = MainForm.tableVe.Rows(r).Item("idmodel") Then
@@ -59,20 +61,23 @@
             Next
         Next
 
+        'On met la table comme DataSource pour le DataGridView
         DGVVehicule.DataSource = table
         search.DataSource = DGVVehicule.DataSource
 
         Dim listeMo(MainForm.tableModel.Rows.Count) As String
         listeMo(0) = "Tous les models"
 
+        'Loop pour mettre tous les noms de model dans la listeMo et puis on utilise cette liste comme datasource pour le combobox
         For i As Integer = 1 To MainForm.tableModel.Rows.Count
             listeMo(i) = MainForm.tableModel(i - 1)(1)
         Next
         CBModel.DataSource = listeMo
 
+        'Création d'une nouvelle table temporaire
         Dim tableVe As New DataTable
         tableVe.Columns.Add("nom")
-
+        'loop pour mettre toutes les lignes de la tableCoulVe qui a le paramètre deletecoul = True
         For r As Integer = 0 To MainForm.tableCoulVe.Rows.Count - 1
             If MainForm.tableCoulVe.Rows(r).Item("deletecoul") = "True" Then
                 Dim row As DataRow = tableVe.NewRow
@@ -81,31 +86,32 @@
             End If
         Next
 
+        'Créer une liste qui va avoir les noms des couleurs mit dans la table
         Dim listeVe(tableVe.Rows.Count) As String
         listeVe(0) = "Toutes les Couleurs"
-
         For i As Integer = 1 To tableVe.Rows.Count
             listeVe(i) = tableVe(i - 1)(0)
         Next
         CBCoulVe.DataSource = listeVe
 
+        'Création d'une liste pour mettre les noms des couleurs de toile dans un combobox
         Dim listeToi(MainForm.tableCoulToi.Rows.Count) As String
         listeToi(0) = "Toutes les Couleurs Toiles"
-
         For i As Integer = 1 To MainForm.tableCoulToi.Rows.Count
             listeToi(i) = MainForm.tableCoulToi(i - 1)(1)
         Next
         CBCoulToi.DataSource = listeToi
 
+        'Création d'une liste pour mettre les noms des couleurs de tissus dans un combobox
         Dim listeTis(MainForm.tableCoulTis.Rows.Count) As String
-        listeTis(0) = "Toutes les Couleurs Toiles"
-
+        listeTis(0) = "Toutes les Couleurs Tissus"
         For i As Integer = 1 To MainForm.tableCoulTis.Rows.Count
             listeTis(i) = MainForm.tableCoulTis(i - 1)(1)
         Next
         CBCoulTis.DataSource = listeTis
     End Sub
 
+    'SI on change le texte ou l'index de ces différent objets qui sont handles on crée un string pour faire une recherche dans le DataGridView
     Private Sub TBSearchMat_TextChanged(sender As Object, e As EventArgs) Handles TBSearchMat.TextChanged, CBModel.SelectedIndexChanged, CBCoulVe.SelectedIndexChanged, CBCoulToi.SelectedIndexChanged, CBCoulTis.SelectedIndexChanged, RBFabNon.CheckedChanged, RBFabOui.CheckedChanged, RBFabTous.CheckedChanged, RBInvNon.CheckedChanged, RBInvOui.CheckedChanged, RBInvTous.CheckedChanged
         Dim str As String = ""
 
@@ -176,6 +182,7 @@
         search.Filter = str
     End Sub
 
+    'Si on double click dans le DataGridView on créer un nouveau form de type GestionVehicule
     Private Sub DGVVehicule_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVVehicule.CellDoubleClick
         If e.RowIndex >= 0 Then
             Dim gestionVe As New GestionVehicule(DGVVehicule.CurrentRow, Me)
@@ -183,10 +190,12 @@
         End If
     End Sub
 
+    'SI on click dans le UserControl on check si le menu du mainform est bien fermer
     Private Sub UCGestionVehicule_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
         main.fermerMenu()
     End Sub
 
+    'Cette fonction sert a recevoir une ligne de DataGridView et de modifier la ligne correspondant dans le DataGridView du UserControl
     Public Sub ChangeRow(row As DataGridViewRow)
         For r As Integer = 0 To DGVVehicule.Rows.Count - 1
             If DGVVehicule.Rows(r).Cells(0).Value = row.Cells(0).Value Then

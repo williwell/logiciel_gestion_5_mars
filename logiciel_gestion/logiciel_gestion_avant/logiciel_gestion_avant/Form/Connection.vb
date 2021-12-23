@@ -8,12 +8,11 @@
         ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
         mainform = main
     End Sub
+
     Private Sub Connection_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         tbPass.PasswordChar() = "*"
         tbUser.Select()
     End Sub
-
-
 
     Private Sub BtConnection_Click(sender As Object, e As EventArgs) Handles btConnection.Click
         verifConnection()

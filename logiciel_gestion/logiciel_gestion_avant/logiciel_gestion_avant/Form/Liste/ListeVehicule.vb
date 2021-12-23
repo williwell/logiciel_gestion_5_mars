@@ -11,8 +11,8 @@
     End Sub
 
     Private Sub ListeVehicule_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Créer une table temporaire et ajouter les colonnes que j'ai besoin
         Dim table As New DataTable
-
         table.Columns.Add("ID")
         table.Columns.Add("Numéro Matricule")
         table.Columns.Add("Model")
@@ -24,6 +24,8 @@
         table.Columns.Add("Couleur Tissus")
         table.Columns.Add("Code Couleur Tissus")
 
+
+        'Mettre les information d'un véhicule si il est en inventaire et fabriquer
         For r As Integer = 0 To MainForm.tableVe.Rows.Count - 1
             If MainForm.tableVe.Rows(r).Item("eninventaire") = "True" And MainForm.tableVe.Rows(r).Item("fabriquer") = "True" Then
                 For r2 As Integer = 0 To MainForm.tableModel.Rows.Count - 1
@@ -57,9 +59,11 @@
             End If
         Next
 
+        'Assigner la table à la DataSource
         DGVVehicule.DataSource = table
     End Sub
 
+    'SI on double click sur une ligne on envoie le id de la ligne du DataGridView au UserControl Vente, on appel la fonction NextPage et on ferme ce form
     Private Sub DGVVehicule_DoubleClick(sender As Object, e As EventArgs) Handles DGVVehicule.DoubleClick
         Dim row As DataGridViewRow = DGVVehicule.CurrentRow
         uc.setID(row.Cells(0).Value)

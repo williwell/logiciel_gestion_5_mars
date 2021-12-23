@@ -2,11 +2,11 @@
 
 Public Class GestionVehicule
     ReadOnly row As DataGridViewRow
-    Dim table As New DataTable
-    Dim tableModel As DataTable
-    Dim tableCoulVe As New DataTable
-    Dim tableCoulToile As DataTable
-    Dim tableCoulTissus As DataTable
+    ReadOnly table As New DataTable
+    ReadOnly tableModel As DataTable
+    ReadOnly tableCoulVe As New DataTable
+    ReadOnly tableCoulToile As DataTable
+    ReadOnly tableCoulTissus As DataTable
     Dim bool As Boolean = True
     ReadOnly listeOR(8) As String
     ReadOnly liste(8) As String
@@ -139,6 +139,7 @@ Public Class GestionVehicule
     End Sub
 
     Private Sub RemplirListe(lis As String())
+        'On remplie la liste avec les valeur qui sont dans le form
         lis(0) = row.Cells(0).Value
         lis(1) = row.Cells(1).Value
         lis(2) = Mainform.tableModel(CBModel.SelectedIndex)(0)
@@ -151,6 +152,8 @@ Public Class GestionVehicule
     End Sub
 
     Private Sub RemplirCB(CB As ComboBox, tablemain As DataTable)
+        'On resoit un comboBox et un datatable pour créer une liste de toute les nom qui sont dans la datatable
+        'Après on utilise cette liste comme datasource du combobox pour faire afficher tous les noms
         Dim liste(tablemain.Rows.Count - 1)
         For i As Integer = 0 To tablemain.Rows.Count - 1
             liste(i) = tablemain(i)(1)
@@ -237,6 +240,7 @@ Public Class GestionVehicule
     End Sub
 
     Private Sub TBMatricule_TextChanged(sender As Object, e As EventArgs) Handles TBMatricule.TextChanged
+        'Checker si un boolean est true pour savoir si on doit le mettre dans la liste de changement et faire appel a la fonction CheckChange
         If bool Then
             liste(1) = TBMatricule.Text()
             CheckChange()
@@ -244,6 +248,7 @@ Public Class GestionVehicule
     End Sub
 
     Private Sub CBModel_SelectedValueChanged(sender As Object, e As EventArgs) Handles CBModel.SelectedValueChanged
+        'Checker si un boolean est true pour savoir si on doit le mettre dans la liste de changement et faire appel a la fonction CheckChange
         If bool Then
             liste(2) = MainForm.tableModel(CBModel.SelectedIndex)(0)
             CheckChange()
@@ -251,6 +256,9 @@ Public Class GestionVehicule
     End Sub
 
     Private Sub CBCoulVe_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBCoulVe.SelectedIndexChanged
+        'Checker si un boolean est true pour savoir si on doit le mettre dans la liste de changement
+        'après on regarde si le combo box est sur aucune couleur pour savoir se quoi doit mettre dans la liste
+        'et faire appel a la fonction CheckChange
         If bool Then
             If Not CBCoulVe.SelectedItem = "Aucune couleur de disponible pour ce model" Then
                 liste(3) = MainForm.tableCoulVe(CBCoulVe.SelectedIndex)(0)
@@ -262,6 +270,7 @@ Public Class GestionVehicule
     End Sub
 
     Private Sub CBCoulToile_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBCoulToile.SelectedIndexChanged
+        'Checker si un boolean est true pour savoir si on doit le mettre dans la liste de changement et faire appel a la fonction CheckChange
         If bool Then
             liste(4) = MainForm.tableCoulToi(CBCoulToile.SelectedIndex)(0)
             CheckChange()
@@ -269,6 +278,7 @@ Public Class GestionVehicule
     End Sub
 
     Private Sub CBCoulTissus_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBCoulTissus.SelectedIndexChanged
+        'Checker si un boolean est true pour savoir si on doit le mettre dans la liste de changement et faire appel a la fonction CheckChange
         If bool Then
             liste(5) = MainForm.tableCoulTis(CBCoulTissus.SelectedIndex)(0)
             CheckChange()
@@ -276,6 +286,7 @@ Public Class GestionVehicule
     End Sub
 
     Private Sub CBFabriquer_CheckedChanged(sender As Object, e As EventArgs) Handles CBFabriquer.CheckedChanged
+        'Checker si un boolean est true pour savoir si on doit le mettre dans la liste de changement et faire appel a la fonction CheckChange
         If bool Then
             liste(6) = CBFabriquer.Checked
             CheckChange()
@@ -283,6 +294,7 @@ Public Class GestionVehicule
     End Sub
 
     Private Sub CBInv_CheckedChanged(sender As Object, e As EventArgs) Handles CBInv.CheckedChanged
+        'Checker si un boolean est true pour savoir si on doit le mettre dans la liste de changement et faire appel a la fonction CheckChange
         If bool Then
             liste(7) = CBInv.Checked
             CheckChange()
@@ -290,6 +302,12 @@ Public Class GestionVehicule
     End Sub
 
     Private Sub DTPPrevu_ValueChanged(sender As Object, e As EventArgs) Handles DTPPrevu.ValueChanged
+        'Checker si un boolean est true pour savoir si on doit le mettre dans la liste de changement
+        'après on regarde la date sélectionner dans le datetimepicker pour voir si la valeur est plus
+        'basse que la date d'aujourd'hui ou la date originale
+        'si oui on mais le bool a false pour qui ne recheck pas le changement de date et on mais la date du moment
+        'Sinon on mais la date sélection
+        'et on faire appel a la fonction CheckChange
         If bool Then
             If DTPPrevu.Value.ToString("yyyy-MM-dd") < Now.ToString("yyyy-MM-dd") And Not DTPPrevu.Value.ToString("yyyy-MM-dd") = listeOR(8) Then
                 bool = False
@@ -304,6 +322,9 @@ Public Class GestionVehicule
     End Sub
 
     Private Sub CheckChange()
+        'On crée un boolean pour qui est mit a false et on fait un loop pour passer toute la liste qui contien les changements
+        'On compare cette liste avec la liste original pour voir si a des changement
+        'Si a des changement on met le boolean a true et on change l'attribue enable du boutton sauvegarder avec ce boolean
         Dim boolCh As Boolean = False
         For i As Integer = 0 To liste.Count - 1
             If Not listeOR(i) = liste(i) Then
@@ -315,6 +336,7 @@ Public Class GestionVehicule
     End Sub
 
     Private Sub GestionVehicule_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
+        'Quand le form ferme on envoir la datarow au UserControl de gestion Véhicule pour qui modifie son datagridview
         uc.ChangeRow(row)
     End Sub
 End Class

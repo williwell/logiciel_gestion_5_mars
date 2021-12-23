@@ -1,7 +1,7 @@
 ﻿Public Class ListeInvManque
-    Dim table As DataTable
+    ReadOnly table As DataTable
     Dim id As String
-    Dim tableInv As New DataTable
+    ReadOnly tableInv As New DataTable
     Dim bool As Boolean = False
 
     Sub New(tableManque As DataTable, idcl As String)
@@ -17,11 +17,13 @@
     Private Sub ListeInvManque_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DGVManque.DataSource = table
 
+        'Création de la table temporaire avec les nom de colonnes de la table client du mainform
         Dim tableCl As New DataTable
         For c As Integer = 0 To MainForm.TableClient.Columns.Count - 1
             tableCl.Columns.Add(MainForm.TableClient.Columns(c).ColumnName)
         Next
 
+        'Loop pour mettre les information des clients avec une jointure avec la table VenteVéhicule
         For r As Integer = 0 To MainForm.TableClient.Rows.Count - 1
             For r2 As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
                 If MainForm.tableVenteVe.Rows(r2).Item("idclient") = MainForm.TableClient.Rows(r).Item("id") Then
@@ -36,16 +38,18 @@
             Next
         Next
 
+        'Créer une liste et mettre tous les id de la table qu'on a recu dans le constructeur paramétrer
         Dim liste(table.Rows.Count - 1) As String
-
         For i As Integer = 0 To table.Rows.Count - 1
             liste(i) = table(i)(0)
         Next
 
+        'Créer les colonnes pour la table Inv
         For i As Integer = 0 To MainForm.tableInv.Columns.Count - 1
             tableInv.Columns.Add(MainForm.tableInv.Columns(i).ColumnName)
         Next
 
+        'Remplir la table Inv selon la table inv du mainform et selon les id de la liste qu'on a
         For r As Integer = 0 To MainForm.tableInv.Rows.Count - 1
             For i As Integer = 0 To liste.Length - 1
                 If MainForm.tableInv.Rows(r).Item("id") = liste(i) Then
@@ -58,6 +62,7 @@
             Next
         Next
 
+        'Mettre information de la première ligne de la table client que nous avons créer et remplir plus haut
         TBIDCl.Text = tablecl(0)(0)
         TBPrenom1.Text = tablecl(0)(1)
         TBNom1.Text = tablecl(0)(2)
@@ -68,13 +73,16 @@
         TBSexe.Text = tablecl(0)(7)
         TBEmail.Text = tablecl(0)(8)
 
+        'Changer la valeur de bool pour que maintenant les changement soit pris en conte et appeler la fonction ChargerInv après
         bool = True
         ChargerInv(0)
 
+        'on empêche le DataGridView de pouvoir trier les résultats
         DGVManque.Columns(0).SortMode = DataGridViewColumnSortMode.NotSortable
         DGVManque.Columns(1).SortMode = DataGridViewColumnSortMode.NotSortable
     End Sub
 
+    'Mettre les informations d'une ligne de la table inv dans les textes box associer selon l'index recu
     Private Sub ChargerInv(index As Integer)
         TBIDInv.Text = tableInv(index)(0)
         TBNomInv.Text = tableInv(index)(1)
@@ -90,6 +98,9 @@
         TBMin.Text = tableInv(index)(7)
     End Sub
 
+    'Quand on change de ligne dans Le DatGridView  on check si le bool est true pour savoir si on doit faire l'action ou non
+    'Après on regarde pour être sur qu'on a bien clicker sur une ligne et après on appel la fonction ChargerInv avec la ligne
+    'qu'on a présentement sélectionner
     Private Sub DGVManque_SelectionChanged(sender As Object, e As EventArgs) Handles DGVManque.SelectionChanged
         If bool Then
             If Not IsNothing(DGVManque.CurrentRow) Then

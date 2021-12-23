@@ -27,6 +27,7 @@
     'Load
     '__________________________________________________________________________________________________________
     Private Sub UCInventaire_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Créeation des colonnes pour la tableOriginal
         For c As Integer = 0 To MainForm.tableInv.Columns.Count - 1
             tableOri.Columns.Add(MainForm.tableInv.Columns(c).ColumnName)
         Next
@@ -51,6 +52,9 @@
     '__________________________________________________________________________________________________________
     'Methods
     '__________________________________________________________________________________________________________
+
+    'On check les touche qui sont appuyer quand on est dans le textbox des id et on regarde si cette touche est entre
+    'Si oui, on appel les fonction Start et BtSauvChanger
     Private Sub TbIDPro_KeyDown(sender As Object, e As KeyEventArgs) Handles tbIDPro.KeyDown
         Try
             If e.KeyCode = Keys.Enter Then
@@ -65,6 +69,7 @@
         End Try
     End Sub
 
+    'Fonction qui sert à changer la propriété readonly ou enable des objets selon le boolean recu en paramètre
     Private Sub ChangeRead(read As Boolean)
         tbNom.ReadOnly = read
         nudQuantite.ReadOnly = read
@@ -81,6 +86,7 @@
         CBDevise.Enabled = Not read
     End Sub
 
+    'Fonction qui sert a enlever toutes information qui est mit dans les objets
     Private Sub Cleane()
         triger = False
         tbNom.Text = ""
@@ -107,6 +113,7 @@
         tbMethoPaie.Text = ""
     End Sub
 
+    'Cette Fonction sert à remplir les objets avec l'information de la tableOriginal et mettre dans une liste
     Private Sub Remplir()
         triger = False
         tbNom.Text = tableOri(0)(1)
@@ -133,6 +140,7 @@
         triger = True
     End Sub
 
+    'Fonction qui sert à remplir les informations de l'inventaire que l'utilisateur à mit
     Private Sub Remplir(id As Integer)
         triger = False
 
@@ -163,6 +171,7 @@
         triger = True
     End Sub
 
+    'Quand on click sur ce bouton, on envoie au serveur l'information de la liste pour modifier l'inventaire sur le serveur
     Private Sub BtSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
         If ConnectionServeur.Getinstance.AddDelete(change, "modInventaire") Then
             Dim liste() As String = {tbIDPro.Text, tbIDFour.Text, nudCoutUn.Value, tbNoFour.Text, tbNoMFR.Text, CBDevise.SelectedItem.ToString}
@@ -184,6 +193,8 @@
 
     End Sub
 
+    'Quand on appuie sur ce bouton, on ouvre un nouveau form de type RechercheProduit et on l'affiche. Après quand le form qu'on a créer
+    'ferme, on sélection le textbox id pour après envoyer un keypress de enter
     Private Sub BtRecherche_Click(sender As Object, e As EventArgs) Handles btRecherche.Click
         Dim recherche As New RechercheProduit(Me, main)
         recherche.ShowDialog()
@@ -191,17 +202,20 @@
         SendKeys.Send("{ENTER}")
     End Sub
 
+    'QUand on appuie sur ce bouton, on appel les fonction remplir pour remmetre les information avant les modifications
     Private Sub BtAnnulMod_Click(sender As Object, e As EventArgs) Handles btAnnulMod.Click
         Remplir()
         Remplir(cbNoFour.SelectedIndex)
         btSauvChanger()
     End Sub
 
+    'Quand on click sur ce bouton, on créer un nouveau form de type CreerProduit et on l'affiche
     Private Sub BtCreer_Click(sender As Object, e As EventArgs) Handles btCreer.Click
         Dim creer As New creerProduit()
         creer.ShowDialog()
     End Sub
 
+    'Quand on change l'index du combobox Numéro fournisseur on appel une fonction pour changer les informations
     Private Sub CbNoFour_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cbNoFour.SelectedIndexChanged
         If Not sameFour = cbNoFour.SelectedIndex Then
             Remplir(cbNoFour.SelectedIndex)
@@ -209,6 +223,8 @@
         End If
     End Sub
 
+    'Quand on click sur ce bouton, on créer une liste des fournisseur déja associer avec cette pièce d'inventaire
+    'puis on créer un nouveau form de type ListeFournisseur et on l'affiche
     Private Sub BtAddFour_Click(sender As Object, e As EventArgs) Handles btAddFour.Click
         Dim liste(cbNoFour.Items.Count - 1) As String
         For i As Integer = 0 To cbNoFour.Items.Count - 1

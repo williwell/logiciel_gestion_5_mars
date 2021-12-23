@@ -65,7 +65,7 @@ Public Class MainForm
     'Load
     '__________________________________________________________________________________________________________
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        System.IO.File.Delete("C:\logiciel_gestion_5_mars_fichier\texte.txt")
+        IO.File.Delete("C:\logiciel_gestion_5_mars_fichier\texte.txt")
         ProgressBar1.Value = 20
     End Sub
 
@@ -93,6 +93,8 @@ Public Class MainForm
     '__________________________________________________________________________________________________________
     'Methods
     '__________________________________________________________________________________________________________
+
+    'Ajouter les UserControl au controls du PanelUC
     Private Sub AddUC()
         ucAccueil = New UCAccueil(Me)
         PanUC.Controls.Add(ucAccueil)
@@ -114,6 +116,7 @@ Public Class MainForm
         bool = True
     End Sub
 
+    'Charger les informations du serveur dans les tables
     Private Sub LoadTable()
         TableClient = ConnectionServeur.Getinstance.GetInfo("getClient")
         tableCoulVe = ConnectionServeur.Getinstance.GetInfo("getCouleurAll")
@@ -143,6 +146,7 @@ Public Class MainForm
         'À faire un jour
     End Sub
 
+    'Regarder si l'utilisateur fait la combinaison de keypres ctr+h+p pour ouvrire la section caché connection
     Private Sub Form1_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         currentKeys.Add(e.KeyCode)
 
@@ -154,11 +158,12 @@ Public Class MainForm
         End If
     End Sub
 
+    'Utilisé pour enlever les touche qui ne sont plus sélectionner par l'utilisateur(Utilisé pour faire la combinaison de touche pour ouvrire option secret)
     Private Sub Form1_KeyUp(sender As Object, e As KeyEventArgs) Handles Me.KeyUp
         currentKeys.Remove(e.KeyCode)
     End Sub
 
-
+    'Agrandir ou rétrécir le Panel Menu pour afficher toutes les options du menu
     Private Sub BtMenu_Click(sender As Object, e As EventArgs) Handles btMenu.Click
         If panMenu.Size = panMenu.MinimumSize Then
             panMenu.Size = panMenu.MaximumSize
@@ -168,33 +173,42 @@ Public Class MainForm
         PanCouleur.Visible = False
     End Sub
 
+    'Si utilisateur click sur le bouton Acceuil du menu on fait afficher le UserControl dans le PanelUC
     Private Sub BtAccueil_Click(sender As Object, e As EventArgs) Handles btAccueil.Click
         ucAccueil.LoadDGV()
         ucAccueil.BringToFront()
         panMenu.Size = panMenu.MinimumSize
     End Sub
 
+    'Appel la fonction ShowInventaire si on click sur le bouton inventaire du menu
     Private Sub BtInventaire_Click(sender As Object, e As EventArgs) Handles btInventaire.Click
         ShowInventaire()
     End Sub
 
+    'Si utilisateur click sur le bouton Vente du menu on fait afficher le UserControl dans le PanelUC
     Private Sub BtVente_Click(sender As Object, e As EventArgs) Handles btVente.Click
         ucVente.BringToFront()
         panMenu.Size = panMenu.MinimumSize
     End Sub
 
+    'Si utilisateur click sur le bouton Fournisseur du menu on fait afficher le UserControl dans le PanelUC
     Private Sub BtFour_Click(sender As Object, e As EventArgs) Handles btFour.Click
         ucFour.BringToFront()
         panMenu.Size = panMenu.MinimumSize
     End Sub
 
+    'Si cette fonction est appeler on fait apparaître le USerCOntrol Inventaire
     Public Sub ShowInventaire()
         ucInventaire.BringToFront()
         panMenu.Size = panMenu.MinimumSize
     End Sub
 
+    'Si la connection au serveur à échoué un bouton connection serveur apparaît et si on click dessus on réessaye de se connecter
+    'Si sa marche, on appel la fonction LoadTalbe et AddUC
+    'Et on fait disparaitre le bouton connection
     Private Sub BtConnec_Click(sender As Object, e As EventArgs) Handles btConnec.Click
         If ConnectionServeur.Getinstance.TestConnection() Then
+            LoadTable()
             AddUC()
             lbNonConc.Text = ""
             btConnec.Visible = False
@@ -204,6 +218,7 @@ Public Class MainForm
         End If
     End Sub
 
+    'Fonction qui est appeler par d'autre et qui remet la page d'acceuil et fait apparaitre le bouton de connection
     Public Sub Fermer()
         If lbNonConc.InvokeRequired Then
             Dim d As New setValue(AddressOf SetTexte)
@@ -216,6 +231,7 @@ Public Class MainForm
         End If
     End Sub
 
+    'Fonction qui sert a mettre une valeur qu'on recoit en paramètre pour un texte
     Private Sub SetTexte(text As String)
         ucAccueil.BringToFront()
         lbNonConc.Text = text
@@ -223,34 +239,41 @@ Public Class MainForm
         btMenu.Enabled = False
     End Sub
 
+    'Si utilisateur click sur le bouton Model du menu on fait afficher le UserControl dans le PanelUC
     Private Sub BtModel_Click(sender As Object, e As EventArgs) Handles btModel.Click
         ucModel.BringToFront()
         panMenu.Size = panMenu.MinimumSize
     End Sub
 
+    'Fonction qui set à mettre le USerControl UCvente2 à la variable
     Public Sub SetUCVente2(ByRef uc As UCVente2)
         ucVente2 = uc
     End Sub
 
+    'Fonction qui set à mettre le USerControl UCvente3 à la variable
     Public Sub SetUCVente3(ByRef uc As UCVente3)
         ucVente3 = uc
     End Sub
 
+    'Fonction qui sert à changer le userCOntrol qui est afficher
     Public Sub ChangeUCNext1(tps As Boolean, tvq As Boolean)
         ucVente2.LoadDGV()
         ucVente2.BringToFront()
         ucVente2.SetPrix(ucVente.GetPrix(), tps, tvq)
     End Sub
 
+    'Fonction qui sert à changer le userCOntrol qui est afficher
     Public Sub ChangeUCNext2()
         ucVente3.BringToFront()
     End Sub
 
+    'Fonction qui sert à changer le userCOntrol qui est afficher
     Public Sub ChangeUCPrev1(tps As Boolean, tvq As Boolean)
         ucVente.BringToFront()
         ucVente.SetTaxe(tps, tvq)
     End Sub
 
+    'Fonction qui sert à changer le userCOntrol qui est afficher
     Public Sub ChangeUCPrev2()
         ucVente2.BringToFront()
     End Sub

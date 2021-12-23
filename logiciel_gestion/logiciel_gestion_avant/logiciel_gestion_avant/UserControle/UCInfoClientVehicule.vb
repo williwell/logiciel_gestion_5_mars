@@ -52,6 +52,7 @@
         End If
     End Sub
 
+    'Si on click dans le UserCOntrol on check pour être sur que le menu dans le Mainform soit bien fermer
     Private Sub UCInfoClientVehicule_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
         main.fermerMenu()
     End Sub
