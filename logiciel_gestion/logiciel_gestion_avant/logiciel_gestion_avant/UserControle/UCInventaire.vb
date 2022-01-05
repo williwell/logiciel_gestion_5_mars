@@ -60,7 +60,6 @@
             If e.KeyCode = Keys.Enter Then
                 If sameID <> tbIDPro.Text Then
                     Start()
-                    BtSauvChanger()
                 End If
                 e.SuppressKeyPress = True
             End If
@@ -173,9 +172,31 @@
 
     'Quand on click sur ce bouton, on envoie au serveur l'information de la liste pour modifier l'inventaire sur le serveur
     Private Sub BtSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
+        'Sauvegarde sur le serveur des information relatif à l'item
         If ConnectionServeur.Getinstance.AddDelete(change, "modInventaire") Then
             Dim liste() As String = {tbIDPro.Text, tbIDFour.Text, nudCoutUn.Value, tbNoFour.Text, tbNoMFR.Text, CBDevise.SelectedItem.ToString}
+
+            'Trouver la ligne correspondante dans la table inventaire et changer les informations
+            For r As Integer = 0 To MainForm.tableInv.Rows.Count - 1
+                If MainForm.tableInv.Rows(r).Item("id") = change(0) Then
+                    For c As Integer = 1 To MainForm.tableInv.Columns.Count - 1
+                        MainForm.tableInv(r)(c) = change(c)
+                    Next
+                End If
+            Next
+
+            'Sauvegarde sur le serveur des changement du fournisseur
             If ConnectionServeur.Getinstance.AddDelete(liste, "modInvFour") Then
+
+                'Trouver la ligne correspondante dans la table invfour et changer les informations
+                For r As Integer = 0 To MainForm.tableInvFour.Rows.Count - 1
+                    If MainForm.tableInvFour.Rows(r).Item("idinventaire") = liste(0) And MainForm.tableInvFour.Rows(r).Item("idfournisseur") = liste(1) Then
+                        For c As Integer = 2 To MainForm.tableInvFour.Columns.Count - 1
+                            MainForm.tableInvFour(r)(c) = liste(c)
+                        Next
+                    End If
+                Next
+
                 MessageBox.Show("La modification à bien été fait")
                 For i As Integer = 1 To change.Length - 1
                     If Not (i = 8 Or i = 9) Then
@@ -236,23 +257,20 @@
         start()
     End Sub
 
+    'Quand on click sur ce bouton, on ouvre un nouveau form de type ListeFournisseur et on l'affiche
     Private Sub BrRemoveFour_Click(sender As Object, e As EventArgs) Handles btRemoveFour.Click
         Dim listeFour As New ListeFournisseur(3, tbIDPro.Text)
         listeFour.ShowDialog()
         Start()
     End Sub
 
+    'Cette fonction sert à mettre l'information d'un item dans les objets du userControl et faire la liste original
     Private Sub Start()
         ChangeRead(True)
 
-        'Select Case* FROM `inventaire`
-        '                            inner Join `invfour`
-        '                            On inventaire.id = invfour.idInventaire
-        '                            inner Join `fournisseur`
-        '                            On invfour.idFournisseur = fournisseur.id
-        '                            WHERE inventaire.id = '{id}'
         tableOri.Clear()
 
+        'loop pour mettre toute l'information nécessaire dans la table
         For r As Integer = 0 To MainForm.tableInv.Rows.Count - 1
             If MainForm.tableInv.Rows(r).Item("id") = tbIDPro.Text Then
                 For r2 As Integer = 0 To MainForm.tableInvFour.Rows.Count - 1
@@ -279,33 +297,31 @@
             End If
         Next
 
+        'On regarde combien de ligne on a dans la table, si on a en 0 on enlève toutes inforations qui pourraient être encore dans les
+        'objets du UserControl et on affiche que le numéro d'item n'existe pas
+        If tableOri.Rows.Count = 0 Then
+            Cleane()
+            labPasItem.Text = "Le numéro d'item n'existe pas!"
+            labPasItem.ForeColor = Color.Red
+            tbIDPro.SelectAll()
+            sameID = tbIDPro.Text
 
-        Try
-            If tableOri(0)(0) = "\\null" Then
-                Cleane()
-                labPasItem.Text = "Le numéro d'item n'existe pas!"
-                labPasItem.ForeColor = Color.Red
-                tbIDPro.SelectAll()
-                sameID = tbIDPro.Text
-            Else
-                Remplir()
+            'Si on a des ligne on remplie les objets avec l'information de l'inventaire
+        Else
+            Remplir()
 
-                Dim liste(tableOri.Rows.Count - 1) As String
-                For i As Integer = 0 To tableOri.Rows.Count - 1
-                    liste(i) = i + 1
-                Next
-                cbNoFour.DataSource = liste
+            Dim liste(tableOri.Rows.Count - 1) As String
+            For i As Integer = 0 To tableOri.Rows.Count - 1
+                liste(i) = i + 1
+            Next
+            cbNoFour.DataSource = liste
 
-                Remplir(0)
-                ChangeRead(False)
-                labPasItem.Text = ""
-                sameID = tbIDPro.Text
-                change(0) = tbIDPro.Text
-            End If
-        Catch ex As Exception
-            MessageBox.Show("Un erreur est survenu avec le serveur")
-            main.Fermer()
-        End Try
+            Remplir(0)
+            ChangeRead(False)
+            labPasItem.Text = ""
+            sameID = tbIDPro.Text
+            change(0) = tbIDPro.Text
+        End If
 
     End Sub
 
@@ -323,13 +339,16 @@
     '__________________________________________________________________________________________________________
     'Validation Functions
     '__________________________________________________________________________________________________________
+
+    'On met l'information dans la liste change et si le trigger est true on appel la fonction btSauvChanger
     Private Sub TbNom_TextChanged(sender As Object, e As EventArgs) Handles tbNom.TextChanged
         change(1) = tbNom.Text
         If triger Then
-            btSauvChanger()
+            BtSauvChanger()
         End If
     End Sub
 
+    'On met l'information dans la liste change et si le trigger est true on appel la fonction btSauvChanger
     Private Sub NudQuantite_ValueChanged(sender As Object, e As EventArgs) Handles nudQuantite.ValueChanged
         change(2) = Convert.ToString(nudQuantite.Value)
         If triger Then
@@ -337,6 +356,7 @@
         End If
     End Sub
 
+    'On met l'information dans la liste change et si le trigger est true on appel la fonction btSauvChanger
     Private Sub TbDescription_TextChanged(sender As Object, e As EventArgs) Handles tbDescription.TextChanged
         change(3) = tbDescription.Text
         If triger Then
@@ -344,6 +364,7 @@
         End If
     End Sub
 
+    'On met l'information dans la liste change et si le trigger est true on appel la fonction btSauvChanger
     Private Sub TbEmplacement_TextChanged(sender As Object, e As EventArgs) Handles tbEmplacement.TextChanged
         change(4) = tbEmplacement.Text
         If triger Then
@@ -351,6 +372,7 @@
         End If
     End Sub
 
+    'On met l'information dans la liste change et si le trigger est true on appel la fonction btSauvChanger
     Private Sub CbUse_CheckedChanged(sender As Object, e As EventArgs) Handles cbUse.CheckedChanged
         change(5) = cbUse.Checked
         If triger Then
@@ -358,6 +380,7 @@
         End If
     End Sub
 
+    'On met l'information dans la liste change et si le trigger est true on appel la fonction btSauvChanger
     Private Sub NudEnCommende_ValueChanged(sender As Object, e As EventArgs) Handles nudEnCommende.ValueChanged
         change(6) = Convert.ToString(nudEnCommende.Value)
         If triger Then
@@ -365,6 +388,7 @@
         End If
     End Sub
 
+    'On met l'information dans la liste change et si le trigger est true on appel la fonction btSauvChanger
     Private Sub NudMinInv_ValueChanged(sender As Object, e As EventArgs) Handles nudMinInv.ValueChanged
         change(7) = Convert.ToString(nudMinInv.Value)
         If triger Then
@@ -372,6 +396,7 @@
         End If
     End Sub
 
+    'On met l'information dans la liste change et si le trigger est true on appel la fonction btSauvChanger
     Private Sub NudCoutUn_ValueChanged(sender As Object, e As EventArgs) Handles nudCoutUn.ValueChanged
         change(10) = Convert.ToString(nudCoutUn.Value)
         If triger Then
@@ -379,6 +404,7 @@
         End If
     End Sub
 
+    'On met l'information dans la liste change et si le trigger est true on appel la fonction btSauvChanger
     Private Sub TbNoFour_TextChanged(sender As Object, e As EventArgs) Handles tbNoFour.TextChanged
         change(11) = tbNoFour.Text
         If triger Then
@@ -386,6 +412,7 @@
         End If
     End Sub
 
+    'On met l'information dans la liste change et si le trigger est true on appel la fonction btSauvChanger
     Private Sub TbNoMFR_TextChanged(sender As Object, e As EventArgs) Handles tbNoMFR.TextChanged
         change(12) = tbNoMFR.Text
         If triger Then
@@ -393,6 +420,7 @@
         End If
     End Sub
 
+    'On met l'information dans la liste change et si le trigger est true on appel la fonction btSauvChanger
     Private Sub CBDevise_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBDevise.SelectedIndexChanged
         change(13) = CBDevise.SelectedItem.ToString
         If triger Then
@@ -400,6 +428,8 @@
         End If
     End Sub
 
+    'Fonction qui sert à regarder si à une différence entre la table oroginal et la liste Change. Si a une différence on change le enable des
+    'boutons BtSauv et BtAnnulMod
     Private Sub BtSauvChanger()
         Dim modif As Boolean = False
         For i As Integer = 1 To tableOri.Columns.Count - 12
@@ -412,6 +442,7 @@
         btAnnulMod.Enabled = modif
     End Sub
 
+    'On regarde quel touche à été appuyer et si cette touche est un point on change en virgule
     Private Sub NudCoutUn_KeyDown(sender As Object, e As KeyEventArgs) Handles nudCoutUn.KeyDown
         If e.KeyCode = 110 Or e.KeyCode = 190 Then
             e.SuppressKeyPress = True
@@ -422,12 +453,15 @@
     '__________________________________________________________________________________________________________
     'Set
     '__________________________________________________________________________________________________________
+
+    'Fonction qui sert à recevoir un id et le mettre dans le textbox et puis envoyer enter comme keypress
     Public Sub SetIDProduit(id As String)
         tbIDPro.Text = id
         tbIDPro.Select()
         SendKeys.Send("{ENTER}")
     End Sub
 
+    'Si on click dans le UserCOntrol on check si le menu du mainform est bien fermer
     Private Sub UCInventaire_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
         main.fermerMenu()
     End Sub

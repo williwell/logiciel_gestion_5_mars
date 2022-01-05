@@ -13,6 +13,8 @@
         main = form
     End Sub
 
+    'Quand on click sur ce bouton, on envoie l'information au serveur pour ajouter une vente de véhicule et les info qui vont avec comme
+    'les options du véhicule et les info du client
     Private Sub BTSave_Click(sender As Object, e As EventArgs) Handles BTSave.Click
         If Not String.IsNullOrEmpty(TBPrenom1.Text) Or Not idCl = 0 Then
             If Not String.IsNullOrEmpty(TBNom1.Text) Or Not idCl = 0 Then
@@ -60,6 +62,16 @@
                 If uc.getID = 0 Then
                     table = ConnectionServeur.Getinstance.GetInfo(listeAdd, "addVehicule")
                     id = table(0)(0)
+
+                    'Mettre les nouvelles informations du nouveau véhicule dans la table du mainform
+                    Dim row As DataRow = MainForm.tableVe.NewRow
+                    For i As Integer = 0 To listeAdd.Length + 1
+                        row(i) = listeAdd(i)
+                        If i >= liste.Length Then
+                            row(i) = 0
+                        End If
+                    Next
+                    MainForm.tableVe.Rows.Add(row)
                 Else
                     id = uc.getID
                 End If
@@ -75,7 +87,16 @@
                     Next
                     If Not IsNothing(liste(5)) Then
                         If ConnectionServeur.Getinstance.AddDelete(listeAdd, "addOpVe") And Not liste.Count - 1 = 6 Then
-                            addClient(listeAddCl, id)
+
+                            'Loop pour ajouter toute les nouvelles option associé à ce véhicule
+                            For i As Integer = 1 To listeAdd.Length - 1
+                                Dim row As DataRow = MainForm.tableOpVe.NewRow
+                                row(0) = listeAdd(i)
+                                row(1) = listeAdd(0)
+                                MainForm.tableOpVe.Rows.Add(row)
+                            Next
+
+                            AddClient(listeAddCl, id)
                         Else
                             MessageBox.Show("Une erreure c'est produit durant l'association des option!", "Attention!")
                         End If
@@ -93,11 +114,20 @@
         End If
     End Sub
 
+    'Fonction qui sert a envoyer l'info d'un nouveau client
     Private Sub AddClient(listeAddCl() As String, id As String)
         Dim table As DataTable
         If idCl = 0 Then
             table = ConnectionServeur.Getinstance.GetInfo(listeAddCl, "AddClientID")
             If Not table(0)(0) = 0 Then
+
+                'On ajoute les infos du nouveau client dans la table du mainform
+                Dim row As DataRow = MainForm.TableClient.NewRow
+                For i As Integer = 0 To listeAddCl.Length - 1
+                    row(i) = listeAddCl(i)
+                Next
+                MainForm.TableClient.Rows.Add(row)
+
                 idCl = table(0)(0)
                 AddVenteCl(id)
             Else
@@ -108,6 +138,7 @@
         End If
     End Sub
 
+    'Fonction qui sert à mettre une vente véhicule à un client déjà existent
     Private Sub AddVenteCl(id As String)
         Dim listeAdd(4) As String
         listeAdd(0) = id
@@ -124,6 +155,14 @@
         nbr2 += 1
         listeAdd(3) = nbr2
         If ConnectionServeur.Getinstance.AddDelete(listeAdd, "addVenteClient") Then
+
+            'On ajoute les informations pour de la vente vehicule dans la table du mainform
+            Dim row As DataRow = MainForm.tableVenteVe.NewRow
+            For i As Integer = 0 To listeAdd.Length - 1
+                row(i) = listeAdd(i)
+            Next
+            MainForm.tableVenteVe.Rows.Add(row)
+
             MessageBox.Show("Ajout fait avec succès")
             Clear()
             uc.Clear()
@@ -133,6 +172,7 @@
         End If
     End Sub
 
+    'Quand on click sur ce bouton, on appel la fonction du mainform pour changer la usercontrol qui est afficher pour mettre le usercontrol UCVente2
     Private Sub BTPrev_Click(sender As Object, e As EventArgs) Handles BTPrev.Click
         main.ChangeUCPrev2()
     End Sub
@@ -143,6 +183,7 @@
         CBSexeCl.DataSource = liste
     End Sub
 
+    'fonction qui sert à enlever le texte dans les objets du usercontrol
     Private Sub Clear()
         TBPrenom1.Text = ""
         TBNom1.Text = ""
@@ -157,11 +198,13 @@
         idCl = 0
     End Sub
 
+    'Quand on click sur ce bouton, on créer un nouveau form de type ListeClient et on le fait apparaître
     Private Sub BTClient_Click(sender As Object, e As EventArgs) Handles BTClient.Click
         Dim ListCl As New ListeClient(Me)
         ListCl.ShowDialog()
     End Sub
 
+    'Fonction qui sert à recevoir une ligne de datagridview et mettre l'information de celle ci dans les texteboxs du usercontrol
     Public Sub GetRowCl(row As DataGridViewRow)
         idCl = row.Cells(0).Value
         TBPreNom1Cl.Text = row.Cells(1).Value
@@ -179,6 +222,7 @@
         ChangeEna(True)
     End Sub
 
+    'fonction qui sert à changer la visibilité des objets dans le usercontrol selon le boulean recu
     Private Sub ChangeEna(bool As Boolean)
         TBPrenom1.Enabled = Not bool
         TBNom1.Enabled = Not bool
@@ -206,11 +250,13 @@
         TBEmailCl.Visible = bool
     End Sub
 
+    'Quand on appui sur ce bouton, on fait appel à la fonction ChangeEna avec un boulean False comme paramètre et on met le paramètre idCl à 0
     Private Sub BTNewCl_Click(sender As Object, e As EventArgs) Handles BTNewCl.Click
-        changeEna(False)
+        ChangeEna(False)
         idCl = 0
     End Sub
 
+    'quand on click dans le usercontrol on check pour être sur que le menu du mainform est bien fermer
     Private Sub UCVente3_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
         main.fermerMenu()
     End Sub
