@@ -22,6 +22,7 @@ Partial Class GestionInvModel
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GestionInvModel))
         Me.Label7 = New System.Windows.Forms.Label()
         Me.DGVInventaireAdd = New System.Windows.Forms.DataGridView()
         Me.Label8 = New System.Windows.Forms.Label()
@@ -105,6 +106,7 @@ Partial Class GestionInvModel
         Me.Controls.Add(Me.DGVInventaireAdd)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.DGVInventaireMo)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "GestionInvModel"
         Me.Text = "Gestion Model Inventaire"
         CType(Me.DGVInventaireAdd, System.ComponentModel.ISupportInitialize).EndInit()

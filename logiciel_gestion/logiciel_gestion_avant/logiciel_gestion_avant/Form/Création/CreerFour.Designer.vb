@@ -22,6 +22,7 @@ Partial Class CreerFour
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CreerFour))
         Me.btAnnuler = New System.Windows.Forms.Button()
         Me.btCreer = New System.Windows.Forms.Button()
         Me.tbMethodePaie = New System.Windows.Forms.TextBox()
@@ -251,6 +252,7 @@ Partial Class CreerFour
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.tbNomFour)
         Me.Controls.Add(Me.Label2)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximumSize = New System.Drawing.Size(279, 580)
         Me.MinimumSize = New System.Drawing.Size(279, 580)
         Me.Name = "CreerFour"

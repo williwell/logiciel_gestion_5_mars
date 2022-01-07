@@ -414,4 +414,10 @@ Public Class MainForm
     Public Function getbool() As Boolean
         Return bool
     End Function
+
+    'Fonction qui est appellé après la sauvegarde d'une nouvelle vente de véhicule et qui apoel une fonction dans UCVente2 pour enlever
+    'les options qui sont sélectionner
+    Public Sub EnleverOpt()
+        ucVente2.EnleverOpt()
+    End Sub
 End Class

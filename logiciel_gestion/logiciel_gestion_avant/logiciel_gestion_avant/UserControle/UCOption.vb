@@ -151,7 +151,7 @@
     'Quand on click sur le bouton, on créer un nouveau form de type CreerOption et on l'affiche
     Private Sub BTCreer_Click(sender As Object, e As EventArgs) Handles BTCreer.Click
         Dim OptionForm As New CreerOption
-        OptionForm.ShowDialog()
+        OptionForm.ShowDialog(Me)
         RemplireDGV()
     End Sub
 
@@ -159,7 +159,7 @@
     'le id de l'option qui est sélectionner dans le datagridview
     Private Sub BTItem_Click(sender As Object, e As EventArgs) Handles BTItem.Click, DGVOption.DoubleClick
         Dim form As New GestionInvOpt(DGVOption.CurrentRow.Cells(0).Value)
-        form.ShowDialog()
+        form.ShowDialog(Me)
         RemplireDGV()
     End Sub
 

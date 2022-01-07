@@ -25,7 +25,7 @@
     Private Sub DGVClient_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVClient.CellDoubleClick
         If e.RowIndex >= 0 Then
             Dim InfoClient As New GestionClient(DGVClient.CurrentRow.Cells(0).Value, Me)
-            InfoClient.ShowDialog()
+            InfoClient.ShowDialog(Me)
         End If
     End Sub
 

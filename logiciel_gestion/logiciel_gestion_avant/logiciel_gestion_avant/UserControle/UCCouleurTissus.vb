@@ -24,7 +24,7 @@
     Private Sub BtCreer_Click(sender As Object, e As EventArgs) Handles BtCreer.Click
         'Créer un nouveau form de CreerCouleurTissus et le fait apparaitre
         Dim NewColor As New CreerCouleurTissus(Me)
-        NewColor.ShowDialog()
+        NewColor.ShowDialog(Me)
     End Sub
 
     Public Sub LoadCoul()

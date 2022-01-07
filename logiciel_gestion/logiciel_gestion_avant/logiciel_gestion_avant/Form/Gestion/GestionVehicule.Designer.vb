@@ -22,6 +22,7 @@ Partial Class GestionVehicule
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GestionVehicule))
         Me.TBMatricule = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.CBModel = New System.Windows.Forms.ComboBox()
@@ -457,6 +458,7 @@ Partial Class GestionVehicule
         Me.Controls.Add(Me.CBModel)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.TBMatricule)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "GestionVehicule"
         Me.Text = "GestionVehicule"
         CType(Me.DGVClient, System.ComponentModel.ISupportInitialize).EndInit()

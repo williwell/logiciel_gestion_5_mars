@@ -22,6 +22,7 @@ Partial Class GestionInvOpt
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GestionInvOpt))
         Me.btAnnuler = New System.Windows.Forms.Button()
         Me.btSave = New System.Windows.Forms.Button()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -106,6 +107,7 @@ Partial Class GestionInvOpt
         Me.Controls.Add(Me.DGVInventaireAdd)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.DGVInventaireOpt)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "GestionInvOpt"
         Me.Text = "Gestion Option Inventaire"
         CType(Me.DGVInventaireAdd, System.ComponentModel.ISupportInitialize).EndInit()

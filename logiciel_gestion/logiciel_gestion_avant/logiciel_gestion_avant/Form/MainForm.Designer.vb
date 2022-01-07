@@ -22,7 +22,9 @@ Partial Class MainForm
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
         Me.PanUC = New System.Windows.Forms.Panel()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.PanGestVeh = New System.Windows.Forms.Panel()
         Me.BTLivrer = New System.Windows.Forms.Button()
         Me.BTGest = New System.Windows.Forms.Button()
@@ -43,7 +45,6 @@ Partial Class MainForm
         Me.btAccueil = New System.Windows.Forms.Button()
         Me.lbNonConc = New System.Windows.Forms.Label()
         Me.btConnec = New System.Windows.Forms.Button()
-        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.PanUC.SuspendLayout()
         Me.PanGestVeh.SuspendLayout()
         Me.PanCouleur.SuspendLayout()
@@ -59,6 +60,13 @@ Partial Class MainForm
         Me.PanUC.Name = "PanUC"
         Me.PanUC.Size = New System.Drawing.Size(808, 621)
         Me.PanUC.TabIndex = 1
+        '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Location = New System.Drawing.Point(253, 240)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(277, 23)
+        Me.ProgressBar1.TabIndex = 6
         '
         'PanGestVeh
         '
@@ -258,13 +266,6 @@ Partial Class MainForm
         Me.btConnec.UseVisualStyleBackColor = True
         Me.btConnec.Visible = False
         '
-        'ProgressBar1
-        '
-        Me.ProgressBar1.Location = New System.Drawing.Point(253, 240)
-        Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(277, 23)
-        Me.ProgressBar1.TabIndex = 6
-        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
@@ -274,6 +275,7 @@ Partial Class MainForm
         Me.Controls.Add(Me.lbNonConc)
         Me.Controls.Add(Me.panMenu)
         Me.Controls.Add(Me.PanUC)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximumSize = New System.Drawing.Size(848, 731)
         Me.MinimumSize = New System.Drawing.Size(848, 731)
         Me.Name = "MainForm"

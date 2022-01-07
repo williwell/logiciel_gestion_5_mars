@@ -204,13 +204,11 @@
                         liste(0) = idInv
                         liste(1) = 1
                         If ConnectionServeur.Getinstance.AddDelete(liste, "delInvFour") Then
-                            For r As Integer = 0 To MainForm.tableInvFour.Rows.Count - 1
+                            For r As Integer = MainForm.tableInvFour.Rows.Count - 1 To 0 Step -1
                                 'Supprimer la ligne dans la table InventaireFournisseur sur le mainform
-                                Dim row As DataRow
                                 If MainForm.tableInvFour.Rows(r).Item("idinventaire") = idInv And MainForm.tableInvFour.Rows(r).Item("idfournisseur") = 1 Then
-                                    row = MainForm.tableInvFour.Rows(r)
+                                    MainForm.tableInvFour.Rows.Remove(MainForm.tableInvFour.Rows(r))
                                 End If
-                                MainForm.tableInvFour.Rows.Remove(row)
                             Next
                         End If
                     End If
@@ -225,7 +223,7 @@
                 MessageBox.Show("La suppression du fournisseur à bien été fait!")
                 For i As Integer = 0 To MainForm.tableInvFour.Rows.Count - 1
                     If MainForm.tableInvFour.Rows(i).Item("idinventaire") = idInv And MainForm.tableInvFour.Rows(i).Item("idfournisseur") = dgvFour.CurrentRow.Cells(0).Value Then
-                        MainForm.tableInvFour.Rows.RemoveAt(dgvFour.CurrentRow.Index)
+                        MainForm.tableInvFour.Rows.RemoveAt(i)
                         i = MainForm.tableInvFour.Rows.Count
                     End If
                 Next
@@ -284,9 +282,10 @@
                         Dim row As DataRow = MainForm.tableInvFour.NewRow
                         row(0) = idInv
                         row(1) = 1
-                        row(2) = "null"
+                        row(2) = 0
                         row(3) = "null"
-                        row(4) = "CAD"
+                        row(4) = "null"
+                        row(5) = "CAD"
                         MainForm.tableInvFour.Rows.Add(row)
                     End If
                 End If

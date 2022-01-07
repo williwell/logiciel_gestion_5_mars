@@ -22,6 +22,7 @@ Partial Class CreerProduit
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CreerProduit))
         Me.nudMinInv = New System.Windows.Forms.NumericUpDown()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.btAnnul = New System.Windows.Forms.Button()
@@ -340,6 +341,7 @@ Partial Class CreerProduit
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.tbIDPro)
         Me.Controls.Add(Me.Label1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "CreerProduit"
         Me.Text = "Créer Nouveau Produit"
         CType(Me.nudMinInv, System.ComponentModel.ISupportInitialize).EndInit()

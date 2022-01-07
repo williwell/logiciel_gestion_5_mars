@@ -441,7 +441,7 @@ Public Class UCGestionModel
     'Si on appuie sur ce bouton, on créer un nouveau form de type CreerModel
     Private Sub BtCreer_Click(sender As Object, e As EventArgs) Handles btCreer.Click
         Dim creer As New CreerModel(Me)
-        creer.ShowDialog()
+        creer.ShowDialog(Me)
     End Sub
 
     'Fonction qui sert a prendre les info des model de la tableModel du Mainform pour créer une liste qui est utilisé comme source pour le combobox
@@ -459,7 +459,7 @@ Public Class UCGestionModel
     'Si on appuie sur ce bouton, on créer un nouveau form de type GestionInvModel avec comme argument le id du model
     Private Sub BtInv_Click(sender As Object, e As EventArgs) Handles btInv.Click
         Dim uc As New GestionInvModel(listeId(cbModel.SelectedIndex), Me)
-        uc.ShowDialog()
+        uc.ShowDialog(Me)
     End Sub
 
     'Si on appuie sur une touche du NumericUpDown on check quel touche est appuier et on réagie selon la touche

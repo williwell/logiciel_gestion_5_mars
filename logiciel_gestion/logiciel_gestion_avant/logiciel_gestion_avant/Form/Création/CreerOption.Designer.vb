@@ -22,6 +22,7 @@ Partial Class CreerOption
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CreerOption))
         Me.DGVItemOption = New System.Windows.Forms.DataGridView()
         Me.TBNom = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -134,6 +135,7 @@ Partial Class CreerOption
         Me.Controls.Add(Me.TBNom)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DGVItemOption)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "CreerOption"
         Me.Text = "Créer nouvelle Option"
         CType(Me.DGVItemOption, System.ComponentModel.ISupportInitialize).EndInit()

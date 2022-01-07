@@ -41,8 +41,13 @@
     '__________________________________________________________________________________________________________
 
     'SI on double click sur une ligne dans le DataGridView du Fournisseur on change le TextBox id pour mettre le id de la ligne clicker
-    Private Sub DgvFour_DoubleClick(sender As Object, e As EventArgs) Handles dgvFour.DoubleClick
+    Private Sub DgvFour_DoubleClick(sender As Object, e As EventArgs) Handles dgvFour.Click
         tbID.Text = dgvFour.CurrentRow.Cells(0).Value
+        If tbID.Text = "1" Then
+            BTDelete.Enabled = False
+        Else
+            BTDelete.Enabled = True
+        End If
     End Sub
 
     'Quand on change le texte du TextBox ID on va chercher l'information
@@ -182,7 +187,7 @@
     'Si on click sur se bouton, on crée un nouveau form de type CreerFour et on le fait afficher
     Private Sub BtCreerFour_Click(sender As Object, e As EventArgs) Handles btCreerFour.Click
         Dim creer As New CreerFour(Me)
-        creer.ShowDialog()
+        creer.ShowDialog(Me)
     End Sub
 
     'Fonction qui sert a attendre un peu après un ajout dans la base de donné et on change le textbox id pour refaire changer les informations
@@ -281,6 +286,88 @@
         main.FermerMenu()
     End Sub
 
+    'Quand on appuie sur le bouton, on demande à l'utilisateur deux fois de suite si il veut vraiment supprimer ce fournisseur si oui on le
+    'supprime définitivement du serveur et toute se qui y ai associé
+    Private Sub BTDelete_Click(sender As Object, e As EventArgs) Handles BTDelete.Click
+        If MessageBox.Show("Voulez-vous vraiment supprimer ce fournisseur: " & dgvFour.CurrentRow.Cells(0).Value & " - " & dgvFour.CurrentRow.Cells(1).Value & "? (Cette action est irréversible)", "Attention!", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            If MessageBox.Show("Êtes-vous sûr que vous voulez vraiment le supprimer: " & dgvFour.CurrentRow.Cells(0).Value & " - " & dgvFour.CurrentRow.Cells(1).Value & "? (Cette action est irréversible)", "Attention!", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+
+                If ConnectionServeur.Getinstance.AddDelete(dgvFour.CurrentRow.Cells(0).Value, "DeleteInvFourFour") Then
+                    'On loop pour trouver toute les lignes qui ont une connection avec ce fournisseur dans la table fourinv et les supprimer
+                    'ON créer aussi une liste avec les id des inventaire qui sont lier au fournisseur qu'on supprime
+                    Dim liste(-1) As String
+                    Dim nbr As Integer = 0
+                    For r As Integer = MainForm.tableInvFour.Rows.Count - 1 To 0 Step -1
+                        If MainForm.tableInvFour.Rows(r).Item("idfournisseur") = dgvFour.CurrentRow.Cells(0).Value Then
+                            ReDim Preserve liste(nbr)
+                            liste(nbr) = MainForm.tableInvFour.Rows(r).Item("idinventaire")
+                            nbr += 1
+                            MainForm.tableInvFour.Rows.RemoveAt(r)
+                        End If
+                    Next
+
+                    If liste.Length > 0 Then
+                        'On envoie la liste au serveur pour qu'il vérifie si il doit ajouter des lignes dans la table invfour pour les inventaire qui
+                        'n'ont plus de fournisseur
+                        If ConnectionServeur.Getinstance.AddDelete(liste, "CheckInvFour") Then
+
+                            'on loop pour trouver si a encore au moin un fournisseur sinon on leur rajoute le fournisseur 0 qui est le
+                            ' fournisseur "Pas de fournisseur"
+                            For i As Integer = 0 To liste.Length - 1
+                                Dim bool As Boolean = True
+                                For r As Integer = 0 To MainForm.tableInvFour.Rows.Count - 1
+                                    If liste(i) = MainForm.tableInvFour.Rows(r).Item("idinventaire") Then
+                                        bool = False
+                                    End If
+                                Next
+                                If bool Then
+                                    Dim row As DataRow = MainForm.tableInvFour.NewRow
+                                    row(0) = liste(i)
+                                    row(1) = 0
+                                    row(2) = 0
+                                    row(3) = "null"
+                                    row(4) = "null"
+                                    row(5) = "CAD"
+                                    MainForm.tableInvFour.Rows.Add(row)
+                                End If
+                            Next
+
+                            DeleteFour()
+                        Else
+                            MessageBox.Show("Une erreure est survenu durant la suppression du fournisseur")
+                        End If
+                    Else
+                        DeleteFour()
+                    End If
+                Else
+                    MessageBox.Show("une erreure est survenu durant la suppression du fournisseur")
+                End If
+            End If
+        End If
+    End Sub
+
+    'Fonction qui sert a supprimer un fournisseur dans la base de donnée du serveur
+    Private Sub DeleteFour()
+        'Suppression du fournisseur sur le serveur
+        If ConnectionServeur.Getinstance.AddDelete(dgvFour.CurrentRow.Cells(0).Value, "DeleteFour") Then
+
+            'On loop pour trouver la ligne correspondante dans la table dournisseur du mainform pour supprimer la ligne
+            Dim index As Integer = 0
+            For r As Integer = 0 To MainForm.tableFour.Rows.Count - 1
+                If MainForm.tableFour.Rows(r).Item("id") = dgvFour.CurrentRow.Cells(0).Value Then
+                    index = r
+                End If
+            Next
+            If index <> 0 Then
+                MainForm.tableFour.Rows.RemoveAt(index)
+            End If
+            MessageBox.Show("Suppression du fournisseur réussit avec succès")
+            dgvPiece.Rows.Clear()
+            Remplir(table)
+        Else
+            MessageBox.Show("Une erreure est survenu et a empêché la suppression du fournisseur")
+        End If
+    End Sub
 
     '__________________________________________________________________________________________________________
     'Set

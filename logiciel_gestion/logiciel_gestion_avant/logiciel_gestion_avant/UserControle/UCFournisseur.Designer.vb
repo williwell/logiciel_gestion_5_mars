@@ -51,6 +51,7 @@ Partial Class UCFournisseur
         Me.btSauv = New System.Windows.Forms.Button()
         Me.btAnnuler = New System.Windows.Forms.Button()
         Me.btCreerFour = New System.Windows.Forms.Button()
+        Me.BTDelete = New System.Windows.Forms.Button()
         CType(Me.dgvPiece, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dgvFour, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -300,15 +301,26 @@ Partial Class UCFournisseur
         '
         Me.btCreerFour.Location = New System.Drawing.Point(40, 18)
         Me.btCreerFour.Name = "btCreerFour"
-        Me.btCreerFour.Size = New System.Drawing.Size(172, 23)
+        Me.btCreerFour.Size = New System.Drawing.Size(180, 23)
         Me.btCreerFour.TabIndex = 0
         Me.btCreerFour.Text = "Créer Nouveau Fournisseur"
         Me.btCreerFour.UseVisualStyleBackColor = True
+        '
+        'BTDelete
+        '
+        Me.BTDelete.Enabled = False
+        Me.BTDelete.Location = New System.Drawing.Point(40, 590)
+        Me.BTDelete.Name = "BTDelete"
+        Me.BTDelete.Size = New System.Drawing.Size(180, 23)
+        Me.BTDelete.TabIndex = 26
+        Me.BTDelete.Text = "Supprimer Fournisseur"
+        Me.BTDelete.UseVisualStyleBackColor = True
         '
         'UCFournisseur
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.BTDelete)
         Me.Controls.Add(Me.btCreerFour)
         Me.Controls.Add(Me.btAnnuler)
         Me.Controls.Add(Me.btSauv)
@@ -376,4 +388,5 @@ Partial Class UCFournisseur
     Friend WithEvents btSauv As Button
     Friend WithEvents btAnnuler As Button
     Friend WithEvents btCreerFour As Button
+    Friend WithEvents BTDelete As Button
 End Class

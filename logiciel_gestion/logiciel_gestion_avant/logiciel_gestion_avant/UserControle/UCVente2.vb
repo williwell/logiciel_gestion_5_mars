@@ -145,4 +145,13 @@
             Next
         Next
     End Sub
+
+    'Fonction qui sert à enlever les options qui sont sélectionner, elle est appeler après la sauvegarde d'un nouveau contra de vente
+    Public Sub EnleverOpt()
+        For r As Integer = DGVOpCh.Rows.Count - 1 To 0 Step -1
+            DGVOpCh.Rows(r).Selected = True
+            ListGest.PopulateRow(table, DGVOpCh, DGVOpDispo)
+            CheckPrix()
+        Next
+    End Sub
 End Class

@@ -22,6 +22,7 @@ Partial Class CreerClient
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CreerClient))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.BTSave = New System.Windows.Forms.Button()
         Me.TBPrenom = New System.Windows.Forms.TextBox()
@@ -212,6 +213,7 @@ Partial Class CreerClient
         Me.Controls.Add(Me.TBPrenom)
         Me.Controls.Add(Me.BTSave)
         Me.Controls.Add(Me.Label1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximumSize = New System.Drawing.Size(383, 460)
         Me.MinimumSize = New System.Drawing.Size(381, 431)
         Me.Name = "CreerClient"

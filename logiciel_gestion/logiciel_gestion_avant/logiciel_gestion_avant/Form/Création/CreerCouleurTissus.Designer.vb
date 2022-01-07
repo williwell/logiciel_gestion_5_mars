@@ -22,6 +22,7 @@ Partial Class CreerCouleurTissus
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CreerCouleurTissus))
         Me.BtAnnuler = New System.Windows.Forms.Button()
         Me.TBCode = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
@@ -91,6 +92,7 @@ Partial Class CreerCouleurTissus
         Me.Controls.Add(Me.TBNom)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.BtSave)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "CreerCouleurTissus"
         Me.Text = "Créer Couleur Tissus"
         Me.ResumeLayout(False)

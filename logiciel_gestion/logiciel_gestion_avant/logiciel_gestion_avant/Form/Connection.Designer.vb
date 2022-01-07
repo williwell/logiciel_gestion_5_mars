@@ -22,6 +22,7 @@ Partial Class Connection
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Connection))
         Me.tbPass = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -80,6 +81,7 @@ Partial Class Connection
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.tbUser)
         Me.Controls.Add(Me.btConnection)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "Connection"
         Me.Text = "Connection"
         Me.ResumeLayout(False)

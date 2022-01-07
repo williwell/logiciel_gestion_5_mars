@@ -186,7 +186,7 @@
     Private Sub DGVVehicule_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVVehicule.CellDoubleClick
         If e.RowIndex >= 0 Then
             Dim gestionVe As New GestionVehicule(DGVVehicule.CurrentRow, Me)
-            gestionVe.ShowDialog()
+            gestionVe.ShowDialog(Me)
         End If
     End Sub
 

@@ -22,6 +22,7 @@ Partial Class ListeVehicule
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ListeVehicule))
         Me.DGVVehicule = New System.Windows.Forms.DataGridView()
         CType(Me.DGVVehicule, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -46,8 +47,9 @@ Partial Class ListeVehicule
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.DGVVehicule)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ListeVehicule"
-        Me.Text = "ListeVehicule"
+        Me.Text = "Liste Vehicule"
         CType(Me.DGVVehicule, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

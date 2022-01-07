@@ -22,6 +22,7 @@ Partial Class ListeInvManque
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ListeInvManque))
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TBIDCl = New System.Windows.Forms.TextBox()
@@ -83,7 +84,7 @@ Partial Class ListeInvManque
         Me.Label31 = New System.Windows.Forms.Label()
         Me.TBNoMFR = New System.Windows.Forms.TextBox()
         Me.Label32 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.CBFour = New System.Windows.Forms.ComboBox()
         Me.Label33 = New System.Windows.Forms.Label()
         Me.TBDescription = New System.Windows.Forms.TextBox()
         Me.Label34 = New System.Windows.Forms.Label()
@@ -623,13 +624,13 @@ Partial Class ListeInvManque
         Me.Label32.TabIndex = 61
         Me.Label32.Text = "Numéro MFR"
         '
-        'ComboBox1
+        'CBFour
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(656, 129)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(269, 23)
-        Me.ComboBox1.TabIndex = 63
+        Me.CBFour.FormattingEnabled = True
+        Me.CBFour.Location = New System.Drawing.Point(656, 129)
+        Me.CBFour.Name = "CBFour"
+        Me.CBFour.Size = New System.Drawing.Size(269, 23)
+        Me.CBFour.TabIndex = 63
         '
         'Label33
         '
@@ -716,7 +717,7 @@ Partial Class ListeInvManque
         Me.Controls.Add(Me.TBDescription)
         Me.Controls.Add(Me.Label34)
         Me.Controls.Add(Me.Label33)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.CBFour)
         Me.Controls.Add(Me.TBNoMFR)
         Me.Controls.Add(Me.Label32)
         Me.Controls.Add(Me.TBDevise)
@@ -778,8 +779,9 @@ Partial Class ListeInvManque
         Me.Controls.Add(Me.TBIDCl)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ListeInvManque"
-        Me.Text = "ListeInvManque"
+        Me.Text = "Liste Inventaire Manque"
         CType(Me.DGVManque, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -847,7 +849,7 @@ Partial Class ListeInvManque
     Friend WithEvents Label31 As Label
     Friend WithEvents TBNoMFR As TextBox
     Friend WithEvents Label32 As Label
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents CBFour As ComboBox
     Friend WithEvents Label33 As Label
     Friend WithEvents TBDescription As TextBox
     Friend WithEvents Label34 As Label

@@ -22,6 +22,7 @@ Partial Class CreerModel
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CreerModel))
         Me.BtAnnuler = New System.Windows.Forms.Button()
         Me.BtEnregistrer = New System.Windows.Forms.Button()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -255,6 +256,7 @@ Partial Class CreerModel
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.dgvOptionMo)
         Me.Controls.Add(Me.Label1)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "CreerModel"
         Me.Text = "Créer Nouveau Model"
         CType(Me.dgvCoulAjout, System.ComponentModel.ISupportInitialize).EndInit()

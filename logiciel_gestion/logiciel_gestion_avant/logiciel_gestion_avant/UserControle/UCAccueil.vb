@@ -244,6 +244,6 @@
             End If
         Next
         Dim form As New ListeInvManque(table, DGVVehicule.CurrentRow.Cells(0).Value)
-        form.ShowDialog()
+        form.ShowDialog(Me)
     End Sub
 End Class

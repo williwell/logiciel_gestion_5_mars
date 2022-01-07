@@ -23,7 +23,7 @@
     'Si on click sur ce bouton, on créer un nouveau form de type CreerCOuleurToile et on l'affiche
     Private Sub BtCreer_Click(sender As Object, e As EventArgs) Handles BtCreer.Click
         Dim NewCoul As New CreerCouleurToile(Me)
-        NewCoul.ShowDialog()
+        NewCoul.ShowDialog(Me)
     End Sub
 
     'Fonction qui sert a mettre les information dans la tableCoul pour après le mettre dans le DataGridView 

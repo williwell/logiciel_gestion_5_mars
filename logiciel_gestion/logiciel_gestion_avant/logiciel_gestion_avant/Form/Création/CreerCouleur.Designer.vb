@@ -22,6 +22,7 @@ Partial Class CreerCouleur
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CreerCouleur))
         Me.BtSave = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TBNom = New System.Windows.Forms.TextBox()
@@ -114,6 +115,7 @@ Partial Class CreerCouleur
         Me.Controls.Add(Me.TBNom)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.BtSave)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximumSize = New System.Drawing.Size(310, 335)
         Me.MinimumSize = New System.Drawing.Size(310, 335)
         Me.Name = "CreerCouleur"

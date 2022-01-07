@@ -101,7 +101,7 @@
     'Crée un nouveau form de CreerCouleur et le faire apparaître et quand ce form est fermé appeler la fonction RmeplirDGV
     Private Sub BtCreer_Click(sender As Object, e As EventArgs) Handles BtCreer.Click
         Dim CreerCoul As New CreerCouleur
-        CreerCoul.ShowDialog()
+        CreerCoul.ShowDialog(Me)
         RemplirDGV()
     End Sub
 

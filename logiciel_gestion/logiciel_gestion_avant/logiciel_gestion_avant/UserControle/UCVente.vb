@@ -96,7 +96,7 @@
     'Quand on click sur le bouton, on crée un nouveau form de type ListeVehicule et on le fait apparaître
     Private Sub BTChoisir_Click(sender As Object, e As EventArgs) Handles BTChoisir.Click
         Dim form As New ListeVehicule(Me)
-        form.ShowDialog()
+        form.ShowDialog(Me)
     End Sub
 
     'Cette fonction est utilisé pour mettre certaine information dans une liste et appeler une fonction du mainform pour changer de userControl

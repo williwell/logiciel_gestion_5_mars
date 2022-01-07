@@ -1,8 +1,9 @@
 ﻿Public Class ListeInvManque
     ReadOnly table As DataTable
-    Dim id As String
+    ReadOnly id As String
     ReadOnly tableInv As New DataTable
     Dim bool As Boolean = False
+    Dim tableFour As New DataTable
 
     Sub New(tableManque As DataTable, idcl As String)
 
@@ -80,6 +81,11 @@
         'on empêche le DataGridView de pouvoir trier les résultats
         DGVManque.Columns(0).SortMode = DataGridViewColumnSortMode.NotSortable
         DGVManque.Columns(1).SortMode = DataGridViewColumnSortMode.NotSortable
+
+        'Ajout des colonnes de la table FOurnisseur avec les nom de colonnes du mainform tableFOur
+        For c As Integer = 0 To MainForm.tableFour.Columns.Count - 1
+            tableFour.Columns.Add(MainForm.tableFour.Columns(c).ColumnName)
+        Next
     End Sub
 
     'Mettre les informations d'une ligne de la table inv dans les textes box associer selon l'index recu
@@ -96,6 +102,31 @@
         End If
         TBCommande.Text = tableInv(index)(6)
         TBMin.Text = tableInv(index)(7)
+
+        'Prendre les infos des fournisseur de cette pièce et les mettre dans la table fournisseur pour les faires afficher et
+        'être utilisé dans le form
+        tableFour.Clear()
+        For r As Integer = 0 To MainForm.tableInv.Rows.Count - 1
+            If MainForm.tableInv.Rows(r).Item("idInventaire") = id Then
+                For r2 As Integer = 0 To MainForm.tableFour.Rows.Count - 1
+                    If MainForm.tableFour.Rows(r2).Item("id") = MainForm.tableInvFour.Rows(r).Item("idfournisseur") Then
+                        Dim row As DataRow = tableFour.NewRow
+                        For c As Integer = 0 To MainForm.tableFour.Columns.Count - 1
+                            row(c) = MainForm.tableFour(r)(c)
+                        Next
+                    End If
+                Next
+            End If
+        Next
+
+        'Création de la liste avec les noms des fournisseurs qui sont liée à cette pièce d'inventaire, après on mais ces noms dans le
+        'combobox
+        Dim liste(tableFour.Rows.Count - 1) As String
+        For r As Integer = 0 To tableFour.Rows.Count - 1
+            liste(r) = tableFour(r)(1)
+        Next
+        CBFour.DataSource = liste
+
     End Sub
 
     'Quand on change de ligne dans Le DatGridView  on check si le bool est true pour savoir si on doit faire l'action ou non

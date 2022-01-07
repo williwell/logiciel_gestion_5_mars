@@ -4,7 +4,7 @@
     '__________________________________________________________________________________________________________
     Dim sameID As String
     Dim sameFour As Integer
-    Dim tableOri As New DataTable
+    ReadOnly tableOri As New DataTable
     ReadOnly change(13) As String
     Dim triger As Boolean = True
     Shared instance As UCInventaire = Nothing
@@ -218,7 +218,7 @@
     'ferme, on sélection le textbox id pour après envoyer un keypress de enter
     Private Sub BtRecherche_Click(sender As Object, e As EventArgs) Handles btRecherche.Click
         Dim recherche As New RechercheProduit(Me, main)
-        recherche.ShowDialog()
+        recherche.ShowDialog(Me)
         tbIDPro.Select()
         SendKeys.Send("{ENTER}")
     End Sub
@@ -233,7 +233,7 @@
     'Quand on click sur ce bouton, on créer un nouveau form de type CreerProduit et on l'affiche
     Private Sub BtCreer_Click(sender As Object, e As EventArgs) Handles btCreer.Click
         Dim creer As New creerProduit()
-        creer.ShowDialog()
+        creer.ShowDialog(Me)
     End Sub
 
     'Quand on change l'index du combobox Numéro fournisseur on appel une fonction pour changer les informations
@@ -253,14 +253,14 @@
             liste(i) = Integer.Parse(tbIDFour.Text)
         Next
         Dim listeFour As New ListeFournisseur(2, tbIDPro.Text, liste)
-        listeFour.ShowDialog()
-        start()
+        listeFour.ShowDialog(Me)
+        Start()
     End Sub
 
     'Quand on click sur ce bouton, on ouvre un nouveau form de type ListeFournisseur et on l'affiche
     Private Sub BrRemoveFour_Click(sender As Object, e As EventArgs) Handles btRemoveFour.Click
         Dim listeFour As New ListeFournisseur(3, tbIDPro.Text)
-        listeFour.ShowDialog()
+        listeFour.ShowDialog(Me)
         Start()
     End Sub
 

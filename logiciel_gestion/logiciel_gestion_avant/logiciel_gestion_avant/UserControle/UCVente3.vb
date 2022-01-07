@@ -66,9 +66,10 @@
                     'Mettre les nouvelles informations du nouveau véhicule dans la table du mainform
                     Dim row As DataRow = MainForm.tableVe.NewRow
                     For i As Integer = 0 To listeAdd.Length + 1
-                        row(i) = listeAdd(i)
-                        If i >= liste.Length Then
+                        If i >= listeAdd.Length Then
                             row(i) = 0
+                        Else
+                            row(i) = listeAdd(i)
                         End If
                     Next
                     MainForm.tableVe.Rows.Add(row)
@@ -166,6 +167,7 @@
             MessageBox.Show("Ajout fait avec succès")
             Clear()
             uc.Clear()
+            main.EnleverOpt()
             main.ChangeUCPrev1(True, True)
         Else
             MessageBox.Show("Une erreure c'est produit durant l'association du véicule et du client!", "Attention!")
@@ -201,7 +203,7 @@
     'Quand on click sur ce bouton, on créer un nouveau form de type ListeClient et on le fait apparaître
     Private Sub BTClient_Click(sender As Object, e As EventArgs) Handles BTClient.Click
         Dim ListCl As New ListeClient(Me)
-        ListCl.ShowDialog()
+        ListCl.ShowDialog(Me)
     End Sub
 
     'Fonction qui sert à recevoir une ligne de datagridview et mettre l'information de celle ci dans les texteboxs du usercontrol

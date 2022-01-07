@@ -22,6 +22,7 @@ Partial Class ListeClient
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ListeClient))
         Me.DGVClient = New System.Windows.Forms.DataGridView()
         CType(Me.DGVClient, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -46,6 +47,7 @@ Partial Class ListeClient
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.DGVClient)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ListeClient"
         Me.Text = "ListeClient"
         CType(Me.DGVClient, System.ComponentModel.ISupportInitialize).EndInit()

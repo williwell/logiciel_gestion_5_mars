@@ -22,6 +22,7 @@ Partial Class RechercheProduit
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RechercheProduit))
         Me.dgvProduit = New System.Windows.Forms.DataGridView()
         CType(Me.dgvProduit, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -48,6 +49,7 @@ Partial Class RechercheProduit
         Me.AutoSize = True
         Me.ClientSize = New System.Drawing.Size(1000, 478)
         Me.Controls.Add(Me.dgvProduit)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "RechercheProduit"
         Me.Text = "Recherche De Produit"
         CType(Me.dgvProduit, System.ComponentModel.ISupportInitialize).EndInit()
