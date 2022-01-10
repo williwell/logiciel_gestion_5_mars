@@ -697,6 +697,7 @@ Partial Class ListeInvManque
         'CBUtilise
         '
         Me.CBUtilise.AutoSize = True
+        Me.CBUtilise.Enabled = False
         Me.CBUtilise.Location = New System.Drawing.Point(371, 353)
         Me.CBUtilise.Name = "CBUtilise"
         Me.CBUtilise.Size = New System.Drawing.Size(45, 19)

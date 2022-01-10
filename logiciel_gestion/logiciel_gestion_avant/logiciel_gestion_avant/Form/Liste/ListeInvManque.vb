@@ -24,6 +24,11 @@
             tableCl.Columns.Add(MainForm.TableClient.Columns(c).ColumnName)
         Next
 
+        'Ajout des colonnes de la table FOurnisseur avec les nom de colonnes du mainform tableFOur
+        For c As Integer = 0 To MainForm.tableFour.Columns.Count - 1
+            tableFour.Columns.Add(MainForm.tableFour.Columns(c).ColumnName)
+        Next
+
         'Loop pour mettre les information des clients avec une jointure avec la table VenteVéhicule
         For r As Integer = 0 To MainForm.TableClient.Rows.Count - 1
             For r2 As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
@@ -76,44 +81,45 @@
 
         'Changer la valeur de bool pour que maintenant les changement soit pris en conte et appeler la fonction ChargerInv après
         bool = True
-        ChargerInv(0)
+        ChargerInv(DGVManque.Rows(0).Cells(0).Value)
 
         'on empêche le DataGridView de pouvoir trier les résultats
         DGVManque.Columns(0).SortMode = DataGridViewColumnSortMode.NotSortable
         DGVManque.Columns(1).SortMode = DataGridViewColumnSortMode.NotSortable
-
-        'Ajout des colonnes de la table FOurnisseur avec les nom de colonnes du mainform tableFOur
-        For c As Integer = 0 To MainForm.tableFour.Columns.Count - 1
-            tableFour.Columns.Add(MainForm.tableFour.Columns(c).ColumnName)
-        Next
     End Sub
 
     'Mettre les informations d'une ligne de la table inv dans les textes box associer selon l'index recu
-    Private Sub ChargerInv(index As Integer)
-        TBIDInv.Text = tableInv(index)(0)
-        TBNomInv.Text = tableInv(index)(1)
-        TBQuantite.Text = tableInv(index)(2)
-        TBDescription.Text = tableInv(index)(3)
-        TBEmplacement.Text = tableInv(index)(4)
-        If tableInv(index)(5) = "True" Then
-            CBUtilise.Checked = True
-        Else
-            CBUtilise.Checked = False
-        End If
-        TBCommande.Text = tableInv(index)(6)
-        TBMin.Text = tableInv(index)(7)
+    Private Sub ChargerInv(id As Integer)
+        For r As Integer = 0 To tableInv.Rows.Count - 1
+            If tableInv(r)(0) = id Then
+                TBIDInv.Text = tableInv(r)(0)
+                TBNomInv.Text = tableInv(r)(1)
+                TBQuantite.Text = tableInv(r)(2)
+                TBDescription.Text = tableInv(r)(3)
+                TBEmplacement.Text = tableInv(r)(4)
+                If tableInv(r)(5) = "True" Then
+                    CBUtilise.Checked = True
+                Else
+                    CBUtilise.Checked = False
+                End If
+                TBCommande.Text = tableInv(r)(6)
+                TBMin.Text = tableInv(r)(7)
+            End If
+        Next
+
 
         'Prendre les infos des fournisseur de cette pièce et les mettre dans la table fournisseur pour les faires afficher et
         'être utilisé dans le form
-        tableFour.Clear()
-        For r As Integer = 0 To MainForm.tableInv.Rows.Count - 1
-            If MainForm.tableInv.Rows(r).Item("idInventaire") = id Then
+        tableFour.Rows.Clear()
+        For r As Integer = 0 To MainForm.tableInvFour.Rows.Count - 1
+            If MainForm.tableInvFour.Rows(r).Item("idinventaire") = DGVManque.CurrentRow.Cells(0).Value Then
                 For r2 As Integer = 0 To MainForm.tableFour.Rows.Count - 1
                     If MainForm.tableFour.Rows(r2).Item("id") = MainForm.tableInvFour.Rows(r).Item("idfournisseur") Then
                         Dim row As DataRow = tableFour.NewRow
                         For c As Integer = 0 To MainForm.tableFour.Columns.Count - 1
-                            row(c) = MainForm.tableFour(r)(c)
+                            row(c) = MainForm.tableFour(r2)(c)
                         Next
+                        tableFour.Rows.Add(row)
                     End If
                 Next
             End If
@@ -127,6 +133,7 @@
         Next
         CBFour.DataSource = liste
 
+        RemplirFour(0)
     End Sub
 
     'Quand on change de ligne dans Le DatGridView  on check si le bool est true pour savoir si on doit faire l'action ou non
@@ -135,8 +142,38 @@
     Private Sub DGVManque_SelectionChanged(sender As Object, e As EventArgs) Handles DGVManque.SelectionChanged
         If bool Then
             If Not IsNothing(DGVManque.CurrentRow) Then
-                ChargerInv(DGVManque.CurrentRow.Index)
+                ChargerInv(DGVManque.CurrentRow.Cells(0).Value)
             End If
         End If
+    End Sub
+
+    'Remplir les informations des fournisseur selon l'index recu en argument
+    Private Sub RemplirFour(i As Integer)
+        TBIDFour.Text = tableFour(i)(0)
+        TBNomFour.Text = tableFour(i)(1)
+        TBAdresse1.Text = tableFour(i)(2)
+        TBAdresse2.Text = tableFour(i)(3)
+        TBTelFour.Text = tableFour(i)(4)
+        TBNomContacte.Text = tableFour(i)(5)
+        TBLeadTime.Text = tableFour(i)(5)
+        TBCouriel.Text = tableFour(i)(6)
+        TBMethoCom.Text = tableFour(i)(7)
+        TBNoCompte.Text = tableFour(i)(8)
+        TBMethodePaiement.Text = tableFour(i)(9)
+
+        'Loop pour trouver la ligne correspondante dans la table inventaireFournisseur du mainform et prendre l'information pour la mettre dans les textbox
+        For r As Integer = 0 To MainForm.tableInvFour.Rows.Count - 1
+            If MainForm.tableInvFour.Rows(r).Item("idinventaire") = DGVManque.CurrentRow.Cells(0).Value And MainForm.tableInvFour.Rows(r).Item("idfournisseur") = tableFour(i)(0) Then
+                TBCoutUn.Text = MainForm.tableInvFour(r)(2)
+                TBNoFour.Text = MainForm.tableInvFour(r)(3)
+                TBNoMFR.Text = MainForm.tableInvFour(r)(4)
+                TBDevise.Text = MainForm.tableInvFour(r)(5)
+            End If
+        Next
+    End Sub
+
+    'Quand on change l'index du combobox on appel la fonction remplirFour avec comme paramètre l'index du combobox qui est maintenent sélectionner
+    Private Sub CBFour_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBFour.SelectedIndexChanged
+        RemplirFour(CBFour.SelectedIndex)
     End Sub
 End Class
