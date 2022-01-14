@@ -3,7 +3,7 @@
     ReadOnly id As String
     ReadOnly tableInv As New DataTable
     Dim bool As Boolean = False
-    Dim tableFour As New DataTable
+    ReadOnly tableFour As New DataTable
 
     Sub New(tableManque As DataTable, idcl As String)
 
@@ -86,6 +86,10 @@
         'on empêche le DataGridView de pouvoir trier les résultats
         DGVManque.Columns(0).SortMode = DataGridViewColumnSortMode.NotSortable
         DGVManque.Columns(1).SortMode = DataGridViewColumnSortMode.NotSortable
+
+        For c As Integer = 0 To DGVManque.Columns.Count - 1
+            DGVManque.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
     End Sub
 
     'Mettre les informations d'une ligne de la table inv dans les textes box associer selon l'index recu

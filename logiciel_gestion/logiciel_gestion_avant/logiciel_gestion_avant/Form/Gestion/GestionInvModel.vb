@@ -1,9 +1,9 @@
 ﻿Imports System.ComponentModel
 
 Public Class GestionInvModel
-    Dim tableInvMo As New DataTable
+    ReadOnly tableInvMo As New DataTable
     Dim OrInvMo(0, 0) As String
-    Dim tableInvAdd As New DataTable
+    ReadOnly tableInvAdd As New DataTable
     Dim OrInvAdd(0, 0) As String
     ReadOnly tableAll As New DataTable
     Dim OrTableAll(0, 0) As String
@@ -115,6 +115,14 @@ Public Class GestionInvModel
         End If
         ReDim OrTableAll(tableAll.Rows.Count - 1, tableAll.Columns.Count - 1)
         ucGestion.ListeOr(OrTableAll, tableAll)
+
+        For c As Integer = 0 To DGVInventaireAdd.Columns.Count - 1
+            DGVInventaireAdd.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
+
+        For c As Integer = 0 To DGVInventaireMo.Columns.Count - 1
+            DGVInventaireMo.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
     End Sub
 
     Private Sub DGVInventaireAdd_DoubleClick(sender As Object, e As EventArgs) Handles DGVInventaireAdd.DoubleClick
@@ -175,7 +183,7 @@ Public Class GestionInvModel
                         ucGestion.CheckChange()
 
                         For i As Integer = 0 To listeAjout.Length - 1
-                            Dim delete As DataRow
+                            Dim delete As DataRow = Nothing
                             For Each r As Integer In MainForm.tableInvMo.Rows
                                 If MainForm.tableInvMo.Rows(r).Item("idinventaire") = listeAjout(i) And MainForm.tableInvMo.Rows(r).Item("idmodel") = id Then
                                     delete = MainForm.tableInvMo.Rows(r)
@@ -205,7 +213,7 @@ Public Class GestionInvModel
 
                     'Supprimer les lignes de la table du mainform
                     For i As Integer = 0 To listeAjout.Length - 1
-                        Dim delete As DataRow
+                        Dim delete As DataRow = Nothing
                         For r As Integer = 0 To MainForm.tableInvMo.Rows.Count - 1
                             If MainForm.tableInvMo.Rows(r).Item("idinventaire") = listeAjout(i) And MainForm.tableInvMo.Rows(r).Item("idmodel") = id Then
                                 delete = MainForm.tableInvMo.Rows(r)

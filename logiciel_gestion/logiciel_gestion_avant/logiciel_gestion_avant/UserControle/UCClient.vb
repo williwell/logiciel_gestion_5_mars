@@ -1,6 +1,5 @@
 ﻿Public Class UCClient
     ReadOnly main As MainForm
-    Dim tableCl As DataTable
 
     Sub New(mainform As MainForm)
 
@@ -13,6 +12,10 @@
 
     Private Sub UCClient_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         DGVClient.DataSource = MainForm.TableClient
+
+        For c As Integer = 0 To DGVClient.Columns.Count - 1
+            DGVClient.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
     End Sub
 
     'Crée un nouveau form de type CreerClient et le faire apparaitre
@@ -24,7 +27,7 @@
     'Si on double click sur une ligne du DataGridView on crée un nouveau form de GestionClient avec comme paramètre la ligne du DataGridView e ton affiche
     Private Sub DGVClient_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVClient.CellDoubleClick
         If e.RowIndex >= 0 Then
-            Dim InfoClient As New GestionClient(DGVClient.CurrentRow.Cells(0).Value, Me)
+            Dim InfoClient As New GestionClient(DGVClient.CurrentRow.Cells(0).Value)
             InfoClient.ShowDialog(Me)
         End If
     End Sub

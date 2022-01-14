@@ -45,6 +45,11 @@ Public Class UCGestionModel
         tableCouleurAdd.Columns.Add("Coût")
 
         RemplirModel()
+
+        SetColumn(dgvCoulAjout)
+        SetColumn(dgvCoulMo)
+        SetColumn(dgvOptionAjout)
+        SetColumn(dgvOptionMo)
     End Sub
 
     Private Sub Remplir(id As String)
@@ -268,7 +273,7 @@ Public Class UCGestionModel
                         'Loop pour passer toutes les index de la listeajout et un deuxieme loop pour passé toutes les lignes de la tableOpMo
                         'du Mainform et enlever la ligne si elle est trouver
                         For i As Integer = 0 To listeAjout.Length - 1
-                            Dim row As DataRow
+                            Dim row As DataRow = Nothing
                             For r As Integer = 0 To MainForm.tableOpMo.Rows.Count - 1
                                 If MainForm.tableOpMo.Rows(r).Item("idoption") = listeAjout(i) And MainForm.tableOpMo.Rows(r).Item("idModel") = listeId(cbModel.SelectedIndex) Then
                                     row = MainForm.tableOpMo.Rows(r)
@@ -291,7 +296,7 @@ Public Class UCGestionModel
                     'Loop pour passer toutes les index de la listeajout et un deuxieme loop pour passé toutes les lignes de la tableOpMo
                     'du Mainform et enlever la ligne si elle est trouver
                     For i As Integer = 0 To listeAjout.Length - 1
-                        Dim row As DataRow
+                        Dim row As DataRow = Nothing
                         For r As Integer = 0 To MainForm.tableOpMo.Rows.Count - 1
                             If MainForm.tableOpMo.Rows(r).Item("idoption") = listeAjout(i) And MainForm.tableOpMo.Rows(r).Item("idModel") = listeId(cbModel.SelectedIndex) Then
                                 row = MainForm.tableOpMo.Rows(r)
@@ -328,7 +333,7 @@ Public Class UCGestionModel
                         'Loop pour passer toutes les index de la listeajout et un deuxieme loop pour passé toutes les lignes de la tableCoulMo
                         'du Mainform et enlever la ligne si elle est trouver
                         For i As Integer = 0 To listeAjout.Length - 1
-                            Dim row As DataRow
+                            Dim row As DataRow = Nothing
                             For r As Integer = 0 To MainForm.tableCoulMo.Rows.Count - 1
                                 If MainForm.tableCoulMo.Rows(r).Item("idcouleur") = listeAjout(i) And MainForm.tableCoulMo.Rows(r).Item("idModel") = listeId(cbModel.SelectedIndex) Then
                                     row = MainForm.tableCoulMo.Rows(r)
@@ -351,7 +356,7 @@ Public Class UCGestionModel
                     'Loop pour passer toutes les index de la listeajout et un deuxieme loop pour passé toutes les lignes de la tableCoulMo
                     'du Mainform et enlever la ligne si elle est trouver
                     For i As Integer = 0 To listeAjout.Length - 1
-                        Dim row As DataRow
+                        Dim row As DataRow = Nothing
                         For r As Integer = 0 To MainForm.tableCoulMo.Rows.Count - 1
                             If MainForm.tableCoulMo.Rows(r).Item("idcouleur") = listeAjout(i) And MainForm.tableCoulMo.Rows(r).Item("idModel") = listeId(cbModel.SelectedIndex) Then
                                 row = MainForm.tableCoulMo.Rows(r)
@@ -382,6 +387,12 @@ Public Class UCGestionModel
         Else
             MessageBox.Show("Un erreure est c'est produit durant l'enregistrement!")
         End If
+    End Sub
+
+    Private Sub SetColumn(dgv As DataGridView)
+        For c As Integer = 0 To dgv.Columns.Count - 1
+            dgv.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
     End Sub
 
     'Fonction qui sert à créer une liste des différence entre les listes originals et des tables actuels et on retourne cette liste

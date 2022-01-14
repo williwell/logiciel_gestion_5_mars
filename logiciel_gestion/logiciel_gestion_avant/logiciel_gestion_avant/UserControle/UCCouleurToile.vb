@@ -1,6 +1,6 @@
 ﻿Public Class UCCouleurToile
     ReadOnly main As MainForm
-    Dim tableCoul As New DataTable
+    ReadOnly tableCoul As New DataTable
     Dim listeOr(0, 0) As String
 
     Sub New(mainform As MainForm)
@@ -18,6 +18,10 @@
         tableCoul.Columns.Add("Nom")
         tableCoul.Columns.Add("Code")
         LoadCoul()
+
+        For c As Integer = 0 To dgvCouleur.Columns.Count - 1
+            dgvCouleur.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
     End Sub
 
     'Si on click sur ce bouton, on créer un nouveau form de type CreerCOuleurToile et on l'affiche

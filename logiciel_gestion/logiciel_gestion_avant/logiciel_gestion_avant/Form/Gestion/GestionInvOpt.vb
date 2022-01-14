@@ -1,9 +1,9 @@
 ﻿Imports System.ComponentModel
 
 Public Class GestionInvOpt
-    Dim tableInvOpt As New DataTable
+    ReadOnly tableInvOpt As New DataTable
     Dim OrInvOpt(0, 0) As String
-    Dim tableInvAdd As New DataTable
+    ReadOnly tableInvAdd As New DataTable
     Dim OrInvAdd(0, 0) As String
     ReadOnly tableAll As New DataTable
     Dim OrTableAll(0, 0) As String
@@ -113,6 +113,14 @@ Public Class GestionInvOpt
         End If
         ReDim OrTableAll(tableAll.Rows.Count - 1, tableAll.Columns.Count - 1)
         ListGest.ListeOr(OrTableAll, tableAll)
+
+        For c As Integer = 0 To DGVInventaireAdd.Columns.Count - 1
+            DGVInventaireAdd.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
+
+        For c As Integer = 0 To DGVInventaireOpt.Columns.Count - 1
+            DGVInventaireOpt.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
     End Sub
 
     Private Sub DGVInventaireAdd_DoubleClick(sender As Object, e As EventArgs) Handles DGVInventaireAdd.DoubleClick
@@ -207,14 +215,14 @@ Public Class GestionInvOpt
         End If
     End Sub
 
-    Private Sub deleteRow(ByRef bool1 As Boolean)
+    Private Sub DeleteRow(ByRef bool1 As Boolean)
         Dim listeAjout() As String = CreateListeAdd(listeInvAdd, DGVInventaireAdd, False)
         If Not IsNothing(listeAjout) Then
             If ConnectionServeur.Getinstance.AddDelete(listeAjout, id, "DeleteInvOpt") Then
 
                 'Supprimer les lignes dans la table du mainform
                 For i As Integer = 0 To listeAjout.Length - 1
-                    Dim row As DataRow
+                    Dim row As DataRow = Nothing
                     For r As Integer = 0 To MainForm.tableOpInv.Rows.Count - 1
                         If MainForm.tableOpInv.Rows(r).Item("idoption") = listeAjout(i) And MainForm.tableOpInv.Rows(r).Item("idoption") = id Then
                             row = MainForm.tableOpInv.Rows(r)

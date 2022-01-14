@@ -2,11 +2,11 @@
 
 Public Class CreerModel
     ReadOnly ucGestionModel As UCGestionModel
-    Dim tableOpAjout As New DataTable
+    ReadOnly tableOpAjout As New DataTable
     ReadOnly tableOpMo As New DataTable
-    Dim tableCoulAjout As New DataTable
+    ReadOnly tableCoulAjout As New DataTable
     ReadOnly tableCoulMo As New DataTable
-    Dim tableInvAjout As New DataTable
+    ReadOnly tableInvAjout As New DataTable
     ReadOnly tableInvMo As New DataTable
     ReadOnly tableMid As New DataTable
 
@@ -89,6 +89,19 @@ Public Class CreerModel
                 End If
             Next
             tableMid.Rows.Add(row)
+        Next
+
+        SetColumn(dgvCoulAjout)
+        SetColumn(dgvCoulMo)
+        SetColumn(dgvOptionAjout)
+        SetColumn(dgvOptionMo)
+        SetColumn(DGVInventaireAdd)
+        SetColumn(DGVInventaireMo)
+    End Sub
+
+    Private Sub SetColumn(dgv As DataGridView)
+        For c As Integer = 0 To dgv.Columns.Count - 1
+            dgv.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         Next
     End Sub
 

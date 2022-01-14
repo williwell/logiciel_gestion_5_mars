@@ -116,6 +116,10 @@
 
         LoadClient(0)
         bool = True
+
+        For c As Integer = 0 To DGVVehicule.Columns.Count - 1
+            DGVVehicule.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
     End Sub
 
     'Si on click dans le userControl on regarde pour voir si le menu du mainform est belle et bien fermer

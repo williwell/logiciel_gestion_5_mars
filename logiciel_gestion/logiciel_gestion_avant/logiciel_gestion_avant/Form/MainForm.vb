@@ -411,7 +411,7 @@ Public Class MainForm
         PanGestVeh.Visible = False
     End Sub
 
-    Public Function getbool() As Boolean
+    Public Function Getbool() As Boolean
         Return bool
     End Function
 
@@ -419,5 +419,10 @@ Public Class MainForm
     'les options qui sont sélectionner
     Public Sub EnleverOpt()
         ucVente2.EnleverOpt()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        Dim test As New TestPrint
+        test.ShowDialog()
     End Sub
 End Class

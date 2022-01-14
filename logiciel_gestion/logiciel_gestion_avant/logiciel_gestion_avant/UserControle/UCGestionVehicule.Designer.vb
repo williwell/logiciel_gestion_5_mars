@@ -49,12 +49,12 @@ Partial Class UCGestionVehicule
         Me.DGVVehicule.AllowUserToAddRows = False
         Me.DGVVehicule.AllowUserToDeleteRows = False
         Me.DGVVehicule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGVVehicule.Location = New System.Drawing.Point(42, 170)
+        Me.DGVVehicule.Location = New System.Drawing.Point(3, 170)
         Me.DGVVehicule.Name = "DGVVehicule"
         Me.DGVVehicule.ReadOnly = True
         Me.DGVVehicule.RowTemplate.Height = 25
         Me.DGVVehicule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DGVVehicule.Size = New System.Drawing.Size(707, 399)
+        Me.DGVVehicule.Size = New System.Drawing.Size(802, 448)
         Me.DGVVehicule.TabIndex = 0
         '
         'Label3

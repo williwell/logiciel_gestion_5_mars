@@ -1,6 +1,6 @@
 ﻿Public Class UCCouleur
     ReadOnly main As MainForm
-    Dim tableCouleur As New DataTable
+    ReadOnly tableCouleur As New DataTable
     Dim listeOr(0, 0) As String
 
     Sub New(mainform As MainForm)
@@ -20,6 +20,10 @@
         tableCouleur.Columns.Add("Coût")
 
         RemplirDGV()
+
+        For c As Integer = 0 To dgvCouleur.Columns.Count - 1
+            dgvCouleur.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
     End Sub
 
     'On passe tous les lignes et les colonnes du DataGridView pour remettre les informations de la listeoriginal

@@ -1,5 +1,5 @@
 ﻿Public Class CreerOption
-    Dim tableAdd As New DataTable
+    ReadOnly tableAdd As New DataTable
     ReadOnly tableOp As New DataTable
     ReadOnly tableMid As New DataTable
     Private Sub CreerOption_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -40,6 +40,14 @@
             tableMid.Rows.Add(r)
         Next
         DGVItemOption.DataSource = tableOp
+
+        For c As Integer = 0 To DGVItemAdd.Columns.Count - 1
+            DGVItemAdd.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
+
+        For c As Integer = 0 To DGVItemOption.Columns.Count - 1
+            DGVItemOption.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
     End Sub
 
     Private Sub DGVItemAdd_DoubleClick(sender As Object, e As EventArgs) Handles DGVItemAdd.DoubleClick

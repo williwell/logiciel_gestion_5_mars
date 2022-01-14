@@ -41,6 +41,10 @@
                 listeOr(r, c) = DGVOption.Rows(r).Cells(c).Value
             Next
         Next
+
+        For c As Integer = 0 To DGVOption.Columns.Count - 1
+            DGVOption.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
     End Sub
 
     'Fonction qui sert à regarder si a des changement entre le datagridview et la liste originale pour savoir si on doit mettre les bouton save et annuler

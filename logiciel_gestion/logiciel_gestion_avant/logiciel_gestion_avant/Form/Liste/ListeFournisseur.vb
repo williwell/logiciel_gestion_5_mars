@@ -47,6 +47,10 @@
         If action = 1 Then
             'Si action est 1 on fait juste mettre la table fournisseur du mainform dans le DataGridView
             dgvFour.DataSource = MainForm.tableFour
+
+            For c As Integer = 0 To dgvFour.Columns.Count - 1
+                dgvFour.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            Next
         ElseIf action = 2 Then
             'Si action est 2 on creer une datatable temporaire pour mettre des information spécifique
             Dim table As New DataTable
@@ -81,6 +85,10 @@
                 MessageBox.Show("Ce produit a tous les fournisseurs!")
                 Me.Close()
             End If
+
+            For c As Integer = 0 To dgvFour.Columns.Count - 1
+                dgvFour.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            Next
         ElseIf action = 3 Then
             'Si action est 3 on creer une datatable temporaire pour mettre des information spécifique
             Dim table As New DataTable
@@ -122,6 +130,10 @@
                 MessageBox.Show("Ce produit n'a pas de fournisseur!")
                 Me.Close()
             End If
+
+            For c As Integer = 0 To dgvFour.Columns.Count - 1
+                dgvFour.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            Next
         End If
     End Sub
 

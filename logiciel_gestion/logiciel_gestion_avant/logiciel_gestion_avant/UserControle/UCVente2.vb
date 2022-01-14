@@ -1,7 +1,7 @@
 ﻿Public Class UCVente2
     ReadOnly main As MainForm
     ReadOnly uc As UCVente
-    Dim table As New DataTable
+    ReadOnly table As New DataTable
     ReadOnly tableCh As New DataTable
     Dim id As Integer
     Dim prix As Decimal
@@ -34,6 +34,14 @@
             tableCh.Columns.Add(table.Columns(i).ColumnName)
         Next
         DGVOpCh.DataSource = tableCh
+
+        For c As Integer = 0 To DGVOpCh.Columns.Count - 1
+            DGVOpCh.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
+
+        For c As Integer = 0 To DGVOpDispo.Columns.Count - 1
+            DGVOpDispo.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
     End Sub
 
     'Fonction qui sert à remplir le DataGridView

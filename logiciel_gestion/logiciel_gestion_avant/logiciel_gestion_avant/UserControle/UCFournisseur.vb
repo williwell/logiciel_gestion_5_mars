@@ -4,7 +4,7 @@
     '__________________________________________________________________________________________________________
     ReadOnly main As MainForm
     ReadOnly ucInv As UCInventaire
-    Dim table As New DataTable
+    ReadOnly table As New DataTable
     ReadOnly liste(10) As String
 
 
@@ -34,6 +34,14 @@
         'On met le datasource du datagridview avec la tableFour du mainform
         dgvFour.DataSource = MainForm.tableFour
         LoadFour()
+
+        For c As Integer = 0 To dgvFour.Columns.Count - 1
+            dgvFour.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
+
+        For c As Integer = 0 To dgvPiece.Columns.Count - 1
+            dgvPiece.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
     End Sub
 
     '__________________________________________________________________________________________________________

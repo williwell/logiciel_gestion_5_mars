@@ -38,6 +38,10 @@
             tableInv.Columns.Add("id")
             tableInv.Columns.Add("quantite")
             LoadDGV()
+
+            For c As Integer = 0 To DGVItemLow.Columns.Count - 1
+                DGVItemLow.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            Next
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try

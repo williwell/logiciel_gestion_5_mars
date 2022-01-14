@@ -1,15 +1,13 @@
 ﻿Public Class UCInfoClientVehicule
     ReadOnly main As MainForm
-    ReadOnly id As String
-    Dim table As New DataTable
+    ReadOnly table As New DataTable
 
-    Sub New(idve As String, mainform As MainForm)
+    Sub New(mainform As MainForm)
 
         ' Cet appel est requis par le concepteur.
         InitializeComponent()
 
         ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
-        id = idve
         main = mainform
     End Sub
 
@@ -50,6 +48,8 @@
 
             DGVClient.Rows.RemoveAt(0)
         End If
+
+
     End Sub
 
     'Si on click dans le UserCOntrol on check pour être sur que le menu dans le Mainform soit bien fermer

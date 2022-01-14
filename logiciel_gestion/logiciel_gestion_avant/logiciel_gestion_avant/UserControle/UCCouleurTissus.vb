@@ -19,6 +19,10 @@
         tableCoul.Columns.Add("Code")
         dgvCouleur.DataSource = tableCoul
         LoadCoul()
+
+        For c As Integer = 0 To dgvCouleur.Columns.Count - 1
+            dgvCouleur.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
     End Sub
 
     Private Sub BtCreer_Click(sender As Object, e As EventArgs) Handles BtCreer.Click

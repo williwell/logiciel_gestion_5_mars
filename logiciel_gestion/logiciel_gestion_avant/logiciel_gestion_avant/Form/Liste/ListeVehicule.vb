@@ -61,6 +61,10 @@
 
         'Assigner la table à la DataSource
         DGVVehicule.DataSource = table
+
+        For c As Integer = 0 To DGVVehicule.Columns.Count - 1
+            DGVVehicule.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
     End Sub
 
     'SI on double click sur une ligne on envoie le id de la ligne du DataGridView au UserControl Vente, on appel la fonction NextPage et on ferme ce form

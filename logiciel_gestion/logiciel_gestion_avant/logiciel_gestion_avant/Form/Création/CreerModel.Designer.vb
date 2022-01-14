@@ -52,7 +52,7 @@ Partial Class CreerModel
         '
         'BtAnnuler
         '
-        Me.BtAnnuler.Location = New System.Drawing.Point(175, 448)
+        Me.BtAnnuler.Location = New System.Drawing.Point(174, 799)
         Me.BtAnnuler.Name = "BtAnnuler"
         Me.BtAnnuler.Size = New System.Drawing.Size(141, 23)
         Me.BtAnnuler.TabIndex = 32
@@ -61,7 +61,7 @@ Partial Class CreerModel
         '
         'BtEnregistrer
         '
-        Me.BtEnregistrer.Location = New System.Drawing.Point(21, 448)
+        Me.BtEnregistrer.Location = New System.Drawing.Point(20, 799)
         Me.BtEnregistrer.Name = "BtEnregistrer"
         Me.BtEnregistrer.Size = New System.Drawing.Size(148, 23)
         Me.BtEnregistrer.TabIndex = 31
@@ -71,7 +71,7 @@ Partial Class CreerModel
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(384, 274)
+        Me.Label5.Location = New System.Drawing.Point(434, 274)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(120, 15)
         Me.Label5.TabIndex = 30
@@ -82,18 +82,18 @@ Partial Class CreerModel
         Me.dgvCoulAjout.AllowUserToAddRows = False
         Me.dgvCoulAjout.AllowUserToDeleteRows = False
         Me.dgvCoulAjout.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvCoulAjout.Location = New System.Drawing.Point(384, 292)
+        Me.dgvCoulAjout.Location = New System.Drawing.Point(434, 292)
         Me.dgvCoulAjout.Name = "dgvCoulAjout"
         Me.dgvCoulAjout.ReadOnly = True
         Me.dgvCoulAjout.RowTemplate.Height = 25
         Me.dgvCoulAjout.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvCoulAjout.Size = New System.Drawing.Size(351, 150)
+        Me.dgvCoulAjout.Size = New System.Drawing.Size(407, 150)
         Me.dgvCoulAjout.TabIndex = 29
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(384, 103)
+        Me.Label6.Location = New System.Drawing.Point(434, 103)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(114, 15)
         Me.Label6.TabIndex = 28
@@ -104,12 +104,12 @@ Partial Class CreerModel
         Me.dgvOptionAjout.AllowUserToAddRows = False
         Me.dgvOptionAjout.AllowUserToDeleteRows = False
         Me.dgvOptionAjout.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvOptionAjout.Location = New System.Drawing.Point(384, 121)
+        Me.dgvOptionAjout.Location = New System.Drawing.Point(434, 121)
         Me.dgvOptionAjout.Name = "dgvOptionAjout"
         Me.dgvOptionAjout.ReadOnly = True
         Me.dgvOptionAjout.RowTemplate.Height = 25
         Me.dgvOptionAjout.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvOptionAjout.Size = New System.Drawing.Size(351, 150)
+        Me.dgvOptionAjout.Size = New System.Drawing.Size(407, 150)
         Me.dgvOptionAjout.TabIndex = 27
         '
         'Label4
@@ -140,7 +140,7 @@ Partial Class CreerModel
         Me.dgvCoulMo.ReadOnly = True
         Me.dgvCoulMo.RowTemplate.Height = 25
         Me.dgvCoulMo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvCoulMo.Size = New System.Drawing.Size(351, 150)
+        Me.dgvCoulMo.Size = New System.Drawing.Size(407, 150)
         Me.dgvCoulMo.TabIndex = 24
         '
         'Label2
@@ -162,7 +162,7 @@ Partial Class CreerModel
         Me.dgvOptionMo.ReadOnly = True
         Me.dgvOptionMo.RowTemplate.Height = 25
         Me.dgvOptionMo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvOptionMo.Size = New System.Drawing.Size(351, 150)
+        Me.dgvOptionMo.Size = New System.Drawing.Size(407, 150)
         Me.dgvOptionMo.TabIndex = 22
         '
         'Label1
@@ -177,7 +177,7 @@ Partial Class CreerModel
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(1166, 103)
+        Me.Label7.Location = New System.Drawing.Point(434, 454)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(130, 15)
         Me.Label7.TabIndex = 36
@@ -188,7 +188,7 @@ Partial Class CreerModel
         Me.DGVInventaireAdd.AllowUserToAddRows = False
         Me.DGVInventaireAdd.AllowUserToDeleteRows = False
         Me.DGVInventaireAdd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGVInventaireAdd.Location = New System.Drawing.Point(1166, 121)
+        Me.DGVInventaireAdd.Location = New System.Drawing.Point(434, 472)
         Me.DGVInventaireAdd.Name = "DGVInventaireAdd"
         Me.DGVInventaireAdd.ReadOnly = True
         Me.DGVInventaireAdd.RowTemplate.Height = 25
@@ -199,7 +199,7 @@ Partial Class CreerModel
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(753, 103)
+        Me.Label8.Location = New System.Drawing.Point(21, 454)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(96, 15)
         Me.Label8.TabIndex = 34
@@ -210,7 +210,7 @@ Partial Class CreerModel
         Me.DGVInventaireMo.AllowUserToAddRows = False
         Me.DGVInventaireMo.AllowUserToDeleteRows = False
         Me.DGVInventaireMo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGVInventaireMo.Location = New System.Drawing.Point(753, 121)
+        Me.DGVInventaireMo.Location = New System.Drawing.Point(21, 472)
         Me.DGVInventaireMo.Name = "DGVInventaireMo"
         Me.DGVInventaireMo.RowTemplate.Height = 25
         Me.DGVInventaireMo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
@@ -237,7 +237,7 @@ Partial Class CreerModel
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1576, 500)
+        Me.ClientSize = New System.Drawing.Size(866, 851)
         Me.Controls.Add(Me.nudCout)
         Me.Controls.Add(Me.TbName)
         Me.Controls.Add(Me.Label7)

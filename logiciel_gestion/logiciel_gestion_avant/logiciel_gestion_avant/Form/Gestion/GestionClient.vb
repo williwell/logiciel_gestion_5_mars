@@ -2,17 +2,15 @@
 
 Public Class GestionClient
     ReadOnly ID As String
-    ReadOnly uc As UCClient
-    Dim table As New DataTable
+    ReadOnly table As New DataTable
     ReadOnly liste() As String = {"Non déterminer", "Homme", "Femme"}
-    Sub New(IDClient As String, ucClient As UCClient)
+    Sub New(IDClient As String)
 
         ' Cet appel est requis par le concepteur.
         InitializeComponent()
 
         ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
         ID = IDClient
-        uc = ucClient
     End Sub
 
     Private Sub GestionClient_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -20,7 +18,11 @@ Public Class GestionClient
             table.Columns.Add(MainForm.TableClient.Columns(c).ColumnName)
         Next
 
-        LoadDGV
+        LoadDGV()
+
+        For c As Integer = 0 To DataGridView1.Columns.Count - 1
+            DataGridView1.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
     End Sub
 
     Private Sub LoadDGV()

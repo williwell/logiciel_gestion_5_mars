@@ -23,13 +23,17 @@
     '__________________________________________________________________________________________________________
     Private Sub RechercheProduit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dgvProduit.DataSource = MainForm.tableInv
-        Try
-            dgvProduit.Sort(dgvProduit.Columns(1), 0)
-        Catch ex As Exception
-            MessageBox.Show("Un erreur est survenu du coté du serveur!")
-            main.fermer()
-            Me.Close()
-        End Try
+        dgvProduit.Sort(dgvProduit.Columns(1), 0)
+
+        For c As Integer = 0 To dgvProduit.Columns.Count - 1
+            If c <> 3 Then
+                dgvProduit.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
+            Else
+                dgvProduit.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+            End If
+        Next
+
+        MessageBox.Show(dgvProduit.Columns(0).Width)
     End Sub
 
     Private Sub DgvProduit_DoubleClick(sender As Object, e As EventArgs) Handles dgvProduit.DoubleClick

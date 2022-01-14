@@ -45,6 +45,7 @@ Partial Class MainForm
         Me.btAccueil = New System.Windows.Forms.Button()
         Me.lbNonConc = New System.Windows.Forms.Label()
         Me.btConnec = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.PanUC.SuspendLayout()
         Me.PanGestVeh.SuspendLayout()
         Me.PanCouleur.SuspendLayout()
@@ -266,11 +267,21 @@ Partial Class MainForm
         Me.btConnec.UseVisualStyleBackColor = True
         Me.btConnec.Visible = False
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(218, 6)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 6
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(832, 692)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btConnec)
         Me.Controls.Add(Me.lbNonConc)
         Me.Controls.Add(Me.panMenu)
@@ -311,4 +322,5 @@ Partial Class MainForm
     Friend WithEvents BTLivrer As Button
     Friend WithEvents BTGest As Button
     Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents Button1 As Button
 End Class

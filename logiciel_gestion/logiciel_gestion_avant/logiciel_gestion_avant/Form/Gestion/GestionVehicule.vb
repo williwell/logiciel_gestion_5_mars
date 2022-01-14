@@ -136,6 +136,10 @@ Public Class GestionVehicule
         RemplirListe(listeOR)
 
         bool = True
+
+        For c As Integer = 0 To DGVClient.Columns.Count - 1
+            DGVClient.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
     End Sub
 
     Private Sub RemplirListe(lis As String())
