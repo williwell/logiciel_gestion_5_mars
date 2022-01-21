@@ -60,3 +60,7 @@ C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gest
 C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gestion_avant\obj\Debug\netcoreapp3.1\logiciel_gestion_avant.ListeInvManque.resources
 C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gestion_avant\obj\Debug\netcoreapp3.1\logiciel_gestion_avant.TestPrint.resources
 C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gestion_avant\obj\Debug\netcoreapp3.1\logiciel_gestion_avant.Resources.resources
+C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gestion_avant\bin\Debug\netcoreapp3.1\Interop.Microsoft.Office.Interop.Excel.dll
+C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gestion_avant\obj\Debug\netcoreapp3.1\Interop.Microsoft.Office.Interop.Excel.dll
+C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gestion_avant\obj\Debug\netcoreapp3.1\logiciel_gestion_avant.vbproj.ResolveComReference.cache
+C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gestion_avant\obj\Debug\netcoreapp3.1\logiciel_gestion_avant.TestExcel.resources

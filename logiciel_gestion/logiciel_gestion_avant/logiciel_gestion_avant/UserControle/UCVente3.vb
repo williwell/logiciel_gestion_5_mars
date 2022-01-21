@@ -165,6 +165,10 @@
             MainForm.tableVenteVe.Rows.Add(row)
 
             MessageBox.Show("Ajout fait avec succès")
+
+            'Dim print As New TestPrint
+            'print.Show()
+
             Clear()
             uc.Clear()
             main.EnleverOpt()

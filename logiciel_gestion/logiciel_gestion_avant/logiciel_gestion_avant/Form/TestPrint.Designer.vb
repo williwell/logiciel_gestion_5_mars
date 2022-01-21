@@ -23,7 +23,6 @@ Partial Class TestPrint
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TestPrint))
-        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -82,7 +81,7 @@ Partial Class TestPrint
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(681, 200)
+        Me.Label6.Location = New System.Drawing.Point(631, 200)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(35, 15)
         Me.Label6.TabIndex = 7
@@ -91,7 +90,7 @@ Partial Class TestPrint
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(681, 215)
+        Me.Label7.Location = New System.Drawing.Point(631, 215)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(113, 15)
         Me.Label7.TabIndex = 8
@@ -118,7 +117,7 @@ Partial Class TestPrint
         Me.DGVModel.ReadOnly = True
         Me.DGVModel.RowHeadersVisible = False
         Me.DGVModel.RowTemplate.Height = 25
-        Me.DGVModel.Size = New System.Drawing.Size(762, 43)
+        Me.DGVModel.Size = New System.Drawing.Size(712, 43)
         Me.DGVModel.TabIndex = 9
         '
         'Description
@@ -143,7 +142,7 @@ Partial Class TestPrint
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(681, 133)
+        Me.Label4.Location = New System.Drawing.Point(631, 133)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(69, 15)
         Me.Label4.TabIndex = 5
@@ -161,7 +160,7 @@ Partial Class TestPrint
         Me.DGVCoulVe.ReadOnly = True
         Me.DGVCoulVe.RowHeadersVisible = False
         Me.DGVCoulVe.RowTemplate.Height = 25
-        Me.DGVCoulVe.Size = New System.Drawing.Size(762, 43)
+        Me.DGVCoulVe.Size = New System.Drawing.Size(712, 43)
         Me.DGVCoulVe.TabIndex = 10
         '
         'DataGridViewTextBoxColumn1
@@ -186,7 +185,7 @@ Partial Class TestPrint
         'LabDate
         '
         Me.LabDate.AutoSize = True
-        Me.LabDate.Location = New System.Drawing.Point(681, 118)
+        Me.LabDate.Location = New System.Drawing.Point(631, 118)
         Me.LabDate.Name = "LabDate"
         Me.LabDate.Size = New System.Drawing.Size(40, 15)
         Me.LabDate.TabIndex = 4
@@ -204,7 +203,7 @@ Partial Class TestPrint
         Me.DGVCoul.ReadOnly = True
         Me.DGVCoul.RowHeadersVisible = False
         Me.DGVCoul.RowTemplate.Height = 25
-        Me.DGVCoul.Size = New System.Drawing.Size(762, 222)
+        Me.DGVCoul.Size = New System.Drawing.Size(712, 222)
         Me.DGVCoul.TabIndex = 11
         '
         'DataGridViewTextBoxColumn4
@@ -247,7 +246,7 @@ Partial Class TestPrint
         Me.DGVOption.ReadOnly = True
         Me.DGVOption.RowHeadersVisible = False
         Me.DGVOption.RowTemplate.Height = 25
-        Me.DGVOption.Size = New System.Drawing.Size(762, 49)
+        Me.DGVOption.Size = New System.Drawing.Size(712, 49)
         Me.DGVOption.TabIndex = 12
         '
         'DataGridViewTextBoxColumn7
@@ -290,7 +289,7 @@ Partial Class TestPrint
         Me.DGVTotal.ReadOnly = True
         Me.DGVTotal.RowHeadersVisible = False
         Me.DGVTotal.RowTemplate.Height = 25
-        Me.DGVTotal.Size = New System.Drawing.Size(762, 172)
+        Me.DGVTotal.Size = New System.Drawing.Size(712, 172)
         Me.DGVTotal.TabIndex = 13
         '
         'DataGridViewTextBoxColumn10
@@ -333,7 +332,7 @@ Partial Class TestPrint
         'LabFin
         '
         Me.LabFin.AutoSize = True
-        Me.LabFin.Location = New System.Drawing.Point(239, 850)
+        Me.LabFin.Location = New System.Drawing.Point(333, 847)
         Me.LabFin.Name = "LabFin"
         Me.LabFin.Size = New System.Drawing.Size(168, 15)
         Me.LabFin.TabIndex = 16
@@ -342,7 +341,7 @@ Partial Class TestPrint
         'LabFin2
         '
         Me.LabFin2.AutoSize = True
-        Me.LabFin2.Location = New System.Drawing.Point(250, 865)
+        Me.LabFin2.Location = New System.Drawing.Point(344, 862)
         Me.LabFin2.Name = "LabFin2"
         Me.LabFin2.Size = New System.Drawing.Size(141, 15)
         Me.LabFin2.TabIndex = 17
@@ -351,7 +350,7 @@ Partial Class TestPrint
         'LabDateNow
         '
         Me.LabDateNow.AutoSize = True
-        Me.LabDateNow.Location = New System.Drawing.Point(727, 118)
+        Me.LabDateNow.Location = New System.Drawing.Point(677, 118)
         Me.LabDateNow.Name = "LabDateNow"
         Me.LabDateNow.Size = New System.Drawing.Size(112, 15)
         Me.LabDateNow.TabIndex = 18
@@ -368,7 +367,7 @@ Partial Class TestPrint
         '
         'BTPrint
         '
-        Me.BTPrint.Location = New System.Drawing.Point(727, 47)
+        Me.BTPrint.Location = New System.Drawing.Point(677, 47)
         Me.BTPrint.Name = "BTPrint"
         Me.BTPrint.Size = New System.Drawing.Size(75, 23)
         Me.BTPrint.TabIndex = 16
@@ -384,7 +383,7 @@ Partial Class TestPrint
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(987, 913)
+        Me.ClientSize = New System.Drawing.Size(987, 907)
         Me.Controls.Add(Me.LabClient)
         Me.Controls.Add(Me.BTPrint)
         Me.Controls.Add(Me.LabDateNow)
@@ -416,7 +415,6 @@ Partial Class TestPrint
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents PrintDocument1 As Printing.PrintDocument
     Friend WithEvents PrintPreviewDialog1 As PrintPreviewDialog
     Friend WithEvents Label6 As Label
     Friend WithEvents Label7 As Label

@@ -422,7 +422,10 @@ Public Class MainForm
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim test As New TestPrint
+        'Dim test As New TestPrint("test", "test", {""})
+        'test.ShowDialog()
+        Dim test As New TestExcel()
         test.ShowDialog()
     End Sub
+
 End Class

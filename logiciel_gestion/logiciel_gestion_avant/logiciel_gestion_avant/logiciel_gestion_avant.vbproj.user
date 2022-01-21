@@ -2,6 +2,7 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_LastSelectedProfileId>C:\logiciel_gestion_5_mars\logiciel_gestion\logiciel_gestion_avant\logiciel_gestion_avant\My Project\PublishProfiles\ClickOnceProfile1.pubxml</_LastSelectedProfileId>
+    <ShowAllFiles>true</ShowAllFiles>
   </PropertyGroup>
   <ItemGroup>
     <Compile Update="Form\Connection.vb">
@@ -65,6 +66,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Form\Création\CreerOption.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form\TestExcel.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Form\TestPrint.vb">
