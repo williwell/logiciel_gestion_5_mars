@@ -65,11 +65,12 @@
 
                     'Mettre les nouvelles informations du nouveau véhicule dans la table du mainform
                     Dim row As DataRow = MainForm.tableVe.NewRow
+                    row(0) = id
                     For i As Integer = 0 To listeAdd.Length + 1
                         If i >= listeAdd.Length Then
-                            row(i) = 0
+                            row(i + 1) = 0
                         Else
-                            row(i) = listeAdd(i)
+                            row(i + 1) = listeAdd(i)
                         End If
                     Next
                     MainForm.tableVe.Rows.Add(row)
@@ -164,15 +165,48 @@
             Next
             MainForm.tableVenteVe.Rows.Add(row)
 
-            MessageBox.Show("Ajout fait avec succès")
+            ReDim listeAdd(7)
+            listeAdd(0) = id
+            listeAdd(1) = idCl
+            listeAdd(2) = Date.Now.ToString("yyyy-MM-dd")
 
-            'Dim print As New TestPrint
-            'print.Show()
+            '--- à faire avec des place pour rentrer de l'information. je met en attendent des information bidons pour les tests
+            listeAdd(3) = 0
+            listeAdd(4) = 0
+            listeAdd(5) = 0
+            listeAdd(6) = 0
+            listeAdd(7) = 0
 
-            Clear()
-            uc.Clear()
-            main.EnleverOpt()
-            main.ChangeUCPrev1(True, True)
+            Dim table As DataTable = ConnectionServeur.Getinstance.GetInfo(listeAdd, "addfacture")
+            Dim idfac As String = table(0)(0)
+
+            If idfac <> 0 Then
+                Dim row2 As DataRow = MainForm.tableFacture.NewRow
+                row2(0) = idfac
+                row2(1) = id
+                row2(2) = idCl
+                row2(3) = Date.Now.ToString("yyyy-MM-dd")
+
+                '--- à faire avec des place pour rentrer de l'information. je met en attendent des information bidons pour les tests
+                row2(4) = 0
+                row2(5) = 0
+                row2(6) = 0
+                row2(7) = 0
+
+                MainForm.tableFacture.Rows.Add(row2)
+
+                MessageBox.Show("Ajout fait avec succès")
+
+                Dim print As New TestPrint(row2)
+                print.Show()
+
+                Clear()
+                uc.Clear()
+                main.EnleverOpt()
+                main.ChangeUCPrev1(True, True)
+            Else
+                MessageBox.Show("Une erreure est survenu durant la création de la facture sur le serveur")
+            End If
         Else
             MessageBox.Show("Une erreure c'est produit durant l'association du véicule et du client!", "Attention!")
         End If

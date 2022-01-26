@@ -13,7 +13,7 @@ Public Class MainForm
     Public Shared tableCoulMo As DataTable
     Public Shared tableCoulTis As DataTable
     Public Shared tableCoulToi As DataTable
-    'Dim tableFacture As DataTable
+    Public Shared tableFacture As DataTable
     'Dim tableFactInv As DataTable
     Public Shared tableFour As DataTable
     Public Shared tableInv As DataTable
@@ -123,7 +123,7 @@ Public Class MainForm
         tableCoulMo = ConnectionServeur.Getinstance.GetInfo("getCoulMoAll")
         tableCoulTis = ConnectionServeur.Getinstance.GetInfo("getCoulTisAll")
         tableCoulToi = ConnectionServeur.Getinstance.GetInfo("getCoulToiAll")
-        ' tableFacture 
+        tableFacture = ConnectionServeur.Getinstance.GetInfo("getFacture")
         ' tableFactInv 
         tableFour = ConnectionServeur.Getinstance.GetInfo("getFournisseur")
         tableInv = ConnectionServeur.Getinstance.GetInfo("getInventaire")
@@ -422,10 +422,10 @@ Public Class MainForm
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        'Dim test As New TestPrint("test", "test", {""})
-        'test.ShowDialog()
-        Dim test As New TestExcel()
+        Dim test As New TestPrint(tableFacture.Rows(8))
         test.ShowDialog()
+        'Dim test As New TestExcel(tableFacture.Rows(0))
+        'test.ShowDialog()
     End Sub
 
 End Class

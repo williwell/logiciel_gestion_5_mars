@@ -60,6 +60,8 @@ Partial Class TestPrint
         Me.BTPrint = New System.Windows.Forms.Button()
         Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
+        Me.LabFac = New System.Windows.Forms.Label()
+        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         CType(Me.DGVModel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVCoulVe, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVCoul, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -378,12 +380,25 @@ Partial Class TestPrint
         '
         Me.PrintDialog1.UseEXDialog = True
         '
+        'LabFac
+        '
+        Me.LabFac.AutoSize = True
+        Me.LabFac.Location = New System.Drawing.Point(703, 133)
+        Me.LabFac.Name = "LabFac"
+        Me.LabFac.Size = New System.Drawing.Size(110, 15)
+        Me.LabFac.TabIndex = 20
+        Me.LabFac.Text = "No facture à mettre"
+        '
+        'PrintDocument1
+        '
+        '
         'TestPrint
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(987, 907)
+        Me.Controls.Add(Me.LabFac)
         Me.Controls.Add(Me.LabClient)
         Me.Controls.Add(Me.BTPrint)
         Me.Controls.Add(Me.LabDateNow)
@@ -452,4 +467,6 @@ Partial Class TestPrint
     Friend WithEvents BTPrint As Button
     Friend WithEvents PageSetupDialog1 As PageSetupDialog
     Friend WithEvents PrintDialog1 As PrintDialog
+    Friend WithEvents LabFac As Label
+    Friend WithEvents PrintDocument1 As Printing.PrintDocument
 End Class
