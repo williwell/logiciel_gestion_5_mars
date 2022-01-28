@@ -43,6 +43,12 @@ Partial Class UCInfoClientVehicule
         Me.TBSexe = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TBTel2 = New System.Windows.Forms.TextBox()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label13 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label14 = New System.Windows.Forms.Label()
         CType(Me.DGVClient, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -64,7 +70,7 @@ Partial Class UCInfoClientVehicule
         Me.TBID.Location = New System.Drawing.Point(26, 109)
         Me.TBID.Name = "TBID"
         Me.TBID.ReadOnly = True
-        Me.TBID.Size = New System.Drawing.Size(178, 23)
+        Me.TBID.Size = New System.Drawing.Size(226, 23)
         Me.TBID.TabIndex = 1
         '
         'Label1
@@ -110,7 +116,7 @@ Partial Class UCInfoClientVehicule
         Me.TBPrenom1.Location = New System.Drawing.Point(26, 153)
         Me.TBPrenom1.Name = "TBPrenom1"
         Me.TBPrenom1.ReadOnly = True
-        Me.TBPrenom1.Size = New System.Drawing.Size(178, 23)
+        Me.TBPrenom1.Size = New System.Drawing.Size(226, 23)
         Me.TBPrenom1.TabIndex = 5
         '
         'Label5
@@ -127,13 +133,13 @@ Partial Class UCInfoClientVehicule
         Me.TBNom1.Location = New System.Drawing.Point(26, 197)
         Me.TBNom1.Name = "TBNom1"
         Me.TBNom1.ReadOnly = True
-        Me.TBNom1.Size = New System.Drawing.Size(178, 23)
+        Me.TBNom1.Size = New System.Drawing.Size(226, 23)
         Me.TBNom1.TabIndex = 7
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(26, 311)
+        Me.Label6.Location = New System.Drawing.Point(26, 443)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(70, 15)
         Me.Label6.TabIndex = 14
@@ -141,10 +147,10 @@ Partial Class UCInfoClientVehicule
         '
         'TBTel1
         '
-        Me.TBTel1.Location = New System.Drawing.Point(26, 329)
+        Me.TBTel1.Location = New System.Drawing.Point(26, 461)
         Me.TBTel1.Name = "TBTel1"
         Me.TBTel1.ReadOnly = True
-        Me.TBTel1.Size = New System.Drawing.Size(178, 23)
+        Me.TBTel1.Size = New System.Drawing.Size(226, 23)
         Me.TBTel1.TabIndex = 13
         '
         'Label7
@@ -161,7 +167,7 @@ Partial Class UCInfoClientVehicule
         Me.TBNom2.Location = New System.Drawing.Point(26, 285)
         Me.TBNom2.Name = "TBNom2"
         Me.TBNom2.ReadOnly = True
-        Me.TBNom2.Size = New System.Drawing.Size(178, 23)
+        Me.TBNom2.Size = New System.Drawing.Size(226, 23)
         Me.TBNom2.TabIndex = 11
         '
         'Label8
@@ -178,13 +184,13 @@ Partial Class UCInfoClientVehicule
         Me.TBPrenom2.Location = New System.Drawing.Point(26, 241)
         Me.TBPrenom2.Name = "TBPrenom2"
         Me.TBPrenom2.ReadOnly = True
-        Me.TBPrenom2.Size = New System.Drawing.Size(178, 23)
+        Me.TBPrenom2.Size = New System.Drawing.Size(226, 23)
         Me.TBPrenom2.TabIndex = 9
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(26, 443)
+        Me.Label9.Location = New System.Drawing.Point(26, 575)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(36, 15)
         Me.Label9.TabIndex = 20
@@ -192,16 +198,16 @@ Partial Class UCInfoClientVehicule
         '
         'TBEmail
         '
-        Me.TBEmail.Location = New System.Drawing.Point(26, 461)
+        Me.TBEmail.Location = New System.Drawing.Point(26, 593)
         Me.TBEmail.Name = "TBEmail"
         Me.TBEmail.ReadOnly = True
-        Me.TBEmail.Size = New System.Drawing.Size(178, 23)
+        Me.TBEmail.Size = New System.Drawing.Size(226, 23)
         Me.TBEmail.TabIndex = 19
         '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(26, 399)
+        Me.Label10.Location = New System.Drawing.Point(26, 531)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(31, 15)
         Me.Label10.TabIndex = 18
@@ -209,16 +215,16 @@ Partial Class UCInfoClientVehicule
         '
         'TBSexe
         '
-        Me.TBSexe.Location = New System.Drawing.Point(26, 417)
+        Me.TBSexe.Location = New System.Drawing.Point(26, 549)
         Me.TBSexe.Name = "TBSexe"
         Me.TBSexe.ReadOnly = True
-        Me.TBSexe.Size = New System.Drawing.Size(178, 23)
+        Me.TBSexe.Size = New System.Drawing.Size(226, 23)
         Me.TBSexe.TabIndex = 17
         '
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(26, 355)
+        Me.Label11.Location = New System.Drawing.Point(26, 487)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(70, 15)
         Me.Label11.TabIndex = 16
@@ -226,16 +232,73 @@ Partial Class UCInfoClientVehicule
         '
         'TBTel2
         '
-        Me.TBTel2.Location = New System.Drawing.Point(26, 373)
+        Me.TBTel2.Location = New System.Drawing.Point(26, 505)
         Me.TBTel2.Name = "TBTel2"
         Me.TBTel2.ReadOnly = True
-        Me.TBTel2.Size = New System.Drawing.Size(178, 23)
+        Me.TBTel2.Size = New System.Drawing.Size(226, 23)
         Me.TBTel2.TabIndex = 15
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(26, 417)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.ReadOnly = True
+        Me.TextBox3.Size = New System.Drawing.Size(226, 23)
+        Me.TextBox3.TabIndex = 32
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(26, 399)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(70, 15)
+        Me.Label12.TabIndex = 31
+        Me.Label12.Text = "Code Postal"
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(26, 373)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.ReadOnly = True
+        Me.TextBox2.Size = New System.Drawing.Size(226, 23)
+        Me.TextBox2.TabIndex = 30
+        '
+        'Label13
+        '
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(26, 355)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(77, 15)
+        Me.Label13.TabIndex = 29
+        Me.Label13.Text = "Appartement"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(26, 329)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.ReadOnly = True
+        Me.TextBox1.Size = New System.Drawing.Size(226, 23)
+        Me.TextBox1.TabIndex = 28
+        '
+        'Label14
+        '
+        Me.Label14.AutoSize = True
+        Me.Label14.Location = New System.Drawing.Point(26, 311)
+        Me.Label14.Name = "Label14"
+        Me.Label14.Size = New System.Drawing.Size(48, 15)
+        Me.Label14.TabIndex = 27
+        Me.Label14.Text = "Adresse"
         '
         'UCInfoClientVehicule
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.TextBox3)
+        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.Label13)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.TBEmail)
         Me.Controls.Add(Me.Label10)
@@ -286,4 +349,10 @@ Partial Class UCInfoClientVehicule
     Friend WithEvents TBSexe As TextBox
     Friend WithEvents Label11 As Label
     Friend WithEvents TBTel2 As TextBox
+    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents Label12 As Label
+    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Label13 As Label
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Label14 As Label
 End Class

@@ -36,6 +36,15 @@ Public Class TestPrint
         For r As Integer = 0 To MainForm.TableClient.Rows.Count - 1
             If MainForm.TableClient.Rows(r).Item("id") = rowFac.Item("idclient") Then
                 LabClient.Text = MainForm.TableClient.Rows(r).Item("nom1") & " " & MainForm.TableClient.Rows(r).Item("prenom1")
+                LabAddCl.Text = MainForm.TableClient.Rows(r).Item("addresse")
+
+                If MainForm.TableClient.Rows(r).Item("app") <> "null" Then
+                    LabAddCl.Text += "  App: " & MainForm.TableClient.Rows(r).Item("app")
+                End If
+
+                LabPosCl.Text = MainForm.TableClient.Rows(r).Item("codepostal")
+                LabTelCl.Text = MainForm.TableClient.Rows(r).Item("telephone1")
+                LabEmailCl.Text = MainForm.TableClient.Rows(r).Item("email")
             End If
         Next
 
@@ -98,6 +107,20 @@ Public Class TestPrint
             End If
         Next
 
+        DGVOption.Rows.Add("Option1")
+        DGVOption.Rows.Add("Option2")
+        DGVOption.Rows.Add("Option3")
+        DGVOption.Rows.Add("Option4")
+        DGVOption.Rows.Add("Option5")
+        DGVOption.Rows.Add("Option6")
+        DGVOption.Rows.Add("Option7")
+        DGVOption.Rows.Add("Option8")
+        DGVOption.Rows.Add("Option9")
+        DGVOption.Rows.Add("Option10")
+        DGVOption.Rows.Add("Option11")
+        DGVOption.Rows.Add("Option12")
+        DGVOption.Rows.Add("Option13")
+
         Dim h As Integer = SetHight(DGVOption)
 
         DGVTotal.Location = New Point(DGVTotal.Location.X, DGVOption.Location.Y + h + 1)
@@ -115,7 +138,13 @@ Public Class TestPrint
 
         SetHight(DGVTotal)
 
-        LabFin.Location = New Point(LabFin.Location.X, DGVTotal.Location.Y + DGVTotal.Height + 20)
+        LabSig1.Location = New Point(LabSig1.Location.X, DGVTotal.Location.Y + DGVTotal.Height + 60)
+        LabLine1.Location = New Point(LabLine1.Location.X, LabSig1.Location.Y - 12)
+        LabSig2.Location = New Point(LabSig2.Location.X, DGVTotal.Location.Y + DGVTotal.Height + 60)
+        LabLine2.Location = New Point(LabLine2.Location.X, LabSig2.Location.Y - 12)
+        Lab5M.Location = New Point(Lab5M.Location.X, DGVTotal.Location.Y + DGVTotal.Height + 60)
+        LabLine3.Location = New Point(Lab5M.Location.X, LabSig1.Location.Y - 12)
+        LabFin.Location = New Point(LabFin.Location.X, LabSig1.Location.Y + LabSig1.Height + 20)
         LabFin2.Location = New Point(LabFin2.Location.X, LabFin.Location.Y + LabFin.Height)
 
         DGVModel.ClearSelection()
@@ -138,12 +167,15 @@ Public Class TestPrint
             PrintDocument1.DefaultPageSettings = PageSetup
         End If
 
-        PrintDocument1.Print()
+        PrintPreviewDialog1.Document = PrintDocument1
+        PrintPreviewDialog1.ShowDialog()
 
-        Dim ex As New TestExcel(rowFac)
-        ex.ShowDialog()
+        'PrintDocument1.Print()
 
-        Me.Close()
+        'Dim ex As New TestExcel(rowFac)
+        'ex.ShowDialog()
+
+        'Me.Close()
     End Sub
 
     Private Function SetHight(dgv As DataGridView)
@@ -159,33 +191,6 @@ Public Class TestPrint
         Return h
     End Function
 
-    Private Function PutBmp(ob As Label, ByVal e As PrintPageEventArgs) As Boolean
-        Dim bool As Boolean = True
-        For i As Integer = 0 To liste.Length - 1
-            If ob.Name = liste(i) Then
-                bool = False
-            End If
-        Next
-        If bool Then
-            Dim txtHeight As Integer = PrintDocument1.DefaultPageSettings.PaperSize.Height
-            Using bmp As Bitmap = New Bitmap(ob.Width, ob.Height)
-                'draw the form on the memory bitmap
-                ob.DrawToBitmap(bmp, New Rectangle(0, 0, ob.Width, ob.Height))
-                If ob.Location.Y > txtHeight Then
-                    e.HasMorePages = True
-                    ob.Location = New Point(ob.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 30)
-                    Return True
-                Else
-                    e.Graphics.DrawImage(bmp, ob.Location.X, ob.Location.Y, ob.Width, ob.Height)
-                    ReDim Preserve liste(nbr)
-                    liste(nbr) = ob.Name
-                    nbr += 1
-                End If
-            End Using
-        End If
-        Return False
-    End Function
-
     Private Function PutBmp(ob As DataGridView, ByVal e As PrintPageEventArgs) As Boolean
         Dim bool As Boolean = True
         For i As Integer = 0 To liste.Length - 1
@@ -193,53 +198,135 @@ Public Class TestPrint
                 bool = False
             End If
         Next
-        If bool Then
-            Dim txtHeight As Integer = PrintDocument1.DefaultPageSettings.PaperSize.Height
-            Using bmp As Bitmap = New Bitmap(ob.Width, ob.Height)
-                'draw the form on the memory bitmap
-                If ob.Location.Y > txtHeight Then
-                    e.HasMorePages = True
-                    ob.Location = New Point(ob.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 30)
-                    Return True
-                ElseIf ob.Location.Y < PictureBox1.Location.Y + PictureBox1.Height + 30 Then
-                    ob.DrawToBitmap(bmp, New Rectangle(0, 0, ob.Width, ob.Height))
-                    e.Graphics.DrawImage(bmp, ob.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 30, ob.Width, ob.Height)
-                Else
-                    If ob.Location.Y + ob.Height > txtHeight Then
-                        Dim HauteurCouper As Integer = ob.Height - (ob.Location.Y + ob.Height - txtHeight) - 45
-                        ob.DrawToBitmap(bmp, New Rectangle(0, 0, ob.Width, HauteurCouper))
-                        e.Graphics.DrawImage(bmp, ob.Location.X, ob.Location.Y, ob.Width, ob.Height)
-                        e.HasMorePages = True
 
-                        Dim total As Integer = 0
-                        total += ob.ColumnHeadersHeight
-                        For r As Integer = 0 To ob.Rows.Count - 1
-                            total += ob.Rows(r).Height
-                            If total >= HauteurCouper - 5 Then
-                                For i As Integer = r To 0 Step -1
-                                    ob.Rows.RemoveAt(i)
-                                Next
-                                ob.ColumnHeadersVisible = False
-                                ob.Height = 0
-                                For i As Integer = 0 To ob.Rows.Count - 1
-                                    ob.Height += ob.Rows(i).Height
-                                Next
-                                ob.Height += 3
-                                Exit For
-                            End If
-                        Next
-                        ob.Location = New Point(ob.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 30)
-                        ob.ClearSelection()
-                        Return True
-                    Else
-                        ob.DrawToBitmap(bmp, New Rectangle(0, 0, ob.Width, ob.Height))
-                        e.Graphics.DrawImage(bmp, ob.Location.X, ob.Location.Y, ob.Width, ob.Height)
-                        ReDim Preserve liste(nbr)
-                        liste(nbr) = ob.Name
-                        nbr += 1
-                    End If
-                End If
-            End Using
+        If bool Then
+            If ob.Location.Y + ob.Height > PrintDocument1.DefaultPageSettings.PaperSize.Height - 50 Then
+                e.HasMorePages = True
+                ob.Location = New Point(ob.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 30)
+                Return True
+            Else
+                Using bmp As Bitmap = New Bitmap(ob.Width, ob.Height)
+                    ob.DrawToBitmap(bmp, New Rectangle(0, 0, ob.Width, ob.Height))
+                    e.Graphics.DrawImage(bmp, ob.Location.X, ob.Location.Y, ob.Width, ob.Height)
+                    ReDim Preserve liste(nbr)
+                    liste(nbr) = ob.Name
+                    nbr += 1
+                End Using
+                Return False
+            End If
+        End If
+        Return False
+    End Function
+
+    Private Function PutBmpLine(ob1 As Label, ob2 As Label, ob3 As Label, ByVal e As PrintPageEventArgs) As Boolean
+        Dim bool As Boolean = True
+        For i As Integer = 0 To liste.Length - 1
+            If ob1.Name = liste(i) Then
+                bool = False
+            End If
+        Next
+
+        If bool Then
+            If ob1.Location.Y + ob1.Height > PrintDocument1.DefaultPageSettings.PaperSize.Height - 50 Then
+                e.HasMorePages = True
+                ob1.Location = New Point(ob1.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 70)
+                ob2.Location = New Point(ob2.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 70)
+                ob3.Location = New Point(ob3.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 70)
+                Return True
+            Else
+                Using bmp As Bitmap = New Bitmap(ob1.Width, ob1.Height)
+                    ob1.DrawToBitmap(bmp, New Rectangle(0, 0, ob1.Width, ob1.Height))
+                    e.Graphics.DrawLine(Pens.Black, ob1.Location.X, ob1.Location.Y, ob1.Location.X + 200, ob1.Location.Y)
+                    ReDim Preserve liste(nbr)
+                    liste(nbr) = ob1.Name
+                    nbr += 1
+                End Using
+                Using bmp As Bitmap = New Bitmap(ob2.Width, ob2.Height)
+                    ob2.DrawToBitmap(bmp, New Rectangle(0, 0, ob2.Width, ob2.Height))
+                    e.Graphics.DrawLine(Pens.Black, ob2.Location.X, ob2.Location.Y, ob2.Location.X + 200, ob2.Location.Y)
+                    ReDim Preserve liste(nbr)
+                    liste(nbr) = ob2.Name
+                    nbr += 1
+                End Using
+                Using bmp As Bitmap = New Bitmap(ob1.Width, ob1.Height)
+                    ob3.DrawToBitmap(bmp, New Rectangle(0, 0, ob3.Width, ob3.Height))
+                    e.Graphics.DrawLine(Pens.Black, ob3.Location.X, ob3.Location.Y, ob3.Location.X + 200, ob3.Location.Y)
+                    ReDim Preserve liste(nbr)
+                    liste(nbr) = ob3.Name
+                    nbr += 1
+                End Using
+                Return False
+            End If
+        End If
+        Return False
+    End Function
+
+    Private Function PutBmpLab(ob1 As Label, ob2 As Label, ob3 As Label, ByVal e As PrintPageEventArgs) As Boolean
+        Dim bool As Boolean = True
+        For i As Integer = 0 To liste.Length - 1
+            If ob1.Name = liste(i) Then
+                bool = False
+            End If
+        Next
+
+        If bool Then
+            If ob1.Location.Y + ob1.Height > PrintDocument1.DefaultPageSettings.PaperSize.Height - 50 Then
+                e.HasMorePages = True
+                ob1.Location = New Point(ob1.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 30)
+                ob2.Location = New Point(ob2.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 30)
+                ob3.Location = New Point(ob3.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 30)
+                Return True
+            Else
+                Using bmp As Bitmap = New Bitmap(ob1.Width, ob1.Height)
+                    ob1.DrawToBitmap(bmp, New Rectangle(0, 0, ob1.Width, ob1.Height))
+                    e.Graphics.DrawImage(bmp, ob1.Location.X, ob1.Location.Y, ob1.Width, ob1.Height)
+                    ReDim Preserve liste(nbr)
+                    liste(nbr) = ob1.Name
+                    nbr += 1
+                End Using
+                Using bmp As Bitmap = New Bitmap(ob2.Width, ob2.Height)
+                    ob2.DrawToBitmap(bmp, New Rectangle(0, 0, ob2.Width, ob2.Height))
+                    e.Graphics.DrawImage(bmp, ob2.Location.X, ob2.Location.Y, ob2.Width, ob2.Height)
+                    ReDim Preserve liste(nbr)
+                    liste(nbr) = ob2.Name
+                    nbr += 1
+                End Using
+                Using bmp As Bitmap = New Bitmap(ob1.Width, ob1.Height)
+                    ob3.DrawToBitmap(bmp, New Rectangle(0, 0, ob3.Width, ob3.Height))
+                    e.Graphics.DrawImage(bmp, ob3.Location.X, ob3.Location.Y, ob3.Width, ob3.Height)
+                    ReDim Preserve liste(nbr)
+                    liste(nbr) = ob3.Name
+                    nbr += 1
+                End Using
+                Return False
+            End If
+        End If
+        Return False
+    End Function
+
+    Private Function PutBmp(ob1 As Label, ByVal e As PrintPageEventArgs) As Boolean
+        Dim bool As Boolean = True
+        For i As Integer = 0 To liste.Length - 1
+            If ob1.Name = liste(i) Then
+                bool = False
+            End If
+        Next
+
+        If bool Then
+            If ob1.Location.Y + ob1.Height > PrintDocument1.DefaultPageSettings.PaperSize.Height - 50 Then
+                e.HasMorePages = True
+                ob1.Location = New Point(ob1.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 30)
+                Return True
+            Else
+                Using bmp As Bitmap = New Bitmap(ob1.Width, ob1.Height)
+                    ob1.DrawToBitmap(bmp, New Rectangle(0, 0, ob1.Width, ob1.Height))
+                    e.Graphics.DrawImage(bmp, ob1.Location.X, ob1.Location.Y, ob1.Width, ob1.Height)
+                    ReDim Preserve liste(nbr)
+                    liste(nbr) = ob1.Name
+                    nbr += 1
+                End Using
+                Return False
+            End If
         End If
         Return False
     End Function
@@ -261,25 +348,61 @@ Public Class TestPrint
         PutBmp(Label5, e)
         PutBmp(Label6, e)
         PutBmp(Label7, e)
+        PutBmp(LabAddCl, e)
+        PutBmp(LabPosCl, e)
+        PutBmp(LabTelCl, e)
+        PutBmp(LabEmailCl, e)
+        PutBmp(LabFac, e)
 
         PutBmp(DGVModel, e)
         PutBmp(DGVCoulVe, e)
         PutBmp(DGVCoul, e)
-        If Not PutBmp(DGVOption, e) Then
-            If DGVTotal.Location.Y >= DGVOption.Location.Y Then
-                DGVTotal.Location = New Point(DGVTotal.Location.X, DGVOption.Location.Y + DGVOption.Height)
-            End If
 
-            LabFin.Location = New Point(LabFin.Location.X, DGVTotal.Location.Y + DGVTotal.Height + 20)
+        If PutBmp(DGVOption, e) Then
+            DGVTotal.Location = New Point(DGVTotal.Location.X, DGVOption.Location.Y + DGVOption.Height - 1)
+            LabSig1.Location = New Point(LabSig1.Location.X, DGVTotal.Location.Y + DGVTotal.Height + 60)
+            LabLine1.Location = New Point(LabLine1.Location.X, LabSig1.Location.Y - 12)
+            LabSig2.Location = New Point(LabSig2.Location.X, DGVTotal.Location.Y + DGVTotal.Height + 60)
+            LabLine2.Location = New Point(LabLine2.Location.X, LabSig2.Location.Y - 12)
+            Lab5M.Location = New Point(Lab5M.Location.X, DGVTotal.Location.Y + DGVTotal.Height + 60)
+            LabLine3.Location = New Point(Lab5M.Location.X, LabSig1.Location.Y - 12)
+            LabFin.Location = New Point(LabFin.Location.X, LabSig1.Location.Y + LabSig1.Height + 20)
             LabFin2.Location = New Point(LabFin2.Location.X, LabFin.Location.Y + LabFin.Height)
+            Exit Sub
         End If
-        If Not PutBmp(DGVTotal, e) Then
-            LabFin.Location = New Point(LabFin.Location.X, DGVTotal.Location.Y + DGVTotal.Height + 20)
+
+        If PutBmp(DGVTotal, e) Then
+            LabLine1.Location = New Point(LabLine1.Location.X, LabSig1.Location.Y + 60)
+            LabSig1.Location = New Point(LabSig1.Location.X, LabLine1.Location.Y + LabLine1.Height + 15)
+            LabLine2.Location = New Point(LabLine2.Location.X, LabSig2.Location.Y + 60)
+            LabSig2.Location = New Point(LabSig2.Location.X, LabLine2.Location.Y + LabLine2.Height + 15)
+            LabLine3.Location = New Point(Lab5M.Location.X, LabSig1.Location.Y + 60)
+            Lab5M.Location = New Point(Lab5M.Location.X, LabLine3.Location.Y + LabLine3.Height + 15)
+            LabFin.Location = New Point(LabFin.Location.X, LabSig1.Location.Y + LabSig1.Height + 20)
             LabFin2.Location = New Point(LabFin2.Location.X, LabFin.Location.Y + LabFin.Height)
+            Exit Sub
         End If
-        If Not PutBmp(LabFin, e) Then
+
+        If PutBmpLine(LabLine1, LabLine2, LabLine3, e) Then
+            LabSig1.Location = New Point(LabSig1.Location.X, LabLine1.Location.Y + LabLine1.Height + 15)
+            LabSig2.Location = New Point(LabSig2.Location.X, LabLine2.Location.Y + LabLine2.Height + 15)
+            Lab5M.Location = New Point(Lab5M.Location.X, LabLine3.Location.Y + LabLine3.Height + 15)
+            LabFin.Location = New Point(LabFin.Location.X, LabSig1.Location.Y + LabSig1.Height + 20)
             LabFin2.Location = New Point(LabFin2.Location.X, LabFin.Location.Y + LabFin.Height)
+            Exit Sub
         End If
+
+        If PutBmpLab(LabSig1, LabSig2, Lab5M, e) Then
+            LabFin.Location = New Point(LabFin.Location.X, LabSig1.Location.Y + LabSig1.Height + 20)
+            LabFin2.Location = New Point(LabFin2.Location.X, LabFin.Location.Y + LabFin.Height)
+            Exit Sub
+        End If
+
+        If PutBmp(LabFin, e) Then
+            LabFin2.Location = New Point(LabFin2.Location.X, LabFin.Location.Y + LabFin.Height)
+            Exit Sub
+        End If
+
         PutBmp(LabFin2, e)
     End Sub
 End Class

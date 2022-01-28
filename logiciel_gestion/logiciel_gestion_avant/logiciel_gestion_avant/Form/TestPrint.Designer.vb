@@ -23,6 +23,9 @@ Partial Class TestPrint
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TestPrint))
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -62,6 +65,17 @@ Partial Class TestPrint
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.LabFac = New System.Windows.Forms.Label()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
+        Me.LabSig1 = New System.Windows.Forms.Label()
+        Me.LabSig2 = New System.Windows.Forms.Label()
+        Me.Lab5M = New System.Windows.Forms.Label()
+        Me.LabLine1 = New System.Windows.Forms.Label()
+        Me.LabLine2 = New System.Windows.Forms.Label()
+        Me.LabLine3 = New System.Windows.Forms.Label()
+        Me.LabAddCl = New System.Windows.Forms.Label()
+        Me.LabPosCl = New System.Windows.Forms.Label()
+        Me.LabTelCl = New System.Windows.Forms.Label()
+        Me.LabEmailCl = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.DGVModel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVCoulVe, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVCoul, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -83,27 +97,30 @@ Partial Class TestPrint
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(631, 200)
+        Me.Label6.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label6.Location = New System.Drawing.Point(631, 167)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(35, 15)
+        Me.Label6.Size = New System.Drawing.Size(28, 12)
         Me.Label6.TabIndex = 7
         Me.Label6.Text = "Pour:"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(631, 215)
+        Me.Label7.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label7.Location = New System.Drawing.Point(631, 179)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(113, 15)
+        Me.Label7.Size = New System.Drawing.Size(93, 12)
         Me.Label7.TabIndex = 8
         Me.Label7.Text = "CONTRAT DE VENTE"
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(77, 200)
+        Me.Label5.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label5.Location = New System.Drawing.Point(77, 167)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(44, 15)
+        Me.Label5.Size = New System.Drawing.Size(34, 12)
         Me.Label5.TabIndex = 6
         Me.Label5.Text = "Client: "
         '
@@ -111,15 +128,24 @@ Partial Class TestPrint
         '
         Me.DGVModel.AllowUserToAddRows = False
         Me.DGVModel.AllowUserToDeleteRows = False
+        Me.DGVModel.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DGVModel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVModel.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Description, Me.Code, Me.Montant})
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle1.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVModel.DefaultCellStyle = DataGridViewCellStyle1
         Me.DGVModel.EnableHeadersVisualStyles = False
-        Me.DGVModel.Location = New System.Drawing.Point(77, 254)
+        Me.DGVModel.Location = New System.Drawing.Point(77, 231)
         Me.DGVModel.Name = "DGVModel"
         Me.DGVModel.ReadOnly = True
         Me.DGVModel.RowHeadersVisible = False
         Me.DGVModel.RowTemplate.Height = 25
-        Me.DGVModel.Size = New System.Drawing.Size(712, 43)
+        Me.DGVModel.Size = New System.Drawing.Size(712, 41)
         Me.DGVModel.TabIndex = 9
         '
         'Description
@@ -144,9 +170,10 @@ Partial Class TestPrint
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(631, 133)
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label4.Location = New System.Drawing.Point(631, 130)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(69, 15)
+        Me.Label4.Size = New System.Drawing.Size(56, 12)
         Me.Label4.TabIndex = 5
         Me.Label4.Text = "N° Facture: "
         '
@@ -154,15 +181,24 @@ Partial Class TestPrint
         '
         Me.DGVCoulVe.AllowUserToAddRows = False
         Me.DGVCoulVe.AllowUserToDeleteRows = False
+        Me.DGVCoulVe.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DGVCoulVe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVCoulVe.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3})
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVCoulVe.DefaultCellStyle = DataGridViewCellStyle2
         Me.DGVCoulVe.EnableHeadersVisualStyles = False
-        Me.DGVCoulVe.Location = New System.Drawing.Point(77, 296)
+        Me.DGVCoulVe.Location = New System.Drawing.Point(77, 271)
         Me.DGVCoulVe.Name = "DGVCoulVe"
         Me.DGVCoulVe.ReadOnly = True
         Me.DGVCoulVe.RowHeadersVisible = False
         Me.DGVCoulVe.RowTemplate.Height = 25
-        Me.DGVCoulVe.Size = New System.Drawing.Size(712, 43)
+        Me.DGVCoulVe.Size = New System.Drawing.Size(712, 41)
         Me.DGVCoulVe.TabIndex = 10
         '
         'DataGridViewTextBoxColumn1
@@ -187,9 +223,10 @@ Partial Class TestPrint
         'LabDate
         '
         Me.LabDate.AutoSize = True
+        Me.LabDate.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.LabDate.Location = New System.Drawing.Point(631, 118)
         Me.LabDate.Name = "LabDate"
-        Me.LabDate.Size = New System.Drawing.Size(40, 15)
+        Me.LabDate.Size = New System.Drawing.Size(32, 12)
         Me.LabDate.TabIndex = 4
         Me.LabDate.Text = "DATE: "
         '
@@ -197,15 +234,24 @@ Partial Class TestPrint
         '
         Me.DGVCoul.AllowUserToAddRows = False
         Me.DGVCoul.AllowUserToDeleteRows = False
+        Me.DGVCoul.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DGVCoul.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVCoul.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6})
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVCoul.DefaultCellStyle = DataGridViewCellStyle3
         Me.DGVCoul.EnableHeadersVisualStyles = False
-        Me.DGVCoul.Location = New System.Drawing.Point(77, 338)
+        Me.DGVCoul.Location = New System.Drawing.Point(77, 311)
         Me.DGVCoul.Name = "DGVCoul"
         Me.DGVCoul.ReadOnly = True
         Me.DGVCoul.RowHeadersVisible = False
         Me.DGVCoul.RowTemplate.Height = 25
-        Me.DGVCoul.Size = New System.Drawing.Size(712, 222)
+        Me.DGVCoul.Size = New System.Drawing.Size(712, 182)
         Me.DGVCoul.TabIndex = 11
         '
         'DataGridViewTextBoxColumn4
@@ -230,9 +276,10 @@ Partial Class TestPrint
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(77, 148)
+        Me.Label3.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label3.Location = New System.Drawing.Point(77, 142)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(233, 15)
+        Me.Label3.Size = New System.Drawing.Size(195, 12)
         Me.Label3.TabIndex = 3
         Me.Label3.Text = "Téléphone (514) 264-4040    1-844-562-7778"
         '
@@ -240,10 +287,12 @@ Partial Class TestPrint
         '
         Me.DGVOption.AllowUserToAddRows = False
         Me.DGVOption.AllowUserToDeleteRows = False
+        Me.DGVOption.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DGVOption.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVOption.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9})
+        Me.DGVOption.DefaultCellStyle = DataGridViewCellStyle2
         Me.DGVOption.EnableHeadersVisualStyles = False
-        Me.DGVOption.Location = New System.Drawing.Point(77, 559)
+        Me.DGVOption.Location = New System.Drawing.Point(77, 492)
         Me.DGVOption.Name = "DGVOption"
         Me.DGVOption.ReadOnly = True
         Me.DGVOption.RowHeadersVisible = False
@@ -273,9 +322,10 @@ Partial Class TestPrint
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(77, 133)
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label2.Location = New System.Drawing.Point(77, 130)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(105, 15)
+        Me.Label2.Size = New System.Drawing.Size(87, 12)
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Joliette, Qc J6E3N9"
         '
@@ -283,10 +333,12 @@ Partial Class TestPrint
         '
         Me.DGVTotal.AllowUserToAddRows = False
         Me.DGVTotal.AllowUserToDeleteRows = False
+        Me.DGVTotal.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DGVTotal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVTotal.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12})
+        Me.DGVTotal.DefaultCellStyle = DataGridViewCellStyle2
         Me.DGVTotal.EnableHeadersVisualStyles = False
-        Me.DGVTotal.Location = New System.Drawing.Point(77, 648)
+        Me.DGVTotal.Location = New System.Drawing.Point(77, 584)
         Me.DGVTotal.Name = "DGVTotal"
         Me.DGVTotal.ReadOnly = True
         Me.DGVTotal.RowHeadersVisible = False
@@ -316,9 +368,10 @@ Partial Class TestPrint
         'Label1
         '
         Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Label1.Location = New System.Drawing.Point(77, 118)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(131, 15)
+        Me.Label1.Size = New System.Drawing.Size(110, 12)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "1265 Rue de Lanaudière"
         '
@@ -334,7 +387,7 @@ Partial Class TestPrint
         'LabFin
         '
         Me.LabFin.AutoSize = True
-        Me.LabFin.Location = New System.Drawing.Point(333, 847)
+        Me.LabFin.Location = New System.Drawing.Point(343, 989)
         Me.LabFin.Name = "LabFin"
         Me.LabFin.Size = New System.Drawing.Size(168, 15)
         Me.LabFin.TabIndex = 16
@@ -343,7 +396,7 @@ Partial Class TestPrint
         'LabFin2
         '
         Me.LabFin2.AutoSize = True
-        Me.LabFin2.Location = New System.Drawing.Point(344, 862)
+        Me.LabFin2.Location = New System.Drawing.Point(354, 1004)
         Me.LabFin2.Name = "LabFin2"
         Me.LabFin2.Size = New System.Drawing.Size(141, 15)
         Me.LabFin2.TabIndex = 17
@@ -352,18 +405,20 @@ Partial Class TestPrint
         'LabDateNow
         '
         Me.LabDateNow.AutoSize = True
+        Me.LabDateNow.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.LabDateNow.Location = New System.Drawing.Point(677, 118)
         Me.LabDateNow.Name = "LabDateNow"
-        Me.LabDateNow.Size = New System.Drawing.Size(112, 15)
+        Me.LabDateNow.Size = New System.Drawing.Size(94, 12)
         Me.LabDateNow.TabIndex = 18
         Me.LabDateNow.Text = "DATE AUJOURD'HUI"
         '
         'LabClient
         '
         Me.LabClient.AutoSize = True
-        Me.LabClient.Location = New System.Drawing.Point(127, 200)
+        Me.LabClient.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabClient.Location = New System.Drawing.Point(117, 167)
         Me.LabClient.Name = "LabClient"
-        Me.LabClient.Size = New System.Drawing.Size(85, 15)
+        Me.LabClient.Size = New System.Drawing.Size(68, 12)
         Me.LabClient.TabIndex = 19
         Me.LabClient.Text = "Client a mettre"
         '
@@ -383,21 +438,134 @@ Partial Class TestPrint
         'LabFac
         '
         Me.LabFac.AutoSize = True
-        Me.LabFac.Location = New System.Drawing.Point(703, 133)
+        Me.LabFac.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabFac.Location = New System.Drawing.Point(699, 130)
         Me.LabFac.Name = "LabFac"
-        Me.LabFac.Size = New System.Drawing.Size(110, 15)
+        Me.LabFac.Size = New System.Drawing.Size(90, 12)
         Me.LabFac.TabIndex = 20
         Me.LabFac.Text = "No facture à mettre"
         '
         'PrintDocument1
         '
         '
+        'LabSig1
+        '
+        Me.LabSig1.AutoSize = True
+        Me.LabSig1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.LabSig1.Location = New System.Drawing.Point(77, 917)
+        Me.LabSig1.Name = "LabSig1"
+        Me.LabSig1.Size = New System.Drawing.Size(68, 17)
+        Me.LabSig1.TabIndex = 21
+        Me.LabSig1.Text = "Signature 1"
+        '
+        'LabSig2
+        '
+        Me.LabSig2.AutoSize = True
+        Me.LabSig2.Location = New System.Drawing.Point(332, 917)
+        Me.LabSig2.Name = "LabSig2"
+        Me.LabSig2.Size = New System.Drawing.Size(66, 15)
+        Me.LabSig2.TabIndex = 22
+        Me.LabSig2.Text = "Signature 2"
+        '
+        'Lab5M
+        '
+        Me.Lab5M.AutoSize = True
+        Me.Lab5M.Location = New System.Drawing.Point(589, 917)
+        Me.Lab5M.Name = "Lab5M"
+        Me.Lab5M.Size = New System.Drawing.Size(59, 15)
+        Me.Lab5M.TabIndex = 23
+        Me.Lab5M.Text = "5 Mars VR"
+        '
+        'LabLine1
+        '
+        Me.LabLine1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.LabLine1.Location = New System.Drawing.Point(77, 905)
+        Me.LabLine1.Name = "LabLine1"
+        Me.LabLine1.Size = New System.Drawing.Size(200, 2)
+        Me.LabLine1.TabIndex = 24
+        '
+        'LabLine2
+        '
+        Me.LabLine2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.LabLine2.Location = New System.Drawing.Point(332, 905)
+        Me.LabLine2.Name = "LabLine2"
+        Me.LabLine2.Size = New System.Drawing.Size(200, 2)
+        Me.LabLine2.TabIndex = 25
+        '
+        'LabLine3
+        '
+        Me.LabLine3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.LabLine3.Location = New System.Drawing.Point(589, 905)
+        Me.LabLine3.Name = "LabLine3"
+        Me.LabLine3.Size = New System.Drawing.Size(200, 2)
+        Me.LabLine3.TabIndex = 26
+        '
+        'LabAddCl
+        '
+        Me.LabAddCl.AutoSize = True
+        Me.LabAddCl.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabAddCl.Location = New System.Drawing.Point(77, 179)
+        Me.LabAddCl.Name = "LabAddCl"
+        Me.LabAddCl.Size = New System.Drawing.Size(71, 12)
+        Me.LabAddCl.TabIndex = 27
+        Me.LabAddCl.Text = "Addresse Client"
+        '
+        'LabPosCl
+        '
+        Me.LabPosCl.AutoSize = True
+        Me.LabPosCl.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabPosCl.Location = New System.Drawing.Point(77, 192)
+        Me.LabPosCl.Name = "LabPosCl"
+        Me.LabPosCl.Size = New System.Drawing.Size(57, 12)
+        Me.LabPosCl.TabIndex = 29
+        Me.LabPosCl.Text = "Code Postal"
+        '
+        'LabTelCl
+        '
+        Me.LabTelCl.AutoSize = True
+        Me.LabTelCl.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabTelCl.Location = New System.Drawing.Point(77, 204)
+        Me.LabTelCl.Name = "LabTelCl"
+        Me.LabTelCl.Size = New System.Drawing.Size(50, 12)
+        Me.LabTelCl.TabIndex = 30
+        Me.LabTelCl.Text = "Téléphone"
+        '
+        'LabEmailCl
+        '
+        Me.LabEmailCl.AutoSize = True
+        Me.LabEmailCl.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabEmailCl.Location = New System.Drawing.Point(77, 216)
+        Me.LabEmailCl.Name = "LabEmailCl"
+        Me.LabEmailCl.Size = New System.Drawing.Size(76, 12)
+        Me.LabEmailCl.TabIndex = 31
+        Me.LabEmailCl.Text = "Addresse couriel"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(526, 47)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 32
+        Me.Button1.Text = "Print"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'TestPrint
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(987, 907)
+        Me.ClientSize = New System.Drawing.Size(987, 1068)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.LabEmailCl)
+        Me.Controls.Add(Me.LabTelCl)
+        Me.Controls.Add(Me.LabPosCl)
+        Me.Controls.Add(Me.LabAddCl)
+        Me.Controls.Add(Me.LabLine3)
+        Me.Controls.Add(Me.LabLine2)
+        Me.Controls.Add(Me.LabLine1)
+        Me.Controls.Add(Me.Lab5M)
+        Me.Controls.Add(Me.LabSig2)
+        Me.Controls.Add(Me.LabSig1)
         Me.Controls.Add(Me.LabFac)
         Me.Controls.Add(Me.LabClient)
         Me.Controls.Add(Me.BTPrint)
@@ -469,4 +637,15 @@ Partial Class TestPrint
     Friend WithEvents PrintDialog1 As PrintDialog
     Friend WithEvents LabFac As Label
     Friend WithEvents PrintDocument1 As Printing.PrintDocument
+    Friend WithEvents LabSig1 As Label
+    Friend WithEvents LabSig2 As Label
+    Friend WithEvents Lab5M As Label
+    Friend WithEvents LabLine1 As Label
+    Friend WithEvents LabLine2 As Label
+    Friend WithEvents LabLine3 As Label
+    Friend WithEvents LabAddCl As Label
+    Friend WithEvents LabPosCl As Label
+    Friend WithEvents LabTelCl As Label
+    Friend WithEvents LabEmailCl As Label
+    Friend WithEvents Button1 As Button
 End Class

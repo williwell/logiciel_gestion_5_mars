@@ -38,14 +38,14 @@ Partial Class ListeClient
         Me.DGVClient.ReadOnly = True
         Me.DGVClient.RowTemplate.Height = 25
         Me.DGVClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DGVClient.Size = New System.Drawing.Size(800, 450)
+        Me.DGVClient.Size = New System.Drawing.Size(1083, 492)
         Me.DGVClient.TabIndex = 0
         '
         'ListeClient
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(1083, 492)
         Me.Controls.Add(Me.DGVClient)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ListeClient"

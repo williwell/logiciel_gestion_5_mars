@@ -37,7 +37,7 @@ Partial Class UCClient
         Me.DGVClient.ReadOnly = True
         Me.DGVClient.RowTemplate.Height = 25
         Me.DGVClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DGVClient.Size = New System.Drawing.Size(661, 396)
+        Me.DGVClient.Size = New System.Drawing.Size(706, 396)
         Me.DGVClient.TabIndex = 0
         '
         'BtCreer

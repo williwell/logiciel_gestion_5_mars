@@ -18,7 +18,7 @@
     Private Sub BTSave_Click(sender As Object, e As EventArgs) Handles BTSave.Click
         If Not String.IsNullOrEmpty(TBPrenom1.Text) Or Not idCl = 0 Then
             If Not String.IsNullOrEmpty(TBNom1.Text) Or Not idCl = 0 Then
-                Dim listeAddCl(7) As String
+                Dim listeAddCl(10) As String
                 If idCl = 0 Then
                     listeAddCl(0) = TBPrenom1.Text
                     listeAddCl(1) = TBNom1.Text
@@ -54,8 +54,26 @@
                     Else
                         listeAddCl(7) = TBEmail.Text
                     End If
+
+                    If String.IsNullOrEmpty(TBAdresse.Text) Then
+                        listeAddCl(8) = "null"
+                    Else
+                        listeAddCl(8) = TBAdresse.Text
+                    End If
+
+                    If String.IsNullOrEmpty(TBApp.Text) Then
+                        listeAddCl(9) = "null"
+                    Else
+                        listeAddCl(9) = TBApp.Text
+                    End If
+
+                    If String.IsNullOrEmpty(TBPoste.Text) Then
+                        listeAddCl(10) = "null"
+                    Else
+                        listeAddCl(10) = TBPoste.Text
+                    End If
                 End If
-                Dim liste() As String = uc.getListeAdd
+                    Dim liste() As String = uc.getListeAdd
                 Dim listeAdd() As String = {liste(0), liste(1), liste(2), liste(3), liste(4)}
                 Dim table As DataTable
                 Dim id As String
@@ -259,6 +277,9 @@
             End If
         Next
         TBEmailCl.Text = row.Cells(8).Value
+        TBAdresseCl.Text = row.Cells(9).Value
+        TBAppCl.Text = row.Cells(10).Value
+        TBPosteCl.Text = row.Cells(11).Value
         ChangeEna(True)
     End Sub
 
