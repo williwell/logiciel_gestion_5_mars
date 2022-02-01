@@ -4,6 +4,7 @@ Public Class GestionClient
     ReadOnly ID As String
     ReadOnly table As New DataTable
     ReadOnly liste() As String = {"Non déterminer", "Homme", "Femme"}
+
     Sub New(IDClient As String)
 
         ' Cet appel est requis par le concepteur.
@@ -77,6 +78,18 @@ Public Class GestionClient
         Next
 
         TBEmail.Text = table(0)(8)
+
+        If table(0)(9) <> "null" Then
+            Dim str As String = table(0)(9)
+            TBRue.Text = str.Substring(0, str.IndexOf(","))
+            str = str.Substring(str.IndexOf(",") + 2)
+            TBVille.Text = str.Substring(0, str.IndexOf(","))
+            str = str.Substring(str.IndexOf(",") + 2)
+            TBPro.Text = str
+        End If
+
+        TBApp.Text = table(0)(10)
+        TBCode.Text = table(0)(11)
     End Sub
 
     Private Sub BTAnnuler_Click(sender As Object, e As EventArgs) Handles BTAnnuler.Click

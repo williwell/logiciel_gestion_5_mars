@@ -65,7 +65,7 @@ Partial Class UCVente3
         Me.Label20 = New System.Windows.Forms.Label()
         Me.TBApp = New System.Windows.Forms.TextBox()
         Me.Label21 = New System.Windows.Forms.Label()
-        Me.TBAdresse = New System.Windows.Forms.TextBox()
+        Me.TBRue = New System.Windows.Forms.TextBox()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.TBPosteCl = New System.Windows.Forms.TextBox()
         Me.Label23 = New System.Windows.Forms.Label()
@@ -73,6 +73,10 @@ Partial Class UCVente3
         Me.Label24 = New System.Windows.Forms.Label()
         Me.TBAdresseCl = New System.Windows.Forms.TextBox()
         Me.Label25 = New System.Windows.Forms.Label()
+        Me.TBVille = New System.Windows.Forms.TextBox()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.TBPro = New System.Windows.Forms.TextBox()
+        Me.Label27 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
         'BTSave
@@ -80,7 +84,7 @@ Partial Class UCVente3
         Me.BTSave.Location = New System.Drawing.Point(321, 591)
         Me.BTSave.Name = "BTSave"
         Me.BTSave.Size = New System.Drawing.Size(114, 23)
-        Me.BTSave.TabIndex = 27
+        Me.BTSave.TabIndex = 14
         Me.BTSave.Text = "Enregistrer"
         Me.BTSave.UseVisualStyleBackColor = True
         '
@@ -107,7 +111,7 @@ Partial Class UCVente3
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(321, 233)
+        Me.Label4.Location = New System.Drawing.Point(531, 145)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(43, 15)
         Me.Label4.TabIndex = 23
@@ -116,7 +120,7 @@ Partial Class UCVente3
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(321, 189)
+        Me.Label5.Location = New System.Drawing.Point(531, 101)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(58, 15)
         Me.Label5.TabIndex = 21
@@ -209,49 +213,49 @@ Partial Class UCVente3
         Me.TBPrenom1.Location = New System.Drawing.Point(321, 119)
         Me.TBPrenom1.Name = "TBPrenom1"
         Me.TBPrenom1.Size = New System.Drawing.Size(204, 23)
-        Me.TBPrenom1.TabIndex = 33
+        Me.TBPrenom1.TabIndex = 1
         '
         'TBNom1
         '
         Me.TBNom1.Location = New System.Drawing.Point(321, 163)
         Me.TBNom1.Name = "TBNom1"
         Me.TBNom1.Size = New System.Drawing.Size(204, 23)
-        Me.TBNom1.TabIndex = 34
+        Me.TBNom1.TabIndex = 2
         '
         'TBPrenom2
         '
-        Me.TBPrenom2.Location = New System.Drawing.Point(321, 207)
+        Me.TBPrenom2.Location = New System.Drawing.Point(531, 119)
         Me.TBPrenom2.Name = "TBPrenom2"
         Me.TBPrenom2.Size = New System.Drawing.Size(204, 23)
-        Me.TBPrenom2.TabIndex = 35
+        Me.TBPrenom2.TabIndex = 3
         '
         'TBNom2
         '
-        Me.TBNom2.Location = New System.Drawing.Point(321, 251)
+        Me.TBNom2.Location = New System.Drawing.Point(531, 163)
         Me.TBNom2.Name = "TBNom2"
         Me.TBNom2.Size = New System.Drawing.Size(204, 23)
-        Me.TBNom2.TabIndex = 36
+        Me.TBNom2.TabIndex = 4
         '
         'TBTel1
         '
         Me.TBTel1.Location = New System.Drawing.Point(321, 427)
         Me.TBTel1.Name = "TBTel1"
         Me.TBTel1.Size = New System.Drawing.Size(204, 23)
-        Me.TBTel1.TabIndex = 37
+        Me.TBTel1.TabIndex = 10
         '
         'TBTel2
         '
         Me.TBTel2.Location = New System.Drawing.Point(321, 471)
         Me.TBTel2.Name = "TBTel2"
         Me.TBTel2.Size = New System.Drawing.Size(204, 23)
-        Me.TBTel2.TabIndex = 38
+        Me.TBTel2.TabIndex = 11
         '
         'TBEmail
         '
         Me.TBEmail.Location = New System.Drawing.Point(321, 559)
         Me.TBEmail.Name = "TBEmail"
         Me.TBEmail.Size = New System.Drawing.Size(204, 23)
-        Me.TBEmail.TabIndex = 40
+        Me.TBEmail.TabIndex = 13
         '
         'CBSexe
         '
@@ -260,7 +264,7 @@ Partial Class UCVente3
         Me.CBSexe.Location = New System.Drawing.Point(321, 515)
         Me.CBSexe.Name = "CBSexe"
         Me.CBSexe.Size = New System.Drawing.Size(204, 23)
-        Me.CBSexe.TabIndex = 41
+        Me.CBSexe.TabIndex = 12
         '
         'BTNewCl
         '
@@ -422,7 +426,7 @@ Partial Class UCVente3
         Me.TBPoste.Location = New System.Drawing.Point(321, 383)
         Me.TBPoste.Name = "TBPoste"
         Me.TBPoste.Size = New System.Drawing.Size(204, 23)
-        Me.TBPoste.TabIndex = 64
+        Me.TBPoste.TabIndex = 9
         '
         'Label20
         '
@@ -438,7 +442,7 @@ Partial Class UCVente3
         Me.TBApp.Location = New System.Drawing.Point(321, 339)
         Me.TBApp.Name = "TBApp"
         Me.TBApp.Size = New System.Drawing.Size(204, 23)
-        Me.TBApp.TabIndex = 62
+        Me.TBApp.TabIndex = 8
         '
         'Label21
         '
@@ -449,21 +453,21 @@ Partial Class UCVente3
         Me.Label21.TabIndex = 61
         Me.Label21.Text = "Appartement"
         '
-        'TBAdresse
+        'TBRue
         '
-        Me.TBAdresse.Location = New System.Drawing.Point(321, 295)
-        Me.TBAdresse.Name = "TBAdresse"
-        Me.TBAdresse.Size = New System.Drawing.Size(204, 23)
-        Me.TBAdresse.TabIndex = 60
+        Me.TBRue.Location = New System.Drawing.Point(321, 207)
+        Me.TBRue.Name = "TBRue"
+        Me.TBRue.Size = New System.Drawing.Size(204, 23)
+        Me.TBRue.TabIndex = 5
         '
         'Label22
         '
         Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(321, 277)
+        Me.Label22.Location = New System.Drawing.Point(321, 189)
         Me.Label22.Name = "Label22"
-        Me.Label22.Size = New System.Drawing.Size(48, 15)
+        Me.Label22.Size = New System.Drawing.Size(27, 15)
         Me.Label22.TabIndex = 59
-        Me.Label22.Text = "Adresse"
+        Me.Label22.Text = "Rue"
         '
         'TBPosteCl
         '
@@ -513,10 +517,46 @@ Partial Class UCVente3
         Me.Label25.TabIndex = 65
         Me.Label25.Text = "Adresse"
         '
+        'TBVille
+        '
+        Me.TBVille.Location = New System.Drawing.Point(321, 251)
+        Me.TBVille.Name = "TBVille"
+        Me.TBVille.Size = New System.Drawing.Size(204, 23)
+        Me.TBVille.TabIndex = 6
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Location = New System.Drawing.Point(321, 233)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(29, 15)
+        Me.Label26.TabIndex = 71
+        Me.Label26.Text = "Ville"
+        '
+        'TBPro
+        '
+        Me.TBPro.Location = New System.Drawing.Point(321, 295)
+        Me.TBPro.Name = "TBPro"
+        Me.TBPro.Size = New System.Drawing.Size(204, 23)
+        Me.TBPro.TabIndex = 7
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Location = New System.Drawing.Point(321, 277)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(53, 15)
+        Me.Label27.TabIndex = 73
+        Me.Label27.Text = "Province"
+        '
         'UCVente3
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.TBPro)
+        Me.Controls.Add(Me.Label27)
+        Me.Controls.Add(Me.TBVille)
+        Me.Controls.Add(Me.Label26)
         Me.Controls.Add(Me.TBPosteCl)
         Me.Controls.Add(Me.Label23)
         Me.Controls.Add(Me.TBAppCl)
@@ -527,7 +567,7 @@ Partial Class UCVente3
         Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.TBApp)
         Me.Controls.Add(Me.Label21)
-        Me.Controls.Add(Me.TBAdresse)
+        Me.Controls.Add(Me.TBRue)
         Me.Controls.Add(Me.Label22)
         Me.Controls.Add(Me.CBSexeCl)
         Me.Controls.Add(Me.TBEmailCl)
@@ -618,7 +658,7 @@ Partial Class UCVente3
     Friend WithEvents Label20 As Label
     Friend WithEvents TBApp As TextBox
     Friend WithEvents Label21 As Label
-    Friend WithEvents TBAdresse As TextBox
+    Friend WithEvents TBRue As TextBox
     Friend WithEvents Label22 As Label
     Friend WithEvents TBPosteCl As TextBox
     Friend WithEvents Label23 As Label
@@ -626,4 +666,8 @@ Partial Class UCVente3
     Friend WithEvents Label24 As Label
     Friend WithEvents TBAdresseCl As TextBox
     Friend WithEvents Label25 As Label
+    Friend WithEvents TBVille As TextBox
+    Friend WithEvents Label26 As Label
+    Friend WithEvents TBPro As TextBox
+    Friend WithEvents Label27 As Label
 End Class

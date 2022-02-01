@@ -26,6 +26,8 @@ Partial Class TestPrint
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -42,6 +44,7 @@ Partial Class TestPrint
         Me.LabDate = New System.Windows.Forms.Label()
         Me.DGVCoul = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Nom = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -76,6 +79,7 @@ Partial Class TestPrint
         Me.LabTelCl = New System.Windows.Forms.Label()
         Me.LabEmailCl = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.LabDateLiv = New System.Windows.Forms.Label()
         CType(Me.DGVModel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVCoulVe, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVCoul, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -236,7 +240,7 @@ Partial Class TestPrint
         Me.DGVCoul.AllowUserToDeleteRows = False
         Me.DGVCoul.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DGVCoul.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGVCoul.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6})
+        Me.DGVCoul.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn4, Me.Nom, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6})
         DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle3.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
@@ -259,6 +263,12 @@ Partial Class TestPrint
         Me.DataGridViewTextBoxColumn4.HeaderText = "COULEUR"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        '
+        'Nom
+        '
+        Me.Nom.HeaderText = "Nom"
+        Me.Nom.Name = "Nom"
+        Me.Nom.ReadOnly = True
         '
         'DataGridViewTextBoxColumn5
         '
@@ -290,7 +300,14 @@ Partial Class TestPrint
         Me.DGVOption.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DGVOption.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVOption.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9})
-        Me.DGVOption.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVOption.DefaultCellStyle = DataGridViewCellStyle4
         Me.DGVOption.EnableHeadersVisualStyles = False
         Me.DGVOption.Location = New System.Drawing.Point(77, 492)
         Me.DGVOption.Name = "DGVOption"
@@ -336,7 +353,14 @@ Partial Class TestPrint
         Me.DGVTotal.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells
         Me.DGVTotal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DGVTotal.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn10, Me.DataGridViewTextBoxColumn11, Me.DataGridViewTextBoxColumn12})
-        Me.DGVTotal.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        DataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DGVTotal.DefaultCellStyle = DataGridViewCellStyle5
         Me.DGVTotal.EnableHeadersVisualStyles = False
         Me.DGVTotal.Location = New System.Drawing.Point(77, 584)
         Me.DGVTotal.Name = "DGVTotal"
@@ -387,18 +411,20 @@ Partial Class TestPrint
         'LabFin
         '
         Me.LabFin.AutoSize = True
+        Me.LabFin.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.LabFin.Location = New System.Drawing.Point(343, 989)
         Me.LabFin.Name = "LabFin"
-        Me.LabFin.Size = New System.Drawing.Size(168, 15)
+        Me.LabFin.Size = New System.Drawing.Size(141, 12)
         Me.LabFin.TabIndex = 16
         Me.LabFin.Text = "MERCI DE VOTRE CONFIANCE!"
         '
         'LabFin2
         '
         Me.LabFin2.AutoSize = True
+        Me.LabFin2.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.LabFin2.Location = New System.Drawing.Point(354, 1004)
         Me.LabFin2.Name = "LabFin2"
-        Me.LabFin2.Size = New System.Drawing.Size(141, 15)
+        Me.LabFin2.Size = New System.Drawing.Size(116, 12)
         Me.LabFin2.TabIndex = 17
         Me.LabFin2.Text = "GARANTIE 5 MARS 3 ANS"
         '
@@ -452,27 +478,30 @@ Partial Class TestPrint
         '
         Me.LabSig1.AutoSize = True
         Me.LabSig1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.LabSig1.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.LabSig1.Location = New System.Drawing.Point(77, 917)
         Me.LabSig1.Name = "LabSig1"
-        Me.LabSig1.Size = New System.Drawing.Size(68, 17)
+        Me.LabSig1.Size = New System.Drawing.Size(56, 14)
         Me.LabSig1.TabIndex = 21
         Me.LabSig1.Text = "Signature 1"
         '
         'LabSig2
         '
         Me.LabSig2.AutoSize = True
+        Me.LabSig2.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.LabSig2.Location = New System.Drawing.Point(332, 917)
         Me.LabSig2.Name = "LabSig2"
-        Me.LabSig2.Size = New System.Drawing.Size(66, 15)
+        Me.LabSig2.Size = New System.Drawing.Size(54, 12)
         Me.LabSig2.TabIndex = 22
         Me.LabSig2.Text = "Signature 2"
         '
         'Lab5M
         '
         Me.Lab5M.AutoSize = True
+        Me.Lab5M.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Lab5M.Location = New System.Drawing.Point(589, 917)
         Me.Lab5M.Name = "Lab5M"
-        Me.Lab5M.Size = New System.Drawing.Size(59, 15)
+        Me.Lab5M.Size = New System.Drawing.Size(49, 12)
         Me.Lab5M.TabIndex = 23
         Me.Lab5M.Text = "5 Mars VR"
         '
@@ -549,12 +578,23 @@ Partial Class TestPrint
         Me.Button1.Text = "Print"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'LabDateLiv
+        '
+        Me.LabDateLiv.AutoSize = True
+        Me.LabDateLiv.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.LabDateLiv.Location = New System.Drawing.Point(631, 1015)
+        Me.LabDateLiv.Name = "LabDateLiv"
+        Me.LabDateLiv.Size = New System.Drawing.Size(50, 12)
+        Me.LabDateLiv.TabIndex = 33
+        Me.LabDateLiv.Text = "Date Livré:"
+        '
         'TestPrint
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(987, 1068)
+        Me.Controls.Add(Me.LabDateLiv)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.LabEmailCl)
         Me.Controls.Add(Me.LabTelCl)
@@ -613,9 +653,6 @@ Partial Class TestPrint
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents LabDate As Label
     Friend WithEvents DGVCoul As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents Label3 As Label
     Friend WithEvents DGVOption As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
@@ -648,4 +685,9 @@ Partial Class TestPrint
     Friend WithEvents LabTelCl As Label
     Friend WithEvents LabEmailCl As Label
     Friend WithEvents Button1 As Button
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents Nom As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
+    Friend WithEvents LabDateLiv As Label
 End Class

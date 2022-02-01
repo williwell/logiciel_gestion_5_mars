@@ -19,6 +19,7 @@ Public Class TestPrint
         DGVCoulVe.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         DGVCoulVe.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGreen
         DGVCoul.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        DGVCoul.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         DGVCoul.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGreen
         DGVOption.Columns(0).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         DGVOption.ColumnHeadersDefaultCellStyle.BackColor = Color.LightGreen
@@ -30,6 +31,8 @@ Public Class TestPrint
         Dim rowCoulVe As DataRow = Nothing
         Dim rowCoulToi As DataRow = Nothing
         Dim rowcoulTis As DataRow = Nothing
+        Dim total As Double = 0
+        Dim nbr As Double = 0
 
         LabFac.Text = rowFac.Item("id")
 
@@ -85,14 +88,16 @@ Public Class TestPrint
             End If
         Next
 
-        DGVModel.Rows.Add(rowMo.Item("nom"), "", rowMo.Item("cout"))
-        DGVCoulVe.Rows.Add(rowCoulVe.Item("nom"), rowCoulVe.Item("code"), rowCoulVe.Item("cout"))
-        DGVCoul.Rows.Add("Toile", rowCoulToi.Item("code"))
+        nbr = rowFac.Item("prixModel")
+        DGVModel.Rows.Add(rowMo.Item("nom"), "", nbr.ToString("c"))
+        nbr = rowFac.Item("prixcouleur")
+        DGVCoulVe.Rows.Add(rowCoulVe.Item("nom"), rowCoulVe.Item("code"), nbr.ToString("c"))
+        DGVCoul.Rows.Add("Toile", rowCoulVe.Item("nom"), rowCoulToi.Item("code"))
         DGVCoul.Rows.Add("ARMOIRE BAS")
         DGVCoul.Rows.Add("ARMOIRE HAUT")
         DGVCoul.Rows.Add("COMPTOIR")
         DGVCoul.Rows.Add("PORTES ARMOIRES")
-        DGVCoul.Rows.Add("BANQUETTE", rowcoulTis.Item("code"))
+        DGVCoul.Rows.Add("BANQUETTE", rowcoulTis.Item("nom"), rowcoulTis.Item("code"))
         DGVCoul.Rows.Add("DECALQUE")
         DGVCoul.Rows.Add("MICRO ONDE")
 
@@ -100,37 +105,47 @@ Public Class TestPrint
             If MainForm.tableOpVe.Rows(r).Item("idvehicule") = rowFac.Item("idVehicule") Then
                 For r2 As Integer = 0 To MainForm.tableOp.Rows.Count - 1
                     If MainForm.tableOpVe.Rows(r).Item("idoption") = MainForm.tableOp.Rows(r2).Item("id") Then
-                        DGVOption.Rows.Add(MainForm.tableOp.Rows(r2).Item("nom"), "", MainForm.tableOp.Rows(r2).Item("cout"))
+                        nbr = MainForm.tableOp.Rows(r2).Item("cout")
+                        DGVOption.Rows.Add(MainForm.tableOp.Rows(r2).Item("nom"), "", nbr.ToString("c"))
                         Exit For
                     End If
                 Next
             End If
         Next
 
-        DGVOption.Rows.Add("Option1")
-        DGVOption.Rows.Add("Option2")
-        DGVOption.Rows.Add("Option3")
-        DGVOption.Rows.Add("Option4")
-        DGVOption.Rows.Add("Option5")
-        DGVOption.Rows.Add("Option6")
-        DGVOption.Rows.Add("Option7")
-        DGVOption.Rows.Add("Option8")
-        DGVOption.Rows.Add("Option9")
-        DGVOption.Rows.Add("Option10")
-        DGVOption.Rows.Add("Option11")
-        DGVOption.Rows.Add("Option12")
-        DGVOption.Rows.Add("Option13")
 
         Dim h As Integer = SetHight(DGVOption)
 
         DGVTotal.Location = New Point(DGVTotal.Location.X, DGVOption.Location.Y + h + 1)
 
-        DGVTotal.Rows.Add("", "SOUS-TOTAL")
-        DGVTotal.Rows.Add("813181443RT0001", "TPS")
-        DGVTotal.Rows.Add("1220140063TQ0001", "TVQ")
-        DGVTotal.Rows.Add("", "TOTAL")
+
+
+        total += DGVModel.Rows(0).Cells(2).Value
+        total += DGVCoulVe.Rows(0).Cells(2).Value
+
+        For r As Integer = 0 To DGVCoul.Rows.Count - 1
+            total += DGVCoul.Rows(r).Cells(3).Value
+        Next
+
+        For r As Integer = 0 To DGVOption.Rows.Count - 1
+            total += DGVOption.Rows(r).Cells(2).Value
+        Next
+
+        DGVTotal.Rows.Add("", "TOTAL", total.ToString("c"))
+        nbr = rowFac.Item("echange")
+        DGVTotal.Rows.Add("", "ÉCHANGE", nbr.ToString("c"))
+        total = total - DGVTotal.Rows(1).Cells(2).Value
+        DGVTotal.Rows.Add("", "SOUS-TOTAL", total.ToString("c"))
+        nbr = DGVTotal.Rows(2).Cells(2).Value * rowFac.Item("tps")
+        DGVTotal.Rows.Add("813181443RT0001", "TPS", nbr.ToString("c"))
+        nbr = DGVTotal.Rows(2).Cells(2).Value * rowFac.Item("tvq")
+        DGVTotal.Rows.Add("1220140063TQ0001", "TVQ", nbr.ToString("c"))
+        nbr = DGVTotal.Rows(2).Cells(2).Value
+        total = nbr + DGVTotal.Rows(3).Cells(2).Value + DGVTotal.Rows(4).Cells(2).Value
+        DGVTotal.Rows.Add("", "TOTAL", total.ToString("c"))
         DGVTotal.Rows.Add("", "ACOMPTE")
-        DGVTotal.Rows.Add("", "BALANCE")
+        total = DGVTotal.Rows(5).Cells(2).Value - DGVTotal.Rows(6).Cells(2).Value
+        DGVTotal.Rows.Add("", "BALANCE", total.ToString("c"))
         DGVTotal.Rows.Add("", "PAYER A LA LIVRAISON")
         DGVTotal.Rows.Add("", "BALANCE ECHANGE")
         DGVTotal.Rows.Add("", "FINANCEMENT")
@@ -170,12 +185,12 @@ Public Class TestPrint
         PrintPreviewDialog1.Document = PrintDocument1
         PrintPreviewDialog1.ShowDialog()
 
-        'PrintDocument1.Print()
+        PrintDocument1.Print()
 
-        'Dim ex As New TestExcel(rowFac)
-        'ex.ShowDialog()
+        Dim ex As New TestExcel(rowFac)
+        ex.ShowDialog()
 
-        'Me.Close()
+        Me.Close()
     End Sub
 
     Private Function SetHight(dgv As DataGridView)
@@ -272,9 +287,12 @@ Public Class TestPrint
         If bool Then
             If ob1.Location.Y + ob1.Height > PrintDocument1.DefaultPageSettings.PaperSize.Height - 50 Then
                 e.HasMorePages = True
-                ob1.Location = New Point(ob1.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 30)
-                ob2.Location = New Point(ob2.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 30)
-                ob3.Location = New Point(ob3.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 30)
+                LabLine1.Location = New Point(LabLine1.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 30)
+                LabLine2.Location = New Point(LabLine2.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 30)
+                LabLine3.Location = New Point(LabLine3.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 30)
+                ob1.Location = New Point(ob1.Location.X, LabLine1.Location.Y + LabLine1.Height + 15)
+                ob2.Location = New Point(ob2.Location.X, LabLine2.Location.Y + LabLine2.Height + 15)
+                ob3.Location = New Point(ob3.Location.X, LabLine3.Location.Y + LabLine3.Height + 15)
                 Return True
             Else
                 Using bmp As Bitmap = New Bitmap(ob1.Width, ob1.Height)
@@ -383,26 +401,27 @@ Public Class TestPrint
             Exit Sub
         End If
 
-        If PutBmpLine(LabLine1, LabLine2, LabLine3, e) Then
-            LabSig1.Location = New Point(LabSig1.Location.X, LabLine1.Location.Y + LabLine1.Height + 15)
-            LabSig2.Location = New Point(LabSig2.Location.X, LabLine2.Location.Y + LabLine2.Height + 15)
-            Lab5M.Location = New Point(Lab5M.Location.X, LabLine3.Location.Y + LabLine3.Height + 15)
-            LabFin.Location = New Point(LabFin.Location.X, LabSig1.Location.Y + LabSig1.Height + 20)
-            LabFin2.Location = New Point(LabFin2.Location.X, LabFin.Location.Y + LabFin.Height)
-            Exit Sub
-        End If
-
         If PutBmpLab(LabSig1, LabSig2, Lab5M, e) Then
             LabFin.Location = New Point(LabFin.Location.X, LabSig1.Location.Y + LabSig1.Height + 20)
             LabFin2.Location = New Point(LabFin2.Location.X, LabFin.Location.Y + LabFin.Height)
             Exit Sub
+        Else
+            PutBmpLine(LabLine1, LabLine2, LabLine3, e)
         End If
 
-        If PutBmp(LabFin, e) Then
+        If PutBmp(LabDateLiv, e) Then
+            LabFin.Location = New Point(LabFin.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 30)
+            LabFin2.Location = New Point(LabFin2.Location.X, LabFin.Location.Y + LabFin.Height)
+            LabDateLiv.Location = New Point(LabDate.Location.X, LabFin2.Location.Y + LabFin2.Height)
+            Exit Sub
+        End If
+
+        If PutBmp(LabFin2, e) Then
+            LabFin.Location = New Point(LabFin.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 30)
             LabFin2.Location = New Point(LabFin2.Location.X, LabFin.Location.Y + LabFin.Height)
             Exit Sub
         End If
 
-        PutBmp(LabFin2, e)
+        PutBmp(LabFin, e)
     End Sub
 End Class

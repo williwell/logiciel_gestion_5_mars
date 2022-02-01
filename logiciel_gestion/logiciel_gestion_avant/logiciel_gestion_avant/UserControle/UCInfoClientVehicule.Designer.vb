@@ -49,6 +49,10 @@ Partial Class UCInfoClientVehicule
         Me.Label13 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
         CType(Me.DGVClient, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -57,7 +61,7 @@ Partial Class UCInfoClientVehicule
         Me.DGVClient.AllowUserToAddRows = False
         Me.DGVClient.AllowUserToDeleteRows = False
         Me.DGVClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGVClient.Location = New System.Drawing.Point(258, 83)
+        Me.DGVClient.Location = New System.Drawing.Point(258, 28)
         Me.DGVClient.Name = "DGVClient"
         Me.DGVClient.ReadOnly = True
         Me.DGVClient.RowTemplate.Height = 25
@@ -67,7 +71,7 @@ Partial Class UCInfoClientVehicule
         '
         'TBID
         '
-        Me.TBID.Location = New System.Drawing.Point(26, 109)
+        Me.TBID.Location = New System.Drawing.Point(26, 54)
         Me.TBID.Name = "TBID"
         Me.TBID.ReadOnly = True
         Me.TBID.Size = New System.Drawing.Size(226, 23)
@@ -76,7 +80,7 @@ Partial Class UCInfoClientVehicule
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(26, 91)
+        Me.Label1.Location = New System.Drawing.Point(26, 36)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(18, 15)
         Me.Label1.TabIndex = 2
@@ -86,7 +90,7 @@ Partial Class UCInfoClientVehicule
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label2.Location = New System.Drawing.Point(26, 55)
+        Me.Label2.Location = New System.Drawing.Point(26, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(119, 25)
         Me.Label2.TabIndex = 3
@@ -96,7 +100,7 @@ Partial Class UCInfoClientVehicule
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label3.Location = New System.Drawing.Point(258, 55)
+        Me.Label3.Location = New System.Drawing.Point(258, 0)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(124, 25)
         Me.Label3.TabIndex = 4
@@ -105,7 +109,7 @@ Partial Class UCInfoClientVehicule
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(26, 135)
+        Me.Label4.Location = New System.Drawing.Point(26, 80)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(58, 15)
         Me.Label4.TabIndex = 6
@@ -113,7 +117,7 @@ Partial Class UCInfoClientVehicule
         '
         'TBPrenom1
         '
-        Me.TBPrenom1.Location = New System.Drawing.Point(26, 153)
+        Me.TBPrenom1.Location = New System.Drawing.Point(26, 98)
         Me.TBPrenom1.Name = "TBPrenom1"
         Me.TBPrenom1.ReadOnly = True
         Me.TBPrenom1.Size = New System.Drawing.Size(226, 23)
@@ -122,7 +126,7 @@ Partial Class UCInfoClientVehicule
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(26, 179)
+        Me.Label5.Location = New System.Drawing.Point(26, 124)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(43, 15)
         Me.Label5.TabIndex = 8
@@ -130,7 +134,7 @@ Partial Class UCInfoClientVehicule
         '
         'TBNom1
         '
-        Me.TBNom1.Location = New System.Drawing.Point(26, 197)
+        Me.TBNom1.Location = New System.Drawing.Point(26, 142)
         Me.TBNom1.Name = "TBNom1"
         Me.TBNom1.ReadOnly = True
         Me.TBNom1.Size = New System.Drawing.Size(226, 23)
@@ -139,7 +143,7 @@ Partial Class UCInfoClientVehicule
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(26, 443)
+        Me.Label6.Location = New System.Drawing.Point(26, 476)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(70, 15)
         Me.Label6.TabIndex = 14
@@ -147,7 +151,7 @@ Partial Class UCInfoClientVehicule
         '
         'TBTel1
         '
-        Me.TBTel1.Location = New System.Drawing.Point(26, 461)
+        Me.TBTel1.Location = New System.Drawing.Point(26, 494)
         Me.TBTel1.Name = "TBTel1"
         Me.TBTel1.ReadOnly = True
         Me.TBTel1.Size = New System.Drawing.Size(226, 23)
@@ -156,7 +160,7 @@ Partial Class UCInfoClientVehicule
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(26, 267)
+        Me.Label7.Location = New System.Drawing.Point(26, 212)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(43, 15)
         Me.Label7.TabIndex = 12
@@ -164,7 +168,7 @@ Partial Class UCInfoClientVehicule
         '
         'TBNom2
         '
-        Me.TBNom2.Location = New System.Drawing.Point(26, 285)
+        Me.TBNom2.Location = New System.Drawing.Point(26, 230)
         Me.TBNom2.Name = "TBNom2"
         Me.TBNom2.ReadOnly = True
         Me.TBNom2.Size = New System.Drawing.Size(226, 23)
@@ -173,7 +177,7 @@ Partial Class UCInfoClientVehicule
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(26, 223)
+        Me.Label8.Location = New System.Drawing.Point(26, 168)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(58, 15)
         Me.Label8.TabIndex = 10
@@ -181,7 +185,7 @@ Partial Class UCInfoClientVehicule
         '
         'TBPrenom2
         '
-        Me.TBPrenom2.Location = New System.Drawing.Point(26, 241)
+        Me.TBPrenom2.Location = New System.Drawing.Point(26, 186)
         Me.TBPrenom2.Name = "TBPrenom2"
         Me.TBPrenom2.ReadOnly = True
         Me.TBPrenom2.Size = New System.Drawing.Size(226, 23)
@@ -190,7 +194,7 @@ Partial Class UCInfoClientVehicule
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(26, 575)
+        Me.Label9.Location = New System.Drawing.Point(26, 608)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(36, 15)
         Me.Label9.TabIndex = 20
@@ -198,7 +202,7 @@ Partial Class UCInfoClientVehicule
         '
         'TBEmail
         '
-        Me.TBEmail.Location = New System.Drawing.Point(26, 593)
+        Me.TBEmail.Location = New System.Drawing.Point(26, 626)
         Me.TBEmail.Name = "TBEmail"
         Me.TBEmail.ReadOnly = True
         Me.TBEmail.Size = New System.Drawing.Size(226, 23)
@@ -207,7 +211,7 @@ Partial Class UCInfoClientVehicule
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(26, 531)
+        Me.Label10.Location = New System.Drawing.Point(26, 564)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(31, 15)
         Me.Label10.TabIndex = 18
@@ -215,7 +219,7 @@ Partial Class UCInfoClientVehicule
         '
         'TBSexe
         '
-        Me.TBSexe.Location = New System.Drawing.Point(26, 549)
+        Me.TBSexe.Location = New System.Drawing.Point(26, 582)
         Me.TBSexe.Name = "TBSexe"
         Me.TBSexe.ReadOnly = True
         Me.TBSexe.Size = New System.Drawing.Size(226, 23)
@@ -224,7 +228,7 @@ Partial Class UCInfoClientVehicule
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(26, 487)
+        Me.Label11.Location = New System.Drawing.Point(26, 520)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(70, 15)
         Me.Label11.TabIndex = 16
@@ -232,7 +236,7 @@ Partial Class UCInfoClientVehicule
         '
         'TBTel2
         '
-        Me.TBTel2.Location = New System.Drawing.Point(26, 505)
+        Me.TBTel2.Location = New System.Drawing.Point(26, 538)
         Me.TBTel2.Name = "TBTel2"
         Me.TBTel2.ReadOnly = True
         Me.TBTel2.Size = New System.Drawing.Size(226, 23)
@@ -240,7 +244,7 @@ Partial Class UCInfoClientVehicule
         '
         'TextBox3
         '
-        Me.TextBox3.Location = New System.Drawing.Point(26, 417)
+        Me.TextBox3.Location = New System.Drawing.Point(26, 450)
         Me.TextBox3.Name = "TextBox3"
         Me.TextBox3.ReadOnly = True
         Me.TextBox3.Size = New System.Drawing.Size(226, 23)
@@ -249,7 +253,7 @@ Partial Class UCInfoClientVehicule
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(26, 399)
+        Me.Label12.Location = New System.Drawing.Point(26, 432)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(70, 15)
         Me.Label12.TabIndex = 31
@@ -257,7 +261,7 @@ Partial Class UCInfoClientVehicule
         '
         'TextBox2
         '
-        Me.TextBox2.Location = New System.Drawing.Point(26, 373)
+        Me.TextBox2.Location = New System.Drawing.Point(26, 406)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.ReadOnly = True
         Me.TextBox2.Size = New System.Drawing.Size(226, 23)
@@ -266,7 +270,7 @@ Partial Class UCInfoClientVehicule
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(26, 355)
+        Me.Label13.Location = New System.Drawing.Point(26, 388)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(77, 15)
         Me.Label13.TabIndex = 29
@@ -274,7 +278,7 @@ Partial Class UCInfoClientVehicule
         '
         'TextBox1
         '
-        Me.TextBox1.Location = New System.Drawing.Point(26, 329)
+        Me.TextBox1.Location = New System.Drawing.Point(26, 274)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.ReadOnly = True
         Me.TextBox1.Size = New System.Drawing.Size(226, 23)
@@ -283,16 +287,54 @@ Partial Class UCInfoClientVehicule
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(26, 311)
+        Me.Label14.Location = New System.Drawing.Point(26, 256)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(48, 15)
         Me.Label14.TabIndex = 27
         Me.Label14.Text = "Adresse"
         '
+        'TextBox4
+        '
+        Me.TextBox4.Location = New System.Drawing.Point(26, 318)
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.ReadOnly = True
+        Me.TextBox4.Size = New System.Drawing.Size(226, 23)
+        Me.TextBox4.TabIndex = 34
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(26, 300)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(48, 15)
+        Me.Label15.TabIndex = 33
+        Me.Label15.Text = "Adresse"
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New System.Drawing.Point(26, 362)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.ReadOnly = True
+        Me.TextBox5.Size = New System.Drawing.Size(226, 23)
+        Me.TextBox5.TabIndex = 36
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(26, 344)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(48, 15)
+        Me.Label16.TabIndex = 35
+        Me.Label16.Text = "Adresse"
+        '
         'UCInfoClientVehicule
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.TextBox5)
+        Me.Controls.Add(Me.Label16)
+        Me.Controls.Add(Me.TextBox4)
+        Me.Controls.Add(Me.Label15)
         Me.Controls.Add(Me.TextBox3)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.TextBox2)
@@ -321,7 +363,7 @@ Partial Class UCInfoClientVehicule
         Me.Controls.Add(Me.TBID)
         Me.Controls.Add(Me.DGVClient)
         Me.Name = "UCInfoClientVehicule"
-        Me.Size = New System.Drawing.Size(808, 649)
+        Me.Size = New System.Drawing.Size(808, 658)
         CType(Me.DGVClient, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -355,4 +397,8 @@ Partial Class UCInfoClientVehicule
     Friend WithEvents Label13 As Label
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Label14 As Label
+    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents Label15 As Label
+    Friend WithEvents TextBox5 As TextBox
+    Friend WithEvents Label16 As Label
 End Class

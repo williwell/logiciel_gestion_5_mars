@@ -46,19 +46,23 @@ Partial Class GestionClient
         Me.BTSave = New System.Windows.Forms.Button()
         Me.BTAnnuler = New System.Windows.Forms.Button()
         Me.CBSexe = New System.Windows.Forms.ComboBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.TBCode = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.TBApp = New System.Windows.Forms.TextBox()
         Me.Label13 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TBRue = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
+        Me.TBVille = New System.Windows.Forms.TextBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.TBPro = New System.Windows.Forms.TextBox()
+        Me.Label16 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGridView1
         '
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(395, 323)
+        Me.DataGridView1.Location = New System.Drawing.Point(395, 353)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowTemplate.Height = 25
         Me.DataGridView1.Size = New System.Drawing.Size(611, 298)
@@ -67,7 +71,7 @@ Partial Class GestionClient
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(395, 305)
+        Me.Label1.Location = New System.Drawing.Point(395, 335)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(107, 15)
         Me.Label1.TabIndex = 1
@@ -85,7 +89,7 @@ Partial Class GestionClient
         'TBID
         '
         Me.TBID.Enabled = False
-        Me.TBID.Location = New System.Drawing.Point(31, 75)
+        Me.TBID.Location = New System.Drawing.Point(31, 27)
         Me.TBID.Name = "TBID"
         Me.TBID.Size = New System.Drawing.Size(226, 23)
         Me.TBID.TabIndex = 3
@@ -93,7 +97,7 @@ Partial Class GestionClient
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(31, 57)
+        Me.Label3.Location = New System.Drawing.Point(31, 9)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(18, 15)
         Me.Label3.TabIndex = 4
@@ -101,7 +105,7 @@ Partial Class GestionClient
         '
         'TBPrenom1
         '
-        Me.TBPrenom1.Location = New System.Drawing.Point(31, 119)
+        Me.TBPrenom1.Location = New System.Drawing.Point(31, 71)
         Me.TBPrenom1.Name = "TBPrenom1"
         Me.TBPrenom1.Size = New System.Drawing.Size(226, 23)
         Me.TBPrenom1.TabIndex = 5
@@ -109,7 +113,7 @@ Partial Class GestionClient
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(31, 101)
+        Me.Label4.Location = New System.Drawing.Point(31, 53)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(58, 15)
         Me.Label4.TabIndex = 6
@@ -117,7 +121,7 @@ Partial Class GestionClient
         '
         'TBNom1
         '
-        Me.TBNom1.Location = New System.Drawing.Point(31, 163)
+        Me.TBNom1.Location = New System.Drawing.Point(31, 115)
         Me.TBNom1.Name = "TBNom1"
         Me.TBNom1.Size = New System.Drawing.Size(226, 23)
         Me.TBNom1.TabIndex = 7
@@ -125,7 +129,7 @@ Partial Class GestionClient
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(31, 145)
+        Me.Label6.Location = New System.Drawing.Point(31, 97)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(43, 15)
         Me.Label6.TabIndex = 8
@@ -133,7 +137,7 @@ Partial Class GestionClient
         '
         'TBPrenom2
         '
-        Me.TBPrenom2.Location = New System.Drawing.Point(31, 207)
+        Me.TBPrenom2.Location = New System.Drawing.Point(31, 159)
         Me.TBPrenom2.Name = "TBPrenom2"
         Me.TBPrenom2.Size = New System.Drawing.Size(226, 23)
         Me.TBPrenom2.TabIndex = 9
@@ -141,7 +145,7 @@ Partial Class GestionClient
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(31, 189)
+        Me.Label5.Location = New System.Drawing.Point(31, 141)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(58, 15)
         Me.Label5.TabIndex = 10
@@ -150,7 +154,7 @@ Partial Class GestionClient
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(31, 497)
+        Me.Label7.Location = New System.Drawing.Point(31, 537)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(31, 15)
         Me.Label7.TabIndex = 18
@@ -159,7 +163,7 @@ Partial Class GestionClient
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(31, 453)
+        Me.Label8.Location = New System.Drawing.Point(31, 493)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(70, 15)
         Me.Label8.TabIndex = 16
@@ -167,15 +171,15 @@ Partial Class GestionClient
         '
         'TBTel2
         '
-        Me.TBTel2.Location = New System.Drawing.Point(31, 471)
+        Me.TBTel2.Location = New System.Drawing.Point(31, 511)
         Me.TBTel2.Name = "TBTel2"
         Me.TBTel2.Size = New System.Drawing.Size(226, 23)
-        Me.TBTel2.TabIndex = 15
+        Me.TBTel2.TabIndex = 18
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(31, 409)
+        Me.Label9.Location = New System.Drawing.Point(31, 449)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(70, 15)
         Me.Label9.TabIndex = 14
@@ -183,15 +187,15 @@ Partial Class GestionClient
         '
         'TBTel1
         '
-        Me.TBTel1.Location = New System.Drawing.Point(31, 427)
+        Me.TBTel1.Location = New System.Drawing.Point(31, 467)
         Me.TBTel1.Name = "TBTel1"
         Me.TBTel1.Size = New System.Drawing.Size(226, 23)
-        Me.TBTel1.TabIndex = 13
+        Me.TBTel1.TabIndex = 17
         '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(31, 233)
+        Me.Label10.Location = New System.Drawing.Point(31, 185)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(43, 15)
         Me.Label10.TabIndex = 12
@@ -199,7 +203,7 @@ Partial Class GestionClient
         '
         'TBNom2
         '
-        Me.TBNom2.Location = New System.Drawing.Point(31, 251)
+        Me.TBNom2.Location = New System.Drawing.Point(31, 203)
         Me.TBNom2.Name = "TBNom2"
         Me.TBNom2.Size = New System.Drawing.Size(226, 23)
         Me.TBNom2.TabIndex = 11
@@ -207,7 +211,7 @@ Partial Class GestionClient
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(31, 541)
+        Me.Label11.Location = New System.Drawing.Point(31, 581)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(36, 15)
         Me.Label11.TabIndex = 20
@@ -215,14 +219,14 @@ Partial Class GestionClient
         '
         'TBEmail
         '
-        Me.TBEmail.Location = New System.Drawing.Point(31, 559)
+        Me.TBEmail.Location = New System.Drawing.Point(31, 599)
         Me.TBEmail.Name = "TBEmail"
         Me.TBEmail.Size = New System.Drawing.Size(226, 23)
-        Me.TBEmail.TabIndex = 19
+        Me.TBEmail.TabIndex = 20
         '
         'BTSave
         '
-        Me.BTSave.Location = New System.Drawing.Point(31, 588)
+        Me.BTSave.Location = New System.Drawing.Point(31, 628)
         Me.BTSave.Name = "BTSave"
         Me.BTSave.Size = New System.Drawing.Size(102, 23)
         Me.BTSave.TabIndex = 21
@@ -232,7 +236,7 @@ Partial Class GestionClient
         'BTAnnuler
         '
         Me.BTAnnuler.Enabled = False
-        Me.BTAnnuler.Location = New System.Drawing.Point(155, 588)
+        Me.BTAnnuler.Location = New System.Drawing.Point(155, 628)
         Me.BTAnnuler.Name = "BTAnnuler"
         Me.BTAnnuler.Size = New System.Drawing.Size(102, 23)
         Me.BTAnnuler.TabIndex = 22
@@ -242,69 +246,105 @@ Partial Class GestionClient
         'CBSexe
         '
         Me.CBSexe.FormattingEnabled = True
-        Me.CBSexe.Location = New System.Drawing.Point(31, 515)
+        Me.CBSexe.Location = New System.Drawing.Point(31, 555)
         Me.CBSexe.Name = "CBSexe"
         Me.CBSexe.Size = New System.Drawing.Size(226, 23)
-        Me.CBSexe.TabIndex = 23
+        Me.CBSexe.TabIndex = 19
         '
-        'TextBox3
+        'TBCode
         '
-        Me.TextBox3.Location = New System.Drawing.Point(31, 383)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(226, 23)
-        Me.TextBox3.TabIndex = 32
+        Me.TBCode.Location = New System.Drawing.Point(31, 423)
+        Me.TBCode.Name = "TBCode"
+        Me.TBCode.Size = New System.Drawing.Size(226, 23)
+        Me.TBCode.TabIndex = 16
         '
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(31, 365)
+        Me.Label12.Location = New System.Drawing.Point(31, 405)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(70, 15)
         Me.Label12.TabIndex = 31
         Me.Label12.Text = "Code Postal"
         '
-        'TextBox2
+        'TBApp
         '
-        Me.TextBox2.Location = New System.Drawing.Point(31, 339)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(226, 23)
-        Me.TextBox2.TabIndex = 30
+        Me.TBApp.Location = New System.Drawing.Point(31, 379)
+        Me.TBApp.Name = "TBApp"
+        Me.TBApp.Size = New System.Drawing.Size(226, 23)
+        Me.TBApp.TabIndex = 15
         '
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(31, 321)
+        Me.Label13.Location = New System.Drawing.Point(31, 361)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(77, 15)
         Me.Label13.TabIndex = 29
         Me.Label13.Text = "Appartement"
         '
-        'TextBox1
+        'TBRue
         '
-        Me.TextBox1.Location = New System.Drawing.Point(31, 295)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(226, 23)
-        Me.TextBox1.TabIndex = 28
+        Me.TBRue.Location = New System.Drawing.Point(31, 247)
+        Me.TBRue.Name = "TBRue"
+        Me.TBRue.Size = New System.Drawing.Size(226, 23)
+        Me.TBRue.TabIndex = 12
         '
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(31, 277)
+        Me.Label14.Location = New System.Drawing.Point(31, 229)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(48, 15)
+        Me.Label14.Size = New System.Drawing.Size(27, 15)
         Me.Label14.TabIndex = 27
-        Me.Label14.Text = "Adresse"
+        Me.Label14.Text = "Rue"
+        '
+        'TBVille
+        '
+        Me.TBVille.Location = New System.Drawing.Point(31, 291)
+        Me.TBVille.Name = "TBVille"
+        Me.TBVille.Size = New System.Drawing.Size(226, 23)
+        Me.TBVille.TabIndex = 13
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(31, 273)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(29, 15)
+        Me.Label15.TabIndex = 33
+        Me.Label15.Text = "Ville"
+        '
+        'TBPro
+        '
+        Me.TBPro.Location = New System.Drawing.Point(31, 335)
+        Me.TBPro.Name = "TBPro"
+        Me.TBPro.Size = New System.Drawing.Size(226, 23)
+        Me.TBPro.TabIndex = 14
+        '
+        'Label16
+        '
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(31, 317)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(53, 15)
+        Me.Label16.TabIndex = 35
+        Me.Label16.Text = "Province"
         '
         'GestionClient
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1018, 633)
-        Me.Controls.Add(Me.TextBox3)
+        Me.ClientSize = New System.Drawing.Size(1018, 690)
+        Me.Controls.Add(Me.TBPro)
+        Me.Controls.Add(Me.Label16)
+        Me.Controls.Add(Me.TBVille)
+        Me.Controls.Add(Me.Label15)
+        Me.Controls.Add(Me.TBCode)
         Me.Controls.Add(Me.Label12)
-        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.TBApp)
         Me.Controls.Add(Me.Label13)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.TBRue)
         Me.Controls.Add(Me.Label14)
         Me.Controls.Add(Me.CBSexe)
         Me.Controls.Add(Me.BTAnnuler)
@@ -361,10 +401,14 @@ Partial Class GestionClient
     Friend WithEvents BTSave As Button
     Friend WithEvents BTAnnuler As Button
     Friend WithEvents CBSexe As ComboBox
-    Friend WithEvents TextBox3 As TextBox
+    Friend WithEvents TBCode As TextBox
     Friend WithEvents Label12 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TBApp As TextBox
     Friend WithEvents Label13 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TBRue As TextBox
     Friend WithEvents Label14 As Label
+    Friend WithEvents TBVille As TextBox
+    Friend WithEvents Label15 As Label
+    Friend WithEvents TBPro As TextBox
+    Friend WithEvents Label16 As Label
 End Class

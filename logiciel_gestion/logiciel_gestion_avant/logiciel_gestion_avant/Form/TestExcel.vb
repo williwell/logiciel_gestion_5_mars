@@ -15,6 +15,9 @@ Public Class TestExcel
     End Sub
 
     Private Sub TestExcel_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Dim row As DataRow = Nothing
+        Dim rowVe As DataRow = Nothing
+
         appXl = CreateObject("Excel.Application")
         appXl.Visible = False
 
@@ -23,15 +26,22 @@ Public Class TestExcel
 
         For r As Integer = 0 To MainForm.TableClient.Rows.Count - 1
             If MainForm.TableClient.Rows(r).Item("id") = rowFac.Item("idclient") Then
-                shXl.Range("A8").Cells.Value = shXl.Range("A8").Cells.Value & " " & MainForm.TableClient.Rows(r).Item("nom1") & " " & MainForm.TableClient.Rows(r).Item("prenom1")
+                row = MainForm.TableClient.Rows(r)
             End If
         Next
+
+        shXl.Range("A8").Cells.Value = shXl.Range("A8").Cells.Value & " " & row.Item("nom1") & " " & row.Item("prenom1")
+        shXl.Range("A9").Cells.Value = row.Item("addresse") & "   app: " & row.Item("app")
+        shXl.Range("A10").Cells.Value = row.Item("codepostal")
+        shXl.Range("A11").Cells.Value = row.Item("telephone1")
+        shXl.Range("A11").HorizontalAlignment = Constants.xlLeft
+        shXl.Range("A12").Cells.Value = row.Item("email")
 
         shXl.Range("C4").Cells.Value = shXl.Range("C4").Cells.Value & " " & Date.Now.ToString("yyyy-MM-dd")
         shXl.Range("D5").Cells.Value = shXl.Range("D5").Cells.Value & " " & rowFac.Item("id")
 
-        Dim rowVe As DataRow = Nothing
-        Dim row As DataRow = Nothing
+
+
 
         For i As Integer = 0 To MainForm.tableVe.Rows.Count - 1
             If MainForm.tableVe.Rows(i).Item("id") = rowFac.Item("idvehicule") Then
@@ -85,7 +95,7 @@ Public Class TestExcel
         Next
 
         Dim nbr As Integer
-        For r As Integer = 1 To 150
+        For r As Integer = 15 To 150
             If shXl.Range("A" & r).Value = "OPTION" Then
                 nbr = r + 1
                 Exit For

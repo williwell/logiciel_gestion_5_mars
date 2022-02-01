@@ -1,5 +1,9 @@
 ﻿Public Class CreerClient
     ReadOnly client As UCClient
+    Dim rue As Boolean
+    Dim ville As Boolean
+    Dim pro As Boolean
+
     Sub New(cl As UCClient)
 
         ' Cet appel est requis par le concepteur.
@@ -20,7 +24,7 @@
         ElseIf String.IsNullOrEmpty(trim(TBNom.Text)) Then
             MessageBox.Show("Vous devez rentrer un nom")
         Else
-            Dim liste(7) As String
+            Dim liste(10) As String
             liste(0) = TBPrenom.Text
             liste(1) = TBNom.Text
 
@@ -55,28 +59,52 @@
                 liste(7) = TBEmail.Text
             End If
 
-            If ConnectionServeur.Getinstance.AddDelete(liste, "AddClient") Then
-                MessageBox.Show("Enregistrement effectuer avec succès")
+            rue = String.IsNullOrEmpty(TBRue.Text)
+            ville = String.IsNullOrEmpty(TBVille.Text)
+            pro = String.IsNullOrEmpty(TBProvince.Text)
 
-                Dim row As DataRow = MainForm.TableClient.NewRow
-                Dim nbr As Integer = 0
-                For r As Integer = 0 To MainForm.TableClient.Rows.Count - 1
-                    If MainForm.TableClient.Rows(r).Item("id") >= nbr Then
-                        nbr = Integer.Parse(MainForm.TableClient.Rows(r).Item("id")) + 1
-                    End If
-                Next
-                row(0) = nbr
-                For c As Integer = 0 To liste.Length - 1
-                    row(c + 1) = liste(c)
-                Next
-                MainForm.TableClient.Rows.Add(row)
-
-                'client.LoadClient()
-                Me.Close()
+            If rue And ville And pro Then
+                liste(8) = "null"
+            ElseIf Not rue And Not ville And Not pro Then
+                liste(8) = TBRue.Text & ", " & TBVille.Text & ", " & TBProvince.Text
             Else
-                MessageBox.Show("Une erreure est survenu durant l'enregistrement!", "Attention!")
+                MessageBox.Show("Vous ne pouvez pas rentrer une adresse partielle!")
             End If
-        End If
+
+            If String.IsNullOrEmpty(TBApp.Text) Then
+                liste(9) = "null"
+            Else
+                liste(9) = TBApp.Text
+            End If
+
+            If String.IsNullOrEmpty(TBCode.Text) Then
+                liste(10) = "null"
+            Else
+                liste(10) = TBCode.Text
+            End If
+
+            If ConnectionServeur.Getinstance.AddDelete(liste, "AddClient") Then
+                    MessageBox.Show("Enregistrement effectuer avec succès")
+
+                    Dim row As DataRow = MainForm.TableClient.NewRow
+                    Dim nbr As Integer = 0
+                    For r As Integer = 0 To MainForm.TableClient.Rows.Count - 1
+                        If MainForm.TableClient.Rows(r).Item("id") >= nbr Then
+                            nbr = Integer.Parse(MainForm.TableClient.Rows(r).Item("id")) + 1
+                        End If
+                    Next
+                    row(0) = nbr
+                    For c As Integer = 0 To liste.Length - 1
+                        row(c + 1) = liste(c)
+                    Next
+                    MainForm.TableClient.Rows.Add(row)
+
+                    'client.LoadClient()
+                    Me.Close()
+                Else
+                    MessageBox.Show("Une erreure est survenu durant l'enregistrement!", "Attention!")
+                End If
+            End If
     End Sub
 
     Private Sub BTAnnuler_Click(sender As Object, e As EventArgs) Handles BTAnnuler.Click

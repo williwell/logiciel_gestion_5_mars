@@ -55,10 +55,10 @@
                         listeAddCl(7) = TBEmail.Text
                     End If
 
-                    If String.IsNullOrEmpty(TBAdresse.Text) Then
+                    If String.IsNullOrEmpty(TBRue.Text) Then
                         listeAddCl(8) = "null"
                     Else
-                        listeAddCl(8) = TBAdresse.Text
+                        listeAddCl(8) = TBRue.Text
                     End If
 
                     If String.IsNullOrEmpty(TBApp.Text) Then
