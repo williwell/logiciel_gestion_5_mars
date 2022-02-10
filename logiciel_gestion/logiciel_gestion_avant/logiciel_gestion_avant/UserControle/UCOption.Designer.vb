@@ -36,15 +36,15 @@ Partial Class UCOption
         Me.DGVOption.AllowUserToAddRows = False
         Me.DGVOption.AllowUserToDeleteRows = False
         Me.DGVOption.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGVOption.Location = New System.Drawing.Point(93, 165)
+        Me.DGVOption.Location = New System.Drawing.Point(259, 171)
         Me.DGVOption.Name = "DGVOption"
         Me.DGVOption.RowTemplate.Height = 25
-        Me.DGVOption.Size = New System.Drawing.Size(486, 264)
+        Me.DGVOption.Size = New System.Drawing.Size(600, 264)
         Me.DGVOption.TabIndex = 3
         '
         'BTCreer
         '
-        Me.BTCreer.Location = New System.Drawing.Point(93, 136)
+        Me.BTCreer.Location = New System.Drawing.Point(259, 142)
         Me.BTCreer.Name = "BTCreer"
         Me.BTCreer.Size = New System.Drawing.Size(140, 23)
         Me.BTCreer.TabIndex = 1
@@ -54,7 +54,7 @@ Partial Class UCOption
         'BtSave
         '
         Me.BtSave.Enabled = False
-        Me.BtSave.Location = New System.Drawing.Point(93, 435)
+        Me.BtSave.Location = New System.Drawing.Point(259, 441)
         Me.BtSave.Name = "BtSave"
         Me.BtSave.Size = New System.Drawing.Size(117, 23)
         Me.BtSave.TabIndex = 4
@@ -64,7 +64,7 @@ Partial Class UCOption
         'BTAnnuler
         '
         Me.BTAnnuler.Enabled = False
-        Me.BTAnnuler.Location = New System.Drawing.Point(216, 435)
+        Me.BTAnnuler.Location = New System.Drawing.Point(382, 441)
         Me.BTAnnuler.Name = "BTAnnuler"
         Me.BTAnnuler.Size = New System.Drawing.Size(117, 23)
         Me.BTAnnuler.TabIndex = 5
@@ -73,7 +73,7 @@ Partial Class UCOption
         '
         'BTDelete
         '
-        Me.BTDelete.Location = New System.Drawing.Point(339, 435)
+        Me.BTDelete.Location = New System.Drawing.Point(505, 441)
         Me.BTDelete.Name = "BTDelete"
         Me.BTDelete.Size = New System.Drawing.Size(117, 23)
         Me.BTDelete.TabIndex = 6
@@ -82,7 +82,7 @@ Partial Class UCOption
         '
         'BTItem
         '
-        Me.BTItem.Location = New System.Drawing.Point(239, 136)
+        Me.BTItem.Location = New System.Drawing.Point(405, 142)
         Me.BTItem.Name = "BTItem"
         Me.BTItem.Size = New System.Drawing.Size(140, 23)
         Me.BTItem.TabIndex = 2
@@ -100,7 +100,7 @@ Partial Class UCOption
         Me.Controls.Add(Me.BTCreer)
         Me.Controls.Add(Me.DGVOption)
         Me.Name = "UCOption"
-        Me.Size = New System.Drawing.Size(808, 649)
+        Me.Size = New System.Drawing.Size(1115, 651)
         CType(Me.DGVOption, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

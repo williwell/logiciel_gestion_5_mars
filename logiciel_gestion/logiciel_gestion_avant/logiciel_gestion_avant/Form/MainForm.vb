@@ -27,6 +27,7 @@ Public Class MainForm
     Public Shared tableOpVe As DataTable
     'Dim tableReparation As DataTable
     'Dim tableRepVe As DataTable
+    Public Shared tableTache As DataTable
     Public Shared tableVe As DataTable
     Public Shared tableVenteVe As DataTable
 
@@ -47,6 +48,7 @@ Public Class MainForm
     Dim ucVente3 As UCVente3
     ReadOnly ucGestVeh As New UCGestionVehicule(Me)
     ReadOnly ucListeVe As New UCListeLivraison(Me)
+    ReadOnly uctache As New UCTache(Me)
     Private Delegate Sub setValue(text As String)
     Dim bool As Boolean = False
     Public Shared lang = Globalization.CultureInfo.CurrentCulture
@@ -96,7 +98,7 @@ Public Class MainForm
 
     'Ajouter les UserControl au controls du PanelUC
     Private Sub AddUC()
-        ucAccueil = New UCAccueil(Me)
+        ucAccueil = New UCAccueil(Me, ucInventaire)
         PanUC.Controls.Add(ucAccueil)
         PanUC.Controls.Add(ucInventaire)
         PanUC.Controls.Add(ucVente)
@@ -111,6 +113,7 @@ Public Class MainForm
         PanUC.Controls.Add(ucVente3)
         PanUC.Controls.Add(ucGestVeh)
         PanUC.Controls.Add(ucListeVe)
+        PanUC.Controls.Add(uctache)
         ucAccueil.RowsColorInv()
         ucAccueil.RowsColorVe()
         bool = True
@@ -137,6 +140,7 @@ Public Class MainForm
         tableOpVe = ConnectionServeur.Getinstance.GetInfo("getOpVe")
         ' tableReparation 
         ' tableRepVe
+        tableTache = ConnectionServeur.Getinstance.GetInfo("getTache")
         tableVe = ConnectionServeur.Getinstance.GetInfo("getVeAll")
         tableVenteVe = ConnectionServeur.Getinstance.GetInfo("getVenteVe")
 
@@ -428,4 +432,8 @@ Public Class MainForm
         'test.ShowDialog()
     End Sub
 
+    Private Sub BTTache_Click(sender As Object, e As EventArgs) Handles BTTache.Click
+        uctache.BringToFront()
+        panMenu.Size = panMenu.MinimumSize
+    End Sub
 End Class

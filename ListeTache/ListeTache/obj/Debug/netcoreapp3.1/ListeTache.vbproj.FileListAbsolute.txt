@@ -26,3 +26,4 @@ C:\logiciel_gestion_5_mars\ListeTache\ListeTache\bin\Debug\netcoreapp3.1\Microso
 C:\logiciel_gestion_5_mars\ListeTache\ListeTache\bin\Debug\netcoreapp3.1\Microsoft.Rest.ClientRuntime.Azure.Authentication.dll
 C:\logiciel_gestion_5_mars\ListeTache\ListeTache\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
 C:\logiciel_gestion_5_mars\ListeTache\ListeTache\obj\Debug\netcoreapp3.1\ListeTache.vbproj.CopyComplete
+C:\logiciel_gestion_5_mars\ListeTache\ListeTache\obj\Debug\netcoreapp3.1\ListeTache.IPSetting.resources

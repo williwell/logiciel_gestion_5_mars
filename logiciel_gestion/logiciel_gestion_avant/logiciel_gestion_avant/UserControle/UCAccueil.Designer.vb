@@ -35,18 +35,18 @@ Partial Class UCAccueil
         Me.DGVItemLow.AllowUserToAddRows = False
         Me.DGVItemLow.AllowUserToDeleteRows = False
         Me.DGVItemLow.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGVItemLow.Location = New System.Drawing.Point(74, 65)
+        Me.DGVItemLow.Location = New System.Drawing.Point(32, 63)
         Me.DGVItemLow.Name = "DGVItemLow"
         Me.DGVItemLow.ReadOnly = True
         Me.DGVItemLow.RowTemplate.Height = 25
         Me.DGVItemLow.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DGVItemLow.Size = New System.Drawing.Size(704, 220)
+        Me.DGVItemLow.Size = New System.Drawing.Size(1054, 248)
         Me.DGVItemLow.TabIndex = 0
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(74, 47)
+        Me.Label1.Location = New System.Drawing.Point(32, 45)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(122, 15)
         Me.Label1.TabIndex = 1
@@ -55,7 +55,7 @@ Partial Class UCAccueil
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(74, 307)
+        Me.Label2.Location = New System.Drawing.Point(32, 314)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(128, 15)
         Me.Label2.TabIndex = 3
@@ -66,12 +66,12 @@ Partial Class UCAccueil
         Me.DGVVehicule.AllowUserToAddRows = False
         Me.DGVVehicule.AllowUserToDeleteRows = False
         Me.DGVVehicule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGVVehicule.Location = New System.Drawing.Point(74, 325)
+        Me.DGVVehicule.Location = New System.Drawing.Point(32, 332)
         Me.DGVVehicule.Name = "DGVVehicule"
         Me.DGVVehicule.ReadOnly = True
         Me.DGVVehicule.RowTemplate.Height = 25
         Me.DGVVehicule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DGVVehicule.Size = New System.Drawing.Size(704, 248)
+        Me.DGVVehicule.Size = New System.Drawing.Size(1054, 248)
         Me.DGVVehicule.TabIndex = 1
         '
         'UCAccueil
@@ -83,7 +83,7 @@ Partial Class UCAccueil
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DGVItemLow)
         Me.Name = "UCAccueil"
-        Me.Size = New System.Drawing.Size(808, 649)
+        Me.Size = New System.Drawing.Size(1115, 651)
         CType(Me.DGVItemLow, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGVVehicule, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

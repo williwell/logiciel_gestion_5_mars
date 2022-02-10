@@ -66,7 +66,7 @@ Partial Class UCInfoClientVehicule
         Me.DGVClient.ReadOnly = True
         Me.DGVClient.RowTemplate.Height = 25
         Me.DGVClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DGVClient.Size = New System.Drawing.Size(547, 269)
+        Me.DGVClient.Size = New System.Drawing.Size(842, 357)
         Me.DGVClient.TabIndex = 0
         '
         'TBID
@@ -363,7 +363,7 @@ Partial Class UCInfoClientVehicule
         Me.Controls.Add(Me.TBID)
         Me.Controls.Add(Me.DGVClient)
         Me.Name = "UCInfoClientVehicule"
-        Me.Size = New System.Drawing.Size(808, 658)
+        Me.Size = New System.Drawing.Size(1115, 651)
         CType(Me.DGVClient, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

@@ -32,7 +32,7 @@ Partial Class UCCouleurTissus
         '
         'BtDel
         '
-        Me.BtDel.Location = New System.Drawing.Point(347, 404)
+        Me.BtDel.Location = New System.Drawing.Point(562, 438)
         Me.BtDel.Name = "BtDel"
         Me.BtDel.Size = New System.Drawing.Size(135, 23)
         Me.BtDel.TabIndex = 9
@@ -42,7 +42,7 @@ Partial Class UCCouleurTissus
         'BTAnnuler
         '
         Me.BTAnnuler.Enabled = False
-        Me.BTAnnuler.Location = New System.Drawing.Point(206, 404)
+        Me.BTAnnuler.Location = New System.Drawing.Point(421, 438)
         Me.BTAnnuler.Name = "BTAnnuler"
         Me.BTAnnuler.Size = New System.Drawing.Size(135, 23)
         Me.BTAnnuler.TabIndex = 8
@@ -52,7 +52,7 @@ Partial Class UCCouleurTissus
         'BTEnregistrer
         '
         Me.BTEnregistrer.Enabled = False
-        Me.BTEnregistrer.Location = New System.Drawing.Point(65, 404)
+        Me.BTEnregistrer.Location = New System.Drawing.Point(280, 438)
         Me.BTEnregistrer.Name = "BTEnregistrer"
         Me.BTEnregistrer.Size = New System.Drawing.Size(135, 23)
         Me.BTEnregistrer.TabIndex = 7
@@ -61,7 +61,7 @@ Partial Class UCCouleurTissus
         '
         'BtCreer
         '
-        Me.BtCreer.Location = New System.Drawing.Point(65, 101)
+        Me.BtCreer.Location = New System.Drawing.Point(280, 135)
         Me.BtCreer.Name = "BtCreer"
         Me.BtCreer.Size = New System.Drawing.Size(176, 23)
         Me.BtCreer.TabIndex = 6
@@ -73,7 +73,7 @@ Partial Class UCCouleurTissus
         Me.dgvCouleur.AllowUserToAddRows = False
         Me.dgvCouleur.AllowUserToDeleteRows = False
         Me.dgvCouleur.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvCouleur.Location = New System.Drawing.Point(65, 130)
+        Me.dgvCouleur.Location = New System.Drawing.Point(280, 164)
         Me.dgvCouleur.Name = "dgvCouleur"
         Me.dgvCouleur.RowTemplate.Height = 25
         Me.dgvCouleur.Size = New System.Drawing.Size(550, 268)
@@ -89,7 +89,7 @@ Partial Class UCCouleurTissus
         Me.Controls.Add(Me.BtCreer)
         Me.Controls.Add(Me.dgvCouleur)
         Me.Name = "UCCouleurTissus"
-        Me.Size = New System.Drawing.Size(847, 647)
+        Me.Size = New System.Drawing.Size(1115, 651)
         CType(Me.dgvCouleur, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

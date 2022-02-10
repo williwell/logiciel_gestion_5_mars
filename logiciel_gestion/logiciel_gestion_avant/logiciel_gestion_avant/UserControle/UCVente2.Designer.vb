@@ -52,7 +52,7 @@ Partial Class UCVente2
         Me.DGVOpDispo.ReadOnly = True
         Me.DGVOpDispo.RowTemplate.Height = 25
         Me.DGVOpDispo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DGVOpDispo.Size = New System.Drawing.Size(561, 242)
+        Me.DGVOpDispo.Size = New System.Drawing.Size(893, 242)
         Me.DGVOpDispo.TabIndex = 0
         '
         'DGVOpCh
@@ -65,7 +65,7 @@ Partial Class UCVente2
         Me.DGVOpCh.ReadOnly = True
         Me.DGVOpCh.RowTemplate.Height = 25
         Me.DGVOpCh.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DGVOpCh.Size = New System.Drawing.Size(561, 242)
+        Me.DGVOpCh.Size = New System.Drawing.Size(893, 242)
         Me.DGVOpCh.TabIndex = 1
         '
         'Label1
@@ -106,7 +106,7 @@ Partial Class UCVente2
         '
         'TBCout
         '
-        Me.TBCout.Location = New System.Drawing.Point(592, 344)
+        Me.TBCout.Location = New System.Drawing.Point(938, 345)
         Me.TBCout.Name = "TBCout"
         Me.TBCout.ReadOnly = True
         Me.TBCout.Size = New System.Drawing.Size(162, 23)
@@ -115,7 +115,7 @@ Partial Class UCVente2
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(592, 326)
+        Me.Label3.Location = New System.Drawing.Point(938, 327)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(27, 15)
         Me.Label3.TabIndex = 32
@@ -124,7 +124,7 @@ Partial Class UCVente2
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(592, 370)
+        Me.Label4.Location = New System.Drawing.Point(938, 371)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(26, 15)
         Me.Label4.TabIndex = 34
@@ -132,7 +132,7 @@ Partial Class UCVente2
         '
         'TBTPS
         '
-        Me.TBTPS.Location = New System.Drawing.Point(592, 388)
+        Me.TBTPS.Location = New System.Drawing.Point(938, 389)
         Me.TBTPS.Name = "TBTPS"
         Me.TBTPS.ReadOnly = True
         Me.TBTPS.Size = New System.Drawing.Size(162, 23)
@@ -141,7 +141,7 @@ Partial Class UCVente2
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(592, 458)
+        Me.Label5.Location = New System.Drawing.Point(938, 459)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(32, 15)
         Me.Label5.TabIndex = 38
@@ -149,7 +149,7 @@ Partial Class UCVente2
         '
         'TBTotal
         '
-        Me.TBTotal.Location = New System.Drawing.Point(592, 476)
+        Me.TBTotal.Location = New System.Drawing.Point(938, 477)
         Me.TBTotal.Name = "TBTotal"
         Me.TBTotal.ReadOnly = True
         Me.TBTotal.Size = New System.Drawing.Size(162, 23)
@@ -158,7 +158,7 @@ Partial Class UCVente2
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(592, 414)
+        Me.Label6.Location = New System.Drawing.Point(938, 415)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(29, 15)
         Me.Label6.TabIndex = 36
@@ -166,7 +166,7 @@ Partial Class UCVente2
         '
         'TBTVQ
         '
-        Me.TBTVQ.Location = New System.Drawing.Point(592, 432)
+        Me.TBTVQ.Location = New System.Drawing.Point(938, 433)
         Me.TBTVQ.Name = "TBTVQ"
         Me.TBTVQ.ReadOnly = True
         Me.TBTVQ.Size = New System.Drawing.Size(162, 23)
@@ -175,7 +175,7 @@ Partial Class UCVente2
         'CBTPS
         '
         Me.CBTPS.AutoSize = True
-        Me.CBTPS.Location = New System.Drawing.Point(592, 505)
+        Me.CBTPS.Location = New System.Drawing.Point(938, 506)
         Me.CBTPS.Name = "CBTPS"
         Me.CBTPS.Size = New System.Drawing.Size(45, 19)
         Me.CBTPS.TabIndex = 39
@@ -185,7 +185,7 @@ Partial Class UCVente2
         'CBTVQ
         '
         Me.CBTVQ.AutoSize = True
-        Me.CBTVQ.Location = New System.Drawing.Point(592, 530)
+        Me.CBTVQ.Location = New System.Drawing.Point(938, 531)
         Me.CBTVQ.Name = "CBTVQ"
         Me.CBTVQ.Size = New System.Drawing.Size(48, 19)
         Me.CBTVQ.TabIndex = 40
@@ -213,7 +213,7 @@ Partial Class UCVente2
         Me.Controls.Add(Me.DGVOpCh)
         Me.Controls.Add(Me.DGVOpDispo)
         Me.Name = "UCVente2"
-        Me.Size = New System.Drawing.Size(808, 649)
+        Me.Size = New System.Drawing.Size(1115, 651)
         CType(Me.DGVOpDispo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGVOpCh, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

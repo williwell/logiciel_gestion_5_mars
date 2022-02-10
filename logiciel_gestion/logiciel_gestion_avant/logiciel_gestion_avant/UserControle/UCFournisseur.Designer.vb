@@ -238,18 +238,18 @@ Partial Class UCFournisseur
         Me.dgvPiece.AllowUserToAddRows = False
         Me.dgvPiece.AllowUserToDeleteRows = False
         Me.dgvPiece.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvPiece.Location = New System.Drawing.Point(296, 326)
+        Me.dgvPiece.Location = New System.Drawing.Point(251, 414)
         Me.dgvPiece.Name = "dgvPiece"
         Me.dgvPiece.ReadOnly = True
         Me.dgvPiece.RowTemplate.Height = 25
         Me.dgvPiece.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvPiece.Size = New System.Drawing.Size(561, 199)
+        Me.dgvPiece.Size = New System.Drawing.Size(846, 199)
         Me.dgvPiece.TabIndex = 15
         '
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(296, 308)
+        Me.Label12.Location = New System.Drawing.Point(251, 396)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(99, 15)
         Me.Label12.TabIndex = 23
@@ -260,18 +260,18 @@ Partial Class UCFournisseur
         Me.dgvFour.AllowUserToAddRows = False
         Me.dgvFour.AllowUserToDeleteRows = False
         Me.dgvFour.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvFour.Location = New System.Drawing.Point(296, 62)
+        Me.dgvFour.Location = New System.Drawing.Point(251, 62)
         Me.dgvFour.Name = "dgvFour"
         Me.dgvFour.ReadOnly = True
         Me.dgvFour.RowTemplate.Height = 25
         Me.dgvFour.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvFour.Size = New System.Drawing.Size(561, 199)
+        Me.dgvFour.Size = New System.Drawing.Size(846, 331)
         Me.dgvFour.TabIndex = 14
         '
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(296, 44)
+        Me.Label13.Location = New System.Drawing.Point(251, 44)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(108, 15)
         Me.Label13.TabIndex = 25
@@ -351,7 +351,7 @@ Partial Class UCFournisseur
         Me.Controls.Add(Me.tbID)
         Me.Controls.Add(Me.Label1)
         Me.Name = "UCFournisseur"
-        Me.Size = New System.Drawing.Size(889, 649)
+        Me.Size = New System.Drawing.Size(1115, 651)
         CType(Me.dgvPiece, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvFour, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

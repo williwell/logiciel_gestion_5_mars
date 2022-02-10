@@ -81,7 +81,7 @@ Partial Class UCVente3
         '
         'BTSave
         '
-        Me.BTSave.Location = New System.Drawing.Point(321, 591)
+        Me.BTSave.Location = New System.Drawing.Point(511, 605)
         Me.BTSave.Name = "BTSave"
         Me.BTSave.Size = New System.Drawing.Size(114, 23)
         Me.BTSave.TabIndex = 14
@@ -92,7 +92,7 @@ Partial Class UCVente3
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label7.Location = New System.Drawing.Point(64, 25)
+        Me.Label7.Location = New System.Drawing.Point(254, 39)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(142, 21)
         Me.Label7.TabIndex = 26
@@ -102,7 +102,7 @@ Partial Class UCVente3
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label6.Location = New System.Drawing.Point(321, 25)
+        Me.Label6.Location = New System.Drawing.Point(511, 39)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(117, 21)
         Me.Label6.TabIndex = 25
@@ -111,7 +111,7 @@ Partial Class UCVente3
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(531, 145)
+        Me.Label4.Location = New System.Drawing.Point(721, 159)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(43, 15)
         Me.Label4.TabIndex = 23
@@ -120,7 +120,7 @@ Partial Class UCVente3
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(531, 101)
+        Me.Label5.Location = New System.Drawing.Point(721, 115)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(58, 15)
         Me.Label5.TabIndex = 21
@@ -129,7 +129,7 @@ Partial Class UCVente3
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(321, 145)
+        Me.Label3.Location = New System.Drawing.Point(511, 159)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(43, 15)
         Me.Label3.TabIndex = 19
@@ -138,7 +138,7 @@ Partial Class UCVente3
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(321, 101)
+        Me.Label2.Location = New System.Drawing.Point(511, 115)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(58, 15)
         Me.Label2.TabIndex = 17
@@ -148,7 +148,7 @@ Partial Class UCVente3
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(64, 0)
+        Me.Label1.Location = New System.Drawing.Point(254, 14)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(61, 25)
         Me.Label1.TabIndex = 16
@@ -156,7 +156,7 @@ Partial Class UCVente3
         '
         'BTClient
         '
-        Me.BTClient.Location = New System.Drawing.Point(64, 65)
+        Me.BTClient.Location = New System.Drawing.Point(254, 79)
         Me.BTClient.Name = "BTClient"
         Me.BTClient.Size = New System.Drawing.Size(196, 23)
         Me.BTClient.TabIndex = 15
@@ -165,7 +165,7 @@ Partial Class UCVente3
         '
         'BTPrev
         '
-        Me.BTPrev.Location = New System.Drawing.Point(64, 591)
+        Me.BTPrev.Location = New System.Drawing.Point(254, 605)
         Me.BTPrev.Name = "BTPrev"
         Me.BTPrev.Size = New System.Drawing.Size(114, 23)
         Me.BTPrev.TabIndex = 28
@@ -175,7 +175,7 @@ Partial Class UCVente3
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(321, 541)
+        Me.Label8.Location = New System.Drawing.Point(511, 555)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(36, 15)
         Me.Label8.TabIndex = 32
@@ -184,7 +184,7 @@ Partial Class UCVente3
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(321, 497)
+        Me.Label9.Location = New System.Drawing.Point(511, 511)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(31, 15)
         Me.Label9.TabIndex = 31
@@ -193,7 +193,7 @@ Partial Class UCVente3
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(321, 453)
+        Me.Label10.Location = New System.Drawing.Point(511, 467)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(70, 15)
         Me.Label10.TabIndex = 30
@@ -202,7 +202,7 @@ Partial Class UCVente3
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(321, 409)
+        Me.Label11.Location = New System.Drawing.Point(511, 423)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(70, 15)
         Me.Label11.TabIndex = 29
@@ -210,49 +210,49 @@ Partial Class UCVente3
         '
         'TBPrenom1
         '
-        Me.TBPrenom1.Location = New System.Drawing.Point(321, 119)
+        Me.TBPrenom1.Location = New System.Drawing.Point(511, 133)
         Me.TBPrenom1.Name = "TBPrenom1"
         Me.TBPrenom1.Size = New System.Drawing.Size(204, 23)
         Me.TBPrenom1.TabIndex = 1
         '
         'TBNom1
         '
-        Me.TBNom1.Location = New System.Drawing.Point(321, 163)
+        Me.TBNom1.Location = New System.Drawing.Point(511, 177)
         Me.TBNom1.Name = "TBNom1"
         Me.TBNom1.Size = New System.Drawing.Size(204, 23)
         Me.TBNom1.TabIndex = 2
         '
         'TBPrenom2
         '
-        Me.TBPrenom2.Location = New System.Drawing.Point(531, 119)
+        Me.TBPrenom2.Location = New System.Drawing.Point(721, 133)
         Me.TBPrenom2.Name = "TBPrenom2"
         Me.TBPrenom2.Size = New System.Drawing.Size(204, 23)
         Me.TBPrenom2.TabIndex = 3
         '
         'TBNom2
         '
-        Me.TBNom2.Location = New System.Drawing.Point(531, 163)
+        Me.TBNom2.Location = New System.Drawing.Point(721, 177)
         Me.TBNom2.Name = "TBNom2"
         Me.TBNom2.Size = New System.Drawing.Size(204, 23)
         Me.TBNom2.TabIndex = 4
         '
         'TBTel1
         '
-        Me.TBTel1.Location = New System.Drawing.Point(321, 427)
+        Me.TBTel1.Location = New System.Drawing.Point(511, 441)
         Me.TBTel1.Name = "TBTel1"
         Me.TBTel1.Size = New System.Drawing.Size(204, 23)
         Me.TBTel1.TabIndex = 10
         '
         'TBTel2
         '
-        Me.TBTel2.Location = New System.Drawing.Point(321, 471)
+        Me.TBTel2.Location = New System.Drawing.Point(511, 485)
         Me.TBTel2.Name = "TBTel2"
         Me.TBTel2.Size = New System.Drawing.Size(204, 23)
         Me.TBTel2.TabIndex = 11
         '
         'TBEmail
         '
-        Me.TBEmail.Location = New System.Drawing.Point(321, 559)
+        Me.TBEmail.Location = New System.Drawing.Point(511, 573)
         Me.TBEmail.Name = "TBEmail"
         Me.TBEmail.Size = New System.Drawing.Size(204, 23)
         Me.TBEmail.TabIndex = 13
@@ -261,14 +261,14 @@ Partial Class UCVente3
         '
         Me.CBSexe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CBSexe.FormattingEnabled = True
-        Me.CBSexe.Location = New System.Drawing.Point(321, 515)
+        Me.CBSexe.Location = New System.Drawing.Point(511, 529)
         Me.CBSexe.Name = "CBSexe"
         Me.CBSexe.Size = New System.Drawing.Size(204, 23)
         Me.CBSexe.TabIndex = 12
         '
         'BTNewCl
         '
-        Me.BTNewCl.Location = New System.Drawing.Point(321, 65)
+        Me.BTNewCl.Location = New System.Drawing.Point(511, 79)
         Me.BTNewCl.Name = "BTNewCl"
         Me.BTNewCl.Size = New System.Drawing.Size(196, 23)
         Me.BTNewCl.TabIndex = 42
@@ -279,7 +279,7 @@ Partial Class UCVente3
         '
         Me.CBSexeCl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CBSexeCl.FormattingEnabled = True
-        Me.CBSexeCl.Location = New System.Drawing.Point(64, 515)
+        Me.CBSexeCl.Location = New System.Drawing.Point(254, 529)
         Me.CBSexeCl.Name = "CBSexeCl"
         Me.CBSexeCl.Size = New System.Drawing.Size(204, 23)
         Me.CBSexeCl.TabIndex = 58
@@ -287,7 +287,7 @@ Partial Class UCVente3
         '
         'TBEmailCl
         '
-        Me.TBEmailCl.Location = New System.Drawing.Point(64, 559)
+        Me.TBEmailCl.Location = New System.Drawing.Point(254, 573)
         Me.TBEmailCl.Name = "TBEmailCl"
         Me.TBEmailCl.Size = New System.Drawing.Size(204, 23)
         Me.TBEmailCl.TabIndex = 57
@@ -295,7 +295,7 @@ Partial Class UCVente3
         '
         'TBTel2Cl
         '
-        Me.TBTel2Cl.Location = New System.Drawing.Point(64, 471)
+        Me.TBTel2Cl.Location = New System.Drawing.Point(254, 485)
         Me.TBTel2Cl.Name = "TBTel2Cl"
         Me.TBTel2Cl.Size = New System.Drawing.Size(204, 23)
         Me.TBTel2Cl.TabIndex = 56
@@ -303,7 +303,7 @@ Partial Class UCVente3
         '
         'TBTel1Cl
         '
-        Me.TBTel1Cl.Location = New System.Drawing.Point(64, 427)
+        Me.TBTel1Cl.Location = New System.Drawing.Point(254, 441)
         Me.TBTel1Cl.Name = "TBTel1Cl"
         Me.TBTel1Cl.Size = New System.Drawing.Size(204, 23)
         Me.TBTel1Cl.TabIndex = 55
@@ -311,7 +311,7 @@ Partial Class UCVente3
         '
         'TBNom2Cl
         '
-        Me.TBNom2Cl.Location = New System.Drawing.Point(64, 251)
+        Me.TBNom2Cl.Location = New System.Drawing.Point(254, 265)
         Me.TBNom2Cl.Name = "TBNom2Cl"
         Me.TBNom2Cl.Size = New System.Drawing.Size(204, 23)
         Me.TBNom2Cl.TabIndex = 54
@@ -319,7 +319,7 @@ Partial Class UCVente3
         '
         'TBPrenom2Cl
         '
-        Me.TBPrenom2Cl.Location = New System.Drawing.Point(64, 207)
+        Me.TBPrenom2Cl.Location = New System.Drawing.Point(254, 221)
         Me.TBPrenom2Cl.Name = "TBPrenom2Cl"
         Me.TBPrenom2Cl.Size = New System.Drawing.Size(204, 23)
         Me.TBPrenom2Cl.TabIndex = 53
@@ -327,7 +327,7 @@ Partial Class UCVente3
         '
         'TBNom1Cl
         '
-        Me.TBNom1Cl.Location = New System.Drawing.Point(64, 163)
+        Me.TBNom1Cl.Location = New System.Drawing.Point(254, 177)
         Me.TBNom1Cl.Name = "TBNom1Cl"
         Me.TBNom1Cl.Size = New System.Drawing.Size(204, 23)
         Me.TBNom1Cl.TabIndex = 52
@@ -335,7 +335,7 @@ Partial Class UCVente3
         '
         'TBPreNom1Cl
         '
-        Me.TBPreNom1Cl.Location = New System.Drawing.Point(64, 119)
+        Me.TBPreNom1Cl.Location = New System.Drawing.Point(254, 133)
         Me.TBPreNom1Cl.Name = "TBPreNom1Cl"
         Me.TBPreNom1Cl.Size = New System.Drawing.Size(204, 23)
         Me.TBPreNom1Cl.TabIndex = 51
@@ -344,7 +344,7 @@ Partial Class UCVente3
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(64, 541)
+        Me.Label12.Location = New System.Drawing.Point(254, 555)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(36, 15)
         Me.Label12.TabIndex = 50
@@ -354,7 +354,7 @@ Partial Class UCVente3
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(64, 497)
+        Me.Label13.Location = New System.Drawing.Point(254, 511)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(31, 15)
         Me.Label13.TabIndex = 49
@@ -364,7 +364,7 @@ Partial Class UCVente3
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(64, 453)
+        Me.Label14.Location = New System.Drawing.Point(254, 467)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(70, 15)
         Me.Label14.TabIndex = 48
@@ -374,7 +374,7 @@ Partial Class UCVente3
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(64, 409)
+        Me.Label15.Location = New System.Drawing.Point(254, 423)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(70, 15)
         Me.Label15.TabIndex = 47
@@ -384,7 +384,7 @@ Partial Class UCVente3
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(64, 233)
+        Me.Label16.Location = New System.Drawing.Point(254, 247)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(43, 15)
         Me.Label16.TabIndex = 46
@@ -394,7 +394,7 @@ Partial Class UCVente3
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(64, 189)
+        Me.Label17.Location = New System.Drawing.Point(254, 203)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(58, 15)
         Me.Label17.TabIndex = 45
@@ -404,7 +404,7 @@ Partial Class UCVente3
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(64, 145)
+        Me.Label18.Location = New System.Drawing.Point(254, 159)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(43, 15)
         Me.Label18.TabIndex = 44
@@ -414,7 +414,7 @@ Partial Class UCVente3
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(64, 101)
+        Me.Label19.Location = New System.Drawing.Point(254, 115)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(58, 15)
         Me.Label19.TabIndex = 43
@@ -423,7 +423,7 @@ Partial Class UCVente3
         '
         'TBPoste
         '
-        Me.TBPoste.Location = New System.Drawing.Point(321, 383)
+        Me.TBPoste.Location = New System.Drawing.Point(511, 397)
         Me.TBPoste.Name = "TBPoste"
         Me.TBPoste.Size = New System.Drawing.Size(204, 23)
         Me.TBPoste.TabIndex = 9
@@ -431,7 +431,7 @@ Partial Class UCVente3
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(321, 365)
+        Me.Label20.Location = New System.Drawing.Point(511, 379)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(70, 15)
         Me.Label20.TabIndex = 63
@@ -439,7 +439,7 @@ Partial Class UCVente3
         '
         'TBApp
         '
-        Me.TBApp.Location = New System.Drawing.Point(321, 339)
+        Me.TBApp.Location = New System.Drawing.Point(511, 353)
         Me.TBApp.Name = "TBApp"
         Me.TBApp.Size = New System.Drawing.Size(204, 23)
         Me.TBApp.TabIndex = 8
@@ -447,7 +447,7 @@ Partial Class UCVente3
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(321, 321)
+        Me.Label21.Location = New System.Drawing.Point(511, 335)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(77, 15)
         Me.Label21.TabIndex = 61
@@ -455,7 +455,7 @@ Partial Class UCVente3
         '
         'TBRue
         '
-        Me.TBRue.Location = New System.Drawing.Point(321, 207)
+        Me.TBRue.Location = New System.Drawing.Point(511, 221)
         Me.TBRue.Name = "TBRue"
         Me.TBRue.Size = New System.Drawing.Size(204, 23)
         Me.TBRue.TabIndex = 5
@@ -463,7 +463,7 @@ Partial Class UCVente3
         'Label22
         '
         Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(321, 189)
+        Me.Label22.Location = New System.Drawing.Point(511, 203)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(27, 15)
         Me.Label22.TabIndex = 59
@@ -471,7 +471,7 @@ Partial Class UCVente3
         '
         'TBPosteCl
         '
-        Me.TBPosteCl.Location = New System.Drawing.Point(64, 383)
+        Me.TBPosteCl.Location = New System.Drawing.Point(254, 397)
         Me.TBPosteCl.Name = "TBPosteCl"
         Me.TBPosteCl.Size = New System.Drawing.Size(204, 23)
         Me.TBPosteCl.TabIndex = 70
@@ -479,7 +479,7 @@ Partial Class UCVente3
         'Label23
         '
         Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(64, 365)
+        Me.Label23.Location = New System.Drawing.Point(254, 379)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(70, 15)
         Me.Label23.TabIndex = 69
@@ -487,7 +487,7 @@ Partial Class UCVente3
         '
         'TBAppCl
         '
-        Me.TBAppCl.Location = New System.Drawing.Point(64, 339)
+        Me.TBAppCl.Location = New System.Drawing.Point(254, 353)
         Me.TBAppCl.Name = "TBAppCl"
         Me.TBAppCl.Size = New System.Drawing.Size(204, 23)
         Me.TBAppCl.TabIndex = 68
@@ -495,7 +495,7 @@ Partial Class UCVente3
         'Label24
         '
         Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(64, 321)
+        Me.Label24.Location = New System.Drawing.Point(254, 335)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(77, 15)
         Me.Label24.TabIndex = 67
@@ -503,7 +503,7 @@ Partial Class UCVente3
         '
         'TBAdresseCl
         '
-        Me.TBAdresseCl.Location = New System.Drawing.Point(64, 295)
+        Me.TBAdresseCl.Location = New System.Drawing.Point(254, 309)
         Me.TBAdresseCl.Name = "TBAdresseCl"
         Me.TBAdresseCl.Size = New System.Drawing.Size(204, 23)
         Me.TBAdresseCl.TabIndex = 66
@@ -511,7 +511,7 @@ Partial Class UCVente3
         'Label25
         '
         Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(64, 277)
+        Me.Label25.Location = New System.Drawing.Point(254, 291)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(48, 15)
         Me.Label25.TabIndex = 65
@@ -519,7 +519,7 @@ Partial Class UCVente3
         '
         'TBVille
         '
-        Me.TBVille.Location = New System.Drawing.Point(321, 251)
+        Me.TBVille.Location = New System.Drawing.Point(511, 265)
         Me.TBVille.Name = "TBVille"
         Me.TBVille.Size = New System.Drawing.Size(204, 23)
         Me.TBVille.TabIndex = 6
@@ -527,7 +527,7 @@ Partial Class UCVente3
         'Label26
         '
         Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(321, 233)
+        Me.Label26.Location = New System.Drawing.Point(511, 247)
         Me.Label26.Name = "Label26"
         Me.Label26.Size = New System.Drawing.Size(29, 15)
         Me.Label26.TabIndex = 71
@@ -535,7 +535,7 @@ Partial Class UCVente3
         '
         'TBPro
         '
-        Me.TBPro.Location = New System.Drawing.Point(321, 295)
+        Me.TBPro.Location = New System.Drawing.Point(511, 309)
         Me.TBPro.Name = "TBPro"
         Me.TBPro.Size = New System.Drawing.Size(204, 23)
         Me.TBPro.TabIndex = 7
@@ -543,7 +543,7 @@ Partial Class UCVente3
         'Label27
         '
         Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(321, 277)
+        Me.Label27.Location = New System.Drawing.Point(511, 291)
         Me.Label27.Name = "Label27"
         Me.Label27.Size = New System.Drawing.Size(53, 15)
         Me.Label27.TabIndex = 73
@@ -609,7 +609,7 @@ Partial Class UCVente3
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.BTClient)
         Me.Name = "UCVente3"
-        Me.Size = New System.Drawing.Size(808, 649)
+        Me.Size = New System.Drawing.Size(1115, 651)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

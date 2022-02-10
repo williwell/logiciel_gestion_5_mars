@@ -251,13 +251,10 @@ Public Class ConnectionServeur
                 search = False
             End If
 
-            'Dim textFileStream As New IO.FileStream("C:\logiciel_gestion_5_mars_fichier\texte.txt", IO.FileMode.OpenOrCreate, IO.FileAccess.ReadWrite, IO.FileShare.None)
-            'Dim myFileWriter As New IO.StreamWriter(textFileStream)
             Using myFileWriter As IO.StreamWriter = IO.File.AppendText("C:\logiciel_gestion_5_mars_fichier\texte.txt")
                 myFileWriter.WriteLine(str)
                 myFileWriter.WriteLine("ok")
                 myFileWriter.Close()
-                'textFileStream.Close()
             End Using
         End While
 

@@ -84,7 +84,7 @@ Partial Class UCInventaire
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(41, 54)
+        Me.Label1.Location = New System.Drawing.Point(139, 54)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(60, 15)
         Me.Label1.TabIndex = 0
@@ -92,14 +92,14 @@ Partial Class UCInventaire
         '
         'tbIDPro
         '
-        Me.tbIDPro.Location = New System.Drawing.Point(41, 72)
+        Me.tbIDPro.Location = New System.Drawing.Point(139, 72)
         Me.tbIDPro.Name = "tbIDPro"
         Me.tbIDPro.Size = New System.Drawing.Size(359, 23)
         Me.tbIDPro.TabIndex = 0
         '
         'tbNom
         '
-        Me.tbNom.Location = New System.Drawing.Point(41, 116)
+        Me.tbNom.Location = New System.Drawing.Point(139, 116)
         Me.tbNom.Name = "tbNom"
         Me.tbNom.ReadOnly = True
         Me.tbNom.Size = New System.Drawing.Size(359, 23)
@@ -108,7 +108,7 @@ Partial Class UCInventaire
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(41, 98)
+        Me.Label2.Location = New System.Drawing.Point(139, 98)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(76, 15)
         Me.Label2.TabIndex = 2
@@ -117,7 +117,7 @@ Partial Class UCInventaire
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(422, 108)
+        Me.Label3.Location = New System.Drawing.Point(629, 108)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(82, 15)
         Me.Label3.TabIndex = 4
@@ -126,7 +126,7 @@ Partial Class UCInventaire
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(41, 299)
+        Me.Label4.Location = New System.Drawing.Point(139, 299)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(86, 15)
         Me.Label4.TabIndex = 6
@@ -135,7 +135,7 @@ Partial Class UCInventaire
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(41, 230)
+        Me.Label6.Location = New System.Drawing.Point(139, 230)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(77, 15)
         Me.Label6.TabIndex = 10
@@ -143,7 +143,7 @@ Partial Class UCInventaire
         '
         'tbEmplacement
         '
-        Me.tbEmplacement.Location = New System.Drawing.Point(41, 204)
+        Me.tbEmplacement.Location = New System.Drawing.Point(139, 204)
         Me.tbEmplacement.Name = "tbEmplacement"
         Me.tbEmplacement.ReadOnly = True
         Me.tbEmplacement.Size = New System.Drawing.Size(116, 23)
@@ -152,7 +152,7 @@ Partial Class UCInventaire
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(41, 186)
+        Me.Label7.Location = New System.Drawing.Point(139, 186)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(80, 15)
         Me.Label7.TabIndex = 12
@@ -160,7 +160,7 @@ Partial Class UCInventaire
         '
         'tbIDFour
         '
-        Me.tbIDFour.Location = New System.Drawing.Point(422, 126)
+        Me.tbIDFour.Location = New System.Drawing.Point(629, 126)
         Me.tbIDFour.Name = "tbIDFour"
         Me.tbIDFour.ReadOnly = True
         Me.tbIDFour.Size = New System.Drawing.Size(209, 23)
@@ -169,7 +169,7 @@ Partial Class UCInventaire
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(41, 476)
+        Me.Label8.Location = New System.Drawing.Point(139, 476)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(67, 15)
         Me.Label8.TabIndex = 14
@@ -178,7 +178,7 @@ Partial Class UCInventaire
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(41, 142)
+        Me.Label9.Location = New System.Drawing.Point(139, 142)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(53, 15)
         Me.Label9.TabIndex = 16
@@ -186,7 +186,7 @@ Partial Class UCInventaire
         '
         'nudQuantite
         '
-        Me.nudQuantite.Location = New System.Drawing.Point(41, 160)
+        Me.nudQuantite.Location = New System.Drawing.Point(139, 160)
         Me.nudQuantite.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
         Me.nudQuantite.Minimum = New Decimal(New Integer() {10000, 0, 0, -2147483648})
         Me.nudQuantite.Name = "nudQuantite"
@@ -196,7 +196,7 @@ Partial Class UCInventaire
         '
         'tbDescription
         '
-        Me.tbDescription.Location = New System.Drawing.Point(41, 494)
+        Me.tbDescription.Location = New System.Drawing.Point(139, 494)
         Me.tbDescription.Multiline = True
         Me.tbDescription.Name = "tbDescription"
         Me.tbDescription.ReadOnly = True
@@ -209,14 +209,14 @@ Partial Class UCInventaire
         Me.labPasItem.AutoSize = True
         Me.labPasItem.Font = New System.Drawing.Font("Segoe UI", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.labPasItem.ForeColor = System.Drawing.Color.Red
-        Me.labPasItem.Location = New System.Drawing.Point(422, 18)
+        Me.labPasItem.Location = New System.Drawing.Point(520, 18)
         Me.labPasItem.Name = "labPasItem"
         Me.labPasItem.Size = New System.Drawing.Size(0, 28)
         Me.labPasItem.TabIndex = 35
         '
         'nudEnCommende
         '
-        Me.nudEnCommende.Location = New System.Drawing.Point(41, 317)
+        Me.nudEnCommende.Location = New System.Drawing.Point(139, 317)
         Me.nudEnCommende.Name = "nudEnCommende"
         Me.nudEnCommende.ReadOnly = True
         Me.nudEnCommende.Size = New System.Drawing.Size(116, 23)
@@ -225,7 +225,7 @@ Partial Class UCInventaire
         'nudCoutUn
         '
         Me.nudCoutUn.DecimalPlaces = 2
-        Me.nudCoutUn.Location = New System.Drawing.Point(41, 248)
+        Me.nudCoutUn.Location = New System.Drawing.Point(139, 248)
         Me.nudCoutUn.Maximum = New Decimal(New Integer() {99999, 0, 0, 0})
         Me.nudCoutUn.Name = "nudCoutUn"
         Me.nudCoutUn.ReadOnly = True
@@ -235,7 +235,7 @@ Partial Class UCInventaire
         'btSauv
         '
         Me.btSauv.Enabled = False
-        Me.btSauv.Location = New System.Drawing.Point(41, 600)
+        Me.btSauv.Location = New System.Drawing.Point(139, 600)
         Me.btSauv.Name = "btSauv"
         Me.btSauv.Size = New System.Drawing.Size(172, 23)
         Me.btSauv.TabIndex = 11
@@ -244,7 +244,7 @@ Partial Class UCInventaire
         '
         'btRecherche
         '
-        Me.btRecherche.Location = New System.Drawing.Point(40, 18)
+        Me.btRecherche.Location = New System.Drawing.Point(138, 18)
         Me.btRecherche.Name = "btRecherche"
         Me.btRecherche.Size = New System.Drawing.Size(172, 23)
         Me.btRecherche.TabIndex = 27
@@ -255,7 +255,7 @@ Partial Class UCInventaire
         '
         Me.cbUse.AutoSize = True
         Me.cbUse.Enabled = False
-        Me.cbUse.Location = New System.Drawing.Point(41, 277)
+        Me.cbUse.Location = New System.Drawing.Point(139, 277)
         Me.cbUse.Name = "cbUse"
         Me.cbUse.Size = New System.Drawing.Size(76, 19)
         Me.cbUse.TabIndex = 5
@@ -265,7 +265,7 @@ Partial Class UCInventaire
         'btAnnulMod
         '
         Me.btAnnulMod.Enabled = False
-        Me.btAnnulMod.Location = New System.Drawing.Point(228, 600)
+        Me.btAnnulMod.Location = New System.Drawing.Point(326, 600)
         Me.btAnnulMod.Name = "btAnnulMod"
         Me.btAnnulMod.Size = New System.Drawing.Size(172, 23)
         Me.btAnnulMod.TabIndex = 12
@@ -274,7 +274,7 @@ Partial Class UCInventaire
         '
         'tbNomFour
         '
-        Me.tbNomFour.Location = New System.Drawing.Point(422, 170)
+        Me.tbNomFour.Location = New System.Drawing.Point(629, 170)
         Me.tbNomFour.Name = "tbNomFour"
         Me.tbNomFour.ReadOnly = True
         Me.tbNomFour.Size = New System.Drawing.Size(209, 23)
@@ -283,7 +283,7 @@ Partial Class UCInventaire
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(422, 152)
+        Me.Label10.Location = New System.Drawing.Point(629, 152)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(98, 15)
         Me.Label10.TabIndex = 42
@@ -291,7 +291,7 @@ Partial Class UCInventaire
         '
         'tbAdres2
         '
-        Me.tbAdres2.Location = New System.Drawing.Point(422, 258)
+        Me.tbAdres2.Location = New System.Drawing.Point(629, 258)
         Me.tbAdres2.Name = "tbAdres2"
         Me.tbAdres2.ReadOnly = True
         Me.tbAdres2.Size = New System.Drawing.Size(209, 23)
@@ -300,7 +300,7 @@ Partial Class UCInventaire
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(422, 240)
+        Me.Label5.Location = New System.Drawing.Point(629, 240)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(57, 15)
         Me.Label5.TabIndex = 46
@@ -308,7 +308,7 @@ Partial Class UCInventaire
         '
         'tbAdres1
         '
-        Me.tbAdres1.Location = New System.Drawing.Point(422, 214)
+        Me.tbAdres1.Location = New System.Drawing.Point(629, 214)
         Me.tbAdres1.Name = "tbAdres1"
         Me.tbAdres1.ReadOnly = True
         Me.tbAdres1.Size = New System.Drawing.Size(209, 23)
@@ -317,7 +317,7 @@ Partial Class UCInventaire
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(422, 196)
+        Me.Label11.Location = New System.Drawing.Point(629, 196)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(57, 15)
         Me.Label11.TabIndex = 44
@@ -325,7 +325,7 @@ Partial Class UCInventaire
         '
         'tbCouriel
         '
-        Me.tbCouriel.Location = New System.Drawing.Point(422, 434)
+        Me.tbCouriel.Location = New System.Drawing.Point(629, 434)
         Me.tbCouriel.Name = "tbCouriel"
         Me.tbCouriel.ReadOnly = True
         Me.tbCouriel.Size = New System.Drawing.Size(209, 23)
@@ -334,7 +334,7 @@ Partial Class UCInventaire
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(422, 416)
+        Me.Label12.Location = New System.Drawing.Point(629, 416)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(45, 15)
         Me.Label12.TabIndex = 54
@@ -342,7 +342,7 @@ Partial Class UCInventaire
         '
         'tbLeepTime
         '
-        Me.tbLeepTime.Location = New System.Drawing.Point(422, 390)
+        Me.tbLeepTime.Location = New System.Drawing.Point(629, 390)
         Me.tbLeepTime.Name = "tbLeepTime"
         Me.tbLeepTime.ReadOnly = True
         Me.tbLeepTime.Size = New System.Drawing.Size(209, 23)
@@ -351,7 +351,7 @@ Partial Class UCInventaire
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(422, 372)
+        Me.Label13.Location = New System.Drawing.Point(629, 372)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(209, 15)
         Me.Label13.TabIndex = 52
@@ -359,7 +359,7 @@ Partial Class UCInventaire
         '
         'tbNomConc
         '
-        Me.tbNomConc.Location = New System.Drawing.Point(422, 346)
+        Me.tbNomConc.Location = New System.Drawing.Point(629, 346)
         Me.tbNomConc.Name = "tbNomConc"
         Me.tbNomConc.ReadOnly = True
         Me.tbNomConc.Size = New System.Drawing.Size(209, 23)
@@ -368,7 +368,7 @@ Partial Class UCInventaire
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(422, 328)
+        Me.Label14.Location = New System.Drawing.Point(629, 328)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(100, 15)
         Me.Label14.TabIndex = 50
@@ -376,7 +376,7 @@ Partial Class UCInventaire
         '
         'tbTel
         '
-        Me.tbTel.Location = New System.Drawing.Point(422, 302)
+        Me.tbTel.Location = New System.Drawing.Point(629, 302)
         Me.tbTel.Name = "tbTel"
         Me.tbTel.ReadOnly = True
         Me.tbTel.Size = New System.Drawing.Size(209, 23)
@@ -385,7 +385,7 @@ Partial Class UCInventaire
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(422, 284)
+        Me.Label15.Location = New System.Drawing.Point(629, 284)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(61, 15)
         Me.Label15.TabIndex = 48
@@ -393,7 +393,7 @@ Partial Class UCInventaire
         '
         'tbMethoPaie
         '
-        Me.tbMethoPaie.Location = New System.Drawing.Point(422, 566)
+        Me.tbMethoPaie.Location = New System.Drawing.Point(629, 566)
         Me.tbMethoPaie.Name = "tbMethoPaie"
         Me.tbMethoPaie.ReadOnly = True
         Me.tbMethoPaie.Size = New System.Drawing.Size(209, 23)
@@ -402,7 +402,7 @@ Partial Class UCInventaire
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(422, 548)
+        Me.Label19.Location = New System.Drawing.Point(629, 548)
         Me.Label19.Name = "Label19"
         Me.Label19.Size = New System.Drawing.Size(124, 15)
         Me.Label19.TabIndex = 60
@@ -410,7 +410,7 @@ Partial Class UCInventaire
         '
         'tbNoCompte
         '
-        Me.tbNoCompte.Location = New System.Drawing.Point(422, 522)
+        Me.tbNoCompte.Location = New System.Drawing.Point(629, 522)
         Me.tbNoCompte.Name = "tbNoCompte"
         Me.tbNoCompte.ReadOnly = True
         Me.tbNoCompte.Size = New System.Drawing.Size(209, 23)
@@ -419,7 +419,7 @@ Partial Class UCInventaire
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(422, 504)
+        Me.Label17.Location = New System.Drawing.Point(629, 504)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(111, 15)
         Me.Label17.TabIndex = 58
@@ -427,7 +427,7 @@ Partial Class UCInventaire
         '
         'tbMetCom
         '
-        Me.tbMetCom.Location = New System.Drawing.Point(422, 478)
+        Me.tbMetCom.Location = New System.Drawing.Point(629, 478)
         Me.tbMetCom.Name = "tbMetCom"
         Me.tbMetCom.ReadOnly = True
         Me.tbMetCom.Size = New System.Drawing.Size(209, 23)
@@ -436,7 +436,7 @@ Partial Class UCInventaire
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(422, 460)
+        Me.Label18.Location = New System.Drawing.Point(629, 460)
         Me.Label18.Name = "Label18"
         Me.Label18.Size = New System.Drawing.Size(135, 15)
         Me.Label18.TabIndex = 56
@@ -444,7 +444,7 @@ Partial Class UCInventaire
         '
         'nudMinInv
         '
-        Me.nudMinInv.Location = New System.Drawing.Point(41, 361)
+        Me.nudMinInv.Location = New System.Drawing.Point(139, 361)
         Me.nudMinInv.Name = "nudMinInv"
         Me.nudMinInv.ReadOnly = True
         Me.nudMinInv.Size = New System.Drawing.Size(116, 23)
@@ -453,7 +453,7 @@ Partial Class UCInventaire
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(41, 343)
+        Me.Label16.Location = New System.Drawing.Point(139, 343)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(183, 15)
         Me.Label16.TabIndex = 62
@@ -461,7 +461,7 @@ Partial Class UCInventaire
         '
         'btCreer
         '
-        Me.btCreer.Location = New System.Drawing.Point(218, 18)
+        Me.btCreer.Location = New System.Drawing.Point(316, 18)
         Me.btCreer.Name = "btCreer"
         Me.btCreer.Size = New System.Drawing.Size(173, 23)
         Me.btCreer.TabIndex = 28
@@ -470,7 +470,7 @@ Partial Class UCInventaire
         '
         'tbNoMFR
         '
-        Me.tbNoMFR.Location = New System.Drawing.Point(41, 449)
+        Me.tbNoMFR.Location = New System.Drawing.Point(139, 449)
         Me.tbNoMFR.Name = "tbNoMFR"
         Me.tbNoMFR.ReadOnly = True
         Me.tbNoMFR.Size = New System.Drawing.Size(359, 23)
@@ -479,7 +479,7 @@ Partial Class UCInventaire
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Location = New System.Drawing.Point(41, 431)
+        Me.Label21.Location = New System.Drawing.Point(139, 431)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(129, 15)
         Me.Label21.TabIndex = 67
@@ -487,7 +487,7 @@ Partial Class UCInventaire
         '
         'tbNoFour
         '
-        Me.tbNoFour.Location = New System.Drawing.Point(41, 405)
+        Me.tbNoFour.Location = New System.Drawing.Point(139, 405)
         Me.tbNoFour.Name = "tbNoFour"
         Me.tbNoFour.ReadOnly = True
         Me.tbNoFour.Size = New System.Drawing.Size(359, 23)
@@ -496,7 +496,7 @@ Partial Class UCInventaire
         'Label22
         '
         Me.Label22.AutoSize = True
-        Me.Label22.Location = New System.Drawing.Point(41, 387)
+        Me.Label22.Location = New System.Drawing.Point(139, 387)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(115, 15)
         Me.Label22.TabIndex = 65
@@ -505,7 +505,7 @@ Partial Class UCInventaire
         'cbNoFour
         '
         Me.cbNoFour.FormattingEnabled = True
-        Me.cbNoFour.Location = New System.Drawing.Point(422, 72)
+        Me.cbNoFour.Location = New System.Drawing.Point(629, 72)
         Me.cbNoFour.Name = "cbNoFour"
         Me.cbNoFour.Size = New System.Drawing.Size(209, 23)
         Me.cbNoFour.TabIndex = 13
@@ -513,7 +513,7 @@ Partial Class UCInventaire
         'btRemoveFour
         '
         Me.btRemoveFour.Enabled = False
-        Me.btRemoveFour.Location = New System.Drawing.Point(666, 125)
+        Me.btRemoveFour.Location = New System.Drawing.Point(873, 125)
         Me.btRemoveFour.Name = "btRemoveFour"
         Me.btRemoveFour.Size = New System.Drawing.Size(124, 23)
         Me.btRemoveFour.TabIndex = 26
@@ -523,7 +523,7 @@ Partial Class UCInventaire
         'btAddFour
         '
         Me.btAddFour.Enabled = False
-        Me.btAddFour.Location = New System.Drawing.Point(666, 72)
+        Me.btAddFour.Location = New System.Drawing.Point(873, 72)
         Me.btAddFour.Name = "btAddFour"
         Me.btAddFour.Size = New System.Drawing.Size(124, 23)
         Me.btAddFour.TabIndex = 25
@@ -534,7 +534,7 @@ Partial Class UCInventaire
         '
         Me.CBDevise.Enabled = False
         Me.CBDevise.FormattingEnabled = True
-        Me.CBDevise.Location = New System.Drawing.Point(162, 248)
+        Me.CBDevise.Location = New System.Drawing.Point(260, 248)
         Me.CBDevise.Name = "CBDevise"
         Me.CBDevise.Size = New System.Drawing.Size(121, 23)
         Me.CBDevise.TabIndex = 95
@@ -542,7 +542,7 @@ Partial Class UCInventaire
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Location = New System.Drawing.Point(162, 230)
+        Me.Label20.Location = New System.Drawing.Point(260, 230)
         Me.Label20.Name = "Label20"
         Me.Label20.Size = New System.Drawing.Size(41, 15)
         Me.Label20.TabIndex = 94
@@ -606,7 +606,7 @@ Partial Class UCInventaire
         Me.Controls.Add(Me.tbIDPro)
         Me.Controls.Add(Me.Label1)
         Me.Name = "UCInventaire"
-        Me.Size = New System.Drawing.Size(808, 649)
+        Me.Size = New System.Drawing.Size(1115, 651)
         CType(Me.nudQuantite, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nudEnCommende, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.nudCoutUn, System.ComponentModel.ISupportInitialize).EndInit()

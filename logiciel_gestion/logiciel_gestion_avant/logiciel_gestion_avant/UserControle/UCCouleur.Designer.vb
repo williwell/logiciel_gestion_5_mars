@@ -35,7 +35,7 @@ Partial Class UCCouleur
         Me.dgvCouleur.AllowUserToAddRows = False
         Me.dgvCouleur.AllowUserToDeleteRows = False
         Me.dgvCouleur.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvCouleur.Location = New System.Drawing.Point(53, 100)
+        Me.dgvCouleur.Location = New System.Drawing.Point(280, 164)
         Me.dgvCouleur.Name = "dgvCouleur"
         Me.dgvCouleur.RowTemplate.Height = 25
         Me.dgvCouleur.Size = New System.Drawing.Size(550, 268)
@@ -43,7 +43,7 @@ Partial Class UCCouleur
         '
         'BtCreer
         '
-        Me.BtCreer.Location = New System.Drawing.Point(53, 71)
+        Me.BtCreer.Location = New System.Drawing.Point(280, 135)
         Me.BtCreer.Name = "BtCreer"
         Me.BtCreer.Size = New System.Drawing.Size(176, 23)
         Me.BtCreer.TabIndex = 1
@@ -53,7 +53,7 @@ Partial Class UCCouleur
         'BTEnregistrer
         '
         Me.BTEnregistrer.Enabled = False
-        Me.BTEnregistrer.Location = New System.Drawing.Point(53, 374)
+        Me.BTEnregistrer.Location = New System.Drawing.Point(280, 438)
         Me.BTEnregistrer.Name = "BTEnregistrer"
         Me.BTEnregistrer.Size = New System.Drawing.Size(135, 23)
         Me.BTEnregistrer.TabIndex = 2
@@ -63,7 +63,7 @@ Partial Class UCCouleur
         'BTAnnuler
         '
         Me.BTAnnuler.Enabled = False
-        Me.BTAnnuler.Location = New System.Drawing.Point(194, 374)
+        Me.BTAnnuler.Location = New System.Drawing.Point(421, 438)
         Me.BTAnnuler.Name = "BTAnnuler"
         Me.BTAnnuler.Size = New System.Drawing.Size(135, 23)
         Me.BTAnnuler.TabIndex = 3
@@ -72,7 +72,7 @@ Partial Class UCCouleur
         '
         'BtDel
         '
-        Me.BtDel.Location = New System.Drawing.Point(335, 374)
+        Me.BtDel.Location = New System.Drawing.Point(562, 438)
         Me.BtDel.Name = "BtDel"
         Me.BtDel.Size = New System.Drawing.Size(135, 23)
         Me.BtDel.TabIndex = 4
@@ -89,7 +89,7 @@ Partial Class UCCouleur
         Me.Controls.Add(Me.BtCreer)
         Me.Controls.Add(Me.dgvCouleur)
         Me.Name = "UCCouleur"
-        Me.Size = New System.Drawing.Size(808, 649)
+        Me.Size = New System.Drawing.Size(1115, 651)
         CType(Me.dgvCouleur, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

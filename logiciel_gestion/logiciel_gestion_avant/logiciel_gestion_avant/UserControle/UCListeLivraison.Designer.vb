@@ -59,7 +59,7 @@ Partial Class UCListeLivraison
         Me.DGVVehicule.ReadOnly = True
         Me.DGVVehicule.RowTemplate.Height = 25
         Me.DGVVehicule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DGVVehicule.Size = New System.Drawing.Size(768, 238)
+        Me.DGVVehicule.Size = New System.Drawing.Size(1080, 238)
         Me.DGVVehicule.TabIndex = 0
         '
         'BTSave
@@ -272,7 +272,7 @@ Partial Class UCListeLivraison
         Me.Controls.Add(Me.BTSave)
         Me.Controls.Add(Me.DGVVehicule)
         Me.Name = "UCListeLivraison"
-        Me.Size = New System.Drawing.Size(808, 649)
+        Me.Size = New System.Drawing.Size(1115, 651)
         CType(Me.DGVVehicule, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

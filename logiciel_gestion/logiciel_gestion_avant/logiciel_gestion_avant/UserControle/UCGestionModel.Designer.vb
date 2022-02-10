@@ -72,7 +72,7 @@ Partial Class UCGestionModel
         Me.dgvOptionMo.ReadOnly = True
         Me.dgvOptionMo.RowTemplate.Height = 25
         Me.dgvOptionMo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvOptionMo.Size = New System.Drawing.Size(351, 150)
+        Me.dgvOptionMo.Size = New System.Drawing.Size(483, 150)
         Me.dgvOptionMo.TabIndex = 4
         '
         'Label2
@@ -104,7 +104,7 @@ Partial Class UCGestionModel
         Me.dgvCoulMo.ReadOnly = True
         Me.dgvCoulMo.RowTemplate.Height = 25
         Me.dgvCoulMo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvCoulMo.Size = New System.Drawing.Size(351, 150)
+        Me.dgvCoulMo.Size = New System.Drawing.Size(483, 150)
         Me.dgvCoulMo.TabIndex = 6
         '
         'Label4
@@ -128,7 +128,7 @@ Partial Class UCGestionModel
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(415, 311)
+        Me.Label5.Location = New System.Drawing.Point(568, 311)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(120, 15)
         Me.Label5.TabIndex = 16
@@ -139,18 +139,18 @@ Partial Class UCGestionModel
         Me.dgvCoulAjout.AllowUserToAddRows = False
         Me.dgvCoulAjout.AllowUserToDeleteRows = False
         Me.dgvCoulAjout.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvCoulAjout.Location = New System.Drawing.Point(415, 329)
+        Me.dgvCoulAjout.Location = New System.Drawing.Point(568, 329)
         Me.dgvCoulAjout.Name = "dgvCoulAjout"
         Me.dgvCoulAjout.ReadOnly = True
         Me.dgvCoulAjout.RowTemplate.Height = 25
         Me.dgvCoulAjout.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvCoulAjout.Size = New System.Drawing.Size(351, 150)
+        Me.dgvCoulAjout.Size = New System.Drawing.Size(483, 150)
         Me.dgvCoulAjout.TabIndex = 7
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(415, 140)
+        Me.Label6.Location = New System.Drawing.Point(568, 140)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(114, 15)
         Me.Label6.TabIndex = 14
@@ -161,12 +161,12 @@ Partial Class UCGestionModel
         Me.dgvOptionAjout.AllowUserToAddRows = False
         Me.dgvOptionAjout.AllowUserToDeleteRows = False
         Me.dgvOptionAjout.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvOptionAjout.Location = New System.Drawing.Point(415, 158)
+        Me.dgvOptionAjout.Location = New System.Drawing.Point(568, 158)
         Me.dgvOptionAjout.Name = "dgvOptionAjout"
         Me.dgvOptionAjout.ReadOnly = True
         Me.dgvOptionAjout.RowTemplate.Height = 25
         Me.dgvOptionAjout.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvOptionAjout.Size = New System.Drawing.Size(351, 150)
+        Me.dgvOptionAjout.Size = New System.Drawing.Size(483, 150)
         Me.dgvOptionAjout.TabIndex = 5
         '
         'BtEnregistrer
@@ -228,7 +228,7 @@ Partial Class UCGestionModel
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.cbModel)
         Me.Name = "UCGestionModel"
-        Me.Size = New System.Drawing.Size(831, 649)
+        Me.Size = New System.Drawing.Size(1115, 651)
         CType(Me.dgvOptionMo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvCoulMo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dgvCoulAjout, System.ComponentModel.ISupportInitialize).EndInit()

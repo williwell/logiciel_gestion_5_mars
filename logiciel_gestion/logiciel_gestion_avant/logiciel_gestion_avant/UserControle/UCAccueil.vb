@@ -4,14 +4,16 @@
     ReadOnly main As MainForm
     ReadOnly tableInv As New DataTable
     ReadOnly tableManque As New DataTable
+    Dim inv As UCInventaire
 
-    Sub New(mainform As MainForm)
+    Sub New(mainform As MainForm, uc As UCInventaire)
 
         ' Cet appel est requis par le concepteur.
         InitializeComponent()
 
         ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
         main = mainform
+        inv = uc
     End Sub
 
     Private Sub UCAccueil_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -42,6 +44,7 @@
             For c As Integer = 0 To DGVItemLow.Columns.Count - 1
                 DGVItemLow.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             Next
+            DGVVehicule.Columns(DGVVehicule.Columns.Count - 1).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         Catch ex As Exception
             MessageBox.Show(ex.Message)
         End Try
@@ -249,5 +252,10 @@
         Next
         Dim form As New ListeInvManque(table, DGVVehicule.CurrentRow.Cells(0).Value)
         form.ShowDialog(Me)
+    End Sub
+
+    Private Sub DGVItemLow_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVItemLow.CellDoubleClick
+        inv.SetIDProduit(DGVItemLow.CurrentRow.Cells(0).Value)
+        main.ShowInventaire()
     End Sub
 End Class

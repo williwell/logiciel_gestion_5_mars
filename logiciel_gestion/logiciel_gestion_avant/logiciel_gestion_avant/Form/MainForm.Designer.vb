@@ -34,6 +34,7 @@ Partial Class MainForm
         Me.BTCoulModel = New System.Windows.Forms.Button()
         Me.btMenu = New System.Windows.Forms.Button()
         Me.panMenu = New System.Windows.Forms.Panel()
+        Me.BTTache = New System.Windows.Forms.Button()
         Me.BTVehicule = New System.Windows.Forms.Button()
         Me.BtClient = New System.Windows.Forms.Button()
         Me.BtOptionModel = New System.Windows.Forms.Button()
@@ -59,7 +60,7 @@ Partial Class MainForm
         Me.PanUC.Controls.Add(Me.PanCouleur)
         Me.PanUC.Location = New System.Drawing.Point(12, 36)
         Me.PanUC.Name = "PanUC"
-        Me.PanUC.Size = New System.Drawing.Size(808, 621)
+        Me.PanUC.Size = New System.Drawing.Size(1115, 651)
         Me.PanUC.TabIndex = 1
         '
         'ProgressBar1
@@ -151,6 +152,7 @@ Partial Class MainForm
         'panMenu
         '
         Me.panMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panMenu.Controls.Add(Me.BTTache)
         Me.panMenu.Controls.Add(Me.BTVehicule)
         Me.panMenu.Controls.Add(Me.BtClient)
         Me.panMenu.Controls.Add(Me.BtOptionModel)
@@ -162,11 +164,20 @@ Partial Class MainForm
         Me.panMenu.Controls.Add(Me.btAccueil)
         Me.panMenu.Controls.Add(Me.btMenu)
         Me.panMenu.Location = New System.Drawing.Point(12, 7)
-        Me.panMenu.MaximumSize = New System.Drawing.Size(100, 292)
+        Me.panMenu.MaximumSize = New System.Drawing.Size(100, 321)
         Me.panMenu.MinimumSize = New System.Drawing.Size(100, 30)
         Me.panMenu.Name = "panMenu"
-        Me.panMenu.Size = New System.Drawing.Size(100, 292)
+        Me.panMenu.Size = New System.Drawing.Size(100, 321)
         Me.panMenu.TabIndex = 2
+        '
+        'BTTache
+        '
+        Me.BTTache.Location = New System.Drawing.Point(2, 290)
+        Me.BTTache.Name = "BTTache"
+        Me.BTTache.Size = New System.Drawing.Size(94, 23)
+        Me.BTTache.TabIndex = 10
+        Me.BTTache.Text = "Tâches"
+        Me.BTTache.UseVisualStyleBackColor = True
         '
         'BTVehicule
         '
@@ -280,15 +291,15 @@ Partial Class MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(832, 692)
+        Me.ClientSize = New System.Drawing.Size(1139, 699)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btConnec)
         Me.Controls.Add(Me.lbNonConc)
         Me.Controls.Add(Me.panMenu)
         Me.Controls.Add(Me.PanUC)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximumSize = New System.Drawing.Size(848, 731)
-        Me.MinimumSize = New System.Drawing.Size(848, 731)
+        Me.MaximumSize = New System.Drawing.Size(1155, 738)
+        Me.MinimumSize = New System.Drawing.Size(1155, 738)
         Me.Name = "MainForm"
         Me.Text = "Logiciel Gestion 5-Mars VR"
         Me.PanUC.ResumeLayout(False)
@@ -323,4 +334,5 @@ Partial Class MainForm
     Friend WithEvents BTGest As Button
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents Button1 As Button
+    Friend WithEvents BTTache As Button
 End Class

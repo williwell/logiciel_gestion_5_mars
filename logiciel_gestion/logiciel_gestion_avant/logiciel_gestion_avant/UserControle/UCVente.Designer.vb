@@ -51,7 +51,7 @@ Partial Class UCVente
         '
         'BTChoisir
         '
-        Me.BTChoisir.Location = New System.Drawing.Point(77, 212)
+        Me.BTChoisir.Location = New System.Drawing.Point(180, 194)
         Me.BTChoisir.Name = "BTChoisir"
         Me.BTChoisir.Size = New System.Drawing.Size(196, 23)
         Me.BTChoisir.TabIndex = 1
@@ -62,7 +62,7 @@ Partial Class UCVente
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(64, 131)
+        Me.Label1.Location = New System.Drawing.Point(167, 113)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(84, 25)
         Me.Label1.TabIndex = 2
@@ -71,7 +71,7 @@ Partial Class UCVente
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(321, 212)
+        Me.Label2.Location = New System.Drawing.Point(424, 194)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(41, 15)
         Me.Label2.TabIndex = 4
@@ -81,7 +81,7 @@ Partial Class UCVente
         '
         Me.CBModel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CBModel.FormattingEnabled = True
-        Me.CBModel.Location = New System.Drawing.Point(321, 230)
+        Me.CBModel.Location = New System.Drawing.Point(424, 212)
         Me.CBModel.Name = "CBModel"
         Me.CBModel.Size = New System.Drawing.Size(200, 23)
         Me.CBModel.TabIndex = 5
@@ -90,7 +90,7 @@ Partial Class UCVente
         '
         Me.CBCoulVe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CBCoulVe.FormattingEnabled = True
-        Me.CBCoulVe.Location = New System.Drawing.Point(321, 274)
+        Me.CBCoulVe.Location = New System.Drawing.Point(424, 256)
         Me.CBCoulVe.Name = "CBCoulVe"
         Me.CBCoulVe.Size = New System.Drawing.Size(200, 23)
         Me.CBCoulVe.TabIndex = 7
@@ -98,7 +98,7 @@ Partial Class UCVente
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(321, 256)
+        Me.Label3.Location = New System.Drawing.Point(424, 238)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(96, 15)
         Me.Label3.TabIndex = 6
@@ -108,7 +108,7 @@ Partial Class UCVente
         '
         Me.CBCoulTissus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CBCoulTissus.FormattingEnabled = True
-        Me.CBCoulTissus.Location = New System.Drawing.Point(321, 362)
+        Me.CBCoulTissus.Location = New System.Drawing.Point(424, 344)
         Me.CBCoulTissus.Name = "CBCoulTissus"
         Me.CBCoulTissus.Size = New System.Drawing.Size(200, 23)
         Me.CBCoulTissus.TabIndex = 11
@@ -116,7 +116,7 @@ Partial Class UCVente
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(321, 344)
+        Me.Label4.Location = New System.Drawing.Point(424, 326)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(83, 15)
         Me.Label4.TabIndex = 10
@@ -126,7 +126,7 @@ Partial Class UCVente
         '
         Me.CBCoulToile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CBCoulToile.FormattingEnabled = True
-        Me.CBCoulToile.Location = New System.Drawing.Point(321, 318)
+        Me.CBCoulToile.Location = New System.Drawing.Point(424, 300)
         Me.CBCoulToile.Name = "CBCoulToile"
         Me.CBCoulToile.Size = New System.Drawing.Size(200, 23)
         Me.CBCoulToile.TabIndex = 9
@@ -134,7 +134,7 @@ Partial Class UCVente
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(321, 300)
+        Me.Label5.Location = New System.Drawing.Point(424, 282)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(76, 15)
         Me.Label5.TabIndex = 8
@@ -144,7 +144,7 @@ Partial Class UCVente
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label6.Location = New System.Drawing.Point(321, 172)
+        Me.Label6.Location = New System.Drawing.Point(424, 154)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(135, 21)
         Me.Label6.TabIndex = 12
@@ -154,7 +154,7 @@ Partial Class UCVente
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label7.Location = New System.Drawing.Point(77, 172)
+        Me.Label7.Location = New System.Drawing.Point(180, 154)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(160, 21)
         Me.Label7.TabIndex = 13
@@ -162,7 +162,7 @@ Partial Class UCVente
         '
         'BtNext
         '
-        Me.BtNext.Location = New System.Drawing.Point(321, 591)
+        Me.BtNext.Location = New System.Drawing.Point(424, 573)
         Me.BtNext.Name = "BtNext"
         Me.BtNext.Size = New System.Drawing.Size(114, 23)
         Me.BtNext.TabIndex = 14
@@ -171,7 +171,7 @@ Partial Class UCVente
         '
         'DTPPre
         '
-        Me.DTPPre.Location = New System.Drawing.Point(321, 406)
+        Me.DTPPre.Location = New System.Drawing.Point(424, 388)
         Me.DTPPre.Name = "DTPPre"
         Me.DTPPre.Size = New System.Drawing.Size(200, 23)
         Me.DTPPre.TabIndex = 15
@@ -179,7 +179,7 @@ Partial Class UCVente
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(321, 388)
+        Me.Label8.Location = New System.Drawing.Point(424, 370)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(126, 15)
         Me.Label8.TabIndex = 16
@@ -188,7 +188,7 @@ Partial Class UCVente
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(592, 458)
+        Me.Label9.Location = New System.Drawing.Point(695, 440)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(32, 15)
         Me.Label9.TabIndex = 46
@@ -196,7 +196,7 @@ Partial Class UCVente
         '
         'TBTotal
         '
-        Me.TBTotal.Location = New System.Drawing.Point(592, 476)
+        Me.TBTotal.Location = New System.Drawing.Point(695, 458)
         Me.TBTotal.Name = "TBTotal"
         Me.TBTotal.ReadOnly = True
         Me.TBTotal.Size = New System.Drawing.Size(162, 23)
@@ -205,7 +205,7 @@ Partial Class UCVente
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(592, 414)
+        Me.Label10.Location = New System.Drawing.Point(695, 396)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(29, 15)
         Me.Label10.TabIndex = 44
@@ -213,7 +213,7 @@ Partial Class UCVente
         '
         'TBTVQ
         '
-        Me.TBTVQ.Location = New System.Drawing.Point(592, 432)
+        Me.TBTVQ.Location = New System.Drawing.Point(695, 414)
         Me.TBTVQ.Name = "TBTVQ"
         Me.TBTVQ.ReadOnly = True
         Me.TBTVQ.Size = New System.Drawing.Size(162, 23)
@@ -222,7 +222,7 @@ Partial Class UCVente
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(592, 370)
+        Me.Label11.Location = New System.Drawing.Point(695, 352)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(26, 15)
         Me.Label11.TabIndex = 42
@@ -230,7 +230,7 @@ Partial Class UCVente
         '
         'TBTPS
         '
-        Me.TBTPS.Location = New System.Drawing.Point(592, 388)
+        Me.TBTPS.Location = New System.Drawing.Point(695, 370)
         Me.TBTPS.Name = "TBTPS"
         Me.TBTPS.ReadOnly = True
         Me.TBTPS.Size = New System.Drawing.Size(162, 23)
@@ -239,7 +239,7 @@ Partial Class UCVente
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(592, 326)
+        Me.Label12.Location = New System.Drawing.Point(695, 308)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(27, 15)
         Me.Label12.TabIndex = 40
@@ -247,7 +247,7 @@ Partial Class UCVente
         '
         'TBCout
         '
-        Me.TBCout.Location = New System.Drawing.Point(592, 344)
+        Me.TBCout.Location = New System.Drawing.Point(695, 326)
         Me.TBCout.Name = "TBCout"
         Me.TBCout.ReadOnly = True
         Me.TBCout.Size = New System.Drawing.Size(162, 23)
@@ -256,7 +256,7 @@ Partial Class UCVente
         'CBTVQ
         '
         Me.CBTVQ.AutoSize = True
-        Me.CBTVQ.Location = New System.Drawing.Point(592, 530)
+        Me.CBTVQ.Location = New System.Drawing.Point(695, 512)
         Me.CBTVQ.Name = "CBTVQ"
         Me.CBTVQ.Size = New System.Drawing.Size(48, 19)
         Me.CBTVQ.TabIndex = 48
@@ -266,7 +266,7 @@ Partial Class UCVente
         'CBTPS
         '
         Me.CBTPS.AutoSize = True
-        Me.CBTPS.Location = New System.Drawing.Point(592, 505)
+        Me.CBTPS.Location = New System.Drawing.Point(695, 487)
         Me.CBTPS.Name = "CBTPS"
         Me.CBTPS.Size = New System.Drawing.Size(45, 19)
         Me.CBTPS.TabIndex = 47
@@ -303,7 +303,7 @@ Partial Class UCVente
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.BTChoisir)
         Me.Name = "UCVente"
-        Me.Size = New System.Drawing.Size(808, 649)
+        Me.Size = New System.Drawing.Size(1115, 651)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

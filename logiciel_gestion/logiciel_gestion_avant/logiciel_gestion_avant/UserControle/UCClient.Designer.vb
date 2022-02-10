@@ -32,17 +32,17 @@ Partial Class UCClient
         Me.DGVClient.AllowUserToAddRows = False
         Me.DGVClient.AllowUserToDeleteRows = False
         Me.DGVClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGVClient.Location = New System.Drawing.Point(54, 121)
+        Me.DGVClient.Location = New System.Drawing.Point(12, 45)
         Me.DGVClient.Name = "DGVClient"
         Me.DGVClient.ReadOnly = True
         Me.DGVClient.RowTemplate.Height = 25
         Me.DGVClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DGVClient.Size = New System.Drawing.Size(706, 396)
+        Me.DGVClient.Size = New System.Drawing.Size(1100, 603)
         Me.DGVClient.TabIndex = 0
         '
         'BtCreer
         '
-        Me.BtCreer.Location = New System.Drawing.Point(54, 92)
+        Me.BtCreer.Location = New System.Drawing.Point(12, 16)
         Me.BtCreer.Name = "BtCreer"
         Me.BtCreer.Size = New System.Drawing.Size(97, 23)
         Me.BtCreer.TabIndex = 1
@@ -56,7 +56,7 @@ Partial Class UCClient
         Me.Controls.Add(Me.BtCreer)
         Me.Controls.Add(Me.DGVClient)
         Me.Name = "UCClient"
-        Me.Size = New System.Drawing.Size(808, 649)
+        Me.Size = New System.Drawing.Size(1115, 651)
         CType(Me.DGVClient, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 

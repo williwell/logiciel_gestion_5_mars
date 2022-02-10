@@ -55,10 +55,16 @@
                         listeAddCl(7) = TBEmail.Text
                     End If
 
-                    If String.IsNullOrEmpty(TBRue.Text) Then
+                    Dim rue As Boolean = String.IsNullOrEmpty(TBRue.Text)
+                    Dim ville As Boolean = String.IsNullOrEmpty(TBVille.Text)
+                    Dim pro As Boolean = String.IsNullOrEmpty(TBPro.Text)
+
+                    If rue And ville And pro Then
                         listeAddCl(8) = "null"
+                    ElseIf Not rue And Not ville And Not pro Then
+                        listeAddCl(8) = TBRue.Text & ", " & TBVille.Text & ", " & TBPro.Text
                     Else
-                        listeAddCl(8) = TBRue.Text
+                        MessageBox.Show("Vous ne pouvez pas rentrer une adresse partielle!")
                     End If
 
                     If String.IsNullOrEmpty(TBApp.Text) Then
