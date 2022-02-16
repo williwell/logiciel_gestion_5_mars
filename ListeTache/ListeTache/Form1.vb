@@ -59,7 +59,7 @@ Public Class Form1
 
         bool = True
         While bool
-            If dateVen.DayOfWeek = 5 Then
+            If dateVen.DayOfWeek >= 5 Then
                 bool = False
             End If
             If dateVen.DayOfWeek <= 5 Then

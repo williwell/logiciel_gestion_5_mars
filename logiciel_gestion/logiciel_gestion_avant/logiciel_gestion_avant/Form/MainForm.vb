@@ -49,6 +49,7 @@ Public Class MainForm
     ReadOnly ucGestVeh As New UCGestionVehicule(Me)
     ReadOnly ucListeVe As New UCListeLivraison(Me)
     ReadOnly uctache As New UCTache(Me)
+    ReadOnly ucFacture As New UCFacture(Me)
     Private Delegate Sub setValue(text As String)
     Dim bool As Boolean = False
     Public Shared lang = Globalization.CultureInfo.CurrentCulture
@@ -114,6 +115,7 @@ Public Class MainForm
         PanUC.Controls.Add(ucGestVeh)
         PanUC.Controls.Add(ucListeVe)
         PanUC.Controls.Add(uctache)
+        PanUC.Controls.Add(ucFacture)
         ucAccueil.RowsColorInv()
         ucAccueil.RowsColorVe()
         bool = True
@@ -425,7 +427,7 @@ Public Class MainForm
         ucVente2.EnleverOpt()
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) 
         Dim test As New TestPrint(tableFacture.Rows(8))
         test.ShowDialog()
         'Dim test As New TestExcel(tableFacture.Rows(0))
@@ -434,6 +436,11 @@ Public Class MainForm
 
     Private Sub BTTache_Click(sender As Object, e As EventArgs) Handles BTTache.Click
         uctache.BringToFront()
+        panMenu.Size = panMenu.MinimumSize
+    End Sub
+
+    Private Sub BTFacture_Click(sender As Object, e As EventArgs) Handles BTFacture.Click
+        ucFacture.BringToFront()
         panMenu.Size = panMenu.MinimumSize
     End Sub
 End Class

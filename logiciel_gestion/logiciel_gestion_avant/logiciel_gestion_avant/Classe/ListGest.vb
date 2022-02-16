@@ -67,23 +67,13 @@ Public Class ListGest
         Return False
     End Function
 
-    Shared Function CreateListeAdd(liste() As String, dgv As DataGridView) As String()
-        Dim listeAdd() As String = Nothing
-        Dim nbr As Integer = -1
-        For i As Integer = 0 To dgv.Rows.Count - 1
-            Dim bool As Boolean = True
-            For int As Integer = 0 To liste.Length - 1
-                If liste(int) = dgv.Rows(i).Cells(0).Value Then
-                    bool = False
-                End If
-            Next
-            If bool Then
-                nbr += 1
-                ReDim Preserve listeAdd(nbr)
-                listeAdd(nbr) = dgv.Rows(i).Cells(0).Value
-            End If
-        Next
-        Return listeAdd
+    Shared Function CheckLenght(str As String, nbr As Integer, msg As String) As Boolean
+        If str.Length > nbr Then
+            MessageBox.Show(msg & "est trop long! Vous ne pouvez pas mettre plus de " & nbr & " caratère dans cet champ")
+            Return False
+        Else
+            Return True
+        End If
     End Function
 
     Shared Sub ListeOr(liste(,) As String, table As DataTable)

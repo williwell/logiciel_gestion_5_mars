@@ -25,13 +25,13 @@ Partial Class Form1
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.Heure = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label1 = New System.Windows.Forms.Label()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -62,9 +62,20 @@ Partial Class Form1
         Me.DataGridView1.Size = New System.Drawing.Size(1277, 680)
         Me.DataGridView1.TabIndex = 0
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label1.Location = New System.Drawing.Point(503, 372)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(527, 45)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Connection au serveur à été perdue"
+        Me.Label1.Visible = False
+        '
         'Heure
         '
-        Me.Heure.HeaderText = "HEURE"
+        Me.Heure.HeaderText = ""
         Me.Heure.Name = "Heure"
         Me.Heure.ReadOnly = True
         '
@@ -97,17 +108,6 @@ Partial Class Form1
         Me.Column5.HeaderText = "VENDREDI"
         Me.Column5.Name = "Column5"
         Me.Column5.ReadOnly = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Segoe UI", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.Label1.Location = New System.Drawing.Point(503, 372)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(527, 45)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Connection au serveur à été perdue"
-        Me.Label1.Visible = False
         '
         'Form1
         '

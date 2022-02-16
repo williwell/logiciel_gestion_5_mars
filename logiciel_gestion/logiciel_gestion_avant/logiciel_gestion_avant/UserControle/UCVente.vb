@@ -245,4 +245,14 @@
     Private Sub UCVente_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
         main.fermerMenu()
     End Sub
+
+    'Function qui retourne la valeur de NUDEchange
+    Public Function GetNUDEchange() As Double
+        Return NUDEchange.Value
+    End Function
+
+    'Function qui retourne la valeur de NUDAcompte
+    Public Function GetNUDAcompte() As Double
+        Return NUDAcompte.Value
+    End Function
 End Class

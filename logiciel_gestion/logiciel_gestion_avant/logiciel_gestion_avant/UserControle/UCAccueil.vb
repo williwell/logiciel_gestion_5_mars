@@ -233,6 +233,8 @@
     End Sub
 
     Private Sub UCAccueil_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
+        DGVItemLow.ClearSelection()
+        DGVVehicule.ClearSelection()
         main.FermerMenu()
     End Sub
 
@@ -258,4 +260,5 @@
         inv.SetIDProduit(DGVItemLow.CurrentRow.Cells(0).Value)
         main.ShowInventaire()
     End Sub
+
 End Class

@@ -27,15 +27,18 @@ Public Class ConnectionServeur
         Try
             clientSocket = New TcpClient(MainForm.GetInstance.GetOption1, MainForm.GetInstance.GetOption3)
             Dim serverStream As NetworkStream = clientSocket.GetStream()
-            Dim outStream As Byte() = Encoding.UTF8.GetBytes("test;$")
+            Dim outStream As Byte() = Encoding.UTF8.GetBytes("Avant;0.3;$")
             serverStream.Write(outStream, 0, outStream.Length)
             serverStream.Flush()
 
             Dim inStream(1024) As Byte
             serverStream.Read(inStream, 0, inStream.Length())
-            If Boolean.Parse(Encoding.UTF8.GetString(inStream).Substring(0, 4)) Then
+            Dim str As String = Encoding.UTF8.GetString(inStream)
+            If Boolean.Parse(str.Substring(0, str.IndexOf(";"))) Then
                 conc = True
                 thread.Start(main)
+            Else
+                MessageBox.Show("La version du programme n'est plus a jour, vous devez le mette à jour pour continuer!", "Attention!")
             End If
             Return conc
         Catch ex As Exception

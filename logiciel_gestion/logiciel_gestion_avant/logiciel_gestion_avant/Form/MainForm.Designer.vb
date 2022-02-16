@@ -46,7 +46,7 @@ Partial Class MainForm
         Me.btAccueil = New System.Windows.Forms.Button()
         Me.lbNonConc = New System.Windows.Forms.Label()
         Me.btConnec = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.BTFacture = New System.Windows.Forms.Button()
         Me.PanUC.SuspendLayout()
         Me.PanGestVeh.SuspendLayout()
         Me.PanCouleur.SuspendLayout()
@@ -55,6 +55,7 @@ Partial Class MainForm
         '
         'PanUC
         '
+        Me.PanUC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PanUC.Controls.Add(Me.ProgressBar1)
         Me.PanUC.Controls.Add(Me.PanGestVeh)
         Me.PanUC.Controls.Add(Me.PanCouleur)
@@ -152,6 +153,7 @@ Partial Class MainForm
         'panMenu
         '
         Me.panMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.panMenu.Controls.Add(Me.BTFacture)
         Me.panMenu.Controls.Add(Me.BTTache)
         Me.panMenu.Controls.Add(Me.BTVehicule)
         Me.panMenu.Controls.Add(Me.BtClient)
@@ -164,10 +166,10 @@ Partial Class MainForm
         Me.panMenu.Controls.Add(Me.btAccueil)
         Me.panMenu.Controls.Add(Me.btMenu)
         Me.panMenu.Location = New System.Drawing.Point(12, 7)
-        Me.panMenu.MaximumSize = New System.Drawing.Size(100, 321)
+        Me.panMenu.MaximumSize = New System.Drawing.Size(100, 348)
         Me.panMenu.MinimumSize = New System.Drawing.Size(100, 30)
         Me.panMenu.Name = "panMenu"
-        Me.panMenu.Size = New System.Drawing.Size(100, 321)
+        Me.panMenu.Size = New System.Drawing.Size(100, 348)
         Me.panMenu.TabIndex = 2
         '
         'BTTache
@@ -278,21 +280,20 @@ Partial Class MainForm
         Me.btConnec.UseVisualStyleBackColor = True
         Me.btConnec.Visible = False
         '
-        'Button1
+        'BTFacture
         '
-        Me.Button1.Location = New System.Drawing.Point(249, 6)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 6
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.BTFacture.Location = New System.Drawing.Point(3, 319)
+        Me.BTFacture.Name = "BTFacture"
+        Me.BTFacture.Size = New System.Drawing.Size(94, 23)
+        Me.BTFacture.TabIndex = 11
+        Me.BTFacture.Text = "Liste Factures"
+        Me.BTFacture.UseVisualStyleBackColor = True
         '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1139, 699)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btConnec)
         Me.Controls.Add(Me.lbNonConc)
         Me.Controls.Add(Me.panMenu)
@@ -333,6 +334,6 @@ Partial Class MainForm
     Friend WithEvents BTLivrer As Button
     Friend WithEvents BTGest As Button
     Friend WithEvents ProgressBar1 As ProgressBar
-    Friend WithEvents Button1 As Button
     Friend WithEvents BTTache As Button
+    Friend WithEvents BTFacture As Button
 End Class

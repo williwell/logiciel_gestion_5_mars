@@ -95,6 +95,9 @@
     <Compile Update="UserControle\UCCouleurToile.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UserControle\UCFacture.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UserControle\UCFournisseur.vb">
       <SubType>UserControl</SubType>
     </Compile>

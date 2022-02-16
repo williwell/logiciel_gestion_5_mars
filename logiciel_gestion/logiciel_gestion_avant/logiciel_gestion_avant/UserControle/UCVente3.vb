@@ -214,8 +214,12 @@
                 '--- à faire avec des place pour rentrer de l'information. je met en attendent des information bidons pour les tests
                 row2(4) = 0
                 row2(5) = 0
-                row2(6) = 0
+                row2(6) = uc.GetNUDEchange
+                row2(6) = uc.GetNUDAcompte
                 row2(7) = 0
+                row2(8) = 0
+                row2(9) = uc.TBTPS.Text
+                row2(10) = uc.TBTVQ.Text
 
                 MainForm.tableFacture.Rows.Add(row2)
 
