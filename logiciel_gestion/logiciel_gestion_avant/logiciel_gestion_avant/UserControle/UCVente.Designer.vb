@@ -168,7 +168,7 @@ Partial Class UCVente
         '
         'BtNext
         '
-        Me.BtNext.Location = New System.Drawing.Point(797, 559)
+        Me.BtNext.Location = New System.Drawing.Point(511, 605)
         Me.BtNext.Name = "BtNext"
         Me.BtNext.Size = New System.Drawing.Size(114, 23)
         Me.BtNext.TabIndex = 14
@@ -300,6 +300,7 @@ Partial Class UCVente
         'NUDEchange
         '
         Me.NUDEchange.Location = New System.Drawing.Point(797, 191)
+        Me.NUDEchange.Maximum = New Decimal(New Integer() {250000, 0, 0, 0})
         Me.NUDEchange.Name = "NUDEchange"
         Me.NUDEchange.Size = New System.Drawing.Size(162, 23)
         Me.NUDEchange.TabIndex = 53
@@ -307,6 +308,7 @@ Partial Class UCVente
         'NUDAcompte
         '
         Me.NUDAcompte.Location = New System.Drawing.Point(797, 235)
+        Me.NUDAcompte.Maximum = New Decimal(New Integer() {250000, 0, 0, 0})
         Me.NUDAcompte.Name = "NUDAcompte"
         Me.NUDAcompte.Size = New System.Drawing.Size(162, 23)
         Me.NUDAcompte.TabIndex = 54

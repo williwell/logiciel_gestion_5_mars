@@ -63,7 +63,6 @@ Partial Class TestPrint
         Me.LabFin2 = New System.Windows.Forms.Label()
         Me.LabDateNow = New System.Windows.Forms.Label()
         Me.LabClient = New System.Windows.Forms.Label()
-        Me.BTPrint = New System.Windows.Forms.Button()
         Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.LabFac = New System.Windows.Forms.Label()
@@ -78,7 +77,6 @@ Partial Class TestPrint
         Me.LabPosCl = New System.Windows.Forms.Label()
         Me.LabTelCl = New System.Windows.Forms.Label()
         Me.LabEmailCl = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.LabDateLiv = New System.Windows.Forms.Label()
         CType(Me.DGVModel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVCoulVe, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -448,15 +446,6 @@ Partial Class TestPrint
         Me.LabClient.TabIndex = 19
         Me.LabClient.Text = "Client a mettre"
         '
-        'BTPrint
-        '
-        Me.BTPrint.Location = New System.Drawing.Point(677, 47)
-        Me.BTPrint.Name = "BTPrint"
-        Me.BTPrint.Size = New System.Drawing.Size(75, 23)
-        Me.BTPrint.TabIndex = 16
-        Me.BTPrint.Text = "Print"
-        Me.BTPrint.UseVisualStyleBackColor = True
-        '
         'PrintDialog1
         '
         Me.PrintDialog1.UseEXDialog = True
@@ -569,15 +558,6 @@ Partial Class TestPrint
         Me.LabEmailCl.TabIndex = 31
         Me.LabEmailCl.Text = "Addresse couriel"
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(526, 47)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 32
-        Me.Button1.Text = "Print"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'LabDateLiv
         '
         Me.LabDateLiv.AutoSize = True
@@ -595,7 +575,6 @@ Partial Class TestPrint
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(987, 1068)
         Me.Controls.Add(Me.LabDateLiv)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.LabEmailCl)
         Me.Controls.Add(Me.LabTelCl)
         Me.Controls.Add(Me.LabPosCl)
@@ -608,7 +587,6 @@ Partial Class TestPrint
         Me.Controls.Add(Me.LabSig1)
         Me.Controls.Add(Me.LabFac)
         Me.Controls.Add(Me.LabClient)
-        Me.Controls.Add(Me.BTPrint)
         Me.Controls.Add(Me.LabDateNow)
         Me.Controls.Add(Me.LabFin2)
         Me.Controls.Add(Me.DGVCoul)
@@ -669,7 +647,6 @@ Partial Class TestPrint
     Friend WithEvents LabFin2 As Label
     Friend WithEvents LabDateNow As Label
     Friend WithEvents LabClient As Label
-    Friend WithEvents BTPrint As Button
     Friend WithEvents PageSetupDialog1 As PageSetupDialog
     Friend WithEvents PrintDialog1 As PrintDialog
     Friend WithEvents LabFac As Label
@@ -684,7 +661,6 @@ Partial Class TestPrint
     Friend WithEvents LabPosCl As Label
     Friend WithEvents LabTelCl As Label
     Friend WithEvents LabEmailCl As Label
-    Friend WithEvents Button1 As Button
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents Nom As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn

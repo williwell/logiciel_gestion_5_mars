@@ -437,6 +437,7 @@ Public Class MainForm
     Private Sub BTTache_Click(sender As Object, e As EventArgs) Handles BTTache.Click
         uctache.BringToFront()
         panMenu.Size = panMenu.MinimumSize
+        uctache.CheckDateSupp()
     End Sub
 
     Private Sub BTFacture_Click(sender As Object, e As EventArgs) Handles BTFacture.Click

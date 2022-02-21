@@ -189,7 +189,7 @@
             Next
             MainForm.tableVenteVe.Rows.Add(row)
 
-            ReDim listeAdd(7)
+            ReDim listeAdd(10)
             listeAdd(0) = id
             listeAdd(1) = idCl
             listeAdd(2) = Date.Now.ToString("yyyy-MM-dd")
@@ -200,6 +200,9 @@
             listeAdd(5) = 0
             listeAdd(6) = 0
             listeAdd(7) = 0
+            listeAdd(8) = 0
+            listeAdd(9) = 0
+            listeAdd(10) = 0
 
             Dim table As DataTable = ConnectionServeur.Getinstance.GetInfo(listeAdd, "addfacture")
             Dim idfac As String = table(0)(0)
@@ -212,14 +215,14 @@
                 row2(3) = Date.Now.ToString("yyyy-MM-dd")
 
                 '--- à faire avec des place pour rentrer de l'information. je met en attendent des information bidons pour les tests
-                row2(4) = 0
-                row2(5) = 0
+                row2(4) = 1
+                row2(5) = 2
                 row2(6) = uc.GetNUDEchange
-                row2(6) = uc.GetNUDAcompte
-                row2(7) = 0
-                row2(8) = 0
-                row2(9) = uc.TBTPS.Text
-                row2(10) = uc.TBTVQ.Text
+                row2(7) = uc.GetNUDAcompte
+                row2(8) = 3
+                row2(9) = 4
+                row2(10) = uc.TBTPS.Text
+                row2(11) = uc.TBTVQ.Text
 
                 MainForm.tableFacture.Rows.Add(row2)
 
@@ -303,6 +306,11 @@
         TBTel2.Enabled = Not bool
         CBSexe.Enabled = Not bool
         TBEmail.Enabled = Not bool
+        TBRue.Enabled = Not bool
+        TBVille.Enabled = Not bool
+        TBPro.Enabled = Not bool
+        TBApp.Enabled = Not bool
+        TBPoste.Enabled = Not bool
         Label12.Visible = bool
         Label13.Visible = bool
         Label14.Visible = bool
@@ -319,6 +327,12 @@
         TBTel2Cl.Visible = bool
         CBSexeCl.Visible = bool
         TBEmailCl.Visible = bool
+        Label23.Visible = bool
+        Label24.Visible = bool
+        Label25.Visible = bool
+        TBAdresseCl.Visible = bool
+        TBAppCl.Visible = bool
+        TBPosteCl.Visible = bool
     End Sub
 
     'Quand on appui sur ce bouton, on fait appel à la fonction ChangeEna avec un boulean False comme paramètre et on met le paramètre idCl à 0

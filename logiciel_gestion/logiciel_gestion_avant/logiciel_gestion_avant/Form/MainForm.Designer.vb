@@ -34,6 +34,7 @@ Partial Class MainForm
         Me.BTCoulModel = New System.Windows.Forms.Button()
         Me.btMenu = New System.Windows.Forms.Button()
         Me.panMenu = New System.Windows.Forms.Panel()
+        Me.BTFacture = New System.Windows.Forms.Button()
         Me.BTTache = New System.Windows.Forms.Button()
         Me.BTVehicule = New System.Windows.Forms.Button()
         Me.BtClient = New System.Windows.Forms.Button()
@@ -46,7 +47,6 @@ Partial Class MainForm
         Me.btAccueil = New System.Windows.Forms.Button()
         Me.lbNonConc = New System.Windows.Forms.Label()
         Me.btConnec = New System.Windows.Forms.Button()
-        Me.BTFacture = New System.Windows.Forms.Button()
         Me.PanUC.SuspendLayout()
         Me.PanGestVeh.SuspendLayout()
         Me.PanCouleur.SuspendLayout()
@@ -76,15 +76,15 @@ Partial Class MainForm
         Me.PanGestVeh.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.PanGestVeh.Controls.Add(Me.BTLivrer)
         Me.PanGestVeh.Controls.Add(Me.BTGest)
-        Me.PanGestVeh.Location = New System.Drawing.Point(101, 231)
+        Me.PanGestVeh.Location = New System.Drawing.Point(93, 231)
         Me.PanGestVeh.Name = "PanGestVeh"
-        Me.PanGestVeh.Size = New System.Drawing.Size(100, 61)
+        Me.PanGestVeh.Size = New System.Drawing.Size(108, 61)
         Me.PanGestVeh.TabIndex = 11
         Me.PanGestVeh.Visible = False
         '
         'BTLivrer
         '
-        Me.BTLivrer.Location = New System.Drawing.Point(3, 32)
+        Me.BTLivrer.Location = New System.Drawing.Point(8, 32)
         Me.BTLivrer.Name = "BTLivrer"
         Me.BTLivrer.Size = New System.Drawing.Size(94, 23)
         Me.BTLivrer.TabIndex = 1
@@ -93,7 +93,7 @@ Partial Class MainForm
         '
         'BTGest
         '
-        Me.BTGest.Location = New System.Drawing.Point(3, 3)
+        Me.BTGest.Location = New System.Drawing.Point(8, 3)
         Me.BTGest.Name = "BTGest"
         Me.BTGest.Size = New System.Drawing.Size(94, 23)
         Me.BTGest.TabIndex = 0
@@ -106,17 +106,15 @@ Partial Class MainForm
         Me.PanCouleur.Controls.Add(Me.BTCoulTissu)
         Me.PanCouleur.Controls.Add(Me.BTCoulToile)
         Me.PanCouleur.Controls.Add(Me.BTCoulModel)
-        Me.PanCouleur.Location = New System.Drawing.Point(100, 149)
-        Me.PanCouleur.MaximumSize = New System.Drawing.Size(100, 89)
-        Me.PanCouleur.MinimumSize = New System.Drawing.Size(100, 89)
+        Me.PanCouleur.Location = New System.Drawing.Point(93, 149)
         Me.PanCouleur.Name = "PanCouleur"
-        Me.PanCouleur.Size = New System.Drawing.Size(100, 89)
+        Me.PanCouleur.Size = New System.Drawing.Size(107, 89)
         Me.PanCouleur.TabIndex = 10
         Me.PanCouleur.Visible = False
         '
         'BTCoulTissu
         '
-        Me.BTCoulTissu.Location = New System.Drawing.Point(3, 61)
+        Me.BTCoulTissu.Location = New System.Drawing.Point(9, 61)
         Me.BTCoulTissu.Name = "BTCoulTissu"
         Me.BTCoulTissu.Size = New System.Drawing.Size(94, 23)
         Me.BTCoulTissu.TabIndex = 2
@@ -125,7 +123,7 @@ Partial Class MainForm
         '
         'BTCoulToile
         '
-        Me.BTCoulToile.Location = New System.Drawing.Point(3, 32)
+        Me.BTCoulToile.Location = New System.Drawing.Point(9, 32)
         Me.BTCoulToile.Name = "BTCoulToile"
         Me.BTCoulToile.Size = New System.Drawing.Size(94, 23)
         Me.BTCoulToile.TabIndex = 1
@@ -134,7 +132,7 @@ Partial Class MainForm
         '
         'BTCoulModel
         '
-        Me.BTCoulModel.Location = New System.Drawing.Point(3, 3)
+        Me.BTCoulModel.Location = New System.Drawing.Point(9, 3)
         Me.BTCoulModel.Name = "BTCoulModel"
         Me.BTCoulModel.Size = New System.Drawing.Size(94, 23)
         Me.BTCoulModel.TabIndex = 0
@@ -171,6 +169,15 @@ Partial Class MainForm
         Me.panMenu.Name = "panMenu"
         Me.panMenu.Size = New System.Drawing.Size(100, 348)
         Me.panMenu.TabIndex = 2
+        '
+        'BTFacture
+        '
+        Me.BTFacture.Location = New System.Drawing.Point(3, 319)
+        Me.BTFacture.Name = "BTFacture"
+        Me.BTFacture.Size = New System.Drawing.Size(94, 23)
+        Me.BTFacture.TabIndex = 11
+        Me.BTFacture.Text = "Liste Factures"
+        Me.BTFacture.UseVisualStyleBackColor = True
         '
         'BTTache
         '
@@ -279,15 +286,6 @@ Partial Class MainForm
         Me.btConnec.Text = "Connecter"
         Me.btConnec.UseVisualStyleBackColor = True
         Me.btConnec.Visible = False
-        '
-        'BTFacture
-        '
-        Me.BTFacture.Location = New System.Drawing.Point(3, 319)
-        Me.BTFacture.Name = "BTFacture"
-        Me.BTFacture.Size = New System.Drawing.Size(94, 23)
-        Me.BTFacture.TabIndex = 11
-        Me.BTFacture.Text = "Liste Factures"
-        Me.BTFacture.UseVisualStyleBackColor = True
         '
         'MainForm
         '

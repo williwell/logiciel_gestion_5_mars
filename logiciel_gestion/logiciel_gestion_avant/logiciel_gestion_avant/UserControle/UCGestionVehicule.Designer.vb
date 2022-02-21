@@ -49,12 +49,13 @@ Partial Class UCGestionVehicule
         Me.DGVVehicule.AllowUserToAddRows = False
         Me.DGVVehicule.AllowUserToDeleteRows = False
         Me.DGVVehicule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGVVehicule.Location = New System.Drawing.Point(3, 170)
+        Me.DGVVehicule.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.DGVVehicule.Location = New System.Drawing.Point(0, 171)
         Me.DGVVehicule.Name = "DGVVehicule"
         Me.DGVVehicule.ReadOnly = True
         Me.DGVVehicule.RowTemplate.Height = 25
         Me.DGVVehicule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DGVVehicule.Size = New System.Drawing.Size(802, 448)
+        Me.DGVVehicule.Size = New System.Drawing.Size(1115, 480)
         Me.DGVVehicule.TabIndex = 0
         '
         'Label3
@@ -223,7 +224,7 @@ Partial Class UCGestionVehicule
         Me.Controls.Add(Me.TBSearchMat)
         Me.Controls.Add(Me.DGVVehicule)
         Me.Name = "UCGestionVehicule"
-        Me.Size = New System.Drawing.Size(808, 621)
+        Me.Size = New System.Drawing.Size(1115, 651)
         CType(Me.DGVVehicule, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()

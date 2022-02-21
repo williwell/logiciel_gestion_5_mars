@@ -23,14 +23,18 @@ Partial Class UCFacture
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.DGVFacture = New System.Windows.Forms.DataGridView()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TBFacture = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.CBModel = New System.Windows.Forms.ComboBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.CBDate = New System.Windows.Forms.CheckBox()
+        Me.DTP = New System.Windows.Forms.DateTimePicker()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.TBMatricule = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.TBClient = New System.Windows.Forms.TextBox()
         CType(Me.DGVFacture, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -47,12 +51,12 @@ Partial Class UCFacture
         Me.DGVFacture.Size = New System.Drawing.Size(1115, 590)
         Me.DGVFacture.TabIndex = 0
         '
-        'TextBox1
+        'TBFacture
         '
-        Me.TextBox1.Location = New System.Drawing.Point(82, 32)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(200, 23)
-        Me.TextBox1.TabIndex = 1
+        Me.TBFacture.Location = New System.Drawing.Point(82, 32)
+        Me.TBFacture.Name = "TBFacture"
+        Me.TBFacture.Size = New System.Drawing.Size(200, 23)
+        Me.TBFacture.TabIndex = 1
         '
         'Label1
         '
@@ -81,55 +85,91 @@ Partial Class UCFacture
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Model"
         '
-        'ComboBox1
+        'CBModel
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(288, 32)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(200, 23)
-        Me.ComboBox1.TabIndex = 6
+        Me.CBModel.FormattingEnabled = True
+        Me.CBModel.Location = New System.Drawing.Point(288, 32)
+        Me.CBModel.Name = "CBModel"
+        Me.CBModel.Size = New System.Drawing.Size(200, 23)
+        Me.CBModel.TabIndex = 6
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(494, 14)
+        Me.Label4.Location = New System.Drawing.Point(906, 14)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(73, 15)
         Me.Label4.TabIndex = 8
         Me.Label4.Text = "Date Facture"
         '
-        'CheckBox1
+        'CBDate
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Checked = True
-        Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBox1.Location = New System.Drawing.Point(573, 13)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(112, 19)
-        Me.CheckBox1.TabIndex = 9
-        Me.CheckBox1.Text = "Toutes Les Dates"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.CBDate.AutoSize = True
+        Me.CBDate.Checked = True
+        Me.CBDate.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CBDate.Location = New System.Drawing.Point(985, 13)
+        Me.CBDate.Name = "CBDate"
+        Me.CBDate.Size = New System.Drawing.Size(112, 19)
+        Me.CBDate.TabIndex = 9
+        Me.CBDate.Text = "Toutes Les Dates"
+        Me.CBDate.UseVisualStyleBackColor = True
         '
-        'DateTimePicker1
+        'DTP
         '
-        Me.DateTimePicker1.Enabled = False
-        Me.DateTimePicker1.Location = New System.Drawing.Point(494, 32)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(200, 23)
-        Me.DateTimePicker1.TabIndex = 10
+        Me.DTP.Enabled = False
+        Me.DTP.Location = New System.Drawing.Point(906, 32)
+        Me.DTP.Name = "DTP"
+        Me.DTP.Size = New System.Drawing.Size(200, 23)
+        Me.DTP.TabIndex = 10
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(494, 14)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(104, 15)
+        Me.Label5.TabIndex = 12
+        Me.Label5.Text = "Matricule Véhicule"
+        '
+        'TBMatricule
+        '
+        Me.TBMatricule.Location = New System.Drawing.Point(494, 32)
+        Me.TBMatricule.Name = "TBMatricule"
+        Me.TBMatricule.Size = New System.Drawing.Size(200, 23)
+        Me.TBMatricule.TabIndex = 11
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(700, 14)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(68, 15)
+        Me.Label6.TabIndex = 14
+        Me.Label6.Text = "Nom Client"
+        '
+        'TBClient
+        '
+        Me.TBClient.Location = New System.Drawing.Point(700, 32)
+        Me.TBClient.Name = "TBClient"
+        Me.TBClient.Size = New System.Drawing.Size(200, 23)
+        Me.TBClient.TabIndex = 13
         '
         'UCFacture
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.Controls.Add(Me.DateTimePicker1)
-        Me.Controls.Add(Me.CheckBox1)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.TBClient)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.TBMatricule)
+        Me.Controls.Add(Me.DTP)
+        Me.Controls.Add(Me.CBDate)
         Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.CBModel)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.TBFacture)
         Me.Controls.Add(Me.DGVFacture)
         Me.Name = "UCFacture"
         Me.Size = New System.Drawing.Size(1115, 651)
@@ -140,12 +180,16 @@ Partial Class UCFacture
     End Sub
 
     Friend WithEvents DGVFacture As DataGridView
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TBFacture As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
-    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents CBModel As ComboBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents CheckBox1 As CheckBox
-    Friend WithEvents DateTimePicker1 As DateTimePicker
+    Friend WithEvents CBDate As CheckBox
+    Friend WithEvents DTP As DateTimePicker
+    Friend WithEvents Label5 As Label
+    Friend WithEvents TBMatricule As TextBox
+    Friend WithEvents Label6 As Label
+    Friend WithEvents TBClient As TextBox
 End Class

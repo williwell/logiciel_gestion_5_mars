@@ -278,6 +278,7 @@ Partial Class UCVente3
         'CBSexeCl
         '
         Me.CBSexeCl.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.CBSexeCl.Enabled = False
         Me.CBSexeCl.FormattingEnabled = True
         Me.CBSexeCl.Location = New System.Drawing.Point(254, 529)
         Me.CBSexeCl.Name = "CBSexeCl"
@@ -287,6 +288,7 @@ Partial Class UCVente3
         '
         'TBEmailCl
         '
+        Me.TBEmailCl.Enabled = False
         Me.TBEmailCl.Location = New System.Drawing.Point(254, 573)
         Me.TBEmailCl.Name = "TBEmailCl"
         Me.TBEmailCl.Size = New System.Drawing.Size(204, 23)
@@ -295,6 +297,7 @@ Partial Class UCVente3
         '
         'TBTel2Cl
         '
+        Me.TBTel2Cl.Enabled = False
         Me.TBTel2Cl.Location = New System.Drawing.Point(254, 485)
         Me.TBTel2Cl.Name = "TBTel2Cl"
         Me.TBTel2Cl.Size = New System.Drawing.Size(204, 23)
@@ -303,6 +306,7 @@ Partial Class UCVente3
         '
         'TBTel1Cl
         '
+        Me.TBTel1Cl.Enabled = False
         Me.TBTel1Cl.Location = New System.Drawing.Point(254, 441)
         Me.TBTel1Cl.Name = "TBTel1Cl"
         Me.TBTel1Cl.Size = New System.Drawing.Size(204, 23)
@@ -311,6 +315,7 @@ Partial Class UCVente3
         '
         'TBNom2Cl
         '
+        Me.TBNom2Cl.Enabled = False
         Me.TBNom2Cl.Location = New System.Drawing.Point(254, 265)
         Me.TBNom2Cl.Name = "TBNom2Cl"
         Me.TBNom2Cl.Size = New System.Drawing.Size(204, 23)
@@ -319,6 +324,7 @@ Partial Class UCVente3
         '
         'TBPrenom2Cl
         '
+        Me.TBPrenom2Cl.Enabled = False
         Me.TBPrenom2Cl.Location = New System.Drawing.Point(254, 221)
         Me.TBPrenom2Cl.Name = "TBPrenom2Cl"
         Me.TBPrenom2Cl.Size = New System.Drawing.Size(204, 23)
@@ -327,6 +333,7 @@ Partial Class UCVente3
         '
         'TBNom1Cl
         '
+        Me.TBNom1Cl.Enabled = False
         Me.TBNom1Cl.Location = New System.Drawing.Point(254, 177)
         Me.TBNom1Cl.Name = "TBNom1Cl"
         Me.TBNom1Cl.Size = New System.Drawing.Size(204, 23)
@@ -335,6 +342,7 @@ Partial Class UCVente3
         '
         'TBPreNom1Cl
         '
+        Me.TBPreNom1Cl.Enabled = False
         Me.TBPreNom1Cl.Location = New System.Drawing.Point(254, 133)
         Me.TBPreNom1Cl.Name = "TBPreNom1Cl"
         Me.TBPreNom1Cl.Size = New System.Drawing.Size(204, 23)
@@ -471,10 +479,12 @@ Partial Class UCVente3
         '
         'TBPosteCl
         '
+        Me.TBPosteCl.Enabled = False
         Me.TBPosteCl.Location = New System.Drawing.Point(254, 397)
         Me.TBPosteCl.Name = "TBPosteCl"
         Me.TBPosteCl.Size = New System.Drawing.Size(204, 23)
         Me.TBPosteCl.TabIndex = 70
+        Me.TBPosteCl.Visible = False
         '
         'Label23
         '
@@ -484,13 +494,16 @@ Partial Class UCVente3
         Me.Label23.Size = New System.Drawing.Size(70, 15)
         Me.Label23.TabIndex = 69
         Me.Label23.Text = "Code Postal"
+        Me.Label23.Visible = False
         '
         'TBAppCl
         '
+        Me.TBAppCl.Enabled = False
         Me.TBAppCl.Location = New System.Drawing.Point(254, 353)
         Me.TBAppCl.Name = "TBAppCl"
         Me.TBAppCl.Size = New System.Drawing.Size(204, 23)
         Me.TBAppCl.TabIndex = 68
+        Me.TBAppCl.Visible = False
         '
         'Label24
         '
@@ -500,13 +513,16 @@ Partial Class UCVente3
         Me.Label24.Size = New System.Drawing.Size(77, 15)
         Me.Label24.TabIndex = 67
         Me.Label24.Text = "Appartement"
+        Me.Label24.Visible = False
         '
         'TBAdresseCl
         '
+        Me.TBAdresseCl.Enabled = False
         Me.TBAdresseCl.Location = New System.Drawing.Point(254, 309)
         Me.TBAdresseCl.Name = "TBAdresseCl"
         Me.TBAdresseCl.Size = New System.Drawing.Size(204, 23)
         Me.TBAdresseCl.TabIndex = 66
+        Me.TBAdresseCl.Visible = False
         '
         'Label25
         '
@@ -516,6 +532,7 @@ Partial Class UCVente3
         Me.Label25.Size = New System.Drawing.Size(48, 15)
         Me.Label25.TabIndex = 65
         Me.Label25.Text = "Adresse"
+        Me.Label25.Visible = False
         '
         'TBVille
         '

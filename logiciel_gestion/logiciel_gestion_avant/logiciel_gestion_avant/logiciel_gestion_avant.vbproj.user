@@ -35,6 +35,9 @@
     <Compile Update="Form\Gestion\GestionClient.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Form\Gestion\GestionFacture.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Form\Gestion\GestionInvModel.vb">
       <SubType>Form</SubType>
     </Compile>

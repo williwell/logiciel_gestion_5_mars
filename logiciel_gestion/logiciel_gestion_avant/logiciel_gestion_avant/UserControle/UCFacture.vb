@@ -1,5 +1,6 @@
 ﻿Public Class UCFacture
     ReadOnly main As MainForm
+    ReadOnly search As New BindingSource
 
     Sub New(m As MainForm)
 
@@ -15,7 +16,7 @@
 
         table.Columns.Add("ID")
         table.Columns.Add("Model")
-        table.Columns.Add("Numéro Matricule")
+        table.Columns.Add("Matricule")
         table.Columns.Add("Client")
         table.Columns.Add("Date")
 
@@ -52,10 +53,20 @@
         DGVFacture.Columns(1).Width = 200
         DGVFacture.Columns(2).Width = 200
         DGVFacture.Columns(3).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+
+        Dim liste(MainForm.tableModel.Rows.Count) As String
+        liste(0) = "Tous les models"
+        For r As Integer = 0 To MainForm.tableModel.Rows.Count - 1
+            liste(r + 1) = MainForm.tableModel.Rows(r).Item("nom")
+        Next
+        CBModel.DataSource = liste
+
+        search.DataSource = DGVFacture.DataSource
     End Sub
 
     Private Sub DGVFacture_DoubleClick(sender As Object, e As EventArgs) Handles DGVFacture.DoubleClick
-        MessageBox.Show(DGVFacture.CurrentRow.Index)
+        Dim f As New GestionFacture(DGVFacture.CurrentRow.Cells(0).Value)
+        f.ShowDialog()
     End Sub
 
     Private Sub UCFacture_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp
@@ -66,4 +77,51 @@
         main.FermerMenu()
     End Sub
 
+    Private Sub SearchText() Handles CBDate.CheckedChanged, DTP.ValueChanged, CBModel.SelectedIndexChanged, TBFacture.TextChanged, TBMatricule.TextChanged, TBClient.TextChanged
+        Dim str As String = ""
+
+        If CBDate.Checked = True Then
+            DTP.Enabled = False
+        Else
+            DTP.Enabled = True
+        End If
+
+        If Not CBDate.Checked Then
+            str = "Date like '" & DTP.Value.ToString("yyyy-MM-dd") & "'"
+        End If
+
+        If Not String.IsNullOrEmpty(Trim(TBFacture.Text)) Then
+            If String.IsNullOrEmpty(str) Then
+                str += "Id like '%" & TBFacture.Text & "%'"
+            Else
+                str += " and id like '%" & TBFacture.Text & "%'"
+            End If
+        End If
+
+        If Not CBModel.SelectedIndex = 0 Then
+            If String.IsNullOrEmpty(str) Then
+                str += "Model like '" & CBModel.SelectedItem & "'"
+            Else
+                str += " and Model like '%" & CBModel.SelectedItem & "%'"
+            End If
+        End If
+
+        If Not String.IsNullOrEmpty(Trim(TBMatricule.Text)) Then
+            If String.IsNullOrEmpty(str) Then
+                str += "Matricule like '%" & TBMatricule.Text & "%'"
+            Else
+                str += " and Matricule like '%" & TBMatricule.Text & "%'"
+            End If
+        End If
+
+        If Not String.IsNullOrEmpty(Trim(TBClient.Text)) Then
+            If String.IsNullOrEmpty(str) Then
+                str += "Client like '%" & TBClient.Text & "%'"
+            Else
+                str += " and Client like '%" & TBClient.Text & "%'"
+            End If
+        End If
+
+        search.Filter = str
+    End Sub
 End Class

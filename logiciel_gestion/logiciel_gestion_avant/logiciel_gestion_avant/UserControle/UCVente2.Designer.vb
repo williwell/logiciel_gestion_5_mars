@@ -88,7 +88,7 @@ Partial Class UCVente2
         '
         'BTPrev
         '
-        Me.BTPrev.Location = New System.Drawing.Point(64, 591)
+        Me.BTPrev.Location = New System.Drawing.Point(254, 605)
         Me.BTPrev.Name = "BTPrev"
         Me.BTPrev.Size = New System.Drawing.Size(114, 23)
         Me.BTPrev.TabIndex = 30
@@ -97,7 +97,7 @@ Partial Class UCVente2
         '
         'BTNext
         '
-        Me.BTNext.Location = New System.Drawing.Point(321, 591)
+        Me.BTNext.Location = New System.Drawing.Point(511, 605)
         Me.BTNext.Name = "BTNext"
         Me.BTNext.Size = New System.Drawing.Size(114, 23)
         Me.BTNext.TabIndex = 29
