@@ -1,5 +1,5 @@
 ﻿Public Class CreerTache
-    Dim tache As UCTache
+    ReadOnly tache As UCTache
 
     Sub New(uc As UCTache)
 

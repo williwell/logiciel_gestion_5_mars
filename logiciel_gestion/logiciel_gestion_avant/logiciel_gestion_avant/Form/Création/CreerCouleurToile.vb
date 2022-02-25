@@ -27,6 +27,7 @@
                     For c As Integer = 0 To liste.Length - 1
                         row(c + 1) = liste(c)
                     Next
+                    row(liste.Length + 1) = True
                     MainForm.tableCoulToi.Rows.Add(row)
 
                     uc.LoadCoul()

@@ -79,7 +79,12 @@
             liste(0) = "Aucune couleur de disponible pour ce model"
         End If
         CBCoulVe.DataSource = liste
-        prix = Decimal.Parse(tableModel(CBModel.SelectedIndex)(2))
+        Try
+            prix = Decimal.Parse(tableModel(CBModel.SelectedIndex)(2)) + Decimal.Parse(tableCoulVe(CBCoulVe.SelectedIndex)(3))
+        Catch ex As Exception
+
+        End Try
+
         TBCout.Text = prix.ToString("0.00$")
     End Sub
 
@@ -183,7 +188,7 @@
 
     'Fonction qui retourne la valeur de la table pour qui le model est sélectionner
     Public Function GetPrix() As String
-        Return tableModel(CBModel.SelectedIndex)(2)
+        Return GetPrixModel() + GetPrixCouleur()
     End Function
 
     'Quand on change le texte du textbox on appel la fonction changeTaxe
@@ -255,4 +260,29 @@
     Public Function GetNUDAcompte() As Double
         Return NUDAcompte.Value
     End Function
+
+    'Function qui retourne le prix du model qui est sélectionner
+    Public Function GetPrixModel() As Double
+        Return tableModel.Rows(CBModel.SelectedIndex).Item("cout")
+    End Function
+
+    'Function qui retourne le prix de la couleur qui est sélectionner
+    Public Function GetPrixCouleur() As Double
+        Return tableCoulVe.Rows(CBCoulVe.SelectedIndex).Item("coût")
+    End Function
+
+    'Fonction qui sert à changer le prix du textbox cout
+    Private Sub CBCoulVe_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBCoulVe.SelectedIndexChanged
+        Try
+            prix = Decimal.Parse(tableModel(CBModel.SelectedIndex)(2))
+        Catch ex As Exception
+
+        End Try
+        Try
+            prix += Decimal.Parse(tableCoulVe(CBCoulVe.SelectedIndex)(3))
+        Catch ex As Exception
+
+        End Try
+        TBCout.Text = prix.ToString("0.00$")
+    End Sub
 End Class

@@ -17,6 +17,7 @@
                     For c As Integer = 0 To liste.Length - 1
                         row(c + 1) = liste(c)
                     Next
+                    row(liste.Length + 1) = True
                     MainForm.tableCoulVe.Rows.Add(row)
 
                     Me.Close()

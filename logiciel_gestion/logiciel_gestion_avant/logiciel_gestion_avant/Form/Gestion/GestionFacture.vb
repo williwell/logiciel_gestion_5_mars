@@ -1,5 +1,5 @@
 ﻿Public Class GestionFacture
-    Dim id As String
+    ReadOnly id As String
 
     Sub New(idGet As String)
 
@@ -145,7 +145,7 @@
         DGVTotal.Rows.Add("", "TOTAL", total.ToString("c"))
         nbr = rowFac.Item("echange")
         DGVTotal.Rows.Add("", "ÉCHANGE", nbr.ToString("c"))
-        total = total - DGVTotal.Rows(1).Cells(2).Value
+        total -= DGVTotal.Rows(1).Cells(2).Value
         DGVTotal.Rows.Add("", "SOUS-TOTAL", total.ToString("c"))
         nbr = DGVTotal.Rows(2).Cells(2).Value * rowFac.Item("tps")
         DGVTotal.Rows.Add("813181443RT0001", "TPS", nbr.ToString("c"))

@@ -312,8 +312,6 @@ Public Class UCGestionModel
             End If
         End If
 
-
-
         listeAjout = CreateListeAdd(listeCoulMo, dgvCoulMo)
         'on regarde si la liste est sinon on enregistrer l'autre table sur le serveur
         If Not IsNothing(listeAjout) Then
@@ -323,7 +321,7 @@ Public Class UCGestionModel
                     Dim row As DataRow = MainForm.tableCoulMo.NewRow
                     row(0) = listeAjout(i)
                     row(1) = listeId(cbModel.SelectedIndex)
-                    MainForm.tableOpMo.Rows.Add(row)
+                    MainForm.tableCoulMo.Rows.Add(row)
                 Next
 
                 listeAjout = CreateListeAdd(listeCoulDispo, dgvCoulAjout)
@@ -379,10 +377,12 @@ Public Class UCGestionModel
             ListeOr(OrOpMo, tableOptionMo)
             ReDim OrOpAdd(tableOptionAdd.Rows.Count - 1, tableOptionAdd.Columns.Count - 1)
             ListeOr(OrOpAdd, tableOptionAdd)
+            nbrOp = tableOptionMo.Rows.Count
             ReDim OrCoulMo(tableCouleurMo.Rows.Count - 1, tableCouleurMo.Columns.Count - 1)
             ListeOr(OrCoulMo, tableCouleurMo)
             ReDim OrCoulAdd(tableCouleurAdd.Rows.Count - 1, tableCouleurAdd.Columns.Count - 1)
             ListeOr(OrCoulAdd, tableCouleurAdd)
+            nbrCoul = tableCouleurMo.Rows.Count
             CheckChange()
         Else
             MessageBox.Show("Un erreure est c'est produit durant l'enregistrement!")
@@ -442,11 +442,15 @@ Public Class UCGestionModel
 
     'Fonction qui sert à mettre les information de la table dans la listeOriginal pour changer la listeOriginal
     Public Sub ListeOr(liste(,) As String, table As DataTable)
-        For r As Integer = 0 To table.Rows.Count - 1
-            For c As Integer = 0 To table.Columns.Count - 1
-                liste(r, c) = table(r)(c)
+        Try
+            For r As Integer = 0 To table.Rows.Count - 1
+                For c As Integer = 0 To table.Columns.Count - 1
+                    liste(r, c) = table(r)(c)
+                Next
             Next
-        Next
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     'Si on appuie sur ce bouton, on créer un nouveau form de type CreerModel

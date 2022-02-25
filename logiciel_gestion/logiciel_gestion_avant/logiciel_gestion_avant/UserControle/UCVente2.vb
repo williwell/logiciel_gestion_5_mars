@@ -122,7 +122,7 @@
             TBTVQ.Text = TVQ.ToString("0.00$")
         End If
 
-        TBCout.Text = d
+        TBCout.Text = d.ToString("0.00$")
 
         TBTotal.Text = Math.Round(d + TPS + TVQ, 2).ToString("0.00$")
     End Sub

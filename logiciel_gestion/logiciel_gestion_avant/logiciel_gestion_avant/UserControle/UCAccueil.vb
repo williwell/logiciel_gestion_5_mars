@@ -4,7 +4,7 @@
     ReadOnly main As MainForm
     ReadOnly tableInv As New DataTable
     ReadOnly tableManque As New DataTable
-    Dim inv As UCInventaire
+    ReadOnly inv As UCInventaire
 
     Sub New(mainform As MainForm, uc As UCInventaire)
 

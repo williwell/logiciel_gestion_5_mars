@@ -151,7 +151,7 @@ Partial Class GestionTache
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Name = "GestionTache"
-        Me.Text = "GestionTache"
+        Me.Text = "Modification Tâche"
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

@@ -217,7 +217,7 @@
     'Quand on appuie sur ce bouton, on ouvre un nouveau form de type RechercheProduit et on l'affiche. Après quand le form qu'on a créer
     'ferme, on sélection le textbox id pour après envoyer un keypress de enter
     Private Sub BtRecherche_Click(sender As Object, e As EventArgs) Handles btRecherche.Click
-        Dim recherche As New RechercheProduit(Me, main)
+        Dim recherche As New RechercheProduit(Me)
         recherche.ShowDialog(Me)
         tbIDPro.Select()
         SendKeys.Send("{ENTER}")

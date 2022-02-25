@@ -195,14 +195,14 @@
             listeAdd(2) = Date.Now.ToString("yyyy-MM-dd")
 
             '--- à faire avec des place pour rentrer de l'information. je met en attendent des information bidons pour les tests
-            listeAdd(3) = 0
-            listeAdd(4) = 0
-            listeAdd(5) = 0
-            listeAdd(6) = 0
+            listeAdd(3) = uc.GetPrixModel()
+            listeAdd(4) = uc.GetPrixCouleur()
+            listeAdd(5) = uc.GetNUDEchange
+            listeAdd(6) = uc.GetNUDAcompte
             listeAdd(7) = 0
             listeAdd(8) = 0
-            listeAdd(9) = 0
-            listeAdd(10) = 0
+            listeAdd(9) = MainForm.GetInstance.GetOption4
+            listeAdd(10) = MainForm.GetInstance.GetOption5
 
             Dim table As DataTable = ConnectionServeur.Getinstance.GetInfo(listeAdd, "addfacture")
             Dim idfac As String = table(0)(0)
@@ -215,14 +215,14 @@
                 row2(3) = Date.Now.ToString("yyyy-MM-dd")
 
                 '--- à faire avec des place pour rentrer de l'information. je met en attendent des information bidons pour les tests
-                row2(4) = 1
-                row2(5) = 2
+                row2(4) = uc.GetPrixModel()
+                row2(5) = uc.GetPrixCouleur()
                 row2(6) = uc.GetNUDEchange
                 row2(7) = uc.GetNUDAcompte
-                row2(8) = 3
-                row2(9) = 4
-                row2(10) = uc.TBTPS.Text
-                row2(11) = uc.TBTVQ.Text
+                row2(8) = 0
+                row2(9) = 0
+                row2(10) = MainForm.GetInstance.GetOption4
+                row2(11) = MainForm.GetInstance.GetOption5
 
                 MainForm.tableFacture.Rows.Add(row2)
 

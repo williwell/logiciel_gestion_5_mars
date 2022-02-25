@@ -67,17 +67,12 @@
             End If
             liste(9) = tbMethodePaie.Text
 
-            If ConnectionServeur.Getinstance.AddDelete(liste, "addFour") Then
+            Dim table As DataTable = ConnectionServeur.Getinstance.GetInfo(liste, "addFour")
+            If table(0)(0) <> 0 Then
                 MessageBox.Show("La création du fournisseur à bien été fait")
 
                 Dim row As DataRow = MainForm.tableFour.NewRow
-                Dim nbr As Integer = 0
-                For r As Integer = 0 To MainForm.tableFour.Rows.Count - 1
-                    If MainForm.tableFour.Rows(r).Item("id") >= nbr Then
-                        nbr = Integer.Parse(MainForm.tableFour.Rows(r).Item("id")) + 1
-                    End If
-                Next
-                row(0) = nbr
+                row(0) = table(0)(0)
                 For c As Integer = 0 To liste.Length - 1
                     row(c + 1) = liste(c)
                 Next

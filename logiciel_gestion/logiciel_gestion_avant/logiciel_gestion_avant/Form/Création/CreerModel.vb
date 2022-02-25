@@ -219,6 +219,11 @@ Public Class CreerModel
                         Dim row2 As DataRow = MainForm.tableInvMo.NewRow
                         row2(0) = DGVInventaireMo.Rows(r).Cells(0).Value
                         row2(1) = id
+                        If String.IsNullOrEmpty(DGVInventaireMo.Rows(r).Cells(4).Value) Then
+                            row2(2) = 0
+                        Else
+                            row2(2) = DGVInventaireMo.Rows(r).Cells(4).Value
+                        End If
                         MainForm.tableInvMo.Rows.Add(row2)
                     Next
 

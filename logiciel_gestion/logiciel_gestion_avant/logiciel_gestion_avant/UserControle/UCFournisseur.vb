@@ -331,7 +331,7 @@
                                 If bool Then
                                     Dim row As DataRow = MainForm.tableInvFour.NewRow
                                     row(0) = liste(i)
-                                    row(1) = 0
+                                    row(1) = 1
                                     row(2) = 0
                                     row(3) = "null"
                                     row(4) = "null"
@@ -370,7 +370,6 @@
                 MainForm.tableFour.Rows.RemoveAt(index)
             End If
             MessageBox.Show("Suppression du fournisseur réussit avec succès")
-            dgvPiece.Rows.Clear()
             Remplir(table)
         Else
             MessageBox.Show("Une erreure est survenu et a empêché la suppression du fournisseur")

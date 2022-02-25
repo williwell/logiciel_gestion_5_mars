@@ -1,5 +1,6 @@
-﻿Public Class UCTache
-    Dim main As MainForm
+﻿Imports System.ComponentModel
+Public Class UCTache
+    ReadOnly main As MainForm
     Dim bool As Boolean = True
 
     Sub New(mainform As MainForm)
@@ -33,6 +34,7 @@
 
         DGVTache.Columns(DGVTache.Columns.Count - 1).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         DGVTache.Columns(DGVTache.Columns.Count - 2).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        DGVTache.Sort(DGVTache.Columns("dateJour"), ListSortDirection.Ascending)
     End Sub
 
     Private Sub BTAdd_Click(sender As Object, e As EventArgs) Handles BTAdd.Click

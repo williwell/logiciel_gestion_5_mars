@@ -1,6 +1,6 @@
 ﻿Public Class GestionTache
-    Dim row As DataGridViewRow
-    Dim uc As UCTache
+    ReadOnly row As DataGridViewRow
+    ReadOnly uc As UCTache
 
     Sub New(r As DataGridViewRow, uctache As UCTache)
 
@@ -43,6 +43,7 @@
                 If MainForm.tableTache.Rows(r).Item("id") = liste(0) Then
                     For c As Integer = 1 To MainForm.tableTache.Columns.Count - 1
                         MainForm.tableTache(r)(c) = liste(c)
+                        MessageBox.Show("Modification effectuer correctement")
                     Next
                     Exit For
                 End If

@@ -3,18 +3,16 @@
     'Attributes
     '__________________________________________________________________________________________________________
     ReadOnly ucInvent As UCInventaire
-    ReadOnly main As MainForm
     '__________________________________________________________________________________________________________
     'Constructor
     '__________________________________________________________________________________________________________
-    Sub New(uc As UCInventaire, mainform As MainForm)
+    Sub New(uc As UCInventaire)
 
         ' Cet appel est requis par le concepteur.
         InitializeComponent()
 
         ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
         ucInvent = uc
-        main = mainform
     End Sub
 
 
@@ -32,8 +30,6 @@
                 dgvProduit.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
             End If
         Next
-
-        MessageBox.Show(dgvProduit.Columns(0).Width)
     End Sub
 
     Private Sub DgvProduit_DoubleClick(sender As Object, e As EventArgs) Handles dgvProduit.DoubleClick

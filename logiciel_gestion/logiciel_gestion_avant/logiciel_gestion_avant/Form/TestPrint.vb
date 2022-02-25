@@ -2,8 +2,8 @@
 Public Class TestPrint
     Dim nbr As Integer = 0
     Dim liste(-1) As String
-    Dim nbrPage As Integer = 1
-    Dim rowFac As DataRow
+    ReadOnly nbrPage As Integer = 1
+    ReadOnly rowFac As DataRow
 
     Sub New(row As DataRow)
         ' Cet appel est requis par le concepteur.
@@ -134,7 +134,7 @@ Public Class TestPrint
         DGVTotal.Rows.Add("", "TOTAL", total.ToString("c"))
         nbr = rowFac.Item("echange")
         DGVTotal.Rows.Add("", "ÉCHANGE", nbr.ToString("c"))
-        total = total - DGVTotal.Rows(1).Cells(2).Value
+        total -= DGVTotal.Rows(1).Cells(2).Value
         DGVTotal.Rows.Add("", "SOUS-TOTAL", total.ToString("c"))
         nbr = DGVTotal.Rows(2).Cells(2).Value * rowFac.Item("tps")
         DGVTotal.Rows.Add("813181443RT0001", "TPS", nbr.ToString("c"))
@@ -220,7 +220,7 @@ Public Class TestPrint
                 ob.Location = New Point(ob.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 30)
                 Return True
             Else
-                Using bmp As Bitmap = New Bitmap(ob.Width, ob.Height)
+                Using bmp As New Bitmap(ob.Width, ob.Height)
                     ob.DrawToBitmap(bmp, New Rectangle(0, 0, ob.Width, ob.Height))
                     e.Graphics.DrawImage(bmp, ob.Location.X, ob.Location.Y, ob.Width, ob.Height)
                     ReDim Preserve liste(nbr)
@@ -249,21 +249,21 @@ Public Class TestPrint
                 ob3.Location = New Point(ob3.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 70)
                 Return True
             Else
-                Using bmp As Bitmap = New Bitmap(ob1.Width, ob1.Height)
+                Using bmp As New Bitmap(ob1.Width, ob1.Height)
                     ob1.DrawToBitmap(bmp, New Rectangle(0, 0, ob1.Width, ob1.Height))
                     e.Graphics.DrawLine(Pens.Black, ob1.Location.X, ob1.Location.Y, ob1.Location.X + 200, ob1.Location.Y)
                     ReDim Preserve liste(nbr)
                     liste(nbr) = ob1.Name
                     nbr += 1
                 End Using
-                Using bmp As Bitmap = New Bitmap(ob2.Width, ob2.Height)
+                Using bmp As New Bitmap(ob2.Width, ob2.Height)
                     ob2.DrawToBitmap(bmp, New Rectangle(0, 0, ob2.Width, ob2.Height))
                     e.Graphics.DrawLine(Pens.Black, ob2.Location.X, ob2.Location.Y, ob2.Location.X + 200, ob2.Location.Y)
                     ReDim Preserve liste(nbr)
                     liste(nbr) = ob2.Name
                     nbr += 1
                 End Using
-                Using bmp As Bitmap = New Bitmap(ob1.Width, ob1.Height)
+                Using bmp As New Bitmap(ob1.Width, ob1.Height)
                     ob3.DrawToBitmap(bmp, New Rectangle(0, 0, ob3.Width, ob3.Height))
                     e.Graphics.DrawLine(Pens.Black, ob3.Location.X, ob3.Location.Y, ob3.Location.X + 200, ob3.Location.Y)
                     ReDim Preserve liste(nbr)
@@ -295,21 +295,21 @@ Public Class TestPrint
                 ob3.Location = New Point(ob3.Location.X, LabLine3.Location.Y + LabLine3.Height + 15)
                 Return True
             Else
-                Using bmp As Bitmap = New Bitmap(ob1.Width, ob1.Height)
+                Using bmp As New Bitmap(ob1.Width, ob1.Height)
                     ob1.DrawToBitmap(bmp, New Rectangle(0, 0, ob1.Width, ob1.Height))
                     e.Graphics.DrawImage(bmp, ob1.Location.X, ob1.Location.Y, ob1.Width, ob1.Height)
                     ReDim Preserve liste(nbr)
                     liste(nbr) = ob1.Name
                     nbr += 1
                 End Using
-                Using bmp As Bitmap = New Bitmap(ob2.Width, ob2.Height)
+                Using bmp As New Bitmap(ob2.Width, ob2.Height)
                     ob2.DrawToBitmap(bmp, New Rectangle(0, 0, ob2.Width, ob2.Height))
                     e.Graphics.DrawImage(bmp, ob2.Location.X, ob2.Location.Y, ob2.Width, ob2.Height)
                     ReDim Preserve liste(nbr)
                     liste(nbr) = ob2.Name
                     nbr += 1
                 End Using
-                Using bmp As Bitmap = New Bitmap(ob1.Width, ob1.Height)
+                Using bmp As New Bitmap(ob1.Width, ob1.Height)
                     ob3.DrawToBitmap(bmp, New Rectangle(0, 0, ob3.Width, ob3.Height))
                     e.Graphics.DrawImage(bmp, ob3.Location.X, ob3.Location.Y, ob3.Width, ob3.Height)
                     ReDim Preserve liste(nbr)
@@ -336,7 +336,7 @@ Public Class TestPrint
                 ob1.Location = New Point(ob1.Location.X, PictureBox1.Location.Y + PictureBox1.Height + 30)
                 Return True
             Else
-                Using bmp As Bitmap = New Bitmap(ob1.Width, ob1.Height)
+                Using bmp As New Bitmap(ob1.Width, ob1.Height)
                     ob1.DrawToBitmap(bmp, New Rectangle(0, 0, ob1.Width, ob1.Height))
                     e.Graphics.DrawImage(bmp, ob1.Location.X, ob1.Location.Y, ob1.Width, ob1.Height)
                     ReDim Preserve liste(nbr)
@@ -350,7 +350,7 @@ Public Class TestPrint
     End Function
 
     Private Sub PrintDocument1_PrintPage(sender As Object, e As PrintPageEventArgs) Handles PrintDocument1.PrintPage
-        Using bmp As Bitmap = New Bitmap(PictureBox1.Width, PictureBox1.Height)
+        Using bmp As New Bitmap(PictureBox1.Width, PictureBox1.Height)
             'draw the form on the memory bitmap
             PictureBox1.DrawToBitmap(bmp, New Rectangle(0, 0, PictureBox1.Width, PictureBox1.Height))
             e.Graphics.DrawImage(bmp, PictureBox1.Location.X, PictureBox1.Location.Y, PictureBox1.Width, PictureBox1.Height)

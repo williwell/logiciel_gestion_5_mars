@@ -3,7 +3,7 @@ Public Class TestExcel
     Dim appXl As Application
     Dim wbXl As Workbook
     Dim shXl As Worksheet
-    Dim rowFac As DataRow
+    ReadOnly rowFac As DataRow
 
     Sub New(rowFacture As DataRow)
 

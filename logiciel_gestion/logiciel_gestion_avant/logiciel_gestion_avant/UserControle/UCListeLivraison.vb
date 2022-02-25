@@ -1,11 +1,10 @@
-﻿Public Class UCListeLivraison
+﻿Imports System.ComponentModel
+Public Class UCListeLivraison
     Dim table As New DataTable
     ReadOnly main As MainForm
     Dim SourceRowIndex As Integer = -1
     ReadOnly tableOR As New DataTable
-    Dim rowInd As Integer = -1
-    Dim tableCl As New DataTable
-    Dim bool As Boolean = False
+    ReadOnly tableCl As New DataTable
 
     Sub New(mainforn As MainForm)
 
@@ -26,7 +25,6 @@
                 tableCl.Columns.Add(MainForm.TableClient.Columns(c).ColumnName)
             End If
         Next
-        tableCl.Columns.Add("idvehicule")
 
         'Ajout des lignes dans la tableCL selon les besoins
         For r As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
@@ -34,12 +32,10 @@
                 If MainForm.tableVenteVe.Rows(r).Item("idclient") = MainForm.TableClient.Rows(r2).Item("id") Then
                     Dim row As DataRow = tableCl.NewRow
                     Dim nbr As Integer = 1
-                    row(0) = MainForm.tableVenteVe.Rows(r).Item("id")
+                    row(0) = MainForm.tableVenteVe.Rows(r).Item("idvehicule")
                     For c As Integer = 0 To MainForm.TableClient.Columns.Count - 1
                         row(c + nbr) = MainForm.TableClient(r2)(c)
                     Next
-                    nbr += MainForm.TableClient.Columns.Count
-                    row(nbr) = MainForm.tableVenteVe.Rows(r).Item("idvehicule")
                     tableCl.Rows.Add(row)
                 End If
             Next
@@ -54,7 +50,7 @@
         table.Columns.Add("Couleur Tissus")
         table.Columns.Add("Fabriquer")
         table.Columns.Add("En Inventaire")
-        table.Columns.Add("Priorité")
+        table.Columns.Add("Priorité", GetType(Integer))
 
         'Ajout des lignes dans la table
         For r As Integer = 0 To MainForm.tableVe.Rows.Count - 1
@@ -90,7 +86,7 @@
 
                     row(6) = MainForm.tableVe.Rows(r).Item("fabriquer")
                     row(7) = MainForm.tableVe.Rows(r).Item("eninventaire")
-                    row(8) = MainForm.tableVenteVe.Rows(r3).Item("priorite")
+                    row(8) = CInt(MainForm.tableVenteVe.Rows(r3).Item("priorite"))
                     table.Rows.Add(row)
                 End If
             Next
@@ -101,6 +97,10 @@
         table = table.DefaultView.ToTable
 
         DGVVehicule.DataSource = table
+
+        For c As Integer = 0 To DGVVehicule.Columns.Count - 1
+            DGVVehicule.Columns(c).SortMode = DataGridViewColumnSortMode.NotSortable
+        Next
 
         'Ajout des colonnes et des lignes dans la table original
         For c As Integer = 0 To table.Columns.Count - 1
@@ -115,7 +115,6 @@
         Next
 
         LoadClient(0)
-        bool = True
 
         For c As Integer = 0 To DGVVehicule.Columns.Count - 1
             DGVVehicule.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
@@ -132,8 +131,9 @@
         Dim id As Integer
 
         For r As Integer = 0 To tableCl.Rows.Count - 1
-            If DGVVehicule.Rows(index).Cells(0).Value = tableCl(r)(tableCl.Columns.Count - 1) Then
+            If DGVVehicule.Rows(index).Cells(0).Value = tableCl(r)(0) Then
                 id = r
+                Exit For
             End If
         Next
 
@@ -146,6 +146,9 @@
         TBTel2.Text = tableCl(id)(7)
         TBSexe.Text = tableCl(id)(8)
         TBEmail.Text = tableCl(id)(9)
+        TBAddresse.Text = tableCl(id)(10)
+        TBApp.Text = tableCl(id)(11)
+        TBPoste.Text = tableCl(id)(12)
     End Sub
 
     'Quand on click dans le DataGridView on regarde si c'est un left Click sur la sourie
