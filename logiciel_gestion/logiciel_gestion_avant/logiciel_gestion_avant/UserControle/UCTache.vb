@@ -19,13 +19,25 @@ Public Class UCTache
     Public Sub LoadDGV()
         Dim table As New DataTable
         For c As Integer = 0 To MainForm.tableTache.Columns.Count - 1
-            table.Columns.Add(MainForm.tableTache.Columns(c).ColumnName)
+            If c <> 1 Then
+                table.Columns.Add(MainForm.tableTache.Columns(c).ColumnName)
+            Else
+                table.Columns.Add("Avant-midi/Après-midi")
+            End If
         Next
 
         For r As Integer = 0 To MainForm.tableTache.Rows.Count - 1
             Dim row As DataRow = table.NewRow
             For c As Integer = 0 To MainForm.tableTache.Columns.Count - 1
-                row(c) = MainForm.tableTache(r)(c)
+                If c <> 1 Then
+                    row(c) = MainForm.tableTache(r)(c)
+                Else
+                    If MainForm.tableTache(r)(c) = "0" Then
+                        row(c) = "AM"
+                    Else
+                        row(c) = "PM"
+                    End If
+                End If
             Next
             table.Rows.Add(row)
         Next

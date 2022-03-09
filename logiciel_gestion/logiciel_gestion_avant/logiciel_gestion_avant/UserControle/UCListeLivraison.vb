@@ -52,6 +52,18 @@ Public Class UCListeLivraison
         table.Columns.Add("En Inventaire")
         table.Columns.Add("Priorité", GetType(Integer))
 
+        LoadDGV()
+        LoadClient(0)
+
+        For c As Integer = 0 To DGVVehicule.Columns.Count - 1
+            DGVVehicule.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        Next
+    End Sub
+
+    Private Sub LoadDGV()
+        table.Rows.Clear()
+        tableOR.Rows.Clear()
+
         'Ajout des lignes dans la table
         For r As Integer = 0 To MainForm.tableVe.Rows.Count - 1
             For r3 As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
@@ -112,12 +124,6 @@ Public Class UCListeLivraison
                 row(c) = table(r)(c)
             Next
             tableOR.Rows.Add(row)
-        Next
-
-        LoadClient(0)
-
-        For c As Integer = 0 To DGVVehicule.Columns.Count - 1
-            DGVVehicule.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         Next
     End Sub
 
@@ -254,5 +260,37 @@ Public Class UCListeLivraison
         Next
         BTSave.Enabled = bool
         BTAnnuler.Enabled = bool
+    End Sub
+
+    'Quand on click sur se bouton, on envoie au serveur la demande pour changer dans la base de donnée la valeur de fabriquer dans vehicule pour la mettre possitive
+    'puis on supprime la ligne dans la table ventevehicule et on changer les priorité dans la table
+    Private Sub BTFab_Click(sender As Object, e As EventArgs) Handles BTFab.Click
+        Dim nbr As Integer
+
+        If ConnectionServeur.Getinstance.AddDelete(DGVVehicule.CurrentRow.Cells(0).Value, "DeleteFabriquer") Then
+            For r As Integer = 0 To MainForm.tableVe.Rows.Count - 1
+                If MainForm.tableVe.Rows(r).Item("id") = DGVVehicule.CurrentRow.Cells(0).Value Then
+                    MainForm.tableVe.Rows(r).Item("fabriquer") = True
+                    Exit For
+                End If
+            Next
+            For r As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
+                If MainForm.tableVenteVe.Rows(r).Item("idvehicule") = DGVVehicule.CurrentRow.Cells(0).Value Then
+                    nbr = MainForm.tableVenteVe.Rows(r).Item("priorite")
+                    MainForm.tableVenteVe.Rows.RemoveAt(r)
+                    Exit For
+                End If
+            Next
+            For r As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
+                If MainForm.tableVenteVe.Rows(r).Item("priorite") = nbr + 1 Then
+                    MainForm.tableVenteVe.Rows(r).Item("priorite") = nbr
+                    nbr += 1
+                End If
+            Next
+            LoadDGV()
+
+        Else
+            MessageBox.Show("Une erreur est survenu durant l'enregistrement des modification")
+        End If
     End Sub
 End Class

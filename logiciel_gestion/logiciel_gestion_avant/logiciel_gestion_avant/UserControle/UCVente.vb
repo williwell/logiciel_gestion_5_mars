@@ -76,14 +76,14 @@
                 liste(i) = tableCoulVe(i)(1) & " - " & tableCoulVe(i)(2)
             Next
         Else
-            liste(0) = "Aucune couleur de disponible pour ce model"
+            liste(0) = "Aucune couleur de disponible!"
         End If
         CBCoulVe.DataSource = liste
-        Try
-            prix = Decimal.Parse(tableModel(CBModel.SelectedIndex)(2)) + Decimal.Parse(tableCoulVe(CBCoulVe.SelectedIndex)(3))
-        Catch ex As Exception
 
-        End Try
+        prix = Decimal.Parse(tableModel(CBModel.SelectedIndex)(2))
+        If CBCoulVe.Items(0).ToString <> "Aucune couleur de disponible!" Then
+            prix += Decimal.Parse(tableCoulVe(CBCoulVe.SelectedIndex)(3))
+        End If
 
         TBCout.Text = prix.ToString("0.00$")
     End Sub
@@ -273,16 +273,12 @@
 
     'Fonction qui sert à changer le prix du textbox cout
     Private Sub CBCoulVe_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBCoulVe.SelectedIndexChanged
-        Try
-            prix = Decimal.Parse(tableModel(CBModel.SelectedIndex)(2))
-        Catch ex As Exception
+        prix = Decimal.Parse(tableModel(CBModel.SelectedIndex)(2))
 
-        End Try
-        Try
+        If CBCoulVe.Items(0).ToString <> "Aucune couleur de disponible!" Then
             prix += Decimal.Parse(tableCoulVe(CBCoulVe.SelectedIndex)(3))
-        Catch ex As Exception
+        End If
 
-        End Try
         TBCout.Text = prix.ToString("0.00$")
     End Sub
 End Class

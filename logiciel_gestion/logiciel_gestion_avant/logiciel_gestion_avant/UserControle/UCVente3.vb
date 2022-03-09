@@ -2,6 +2,7 @@
     ReadOnly uc As UCVente
     ReadOnly main As MainForm
     Dim idCl As String = 0
+    Dim veExist As Boolean = False
 
     Sub New(ucVente As UCVente, form As MainForm)
 
@@ -16,6 +17,7 @@
     'Quand on click sur ce bouton, on envoie l'information au serveur pour ajouter une vente de véhicule et les info qui vont avec comme
     'les options du véhicule et les info du client
     Private Sub BTSave_Click(sender As Object, e As EventArgs) Handles BTSave.Click
+        veExist = False
         If Not String.IsNullOrEmpty(TBPrenom1.Text) Or Not idCl = 0 Then
             If Not String.IsNullOrEmpty(TBNom1.Text) Or Not idCl = 0 Then
                 Dim listeAddCl(10) As String
@@ -79,11 +81,13 @@
                         listeAddCl(10) = TBPoste.Text
                     End If
                 End If
-                    Dim liste() As String = uc.getListeAdd
+
+                Dim liste() As String = uc.GetListeAdd
                 Dim listeAdd() As String = {liste(0), liste(1), liste(2), liste(3), liste(4)}
                 Dim table As DataTable
-                Dim id As String
-                If uc.getID = 0 Then
+                Dim id As String = uc.GetID
+
+                If id = 0 Then
                     table = ConnectionServeur.Getinstance.GetInfo(listeAdd, "addVehicule")
                     id = table(0)(0)
 
@@ -99,7 +103,15 @@
                     Next
                     MainForm.tableVe.Rows.Add(row)
                 Else
-                    id = uc.getID
+                    For r As Integer = 0 To MainForm.tableVe.Rows.Count - 1
+                        If MainForm.tableVe.Rows(r).Item("id") = id Then
+                            MainForm.tableVe.Rows(r).Item("eninventaire") = 0
+                            Exit For
+                        End If
+                    Next
+                    Dim listeTempo As String() = {id, 0}
+                    ConnectionServeur.Getinstance.AddDelete(listeTempo, "livrervehicule")
+                    veExist = True
                 End If
 
                 If Not id = "null" Then
@@ -127,7 +139,7 @@
                             MessageBox.Show("Une erreure c'est produit durant l'association des option!", "Attention!")
                         End If
                     Else
-                        addClient(listeAddCl, id)
+                        AddClient(listeAddCl, id)
                     End If
                 Else
                     MessageBox.Show("Une erreure c'est produit durant l'enregistrement du véhicule")
@@ -180,66 +192,75 @@
         Next
         nbr2 += 1
         listeAdd(3) = nbr2
-        If ConnectionServeur.Getinstance.AddDelete(listeAdd, "addVenteClient") Then
 
-            'On ajoute les informations pour de la vente vehicule dans la table du mainform
-            Dim row As DataRow = MainForm.tableVenteVe.NewRow
-            For i As Integer = 0 To listeAdd.Length - 1
-                row(i) = listeAdd(i)
-            Next
-            MainForm.tableVenteVe.Rows.Add(row)
+        If veExist = False Then
+            If ConnectionServeur.Getinstance.AddDelete(listeAdd, "addVenteClient") Then
 
-            ReDim listeAdd(10)
-            listeAdd(0) = id
-            listeAdd(1) = idCl
-            listeAdd(2) = Date.Now.ToString("yyyy-MM-dd")
+                'On ajoute les informations pour de la vente vehicule dans la table du mainform
+                Dim row As DataRow = MainForm.tableVenteVe.NewRow
+                For i As Integer = 0 To listeAdd.Length - 1
+                    row(i) = listeAdd(i)
+                Next
+                MainForm.tableVenteVe.Rows.Add(row)
 
-            '--- à faire avec des place pour rentrer de l'information. je met en attendent des information bidons pour les tests
-            listeAdd(3) = uc.GetPrixModel()
-            listeAdd(4) = uc.GetPrixCouleur()
-            listeAdd(5) = uc.GetNUDEchange
-            listeAdd(6) = uc.GetNUDAcompte
-            listeAdd(7) = 0
-            listeAdd(8) = 0
-            listeAdd(9) = MainForm.GetInstance.GetOption4
-            listeAdd(10) = MainForm.GetInstance.GetOption5
-
-            Dim table As DataTable = ConnectionServeur.Getinstance.GetInfo(listeAdd, "addfacture")
-            Dim idfac As String = table(0)(0)
-
-            If idfac <> 0 Then
-                Dim row2 As DataRow = MainForm.tableFacture.NewRow
-                row2(0) = idfac
-                row2(1) = id
-                row2(2) = idCl
-                row2(3) = Date.Now.ToString("yyyy-MM-dd")
-
-                '--- à faire avec des place pour rentrer de l'information. je met en attendent des information bidons pour les tests
-                row2(4) = uc.GetPrixModel()
-                row2(5) = uc.GetPrixCouleur()
-                row2(6) = uc.GetNUDEchange
-                row2(7) = uc.GetNUDAcompte
-                row2(8) = 0
-                row2(9) = 0
-                row2(10) = MainForm.GetInstance.GetOption4
-                row2(11) = MainForm.GetInstance.GetOption5
-
-                MainForm.tableFacture.Rows.Add(row2)
-
-                MessageBox.Show("Ajout fait avec succès")
-
-                Dim print As New TestPrint(row2)
-                print.Show()
-
-                Clear()
-                uc.Clear()
-                main.EnleverOpt()
-                main.ChangeUCPrev1(True, True)
+                EnregistrerFact(id)
             Else
-                MessageBox.Show("Une erreure est survenu durant la création de la facture sur le serveur")
+                MessageBox.Show("Une erreure c'est produit durant l'association du véicule et du client!", "Attention!")
             End If
         Else
-            MessageBox.Show("Une erreure c'est produit durant l'association du véicule et du client!", "Attention!")
+            EnregistrerFact(id)
+        End If
+    End Sub
+
+    Private Sub EnregistrerFact(id As String)
+        Dim listeAdd(10) As String
+        listeAdd(0) = id
+        listeAdd(1) = idCl
+        listeAdd(2) = Date.Now.ToString("yyyy-MM-dd")
+
+        '--- à faire avec des place pour rentrer de l'information. je met en attendent des information bidons pour les tests
+        listeAdd(3) = uc.GetPrixModel()
+        listeAdd(4) = uc.GetPrixCouleur()
+        listeAdd(5) = uc.GetNUDEchange
+        listeAdd(6) = uc.GetNUDAcompte
+        listeAdd(7) = 0
+        listeAdd(8) = 0
+        listeAdd(9) = MainForm.GetInstance.GetOption4
+        listeAdd(10) = MainForm.GetInstance.GetOption5
+
+        Dim table As DataTable = ConnectionServeur.Getinstance.GetInfo(listeAdd, "addfacture")
+        Dim idfac As String = table(0)(0)
+
+        If idfac <> 0 Then
+            Dim row2 As DataRow = MainForm.tableFacture.NewRow
+            row2(0) = idfac
+            row2(1) = id
+            row2(2) = idCl
+            row2(3) = Date.Now.ToString("yyyy-MM-dd")
+
+            '--- à faire avec des place pour rentrer de l'information. je met en attendent des information bidons pour les tests
+            row2(4) = uc.GetPrixModel()
+            row2(5) = uc.GetPrixCouleur()
+            row2(6) = uc.GetNUDEchange
+            row2(7) = uc.GetNUDAcompte
+            row2(8) = 0
+            row2(9) = 0
+            row2(10) = MainForm.GetInstance.GetOption4
+            row2(11) = MainForm.GetInstance.GetOption5
+
+            MainForm.tableFacture.Rows.Add(row2)
+
+            MessageBox.Show("Ajout fait avec succès")
+
+            Dim print As New TestPrint(row2)
+            print.Show()
+
+            Clear()
+            uc.Clear()
+            main.EnleverOpt()
+            main.ChangeUCPrev1(True, True)
+        Else
+            MessageBox.Show("Une erreure est survenu durant la création de la facture sur le serveur")
         End If
     End Sub
 

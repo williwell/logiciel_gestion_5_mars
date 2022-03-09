@@ -13,7 +13,7 @@
     End Sub
 
     Private Sub GestionTache_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        If row.Cells(1).Value = 0 Then
+        If row.Cells(1).Value = "AM" Then
             RadioButton1.Checked = True
         Else
             RadioButton2.Checked = True
@@ -43,8 +43,8 @@
                 If MainForm.tableTache.Rows(r).Item("id") = liste(0) Then
                     For c As Integer = 1 To MainForm.tableTache.Columns.Count - 1
                         MainForm.tableTache(r)(c) = liste(c)
-                        MessageBox.Show("Modification effectuer correctement")
                     Next
+                    MessageBox.Show("Modification effectuer correctement")
                     Exit For
                 End If
             Next

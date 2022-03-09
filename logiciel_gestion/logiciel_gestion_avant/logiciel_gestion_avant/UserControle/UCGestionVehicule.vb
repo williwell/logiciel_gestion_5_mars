@@ -26,8 +26,12 @@
         table.Columns.Add("codecouleurtissus")
         table.Columns.Add("fabriquer")
         table.Columns.Add("eninventaire")
+        LoadDGV()
+    End Sub
 
+    Public Sub LoadDGV()
         'loop pour mettre toutes les informations dans la table 
+        DGVVehicule.Rows.Clear()
         For r As Integer = 0 To MainForm.tableVe.Rows.Count - 1
             For r2 As Integer = 0 To MainForm.tableModel.Rows.Count - 1
                 If MainForm.tableModel.Rows(r2).Item("id") = MainForm.tableVe.Rows(r).Item("idmodel") Then

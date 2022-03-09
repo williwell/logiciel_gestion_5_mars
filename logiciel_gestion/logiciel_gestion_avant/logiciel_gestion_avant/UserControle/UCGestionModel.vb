@@ -296,13 +296,11 @@ Public Class UCGestionModel
                     'Loop pour passer toutes les index de la listeajout et un deuxieme loop pour passé toutes les lignes de la tableOpMo
                     'du Mainform et enlever la ligne si elle est trouver
                     For i As Integer = 0 To listeAjout.Length - 1
-                        Dim row As DataRow = Nothing
-                        For r As Integer = 0 To MainForm.tableOpMo.Rows.Count - 1
+                        For r As Integer = MainForm.tableOpMo.Rows.Count - 1 To 0 Step -1
                             If MainForm.tableOpMo.Rows(r).Item("idoption") = listeAjout(i) And MainForm.tableOpMo.Rows(r).Item("idModel") = listeId(cbModel.SelectedIndex) Then
-                                row = MainForm.tableOpMo.Rows(r)
+                                MainForm.tableOpMo.Rows.Remove(MainForm.tableOpMo.Rows(r))
                             End If
                         Next
-                        MainForm.tableOpMo.Rows.Remove(row)
                     Next
 
                     bool1 = True
@@ -334,10 +332,9 @@ Public Class UCGestionModel
                             Dim row As DataRow = Nothing
                             For r As Integer = 0 To MainForm.tableCoulMo.Rows.Count - 1
                                 If MainForm.tableCoulMo.Rows(r).Item("idcouleur") = listeAjout(i) And MainForm.tableCoulMo.Rows(r).Item("idModel") = listeId(cbModel.SelectedIndex) Then
-                                    row = MainForm.tableCoulMo.Rows(r)
+                                    MainForm.tableCoulMo.Rows.Remove(MainForm.tableCoulMo.Rows(r))
                                 End If
                             Next
-                            MainForm.tableCoulMo.Rows.Remove(row)
                         Next
 
                         bool2 = True
@@ -354,13 +351,11 @@ Public Class UCGestionModel
                     'Loop pour passer toutes les index de la listeajout et un deuxieme loop pour passé toutes les lignes de la tableCoulMo
                     'du Mainform et enlever la ligne si elle est trouver
                     For i As Integer = 0 To listeAjout.Length - 1
-                        Dim row As DataRow = Nothing
                         For r As Integer = 0 To MainForm.tableCoulMo.Rows.Count - 1
                             If MainForm.tableCoulMo.Rows(r).Item("idcouleur") = listeAjout(i) And MainForm.tableCoulMo.Rows(r).Item("idModel") = listeId(cbModel.SelectedIndex) Then
-                                row = MainForm.tableCoulMo.Rows(r)
+                                MainForm.tableCoulMo.Rows.Remove(MainForm.tableCoulMo.Rows(r))
                             End If
                         Next
-                        MainForm.tableCoulMo.Rows.Remove(row)
                     Next
 
                     bool2 = True

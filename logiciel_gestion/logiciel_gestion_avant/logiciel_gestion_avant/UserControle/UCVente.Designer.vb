@@ -205,7 +205,7 @@ Partial Class UCVente
         Me.TBTotal.Location = New System.Drawing.Point(579, 322)
         Me.TBTotal.Name = "TBTotal"
         Me.TBTotal.ReadOnly = True
-        Me.TBTotal.Size = New System.Drawing.Size(162, 23)
+        Me.TBTotal.Size = New System.Drawing.Size(200, 23)
         Me.TBTotal.TabIndex = 45
         '
         'Label10
@@ -222,7 +222,7 @@ Partial Class UCVente
         Me.TBTVQ.Location = New System.Drawing.Point(579, 278)
         Me.TBTVQ.Name = "TBTVQ"
         Me.TBTVQ.ReadOnly = True
-        Me.TBTVQ.Size = New System.Drawing.Size(162, 23)
+        Me.TBTVQ.Size = New System.Drawing.Size(200, 23)
         Me.TBTVQ.TabIndex = 43
         '
         'Label11
@@ -239,7 +239,7 @@ Partial Class UCVente
         Me.TBTPS.Location = New System.Drawing.Point(579, 234)
         Me.TBTPS.Name = "TBTPS"
         Me.TBTPS.ReadOnly = True
-        Me.TBTPS.Size = New System.Drawing.Size(162, 23)
+        Me.TBTPS.Size = New System.Drawing.Size(200, 23)
         Me.TBTPS.TabIndex = 41
         '
         'Label12
@@ -256,7 +256,7 @@ Partial Class UCVente
         Me.TBCout.Location = New System.Drawing.Point(579, 190)
         Me.TBCout.Name = "TBCout"
         Me.TBCout.ReadOnly = True
-        Me.TBCout.Size = New System.Drawing.Size(162, 23)
+        Me.TBCout.Size = New System.Drawing.Size(200, 23)
         Me.TBCout.TabIndex = 39
         '
         'CBTVQ
@@ -282,7 +282,7 @@ Partial Class UCVente
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(797, 216)
+        Me.Label15.Location = New System.Drawing.Point(307, 436)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(56, 15)
         Me.Label15.TabIndex = 52
@@ -291,7 +291,7 @@ Partial Class UCVente
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(797, 172)
+        Me.Label16.Location = New System.Drawing.Point(307, 392)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(52, 15)
         Me.Label16.TabIndex = 50
@@ -299,18 +299,18 @@ Partial Class UCVente
         '
         'NUDEchange
         '
-        Me.NUDEchange.Location = New System.Drawing.Point(797, 191)
+        Me.NUDEchange.Location = New System.Drawing.Point(307, 411)
         Me.NUDEchange.Maximum = New Decimal(New Integer() {250000, 0, 0, 0})
         Me.NUDEchange.Name = "NUDEchange"
-        Me.NUDEchange.Size = New System.Drawing.Size(162, 23)
+        Me.NUDEchange.Size = New System.Drawing.Size(200, 23)
         Me.NUDEchange.TabIndex = 53
         '
         'NUDAcompte
         '
-        Me.NUDAcompte.Location = New System.Drawing.Point(797, 235)
+        Me.NUDAcompte.Location = New System.Drawing.Point(307, 454)
         Me.NUDAcompte.Maximum = New Decimal(New Integer() {250000, 0, 0, 0})
         Me.NUDAcompte.Name = "NUDAcompte"
-        Me.NUDAcompte.Size = New System.Drawing.Size(162, 23)
+        Me.NUDAcompte.Size = New System.Drawing.Size(200, 23)
         Me.NUDAcompte.TabIndex = 54
         '
         'UCVente

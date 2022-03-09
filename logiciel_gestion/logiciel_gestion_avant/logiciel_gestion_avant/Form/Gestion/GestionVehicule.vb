@@ -3,10 +3,7 @@
 Public Class GestionVehicule
     ReadOnly row As DataGridViewRow
     ReadOnly table As New DataTable
-    ReadOnly tableModel As DataTable
     ReadOnly tableCoulVe As New DataTable
-    ReadOnly tableCoulToile As DataTable
-    ReadOnly tableCoulTissus As DataTable
     Dim bool As Boolean = True
     ReadOnly listeOR(8) As String
     ReadOnly liste(8) As String
@@ -58,9 +55,9 @@ Public Class GestionVehicule
                     End If
                 End If
             Next
-            For r2 As Integer = 0 To MainForm.tableLivrer.Rows.Count - 1
-                If MainForm.TableClient.Rows(r).Item("id") = MainForm.tableLivrer.Rows(r2).Item("idclient") Then
-                    If MainForm.tableLivrer.Rows(r2).Item("idvehicule") = row.Cells(0).Value Then
+            For r2 As Integer = MainForm.tableFacture.Rows.Count - 1 To 0 Step -1
+                If MainForm.TableClient.Rows(r).Item("id") = MainForm.tableFacture.Rows(r2).Item("idclient") Then
+                    If MainForm.tableFacture.Rows(r2).Item("idvehicule") = row.Cells(0).Value Then
                         Dim row As DataRow = table.NewRow
                         row(0) = MainForm.TableClient.Rows(r).Item("id")
                         row(1) = MainForm.TableClient.Rows(r).Item("prenom1")
@@ -108,10 +105,10 @@ Public Class GestionVehicule
         SelectionComboBox(CBCoulToile, row.Cells(5).Value)
         SelectionComboBox(CBCoulTissus, row.Cells(7).Value)
 
-        If row.Cells(9).Value = "True" Then
+        If row.Cells(10).Value = "True" Then
             CBFabriquer.Checked = True
         End If
-        If row.Cells(10).Value = "True" Then
+        If row.Cells(11).Value = "True" Then
             CBInv.Checked = True
         End If
 
@@ -226,13 +223,13 @@ Public Class GestionVehicule
 
             'Remplir le datarow avec les nouvelles données pour quand on va fermer la fenêtre elle soit envoyer dans le datagrid view de ucgestionVehicule
             row.Cells(1).Value = TBMatricule.Text
-            row.Cells(2).Value = tableModel(CBModel.SelectedIndex)(1)
+            row.Cells(2).Value = MainForm.tableModel(CBModel.SelectedIndex)(1)
             row.Cells(3).Value = tableCoulVe(CBCoulVe.SelectedIndex)(1)
             row.Cells(4).Value = tableCoulVe(CBCoulVe.SelectedIndex)(2)
-            row.Cells(5).Value = tableCoulToile(CBCoulToile.SelectedIndex)(1)
-            row.Cells(6).Value = tableCoulToile(CBCoulToile.SelectedIndex)(2)
-            row.Cells(7).Value = tableCoulTissus(CBCoulTissus.SelectedIndex)(1)
-            row.Cells(8).Value = tableCoulTissus(CBCoulTissus.SelectedIndex)(2)
+            row.Cells(5).Value = MainForm.tableCoulToi(CBCoulToile.SelectedIndex)(1)
+            row.Cells(6).Value = MainForm.tableCoulToi(CBCoulToile.SelectedIndex)(2)
+            row.Cells(7).Value = MainForm.tableCoulTis(CBCoulTissus.SelectedIndex)(1)
+            row.Cells(8).Value = MainForm.tableCoulTis(CBCoulTissus.SelectedIndex)(2)
             row.Cells(9).Value = CBFabriquer.Checked
             row.Cells(10).Value = CBInv.Checked
 

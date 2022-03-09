@@ -1,5 +1,6 @@
 ﻿Public Class ListeVehicule
     ReadOnly uc As UCVente
+    Dim veInventaire As Boolean = False
 
     Sub New(ucVente As UCVente)
 
@@ -70,7 +71,7 @@
     'SI on double click sur une ligne on envoie le id de la ligne du DataGridView au UserControl Vente, on appel la fonction NextPage et on ferme ce form
     Private Sub DGVVehicule_DoubleClick(sender As Object, e As EventArgs) Handles DGVVehicule.DoubleClick
         Dim row As DataGridViewRow = DGVVehicule.CurrentRow
-        uc.setID(row.Cells(0).Value)
+        uc.SetID(row.Cells(0).Value)
         uc.NextPage(row.Cells(1).Value, row.Cells(2).Value, row.Cells(3).Value, row.Cells(4).Value, row.Cells(5).Value)
         Me.Close()
     End Sub

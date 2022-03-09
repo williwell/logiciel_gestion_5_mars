@@ -50,6 +50,7 @@ Partial Class UCListeLivraison
         Me.TBAddresse = New System.Windows.Forms.TextBox()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.TBApp = New System.Windows.Forms.TextBox()
+        Me.BTFab = New System.Windows.Forms.Button()
         CType(Me.DGVVehicule, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -71,9 +72,9 @@ Partial Class UCListeLivraison
         'BTSave
         '
         Me.BTSave.Enabled = False
-        Me.BTSave.Location = New System.Drawing.Point(20, 625)
+        Me.BTSave.Location = New System.Drawing.Point(308, 625)
         Me.BTSave.Name = "BTSave"
-        Me.BTSave.Size = New System.Drawing.Size(168, 23)
+        Me.BTSave.Size = New System.Drawing.Size(174, 23)
         Me.BTSave.TabIndex = 1
         Me.BTSave.Text = "Enregistrer Nouvelle Priorité"
         Me.BTSave.UseVisualStyleBackColor = True
@@ -81,11 +82,11 @@ Partial Class UCListeLivraison
         'BTAnnuler
         '
         Me.BTAnnuler.Enabled = False
-        Me.BTAnnuler.Location = New System.Drawing.Point(194, 625)
+        Me.BTAnnuler.Location = New System.Drawing.Point(488, 625)
         Me.BTAnnuler.Name = "BTAnnuler"
-        Me.BTAnnuler.Size = New System.Drawing.Size(168, 23)
+        Me.BTAnnuler.Size = New System.Drawing.Size(174, 23)
         Me.BTAnnuler.TabIndex = 2
-        Me.BTAnnuler.Text = "Annuler Changement"
+        Me.BTAnnuler.Text = "Annuler Changement Priorité"
         Me.BTAnnuler.UseVisualStyleBackColor = True
         '
         'Label1
@@ -302,10 +303,20 @@ Partial Class UCListeLivraison
         Me.TBApp.Size = New System.Drawing.Size(168, 23)
         Me.TBApp.TabIndex = 26
         '
+        'BTFab
+        '
+        Me.BTFab.Location = New System.Drawing.Point(20, 625)
+        Me.BTFab.Name = "BTFab"
+        Me.BTFab.Size = New System.Drawing.Size(174, 23)
+        Me.BTFab.TabIndex = 28
+        Me.BTFab.Text = "Marquer Comme Fabriquer"
+        Me.BTFab.UseVisualStyleBackColor = True
+        '
         'UCListeLivraison
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.BTFab)
         Me.Controls.Add(Me.Label13)
         Me.Controls.Add(Me.TBApp)
         Me.Controls.Add(Me.Label11)
@@ -370,4 +381,5 @@ Partial Class UCListeLivraison
     Friend WithEvents TBAddresse As TextBox
     Friend WithEvents Label13 As Label
     Friend WithEvents TBApp As TextBox
+    Friend WithEvents BTFab As Button
 End Class

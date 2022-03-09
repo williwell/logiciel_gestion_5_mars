@@ -277,6 +277,7 @@ Public Class MainForm
     Public Sub ChangeUCPrev1(tps As Boolean, tvq As Boolean)
         ucVente.BringToFront()
         ucVente.SetTaxe(tps, tvq)
+        ucGestVeh.LoadDGV()
     End Sub
 
     'Fonction qui sert à changer le userCOntrol qui est afficher

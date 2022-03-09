@@ -19,12 +19,25 @@
     End Sub
 
     Private Sub BTSave_Click(sender As Object, e As EventArgs) Handles BTSave.Click
+        rue = String.IsNullOrEmpty(TBRue.Text)
+        ville = String.IsNullOrEmpty(TBVille.Text)
+        pro = String.IsNullOrEmpty(TBProvince.Text)
+        Dim liste(10) As String
+
         If String.IsNullOrEmpty(Trim(TBPrenom.Text)) Then
             MessageBox.Show("Vous devez rentrer un prénom")
-        ElseIf String.IsNullOrEmpty(trim(TBNom.Text)) Then
+        ElseIf String.IsNullOrEmpty(Trim(TBNom.Text)) Then
             MessageBox.Show("Vous devez rentrer un nom")
         Else
-            Dim liste(10) As String
+            If rue And ville And pro Then
+                liste(8) = "null"
+            ElseIf Not rue And Not ville And Not pro Then
+                liste(8) = TBRue.Text & ", " & TBVille.Text & ", " & TBProvince.Text
+            Else
+                MessageBox.Show("Vous ne pouvez pas rentrer une adresse partielle!")
+                Exit Sub
+            End If
+
             liste(0) = TBPrenom.Text
             liste(1) = TBNom.Text
 
@@ -53,25 +66,13 @@
             End If
 
             liste(6) = CBSexe.SelectedItem
-            If String.IsNullOrEmpty(Trim(TBEmail.Text)) Then
-                liste(7) = "null"
-            Else
-                liste(7) = TBEmail.Text
-            End If
+        If String.IsNullOrEmpty(Trim(TBEmail.Text)) Then
+            liste(7) = "null"
+        Else
+            liste(7) = TBEmail.Text
+        End If
 
-            rue = String.IsNullOrEmpty(TBRue.Text)
-            ville = String.IsNullOrEmpty(TBVille.Text)
-            pro = String.IsNullOrEmpty(TBProvince.Text)
-
-            If rue And ville And pro Then
-                liste(8) = "null"
-            ElseIf Not rue And Not ville And Not pro Then
-                liste(8) = TBRue.Text & ", " & TBVille.Text & ", " & TBProvince.Text
-            Else
-                MessageBox.Show("Vous ne pouvez pas rentrer une adresse partielle!")
-            End If
-
-            If String.IsNullOrEmpty(TBApp.Text) Then
+        If String.IsNullOrEmpty(TBApp.Text) Then
                 liste(9) = "null"
             Else
                 liste(9) = TBApp.Text

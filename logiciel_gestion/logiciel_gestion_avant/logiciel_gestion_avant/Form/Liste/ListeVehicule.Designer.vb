@@ -38,14 +38,14 @@ Partial Class ListeVehicule
         Me.DGVVehicule.ReadOnly = True
         Me.DGVVehicule.RowTemplate.Height = 25
         Me.DGVVehicule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DGVVehicule.Size = New System.Drawing.Size(800, 450)
+        Me.DGVVehicule.Size = New System.Drawing.Size(1120, 519)
         Me.DGVVehicule.TabIndex = 0
         '
         'ListeVehicule
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(1120, 519)
         Me.Controls.Add(Me.DGVVehicule)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "ListeVehicule"

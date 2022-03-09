@@ -11,6 +11,7 @@ Public Class GestionInvOpt
     Dim listeInvAdd() As String
     Dim nbrInv As Integer
     ReadOnly id As String
+    Dim boolSauv As String = True
 
     Sub New(idOpt As String)
 
@@ -203,6 +204,8 @@ Public Class GestionInvOpt
         If bool1 Then
             If bool2 Then
                 MessageBox.Show("L'enregistrement c'est effectuer correctement")
+                boolSauv = False
+                Me.Close()
             Else
                 MessageBox.Show("Le changement des items pour le model c'est effectué correctement, mais une erreure c'est produit durant le changement des quantité des items")
             End If
@@ -327,12 +330,14 @@ Public Class GestionInvOpt
     End Sub
 
     Private Sub GestionInvOpt_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        If btSave.Enabled = True Then
-            Dim result As DialogResult = MessageBox.Show("Voulez-vous sauvegarder les modifications que vous avez apporté?", "Attention", MessageBoxButtons.YesNoCancel)
-            If result = DialogResult.Yes Then
-                Sauvegarder()
-            ElseIf result = DialogResult.Cancel Then
-                e.Cancel = True
+        If boolSauv Then
+            If btSave.Enabled = True Then
+                Dim result As DialogResult = MessageBox.Show("Voulez-vous sauvegarder les modifications que vous avez apporté?", "Attention", MessageBoxButtons.YesNoCancel)
+                If result = DialogResult.Yes Then
+                    Sauvegarder()
+                ElseIf result = DialogResult.Cancel Then
+                    e.Cancel = True
+                End If
             End If
         End If
     End Sub

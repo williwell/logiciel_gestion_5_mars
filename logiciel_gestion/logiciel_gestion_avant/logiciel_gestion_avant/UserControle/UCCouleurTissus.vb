@@ -140,7 +140,7 @@
             'Loop pour trouver la ligne dans la table Coultis du mainform avec celle du DataGridView selectionner
             For r As Integer = 0 To MainForm.tableCoulTis.Rows.Count - 1
                 If MainForm.tableCoulTis.Rows(r).Item("id") = dgvCouleur.CurrentRow.Cells(0).Value Then
-                    MainForm.tableCoulTis.Rows(r).Item("deletCoul") = 0
+                    MainForm.tableCoulTis.Rows(r).Item("deleteCoul") = 0
                 End If
             Next
             LoadCoul()
