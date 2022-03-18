@@ -11,6 +11,9 @@
     <Compile Update="Form\Création\CreerClient.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Form\Création\CreerContrat.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Form\Création\CreerCouleur.vb">
       <SubType>Form</SubType>
     </Compile>

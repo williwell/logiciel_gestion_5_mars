@@ -193,8 +193,10 @@ Public Class MainForm
 
     'Si utilisateur click sur le bouton Vente du menu on fait afficher le UserControl dans le PanelUC
     Private Sub BtVente_Click(sender As Object, e As EventArgs) Handles btVente.Click
-        ucVente.BringToFront()
-        panMenu.Size = panMenu.MinimumSize
+        Dim contrat As New CreerContrat
+        contrat.ShowDialog()
+        'ucVente.BringToFront()
+        'panMenu.Size = panMenu.MinimumSize
     End Sub
 
     'Si utilisateur click sur le bouton Fournisseur du menu on fait afficher le UserControl dans le PanelUC
