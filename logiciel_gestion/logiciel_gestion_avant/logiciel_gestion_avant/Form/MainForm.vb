@@ -431,7 +431,7 @@ Public Class MainForm
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) 
-        Dim test As New TestPrint(tableFacture.Rows(8))
+        Dim test As New PrintingForm(tableFacture.Rows(8))
         test.ShowDialog()
         'Dim test As New TestExcel(tableFacture.Rows(0))
         'test.ShowDialog()

@@ -1,7 +1,7 @@
 ﻿Public Class ListeClient
-    ReadOnly uc As UCVente3
+    ReadOnly uc As CreerContrat
 
-    Sub New(ucVe As UCVente3)
+    Sub New(ucVe As CreerContrat)
 
         ' Cet appel est requis par le concepteur.
         InitializeComponent()
@@ -21,7 +21,7 @@
 
     Private Sub DGVClient_DoubleClick(sender As Object, e As EventArgs) Handles DGVClient.DoubleClick
         'Quand on double click sur une 
-        uc.GetRowCl(DGVClient.CurrentRow)
+        uc.SetIDCl(DGVClient.CurrentRow)
         Me.Close()
     End Sub
 End Class

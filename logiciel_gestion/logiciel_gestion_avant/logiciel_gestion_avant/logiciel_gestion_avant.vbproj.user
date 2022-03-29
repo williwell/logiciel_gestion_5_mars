@@ -83,7 +83,7 @@
     <Compile Update="Form\TestExcel.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Form\TestPrint.vb">
+    <Compile Update="Form\PrintingForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="UserControle\UCAccueil.vb">

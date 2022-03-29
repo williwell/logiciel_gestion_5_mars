@@ -92,6 +92,7 @@ Partial Class CreerContrat
         Me.BTClEx = New System.Windows.Forms.Button()
         Me.BTSave = New System.Windows.Forms.Button()
         Me.CBSexe = New System.Windows.Forms.ComboBox()
+        Me.BTAnnuler = New System.Windows.Forms.Button()
         CType(Me.DGVOptionCh, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVOptionDis, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -384,7 +385,7 @@ Partial Class CreerContrat
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(608, 538)
+        Me.Label13.Location = New System.Drawing.Point(634, 538)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(86, 15)
         Me.Label13.TabIndex = 40
@@ -392,7 +393,7 @@ Partial Class CreerContrat
         '
         'TBPayerLiv
         '
-        Me.TBPayerLiv.Location = New System.Drawing.Point(608, 556)
+        Me.TBPayerLiv.Location = New System.Drawing.Point(634, 556)
         Me.TBPayerLiv.Name = "TBPayerLiv"
         Me.TBPayerLiv.ReadOnly = True
         Me.TBPayerLiv.Size = New System.Drawing.Size(138, 23)
@@ -401,7 +402,7 @@ Partial Class CreerContrat
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(608, 582)
+        Me.Label14.Location = New System.Drawing.Point(634, 582)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(96, 15)
         Me.Label14.TabIndex = 42
@@ -409,7 +410,7 @@ Partial Class CreerContrat
         '
         'TBBalEchange
         '
-        Me.TBBalEchange.Location = New System.Drawing.Point(608, 600)
+        Me.TBBalEchange.Location = New System.Drawing.Point(634, 600)
         Me.TBBalEchange.Name = "TBBalEchange"
         Me.TBBalEchange.ReadOnly = True
         Me.TBBalEchange.Size = New System.Drawing.Size(138, 23)
@@ -688,7 +689,7 @@ Partial Class CreerContrat
         '
         'BTSave
         '
-        Me.BTSave.Location = New System.Drawing.Point(1120, 655)
+        Me.BTSave.Location = New System.Drawing.Point(930, 664)
         Me.BTSave.Name = "BTSave"
         Me.BTSave.Size = New System.Drawing.Size(184, 48)
         Me.BTSave.TabIndex = 77
@@ -698,16 +699,27 @@ Partial Class CreerContrat
         'CBSexe
         '
         Me.CBSexe.FormattingEnabled = True
+        Me.CBSexe.Items.AddRange(New Object() {"Non Déterminé", "Homme", "Femme"})
         Me.CBSexe.Location = New System.Drawing.Point(768, 175)
         Me.CBSexe.Name = "CBSexe"
         Me.CBSexe.Size = New System.Drawing.Size(170, 23)
         Me.CBSexe.TabIndex = 78
+        '
+        'BTAnnuler
+        '
+        Me.BTAnnuler.Location = New System.Drawing.Point(1120, 664)
+        Me.BTAnnuler.Name = "BTAnnuler"
+        Me.BTAnnuler.Size = New System.Drawing.Size(184, 48)
+        Me.BTAnnuler.TabIndex = 79
+        Me.BTAnnuler.Text = "Annuler"
+        Me.BTAnnuler.UseVisualStyleBackColor = True
         '
         'CreerContrat
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1310, 715)
+        Me.Controls.Add(Me.BTAnnuler)
         Me.Controls.Add(Me.CBSexe)
         Me.Controls.Add(Me.BTSave)
         Me.Controls.Add(Me.BTNouvCl)
@@ -857,4 +869,5 @@ Partial Class CreerContrat
     Friend WithEvents BTClEx As Button
     Friend WithEvents BTSave As Button
     Friend WithEvents CBSexe As ComboBox
+    Friend WithEvents BTAnnuler As Button
 End Class

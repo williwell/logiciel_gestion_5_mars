@@ -252,7 +252,7 @@
 
             MessageBox.Show("Ajout fait avec succès")
 
-            Dim print As New TestPrint(row2)
+            Dim print As New PrintingForm(row2)
             print.Show()
 
             Clear()
@@ -292,8 +292,7 @@
 
     'Quand on click sur ce bouton, on créer un nouveau form de type ListeClient et on le fait apparaître
     Private Sub BTClient_Click(sender As Object, e As EventArgs) Handles BTClient.Click
-        Dim ListCl As New ListeClient(Me)
-        ListCl.ShowDialog(Me)
+
     End Sub
 
     'Fonction qui sert à recevoir une ligne de datagridview et mettre l'information de celle ci dans les texteboxs du usercontrol

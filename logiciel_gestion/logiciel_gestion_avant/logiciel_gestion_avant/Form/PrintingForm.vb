@@ -1,5 +1,5 @@
 ﻿Imports System.Drawing.Printing
-Public Class TestPrint
+Public Class PrintingForm
     Dim nbr As Integer = 0
     Dim liste(-1) As String
     ReadOnly nbrPage As Integer = 1
