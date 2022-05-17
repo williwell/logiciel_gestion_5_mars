@@ -33,8 +33,10 @@
     End Sub
 
     Private Sub DgvProduit_DoubleClick(sender As Object, e As EventArgs) Handles dgvProduit.DoubleClick
-        ucInvent.SetIDProduit(dgvProduit.CurrentRow.Cells(0).Value)
-        Me.Close()
+        If dgvProduit.CurrentRow IsNot Nothing Then
+            ucInvent.SetIDProduit(dgvProduit.CurrentRow.Cells(0).Value)
+            Me.Close()
+        End If
     End Sub
 
 

@@ -110,8 +110,10 @@
 
     'Si on double click sur une ligne dans le DataGridView pièce, on fait afficher le UserControl Inventaire avec les informations de cette pièce
     Private Sub DgvPiece_DoubleClick(sender As Object, e As EventArgs) Handles dgvPiece.DoubleClick
-        ucInv.SetIDProduit(dgvPiece.CurrentRow.Cells(0).Value)
-        main.ShowInventaire()
+        If dgvPiece.CurrentRow IsNot Nothing Then
+            ucInv.SetIDProduit(dgvPiece.CurrentRow.Cells(0).Value)
+            main.ShowInventaire()
+        End If
     End Sub
 
     'Fonction qui sert a mettre l'information qu'on resoit dans les TextBox

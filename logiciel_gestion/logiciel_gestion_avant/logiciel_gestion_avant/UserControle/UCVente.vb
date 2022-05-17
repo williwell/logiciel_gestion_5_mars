@@ -152,7 +152,7 @@
 
     'Fonction qui sert a avoir le id du model qui est sélectionner
     Public Function GetIDModel() As String
-        Return tableModel(CBModel.SelectedIndex)(0)
+        'Return tableModel(CBModel.SelectedIndex)(0)
     End Function
 
     'Fonction qui retourne la listeadd qui à été créer pour ajouter une vente

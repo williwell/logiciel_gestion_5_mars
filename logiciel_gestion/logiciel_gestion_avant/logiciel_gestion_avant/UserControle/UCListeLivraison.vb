@@ -143,18 +143,33 @@ Public Class UCListeLivraison
             End If
         Next
 
-        TBID.Text = tableCl(id)(1)
-        TBPrenom1.Text = tableCl(id)(2)
-        TBNom1.Text = tableCl(id)(3)
-        TBPrenom2.Text = tableCl(id)(4)
-        TBNom2.Text = tableCl(id)(5)
-        TBTel1.Text = tableCl(id)(6)
-        TBTel2.Text = tableCl(id)(7)
-        TBSexe.Text = tableCl(id)(8)
-        TBEmail.Text = tableCl(id)(9)
-        TBAddresse.Text = tableCl(id)(10)
-        TBApp.Text = tableCl(id)(11)
-        TBPoste.Text = tableCl(id)(12)
+        If tableCl.Rows.Count > 0 Then
+            TBID.Text = tableCl(id)(1)
+            TBPrenom1.Text = tableCl(id)(2)
+            TBNom1.Text = tableCl(id)(3)
+            TBPrenom2.Text = tableCl(id)(4)
+            TBNom2.Text = tableCl(id)(5)
+            TBTel1.Text = tableCl(id)(6)
+            TBTel2.Text = tableCl(id)(7)
+            TBSexe.Text = tableCl(id)(8)
+            TBEmail.Text = tableCl(id)(9)
+            TBAddresse.Text = tableCl(id)(10)
+            TBApp.Text = tableCl(id)(11)
+            TBPoste.Text = tableCl(id)(12)
+        Else
+            TBID.Text = "Aucun Client"
+            TBPrenom1.Text = "Aucun Client"
+            TBNom1.Text = "Aucun Client"
+            TBPrenom2.Text = "Aucun Client"
+            TBNom2.Text = "Aucun Client"
+            TBTel1.Text = "Aucun Client"
+            TBTel2.Text = "Aucun Client"
+            TBSexe.Text = "Aucun Client"
+            TBEmail.Text = "Aucun Client"
+            TBAddresse.Text = "Aucun Client"
+            TBApp.Text = "Aucun Client"
+            TBPoste.Text = "Aucun Client"
+        End If
     End Sub
 
     'Quand on click dans le DataGridView on regarde si c'est un left Click sur la sourie
@@ -265,32 +280,34 @@ Public Class UCListeLivraison
     'Quand on click sur se bouton, on envoie au serveur la demande pour changer dans la base de donnée la valeur de fabriquer dans vehicule pour la mettre possitive
     'puis on supprime la ligne dans la table ventevehicule et on changer les priorité dans la table
     Private Sub BTFab_Click(sender As Object, e As EventArgs) Handles BTFab.Click
-        Dim nbr As Integer
+        If DGVVehicule.CurrentRow IsNot Nothing Then
+            Dim nbr As Integer
 
-        If ConnectionServeur.Getinstance.AddDelete(DGVVehicule.CurrentRow.Cells(0).Value, "DeleteFabriquer") Then
-            For r As Integer = 0 To MainForm.tableVe.Rows.Count - 1
-                If MainForm.tableVe.Rows(r).Item("id") = DGVVehicule.CurrentRow.Cells(0).Value Then
-                    MainForm.tableVe.Rows(r).Item("fabriquer") = True
-                    Exit For
-                End If
-            Next
-            For r As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
-                If MainForm.tableVenteVe.Rows(r).Item("idvehicule") = DGVVehicule.CurrentRow.Cells(0).Value Then
-                    nbr = MainForm.tableVenteVe.Rows(r).Item("priorite")
-                    MainForm.tableVenteVe.Rows.RemoveAt(r)
-                    Exit For
-                End If
-            Next
-            For r As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
-                If MainForm.tableVenteVe.Rows(r).Item("priorite") = nbr + 1 Then
-                    MainForm.tableVenteVe.Rows(r).Item("priorite") = nbr
-                    nbr += 1
-                End If
-            Next
-            LoadDGV()
+            If ConnectionServeur.Getinstance.AddDelete(DGVVehicule.CurrentRow.Cells(0).Value, "DeleteFabriquer") Then
+                For r As Integer = 0 To MainForm.tableVe.Rows.Count - 1
+                    If MainForm.tableVe.Rows(r).Item("id") = DGVVehicule.CurrentRow.Cells(0).Value Then
+                        MainForm.tableVe.Rows(r).Item("fabriquer") = True
+                        Exit For
+                    End If
+                Next
+                For r As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
+                    If MainForm.tableVenteVe.Rows(r).Item("idvehicule") = DGVVehicule.CurrentRow.Cells(0).Value Then
+                        nbr = MainForm.tableVenteVe.Rows(r).Item("priorite")
+                        MainForm.tableVenteVe.Rows.RemoveAt(r)
+                        Exit For
+                    End If
+                Next
+                For r As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
+                    If MainForm.tableVenteVe.Rows(r).Item("priorite") = nbr + 1 Then
+                        MainForm.tableVenteVe.Rows(r).Item("priorite") = nbr
+                        nbr += 1
+                    End If
+                Next
+                LoadDGV()
 
-        Else
-            MessageBox.Show("Une erreur est survenu durant l'enregistrement des modification")
+            Else
+                MessageBox.Show("Une erreur est survenu durant l'enregistrement des modification")
+            End If
         End If
     End Sub
 End Class

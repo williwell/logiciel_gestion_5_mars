@@ -147,7 +147,7 @@
             If String.IsNullOrEmpty(str) Then
                 str += "nomatricule like '%" & TBSearchMat.Text & "%'"
             Else
-                str += " and nomatricule like '" & TBSearchMat.Text & "'"
+                str += " and nomatricule like '%" & TBSearchMat.Text & "%'"
             End If
         End If
 
@@ -208,5 +208,9 @@
                 Next
             End If
         Next
+    End Sub
+
+    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
+
     End Sub
 End Class

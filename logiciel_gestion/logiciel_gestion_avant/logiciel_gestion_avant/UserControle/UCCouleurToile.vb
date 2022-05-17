@@ -56,6 +56,12 @@
                 listeOr(r, c) = tableCoul(r)(c)
             Next
         Next
+
+        If dgvCouleur.Rows.Count = 0 Then
+            BtDel.Enabled = False
+        Else
+            BtDel.Enabled = True
+        End If
     End Sub
 
 

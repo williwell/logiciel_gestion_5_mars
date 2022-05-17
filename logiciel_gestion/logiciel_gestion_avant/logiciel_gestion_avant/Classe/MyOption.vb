@@ -18,7 +18,7 @@
         myFileWriter.WriteLine(MainForm.GetInstance.GetOption5)
         myFileWriter.Close()
         textFileStream.Close()
-        MessageBox.Show("Sauvegarde effectuer")
+        MessageBox.Show(MsgTextFr.Getinstance.MsgSauv)
     End Sub
 
     Public Sub ReadOption()

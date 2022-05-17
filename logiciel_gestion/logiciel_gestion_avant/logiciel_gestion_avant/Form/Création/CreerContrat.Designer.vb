@@ -93,6 +93,9 @@ Partial Class CreerContrat
         Me.BTSave = New System.Windows.Forms.Button()
         Me.CBSexe = New System.Windows.Forms.ComboBox()
         Me.BTAnnuler = New System.Windows.Forms.Button()
+        Me.DTPLivraison = New System.Windows.Forms.DateTimePicker()
+        Me.Label29 = New System.Windows.Forms.Label()
+        Me.BTCouleur = New System.Windows.Forms.Button()
         CType(Me.DGVOptionCh, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVOptionDis, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -218,7 +221,7 @@ Partial Class CreerContrat
         Me.DGVOptionCh.AllowUserToAddRows = False
         Me.DGVOptionCh.AllowUserToDeleteRows = False
         Me.DGVOptionCh.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGVOptionCh.Location = New System.Drawing.Point(12, 279)
+        Me.DGVOptionCh.Location = New System.Drawing.Point(12, 332)
         Me.DGVOptionCh.Name = "DGVOptionCh"
         Me.DGVOptionCh.ReadOnly = True
         Me.DGVOptionCh.RowTemplate.Height = 25
@@ -231,7 +234,7 @@ Partial Class CreerContrat
         Me.DGVOptionDis.AllowUserToAddRows = False
         Me.DGVOptionDis.AllowUserToDeleteRows = False
         Me.DGVOptionDis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGVOptionDis.Location = New System.Drawing.Point(654, 279)
+        Me.DGVOptionDis.Location = New System.Drawing.Point(654, 332)
         Me.DGVOptionDis.Name = "DGVOptionDis"
         Me.DGVOptionDis.ReadOnly = True
         Me.DGVOptionDis.RowTemplate.Height = 25
@@ -242,7 +245,7 @@ Partial Class CreerContrat
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(12, 261)
+        Me.Label6.Location = New System.Drawing.Point(12, 314)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(85, 15)
         Me.Label6.TabIndex = 23
@@ -251,7 +254,7 @@ Partial Class CreerContrat
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(654, 261)
+        Me.Label7.Location = New System.Drawing.Point(654, 314)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(103, 15)
         Me.Label7.TabIndex = 24
@@ -259,7 +262,7 @@ Partial Class CreerContrat
         '
         'TBTPS
         '
-        Me.TBTPS.Location = New System.Drawing.Point(220, 562)
+        Me.TBTPS.Location = New System.Drawing.Point(220, 615)
         Me.TBTPS.Name = "TBTPS"
         Me.TBTPS.ReadOnly = True
         Me.TBTPS.Size = New System.Drawing.Size(138, 23)
@@ -268,7 +271,7 @@ Partial Class CreerContrat
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(20, 538)
+        Me.Label8.Location = New System.Drawing.Point(20, 591)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(32, 15)
         Me.Label8.TabIndex = 26
@@ -276,7 +279,7 @@ Partial Class CreerContrat
         '
         'TBTotal
         '
-        Me.TBTotal.Location = New System.Drawing.Point(20, 556)
+        Me.TBTotal.Location = New System.Drawing.Point(20, 609)
         Me.TBTotal.Name = "TBTotal"
         Me.TBTotal.ReadOnly = True
         Me.TBTotal.Size = New System.Drawing.Size(138, 23)
@@ -287,7 +290,7 @@ Partial Class CreerContrat
         Me.CBTPS.AutoSize = True
         Me.CBTPS.Checked = True
         Me.CBTPS.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CBTPS.Location = New System.Drawing.Point(220, 537)
+        Me.CBTPS.Location = New System.Drawing.Point(220, 590)
         Me.CBTPS.Name = "CBTPS"
         Me.CBTPS.Size = New System.Drawing.Size(45, 19)
         Me.CBTPS.TabIndex = 28
@@ -299,7 +302,7 @@ Partial Class CreerContrat
         Me.CBTVQ.AutoSize = True
         Me.CBTVQ.Checked = True
         Me.CBTVQ.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CBTVQ.Location = New System.Drawing.Point(220, 591)
+        Me.CBTVQ.Location = New System.Drawing.Point(220, 644)
         Me.CBTVQ.Name = "CBTVQ"
         Me.CBTVQ.Size = New System.Drawing.Size(48, 19)
         Me.CBTVQ.TabIndex = 30
@@ -308,7 +311,7 @@ Partial Class CreerContrat
         '
         'TBTVQ
         '
-        Me.TBTVQ.Location = New System.Drawing.Point(220, 616)
+        Me.TBTVQ.Location = New System.Drawing.Point(220, 669)
         Me.TBTVQ.Name = "TBTVQ"
         Me.TBTVQ.ReadOnly = True
         Me.TBTVQ.Size = New System.Drawing.Size(138, 23)
@@ -317,7 +320,7 @@ Partial Class CreerContrat
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(20, 582)
+        Me.Label9.Location = New System.Drawing.Point(20, 635)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(52, 15)
         Me.Label9.TabIndex = 32
@@ -325,7 +328,7 @@ Partial Class CreerContrat
         '
         'TBEchange
         '
-        Me.TBEchange.Location = New System.Drawing.Point(20, 600)
+        Me.TBEchange.Location = New System.Drawing.Point(20, 653)
         Me.TBEchange.Name = "TBEchange"
         Me.TBEchange.Size = New System.Drawing.Size(138, 23)
         Me.TBEchange.TabIndex = 31
@@ -334,7 +337,7 @@ Partial Class CreerContrat
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(20, 626)
+        Me.Label10.Location = New System.Drawing.Point(20, 679)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(62, 15)
         Me.Label10.TabIndex = 34
@@ -342,7 +345,7 @@ Partial Class CreerContrat
         '
         'TBSousTotal
         '
-        Me.TBSousTotal.Location = New System.Drawing.Point(20, 644)
+        Me.TBSousTotal.Location = New System.Drawing.Point(20, 697)
         Me.TBSousTotal.Name = "TBSousTotal"
         Me.TBSousTotal.ReadOnly = True
         Me.TBSousTotal.Size = New System.Drawing.Size(138, 23)
@@ -351,7 +354,7 @@ Partial Class CreerContrat
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(428, 582)
+        Me.Label11.Location = New System.Drawing.Point(428, 635)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(56, 15)
         Me.Label11.TabIndex = 36
@@ -359,7 +362,7 @@ Partial Class CreerContrat
         '
         'TBAccompte
         '
-        Me.TBAccompte.Location = New System.Drawing.Point(428, 600)
+        Me.TBAccompte.Location = New System.Drawing.Point(428, 653)
         Me.TBAccompte.Name = "TBAccompte"
         Me.TBAccompte.Size = New System.Drawing.Size(138, 23)
         Me.TBAccompte.TabIndex = 35
@@ -368,7 +371,7 @@ Partial Class CreerContrat
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(428, 626)
+        Me.Label12.Location = New System.Drawing.Point(428, 679)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(48, 15)
         Me.Label12.TabIndex = 38
@@ -376,7 +379,7 @@ Partial Class CreerContrat
         '
         'TBBalance
         '
-        Me.TBBalance.Location = New System.Drawing.Point(428, 644)
+        Me.TBBalance.Location = New System.Drawing.Point(428, 697)
         Me.TBBalance.Name = "TBBalance"
         Me.TBBalance.ReadOnly = True
         Me.TBBalance.Size = New System.Drawing.Size(138, 23)
@@ -385,7 +388,7 @@ Partial Class CreerContrat
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(634, 538)
+        Me.Label13.Location = New System.Drawing.Point(634, 591)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(86, 15)
         Me.Label13.TabIndex = 40
@@ -393,7 +396,7 @@ Partial Class CreerContrat
         '
         'TBPayerLiv
         '
-        Me.TBPayerLiv.Location = New System.Drawing.Point(634, 556)
+        Me.TBPayerLiv.Location = New System.Drawing.Point(634, 609)
         Me.TBPayerLiv.Name = "TBPayerLiv"
         Me.TBPayerLiv.ReadOnly = True
         Me.TBPayerLiv.Size = New System.Drawing.Size(138, 23)
@@ -402,7 +405,7 @@ Partial Class CreerContrat
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(634, 582)
+        Me.Label14.Location = New System.Drawing.Point(634, 635)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(96, 15)
         Me.Label14.TabIndex = 42
@@ -410,7 +413,7 @@ Partial Class CreerContrat
         '
         'TBBalEchange
         '
-        Me.TBBalEchange.Location = New System.Drawing.Point(634, 600)
+        Me.TBBalEchange.Location = New System.Drawing.Point(634, 653)
         Me.TBBalEchange.Name = "TBBalEchange"
         Me.TBBalEchange.ReadOnly = True
         Me.TBBalEchange.Size = New System.Drawing.Size(138, 23)
@@ -419,7 +422,7 @@ Partial Class CreerContrat
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(825, 538)
+        Me.Label15.Location = New System.Drawing.Point(825, 591)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(76, 15)
         Me.Label15.TabIndex = 44
@@ -427,7 +430,7 @@ Partial Class CreerContrat
         '
         'TBFinancement
         '
-        Me.TBFinancement.Location = New System.Drawing.Point(825, 556)
+        Me.TBFinancement.Location = New System.Drawing.Point(825, 609)
         Me.TBFinancement.Name = "TBFinancement"
         Me.TBFinancement.ReadOnly = True
         Me.TBFinancement.Size = New System.Drawing.Size(138, 23)
@@ -436,7 +439,7 @@ Partial Class CreerContrat
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(825, 579)
+        Me.Label16.Location = New System.Drawing.Point(825, 632)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(89, 15)
         Me.Label16.TabIndex = 46
@@ -444,7 +447,7 @@ Partial Class CreerContrat
         '
         'TBRemettreCl
         '
-        Me.TBRemettreCl.Location = New System.Drawing.Point(825, 597)
+        Me.TBRemettreCl.Location = New System.Drawing.Point(825, 650)
         Me.TBRemettreCl.Name = "TBRemettreCl"
         Me.TBRemettreCl.ReadOnly = True
         Me.TBRemettreCl.Size = New System.Drawing.Size(138, 23)
@@ -453,7 +456,7 @@ Partial Class CreerContrat
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(428, 538)
+        Me.Label17.Location = New System.Drawing.Point(428, 591)
         Me.Label17.Name = "Label17"
         Me.Label17.Size = New System.Drawing.Size(32, 15)
         Me.Label17.TabIndex = 48
@@ -461,7 +464,7 @@ Partial Class CreerContrat
         '
         'TBTotalFin
         '
-        Me.TBTotalFin.Location = New System.Drawing.Point(428, 556)
+        Me.TBTotalFin.Location = New System.Drawing.Point(428, 609)
         Me.TBTotalFin.Name = "TBTotalFin"
         Me.TBTotalFin.ReadOnly = True
         Me.TBTotalFin.Size = New System.Drawing.Size(138, 23)
@@ -689,7 +692,7 @@ Partial Class CreerContrat
         '
         'BTSave
         '
-        Me.BTSave.Location = New System.Drawing.Point(930, 664)
+        Me.BTSave.Location = New System.Drawing.Point(930, 717)
         Me.BTSave.Name = "BTSave"
         Me.BTSave.Size = New System.Drawing.Size(184, 48)
         Me.BTSave.TabIndex = 77
@@ -707,18 +710,46 @@ Partial Class CreerContrat
         '
         'BTAnnuler
         '
-        Me.BTAnnuler.Location = New System.Drawing.Point(1120, 664)
+        Me.BTAnnuler.Location = New System.Drawing.Point(1120, 717)
         Me.BTAnnuler.Name = "BTAnnuler"
         Me.BTAnnuler.Size = New System.Drawing.Size(184, 48)
         Me.BTAnnuler.TabIndex = 79
         Me.BTAnnuler.Text = "Annuler"
         Me.BTAnnuler.UseVisualStyleBackColor = True
         '
+        'DTPLivraison
+        '
+        Me.DTPLivraison.Location = New System.Drawing.Point(12, 263)
+        Me.DTPLivraison.Name = "DTPLivraison"
+        Me.DTPLivraison.Size = New System.Drawing.Size(263, 23)
+        Me.DTPLivraison.TabIndex = 80
+        '
+        'Label29
+        '
+        Me.Label29.AutoSize = True
+        Me.Label29.Location = New System.Drawing.Point(12, 245)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(111, 15)
+        Me.Label29.TabIndex = 81
+        Me.Label29.Text = "Date prévu livraison"
+        '
+        'BTCouleur
+        '
+        Me.BTCouleur.Location = New System.Drawing.Point(281, 218)
+        Me.BTCouleur.Name = "BTCouleur"
+        Me.BTCouleur.Size = New System.Drawing.Size(138, 23)
+        Me.BTCouleur.TabIndex = 82
+        Me.BTCouleur.Text = "Ajouter des couleurs"
+        Me.BTCouleur.UseVisualStyleBackColor = True
+        '
         'CreerContrat
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1310, 715)
+        Me.ClientSize = New System.Drawing.Size(1310, 772)
+        Me.Controls.Add(Me.BTCouleur)
+        Me.Controls.Add(Me.Label29)
+        Me.Controls.Add(Me.DTPLivraison)
         Me.Controls.Add(Me.BTAnnuler)
         Me.Controls.Add(Me.CBSexe)
         Me.Controls.Add(Me.BTSave)
@@ -791,7 +822,7 @@ Partial Class CreerContrat
         Me.Controls.Add(Me.TBCoutM)
         Me.Controls.Add(Me.CBModel)
         Me.Name = "CreerContrat"
-        Me.Text = "Contrat"
+        Me.Text = " Créer Contrat"
         CType(Me.DGVOptionCh, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGVOptionDis, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -870,4 +901,7 @@ Partial Class CreerContrat
     Friend WithEvents BTSave As Button
     Friend WithEvents CBSexe As ComboBox
     Friend WithEvents BTAnnuler As Button
+    Friend WithEvents DTPLivraison As DateTimePicker
+    Friend WithEvents Label29 As Label
+    Friend WithEvents BTCouleur As Button
 End Class

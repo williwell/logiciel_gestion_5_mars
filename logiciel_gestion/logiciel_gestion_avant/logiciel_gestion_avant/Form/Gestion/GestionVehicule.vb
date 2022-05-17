@@ -4,6 +4,7 @@ Public Class GestionVehicule
     ReadOnly row As DataGridViewRow
     ReadOnly table As New DataTable
     ReadOnly tableCoulVe As New DataTable
+    Dim tablePie As New DataTable
     Dim bool As Boolean = True
     ReadOnly listeOR(8) As String
     ReadOnly liste(8) As String
@@ -137,14 +138,27 @@ Public Class GestionVehicule
         For c As Integer = 0 To DGVClient.Columns.Count - 1
             DGVClient.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         Next
+
+        For c As Integer = 0 To MainForm.tablePieSerie.Columns.Count - 2
+            tablePie.Columns.Add(MainForm.tablePieSerie.Columns(c).ColumnName)
+        Next
+
+        RemplirDGVPieSerie()
+
+        DGVListePie.Columns(1).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
+        DGVListePie.Columns(2).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
     End Sub
 
     Private Sub RemplirListe(lis As String())
         'On remplie la liste avec les valeur qui sont dans le form
         lis(0) = row.Cells(0).Value
         lis(1) = row.Cells(1).Value
-        lis(2) = Mainform.tableModel(CBModel.SelectedIndex)(0)
-        lis(3) = tableCoulVe(CBCoulVe.SelectedIndex)(0)
+        lis(2) = MainForm.tableModel(CBModel.SelectedIndex)(0)
+        If tableCoulVe.Rows.Count <> 0 Then
+            lis(3) = tableCoulVe(CBCoulVe.SelectedIndex)(0)
+        Else
+            lis(3) = "Aucune couleur"
+        End If
         lis(4) = MainForm.tableCoulToi(CBCoulToile.SelectedIndex)(0)
         lis(5) = MainForm.tableCoulTis(CBCoulTissus.SelectedIndex)(0)
         lis(6) = CBFabriquer.Checked
@@ -339,5 +353,27 @@ Public Class GestionVehicule
     Private Sub GestionVehicule_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         'Quand le form ferme on envoir la datarow au UserControl de gestion Véhicule pour qui modifie son datagridview
         uc.ChangeRow(row)
+    End Sub
+
+    Private Sub BTAdd_Click(sender As Object, e As EventArgs) Handles BTAdd.Click
+        Dim form As New CreerPieSerie(TBIDVe.Text)
+        form.ShowDialog()
+        RemplirDGVPieSerie()
+    End Sub
+
+    Private Sub RemplirDGVPieSerie()
+        tablePie.Rows.Clear()
+
+        For r As Integer = 0 To MainForm.tablePieSerie.Rows.Count - 1
+            If MainForm.tablePieSerie.Rows(r).Item("idveh") = TBIDVe.Text Then
+                Dim row As DataRow = tablePie.NewRow
+                For c As Integer = 0 To row.ItemArray.Count - 1
+                    row(c) = MainForm.tablePieSerie.Rows(r).Item(c)
+                Next
+                tablePie.Rows.Add(row)
+            End If
+        Next
+
+        DGVListePie.DataSource = tablePie
     End Sub
 End Class

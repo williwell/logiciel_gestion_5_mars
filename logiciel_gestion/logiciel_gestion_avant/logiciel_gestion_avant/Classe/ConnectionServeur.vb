@@ -38,7 +38,7 @@ Public Class ConnectionServeur
                 conc = True
                 thread.Start(main)
             Else
-                MessageBox.Show("La version du programme n'est plus a jour, vous devez le mette à jour pour continuer!", "Attention!")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ, "Attention!")
             End If
             Return conc
         Catch ex As Exception

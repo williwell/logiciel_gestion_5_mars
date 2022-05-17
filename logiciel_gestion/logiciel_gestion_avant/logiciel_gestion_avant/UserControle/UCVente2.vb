@@ -46,15 +46,15 @@
 
     'Fonction qui sert à remplir le DataGridView
     Public Sub LoadDGV()
-        If Not id = uc.GetIDModel Then
-            id = uc.GetIDModel
-            remplirDGV()
-            DGVOpDispo.DataSource = table
+        'If Not id = uc.GetIDModel Then
+        '    id = uc.GetIDModel
+        '    remplirDGV()
+        '    DGVOpDispo.DataSource = table
 
-            For i As Integer = DGVOpCh.Rows.Count - 1 To 0 Step -1
-                DGVOpCh.Rows.RemoveAt(i)
-            Next
-        End If
+        '    For i As Integer = DGVOpCh.Rows.Count - 1 To 0 Step -1
+        '        DGVOpCh.Rows.RemoveAt(i)
+        '    Next
+        'End If
     End Sub
 
     'Quand on click sur le bouton, on appel la fonction du mainform pour retourner sur le usercontrol UCVente1

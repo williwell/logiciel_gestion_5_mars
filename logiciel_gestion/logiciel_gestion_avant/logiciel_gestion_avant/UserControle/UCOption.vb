@@ -45,6 +45,14 @@
         For c As Integer = 0 To DGVOption.Columns.Count - 1
             DGVOption.Columns(c).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         Next
+
+        If DGVOption.Rows.Count = 0 Then
+            BTDelete.Enabled = False
+            BTItem.Enabled = False
+        Else
+            BTDelete.Enabled = True
+            BTItem.Enabled = True
+        End If
     End Sub
 
     'Fonction qui sert à regarder si a des changement entre le datagridview et la liste originale pour savoir si on doit mettre les bouton save et annuler
@@ -162,9 +170,11 @@
     'Quand on click sur ce bouton ou qu'on double click sur une ligne du datagridview, on créer un nouveau form de type GEstionInvOpt avec
     'le id de l'option qui est sélectionner dans le datagridview
     Private Sub BTItem_Click(sender As Object, e As EventArgs) Handles BTItem.Click, DGVOption.DoubleClick
-        Dim form As New GestionInvOpt(DGVOption.CurrentRow.Cells(0).Value)
-        form.ShowDialog(Me)
-        RemplireDGV()
+        If DGVOption.CurrentRow IsNot Nothing Then
+            Dim form As New GestionInvOpt(DGVOption.CurrentRow.Cells(0).Value)
+            form.ShowDialog(Me)
+            RemplireDGV()
+        End If
     End Sub
 
     'Quand on click dans le userControl, on check que le menu du mainform soit bien fermer

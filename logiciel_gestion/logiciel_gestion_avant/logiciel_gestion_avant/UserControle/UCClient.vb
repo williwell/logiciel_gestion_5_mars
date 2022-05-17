@@ -26,9 +26,11 @@
 
     'Si on double click sur une ligne du DataGridView on crée un nouveau form de GestionClient avec comme paramètre la ligne du DataGridView e ton affiche
     Private Sub DGVClient_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DGVClient.CellDoubleClick
-        If e.RowIndex >= 0 Then
-            Dim InfoClient As New GestionClient(DGVClient.CurrentRow.Cells(0).Value)
-            InfoClient.ShowDialog(Me)
+        If DGVClient.CurrentRow IsNot Nothing Then
+            If e.RowIndex >= 0 Then
+                Dim InfoClient As New GestionClient(DGVClient.CurrentRow.Cells(0).Value)
+                InfoClient.ShowDialog(Me)
+            End If
         End If
     End Sub
 

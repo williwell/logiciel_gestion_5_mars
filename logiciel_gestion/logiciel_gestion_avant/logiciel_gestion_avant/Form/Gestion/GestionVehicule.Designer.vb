@@ -62,7 +62,11 @@ Partial Class GestionVehicule
         Me.BTSave = New System.Windows.Forms.Button()
         Me.CBFabriquer = New System.Windows.Forms.CheckBox()
         Me.CBInv = New System.Windows.Forms.CheckBox()
+        Me.BTAdd = New System.Windows.Forms.Button()
+        Me.DGVListePie = New System.Windows.Forms.DataGridView()
+        Me.Label6 = New System.Windows.Forms.Label()
         CType(Me.DGVClient, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DGVListePie, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TBMatricule
@@ -349,12 +353,12 @@ Partial Class GestionVehicule
         Me.DGVClient.AllowUserToAddRows = False
         Me.DGVClient.AllowUserToDeleteRows = False
         Me.DGVClient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGVClient.Location = New System.Drawing.Point(561, 78)
+        Me.DGVClient.Location = New System.Drawing.Point(561, 70)
         Me.DGVClient.Name = "DGVClient"
         Me.DGVClient.ReadOnly = True
         Me.DGVClient.RowTemplate.Height = 25
         Me.DGVClient.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DGVClient.Size = New System.Drawing.Size(672, 261)
+        Me.DGVClient.Size = New System.Drawing.Size(672, 199)
         Me.DGVClient.TabIndex = 21
         '
         'Label18
@@ -414,11 +418,48 @@ Partial Class GestionVehicule
         Me.CBInv.Text = "En Inventaire"
         Me.CBInv.UseVisualStyleBackColor = True
         '
+        'BTAdd
+        '
+        Me.BTAdd.Location = New System.Drawing.Point(696, 294)
+        Me.BTAdd.Name = "BTAdd"
+        Me.BTAdd.Size = New System.Drawing.Size(179, 23)
+        Me.BTAdd.TabIndex = 50
+        Me.BTAdd.Text = "Ajouter nouvelle pièce"
+        Me.BTAdd.UseVisualStyleBackColor = True
+        '
+        'DGVListePie
+        '
+        Me.DGVListePie.AllowUserToAddRows = False
+        Me.DGVListePie.AllowUserToDeleteRows = False
+        Me.DGVListePie.AllowUserToResizeColumns = False
+        Me.DGVListePie.AllowUserToResizeRows = False
+        Me.DGVListePie.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DGVListePie.Location = New System.Drawing.Point(561, 323)
+        Me.DGVListePie.Name = "DGVListePie"
+        Me.DGVListePie.ReadOnly = True
+        Me.DGVListePie.RowTemplate.Height = 25
+        Me.DGVListePie.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DGVListePie.Size = New System.Drawing.Size(672, 294)
+        Me.DGVListePie.TabIndex = 49
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Font = New System.Drawing.Font("Segoe UI", 14.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label6.Location = New System.Drawing.Point(561, 295)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(129, 25)
+        Me.Label6.TabIndex = 51
+        Me.Label6.Text = "Pièce installer"
+        '
         'GestionVehicule
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1245, 629)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.BTAdd)
+        Me.Controls.Add(Me.DGVListePie)
         Me.Controls.Add(Me.CBInv)
         Me.Controls.Add(Me.CBFabriquer)
         Me.Controls.Add(Me.BTSave)
@@ -462,6 +503,7 @@ Partial Class GestionVehicule
         Me.Name = "GestionVehicule"
         Me.Text = "GestionVehicule"
         CType(Me.DGVClient, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DGVListePie, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -506,4 +548,7 @@ Partial Class GestionVehicule
     Friend WithEvents BTSave As Button
     Friend WithEvents CBFabriquer As CheckBox
     Friend WithEvents CBInv As CheckBox
+    Friend WithEvents BTAdd As Button
+    Friend WithEvents DGVListePie As DataGridView
+    Friend WithEvents Label6 As Label
 End Class

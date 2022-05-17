@@ -29,6 +29,10 @@ Partial Class GestionFacture
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GestionFacture))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
         Me.LabDateLiv = New System.Windows.Forms.Label()
         Me.LabEmailCl = New System.Windows.Forms.Label()
         Me.LabTelCl = New System.Windows.Forms.Label()
@@ -90,6 +94,10 @@ Partial Class GestionFacture
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.Label11)
+        Me.Panel1.Controls.Add(Me.Label10)
+        Me.Panel1.Controls.Add(Me.Label9)
+        Me.Panel1.Controls.Add(Me.Label8)
         Me.Panel1.Controls.Add(Me.LabDateLiv)
         Me.Panel1.Controls.Add(Me.LabEmailCl)
         Me.Panel1.Controls.Add(Me.LabTelCl)
@@ -126,6 +134,46 @@ Partial Class GestionFacture
         Me.Panel1.Size = New System.Drawing.Size(816, 648)
         Me.Panel1.TabIndex = 1
         '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label11.Location = New System.Drawing.Point(12, 199)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(30, 12)
+        Me.Label11.TabIndex = 69
+        Me.Label11.Text = "Email:"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label10.Location = New System.Drawing.Point(12, 187)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(52, 12)
+        Me.Label10.TabIndex = 68
+        Me.Label10.Text = "Téléphone:"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label9.Location = New System.Drawing.Point(12, 175)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(59, 12)
+        Me.Label9.TabIndex = 67
+        Me.Label9.Text = "Code Postal:"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label8.Location = New System.Drawing.Point(12, 162)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(40, 12)
+        Me.Label8.TabIndex = 66
+        Me.Label8.Text = "Adresse:"
+        '
         'LabDateLiv
         '
         Me.LabDateLiv.AutoSize = True
@@ -140,7 +188,7 @@ Partial Class GestionFacture
         '
         Me.LabEmailCl.AutoSize = True
         Me.LabEmailCl.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabEmailCl.Location = New System.Drawing.Point(12, 199)
+        Me.LabEmailCl.Location = New System.Drawing.Point(77, 199)
         Me.LabEmailCl.Name = "LabEmailCl"
         Me.LabEmailCl.Size = New System.Drawing.Size(76, 12)
         Me.LabEmailCl.TabIndex = 63
@@ -150,7 +198,7 @@ Partial Class GestionFacture
         '
         Me.LabTelCl.AutoSize = True
         Me.LabTelCl.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabTelCl.Location = New System.Drawing.Point(12, 187)
+        Me.LabTelCl.Location = New System.Drawing.Point(77, 187)
         Me.LabTelCl.Name = "LabTelCl"
         Me.LabTelCl.Size = New System.Drawing.Size(50, 12)
         Me.LabTelCl.TabIndex = 62
@@ -160,7 +208,7 @@ Partial Class GestionFacture
         '
         Me.LabPosCl.AutoSize = True
         Me.LabPosCl.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabPosCl.Location = New System.Drawing.Point(12, 175)
+        Me.LabPosCl.Location = New System.Drawing.Point(77, 175)
         Me.LabPosCl.Name = "LabPosCl"
         Me.LabPosCl.Size = New System.Drawing.Size(57, 12)
         Me.LabPosCl.TabIndex = 61
@@ -170,7 +218,7 @@ Partial Class GestionFacture
         '
         Me.LabAddCl.AutoSize = True
         Me.LabAddCl.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabAddCl.Location = New System.Drawing.Point(12, 162)
+        Me.LabAddCl.Location = New System.Drawing.Point(77, 162)
         Me.LabAddCl.Name = "LabAddCl"
         Me.LabAddCl.Size = New System.Drawing.Size(71, 12)
         Me.LabAddCl.TabIndex = 60
@@ -244,7 +292,7 @@ Partial Class GestionFacture
         '
         Me.LabClient.AutoSize = True
         Me.LabClient.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabClient.Location = New System.Drawing.Point(52, 150)
+        Me.LabClient.Location = New System.Drawing.Point(77, 150)
         Me.LabClient.Name = "LabClient"
         Me.LabClient.Size = New System.Drawing.Size(68, 12)
         Me.LabClient.TabIndex = 52
@@ -443,7 +491,7 @@ Partial Class GestionFacture
         Me.DGVModel.RowHeadersVisible = False
         Me.DGVModel.RowTemplate.Height = 25
         Me.DGVModel.Size = New System.Drawing.Size(712, 41)
-        Me.DGVModel.TabIndex = 43
+        Me.DGVModel.TabIndex = 90
         '
         'Description
         '
@@ -674,4 +722,8 @@ Partial Class GestionFacture
     Friend WithEvents PrintDialog1 As PrintDialog
     Friend WithEvents PrintDocument1 As Printing.PrintDocument
     Friend WithEvents PrintPreviewDialog1 As PrintPreviewDialog
+    Friend WithEvents Label11 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label8 As Label
 End Class

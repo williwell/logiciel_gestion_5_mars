@@ -7,9 +7,10 @@
     Dim listeIDCoulVe(0) As String
     Dim listeIDCoulTis(0) As String
     Dim listeIDCoulToi(0) As String
+    Dim listeCoul(-1) As String
 
     Private Sub CreerContrat_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Dim liste(0) As String
+        Dim liste(-1) As String
 
         For c As Integer = 0 To MainForm.tableOp.Columns.Count - 2
             tableCh.Columns.Add(MainForm.tableOp.Columns(c).ColumnName)
@@ -31,8 +32,13 @@
             listeIDM(r) = MainForm.tableModel.Rows(r).Item("id")
         Next
 
-        CBModel.DataSource = liste
-
+        If liste.Length <> 0 Then
+            CBModel.DataSource = liste
+        Else
+            CBModel.Items.Add(MsgTextFr.Getinstance.MsgMissModel)
+            CBModel.SelectedIndex = 0
+            BTSave.Enabled = False
+        End If
 
         For r As Integer = 0 To MainForm.tableCoulTis.Rows.Count - 1
             ReDim Preserve liste(r)
@@ -88,7 +94,7 @@
         Next
 
         If CBCoulVe.Items.Count = 0 Then
-            CBCoulVe.Items.Add("Aucune couleur associé à ce model")
+            CBCoulVe.Items.Add(MsgTextFr.Getinstance.MsgMissCoulModel)
         End If
 
         CBCoulVe.SelectedIndex = 0
@@ -111,7 +117,7 @@
     End Sub
 
     Private Sub CBCoulVe_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBCoulVe.SelectedIndexChanged
-        If CBCoulVe.SelectedItem <> "Aucune couleur associé à ce model" Then
+        If CBCoulVe.SelectedItem <> MsgTextFr.Getinstance.MsgMissCoulModel Then
             For r As Integer = 0 To MainForm.tableCoulVe.Rows.Count - 1
                 If CBCoulVe.SelectedItem = MainForm.tableCoulVe.Rows(r).Item("nom") Then
                     Dim cout As Double = MainForm.tableCoulVe.Rows(r).Item("cout")
@@ -252,7 +258,7 @@
     End Sub
 
     Private Sub BTAnnuler_Click(sender As Object, e As EventArgs) Handles BTAnnuler.Click
-        If MessageBox.Show("Voulez-vous vraiment annuler ce contrat?", "Attention", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+        If MessageBox.Show(MsgTextFr.Getinstance.MsgAnnulerContrat, "Attention", MessageBoxButtons.YesNo) = DialogResult.Yes Then
             Me.Close()
         End If
     End Sub
@@ -314,20 +320,20 @@
         If idCl = 0 Then
             Dim strErr As String = ""
             If String.IsNullOrEmpty(TBPrenom1.Text) Then
-                strErr = "Vous devez mettre un prénom"
+                strErr = MsgTextFr.Getinstance.MsgMissPrenom.Substring(0, MsgTextFr.Getinstance.MsgMissPrenom.Length - 1)
             End If
             If String.IsNullOrEmpty(TBNom1.Text) Then
                 If String.IsNullOrEmpty(strErr) Then
-                    strErr = "Vous devez mettre un nom"
+                    strErr = MsgTextFr.Getinstance.MsgMissNom.Substring(0, MsgTextFr.Getinstance.MsgMissNom.Length - 1)
                 Else
-                    strErr += ", vous devez avoir un nom"
+                    strErr += ", " & MsgTextFr.Getinstance.MsgMissNom.Substring(0, MsgTextFr.Getinstance.MsgMissNom.Length - 1).ToLower
                 End If
             End If
             If String.IsNullOrEmpty(TBTel1.Text) Then
                 If String.IsNullOrEmpty(strErr) Then
-                    strErr = "Vous devez mettre un numéro de téléphone"
+                    strErr = MsgTextFr.Getinstance.msgMissTelephone
                 Else
-                    strErr += ", vous devez avoir un numéro de téléphone"
+                    strErr += ", " & MsgTextFr.Getinstance.msgMissTelephone.Substring(0, MsgTextFr.Getinstance.msgMissTelephone.Length - 1).ToLower
                 End If
             End If
 
@@ -397,7 +403,7 @@
                     MainForm.TableClient.Rows.Add(row)
                     SaveVe()
                 Else
-                    MessageBox.Show("Une erreur est survenu durant l'enregistrement")
+                    MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
                 End If
             End If
         Else
@@ -411,7 +417,11 @@
 
             liste(0) = "null"
             liste(1) = listeIDM(CBModel.SelectedIndex)
-            liste(2) = listeIDCoulVe(CBCoulVe.SelectedIndex)
+            If CBCoulVe.SelectedItem <> MsgTextFr.Getinstance.MsgMissCoulModel Then
+                liste(2) = listeIDCoulVe(CBCoulVe.SelectedIndex)
+            Else
+                liste(2) = 0
+            End If
             liste(3) = listeIDCoulToi(CBCoulToile.SelectedIndex)
             liste(4) = listeIDCoulTis(CBCoulTissus.SelectedIndex)
             idVe = ConnectionServeur.Getinstance.GetInfo(liste, "addvehicule")(0)(0)
@@ -426,9 +436,10 @@
                 row(5) = listeIDCoulTis(CBCoulTissus.SelectedIndex)
                 row(6) = 0
                 row(7) = 0
+                MainForm.tableVe.Rows.Add(row)
                 SaveOp()
             Else
-                MessageBox.Show("Une erreure est survenu durant l'enregistrement du Véhicule")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
             End If
         Else
             SaveOp()
@@ -458,7 +469,7 @@
                 Next
                 SaveVente()
             Else
-                MessageBox.Show("Une erreur est survenu durant l'enregistrement des options avec le véhicule")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
             End If
         Else
             SaveVente()
@@ -484,32 +495,58 @@
         Dim table As DataTable = ConnectionServeur.Getinstance.GetInfo(ListeAdd, "addfacture")
         Dim idFac As Integer = table(0)(0)
         If idfac <> 0 Then
-            MessageBox.Show("Ajout fait avec succès")
 
-            Dim row2 As DataRow = MainForm.tableFacture.NewRow
-            row2(0) = idFac
-            row2(1) = idVe
-            row2(2) = idCl
-            row2(3) = Date.Now.ToString("yyyy-MM-dd")
-            row2(4) = TBCoutM.Text.Substring(0, TBCoutM.Text.IndexOf("$"))
-            row2(5) = TBCoutC.Text.Substring(0, TBCoutC.Text.IndexOf("$"))
-            row2(6) = TBEchange.Text.Substring(0, TBCoutC.Text.IndexOf("$"))
-            row2(7) = TBAccompte.Text.Substring(0, TBAccompte.Text.IndexOf("$"))
-            'row2(8) = TBPayerLiv.Text.Substring(0, TBPayerLiv.Text.IndexOf("$"))
-            ListeAdd(9) = 0
-            ListeAdd(8) = 0
-            'row2(9) = TBRemettreCl.Text.Substring(0, TBRemettreCl.Text.IndexOf("$"))
-            row2(10) = MainForm.GetInstance.GetOption4
-            row2(11) = MainForm.GetInstance.GetOption5
+            Dim priorite As Integer = 1
 
-            MainForm.tableFacture.Rows.Add(row2)
+            For r As Integer = 0 To MainForm.tableVenteVe.Rows.Count - 1
+                If MainForm.tableVenteVe.Rows(r).Item("priorite") >= priorite Then
+                    priorite = MainForm.tableVenteVe.Rows(r).Item("priorite") + 1
+                End If
+            Next
 
-            Dim print As New PrintingForm(row2)
-            print.Show()
+            Dim listeAdd2(4) As String
+            listeAdd2(0) = idVe
+            listeAdd2(1) = Date.Now.ToString("yyyy-MM-jj")
+            listeAdd2(2) = DTPLivraison.Value.ToString("yyyy-MM-jj")
+            listeAdd2(3) = priorite
+            listeAdd2(4) = idCl
 
-            Me.Close()
+            If ConnectionServeur.Getinstance.AddDelete(listeAdd2, "addventeclient") Then
+                MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
+                Dim row2 As DataRow = MainForm.tableFacture.NewRow
+                row2(0) = idFac
+                row2(1) = idVe
+                row2(2) = idCl
+                row2(3) = Date.Now.ToString("yyyy-MM-dd")
+                row2(4) = TBCoutM.Text.Substring(0, TBCoutM.Text.IndexOf("$"))
+                row2(5) = TBCoutC.Text.Substring(0, TBCoutC.Text.IndexOf("$"))
+                row2(6) = TBEchange.Text.Substring(0, TBEchange.Text.IndexOf("$"))
+                row2(7) = TBAccompte.Text.Substring(0, TBAccompte.Text.IndexOf("$"))
+                'row2(8) = TBPayerLiv.Text.Substring(0, TBPayerLiv.Text.IndexOf("$"))
+                'row2(9) = TBRemettreCl.Text.Substring(0, TBRemettreCl.Text.IndexOf("$"))
+                row2(10) = MainForm.GetInstance.GetOption4
+                row2(11) = MainForm.GetInstance.GetOption5
+
+                MainForm.tableFacture.Rows.Add(row2)
+
+                Dim print As New PrintingForm(row2)
+                print.Show()
+
+                Me.Close()
+            Else
+                MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
+            End If
         Else
-            MessageBox.Show("Une erreure est survenu durant l'enregistrement de la facture!", "Attention!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgErrServFacture, "Attention!")
         End If
+    End Sub
+
+    Private Sub BTCouleur_Click(sender As Object, e As EventArgs) Handles BTCouleur.Click
+        Dim form As New AddCoulContrat(listeCoul, Me)
+        form.ShowDialog()
+    End Sub
+
+    Public Sub RemplirListe(lst() As String)
+        listeCoul = lst
     End Sub
 End Class

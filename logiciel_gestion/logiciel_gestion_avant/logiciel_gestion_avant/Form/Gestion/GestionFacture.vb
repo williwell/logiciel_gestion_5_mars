@@ -130,7 +130,6 @@
         DGVTotal.Location = New Point(DGVTotal.Location.X, DGVOption.Location.Y + h + 1)
 
 
-
         total += DGVModel.Rows(0).Cells(2).Value
         total += DGVCoulVe.Rows(0).Cells(2).Value
 
@@ -154,7 +153,7 @@
         nbr = DGVTotal.Rows(2).Cells(2).Value
         total = nbr + DGVTotal.Rows(3).Cells(2).Value + DGVTotal.Rows(4).Cells(2).Value
         DGVTotal.Rows.Add("", "TOTAL", total.ToString("c"))
-        DGVTotal.Rows.Add("", "ACOMPTE")
+        DGVTotal.Rows.Add("", "ACOMPTE", rowFac.Item("acompte"))
         total = DGVTotal.Rows(5).Cells(2).Value - DGVTotal.Rows(6).Cells(2).Value
         DGVTotal.Rows.Add("", "BALANCE", total.ToString("c"))
         DGVTotal.Rows.Add("", "PAYER A LA LIVRAISON")
@@ -192,8 +191,4 @@
 
         Return h
     End Function
-
-    Private Sub Panel1_Paint(sender As Object, e As PaintEventArgs) Handles Panel1.Paint
-
-    End Sub
 End Class

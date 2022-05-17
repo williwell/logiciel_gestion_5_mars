@@ -191,7 +191,7 @@ Public Class CreerModel
                 MainForm.tableModel.Rows.Add(row)
 
                 If dgvOptionMo.Rows.Count > 0 Then
-                    ConnectionServeur.Getinstance.AddDeleteListe(CreateListe(dgvOptionMo), id, "AddOpMo")
+                    ConnectionServeur.Getinstance.AddDelete(CreateListe(dgvOptionMo), id, "AddOpMo")
 
                     For r As Integer = 0 To dgvOptionMo.Rows.Count - 1
                         Dim row2 As DataRow = MainForm.tableOpMo.NewRow
@@ -202,7 +202,7 @@ Public Class CreerModel
 
                 End If
                 If dgvCoulMo.Rows.Count > 0 Then
-                    ConnectionServeur.Getinstance.AddDeleteListe(CreateListe(dgvCoulMo), id, "AddCoulMo")
+                    ConnectionServeur.Getinstance.AddDelete(CreateListe(dgvCoulMo), id, "AddCoulMo")
 
                     For r As Integer = 0 To dgvCoulMo.Rows.Count - 1
                         Dim row2 As DataRow = MainForm.tableCoulMo.NewRow

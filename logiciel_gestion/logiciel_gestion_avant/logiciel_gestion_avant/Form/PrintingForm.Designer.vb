@@ -78,6 +78,10 @@ Partial Class PrintingForm
         Me.LabTelCl = New System.Windows.Forms.Label()
         Me.LabEmailCl = New System.Windows.Forms.Label()
         Me.LabDateLiv = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
         CType(Me.DGVModel, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVCoulVe, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVCoul, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -440,7 +444,7 @@ Partial Class PrintingForm
         '
         Me.LabClient.AutoSize = True
         Me.LabClient.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabClient.Location = New System.Drawing.Point(117, 167)
+        Me.LabClient.Location = New System.Drawing.Point(138, 167)
         Me.LabClient.Name = "LabClient"
         Me.LabClient.Size = New System.Drawing.Size(68, 12)
         Me.LabClient.TabIndex = 19
@@ -522,7 +526,7 @@ Partial Class PrintingForm
         '
         Me.LabAddCl.AutoSize = True
         Me.LabAddCl.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabAddCl.Location = New System.Drawing.Point(77, 179)
+        Me.LabAddCl.Location = New System.Drawing.Point(138, 179)
         Me.LabAddCl.Name = "LabAddCl"
         Me.LabAddCl.Size = New System.Drawing.Size(71, 12)
         Me.LabAddCl.TabIndex = 27
@@ -532,7 +536,7 @@ Partial Class PrintingForm
         '
         Me.LabPosCl.AutoSize = True
         Me.LabPosCl.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabPosCl.Location = New System.Drawing.Point(77, 192)
+        Me.LabPosCl.Location = New System.Drawing.Point(138, 192)
         Me.LabPosCl.Name = "LabPosCl"
         Me.LabPosCl.Size = New System.Drawing.Size(57, 12)
         Me.LabPosCl.TabIndex = 29
@@ -542,7 +546,7 @@ Partial Class PrintingForm
         '
         Me.LabTelCl.AutoSize = True
         Me.LabTelCl.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabTelCl.Location = New System.Drawing.Point(77, 204)
+        Me.LabTelCl.Location = New System.Drawing.Point(138, 204)
         Me.LabTelCl.Name = "LabTelCl"
         Me.LabTelCl.Size = New System.Drawing.Size(50, 12)
         Me.LabTelCl.TabIndex = 30
@@ -552,7 +556,7 @@ Partial Class PrintingForm
         '
         Me.LabEmailCl.AutoSize = True
         Me.LabEmailCl.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.LabEmailCl.Location = New System.Drawing.Point(77, 216)
+        Me.LabEmailCl.Location = New System.Drawing.Point(138, 216)
         Me.LabEmailCl.Name = "LabEmailCl"
         Me.LabEmailCl.Size = New System.Drawing.Size(76, 12)
         Me.LabEmailCl.TabIndex = 31
@@ -568,12 +572,56 @@ Partial Class PrintingForm
         Me.LabDateLiv.TabIndex = 33
         Me.LabDateLiv.Text = "Date Livré:"
         '
-        'TestPrint
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label8.Location = New System.Drawing.Point(77, 179)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(40, 12)
+        Me.Label8.TabIndex = 34
+        Me.Label8.Text = "Adresse:"
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label9.Location = New System.Drawing.Point(77, 192)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(59, 12)
+        Me.Label9.TabIndex = 35
+        Me.Label9.Text = "Code Postal:"
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label10.Location = New System.Drawing.Point(77, 204)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(52, 12)
+        Me.Label10.TabIndex = 36
+        Me.Label10.Text = "Téléphone:"
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Label11.Location = New System.Drawing.Point(77, 216)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(30, 12)
+        Me.Label11.TabIndex = 37
+        Me.Label11.Text = "Email:"
+        '
+        'PrintingForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(987, 1068)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.LabDateLiv)
         Me.Controls.Add(Me.LabEmailCl)
         Me.Controls.Add(Me.LabTelCl)
@@ -604,7 +652,7 @@ Partial Class PrintingForm
         Me.Controls.Add(Me.DGVCoulVe)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.LabDate)
-        Me.Name = "TestPrint"
+        Me.Name = "PrintingForm"
         Me.Text = "TestPrint"
         CType(Me.DGVModel, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGVCoulVe, System.ComponentModel.ISupportInitialize).EndInit()
@@ -666,4 +714,8 @@ Partial Class PrintingForm
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents LabDateLiv As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label11 As Label
 End Class

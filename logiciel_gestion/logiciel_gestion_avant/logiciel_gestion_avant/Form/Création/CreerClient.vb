@@ -25,16 +25,16 @@
         Dim liste(10) As String
 
         If String.IsNullOrEmpty(Trim(TBPrenom.Text)) Then
-            MessageBox.Show("Vous devez rentrer un prénom")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgMissPrenom)
         ElseIf String.IsNullOrEmpty(Trim(TBNom.Text)) Then
-            MessageBox.Show("Vous devez rentrer un nom")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgMissNom)
         Else
             If rue And ville And pro Then
                 liste(8) = "null"
             ElseIf Not rue And Not ville And Not pro Then
                 liste(8) = TBRue.Text & ", " & TBVille.Text & ", " & TBProvince.Text
             Else
-                MessageBox.Show("Vous ne pouvez pas rentrer une adresse partielle!")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgMissAddresse)
                 Exit Sub
             End If
 
@@ -85,9 +85,9 @@
             End If
 
             If ConnectionServeur.Getinstance.AddDelete(liste, "AddClient") Then
-                    MessageBox.Show("Enregistrement effectuer avec succès")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
 
-                    Dim row As DataRow = MainForm.TableClient.NewRow
+                Dim row As DataRow = MainForm.TableClient.NewRow
                     Dim nbr As Integer = 0
                     For r As Integer = 0 To MainForm.TableClient.Rows.Count - 1
                         If MainForm.TableClient.Rows(r).Item("id") >= nbr Then
@@ -103,8 +103,8 @@
                     'client.LoadClient()
                     Me.Close()
                 Else
-                    MessageBox.Show("Une erreure est survenu durant l'enregistrement!", "Attention!")
-                End If
+                MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ, "Attention!")
+            End If
             End If
     End Sub
 

@@ -2,13 +2,15 @@
 
 Public Class ListGest
     Shared Sub PopulateRow(tableRecever As DataTable, dgvGiver As DataGridView, dgvRecever As DataGridView)
-        Dim row As DataRow = tableRecever.NewRow
-        For i As Integer = 0 To dgvGiver.Columns.Count - 1
-            row(i) = dgvGiver.CurrentRow.Cells(i).Value
-        Next
-        tableRecever.Rows.Add(row)
-        dgvRecever.Sort(dgvRecever.Columns(0), ListSortDirection.Ascending)
-        dgvGiver.Rows.Remove(dgvGiver.CurrentRow)
+        If dgvGiver.CurrentRow IsNot Nothing Then
+            Dim row As DataRow = tableRecever.NewRow
+            For i As Integer = 0 To dgvGiver.Columns.Count - 1
+                row(i) = dgvGiver.CurrentRow.Cells(i).Value
+            Next
+            tableRecever.Rows.Add(row)
+            dgvRecever.Sort(dgvRecever.Columns(0), ListSortDirection.Ascending)
+            dgvGiver.Rows.Remove(dgvGiver.CurrentRow)
+        End If
     End Sub
 
     Shared Sub PopulateRow(table As DataTable, dgvGiver As DataGridView, dgvRecever As DataGridView, tableMid As DataTable)
@@ -69,7 +71,7 @@ Public Class ListGest
 
     Shared Function CheckLenght(str As String, nbr As Integer, msg As String) As Boolean
         If str.Length > nbr Then
-            MessageBox.Show(msg & "est trop long! Vous ne pouvez pas mettre plus de " & nbr & " caratère dans cet champ")
+            MessageBox.Show(msg & MsgTextFr.Getinstance.MsgErrTropCaractere1 & nbr & MsgTextFr.Getinstance.MsgErrTropCaractere2)
             Return False
         Else
             Return True

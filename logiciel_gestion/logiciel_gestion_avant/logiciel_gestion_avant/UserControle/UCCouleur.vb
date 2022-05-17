@@ -60,6 +60,12 @@
                 listeOr(r, c) = tableCouleur(r)(c)
             Next
         Next
+
+        If dgvCouleur.Rows.Count = 0 Then
+            BtDel.Enabled = False
+        Else
+            BtDel.Enabled = True
+        End If
     End Sub
 
     Private Sub BTEnregistrer_Click(sender As Object, e As EventArgs) Handles BTEnregistrer.Click

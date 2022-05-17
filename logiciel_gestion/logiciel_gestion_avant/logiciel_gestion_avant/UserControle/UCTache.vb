@@ -47,6 +47,14 @@ Public Class UCTache
         DGVTache.Columns(DGVTache.Columns.Count - 1).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         DGVTache.Columns(DGVTache.Columns.Count - 2).AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
         DGVTache.Sort(DGVTache.Columns("dateJour"), ListSortDirection.Ascending)
+
+        If DGVTache.Rows.Count = 0 Then
+            BTMod.Enabled = False
+            BTSupp.Enabled = False
+        Else
+            BTMod.Enabled = True
+            BTSupp.Enabled = True
+        End If
     End Sub
 
     Private Sub BTAdd_Click(sender As Object, e As EventArgs) Handles BTAdd.Click

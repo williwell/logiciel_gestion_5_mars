@@ -53,6 +53,12 @@
                 listeOr(r, c) = tableCoul(r)(c)
             Next
         Next
+
+        If dgvCouleur.Rows.Count = 0 Then
+            BtDel.Enabled = False
+        Else
+            BtDel.Enabled = True
+        End If
     End Sub
 
     'Si on click sur ce bouton, on remet toute l'information de la listeOriginal dans la tableCoul pour remettre les informations de base dedans

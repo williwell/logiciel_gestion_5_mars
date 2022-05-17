@@ -1,6 +1,5 @@
 ﻿Public Class ListeVehicule
     ReadOnly uc As CreerContrat
-    Dim veInventaire As Boolean = False
 
     Sub New(ucVente As CreerContrat)
 

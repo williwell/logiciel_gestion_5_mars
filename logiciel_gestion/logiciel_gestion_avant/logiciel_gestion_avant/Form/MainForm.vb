@@ -30,6 +30,7 @@ Public Class MainForm
     Public Shared tableTache As DataTable
     Public Shared tableVe As DataTable
     Public Shared tableVenteVe As DataTable
+    Public Shared tablePieSerie As DataTable
 
     ReadOnly keyCombo As New List(Of Keys)({Keys.ControlKey, Keys.H, Keys.P})
     ReadOnly currentKeys As New List(Of Keys)
@@ -145,6 +146,7 @@ Public Class MainForm
         tableTache = ConnectionServeur.Getinstance.GetInfo("getTache")
         tableVe = ConnectionServeur.Getinstance.GetInfo("getVeAll")
         tableVenteVe = ConnectionServeur.Getinstance.GetInfo("getVenteVe")
+        tablePieSerie = ConnectionServeur.Getinstance.GetInfo("getPieSerie")
 
         'À faire un jour
         'test.Tables.Add(tableInv)

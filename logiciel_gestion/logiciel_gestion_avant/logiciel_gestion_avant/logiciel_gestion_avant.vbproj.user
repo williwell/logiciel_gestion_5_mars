@@ -5,6 +5,9 @@
     <ShowAllFiles>true</ShowAllFiles>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="Form\AddCoulContrat.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Form\Connection.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -27,6 +30,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Form\Création\CreerModel.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form\Création\CreerPieSerie.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Form\Création\CreerProduit.vb">

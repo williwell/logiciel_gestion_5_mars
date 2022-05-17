@@ -65,8 +65,10 @@
     End Sub
 
     Private Sub DGVFacture_DoubleClick(sender As Object, e As EventArgs) Handles DGVFacture.DoubleClick
-        Dim f As New GestionFacture(DGVFacture.CurrentRow.Cells(0).Value)
-        f.ShowDialog()
+        If DGVFacture.CurrentRow IsNot Nothing Then
+            Dim f As New GestionFacture(DGVFacture.CurrentRow.Cells(0).Value)
+            f.ShowDialog()
+        End If
     End Sub
 
     Private Sub UCFacture_MouseUp(sender As Object, e As MouseEventArgs) Handles Me.MouseUp

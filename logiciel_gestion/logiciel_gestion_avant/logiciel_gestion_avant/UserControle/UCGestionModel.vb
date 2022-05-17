@@ -198,14 +198,16 @@ Public Class UCGestionModel
 
     'Fonction qui permet d'envoyer une ligne d'un DataGridView à un autre DataGridView
     Public Sub PopulateRow(table As DataTable, dgvGiver As DataGridView, dgvRecever As DataGridView)
-        Dim row As DataRow = table.NewRow
-        For i As Integer = 0 To dgvGiver.Columns.Count - 1
-            row(i) = dgvGiver.CurrentRow.Cells(i).Value
-        Next
-        table.Rows.Add(row)
-        dgvRecever.Sort(dgvRecever.Columns(0), ListSortDirection.Ascending)
-        dgvGiver.Rows.Remove(dgvGiver.CurrentRow)
-        CheckChange()
+        If dgvGiver.CurrentRow IsNot Nothing Then
+            Dim row As DataRow = table.NewRow
+            For i As Integer = 0 To dgvGiver.Columns.Count - 1
+                row(i) = dgvGiver.CurrentRow.Cells(i).Value
+            Next
+            table.Rows.Add(row)
+            dgvRecever.Sort(dgvRecever.Columns(0), ListSortDirection.Ascending)
+            dgvGiver.Rows.Remove(dgvGiver.CurrentRow)
+            CheckChange()
+        End If
     End Sub
 
     'Fonction qui sert a prendre une table et créer une liste des ID de cette table et retourne la liste
@@ -462,7 +464,13 @@ Public Class UCGestionModel
             liste(i) = MainForm.tableModel(i)(1)
             listeId(i) = MainForm.tableModel(i)(0)
         Next
-        cbModel.DataSource = liste
+        If liste.Length <> 0 Then
+            cbModel.DataSource = liste
+            btInv.Enabled = True
+        Else
+            btInv.Enabled = False
+        End If
+
         Remplir(1)
     End Sub
 
