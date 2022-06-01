@@ -31,6 +31,7 @@ Public Class MainForm
     Public Shared tableVe As DataTable
     Public Shared tableVenteVe As DataTable
     Public Shared tablePieSerie As DataTable
+    Public Shared tableCoulSupp As DataTable
 
     ReadOnly keyCombo As New List(Of Keys)({Keys.ControlKey, Keys.H, Keys.P})
     ReadOnly currentKeys As New List(Of Keys)
@@ -85,7 +86,7 @@ Public Class MainForm
             LoadTable()
             AddUC()
         Else
-            lbNonConc.Text = "Impossible de se connecter au serveur!"
+            lbNonConc.Text = MsgTextFr.Getinstance.MsgErrConnectionServ
             btConnec.Visible = True
             btMenu.Enabled = False
         End If
@@ -147,6 +148,7 @@ Public Class MainForm
         tableVe = ConnectionServeur.Getinstance.GetInfo("getVeAll")
         tableVenteVe = ConnectionServeur.Getinstance.GetInfo("getVenteVe")
         tablePieSerie = ConnectionServeur.Getinstance.GetInfo("getPieSerie")
+        tableCoulSupp = ConnectionServeur.Getinstance.GetInfo("getCoulSupp")
 
         'À faire un jour
         'test.Tables.Add(tableInv)
@@ -224,7 +226,7 @@ Public Class MainForm
             btConnec.Visible = False
             btMenu.Enabled = True
         Else
-            MessageBox.Show("Toujours impossible de se connecter au serveur!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgStillErrConcServ)
         End If
     End Sub
 
@@ -232,10 +234,10 @@ Public Class MainForm
     Public Sub Fermer()
         If lbNonConc.InvokeRequired Then
             Dim d As New setValue(AddressOf SetTexte)
-            BeginInvoke(d, New Object() {"Impossible de se connecter au serveur!"})
+            BeginInvoke(d, New Object() {MsgTextFr.Getinstance.MsgErrConnectionServ})
         Else
             ucAccueil.BringToFront()
-            lbNonConc.Text = "Impossible de se connecter au serveur!"
+            lbNonConc.Text = MsgTextFr.Getinstance.MsgErrConnectionServ
             btConnec.Visible = True
             btMenu.Enabled = False
         End If
@@ -341,7 +343,7 @@ Public Class MainForm
     End Function
 
     Private Sub MainForm_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
-        If MessageBox.Show("Voulez-vous vraiment fermer le programme?", "Attention!", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+        If MessageBox.Show(MsgTextFr.Getinstance.MsgExitProg, MsgTextFr.Getinstance.MsgAttention, MessageBoxButtons.YesNo) = DialogResult.Yes Then
             ConnectionServeur.Getinstance.GetInfo("fermer")
             Me.Dispose()
         Else
@@ -430,13 +432,6 @@ Public Class MainForm
     'les options qui sont sélectionner
     Public Sub EnleverOpt()
         ucVente2.EnleverOpt()
-    End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) 
-        Dim test As New PrintingForm(tableFacture.Rows(8))
-        test.ShowDialog()
-        'Dim test As New TestExcel(tableFacture.Rows(0))
-        'test.ShowDialog()
     End Sub
 
     Private Sub BTTache_Click(sender As Object, e As EventArgs) Handles BTTache.Click

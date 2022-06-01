@@ -14,7 +14,7 @@
             If Not String.IsNullOrEmpty(TBCode.Text) Then
                 Dim liste() As String = {TBNom.Text, TBCode.Text}
                 If ConnectionServeur.Getinstance.AddDelete(liste, "AddCoulTissus") Then
-                    MessageBox.Show("La création de la nouvelle couleur réussit!")
+                    MessageBox.Show(MsgTextFr.Getinstance.MsgCreationCoul)
 
                     Dim row As DataRow = MainForm.tableCoulTis.NewRow
                     Dim nbr As Integer = 0
@@ -33,20 +33,23 @@
                     uc.LoadCoul()
                     Me.Close()
                 Else
-                    MessageBox.Show("Une erreure est survenue durant l'enregistrement!")
+                    MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
                 End If
             Else
-                MessageBox.Show("La couleur doit avoir un code!")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgMissCodeCoul)
             End If
         Else
-            MessageBox.Show("La couleur doit avoir un nom!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgMissNomCoul)
         End If
     End Sub
 
     Private Sub NUDCout_KeyDown(sender As Object, e As KeyEventArgs)
-        If e.KeyCode = 110 Or e.KeyCode = 190 Then
-            e.SuppressKeyPress = True
-            SendKeys.Send(",")
+        Dim lang = Globalization.CultureInfo.CurrentCulture
+        If lang.Name = "fr-CA" Then
+            If e.KeyCode = 110 Or e.KeyCode = 190 Then
+                e.SuppressKeyPress = True
+                SendKeys.Send(",")
+            End If
         End If
     End Sub
 End Class

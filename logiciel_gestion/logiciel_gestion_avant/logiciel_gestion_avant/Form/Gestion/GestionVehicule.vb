@@ -4,7 +4,7 @@ Public Class GestionVehicule
     ReadOnly row As DataGridViewRow
     ReadOnly table As New DataTable
     ReadOnly tableCoulVe As New DataTable
-    Dim tablePie As New DataTable
+    ReadOnly tablePie As New DataTable
     Dim bool As Boolean = True
     ReadOnly listeOR(8) As String
     ReadOnly liste(8) As String
@@ -203,7 +203,7 @@ Public Class GestionVehicule
                 listeCoul(i) = tableCoulVe(i)(1) & " - " & tableCoulVe(i)(2)
             Next
         Else
-            listeCoul(0) = "Aucune couleur de disponible pour ce model"
+            listeCoul(0) = MsgTextFr.Getinstance.MsgMissCoulModel
         End If
         CBCoulVe.DataSource = listeCoul
     End Sub
@@ -230,7 +230,7 @@ Public Class GestionVehicule
             Next
 
             'Message de confirmation de réussite et changement de la liste originale pour matcher les nouvelles données
-            MessageBox.Show("Enregistrement fait avec succès!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
             For i As Integer = 1 To liste.Count - 1
                 listeOR(i) = liste(i)
             Next
@@ -250,7 +250,7 @@ Public Class GestionVehicule
             CheckChange()
         Else
             'Message d'erreure si l'enregistrement sur le serveur à échouer
-            MessageBox.Show("Une erreure est survenue durant l'enregistrement!", "Attention!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ, "Attention!")
         End If
     End Sub
 
@@ -275,7 +275,7 @@ Public Class GestionVehicule
         'après on regarde si le combo box est sur aucune couleur pour savoir se quoi doit mettre dans la liste
         'et faire appel a la fonction CheckChange
         If bool Then
-            If Not CBCoulVe.SelectedItem = "Aucune couleur de disponible pour ce model" Then
+            If Not CBCoulVe.SelectedItem = MsgTextFr.Getinstance.MsgMissCoulModel Then
                 liste(3) = MainForm.tableCoulVe(CBCoulVe.SelectedIndex)(0)
             Else
                 liste(3) = 0

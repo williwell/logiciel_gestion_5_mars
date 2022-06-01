@@ -4,14 +4,16 @@ Public Class TestExcel
     Dim wbXl As Workbook
     Dim shXl As Worksheet
     ReadOnly rowFac As DataRow
+    ReadOnly listeCoul As String()
 
-    Sub New(rowFacture As DataRow)
+    Sub New(rowFacture As DataRow, lst As String())
 
         ' Cet appel est requis par le concepteur.
         InitializeComponent()
 
         ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
         rowFac = rowFacture
+        listeCoul = lst
     End Sub
 
     Private Sub TestExcel_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -61,7 +63,7 @@ Public Class TestExcel
         info(0) = row(1)
         info(1) = " "
         info(2) = row(0)
-        info(3) = row(2)
+        info(3) = rowFac.Item("prixmodel")
 
         shXl.Range("A16", "D16").Value = info
 
@@ -76,12 +78,13 @@ Public Class TestExcel
         info(0) = row(1)
         info(1) = " "
         info(2) = row(2)
-        info(3) = row(3)
+        info(3) = rowFac.Item("prixcouleur")
 
         shXl.Range("A18", "D18").Value = info
 
         For r As Integer = 0 To MainForm.tableCoulToi.Rows.Count - 1
             If MainForm.tableCoulToi.Rows(r).Item("id") = rowVe.Item("idcoultoile") Then
+                shXl.Range("a20").Value = "Toile - " & MainForm.tableCoulToi.Rows(r).Item("nom")
                 shXl.Range("c20").Value = MainForm.tableCoulToi.Rows(r).Item("code")
                 Exit For
             End If
@@ -89,18 +92,36 @@ Public Class TestExcel
 
         For r As Integer = 0 To MainForm.tableCoulTis.Rows.Count - 1
             If MainForm.tableCoulTis.Rows(r).Item("id") = rowVe.Item("idcoultissus") Then
-                shXl.Range("c25").Value = MainForm.tableCoulTis.Rows(r).Item("code")
+                shXl.Range("a21").Value = "Banquette - " & MainForm.tableCoulTis.Rows(r).Item("nom")
+                shXl.Range("c21").Value = MainForm.tableCoulTis.Rows(r).Item("code")
                 Exit For
             End If
         Next
 
-        Dim nbr As Integer
+        Dim nbr As Integer = 22
+        Dim count As Integer = 0
+        For r As Integer = 0 To listeCoul.Length / 3 - 1
+            shXl.Range("A" & nbr).EntireRow.Insert()
+            info(0) = listeCoul(count) & " - " & listeCoul(count + 1)
+            info(1) = " "
+            info(2) = listeCoul(count + 2)
+            info(3) = ""
+
+            shXl.Range("A" & nbr, "D" & nbr).Value = info
+            shXl.Range("A" & nbr, "B" & nbr).Cells.Borders.LineStyle = XlLineStyle.xlContinuous
+            nbr += 1
+            count += 3
+        Next
+
+
         For r As Integer = 15 To 150
             If shXl.Range("A" & r).Value = "OPTION" Then
                 nbr = r + 1
                 Exit For
             End If
         Next
+
+        shXl.Range("d" & nbr).Cells.Value = ""
 
         For r As Integer = 0 To MainForm.tableOpVe.Rows.Count - 1
             If MainForm.tableOpVe.Rows(r).Item("idvehicule") = rowFac.Item("idvehicule") Then
@@ -121,6 +142,29 @@ Public Class TestExcel
             End If
         Next
         shXl.Range("C" & nbr, "D" & nbr).Cells.Borders.LineStyle = XlLineStyle.xlContinuous
+
+        For r As Integer = 22 To 150
+            If shXl.Range("c" & r).Value = "TOTAL" Then
+                Dim total As Double = 0
+                For r2 As Integer = 16 To r - 1
+                    total += shXl.Range("d" & r2).Value
+                Next
+                shXl.Range("d" & r).Value = total
+                shXl.Range("d" & r + 4).Value = rowFac.Item("echange")
+                shXl.Range("d" & r + 5).Value = shXl.Range("d" & r).Value - shXl.Range("d" & r + 4).Value
+                shXl.Range("d" & r + 6).Value = shXl.Range("d" & r + 5).Value * rowFac.Item("tps")
+                shXl.Range("d" & r + 7).Value = shXl.Range("d" & r + 5).Value * rowFac.Item("tvq")
+                shXl.Range("d" & r + 8).Value = shXl.Range("d" & r + 5).Value + shXl.Range("d" & r + 6).Value + shXl.Range("d" & r + 7).Value
+                shXl.Range("d" & r + 9).Value = rowFac.Item("acompte")
+                shXl.Range("d" & r + 10).Value = shXl.Range("d" & r + 8).Value - shXl.Range("d" & r + 9).Value
+                shXl.Range("d" & r + 12).Value = rowFac.Item("payerlivraison")
+                shXl.Range("d" & r + 13).Value = rowFac.Item("balanceechange")
+                shXl.Range("d" & r + 15).Value = rowFac.Item("remettrecl")
+                Exit For
+            End If
+        Next
+
+
 
         wbXl.SaveAs2("C:\logiciel_gestion_5_mars_fichier\Facture\Véhicule\" & Date.Now.ToString("yyyy-MM-dd") & "_no" & rowFac.Item("id") & ".xlsx")
 

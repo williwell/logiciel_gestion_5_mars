@@ -105,9 +105,9 @@
                             Next
                         End If
                     Next
-                    MessageBox.Show("Enregistrement réussit!")
+                    MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
                 Else
-                    MessageBox.Show("Une erreure c'est produit durant l'enregistrement")
+                    MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
                 End If
             End If
         Next
@@ -141,7 +141,7 @@
     'Si on click sur ce bouton, on envoie au serveur l'information de changer le paramètre deletecoul a 0
     'Après on fait appel à la fonction LoadCoul pour réchager les nouvelles couleurs dans le DataGridView
     Private Sub BtDel_Click(sender As Object, e As EventArgs) Handles BtDel.Click
-        If MessageBox.Show("Voulez-vous vraiment supprimer " + dgvCouleur.CurrentRow.Cells(1).Value + "?", "Attention!", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+        If MessageBox.Show(MsgTextFr.Getinstance.MsgConfirSupp + dgvCouleur.CurrentRow.Cells(1).Value + "?", MsgTextFr.Getinstance.MsgAttention, MessageBoxButtons.YesNo) = DialogResult.Yes Then
             ConnectionServeur.Getinstance.GetInfo(dgvCouleur.CurrentRow.Cells(0).Value, "ChangeDeleteTis")
             'Loop pour trouver la ligne dans la table Coultis du mainform avec celle du DataGridView selectionner
             For r As Integer = 0 To MainForm.tableCoulTis.Rows.Count - 1

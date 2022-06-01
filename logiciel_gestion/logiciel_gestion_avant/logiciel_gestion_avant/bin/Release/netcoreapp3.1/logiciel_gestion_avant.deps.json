@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v3.1": {
       "logiciel_gestion_avant/1.0.0": {
         "dependencies": {
-          "MySql.Data": "8.0.26"
+          "MySql.Data": "8.0.26",
+          "Interop.Microsoft.Office.Interop.Excel": "1.9.0.0"
         },
         "runtime": {
           "logiciel_gestion_avant.dll": {}
@@ -137,6 +138,14 @@
       "System.Windows.Extensions/4.7.0": {
         "dependencies": {
           "System.Drawing.Common": "4.7.0"
+        }
+      },
+      "Interop.Microsoft.Office.Interop.Excel/1.9.0.0": {
+        "runtime": {
+          "Interop.Microsoft.Office.Interop.Excel.dll": {
+            "assemblyVersion": "1.9.0.0",
+            "fileVersion": "1.9.0.0"
+          }
         }
       }
     }
@@ -279,6 +288,11 @@
       "sha512": "sha512-CeWTdRNfRaSh0pm2gDTJFwVaXfTq6Xwv/sA887iwPTneW7oMtMlpvDIO+U60+3GWTB7Aom6oQwv5VZVUhQRdPQ==",
       "path": "system.windows.extensions/4.7.0",
       "hashPath": "system.windows.extensions.4.7.0.nupkg.sha512"
+    },
+    "Interop.Microsoft.Office.Interop.Excel/1.9.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

@@ -45,7 +45,7 @@ Partial Class AddCoulContrat
         Me.DGV.RowTemplate.Height = 25
         Me.DGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DGV.Size = New System.Drawing.Size(504, 244)
-        Me.DGV.TabIndex = 0
+        Me.DGV.TabIndex = 15
         '
         'TBNom
         '
@@ -68,7 +68,7 @@ Partial Class AddCoulContrat
         Me.BTAdd.Location = New System.Drawing.Point(12, 147)
         Me.BTAdd.Name = "BTAdd"
         Me.BTAdd.Size = New System.Drawing.Size(106, 23)
-        Me.BTAdd.TabIndex = 3
+        Me.BTAdd.TabIndex = 4
         Me.BTAdd.Text = "Ajouter"
         Me.BTAdd.UseVisualStyleBackColor = True
         '
@@ -77,7 +77,7 @@ Partial Class AddCoulContrat
         Me.BTEnd.Location = New System.Drawing.Point(12, 262)
         Me.BTEnd.Name = "BTEnd"
         Me.BTEnd.Size = New System.Drawing.Size(106, 23)
-        Me.BTEnd.TabIndex = 4
+        Me.BTEnd.TabIndex = 5
         Me.BTEnd.Text = "Terminer"
         Me.BTEnd.UseVisualStyleBackColor = True
         '
@@ -86,7 +86,7 @@ Partial Class AddCoulContrat
         Me.BTDelete.Location = New System.Drawing.Point(210, 262)
         Me.BTDelete.Name = "BTDelete"
         Me.BTDelete.Size = New System.Drawing.Size(106, 23)
-        Me.BTDelete.TabIndex = 5
+        Me.BTDelete.TabIndex = 6
         Me.BTDelete.Text = "Enlever"
         Me.BTDelete.UseVisualStyleBackColor = True
         '
@@ -104,7 +104,7 @@ Partial Class AddCoulContrat
         Me.TBCouleur.Location = New System.Drawing.Point(12, 74)
         Me.TBCouleur.Name = "TBCouleur"
         Me.TBCouleur.Size = New System.Drawing.Size(192, 23)
-        Me.TBCouleur.TabIndex = 6
+        Me.TBCouleur.TabIndex = 2
         '
         'Label3
         '
@@ -120,7 +120,7 @@ Partial Class AddCoulContrat
         Me.TBCode.Location = New System.Drawing.Point(12, 118)
         Me.TBCode.Name = "TBCode"
         Me.TBCode.Size = New System.Drawing.Size(192, 23)
-        Me.TBCode.TabIndex = 8
+        Me.TBCode.TabIndex = 3
         '
         'AddCoulContrat
         '

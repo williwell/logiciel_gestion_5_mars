@@ -1,4 +1,6 @@
-﻿Public Class AddCoulContrat
+﻿Imports System.ComponentModel
+
+Public Class AddCoulContrat
     ReadOnly liste() As String
     ReadOnly table As New DataTable
     ReadOnly contrat As CreerContrat
@@ -43,6 +45,10 @@
                 row(1) = TBCouleur.Text
                 row(2) = TBCode.Text
                 table.Rows.Add(row)
+                TBNom.Text = ""
+                TBCouleur.Text = ""
+                TBCode.Text = ""
+                TBNom.Select()
             End If
         End If
     End Sub
@@ -54,6 +60,10 @@
     End Sub
 
     Private Sub BTEnd_Click(sender As Object, e As EventArgs) Handles BTEnd.Click
+        Me.Close()
+    End Sub
+
+    Private Sub AddCoulContrat_Closing(sender As Object, e As CancelEventArgs) Handles Me.Closing
         Dim lst(DGV.Rows.Count * 3 - 1) As String
         For r As Integer = 0 To DGV.Rows.Count - 1
             lst(r * 3) = DGV.Rows(r).Cells(0).Value
@@ -61,6 +71,5 @@
             lst(r * 3 + 2) = DGV.Rows(r).Cells(2).Value
         Next
         contrat.RemplirListe(lst)
-        Me.Close()
     End Sub
 End Class

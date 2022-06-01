@@ -28,7 +28,7 @@
             Me.Hide()
             optionRecp.Show()
         Else
-            MessageBox.Show("Nom d'utilisatuer ou mot de passe incorrecte!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgIncorectUserPass)
         End If
     End Sub
 

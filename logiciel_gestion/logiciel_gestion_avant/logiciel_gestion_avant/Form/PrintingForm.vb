@@ -4,13 +4,15 @@ Public Class PrintingForm
     Dim liste(-1) As String
     ReadOnly nbrPage As Integer = 1
     ReadOnly rowFac As DataRow
+    ReadOnly listeCoul As String()
 
-    Sub New(row As DataRow)
+    Sub New(row As DataRow, lst As String())
         ' Cet appel est requis par le concepteur.
         InitializeComponent()
 
         ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
         rowFac = row
+        listeCoul = lst
     End Sub
 
     Private Sub TestPrint_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -93,13 +95,16 @@ Public Class PrintingForm
         nbr = rowFac.Item("prixcouleur")
         DGVCoulVe.Rows.Add(rowCoulVe.Item("nom"), rowCoulVe.Item("code"), nbr.ToString("c"))
         DGVCoul.Rows.Add("Toile", rowCoulVe.Item("nom"), rowCoulToi.Item("code"))
-        DGVCoul.Rows.Add("ARMOIRE BAS")
-        DGVCoul.Rows.Add("ARMOIRE HAUT")
-        DGVCoul.Rows.Add("COMPTOIR")
-        DGVCoul.Rows.Add("PORTES ARMOIRES")
         DGVCoul.Rows.Add("BANQUETTE", rowcoulTis.Item("nom"), rowcoulTis.Item("code"))
-        DGVCoul.Rows.Add("DECALQUE")
-        DGVCoul.Rows.Add("MICRO ONDE")
+
+        Dim i As Integer = 0
+        For r As Integer = 0 To listeCoul.Length / 3 - 1
+            DGVCoul.Rows.Add(listeCoul(i), listeCoul(i + 1), listeCoul(i + 2))
+            i += 3
+        Next
+
+        Dim h As Integer = SetHight(DGVCoul)
+        DGVOption.Location = New Point(DGVOption.Location.X, DGVCoul.Location.Y + h + 1)
 
         For r As Integer = 0 To MainForm.tableOpVe.Rows.Count - 1
             If MainForm.tableOpVe.Rows(r).Item("idvehicule") = rowFac.Item("idVehicule") Then
@@ -113,12 +118,9 @@ Public Class PrintingForm
             End If
         Next
 
-
-        Dim h As Integer = SetHight(DGVOption)
+        h = SetHight(DGVOption)
 
         DGVTotal.Location = New Point(DGVTotal.Location.X, DGVOption.Location.Y + h + 1)
-
-
 
         total += DGVModel.Rows(0).Cells(2).Value
         total += DGVCoulVe.Rows(0).Cells(2).Value
@@ -146,10 +148,15 @@ Public Class PrintingForm
         DGVTotal.Rows.Add("", "ACOMPTE", rowFac.Item("acompte"))
         total = DGVTotal.Rows(5).Cells(2).Value - DGVTotal.Rows(6).Cells(2).Value
         DGVTotal.Rows.Add("", "BALANCE", total.ToString("c"))
-        DGVTotal.Rows.Add("", "PAYER A LA LIVRAISON")
-        DGVTotal.Rows.Add("", "BALANCE ECHANGE")
-        DGVTotal.Rows.Add("", "FINANCEMENT")
-        DGVTotal.Rows.Add("", "A REMETTRE CLIENT")
+        nbr = rowFac.Item("payerlivraison")
+        DGVTotal.Rows.Add("", "PAYER A LA LIVRAISON", nbr.ToString("c"))
+        nbr = rowFac.Item("balanceechange")
+        DGVTotal.Rows.Add("", "BALANCE ECHANGE", nbr.ToString("c"))
+        total -= rowFac.Item("PayerLivraison")
+        total += CDbl(rowFac.Item("remettrecl")) + CDbl(rowFac.Item("balanceEchange"))
+        DGVTotal.Rows.Add("", "FINANCEMENT", total.ToString("c"))
+        nbr = rowFac.Item("remettrecl")
+        DGVTotal.Rows.Add("", "A REMETTRE CLIENT", nbr.ToString("c"))
 
         SetHight(DGVTotal)
 
@@ -187,7 +194,7 @@ Public Class PrintingForm
 
         PrintDocument1.Print()
 
-        Dim ex As New TestExcel(rowFac)
+        Dim ex As New TestExcel(rowFac, listeCoul)
         ex.ShowDialog()
 
         Me.Close()

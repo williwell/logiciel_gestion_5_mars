@@ -122,23 +122,26 @@
                     End If
                 Next
                 If bool Then
-                    MessageBox.Show("Une erreure est survenue durant l'enregistrement des pièces associer aux option!")
+                    MessageBox.Show(MsgTextFr.Getinstance.MsgErrOptionPiece)
                 Else
-                    MessageBox.Show("La création de la nouvelle option est fait!")
+                    MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
                     Me.Close()
                 End If
             Else
-                MessageBox.Show("Une erreure est survenue durant l'enregistrement de la nouvelle option!")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
             End If
         Else
-            MessageBox.Show("Vous devez avoir un nom!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgMissNom, "Attention!")
         End If
     End Sub
 
     Private Sub NUDCout_KeyDown(sender As Object, e As KeyEventArgs) Handles NUDCout.KeyDown
-        If e.KeyCode = 110 Or e.KeyCode = 190 Then
-            e.SuppressKeyPress = True
-            SendKeys.Send(",")
+        Dim lang = Globalization.CultureInfo.CurrentCulture
+        If lang.Name = "fr-CA" Then
+            If e.KeyCode = 110 Or e.KeyCode = 190 Then
+                e.SuppressKeyPress = True
+                SendKeys.Send(",")
+            End If
         End If
     End Sub
 

@@ -68,11 +68,11 @@ Public Class UCTache
     End Sub
 
     Private Sub BTSupp_Click(sender As Object, e As EventArgs) Handles BTSupp.Click
-        If MessageBox.Show("Voulez-vous vraiment supprimer cette tâche?", "Attention", MessageBoxButtons.YesNo) = vbYes Then
+        If MessageBox.Show(MsgTextFr.Getinstance.MsgConfirSuppTache, MsgTextFr.Getinstance.MsgAttention, MessageBoxButtons.YesNo) = vbYes Then
             If ConnectionServeur.Getinstance.AddDelete(DGVTache.CurrentRow.Cells(0).Value, "delTache") Then
                 DGVTache.Rows.Remove(DGVTache.CurrentRow)
             Else
-                MessageBox.Show("Une erreur est survenu durant la suppression de la tâche!")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgErrSupp)
             End If
         End If
     End Sub
@@ -101,10 +101,10 @@ Public Class UCTache
                         End If
                     Next
                     If ConnectionServeur.Getinstance.AddDelete(liste, "DeleteTache") Then
-                        MessageBox.Show("Suppression effectuer correctement")
+                        MessageBox.Show(MsgTextFr.Getinstance.MsgSupp)
                         LoadDGV()
                     Else
-                        MessageBox.Show("Une erreure est survenu durant la suppression des tâches!", "Attention!")
+                        MessageBox.Show(MsgTextFr.Getinstance.MsgErrSupp, MsgTextFr.Getinstance.MsgAttention)
                     End If
                 End If
             End If

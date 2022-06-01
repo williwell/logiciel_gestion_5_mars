@@ -99,9 +99,9 @@
                         End If
                     Next
                     RemplirDGV()
-                    MessageBox.Show("Enregistrement réussit!")
+                    MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
                 Else
-                    MessageBox.Show("Une erreure c'est produit durant l'enregistrement")
+                    MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
                 End If
             End If
         Next
@@ -143,7 +143,7 @@
     'Quand on click sur le bouton déléte on envoie l'information au serveur de changer la variable DeleteCoul a False pour le ID qu'on a envoyer
     'Après on change l'information dans la table CoulVe du mainform et on appel la fonction RemplirDGV et CheckerChange
     Private Sub BtDel_Click(sender As Object, e As EventArgs) Handles BtDel.Click
-        If MessageBox.Show("Voulez-vous vraiment supprimer " + dgvCouleur.CurrentRow.Cells(1).Value + "?", "Attention!", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+        If MessageBox.Show(MsgTextFr.Getinstance.MsgConfirSupp + dgvCouleur.CurrentRow.Cells(1).Value + "?", MsgTextFr.Getinstance.MsgAttention, MessageBoxButtons.YesNo) = DialogResult.Yes Then
             ConnectionServeur.Getinstance.GetInfo(dgvCouleur.CurrentRow.Cells(0).Value, "ChangeDelete")
             'loop pour trouver le même id dans la table CoulVe du Mainform et changer la valeur de DeleteCoul a 0
             For r As Integer = 0 To MainForm.tableCoulVe.Rows.Count - 1

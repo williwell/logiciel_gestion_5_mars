@@ -146,47 +146,64 @@
             For r As Integer = 0 To DGVOptionCh.Rows.Count - 1
                 cout += CDbl(DGVOptionCh.Rows(r).Cells("cout").Value)
             Next
-            TBTotal.Text = cout.ToString("0.00$")
+            TBTotal.Text = cout.ToString("c")
             If TBEchange.Text <> "" Then
-                TBEchange.Text = CDbl(TBEchange.Text).ToString("0.00$")
+                TBEchange.Text = CDbl(TBEchange.Text).ToString("c")
             Else
                 TBEchange.Text = "0,00$"
             End If
-            TBSousTotal.Text = (CDbl(TBTotal.Text) - CDbl(TBEchange.Text)).ToString("0.00$")
+            TBSousTotal.Text = (CDbl(TBTotal.Text) - CDbl(TBEchange.Text)).ToString("c")
             If CBTPS.Checked Then
-                TBTPS.Text = (CDbl(TBSousTotal.Text) * MainForm.GetInstance.GetOption4).ToString("0.00$")
+                TBTPS.Text = (CDbl(TBSousTotal.Text) * MainForm.GetInstance.GetOption4).ToString("c")
             Else
                 TBTPS.Text = "0,00$"
             End If
             If CBTVQ.Checked Then
-                TBTVQ.Text = (CDbl(TBSousTotal.Text) * MainForm.GetInstance.GetOption5).ToString("0.00$")
+                TBTVQ.Text = (CDbl(TBSousTotal.Text) * MainForm.GetInstance.GetOption5).ToString("c")
             Else
                 TBTVQ.Text = "0,00$"
             End If
             If TBAccompte.Text <> "" Then
-                TBAccompte.Text = CDbl(TBAccompte.Text).ToString("0.00$")
+                TBAccompte.Text = CDbl(TBAccompte.Text).ToString("c")
             Else
                 TBAccompte.Text = "0,00$"
             End If
-            TBTotalFin.Text = (CDbl(TBSousTotal.Text) + CDbl(TBTPS.Text) + CDbl(TBTVQ.Text)).ToString("0.00$")
-            TBBalance.Text = (CDbl(TBTotalFin.Text) - CDbl(TBAccompte.Text)).ToString("0.00$")
+            TBTotalFin.Text = (CDbl(TBSousTotal.Text) + CDbl(TBTPS.Text) + CDbl(TBTVQ.Text)).ToString("c")
+            TBBalance.Text = (CDbl(TBTotalFin.Text) - CDbl(TBAccompte.Text)).ToString("c")
+
+            If TBPayerLiv.Text <> "" Then
+                TBPayerLiv.Text = CDbl(TBPayerLiv.Text).ToString("c")
+            Else
+                TBPayerLiv.Text = "0,00$"
+            End If
+            If TBBalEchange.Text <> "" Then
+                TBBalEchange.Text = CDbl(TBBalEchange.Text).ToString("c")
+            Else
+                TBBalEchange.Text = "0,00$"
+            End If
+            If TBRemettreCl.Text <> "" Then
+                TBRemettreCl.Text = CDbl(TBRemettreCl.Text).ToString("c")
+            Else
+                TBRemettreCl.Text = "0,00$"
+            End If
+            TBFinancement.Text = (CDbl(TBBalance.Text) - CDbl(TBPayerLiv.Text) + CDbl(TBBalEchange.Text) + CDbl(TBRemettreCl.Text)).ToString("0.00$")
         End If
     End Sub
 
-    Private Sub TBEchange_Leave(sender As Object, e As EventArgs) Handles TBEchange.Leave, TBAccompte.Leave, CBTPS.CheckedChanged, CBTVQ.CheckedChanged
+    Private Sub TBEchange_Leave(sender As Object, e As EventArgs) Handles TBEchange.Leave, TBAccompte.Leave, CBTPS.CheckedChanged, CBTVQ.CheckedChanged, TBPayerLiv.Leave, TBBalEchange.Leave, TBRemettreCl.Leave
         CheckPrix()
     End Sub
 
-    Private Sub TBEchange_KeyDown(sender As Object, e As KeyEventArgs) Handles TBEchange.KeyDown, TBAccompte.KeyDown
+    Private Sub TBEchange_KeyDown(sender As Object, e As KeyEventArgs) Handles TBEchange.KeyDown, TBAccompte.KeyDown, TBRemettreCl.KeyDown, TBPayerLiv.KeyDown, TBBalEchange.KeyDown
         If IsNumeric(ChrW(e.KeyValue)) Or (e.KeyValue >= 96 And e.KeyValue <= 105) Or e.KeyValue = 188 Or e.KeyValue = 110 Or e.KeyValue = 190 Or e.KeyValue = 8 Or e.KeyValue = 37 Or e.KeyValue = 39 Or e.KeyValue = 46 Then
             If e.KeyValue = 110 Or e.KeyValue = 190 Then
                 e.SuppressKeyPress = True
-                If Not (TBEchange.Text.Contains(",") And TBAccompte.Text.Contains(",")) Then
+                If Not (TBEchange.Text.Contains(",") And TBAccompte.Text.Contains(",") And TBRemettreCl.Text.Contains(",") And TBPayerLiv.Text.Contains(",") And TBBalEchange.Text.Contains(",")) Then
                     SendKeys.Send(",")
                 End If
             End If
             If e.KeyValue = 188 Then
-                If TBEchange.Text.Contains(",") And TBAccompte.Text.Contains(",") Then
+                If TBEchange.Text.Contains(",") And TBAccompte.Text.Contains(",") And TBRemettreCl.Text.Contains(",") And TBPayerLiv.Text.Contains(",") And TBBalEchange.Text.Contains(",") Then
                     e.SuppressKeyPress = True
                 End If
             End If
@@ -477,20 +494,19 @@
     End Sub
 
     Private Sub SaveVente()
-        Dim ListeAdd(10) As String
+        Dim ListeAdd(11) As String
         ListeAdd(0) = idVe
         ListeAdd(1) = idCl
         ListeAdd(2) = Date.Now.ToString("yyyy-MM-dd")
-        ListeAdd(3) = TBCoutM.Text.Substring(0, TBCoutM.Text.IndexOf("$"))
-        ListeAdd(4) = TBCoutC.Text.Substring(0, TBCoutC.Text.IndexOf("$"))
-        ListeAdd(5) = TBEchange.Text.Substring(0, TBEchange.Text.IndexOf("$"))
-        ListeAdd(6) = TBAccompte.Text.Substring(0, TBAccompte.Text.IndexOf("$"))
-        'ListeAdd(7) = TBPayerLiv.Text.Substring(0, TBPayerLiv.Text.IndexOf("$"))
-        'ListeAdd(8) = TBRemettreCl.Text.Substring(0, TBRemettreCl.Text.IndexOf("$"))
-        ListeAdd(7) = 0
-        ListeAdd(8) = 0
-        ListeAdd(9) = MainForm.GetInstance.GetOption4
-        ListeAdd(10) = MainForm.GetInstance.GetOption5
+        ListeAdd(3) = setString(TBCoutM.Text.Substring(0, TBCoutM.Text.IndexOf("$")))
+        ListeAdd(4) = setString(TBCoutC.Text.Substring(0, TBCoutC.Text.IndexOf("$")))
+        ListeAdd(5) = setString(TBEchange.Text.Substring(0, TBEchange.Text.IndexOf("$")))
+        ListeAdd(6) = setString(TBAccompte.Text.Substring(0, TBAccompte.Text.IndexOf("$")))
+        ListeAdd(7) = setString(TBPayerLiv.Text.Substring(0, TBPayerLiv.Text.IndexOf("$")))
+        ListeAdd(8) = setString(TBRemettreCl.Text.Substring(0, TBRemettreCl.Text.IndexOf("$")))
+        ListeAdd(9) = setString(TBBalEchange.Text.Substring(0, TBBalEchange.Text.IndexOf("$")))
+        ListeAdd(10) = MainForm.GetInstance.GetOption4
+        ListeAdd(11) = MainForm.GetInstance.GetOption5
 
         Dim table As DataTable = ConnectionServeur.Getinstance.GetInfo(ListeAdd, "addfacture")
         Dim idFac As Integer = table(0)(0)
@@ -506,39 +522,75 @@
 
             Dim listeAdd2(4) As String
             listeAdd2(0) = idVe
-            listeAdd2(1) = Date.Now.ToString("yyyy-MM-jj")
-            listeAdd2(2) = DTPLivraison.Value.ToString("yyyy-MM-jj")
+            listeAdd2(1) = Date.Now.ToString("yyyy-MM-dd")
+            listeAdd2(2) = DTPLivraison.Value.ToString("yyyy-MM-dd")
             listeAdd2(3) = priorite
             listeAdd2(4) = idCl
 
             If ConnectionServeur.Getinstance.AddDelete(listeAdd2, "addventeclient") Then
-                MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
-                Dim row2 As DataRow = MainForm.tableFacture.NewRow
-                row2(0) = idFac
-                row2(1) = idVe
-                row2(2) = idCl
-                row2(3) = Date.Now.ToString("yyyy-MM-dd")
-                row2(4) = TBCoutM.Text.Substring(0, TBCoutM.Text.IndexOf("$"))
-                row2(5) = TBCoutC.Text.Substring(0, TBCoutC.Text.IndexOf("$"))
-                row2(6) = TBEchange.Text.Substring(0, TBEchange.Text.IndexOf("$"))
-                row2(7) = TBAccompte.Text.Substring(0, TBAccompte.Text.IndexOf("$"))
-                'row2(8) = TBPayerLiv.Text.Substring(0, TBPayerLiv.Text.IndexOf("$"))
-                'row2(9) = TBRemettreCl.Text.Substring(0, TBRemettreCl.Text.IndexOf("$"))
-                row2(10) = MainForm.GetInstance.GetOption4
-                row2(11) = MainForm.GetInstance.GetOption5
 
-                MainForm.tableFacture.Rows.Add(row2)
+                If listeCoul.Length > 0 Then
+                    Dim tableId As DataTable = ConnectionServeur.Getinstance.AddDeleteListeTable(listeCoul, idVe, "addCoulSupp")
+                    If tableId(0)(0) <> -1 Then
+                        For r As Integer = 0 To tableId.Rows.Count - 1
+                            Dim row As DataRow = MainForm.tableCoulSupp.NewRow
+                            row(0) = tableId(r)(0)
+                            row(1) = listeCoul(3 * r)
+                            row(2) = listeCoul(3 * r + 1)
+                            row(3) = listeCoul(3 * r + 2)
+                            row(4) = idVe
+                        Next
 
-                Dim print As New PrintingForm(row2)
-                print.Show()
-
-                Me.Close()
+                        EndSave(idFac)
+                    Else
+                        MessageBox.Show(MsgTextFr.Getinstance.MsgErrServCoulSupp, "Attention!")
+                    End If
+                Else
+                    EndSave(idFac)
+                End If
             Else
                 MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
             End If
         Else
             MessageBox.Show(MsgTextFr.Getinstance.MsgErrServFacture, "Attention!")
         End If
+    End Sub
+
+    Private Function setString(str As String) As String
+        Dim nbr As Integer = 0
+        For c As Integer = 0 To str.Length - 1
+            If Convert.ToByte(str(c)) = 160 Then
+                str = str.Remove(c, 1)
+                str = setString(str)
+                Exit For
+            End If
+        Next
+        Return str.Trim
+    End Function
+
+    Private Sub EndSave(idFac As String)
+        MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
+        Dim row2 As DataRow = MainForm.tableFacture.NewRow
+        row2(0) = idFac
+        row2(1) = idVe
+        row2(2) = idCl
+        row2(3) = Date.Now.ToString("yyyy-MM-dd")
+        row2(4) = setString(TBCoutM.Text.Substring(0, TBCoutM.Text.IndexOf("$")))
+        row2(5) = setString(TBCoutC.Text.Substring(0, TBCoutC.Text.IndexOf("$")))
+        row2(6) = setString(TBEchange.Text.Substring(0, TBEchange.Text.IndexOf("$")))
+        row2(7) = setString(TBAccompte.Text.Substring(0, TBAccompte.Text.IndexOf("$")))
+        row2(8) = setString(TBPayerLiv.Text.Substring(0, TBPayerLiv.Text.IndexOf("$")))
+        row2(9) = setString(TBRemettreCl.Text.Substring(0, TBRemettreCl.Text.IndexOf("$")))
+        row2(10) = setString(TBBalEchange.Text.Substring(0, TBBalEchange.Text.IndexOf("$")))
+        row2(11) = MainForm.GetInstance.GetOption4
+        row2(12) = MainForm.GetInstance.GetOption5
+
+        MainForm.tableFacture.Rows.Add(row2)
+
+        Dim print As New PrintingForm(row2, listeCoul)
+        print.Show()
+
+        Me.Close()
     End Sub
 
     Private Sub BTCouleur_Click(sender As Object, e As EventArgs) Handles BTCouleur.Click

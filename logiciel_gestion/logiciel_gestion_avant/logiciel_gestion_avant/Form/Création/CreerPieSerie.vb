@@ -1,5 +1,5 @@
 ﻿Public Class CreerPieSerie
-    Dim idVe As Integer
+    ReadOnly idVe As Integer
 
     Sub New(id As Integer)
 
@@ -23,19 +23,19 @@
                 listeAdd(3) = DTPInstall.Value
                 listeAdd(4) = idVe
                 If ConnectionServeur.Getinstance.AddDelete(listeAdd, "addPieSerie") Then
-                    MessageBox.Show("Ajout réussit!")
+                    MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
 
                     MainForm.tablePieSerie.Rows.Add(listeAdd)
 
                     Me.Close()
                 Else
-                    MessageBox.Show("Une erreure c'est produit durant l'enregistrement sur le serveur!", "Attention!")
+                    MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ, "Attention!")
                 End If
             Else
-                MessageBox.Show("Vous devez mettre un nom de pièce")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgMissNom)
             End If
         Else
-            MessageBox.Show("Vous devez mettre un numéro de série")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgMissNoSerie)
         End If
     End Sub
 End Class

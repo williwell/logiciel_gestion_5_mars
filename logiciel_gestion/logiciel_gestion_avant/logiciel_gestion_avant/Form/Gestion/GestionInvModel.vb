@@ -232,16 +232,16 @@ Public Class GestionInvModel
 
         If bool1 Then
             If bool2 Then
-                MessageBox.Show("L'enregistrement c'est effectuer correctement")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
                 Me.Close()
             Else
-                MessageBox.Show("Le changement des items pour le model c'est effectué correctement, mais une erreure c'est produit durant le changement des quantité des items")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgSauvItemErrQuantite)
             End If
         Else
             If bool2 Then
-                MessageBox.Show("Le changement des quantités des items c'est effectué correctement, mais une erreure c'est produit durant l'enregistrement des produits.")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgSauvQuantiteErrItem)
             Else
-                MessageBox.Show("Un erreure est c'est produit durant l'enregistrement des changement!")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
             End If
         End If
     End Sub

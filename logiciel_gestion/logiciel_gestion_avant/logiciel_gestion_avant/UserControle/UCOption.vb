@@ -134,9 +134,9 @@
                     For c As Integer = 0 To DGVOption.Columns.Count - 1
                         listeOr(r, c) = listeAdd(c)
                     Next
-                    MessageBox.Show("Enregistrement réussit!")
+                    MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
                 Else
-                    MessageBox.Show("Une erreure est survenue durant l'enregistrement!")
+                    MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
                 End If
             End If
         Next
@@ -146,7 +146,7 @@
     'Quand on click sur ce bouton, on envoie sur le serveur l'information qu'on doit changé le paramètre DeleteOpt pour qu'il soit considé comme
     'Supprimer
     Private Sub BTDelete_Click(sender As Object, e As EventArgs) Handles BTDelete.Click
-        If MessageBox.Show("Voulez-vous vraiment supprimer " + DGVOption.CurrentRow.Cells(1).Value + "?", "Attention!", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+        If MessageBox.Show(MsgTextFr.Getinstance.MsgConfirSupp + DGVOption.CurrentRow.Cells(1).Value + "?", MsgTextFr.Getinstance.MsgAttention, MessageBoxButtons.YesNo) = DialogResult.Yes Then
             ConnectionServeur.Getinstance.GetInfo(DGVOption.CurrentRow.Cells(0).Value, "ChangeDeleteOp")
 
             'Loop pour trouver la même ligne dans la table du mainform et modifier la valeur de deleteOpt

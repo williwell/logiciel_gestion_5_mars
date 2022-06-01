@@ -229,13 +229,13 @@ Public Class CreerModel
 
                 End If
                 ucGestionModel.RemplirModel()
-                MessageBox.Show("Création du nouveau model réussit")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
                 Me.Close()
             Else
-                MessageBox.Show("Une erreure est survenu durant la création du nouveau model!")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
             End If
         Else
-            MessageBox.Show("Le champ nom ne peut pas être vide!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgMissNom)
         End If
     End Sub
 

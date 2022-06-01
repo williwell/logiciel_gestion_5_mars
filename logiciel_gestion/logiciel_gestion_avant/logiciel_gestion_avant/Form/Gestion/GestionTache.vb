@@ -44,14 +44,14 @@
                     For c As Integer = 1 To MainForm.tableTache.Columns.Count - 1
                         MainForm.tableTache(r)(c) = liste(c)
                     Next
-                    MessageBox.Show("Modification effectuer correctement")
+                    MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
                     Exit For
                 End If
             Next
             uc.LoadDGV()
             Me.Close()
         Else
-            MessageBox.Show("Une erreure est survenu durant l'enregistrement des changements!", "Attention!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ, "Attention!")
         End If
     End Sub
 

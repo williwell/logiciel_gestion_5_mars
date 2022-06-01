@@ -82,7 +82,7 @@
 
             'Si aucune rangé est mit dans le DataGridView on met un message et ferme le form
             If Not dgvFour.Rows.Count > 0 Then
-                MessageBox.Show("Ce produit a tous les fournisseurs!")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgTousFour)
                 Me.Close()
             End If
 
@@ -127,7 +127,7 @@
 
             'Si aucune rangé est mit dans le DataGridView on met un message et ferme le form
             If Not dgvFour.Rows.Count > 0 Then
-                MessageBox.Show("Ce produit n'a pas de fournisseur!")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgAucunFour)
                 Me.Close()
             End If
 
@@ -153,7 +153,7 @@
             If ConnectionServeur.Getinstance.AddDelete(liste, "addInvFour") Then
                 'Si l'enregistrement sur le serveur c'est fait sans erreure un écrit un message et on créer une ligne pour
                 'l'ajouter dans la table InventaireFournisseur du mainform
-                MessageBox.Show("L'ajout du fournisseur à bien été fait!")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
                 Dim rowadd As DataRow = MainForm.tableInvFour.NewRow
                 rowadd(0) = idInv
                 rowadd(1) = dgvFour.CurrentRow.Cells(0).Value
@@ -232,7 +232,7 @@
             Dim liste() As String = {idInv, dgvFour.CurrentRow.Cells(0).Value}
             If ConnectionServeur.Getinstance.AddDelete(liste, "delInvFour") Then
                 'Si l'enregistrement sur le serveur est réussit on écrit un message et on l'enlève de la table inventaireFournisseur sur le mainform
-                MessageBox.Show("La suppression du fournisseur à bien été fait!")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgSupp)
                 For i As Integer = 0 To MainForm.tableInvFour.Rows.Count - 1
                     If MainForm.tableInvFour.Rows(i).Item("idinventaire") = idInv And MainForm.tableInvFour.Rows(i).Item("idfournisseur") = dgvFour.CurrentRow.Cells(0).Value Then
                         MainForm.tableInvFour.Rows.RemoveAt(i)
@@ -303,7 +303,7 @@
                 End If
                 Me.Close()
             Else
-                MessageBox.Show("Une erreure c'est produit durant la suppression du fournisseur!", "Attention!")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ, "Attention!")
             End If
         End If
     End Sub

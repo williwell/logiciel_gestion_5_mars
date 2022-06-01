@@ -398,9 +398,9 @@ Partial Class CreerContrat
         '
         Me.TBPayerLiv.Location = New System.Drawing.Point(634, 609)
         Me.TBPayerLiv.Name = "TBPayerLiv"
-        Me.TBPayerLiv.ReadOnly = True
         Me.TBPayerLiv.Size = New System.Drawing.Size(138, 23)
         Me.TBPayerLiv.TabIndex = 39
+        Me.TBPayerLiv.Text = "0,00$"
         '
         'Label14
         '
@@ -415,14 +415,14 @@ Partial Class CreerContrat
         '
         Me.TBBalEchange.Location = New System.Drawing.Point(634, 653)
         Me.TBBalEchange.Name = "TBBalEchange"
-        Me.TBBalEchange.ReadOnly = True
         Me.TBBalEchange.Size = New System.Drawing.Size(138, 23)
         Me.TBBalEchange.TabIndex = 41
+        Me.TBBalEchange.Text = "0,00$"
         '
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(825, 591)
+        Me.Label15.Location = New System.Drawing.Point(820, 591)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(76, 15)
         Me.Label15.TabIndex = 44
@@ -430,7 +430,7 @@ Partial Class CreerContrat
         '
         'TBFinancement
         '
-        Me.TBFinancement.Location = New System.Drawing.Point(825, 609)
+        Me.TBFinancement.Location = New System.Drawing.Point(820, 609)
         Me.TBFinancement.Name = "TBFinancement"
         Me.TBFinancement.ReadOnly = True
         Me.TBFinancement.Size = New System.Drawing.Size(138, 23)
@@ -439,7 +439,7 @@ Partial Class CreerContrat
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(825, 632)
+        Me.Label16.Location = New System.Drawing.Point(634, 679)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(89, 15)
         Me.Label16.TabIndex = 46
@@ -447,11 +447,11 @@ Partial Class CreerContrat
         '
         'TBRemettreCl
         '
-        Me.TBRemettreCl.Location = New System.Drawing.Point(825, 650)
+        Me.TBRemettreCl.Location = New System.Drawing.Point(634, 697)
         Me.TBRemettreCl.Name = "TBRemettreCl"
-        Me.TBRemettreCl.ReadOnly = True
         Me.TBRemettreCl.Size = New System.Drawing.Size(138, 23)
         Me.TBRemettreCl.TabIndex = 45
+        Me.TBRemettreCl.Text = "0,00$"
         '
         'Label17
         '

@@ -252,8 +252,8 @@
 
             MessageBox.Show("Ajout fait avec succès")
 
-            Dim print As New PrintingForm(row2)
-            print.Show()
+            'Dim print As New PrintingForm(row2)
+            'print.Show()
 
             Clear()
             uc.Clear()

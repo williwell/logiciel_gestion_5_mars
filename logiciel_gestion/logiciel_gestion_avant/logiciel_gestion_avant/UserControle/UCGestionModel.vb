@@ -331,7 +331,6 @@ Public Class UCGestionModel
                         'Loop pour passer toutes les index de la listeajout et un deuxieme loop pour passé toutes les lignes de la tableCoulMo
                         'du Mainform et enlever la ligne si elle est trouver
                         For i As Integer = 0 To listeAjout.Length - 1
-                            Dim row As DataRow = Nothing
                             For r As Integer = 0 To MainForm.tableCoulMo.Rows.Count - 1
                                 If MainForm.tableCoulMo.Rows(r).Item("idcouleur") = listeAjout(i) And MainForm.tableCoulMo.Rows(r).Item("idModel") = listeId(cbModel.SelectedIndex) Then
                                     MainForm.tableCoulMo.Rows.Remove(MainForm.tableCoulMo.Rows(r))
@@ -369,7 +368,7 @@ Public Class UCGestionModel
 
         'SI l'enregistrement c'est effectuer correctment, on change les toutes les listeOriginal pour leur nouvelle valeur
         If bool1 And bool2 Then
-            MessageBox.Show("L'enregistrement c'est effectuer correctement")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
             ReDim OrOpMo(tableOptionMo.Rows.Count - 1, tableOptionMo.Columns.Count - 1)
             ListeOr(OrOpMo, tableOptionMo)
             ReDim OrOpAdd(tableOptionAdd.Rows.Count - 1, tableOptionAdd.Columns.Count - 1)
@@ -382,7 +381,7 @@ Public Class UCGestionModel
             nbrCoul = tableCouleurMo.Rows.Count
             CheckChange()
         Else
-            MessageBox.Show("Un erreure est c'est produit durant l'enregistrement!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
         End If
     End Sub
 

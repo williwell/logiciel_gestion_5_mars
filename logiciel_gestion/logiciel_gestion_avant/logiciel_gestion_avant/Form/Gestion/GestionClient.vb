@@ -56,9 +56,9 @@ Public Class GestionClient
             For i As Integer = 0 To listeAdd.Length - 1
                 table(0)(i) = listeAdd(i)
             Next
-            MessageBox.Show("L'enregistrement des modification fait.")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
         Else
-            MessageBox.Show("Une erreure est survenu durant l'enregistrement!", "Attention!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ, "Attention!")
         End If
     End Sub
 

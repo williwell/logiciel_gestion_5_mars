@@ -136,7 +136,7 @@
             tbNoCompte.Text = table(0)(9)
             tbMethodePaie.Text = table(0)(10)
         Catch ex As Exception
-            MessageBox.Show("Un erreure est survenu avec le serveur!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
             main.Fermer()
         End Try
     End Sub
@@ -159,7 +159,7 @@
     'des textbox pour modifier dans la base de donnée
     Private Sub BtSauv_Click(sender As Object, e As EventArgs) Handles btSauv.Click
         If ConnectionServeur.Getinstance.AddDelete(liste, "modFour") Then
-            MessageBox.Show("La modification c'est fait sans problème")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
             'loop qui sert a mettre a jour les informations dans la table vu qu'il on été modifier dans des textbox
             For i As Integer = 1 To liste.Length - 1
                 table(0)(i) = liste(i)
@@ -176,7 +176,7 @@
             Next
             BtSauvChanger()
         Else
-            MessageBox.Show("Un erreur est survenu du coté du serveur!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
         End If
     End Sub
 
@@ -299,8 +299,8 @@
     'Quand on appuie sur le bouton, on demande à l'utilisateur deux fois de suite si il veut vraiment supprimer ce fournisseur si oui on le
     'supprime définitivement du serveur et toute se qui y ai associé
     Private Sub BTDelete_Click(sender As Object, e As EventArgs) Handles BTDelete.Click
-        If MessageBox.Show("Voulez-vous vraiment supprimer ce fournisseur: " & dgvFour.CurrentRow.Cells(0).Value & " - " & dgvFour.CurrentRow.Cells(1).Value & "? (Cette action est irréversible)", "Attention!", MessageBoxButtons.YesNo) = DialogResult.Yes Then
-            If MessageBox.Show("Êtes-vous sûr que vous voulez vraiment le supprimer: " & dgvFour.CurrentRow.Cells(0).Value & " - " & dgvFour.CurrentRow.Cells(1).Value & "? (Cette action est irréversible)", "Attention!", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+        If MessageBox.Show(MsgTextFr.Getinstance.MsgConfirSuppFour1 & dgvFour.CurrentRow.Cells(0).Value & " - " & dgvFour.CurrentRow.Cells(1).Value & "? " & MsgTextFr.Getinstance.MsgIrreversible, MsgTextFr.Getinstance.MsgAttention, MessageBoxButtons.YesNo) = DialogResult.Yes Then
+            If MessageBox.Show(MsgTextFr.Getinstance.MsgConfirSuppFour2 & dgvFour.CurrentRow.Cells(0).Value & " - " & dgvFour.CurrentRow.Cells(1).Value & "? " & MsgTextFr.Getinstance.MsgIrreversible, MsgTextFr.Getinstance.MsgAttention, MessageBoxButtons.YesNo) = DialogResult.Yes Then
 
                 If ConnectionServeur.Getinstance.AddDelete(dgvFour.CurrentRow.Cells(0).Value, "DeleteInvFourFour") Then
                     'On loop pour trouver toute les lignes qui ont une connection avec ce fournisseur dans la table fourinv et les supprimer
@@ -344,13 +344,13 @@
 
                             DeleteFour()
                         Else
-                            MessageBox.Show("Une erreure est survenu durant la suppression du fournisseur")
+                            MessageBox.Show(MsgTextFr.Getinstance.MsgErrSupp)
                         End If
                     Else
                         DeleteFour()
                     End If
                 Else
-                    MessageBox.Show("une erreure est survenu durant la suppression du fournisseur")
+                    MessageBox.Show(MsgTextFr.Getinstance.MsgErrSupp)
                 End If
             End If
         End If
@@ -371,10 +371,10 @@
             If index <> 0 Then
                 MainForm.tableFour.Rows.RemoveAt(index)
             End If
-            MessageBox.Show("Suppression du fournisseur réussit avec succès")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgSupp)
             Remplir(table)
         Else
-            MessageBox.Show("Une erreure est survenu et a empêché la suppression du fournisseur")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgErrSupp)
         End If
     End Sub
 

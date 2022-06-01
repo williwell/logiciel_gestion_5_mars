@@ -197,7 +197,7 @@
                     End If
                 Next
 
-                MessageBox.Show("La modification à bien été fait")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgModServ)
                 For i As Integer = 1 To change.Length - 1
                     If Not (i = 8 Or i = 9) Then
                         tableOri(cbNoFour.SelectedIndex)(i) = change(i)
@@ -205,11 +205,11 @@
                 Next
                 BtSauvChanger()
             Else
-                MessageBox.Show("Une erreure est survenue durant la sauvegerde de la modification!")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
 
             End If
         Else
-            MessageBox.Show("Une erreure est survenue durant la sauvegerde de la modification!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
         End If
 
     End Sub
@@ -301,7 +301,7 @@
         'objets du UserControl et on affiche que le numéro d'item n'existe pas
         If tableOri.Rows.Count = 0 Then
             Cleane()
-            labPasItem.Text = "Le numéro d'item n'existe pas!"
+            labPasItem.Text = MsgTextFr.Getinstance.MsgNoIdProduit
             labPasItem.ForeColor = Color.Red
             tbIDPro.SelectAll()
             sameID = tbIDPro.Text

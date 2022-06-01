@@ -104,9 +104,9 @@
                             Next
                         End If
                     Next
-                    MessageBox.Show("Enregistrement réussit!")
+                    MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
                 Else
-                    MessageBox.Show("Une erreure c'est produit durant l'enregistrement")
+                    MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
                 End If
             End If
         Next
@@ -138,7 +138,7 @@
 
     'Si on click sur ce bouton, on envoie au serveur l'instruction de changer le paramètre deleteCoul pour le mettre a 0 pour la ligne avec le même id
     Private Sub BtDel_Click(sender As Object, e As EventArgs) Handles BtDel.Click
-        If MessageBox.Show("Voulez-vous vraiment supprimer " + dgvCouleur.CurrentRow.Cells(1).Value + "?", "Attention!", MessageBoxButtons.YesNo) = DialogResult.Yes Then
+        If MessageBox.Show(MsgTextFr.Getinstance.MsgConfirSupp + dgvCouleur.CurrentRow.Cells(1).Value + "?", MsgTextFr.Getinstance.MsgAttention, MessageBoxButtons.YesNo) = DialogResult.Yes Then
             ConnectionServeur.Getinstance.GetInfo(dgvCouleur.CurrentRow.Cells(0).Value, "ChangeDeleteToi")
             'loop pour trouver quel ligne a le même id et changer le paramètre deleteCOul pour mettre 0
             For r As Integer = 0 To MainForm.tableCoulToi.Rows.Count - 1

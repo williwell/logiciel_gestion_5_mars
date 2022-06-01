@@ -13,7 +13,7 @@
     Private Sub BtCreer_Click(sender As Object, e As EventArgs) Handles btCreer.Click
         Dim liste(9) As String
         If String.IsNullOrEmpty(tbNomFour.Text) Then
-            MessageBox.Show("Le fournisseur doit avoir un nom!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgMissNom)
         Else
             liste(0) = tbNomFour.Text
 
@@ -69,7 +69,7 @@
 
             Dim table As DataTable = ConnectionServeur.Getinstance.GetInfo(liste, "addFour")
             If table(0)(0) <> 0 Then
-                MessageBox.Show("La création du fournisseur à bien été fait")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
 
                 Dim row As DataRow = MainForm.tableFour.NewRow
                 row(0) = table(0)(0)
@@ -81,7 +81,7 @@
                 four.LoadFour()
                 Me.Close()
             Else
-                MessageBox.Show("Une erreur c'est produit durant la création du fournisseur")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
             End If
         End If
     End Sub

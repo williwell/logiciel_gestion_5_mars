@@ -219,6 +219,31 @@ Public Class ConnectionServeur
         Return bool
     End Function
 
+    Public Function AddDeleteListeTable(liste() As String, id As String, instruction As String) As DataTable
+        Dim table As DataTable = Nothing
+
+        If conc Then
+            Try
+                Dim serverStream As NetworkStream = clientSocket.GetStream()
+                Dim text As String = "\\liste;"
+
+                For i As Integer = 0 To liste.Length - 1
+                    text += liste(i) & ";"
+                Next
+                text += "\\listeEnd;"
+
+                Dim outStream As Byte() = Encoding.UTF8.GetBytes(text & instruction & ";" & id & ";$")
+                serverStream.Write(outStream, 0, outStream.Length)
+                serverStream.Flush()
+
+                table = CreateTable(serverStream)
+            Catch ex As Exception
+
+            End Try
+        End If
+        Return table
+    End Function
+
     Public Function ModInv(idInv As String, idModel As String, nbr As String, str As String) As Boolean
         Dim bool As Boolean = False
         If conc Then

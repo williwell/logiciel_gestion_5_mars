@@ -28,12 +28,12 @@
         End If
 
         If String.IsNullOrEmpty(TBNom.Text) Then
-            MessageBox.Show("Vous devez avoir un titre de mit!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgMissTitre)
         ElseIf TBNom.Text.Length <= 100 Then
             liste(2) = TBNom.Text
             Dim id As String = ConnectionServeur.Getinstance.GetInfo(liste, "addTache")(0)(0)
             If id <> "0" Then
-                MessageBox.Show("Ajout de la tâche réussit!")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
                 Dim row As DataRow = MainForm.tableTache.NewRow
                 row(0) = id
                 For c As Integer = 1 To MainForm.tableTache.Columns.Count - 1
@@ -43,10 +43,10 @@
                 tache.LoadDGV()
                 Me.Close()
             Else
-                MessageBox.Show("Une erreure est survenu durant l'enregistrement sur le serveur!")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
             End If
         Else
-            MessageBox.Show("Le titre est trop long! (Maximun de 100 caratères)")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgTitreTropLong)
         End If
     End Sub
 

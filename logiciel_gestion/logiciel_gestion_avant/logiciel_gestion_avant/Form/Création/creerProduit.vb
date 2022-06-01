@@ -78,7 +78,7 @@
                 MainForm.tableInv.Rows.Add(row)
                 Dim liste2() As String = {liste(0), liste(4), liste(6), liste(10), liste(11), CBDevise.SelectedItem.ToString}
                 If ConnectionServeur.Getinstance.AddDelete(liste2, "addInvFour") Then
-                    MessageBox.Show("La création du nouveau produit à bien été fait!")
+                    MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
                     Dim row2 As DataRow = MainForm.tableInvFour.NewRow
                     For i As Integer = 0 To liste2.Length - 1
                         row2(i) = liste2(i)
@@ -86,13 +86,13 @@
                     MainForm.tableInvFour.Rows.Add(row2)
                     Me.Close()
                 Else
-                    MessageBox.Show("Une erreur est survenue durant la création!", "Attention!")
+                    MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ, "Attention!")
                 End If
             Else
-                MessageBox.Show("Une erreur est survenue durant la création!", "Attention!")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ, "Attention!")
             End If
         Else
-            MessageBox.Show("Le id du nouveau produit et le nom du produit doit être rmplie obligatoirement!", "Attention!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgMissIdNom, "Attention!")
         End If
     End Sub
 
@@ -106,9 +106,12 @@
     End Sub
 
     Private Sub NudCoutUn_KeyDown(sender As Object, e As KeyEventArgs) Handles nudCoutUn.KeyDown
-        If e.KeyCode = 110 Or e.KeyCode = 190 Then
-            e.SuppressKeyPress = True
-            SendKeys.Send(",")
+        Dim lang = Globalization.CultureInfo.CurrentCulture
+        If lang.Name = "fr-CA" Then
+            If e.KeyCode = 110 Or e.KeyCode = 190 Then
+                e.SuppressKeyPress = True
+                SendKeys.Send(",")
+            End If
         End If
     End Sub
 
@@ -154,7 +157,7 @@
         If bool Then
             tbIDPro.BackColor = Color.Red
             btSauv.Enabled = False
-            LabSameID.Text = "Ce ID de produit existe déjà!"
+            LabSameID.Text = MsgTextFr.Getinstance.MsgIdExiste
             LabSameID.ForeColor = Color.Red
         Else
             LabSameID.Text = ""

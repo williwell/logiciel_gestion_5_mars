@@ -243,9 +243,9 @@ Public Class UCListeLivraison
 
             ChangerTable(tableOR, table)
             CheckChange()
-            MessageBox.Show("Changement des priorité fait avec succès!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgChangePrio)
         Else
-            MessageBox.Show("Une erreure c'est produit durant l'enregistrement des changement de priorité!", "Attention!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ, MsgTextFr.Getinstance.MsgAttention)
         End If
     End Sub
 
@@ -306,7 +306,7 @@ Public Class UCListeLivraison
                 LoadDGV()
 
             Else
-                MessageBox.Show("Une erreur est survenu durant l'enregistrement des modification")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
             End If
         End If
     End Sub
