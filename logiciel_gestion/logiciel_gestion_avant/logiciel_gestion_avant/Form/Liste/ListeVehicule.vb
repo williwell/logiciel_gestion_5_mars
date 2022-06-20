@@ -1,7 +1,7 @@
 ﻿Public Class ListeVehicule
-    ReadOnly uc As CreerContrat
+    ReadOnly uc As CreerCommande
 
-    Sub New(ucVente As CreerContrat)
+    Sub New(ucVente As CreerCommande)
 
         ' Cet appel est requis par le concepteur.
         InitializeComponent()
@@ -14,8 +14,10 @@
         'Créer une table temporaire et ajouter les colonnes que j'ai besoin
         Dim table As New DataTable
         table.Columns.Add("ID")
-        table.Columns.Add("Numéro Matricule")
+        table.Columns.Add("NIV")
         table.Columns.Add("Model")
+        table.Columns.Add("Châssis")
+        table.Columns.Add("Année")
         table.Columns.Add("Coût")
         table.Columns.Add("Couleur Véhicule")
         table.Columns.Add("Code Couleur Véhicule")
@@ -38,8 +40,10 @@
                                             If MainForm.tableVe.Rows(r).Item("idcoultissus") = MainForm.tableCoulTis.Rows(r5).Item("id") Then
                                                 Dim row As DataRow = table.NewRow
                                                 row(0) = MainForm.tableVe.Rows(r).Item("id")
-                                                row(1) = MainForm.tableVe.Rows(r).Item("nomatricule")
+                                                row(1) = MainForm.tableVe.Rows(r).Item("NIV")
                                                 row(2) = MainForm.tableModel.Rows(r2).Item("nom")
+                                                row(3) = MainForm.tableVe.Rows(r).Item("chassi")
+                                                row(4) = MainForm.tableVe.Rows(r).Item("annee")
                                                 row(3) = MainForm.tableModel.Rows(r2).Item("cout")
                                                 row(4) = MainForm.tableCoulVe.Rows(r3).Item("nom")
                                                 row(5) = MainForm.tableCoulVe.Rows(r3).Item("code")

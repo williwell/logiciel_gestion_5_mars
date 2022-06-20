@@ -29,6 +29,7 @@ Partial Class GestionFacture
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(GestionFacture))
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.BTPrint = New System.Windows.Forms.Button()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -94,6 +95,7 @@ Partial Class GestionFacture
         '
         'Panel1
         '
+        Me.Panel1.Controls.Add(Me.BTPrint)
         Me.Panel1.Controls.Add(Me.Label11)
         Me.Panel1.Controls.Add(Me.Label10)
         Me.Panel1.Controls.Add(Me.Label9)
@@ -131,8 +133,17 @@ Partial Class GestionFacture
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(816, 648)
+        Me.Panel1.Size = New System.Drawing.Size(816, 609)
         Me.Panel1.TabIndex = 1
+        '
+        'BTPrint
+        '
+        Me.BTPrint.Location = New System.Drawing.Point(175, 5)
+        Me.BTPrint.Name = "BTPrint"
+        Me.BTPrint.Size = New System.Drawing.Size(128, 23)
+        Me.BTPrint.TabIndex = 2
+        Me.BTPrint.Text = "Imprimer"
+        Me.BTPrint.UseVisualStyleBackColor = True
         '
         'Label11
         '
@@ -402,9 +413,9 @@ Partial Class GestionFacture
         Me.Label7.Font = New System.Drawing.Font("Segoe UI", 7.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Label7.Location = New System.Drawing.Point(566, 162)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(93, 12)
+        Me.Label7.Size = New System.Drawing.Size(62, 12)
         Me.Label7.TabIndex = 42
-        Me.Label7.Text = "CONTRAT DE VENTE"
+        Me.Label7.Text = "COMMANDE"
         '
         'Label1
         '
@@ -656,7 +667,7 @@ Partial Class GestionFacture
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(816, 648)
+        Me.ClientSize = New System.Drawing.Size(816, 609)
         Me.Controls.Add(Me.Panel1)
         Me.Name = "GestionFacture"
         Me.Text = "GestionFacture"
@@ -726,4 +737,5 @@ Partial Class GestionFacture
     Friend WithEvents Label10 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents Label8 As Label
+    Friend WithEvents BTPrint As Button
 End Class

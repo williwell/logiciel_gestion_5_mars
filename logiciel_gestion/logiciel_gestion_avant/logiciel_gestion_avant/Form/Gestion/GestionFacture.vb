@@ -1,5 +1,6 @@
 ﻿Public Class GestionFacture
     ReadOnly id As String
+    Dim rowFac As DataRow
 
     Sub New(idGet As String)
 
@@ -13,7 +14,7 @@
     Private Sub GestionFacture_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Panel1.AutoScroll = True
 
-        Dim rowFac As DataRow = MainForm.tableFacture.NewRow
+        rowFac = MainForm.tableFacture.NewRow
 
         For r As Integer = 0 To MainForm.tableFacture.Rows.Count - 1
             If MainForm.tableFacture.Rows(r).Item("id") = id Then
@@ -191,4 +192,20 @@
 
         Return h
     End Function
+
+    Private Sub BTPrint_Click(sender As Object, e As EventArgs) Handles BTPrint.Click
+        Dim liste(-1) As String
+        Dim nbr As Integer = 2
+        For r As Integer = 0 To MainForm.tableCoulSupp.Rows.Count - 1
+            If MainForm.tableCoulSupp.Rows(r).Item("idVe") = rowFac.Item("idvehicule") Then
+                ReDim Preserve liste(nbr)
+                liste(nbr - 2) = MainForm.tableCoulSupp.Rows(r).Item("nom")
+                liste(nbr - 1) = MainForm.tableCoulSupp.Rows(r).Item("couleur")
+                liste(nbr) = MainForm.tableCoulSupp.Rows(r).Item("code")
+                nbr += 3
+            End If
+        Next
+        Dim f As New PrintingForm(rowFac, liste, rowFac.Item("date"), False)
+        f.ShowDialog()
+    End Sub
 End Class

@@ -3,8 +3,9 @@
 Public Class AddCoulContrat
     ReadOnly liste() As String
     ReadOnly table As New DataTable
-    ReadOnly contrat As CreerContrat
-    Sub New(lst() As String, form As CreerContrat)
+    ReadOnly contrat As CreerCommande
+    ReadOnly vehicule As CreerVehicule
+    Sub New(lst() As String, form As CreerCommande)
 
         ' Cet appel est requis par le concepteur.
         InitializeComponent()
@@ -12,6 +13,16 @@ Public Class AddCoulContrat
         ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
         liste = lst
         contrat = form
+    End Sub
+
+    Sub New(lst() As String, form As CreerVehicule)
+
+        ' Cet appel est requis par le concepteur.
+        InitializeComponent()
+
+        ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
+        liste = lst
+        vehicule = form
     End Sub
 
     Private Sub AddCoulContrat_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -70,6 +81,10 @@ Public Class AddCoulContrat
             lst(r * 3 + 1) = DGV.Rows(r).Cells(1).Value
             lst(r * 3 + 2) = DGV.Rows(r).Cells(2).Value
         Next
-        contrat.RemplirListe(lst)
+        If IsNothing(contrat) Then
+            vehicule.RemplirListe(lst)
+        Else
+            contrat.RemplirListe(lst)
+        End If
     End Sub
 End Class

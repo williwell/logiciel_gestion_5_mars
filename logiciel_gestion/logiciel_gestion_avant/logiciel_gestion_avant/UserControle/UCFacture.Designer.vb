@@ -46,6 +46,7 @@ Partial Class UCFacture
         Me.DGVFacture.Dock = System.Windows.Forms.DockStyle.Bottom
         Me.DGVFacture.Location = New System.Drawing.Point(0, 61)
         Me.DGVFacture.Name = "DGVFacture"
+        Me.DGVFacture.ReadOnly = True
         Me.DGVFacture.RowTemplate.Height = 25
         Me.DGVFacture.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DGVFacture.Size = New System.Drawing.Size(1115, 590)

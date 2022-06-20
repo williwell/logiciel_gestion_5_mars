@@ -27,7 +27,9 @@
             Next
 
             tableVehicule.Columns.Add("ID")
-            tableVehicule.Columns.Add("Numéro Matricule")
+            tableVehicule.Columns.Add("NIV")
+            tableVehicule.Columns.Add("Châssis")
+            tableVehicule.Columns.Add("Année")
             tableVehicule.Columns.Add("Model")
             tableVehicule.Columns.Add("Couleur Véhicule")
             tableVehicule.Columns.Add("Couleur Toile")
@@ -77,29 +79,31 @@
                     If MainForm.tableVenteVe.Rows(r2).Item("dateprevu") < Date.Now.AddMonths(1) Then
                         Dim row As DataRow = tableVehicule.NewRow
                         row(0) = MainForm.tableVe.Rows(r).Item("id")
-                        row(1) = MainForm.tableVe.Rows(r).Item("nomatricule")
-                        row(6) = MainForm.tableVe.Rows(r).Item("fabriquer")
-                        row(7) = MainForm.tableVe.Rows(r).Item("eninventaire")
-                        row(8) = MainForm.tableVenteVe.Rows(r2).Item("dateprevu")
-                        row(9) = MainForm.tableVenteVe.Rows(r2).Item("priorite")
+                        row(1) = MainForm.tableVe.Rows(r).Item("NIV")
+                        row(2) = MainForm.tableVe.Rows(r).Item("chassi")
+                        row(3) = MainForm.tableVe.Rows(r).Item("annee")
+                        row(8) = MainForm.tableVe.Rows(r).Item("fabriquer")
+                        row(9) = MainForm.tableVe.Rows(r).Item("eninventaire")
+                        row(10) = MainForm.tableVenteVe.Rows(r2).Item("dateprevu")
+                        row(11) = MainForm.tableVenteVe.Rows(r2).Item("priorite")
                         For r3 As Integer = 0 To MainForm.tableModel.Rows.Count - 1
                             If MainForm.tableVe.Rows(r).Item("idmodel") = MainForm.tableModel.Rows(r3).Item("id") Then
-                                row(2) = MainForm.tableModel.Rows(r3).Item("nom")
+                                row(4) = MainForm.tableModel.Rows(r3).Item("nom")
                             End If
                         Next
                         For r3 As Integer = 0 To MainForm.tableCoulVe.Rows.Count - 1
                             If MainForm.tableVe.Rows(r).Item("idcouleur") = MainForm.tableCoulVe.Rows(r3).Item("id") Then
-                                row(3) = MainForm.tableCoulVe.Rows(r3).Item("nom")
+                                row(5) = MainForm.tableCoulVe.Rows(r3).Item("nom")
                             End If
                         Next
                         For r3 As Integer = 0 To MainForm.tableCoulToi.Rows.Count - 1
                             If MainForm.tableVe.Rows(r).Item("idcoultoile") = MainForm.tableCoulToi.Rows(r3).Item("id") Then
-                                row(4) = MainForm.tableCoulToi.Rows(r3).Item("nom")
+                                row(6) = MainForm.tableCoulToi.Rows(r3).Item("nom")
                             End If
                         Next
                         For r3 As Integer = 0 To MainForm.tableCoulTis.Rows.Count - 1
                             If MainForm.tableVe.Rows(r).Item("idcoultissus") = MainForm.tableCoulTis.Rows(r3).Item("id") Then
-                                row(5) = MainForm.tableCoulTis.Rows(r3).Item("nom")
+                                row(7) = MainForm.tableCoulTis.Rows(r3).Item("nom")
                             End If
                         Next
                         tableVehicule.Rows.Add(row)

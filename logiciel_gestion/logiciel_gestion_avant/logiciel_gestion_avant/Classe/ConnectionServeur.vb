@@ -27,7 +27,7 @@ Public Class ConnectionServeur
         Try
             clientSocket = New TcpClient(MainForm.GetInstance.GetOption1, MainForm.GetInstance.GetOption3)
             Dim serverStream As NetworkStream = clientSocket.GetStream()
-            Dim outStream As Byte() = Encoding.UTF8.GetBytes("Avant;0.3;$")
+            Dim outStream As Byte() = Encoding.UTF8.GetBytes("Avant;0.4;$")
             serverStream.Write(outStream, 0, outStream.Length)
             serverStream.Flush()
 
@@ -38,7 +38,7 @@ Public Class ConnectionServeur
                 conc = True
                 thread.Start(main)
             Else
-                MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ, "Attention!")
+                MessageBox.Show(MsgTextFr.Getinstance.MsgErrConnectionServ, MsgTextFr.Getinstance.MsgAttention)
             End If
             Return conc
         Catch ex As Exception
@@ -279,11 +279,6 @@ Public Class ConnectionServeur
                 search = False
             End If
 
-            Using myFileWriter As IO.StreamWriter = IO.File.AppendText("C:\logiciel_gestion_5_mars_fichier\texte.txt")
-                myFileWriter.WriteLine(str)
-                myFileWriter.WriteLine("ok")
-                myFileWriter.Close()
-            End Using
         End While
 
         Dim row As Integer = Integer.Parse(str.Substring(0, str.IndexOf(";")))

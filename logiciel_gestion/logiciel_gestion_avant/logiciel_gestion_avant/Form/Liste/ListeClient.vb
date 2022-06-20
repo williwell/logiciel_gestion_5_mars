@@ -1,7 +1,7 @@
 ﻿Public Class ListeClient
-    ReadOnly uc As CreerContrat
+    ReadOnly uc As CreerCommande
 
-    Sub New(ucVe As CreerContrat)
+    Sub New(ucVe As CreerCommande)
 
         ' Cet appel est requis par le concepteur.
         InitializeComponent()

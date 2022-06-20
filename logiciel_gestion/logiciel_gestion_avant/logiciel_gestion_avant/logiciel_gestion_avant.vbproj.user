@@ -14,7 +14,7 @@
     <Compile Update="Form\Création\CreerClient.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Form\Création\CreerContrat.vb">
+    <Compile Update="Form\Création\CreerCommande.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Form\Création\CreerCouleur.vb">
@@ -41,6 +41,9 @@
     <Compile Update="Form\Création\CreerTache.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Form\Création\CreerVehicule.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Form\Gestion\GestionClient.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -51,6 +54,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Form\Gestion\GestionInvOpt.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form\Gestion\GestionOptVe.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Form\Gestion\GestionTache.vb">
@@ -132,15 +138,6 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UserControle\UCTache.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControle\UCVente.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControle\UCVente2.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UserControle\UCVente3.vb">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

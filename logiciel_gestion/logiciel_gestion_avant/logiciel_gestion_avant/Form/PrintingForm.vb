@@ -5,14 +5,18 @@ Public Class PrintingForm
     ReadOnly nbrPage As Integer = 1
     ReadOnly rowFac As DataRow
     ReadOnly listeCoul As String()
+    ReadOnly dateImp As Date
+    ReadOnly bool As Boolean
 
-    Sub New(row As DataRow, lst As String())
+    Sub New(row As DataRow, lst As String(), dateRecu As Date, boolEx As Boolean)
         ' Cet appel est requis par le concepteur.
         InitializeComponent()
 
         ' Ajoutez une initialisation quelconque après l'appel InitializeComponent().
         rowFac = row
         listeCoul = lst
+        dateImp = dateRecu
+        bool = boolEx
     End Sub
 
     Private Sub TestPrint_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -53,7 +57,7 @@ Public Class PrintingForm
             End If
         Next
 
-        LabDateNow.Text = Date.Now.ToString("yyyy-MM-dd")
+        LabDateNow.Text = dateImp.ToString("yyyy-MM-dd")
 
         For r As Integer = 0 To MainForm.tableVe.Rows.Count - 1
             If MainForm.tableVe.Rows(r).Item("id") = rowFac.Item("idVehicule") Then
@@ -194,8 +198,10 @@ Public Class PrintingForm
 
         PrintDocument1.Print()
 
-        Dim ex As New TestExcel(rowFac, listeCoul)
-        ex.ShowDialog()
+        If bool = True Then
+            Dim ex As New TestExcel(rowFac, listeCoul)
+            ex.ShowDialog()
+        End If
 
         Me.Close()
     End Sub

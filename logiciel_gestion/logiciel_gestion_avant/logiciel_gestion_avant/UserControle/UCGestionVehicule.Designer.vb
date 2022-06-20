@@ -39,6 +39,7 @@ Partial Class UCGestionVehicule
         Me.RBInvOui = New System.Windows.Forms.RadioButton()
         Me.RBInvTous = New System.Windows.Forms.RadioButton()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.BTCreerVe = New System.Windows.Forms.Button()
         CType(Me.DGVVehicule, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
@@ -210,10 +211,20 @@ Partial Class UCGestionVehicule
         Me.Label2.TabIndex = 21
         Me.Label2.Text = "En Inventaire"
         '
+        'BTCreerVe
+        '
+        Me.BTCreerVe.Location = New System.Drawing.Point(45, 18)
+        Me.BTCreerVe.Name = "BTCreerVe"
+        Me.BTCreerVe.Size = New System.Drawing.Size(110, 23)
+        Me.BTCreerVe.TabIndex = 20
+        Me.BTCreerVe.Text = "Ajouter Véhicule"
+        Me.BTCreerVe.UseVisualStyleBackColor = True
+        '
         'UCGestionVehicule
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.Controls.Add(Me.BTCreerVe)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.Label3)
@@ -252,4 +263,5 @@ Partial Class UCGestionVehicule
     Friend WithEvents RBInvOui As RadioButton
     Friend WithEvents RBInvTous As RadioButton
     Friend WithEvents Label2 As Label
+    Friend WithEvents BTCreerVe As Button
 End Class

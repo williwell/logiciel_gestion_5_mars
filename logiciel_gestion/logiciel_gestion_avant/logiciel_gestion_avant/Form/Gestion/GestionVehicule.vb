@@ -376,4 +376,9 @@ Public Class GestionVehicule
 
         DGVListePie.DataSource = tablePie
     End Sub
+
+    Private Sub BTModOpt_Click(sender As Object, e As EventArgs) Handles BTModOpt.Click
+        Dim f As New GestionOptVe(TBIDVe.Text)
+        f.ShowDialog()
+    End Sub
 End Class

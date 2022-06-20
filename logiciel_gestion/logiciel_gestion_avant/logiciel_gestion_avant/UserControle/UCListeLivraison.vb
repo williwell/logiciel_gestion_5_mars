@@ -70,7 +70,7 @@ Public Class UCListeLivraison
                 If MainForm.tableVe.Rows(r).Item("id") = MainForm.tableVenteVe.Rows(r3).Item("idvehicule") Then
                     Dim row As DataRow = table.NewRow
                     row(0) = MainForm.tableVe.Rows(r).Item("id")
-                    row(1) = MainForm.tableVe.Rows(r).Item("nomatricule")
+                    row(1) = MainForm.tableVe.Rows(r).Item("niv")
 
                     For r2 As Integer = 0 To MainForm.tableModel.Rows.Count - 1
                         If MainForm.tableVe.Rows(r).Item("idmodel") = MainForm.tableModel.Rows(r2).Item("id") Then

@@ -65,6 +65,7 @@ Partial Class GestionVehicule
         Me.BTAdd = New System.Windows.Forms.Button()
         Me.DGVListePie = New System.Windows.Forms.DataGridView()
         Me.Label6 = New System.Windows.Forms.Label()
+        Me.BTModOpt = New System.Windows.Forms.Button()
         CType(Me.DGVClient, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVListePie, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -391,7 +392,7 @@ Partial Class GestionVehicule
         'BTSave
         '
         Me.BTSave.Enabled = False
-        Me.BTSave.Location = New System.Drawing.Point(56, 477)
+        Me.BTSave.Location = New System.Drawing.Point(56, 547)
         Me.BTSave.Name = "BTSave"
         Me.BTSave.Size = New System.Drawing.Size(178, 23)
         Me.BTSave.TabIndex = 46
@@ -452,11 +453,21 @@ Partial Class GestionVehicule
         Me.Label6.TabIndex = 51
         Me.Label6.Text = "Pièce installer"
         '
+        'BTModOpt
+        '
+        Me.BTModOpt.Location = New System.Drawing.Point(56, 447)
+        Me.BTModOpt.Name = "BTModOpt"
+        Me.BTModOpt.Size = New System.Drawing.Size(178, 23)
+        Me.BTModOpt.TabIndex = 52
+        Me.BTModOpt.Text = "Modifier Option Véhicule"
+        Me.BTModOpt.UseVisualStyleBackColor = True
+        '
         'GestionVehicule
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1245, 629)
+        Me.Controls.Add(Me.BTModOpt)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.BTAdd)
         Me.Controls.Add(Me.DGVListePie)
@@ -551,4 +562,5 @@ Partial Class GestionVehicule
     Friend WithEvents BTAdd As Button
     Friend WithEvents DGVListePie As DataGridView
     Friend WithEvents Label6 As Label
+    Friend WithEvents BTModOpt As Button
 End Class

@@ -32,13 +32,13 @@ Public Class MainForm
     Public Shared tableVenteVe As DataTable
     Public Shared tablePieSerie As DataTable
     Public Shared tableCoulSupp As DataTable
+    Public Shared tableCommandeVe As DataTable
 
     ReadOnly keyCombo As New List(Of Keys)({Keys.ControlKey, Keys.H, Keys.P})
     ReadOnly currentKeys As New List(Of Keys)
     Dim options As New StructureOption.MesOption
     Dim ucAccueil As UCAccueil
     ReadOnly ucInventaire As New UCInventaire(Me)
-    ReadOnly ucVente As New UCVente(Me)
     ReadOnly ucFour As New UCFournisseur(Me, ucInventaire)
     ReadOnly ucModel As New UCGestionModel(Me)
     ReadOnly ucCouleur As New UCCouleur(Me)
@@ -46,8 +46,6 @@ Public Class MainForm
     ReadOnly ucClient As New UCClient(Me)
     ReadOnly ucCoulToile As New UCCouleurToile(Me)
     ReadOnly ucCoulTissus As New UCCouleurTissus(Me)
-    Dim ucVente2 As UCVente2
-    Dim ucVente3 As UCVente3
     ReadOnly ucGestVeh As New UCGestionVehicule(Me)
     ReadOnly ucListeVe As New UCListeLivraison(Me)
     ReadOnly uctache As New UCTache(Me)
@@ -70,7 +68,6 @@ Public Class MainForm
     'Load
     '__________________________________________________________________________________________________________
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        IO.File.Delete("C:\logiciel_gestion_5_mars_fichier\texte.txt")
         ProgressBar1.Value = 20
     End Sub
 
@@ -104,7 +101,6 @@ Public Class MainForm
         ucAccueil = New UCAccueil(Me, ucInventaire)
         PanUC.Controls.Add(ucAccueil)
         PanUC.Controls.Add(ucInventaire)
-        PanUC.Controls.Add(ucVente)
         PanUC.Controls.Add(ucFour)
         PanUC.Controls.Add(ucModel)
         PanUC.Controls.Add(ucCouleur)
@@ -112,8 +108,6 @@ Public Class MainForm
         PanUC.Controls.Add(ucClient)
         PanUC.Controls.Add(ucCoulToile)
         PanUC.Controls.Add(ucCoulTissus)
-        PanUC.Controls.Add(ucVente2)
-        PanUC.Controls.Add(ucVente3)
         PanUC.Controls.Add(ucGestVeh)
         PanUC.Controls.Add(ucListeVe)
         PanUC.Controls.Add(uctache)
@@ -181,6 +175,8 @@ Public Class MainForm
             panMenu.Size = panMenu.MinimumSize
         End If
         PanCouleur.Visible = False
+        PanCommande.Visible = False
+        PanGestVeh.Visible = False
     End Sub
 
     'Si utilisateur click sur le bouton Acceuil du menu on fait afficher le UserControl dans le PanelUC
@@ -197,10 +193,14 @@ Public Class MainForm
 
     'Si utilisateur click sur le bouton Vente du menu on fait afficher le UserControl dans le PanelUC
     Private Sub BtVente_Click(sender As Object, e As EventArgs) Handles btVente.Click
-        Dim contrat As New CreerContrat
-        contrat.ShowDialog()
-        'ucVente.BringToFront()
-        'panMenu.Size = panMenu.MinimumSize
+        If PanCommande.Visible = True Then
+            PanCommande.Visible = False
+        Else
+            PanCommande.BringToFront()
+            PanCommande.Visible = True
+            PanGestVeh.Visible = False
+            PanCouleur.Visible = False
+        End If
     End Sub
 
     'Si utilisateur click sur le bouton Fournisseur du menu on fait afficher le UserControl dans le PanelUC
@@ -255,40 +255,6 @@ Public Class MainForm
     Private Sub BtModel_Click(sender As Object, e As EventArgs) Handles btModel.Click
         ucModel.BringToFront()
         panMenu.Size = panMenu.MinimumSize
-    End Sub
-
-    'Fonction qui set à mettre le USerControl UCvente2 à la variable
-    Public Sub SetUCVente2(ByRef uc As UCVente2)
-        ucVente2 = uc
-    End Sub
-
-    'Fonction qui set à mettre le USerControl UCvente3 à la variable
-    Public Sub SetUCVente3(ByRef uc As UCVente3)
-        ucVente3 = uc
-    End Sub
-
-    'Fonction qui sert à changer le userCOntrol qui est afficher
-    Public Sub ChangeUCNext1(tps As Boolean, tvq As Boolean)
-        ucVente2.LoadDGV()
-        ucVente2.BringToFront()
-        ucVente2.SetPrix(ucVente.GetPrix(), tps, tvq)
-    End Sub
-
-    'Fonction qui sert à changer le userCOntrol qui est afficher
-    Public Sub ChangeUCNext2()
-        ucVente3.BringToFront()
-    End Sub
-
-    'Fonction qui sert à changer le userCOntrol qui est afficher
-    Public Sub ChangeUCPrev1(tps As Boolean, tvq As Boolean)
-        ucVente.BringToFront()
-        ucVente.SetTaxe(tps, tvq)
-        ucGestVeh.LoadDGV()
-    End Sub
-
-    'Fonction qui sert à changer le userCOntrol qui est afficher
-    Public Sub ChangeUCPrev2()
-        ucVente2.BringToFront()
     End Sub
 
     '__________________________________________________________________________________________________________
@@ -358,6 +324,7 @@ Public Class MainForm
             PanCouleur.BringToFront()
             PanCouleur.Visible = True
             PanGestVeh.Visible = False
+            PanCommande.Visible = False
         End If
     End Sub
 
@@ -393,6 +360,7 @@ Public Class MainForm
             PanGestVeh.BringToFront()
             PanGestVeh.Visible = True
             PanCouleur.Visible = False
+            PanCommande.Visible = False
         End If
     End Sub
 
@@ -428,12 +396,6 @@ Public Class MainForm
         Return bool
     End Function
 
-    'Fonction qui est appellé après la sauvegarde d'une nouvelle vente de véhicule et qui apoel une fonction dans UCVente2 pour enlever
-    'les options qui sont sélectionner
-    Public Sub EnleverOpt()
-        ucVente2.EnleverOpt()
-    End Sub
-
     Private Sub BTTache_Click(sender As Object, e As EventArgs) Handles BTTache.Click
         uctache.BringToFront()
         panMenu.Size = panMenu.MinimumSize
@@ -443,5 +405,10 @@ Public Class MainForm
     Private Sub BTFacture_Click(sender As Object, e As EventArgs) Handles BTFacture.Click
         ucFacture.BringToFront()
         panMenu.Size = panMenu.MinimumSize
+    End Sub
+
+    Private Sub BTCreerCommande_Click(sender As Object, e As EventArgs) Handles BTCreerCommande.Click
+        Dim contrat As New CreerCommande
+        contrat.ShowDialog()
     End Sub
 End Class

@@ -15,8 +15,10 @@
     Private Sub UCGestionVehicule_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Création des colonnes pour la table
         table.Columns.Add("id")
-        table.Columns.Add("nomatricule")
+        table.Columns.Add("niv")
         table.Columns.Add("model")
+        table.Columns.Add("châssis")
+        table.Columns.Add("Année")
         table.Columns.Add("cout")
         table.Columns.Add("couleurvehicule")
         table.Columns.Add("codecouleurvehicule")
@@ -31,7 +33,7 @@
 
     Public Sub LoadDGV()
         'loop pour mettre toutes les informations dans la table 
-        DGVVehicule.Rows.Clear()
+        table.Rows.Clear()
         For r As Integer = 0 To MainForm.tableVe.Rows.Count - 1
             For r2 As Integer = 0 To MainForm.tableModel.Rows.Count - 1
                 If MainForm.tableModel.Rows(r2).Item("id") = MainForm.tableVe.Rows(r).Item("idmodel") Then
@@ -43,17 +45,19 @@
                                         If MainForm.tableVe.Rows(r).Item("idcoultissus") = MainForm.tableCoulTis.Rows(r5).Item("id") Then
                                             Dim row As DataRow = table.NewRow
                                             row(0) = MainForm.tableVe.Rows(r).Item("id")
-                                            row(1) = MainForm.tableVe.Rows(r).Item("nomatricule")
+                                            row(1) = MainForm.tableVe.Rows(r).Item("niv")
                                             row(2) = MainForm.tableModel.Rows(r2).Item("nom")
-                                            row(3) = MainForm.tableModel.Rows(r2).Item("cout")
-                                            row(4) = MainForm.tableCoulVe.Rows(r3).Item("nom")
-                                            row(5) = MainForm.tableCoulVe.Rows(r3).Item("code")
-                                            row(6) = MainForm.tableCoulToi.Rows(r4).Item("nom")
-                                            row(7) = MainForm.tableCoulToi.Rows(r4).Item("code")
-                                            row(8) = MainForm.tableCoulTis.Rows(r5).Item("nom")
-                                            row(9) = MainForm.tableCoulTis.Rows(r5).Item("code")
-                                            row(10) = MainForm.tableVe.Rows(r).Item("fabriquer")
-                                            row(11) = MainForm.tableVe.Rows(r).Item("eninventaire")
+                                            row(3) = MainForm.tableVe.Rows(r).Item("chassi")
+                                            row(4) = MainForm.tableVe.Rows(r).Item("annee")
+                                            row(5) = MainForm.tableModel.Rows(r2).Item("cout")
+                                            row(6) = MainForm.tableCoulVe.Rows(r3).Item("nom")
+                                            row(7) = MainForm.tableCoulVe.Rows(r3).Item("code")
+                                            row(8) = MainForm.tableCoulToi.Rows(r4).Item("nom")
+                                            row(9) = MainForm.tableCoulToi.Rows(r4).Item("code")
+                                            row(10) = MainForm.tableCoulTis.Rows(r5).Item("nom")
+                                            row(11) = MainForm.tableCoulTis.Rows(r5).Item("code")
+                                            row(12) = MainForm.tableVe.Rows(r).Item("fabriquer")
+                                            row(13) = MainForm.tableVe.Rows(r).Item("eninventaire")
                                             table.Rows.Add(row)
                                         End If
                                     Next
@@ -145,9 +149,9 @@
 
         If Not String.IsNullOrEmpty(Trim(TBSearchMat.Text)) Then
             If String.IsNullOrEmpty(str) Then
-                str += "nomatricule like '%" & TBSearchMat.Text & "%'"
+                str += "NIV like '%" & TBSearchMat.Text & "%'"
             Else
-                str += " and nomatricule like '%" & TBSearchMat.Text & "%'"
+                str += " and NIV like '%" & TBSearchMat.Text & "%'"
             End If
         End If
 
@@ -210,7 +214,8 @@
         Next
     End Sub
 
-    Private Sub Label3_Click(sender As Object, e As EventArgs) Handles Label3.Click
-
+    Private Sub BTCreerVe_Click(sender As Object, e As EventArgs) Handles BTCreerVe.Click
+        Dim form As New CreerVehicule(Me)
+        form.ShowDialog()
     End Sub
 End Class

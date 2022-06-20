@@ -24,6 +24,9 @@ Partial Class MainForm
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
         Me.PanUC = New System.Windows.Forms.Panel()
+        Me.PanCommande = New System.Windows.Forms.Panel()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.BTCreerCommande = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.PanGestVeh = New System.Windows.Forms.Panel()
         Me.BTLivrer = New System.Windows.Forms.Button()
@@ -48,6 +51,7 @@ Partial Class MainForm
         Me.lbNonConc = New System.Windows.Forms.Label()
         Me.btConnec = New System.Windows.Forms.Button()
         Me.PanUC.SuspendLayout()
+        Me.PanCommande.SuspendLayout()
         Me.PanGestVeh.SuspendLayout()
         Me.PanCouleur.SuspendLayout()
         Me.panMenu.SuspendLayout()
@@ -56,6 +60,7 @@ Partial Class MainForm
         'PanUC
         '
         Me.PanUC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PanUC.Controls.Add(Me.PanCommande)
         Me.PanUC.Controls.Add(Me.ProgressBar1)
         Me.PanUC.Controls.Add(Me.PanGestVeh)
         Me.PanUC.Controls.Add(Me.PanCouleur)
@@ -64,9 +69,38 @@ Partial Class MainForm
         Me.PanUC.Size = New System.Drawing.Size(1115, 651)
         Me.PanUC.TabIndex = 1
         '
+        'PanCommande
+        '
+        Me.PanCommande.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PanCommande.Controls.Add(Me.Button3)
+        Me.PanCommande.Controls.Add(Me.BTCreerCommande)
+        Me.PanCommande.Location = New System.Drawing.Point(93, 86)
+        Me.PanCommande.Name = "PanCommande"
+        Me.PanCommande.Size = New System.Drawing.Size(108, 61)
+        Me.PanCommande.TabIndex = 14
+        Me.PanCommande.Visible = False
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(8, 32)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(94, 23)
+        Me.Button3.TabIndex = 1
+        Me.Button3.Text = "Liste Comm"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'BTCreerCommande
+        '
+        Me.BTCreerCommande.Location = New System.Drawing.Point(8, 3)
+        Me.BTCreerCommande.Name = "BTCreerCommande"
+        Me.BTCreerCommande.Size = New System.Drawing.Size(94, 23)
+        Me.BTCreerCommande.TabIndex = 0
+        Me.BTCreerCommande.Text = "Nouveau"
+        Me.BTCreerCommande.UseVisualStyleBackColor = True
+        '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(253, 240)
+        Me.ProgressBar1.Location = New System.Drawing.Point(390, 264)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(277, 23)
         Me.ProgressBar1.TabIndex = 6
@@ -248,7 +282,7 @@ Partial Class MainForm
         Me.btVente.Name = "btVente"
         Me.btVente.Size = New System.Drawing.Size(94, 23)
         Me.btVente.TabIndex = 3
-        Me.btVente.Text = "Contrat"
+        Me.btVente.Text = "Commande"
         Me.btVente.UseVisualStyleBackColor = True
         '
         'btInventaire
@@ -302,6 +336,7 @@ Partial Class MainForm
         Me.Name = "MainForm"
         Me.Text = "Logiciel Gestion 5-Mars VR"
         Me.PanUC.ResumeLayout(False)
+        Me.PanCommande.ResumeLayout(False)
         Me.PanGestVeh.ResumeLayout(False)
         Me.PanCouleur.ResumeLayout(False)
         Me.panMenu.ResumeLayout(False)
@@ -334,4 +369,7 @@ Partial Class MainForm
     Friend WithEvents ProgressBar1 As ProgressBar
     Friend WithEvents BTTache As Button
     Friend WithEvents BTFacture As Button
+    Friend WithEvents PanCommande As Panel
+    Friend WithEvents Button3 As Button
+    Friend WithEvents BTCreerCommande As Button
 End Class

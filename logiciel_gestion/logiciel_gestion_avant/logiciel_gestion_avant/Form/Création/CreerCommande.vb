@@ -1,4 +1,4 @@
-﻿Public Class CreerContrat
+﻿Public Class CreerCommande
     Dim idVe As Integer = 0
     Dim idCl As Integer = 0
     ReadOnly tableCh As New DataTable
@@ -212,15 +212,6 @@
         End If
     End Sub
 
-    Private Sub ChangerEnableVe(bool As Boolean)
-        BTNouvVe.Enabled = Not bool
-        BTVeEx.Enabled = bool
-        CBModel.Enabled = bool
-        CBCoulVe.Enabled = bool
-        CBCoulToile.Enabled = bool
-        CBCoulTissus.Enabled = bool
-    End Sub
-
     Private Sub ChangerEnableCl(bool As Boolean)
         BTClEx.Enabled = bool
         BTNouvCl.Enabled = Not bool
@@ -237,17 +228,6 @@
         TBProvince.Enabled = bool
         TBApp.Enabled = bool
         TBCodePos.Enabled = bool
-    End Sub
-
-    Private Sub BTVeEx_Click(sender As Object, e As EventArgs) Handles BTVeEx.Click
-        ChangerEnableVe(False)
-        Dim form As New ListeVehicule(Me)
-        form.ShowDialog(Me)
-    End Sub
-
-    Private Sub BTNouvVe_Click(sender As Object, e As EventArgs) Handles BTNouvVe.Click
-        ChangerEnableVe(True)
-        SetComboBox()
     End Sub
 
     Private Sub BTClEx_Click(sender As Object, e As EventArgs) Handles BTClEx.Click
@@ -348,9 +328,9 @@
             End If
             If String.IsNullOrEmpty(TBTel1.Text) Then
                 If String.IsNullOrEmpty(strErr) Then
-                    strErr = MsgTextFr.Getinstance.msgMissTelephone
+                    strErr = MsgTextFr.Getinstance.MsgMissTelephone
                 Else
-                    strErr += ", " & MsgTextFr.Getinstance.msgMissTelephone.Substring(0, MsgTextFr.Getinstance.msgMissTelephone.Length - 1).ToLower
+                    strErr += ", " & MsgTextFr.Getinstance.MsgMissTelephone.Substring(0, MsgTextFr.Getinstance.MsgMissTelephone.Length - 1).ToLower
                 End If
             End If
 
@@ -434,26 +414,30 @@
 
             liste(0) = "null"
             liste(1) = listeIDM(CBModel.SelectedIndex)
+            liste(2) = TBChassi.Text
+            liste(3) = TBAnnee.Text
             If CBCoulVe.SelectedItem <> MsgTextFr.Getinstance.MsgMissCoulModel Then
-                liste(2) = listeIDCoulVe(CBCoulVe.SelectedIndex)
+                liste(4) = listeIDCoulVe(CBCoulVe.SelectedIndex)
             Else
-                liste(2) = 0
+                liste(4) = 0
             End If
-            liste(3) = listeIDCoulToi(CBCoulToile.SelectedIndex)
-            liste(4) = listeIDCoulTis(CBCoulTissus.SelectedIndex)
-            idVe = ConnectionServeur.Getinstance.GetInfo(liste, "addvehicule")(0)(0)
+            liste(5) = listeIDCoulToi(CBCoulToile.SelectedIndex)
+            liste(6) = listeIDCoulTis(CBCoulTissus.SelectedIndex)
+            idVe = ConnectionServeur.Getinstance.GetInfo(liste, "addCommandeVe")(0)(0)
 
             If idVe <> 0 Then
                 Dim row As DataRow = MainForm.tableVe.NewRow
                 row(0) = idVe
                 row(1) = "null"
                 row(2) = listeIDM(CBModel.SelectedIndex)
-                row(3) = listeIDCoulVe(CBCoulVe.SelectedIndex)
-                row(4) = listeIDCoulToi(CBCoulToile.SelectedIndex)
-                row(5) = listeIDCoulTis(CBCoulTissus.SelectedIndex)
-                row(6) = 0
-                row(7) = 0
-                MainForm.tableVe.Rows.Add(row)
+                row(3) = TBChassi.Text
+                row(4) = TBAnnee.Text
+                row(5) = listeIDCoulVe(CBCoulVe.SelectedIndex)
+                row(6) = listeIDCoulToi(CBCoulToile.SelectedIndex)
+                row(7) = listeIDCoulTis(CBCoulTissus.SelectedIndex)
+                row(8) = 0
+                row(9) = 0
+                MainForm.tableCommandeVe.Rows.Add(row)
                 SaveOp()
             Else
                 MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
@@ -498,19 +482,19 @@
         ListeAdd(0) = idVe
         ListeAdd(1) = idCl
         ListeAdd(2) = Date.Now.ToString("yyyy-MM-dd")
-        ListeAdd(3) = setString(TBCoutM.Text.Substring(0, TBCoutM.Text.IndexOf("$")))
-        ListeAdd(4) = setString(TBCoutC.Text.Substring(0, TBCoutC.Text.IndexOf("$")))
-        ListeAdd(5) = setString(TBEchange.Text.Substring(0, TBEchange.Text.IndexOf("$")))
-        ListeAdd(6) = setString(TBAccompte.Text.Substring(0, TBAccompte.Text.IndexOf("$")))
-        ListeAdd(7) = setString(TBPayerLiv.Text.Substring(0, TBPayerLiv.Text.IndexOf("$")))
-        ListeAdd(8) = setString(TBRemettreCl.Text.Substring(0, TBRemettreCl.Text.IndexOf("$")))
-        ListeAdd(9) = setString(TBBalEchange.Text.Substring(0, TBBalEchange.Text.IndexOf("$")))
+        ListeAdd(3) = SetString(TBCoutM.Text.Substring(0, TBCoutM.Text.IndexOf("$")))
+        ListeAdd(4) = SetString(TBCoutC.Text.Substring(0, TBCoutC.Text.IndexOf("$")))
+        ListeAdd(5) = SetString(TBEchange.Text.Substring(0, TBEchange.Text.IndexOf("$")))
+        ListeAdd(6) = SetString(TBAccompte.Text.Substring(0, TBAccompte.Text.IndexOf("$")))
+        ListeAdd(7) = SetString(TBPayerLiv.Text.Substring(0, TBPayerLiv.Text.IndexOf("$")))
+        ListeAdd(8) = SetString(TBRemettreCl.Text.Substring(0, TBRemettreCl.Text.IndexOf("$")))
+        ListeAdd(9) = SetString(TBBalEchange.Text.Substring(0, TBBalEchange.Text.IndexOf("$")))
         ListeAdd(10) = MainForm.GetInstance.GetOption4
         ListeAdd(11) = MainForm.GetInstance.GetOption5
 
         Dim table As DataTable = ConnectionServeur.Getinstance.GetInfo(ListeAdd, "addfacture")
         Dim idFac As Integer = table(0)(0)
-        If idfac <> 0 Then
+        If idFac <> 0 Then
 
             Dim priorite As Integer = 1
 
@@ -556,12 +540,11 @@
         End If
     End Sub
 
-    Private Function setString(str As String) As String
-        Dim nbr As Integer = 0
+    Private Function SetString(str As String) As String
         For c As Integer = 0 To str.Length - 1
             If Convert.ToByte(str(c)) = 160 Then
                 str = str.Remove(c, 1)
-                str = setString(str)
+                str = SetString(str)
                 Exit For
             End If
         Next
@@ -575,19 +558,19 @@
         row2(1) = idVe
         row2(2) = idCl
         row2(3) = Date.Now.ToString("yyyy-MM-dd")
-        row2(4) = setString(TBCoutM.Text.Substring(0, TBCoutM.Text.IndexOf("$")))
-        row2(5) = setString(TBCoutC.Text.Substring(0, TBCoutC.Text.IndexOf("$")))
-        row2(6) = setString(TBEchange.Text.Substring(0, TBEchange.Text.IndexOf("$")))
-        row2(7) = setString(TBAccompte.Text.Substring(0, TBAccompte.Text.IndexOf("$")))
-        row2(8) = setString(TBPayerLiv.Text.Substring(0, TBPayerLiv.Text.IndexOf("$")))
-        row2(9) = setString(TBRemettreCl.Text.Substring(0, TBRemettreCl.Text.IndexOf("$")))
-        row2(10) = setString(TBBalEchange.Text.Substring(0, TBBalEchange.Text.IndexOf("$")))
+        row2(4) = SetString(TBCoutM.Text.Substring(0, TBCoutM.Text.IndexOf("$")))
+        row2(5) = SetString(TBCoutC.Text.Substring(0, TBCoutC.Text.IndexOf("$")))
+        row2(6) = SetString(TBEchange.Text.Substring(0, TBEchange.Text.IndexOf("$")))
+        row2(7) = SetString(TBAccompte.Text.Substring(0, TBAccompte.Text.IndexOf("$")))
+        row2(8) = SetString(TBPayerLiv.Text.Substring(0, TBPayerLiv.Text.IndexOf("$")))
+        row2(9) = SetString(TBRemettreCl.Text.Substring(0, TBRemettreCl.Text.IndexOf("$")))
+        row2(10) = SetString(TBBalEchange.Text.Substring(0, TBBalEchange.Text.IndexOf("$")))
         row2(11) = MainForm.GetInstance.GetOption4
         row2(12) = MainForm.GetInstance.GetOption5
 
         MainForm.tableFacture.Rows.Add(row2)
 
-        Dim print As New PrintingForm(row2, listeCoul)
+        Dim print As New PrintingForm(row2, listeCoul, Date.Now, True)
         print.Show()
 
         Me.Close()
@@ -600,5 +583,9 @@
 
     Public Sub RemplirListe(lst() As String)
         listeCoul = lst
+    End Sub
+
+    Private Sub BTNoDate_Click(sender As Object, e As EventArgs) Handles BTNoDate.Click
+        DTPLivraison.Value = New Date(1900, 1, 1)
     End Sub
 End Class

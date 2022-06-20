@@ -31,7 +31,7 @@
                             Exit For
                         End If
                     Next
-                    row(2) = MainForm.tableVe.Rows(r2).Item("nomatricule")
+                    row(2) = MainForm.tableVe.Rows(r2).Item("niv")
                     Exit For
                 End If
             Next
