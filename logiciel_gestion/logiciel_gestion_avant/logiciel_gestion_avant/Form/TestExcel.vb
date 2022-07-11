@@ -32,6 +32,9 @@ Public Class TestExcel
             End If
         Next
 
+        shXl.Range("C5").Cells.Value = "N° Commande"
+        shXl.Range("C9").Cells.Value = "Commande"
+
         shXl.Range("A8").Cells.Value = shXl.Range("A8").Cells.Value & " " & row.Item("nom1") & " " & row.Item("prenom1")
         shXl.Range("A9").Cells.Value = row.Item("addresse") & "   app: " & row.Item("app")
         shXl.Range("A10").Cells.Value = row.Item("codepostal")
@@ -40,7 +43,7 @@ Public Class TestExcel
         shXl.Range("A12").Cells.Value = row.Item("email")
 
         shXl.Range("C4").Cells.Value = shXl.Range("C4").Cells.Value & " " & Date.Now.ToString("yyyy-MM-dd")
-        shXl.Range("D5").Cells.Value = shXl.Range("D5").Cells.Value & " " & rowFac.Item("id")
+        shXl.Range("D5").Cells.Value = shXl.Range("D5").Cells.Value & " " & rowFac.Item("idCommande")
 
 
 
@@ -166,7 +169,7 @@ Public Class TestExcel
 
 
 
-        wbXl.SaveAs2("C:\logiciel_gestion_5_mars_fichier\Facture\Véhicule\" & Date.Now.ToString("yyyy-MM-dd") & "_no" & rowFac.Item("id") & ".xlsx")
+        wbXl.SaveAs2("C:\logiciel_gestion_5_mars_fichier\Facture\Véhicule\" & Date.Now.ToString("yyyy-MM-dd") & "_no" & rowFac.Item("idCommande") & ".xlsx")
 
         shXl = Nothing
         wbXl = Nothing

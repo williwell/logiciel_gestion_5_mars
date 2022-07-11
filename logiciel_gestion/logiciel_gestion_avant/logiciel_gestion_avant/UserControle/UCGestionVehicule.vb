@@ -32,7 +32,7 @@
     End Sub
 
     Public Sub LoadDGV()
-        'loop pour mettre toutes les informations dans la table 
+        'loop pour mettre toutes les informations dans la table adw
         table.Rows.Clear()
         For r As Integer = 0 To MainForm.tableVe.Rows.Count - 1
             For r2 As Integer = 0 To MainForm.tableModel.Rows.Count - 1

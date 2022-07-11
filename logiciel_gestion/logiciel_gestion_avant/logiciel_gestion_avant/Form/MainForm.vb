@@ -33,6 +33,7 @@ Public Class MainForm
     Public Shared tablePieSerie As DataTable
     Public Shared tableCoulSupp As DataTable
     Public Shared tableCommandeVe As DataTable
+    'Public Shared tableOpCommande As DataTable
 
     ReadOnly keyCombo As New List(Of Keys)({Keys.ControlKey, Keys.H, Keys.P})
     ReadOnly currentKeys As New List(Of Keys)
@@ -100,8 +101,9 @@ Public Class MainForm
     Private Sub AddUC()
         ucAccueil = New UCAccueil(Me, ucInventaire)
         PanUC.Controls.Add(ucAccueil)
-        PanUC.Controls.Add(ucInventaire)
         PanUC.Controls.Add(ucFour)
+        PanUC.Controls.Add(ucInventaire)
+
         PanUC.Controls.Add(ucModel)
         PanUC.Controls.Add(ucCouleur)
         PanUC.Controls.Add(ucOption)
@@ -143,6 +145,8 @@ Public Class MainForm
         tableVenteVe = ConnectionServeur.Getinstance.GetInfo("getVenteVe")
         tablePieSerie = ConnectionServeur.Getinstance.GetInfo("getPieSerie")
         tableCoulSupp = ConnectionServeur.Getinstance.GetInfo("getCoulSupp")
+        tableCommandeVe = ConnectionServeur.Getinstance.GetInfo("getCommandeVe")
+        'tableOpCommande = ConnectionServeur.Getinstance.GetInfo("getOptionCommande")
 
         'À faire un jour
         'test.Tables.Add(tableInv)
@@ -410,5 +414,11 @@ Public Class MainForm
     Private Sub BTCreerCommande_Click(sender As Object, e As EventArgs) Handles BTCreerCommande.Click
         Dim contrat As New CreerCommande
         contrat.ShowDialog()
+    End Sub
+
+    Private Sub BTListComm_Click(sender As Object, e As EventArgs) Handles BTListComm.Click
+        'ucListeVe.BringToFront()
+        'panMenu.Size = panMenu.MinimumSize
+        MessageBox.Show("Pas encore fini a venir")
     End Sub
 End Class

@@ -56,6 +56,8 @@
         Next
         CBCoulToile.DataSource = liste
         CBSexe.SelectedIndex = 0
+
+        NUDAnnee.Value = Date.Now.ToString("yyyy")
     End Sub
 
     Private Sub CBModel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBModel.SelectedIndexChanged
@@ -410,12 +412,12 @@
 
     Private Sub SaveVe()
         If idVe = 0 Then
-            Dim liste(4) As String
+            Dim liste(6) As String
 
             liste(0) = "null"
             liste(1) = listeIDM(CBModel.SelectedIndex)
             liste(2) = TBChassi.Text
-            liste(3) = TBAnnee.Text
+            liste(3) = NUDAnnee.Value
             If CBCoulVe.SelectedItem <> MsgTextFr.Getinstance.MsgMissCoulModel Then
                 liste(4) = listeIDCoulVe(CBCoulVe.SelectedIndex)
             Else
@@ -423,7 +425,7 @@
             End If
             liste(5) = listeIDCoulToi(CBCoulToile.SelectedIndex)
             liste(6) = listeIDCoulTis(CBCoulTissus.SelectedIndex)
-            idVe = ConnectionServeur.Getinstance.GetInfo(liste, "addCommandeVe")(0)(0)
+            idVe = ConnectionServeur.Getinstance.GetInfo(liste, "addVehicule")(0)(0)
 
             If idVe <> 0 Then
                 Dim row As DataRow = MainForm.tableVe.NewRow
@@ -431,13 +433,13 @@
                 row(1) = "null"
                 row(2) = listeIDM(CBModel.SelectedIndex)
                 row(3) = TBChassi.Text
-                row(4) = TBAnnee.Text
+                row(4) = NUDAnnee.Value
                 row(5) = listeIDCoulVe(CBCoulVe.SelectedIndex)
                 row(6) = listeIDCoulToi(CBCoulToile.SelectedIndex)
                 row(7) = listeIDCoulTis(CBCoulTissus.SelectedIndex)
                 row(8) = 0
                 row(9) = 0
-                MainForm.tableCommandeVe.Rows.Add(row)
+                MainForm.tableVe.Rows.Add(row)
                 SaveOp()
             Else
                 MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
@@ -492,7 +494,7 @@
         ListeAdd(10) = MainForm.GetInstance.GetOption4
         ListeAdd(11) = MainForm.GetInstance.GetOption5
 
-        Dim table As DataTable = ConnectionServeur.Getinstance.GetInfo(ListeAdd, "addfacture")
+        Dim table As DataTable = ConnectionServeur.Getinstance.GetInfo(ListeAdd, "addCommande")
         Dim idFac As Integer = table(0)(0)
         If idFac <> 0 Then
 
@@ -512,7 +514,6 @@
             listeAdd2(4) = idCl
 
             If ConnectionServeur.Getinstance.AddDelete(listeAdd2, "addventeclient") Then
-
                 If listeCoul.Length > 0 Then
                     Dim tableId As DataTable = ConnectionServeur.Getinstance.AddDeleteListeTable(listeCoul, idVe, "addCoulSupp")
                     If tableId(0)(0) <> -1 Then
@@ -523,11 +524,11 @@
                             row(2) = listeCoul(3 * r + 1)
                             row(3) = listeCoul(3 * r + 2)
                             row(4) = idVe
+                            MainForm.tableCoulSupp.Rows.Add(row)
                         Next
-
                         EndSave(idFac)
                     Else
-                        MessageBox.Show(MsgTextFr.Getinstance.MsgErrServCoulSupp, "Attention!")
+                        MessageBox.Show(MsgTextFr.Getinstance.MsgErrServCoulSupp, MsgTextFr.Getinstance.MsgAttention)
                     End If
                 Else
                     EndSave(idFac)
@@ -536,7 +537,7 @@
                 MessageBox.Show(MsgTextFr.Getinstance.MsgErrServ)
             End If
         Else
-            MessageBox.Show(MsgTextFr.Getinstance.MsgErrServFacture, "Attention!")
+            MessageBox.Show(MsgTextFr.Getinstance.MsgErrServFacture, MsgTextFr.Getinstance.MsgAttention)
         End If
     End Sub
 
@@ -553,7 +554,7 @@
 
     Private Sub EndSave(idFac As String)
         MessageBox.Show(MsgTextFr.Getinstance.MsgSauvServ)
-        Dim row2 As DataRow = MainForm.tableFacture.NewRow
+        Dim row2 As DataRow = MainForm.tableCommandeVe.NewRow
         row2(0) = idFac
         row2(1) = idVe
         row2(2) = idCl
@@ -568,7 +569,7 @@
         row2(11) = MainForm.GetInstance.GetOption4
         row2(12) = MainForm.GetInstance.GetOption5
 
-        MainForm.tableFacture.Rows.Add(row2)
+        MainForm.tableCommandeVe.Rows.Add(row2)
 
         Dim print As New PrintingForm(row2, listeCoul, Date.Now, True)
         print.Show()

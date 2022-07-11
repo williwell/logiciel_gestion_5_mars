@@ -40,7 +40,7 @@ Public Class PrintingForm
         Dim total As Double = 0
         Dim nbr As Double = 0
 
-        LabFac.Text = rowFac.Item("id")
+        LabFac.Text = rowFac.Item("idCommande")
 
         For r As Integer = 0 To MainForm.TableClient.Rows.Count - 1
             If MainForm.TableClient.Rows(r).Item("id") = rowFac.Item("idclient") Then
@@ -192,9 +192,6 @@ Public Class PrintingForm
             End With
             PrintDocument1.DefaultPageSettings = PageSetup
         End If
-
-        PrintPreviewDialog1.Document = PrintDocument1
-        PrintPreviewDialog1.ShowDialog()
 
         PrintDocument1.Print()
 

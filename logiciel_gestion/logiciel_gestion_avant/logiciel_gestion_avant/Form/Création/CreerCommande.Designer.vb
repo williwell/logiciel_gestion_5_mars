@@ -95,12 +95,13 @@ Partial Class CreerCommande
         Me.Label29 = New System.Windows.Forms.Label()
         Me.BTCouleur = New System.Windows.Forms.Button()
         Me.Label32 = New System.Windows.Forms.Label()
-        Me.TBAnnee = New System.Windows.Forms.TextBox()
         Me.TBChassi = New System.Windows.Forms.TextBox()
         Me.Label33 = New System.Windows.Forms.Label()
         Me.BTNoDate = New System.Windows.Forms.Button()
+        Me.NUDAnnee = New System.Windows.Forms.NumericUpDown()
         CType(Me.DGVOptionCh, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVOptionDis, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NUDAnnee, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'CBModel
@@ -735,13 +736,6 @@ Partial Class CreerCommande
         Me.Label32.TabIndex = 113
         Me.Label32.Text = "Année"
         '
-        'TBAnnee
-        '
-        Me.TBAnnee.Location = New System.Drawing.Point(281, 131)
-        Me.TBAnnee.Name = "TBAnnee"
-        Me.TBAnnee.Size = New System.Drawing.Size(138, 23)
-        Me.TBAnnee.TabIndex = 112
-        '
         'TBChassi
         '
         Me.TBChassi.Location = New System.Drawing.Point(12, 131)
@@ -767,14 +761,24 @@ Partial Class CreerCommande
         Me.BTNoDate.Text = "Pas de date"
         Me.BTNoDate.UseVisualStyleBackColor = True
         '
+        'NUDAnnee
+        '
+        Me.NUDAnnee.Location = New System.Drawing.Point(281, 132)
+        Me.NUDAnnee.Maximum = New Decimal(New Integer() {3000, 0, 0, 0})
+        Me.NUDAnnee.Minimum = New Decimal(New Integer() {2000, 0, 0, 0})
+        Me.NUDAnnee.Name = "NUDAnnee"
+        Me.NUDAnnee.Size = New System.Drawing.Size(138, 23)
+        Me.NUDAnnee.TabIndex = 115
+        Me.NUDAnnee.Value = New Decimal(New Integer() {2000, 0, 0, 0})
+        '
         'CreerCommande
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1310, 856)
+        Me.Controls.Add(Me.NUDAnnee)
         Me.Controls.Add(Me.BTNoDate)
         Me.Controls.Add(Me.Label32)
-        Me.Controls.Add(Me.TBAnnee)
         Me.Controls.Add(Me.TBChassi)
         Me.Controls.Add(Me.Label33)
         Me.Controls.Add(Me.BTCouleur)
@@ -853,6 +857,7 @@ Partial Class CreerCommande
         Me.Text = " Créer Contrat"
         CType(Me.DGVOptionCh, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DGVOptionDis, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NUDAnnee, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -931,8 +936,8 @@ Partial Class CreerCommande
     Friend WithEvents Label29 As Label
     Friend WithEvents BTCouleur As Button
     Friend WithEvents Label32 As Label
-    Friend WithEvents TBAnnee As TextBox
     Friend WithEvents TBChassi As TextBox
     Friend WithEvents Label33 As Label
     Friend WithEvents BTNoDate As Button
+    Friend WithEvents NUDAnnee As NumericUpDown
 End Class

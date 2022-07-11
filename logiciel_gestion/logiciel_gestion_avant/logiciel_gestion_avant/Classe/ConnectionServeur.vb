@@ -278,14 +278,12 @@ Public Class ConnectionServeur
             If InStr(str, "\\end;") >= 1 Then
                 search = False
             End If
-
         End While
 
         Dim row As Integer = Integer.Parse(str.Substring(0, str.IndexOf(";")))
         str = str.Substring(str.IndexOf(";") + 1)
         Dim col As Integer = Integer.Parse(str.Substring(0, str.IndexOf(";")))
         str = str.Substring(str.IndexOf(";") + 1)
-
 
         For c As Integer = 0 To col
             table.Columns.Add(str.Substring(0, str.IndexOf(";")), GetType(String))
@@ -295,7 +293,6 @@ Public Class ConnectionServeur
         For r As Integer = 0 To row
             table.Rows.Add()
         Next
-
 
         search = True
         While search

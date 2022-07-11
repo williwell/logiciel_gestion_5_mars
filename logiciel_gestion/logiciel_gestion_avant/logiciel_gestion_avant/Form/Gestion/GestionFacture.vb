@@ -1,6 +1,7 @@
 ﻿Public Class GestionFacture
     ReadOnly id As String
     Dim rowFac As DataRow
+    Dim listeCoul(-1) As String
 
     Sub New(idGet As String)
 
@@ -105,13 +106,27 @@
         nbr = rowFac.Item("prixcouleur")
         DGVCoulVe.Rows.Add(rowCoulVe.Item("nom"), rowCoulVe.Item("code"), nbr.ToString("c"))
         DGVCoul.Rows.Add("Toile", rowCoulVe.Item("nom"), rowCoulToi.Item("code"))
-        DGVCoul.Rows.Add("ARMOIRE BAS")
-        DGVCoul.Rows.Add("ARMOIRE HAUT")
-        DGVCoul.Rows.Add("COMPTOIR")
-        DGVCoul.Rows.Add("PORTES ARMOIRES")
         DGVCoul.Rows.Add("BANQUETTE", rowcoulTis.Item("nom"), rowcoulTis.Item("code"))
-        DGVCoul.Rows.Add("DECALQUE")
-        DGVCoul.Rows.Add("MICRO ONDE")
+
+        Dim nbr2 As Integer = 2
+        For r As Integer = 0 To MainForm.tableCoulSupp.Rows.Count - 1
+            If MainForm.tableCoulSupp.Rows(r).Item("idVe") = rowFac.Item("idvehicule") Then
+                ReDim Preserve listeCoul(nbr2)
+                listeCoul(nbr2 - 2) = MainForm.tableCoulSupp.Rows(r).Item("nom")
+                listeCoul(nbr2 - 1) = MainForm.tableCoulSupp.Rows(r).Item("couleur")
+                listeCoul(nbr2) = MainForm.tableCoulSupp.Rows(r).Item("code")
+                nbr2 += 3
+            End If
+        Next
+
+        Dim i As Integer = 0
+        For r As Integer = 0 To listeCoul.Length / 3 - 1
+            DGVCoul.Rows.Add(listeCoul(i), listeCoul(i + 1), listeCoul(i + 2))
+            i += 3
+        Next
+
+        Dim h As Integer = SetHight(DGVCoul)
+        DGVOption.Location = New Point(DGVOption.Location.X, DGVCoul.Location.Y + h + 1)
 
         For r As Integer = 0 To MainForm.tableOpVe.Rows.Count - 1
             If MainForm.tableOpVe.Rows(r).Item("idvehicule") = rowFac.Item("idVehicule") Then
@@ -125,11 +140,9 @@
             End If
         Next
 
-
-        Dim h As Integer = SetHight(DGVOption)
+        h = SetHight(DGVOption)
 
         DGVTotal.Location = New Point(DGVTotal.Location.X, DGVOption.Location.Y + h + 1)
-
 
         total += DGVModel.Rows(0).Cells(2).Value
         total += DGVCoulVe.Rows(0).Cells(2).Value
@@ -195,16 +208,7 @@
 
     Private Sub BTPrint_Click(sender As Object, e As EventArgs) Handles BTPrint.Click
         Dim liste(-1) As String
-        Dim nbr As Integer = 2
-        For r As Integer = 0 To MainForm.tableCoulSupp.Rows.Count - 1
-            If MainForm.tableCoulSupp.Rows(r).Item("idVe") = rowFac.Item("idvehicule") Then
-                ReDim Preserve liste(nbr)
-                liste(nbr - 2) = MainForm.tableCoulSupp.Rows(r).Item("nom")
-                liste(nbr - 1) = MainForm.tableCoulSupp.Rows(r).Item("couleur")
-                liste(nbr) = MainForm.tableCoulSupp.Rows(r).Item("code")
-                nbr += 3
-            End If
-        Next
+
         Dim f As New PrintingForm(rowFac, liste, rowFac.Item("date"), False)
         f.ShowDialog()
     End Sub

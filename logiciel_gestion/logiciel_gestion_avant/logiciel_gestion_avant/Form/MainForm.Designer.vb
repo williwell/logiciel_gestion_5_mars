@@ -25,7 +25,7 @@ Partial Class MainForm
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(MainForm))
         Me.PanUC = New System.Windows.Forms.Panel()
         Me.PanCommande = New System.Windows.Forms.Panel()
-        Me.Button3 = New System.Windows.Forms.Button()
+        Me.BTListComm = New System.Windows.Forms.Button()
         Me.BTCreerCommande = New System.Windows.Forms.Button()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.PanGestVeh = New System.Windows.Forms.Panel()
@@ -72,7 +72,7 @@ Partial Class MainForm
         'PanCommande
         '
         Me.PanCommande.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.PanCommande.Controls.Add(Me.Button3)
+        Me.PanCommande.Controls.Add(Me.BTListComm)
         Me.PanCommande.Controls.Add(Me.BTCreerCommande)
         Me.PanCommande.Location = New System.Drawing.Point(93, 86)
         Me.PanCommande.Name = "PanCommande"
@@ -80,14 +80,14 @@ Partial Class MainForm
         Me.PanCommande.TabIndex = 14
         Me.PanCommande.Visible = False
         '
-        'Button3
+        'BTListComm
         '
-        Me.Button3.Location = New System.Drawing.Point(8, 32)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(94, 23)
-        Me.Button3.TabIndex = 1
-        Me.Button3.Text = "Liste Comm"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.BTListComm.Location = New System.Drawing.Point(8, 32)
+        Me.BTListComm.Name = "BTListComm"
+        Me.BTListComm.Size = New System.Drawing.Size(94, 23)
+        Me.BTListComm.TabIndex = 1
+        Me.BTListComm.Text = "Liste Comm"
+        Me.BTListComm.UseVisualStyleBackColor = True
         '
         'BTCreerCommande
         '
@@ -370,6 +370,6 @@ Partial Class MainForm
     Friend WithEvents BTTache As Button
     Friend WithEvents BTFacture As Button
     Friend WithEvents PanCommande As Panel
-    Friend WithEvents Button3 As Button
+    Friend WithEvents BTListComm As Button
     Friend WithEvents BTCreerCommande As Button
 End Class
